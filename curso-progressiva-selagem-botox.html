@@ -1,11 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Curso Progressiva, Selagem e Botox</title>
+  <style>
+    body{font-family:Arial, Helvetica, sans-serif; margin:24px; line-height:1.4;}
+    header{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;}
+    nav a{margin-right:12px; text-decoration:none; color:#0b57d0;}
+    nav a:hover{text-decoration:underline;}
+    .aulas{margin-top:18px;}
+    .aulas ol{padding-left:18px;}
+    .badge{font-size:12px; padding:2px 8px; border:1px solid #ddd; border-radius:999px; color:#444;}
+  </style>
 </head>
+
 <body>
-  <h1>Em breve: Curso de Progressiva, Selagem e Botox</h1>
-  <a href="index.html">Voltar</a>
+  <header>
+    <div>
+      <h1 style="margin:0;">Curso Progressiva, Selagem e Botox</h1>
+      <div class="badge">Sistema de 3 aulas</div>
+    </div>
+
+    <!-- MENU -->
+    <nav aria-label="Menu do curso">
+      <a href="index.html">Início</a>
+      <a href="#aula1">Aula 1</a>
+      <a href="#aula2">Aula 2</a>
+      <a href="#aula3">Aula 3</a>
+    </nav>
+  </header>
+
+  <main class="aulas">
+    <p>Selecione uma aula no menu acima.</p>
+
+    <section id="aula1">
+      <h2>Aula 1 — Introdução</h2>
+      <p>Conteúdo da Aula 1 aqui.</p>
+    </section>
+
+    <section id="aula2">
+      <h2>Aula 2 — Passo a passo</h2>
+      <p>Conteúdo da Aula 2 aqui.</p>
+    </section>
+
+    <section id="aula3">
+      <h2>Aula 3 — Finalização e cuidados</h2>
+      <p>Conteúdo da Aula 3 aqui.</p>
+    </section>
+
+    <p><a href="index.html">Voltar</a></p>
+  </main>
 </body>
 </html>
