@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SEMEAR – Escola da Mulher Empreendedora</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;min-height:100%;background:#050816;font-family:'Inter',sans-serif;color:#F5F7FB;}
+
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.10) 0%,transparent 42%),
+    radial-gradient(800px 380px at 25% 60%,rgba(35,110,255,.10) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.2;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+
+.wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 20px 60px;}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:48px;}
+.logo-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 24px;border-radius:999px;margin-bottom:24px;
+  background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);
+  font-size:13px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;
+}
+.logo-badge svg{width:16px;height:16px;}
+.header h1{
+  font-size:clamp(28px,7vw,52px);font-weight:900;letter-spacing:-.03em;
+  line-height:1.08;color:#F5F7FB;margin-bottom:14px;
+}
+.gt{
+  background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 4s linear infinite;
+}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+.header p{font-size:clamp(13px,3vw,16px);color:#AAB3C5;line-height:1.6;max-width:520px;margin:0 auto;}
+
+.gl{width:70px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin:0 auto 28px;}
+
+/* SECTION TITLE */
+.sec-title{font-size:clamp(15px,4vw,20px);font-weight:700;color:#F5F7FB;margin-bottom:6px;}
+.sec-sub{font-size:13px;color:#7E879B;margin-bottom:20px;}
+
+/* GRID DE CURSOS */
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-bottom:48px;}
+
+/* CARD */
+.course-card{
+  background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.06);
+  overflow:hidden;transition:all .4s ease;display:flex;flex-direction:column;
+}
+.course-card:hover{
+  border-color:rgba(46,107,255,.22);transform:translateY(-4px);
+  box-shadow:0 28px 64px rgba(0,0,0,.55),0 0 50px rgba(46,107,255,.10);
+}
+
+.card-thumb{
+  width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+  font-size:52px;position:relative;overflow:hidden;
+}
+.card-thumb::before{content:'';position:absolute;inset:0;}
+.thumb-1::before{background:linear-gradient(135deg,rgba(46,107,255,.25),rgba(200,109,215,.20));}
+.thumb-2::before{background:linear-gradient(135deg,rgba(46,196,182,.20),rgba(91,63,214,.22));}
+.thumb-coming::before{background:linear-gradient(135deg,rgba(255,255,255,.03),rgba(255,255,255,.05));}
+
+.card-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:10px;}
+
+.card-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:999px;
+  font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  width:fit-content;
+}
+.tag-blue{background:rgba(46,107,255,.12);border:1px solid rgba(46,107,255,.25);color:#8FAEFF;}
+.tag-teal{background:rgba(46,196,182,.10);border:1px solid rgba(46,196,182,.25);color:#5EE8DA;}
+.tag-gray{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;}
+
+.card-title{font-size:clamp(14px,3.5vw,17px);font-weight:800;letter-spacing:-.015em;color:#F5F7FB;line-height:1.25;}
+.card-desc{font-size:12px;color:#AAB3C5;line-height:1.6;flex:1;}
+
+/* BOTÃO ACESSAR */
+.btn-access{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:12px;border-radius:12px;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;
+  transition:all .3s ease;margin-top:4px;
+}
+.btn-blue{
+  background:linear-gradient(135deg,#2E6BFF,#1E56D9);color:#fff;
+  box-shadow:0 8px 24px rgba(46,107,255,.3);
+}
+.btn-blue:hover{background:linear-gradient(135deg,#4A7FFF,#2E6BFF);box-shadow:0 12px 32px rgba(46,107,255,.45);transform:translateY(-1px);}
+.btn-teal{
+  background:linear-gradient(135deg,#2EC4B6,#1A9B8F);color:#fff;
+  box-shadow:0 8px 24px rgba(46,196,182,.28);
+}
+.btn-teal:hover{background:linear-gradient(135deg,#3DD9CA,#2EC4B6);box-shadow:0 12px 32px rgba(46,196,182,.4);transform:translateY(-1px);}
+.btn-coming{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#7E879B;cursor:not-allowed;
+}
+
+/* MODAL */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex;}
+.modal{
+  background:linear-gradient(145deg,#0D1128,#080C20);
+  border:1px solid rgba(255,255,255,.1);border-radius:24px;
+  box-shadow:0 32px 80px rgba(0,0,0,.7),0 0 60px rgba(46,107,255,.1);
+  padding:32px 28px;max-width:380px;width:100%;
+  animation:modalIn .4s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes modalIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+.modal-icon{width:56px;height:56px;border-radius:16px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;}
+.modal-icon-blue{background:linear-gradient(145deg,#2E6BFF,#1E56D9);box-shadow:0 8px 24px rgba(46,107,255,.35);}
+.modal-icon-teal{background:linear-gradient(145deg,#2EC4B6,#1A9B8F);box-shadow:0 8px 24px rgba(46,196,182,.3);}
+.modal-icon svg{width:26px;height:26px;color:#fff;}
+
+.modal h3{font-size:18px;font-weight:800;color:#F5F7FB;text-align:center;margin-bottom:6px;}
+.modal p{font-size:13px;color:#AAB3C5;text-align:center;line-height:1.5;margin-bottom:20px;}
+
+.input-wrap{position:relative;margin-bottom:14px;}
+.input-wrap input{
+  width:100%;padding:13px 44px 13px 16px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;color:#F5F7FB;font-family:'Inter',sans-serif;font-size:14px;
+  outline:none;transition:border-color .3s;
+}
+.input-wrap input:focus{border-color:rgba(46,107,255,.5);}
+.input-wrap input::placeholder{color:#7E879B;}
+.toggle-pw{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;color:#7E879B;padding:0;
+  display:flex;align-items:center;transition:color .3s;
+}
+.toggle-pw:hover{color:#AAB3C5;}
+.toggle-pw svg{width:18px;height:18px;}
+
+.modal-error{
+  font-size:12px;color:#FF6B6B;text-align:center;margin-bottom:10px;
+  background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);
+  border-radius:8px;padding:8px;display:none;
+}
+.modal-error.show{display:block;}
+
+.modal-actions{display:flex;flex-direction:column;gap:10px;}
+.btn-modal{
+  width:100%;padding:13px;border-radius:12px;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:700;transition:all .3s;
+}
+.btn-confirm-blue{background:linear-gradient(135deg,#2E6BFF,#1E56D9);color:#fff;box-shadow:0 8px 20px rgba(46,107,255,.3);}
+.btn-confirm-blue:hover{background:linear-gradient(135deg,#4A7FFF,#2E6BFF);}
+.btn-confirm-teal{background:linear-gradient(135deg,#2EC4B6,#1A9B8F);color:#fff;box-shadow:0 8px 20px rgba(46,196,182,.28);}
+.btn-confirm-teal:hover{background:linear-gradient(135deg,#3DD9CA,#2EC4B6);}
+.btn-cancel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#AAB3C5;}
+.btn-cancel:hover{background:rgba(255,255,255,.09);color:#F5F7FB;}
+
+/* FOOTER */
+.footer{text-align:center;border-top:1px solid rgba(255,255,255,.06);padding-top:28px;}
+.footer p{font-size:12px;color:#7E879B;line-height:1.7;}
+.footer strong{color:#5B3FD6;font-weight:700;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      SEMEAR
+    </div>
+    <h1>Escola da <span class="gt">Mulher Empreendedora</span></h1>
+    <div class="gl"></div>
+    <p>Conteúdos exclusivos para transformar sua carreira na cabeleiraria com propósito e profissionalismo. 💜</p>
+  </header>
+
+  <!-- CURSOS -->
+  <div class="sec-title">📚 Cursos Disponíveis</div>
+  <p class="sec-sub">Acesse com sua senha exclusiva de aluna</p>
+
+  <div class="courses-grid">
+
+    <!-- CURSO 1 -->
+    <div class="course-card">
+      <div class="card-thumb thumb-1">
+        <span style="position:relative;z-index:1;">✂️</span>
+      </div>
+      <div class="card-body">
+        <span class="card-tag tag-blue">✅ Disponível</span>
+        <div class="card-title">Cortes e Modelagens</div>
+        <p class="card-desc">Aprenda as técnicas fundamentais de corte, modelagem e acabamento para todos os tipos de cabelo.</p>
+        <button class="btn-access btn-blue" onclick="openModal('modal1')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Acessar Curso
+        </button>
+      </div>
+    </div>
+
+    <!-- CURSO 2 -->
+    <div class="course-card">
+      <div class="card-thumb thumb-2">
+        <span style="position:relative;z-index:1;">💧</span>
+      </div>
+      <div class="card-body">
+        <span class="card-tag tag-teal">✅ Disponível</span>
+        <div class="card-title">Os Pilares dos Cabelos Saudáveis</div>
+        <p class="card-desc">Domine hidratação, nutrição, restauração e reconstrução para transformar qualquer tipo de fio.</p>
+        <button class="btn-access btn-teal" onclick="openModal('modal2')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Acessar Curso
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      💜 <strong>SEMEAR — A Escola da Mulher Empreendedora</strong><br>
+      Conteúdo exclusivo para alunas. Não compartilhe sua senha de acesso.
+    </p>
+  </footer>
+
+</div>
+
+<!-- MODAL CURSO 1 -->
+<div class="modal-overlay" id="modal1">
+  <div class="modal">
+    <div class="modal-icon modal-icon-blue" style="margin:0 auto 16px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    </div>
+    <h3>Cortes e Modelagens</h3>
+    <p>Digite a senha exclusiva para acessar o conteúdo deste curso.</p>
+    <div class="input-wrap">
+      <input type="password" id="pw1" placeholder="Digite sua senha..." onkeydown="if(event.key==='Enter')check(1)">
+      <button class="toggle-pw" onclick="togglePw('pw1',this)" tabindex="-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <div class="modal-error" id="err1">Senha incorreta. Tente novamente.</div>
+    <div class="modal-actions">
+      <button class="btn-modal btn-confirm-blue" onclick="check(1)">Entrar</button>
+      <button class="btn-modal btn-cancel" onclick="closeModal('modal1')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CURSO 2 -->
+<div class="modal-overlay" id="modal2">
+  <div class="modal">
+    <div class="modal-icon modal-icon-teal" style="margin:0 auto 16px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    </div>
+    <h3>Os Pilares dos Cabelos Saudáveis</h3>
+    <p>Digite a senha exclusiva para acessar o conteúdo deste curso.</p>
+    <div class="input-wrap">
+      <input type="password" id="pw2" placeholder="Digite sua senha..." onkeydown="if(event.key==='Enter')check(2)">
+      <button class="toggle-pw" onclick="togglePw('pw2',this)" tabindex="-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <div class="modal-error" id="err2">Senha incorreta. Tente novamente.</div>
+    <div class="modal-actions">
+      <button class="btn-modal btn-confirm-teal" onclick="check(2)">Entrar</button>
+      <button class="btn-modal btn-cancel" onclick="closeModal('modal2')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const COURSES = {
+  1: { senha: 'semearcp', arquivo: 'index.html' },
+  2: { senha: 'semearcp', arquivo: 'pilares.html' }
+};
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  const num = id.replace('modal','');
+  const inp = document.getElementById('pw'+num);
+  if(inp){ inp.value=''; setTimeout(()=>inp.focus(),200); }
+  const err = document.getElementById('err'+num);
+  if(err) err.classList.remove('show');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+function check(num) {
+  const inp = document.getElementById('pw'+num);
+  const err = document.getElementById('err'+num);
+  const course = COURSES[num];
+  if(inp.value.trim() === course.senha) {
+    window.location.href = course.arquivo;
+  } else {
+    err.classList.add('show');
+    inp.value='';
+    inp.focus();
+    inp.style.borderColor='rgba(255,80,80,.5)';
+    setTimeout(()=>{ inp.style.borderColor=''; },1200);
+  }
+}
+
+function togglePw(inputId, btn) {
+  const inp = document.getElementById(inputId);
+  const isPass = inp.type === 'password';
+  inp.type = isPass ? 'text' : 'password';
+  btn.innerHTML = isPass
+    ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
+    : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+}
+
+// Fechar modal clicando fora
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if(e.target === this) this.classList.remove('open');
+  });
+});
+
+// ESC fecha modal
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  }
+});
+</script>
+</body>
+</html>
