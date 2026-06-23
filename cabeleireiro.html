@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacote Cabeleireiro – Instituto Semear</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body{
+      font-family: Inter, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+      color: #F5F7FB;
+      padding: 40px 22px 60px;
+    }
+
+    .wrap{ max-width: 1100px; margin: 0 auto; }
+    .top{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+      margin-bottom: 26px;
+    }
+
+    .title h1{
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
+    }
+    .title p{ color:#AAB3C5; font-size: 15px; max-width: 650px; line-height: 1.6; }
+
+    .btn-back{
+      display:inline-flex; align-items:center; gap:10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color:#F5F7FB;
+      padding: 12px 14px;
+      border-radius: 12px;
+      text-decoration:none;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+      transition: .25s ease;
+      backdrop-filter: blur(8px);
+    }
+    .btn-back:hover{ transform: translateY(-1px); border-color: rgba(46,107,255,.35); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      transition: .25s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(46,107,255,.25);
+      box-shadow: 0 26px 64px rgba(0,0,0,.55), 0 0 30px rgba(46,107,255,.10);
+    }
+
+    .thumb{
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: rgba(0,0,0,.25);
+      display:block;
+      object-fit: cover;
+    }
+
+    .body{ padding: 14px 14px 16px; }
+    .body h3{
+      font-size: 15px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    .actions{
+      display:flex; gap:10px; flex-wrap: wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration:none;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .01em;
+      transition: .25s ease;
+    }
+    .btn.primary{
+      color:#fff;
+      background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
+      box-shadow: 0 12px 28px rgba(46,107,255,.30);
+    }
+    .btn.primary:hover{ transform: scale(1.02); box-shadow: 0 18px 40px rgba(46,107,255,.45); }
+
+    .hint{
+      margin-top: 18px;
+      color:#7E879B;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="title">
+        <h1>Pacote Cabeleireiro: seus 6 cursos</h1>
+        <p>Escolha abaixo qual módulo você quer assistir agora. (Você pode voltar aqui sempre que quiser.)</p>
+      </div>
+
+      <a class="btn-back" href="index.html">← Voltar</a>
+    </div>
+
+    <div class="grid">
+      <!-- 1 -->
+      <article class="card">
+        <img class="thumb" src="assets/cursos/tratamentos-pacotes-servicos.png" alt="Curso de Tratamentos, Pacotes e Serviços Complementares">
+        <div class="body">
+          <h3>Tratamentos, Pacotes e Serviços Complementares</h3>
+          <div class="actions">
+            <a class="btn primary" href="curso-tratamentos.html">Entrar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <img class="thumb" src="assets/cursos/colorimetria-ozonioterapia.png" alt="Curso de Colorimetria e Ozonioterapia Capilar">
+        <div class="body">
+          <h3>Colorimetria e Ozonioterapia Capilar</h3>
+          <div class="actions">
+            <a class="btn primary" href="curso-colorimetria-ozonio.html">Entrar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card">
+        <img class="thumb" src="assets/cursos/luzes-morena-iluminada.png" alt="Curso de Luzes e Morena Iluminada">
+        <div class="body">
+          <h3>Luzes e Morena Iluminada</h3>
+          <div class="actions">
+            <a class="btn primary" href="curso-luzes-morena.html">Entrar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card">
+        <img class="thumb" src="assets/cursos/coloracao.png" alt="Curso de Coloração">
+        <div class="body">
+          <h3>Coloração</h3>
+          <div class="actions">
+            <a class="btn primary" href="curso-coloracao.html">Entrar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card">
+        <img class="thumb" src="assets/cursos/progressiva-selagem-botox.png" alt="Curso de Progressiva, Selagem e Botox">
+        <div class="body">
+          <h3>Progressiva, Selagem e Botox</h3>
+          <div class="actions">
+            <a class="btn primary" href="curso-progressiva-selagem-botox.html">Entrar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="card">
+        <img class="thumb" src="assets/cursos/cortes-modelagens.png" alt="Curso de Cortes e Modelagens">
+        <div class="body">
+          <h3>Cortes e Modelagens</h3>
+          <div class="actions">
+            <a class="btn primary" href="curso-cortes-modelagens.html">Entrar</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="hint">
+      Dica: coloque as imagens na pasta <strong>assets/cursos/</strong> com esses nomes (ou troque os <em>src</em> para o nome que você usar).
+    </p>
+  </div>
+</body>
+</html>
