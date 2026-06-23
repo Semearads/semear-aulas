@@ -1,183 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curso 2 — Procedimentos Térmicos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso de Procedimentos Termicos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
+    :root{
+      --bg:#050816;
+      --card:rgba(255,255,255,.04);
+      --border:rgba(255,255,255,.08);
+      --text:#F5F7FB;
+      --muted:#AAB3C5;
+      --blue:#2E6BFF;
+      --pink:#C86DD7;
+    }
+    *{box-sizing:border-box}
     body{
-      font-family: Inter, sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
-      color: #F5F7FB;
-      padding: 50px 22px 60px;
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.14) 0%, transparent 42%),
+                  radial-gradient(800px 380px at 35% 20%, rgba(35,110,255,.14) 0%, transparent 42%),
+                  linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+      color:var(--text);
+      min-height:100vh;
+      padding:28px 16px;
     }
-
-    .wrap{ max-width: 900px; margin: 0 auto; }
-
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px; margin-bottom: 22px;
-    }
-
-    .btn-back{
-      display:inline-flex; align-items:center; gap:10px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color:#AAB3C5;
-      padding: 12px 16px;
-      border-radius: 12px;
-      text-decoration:none;
-      font-weight:700;
-      font-size: 14px;
-      transition: .25s ease;
-    }
-    .btn-back:hover{ color:#F5F7FB; border-color: rgba(46,107,255,.3); }
-
+    .wrap{max-width:860px;margin:0 auto}
     .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 16px;
-      border-radius: 999px;
-      background: rgba(46,107,255,.08);
-      border: 1px solid rgba(46,107,255,.2);
-      font-size: 12px; font-weight: 800;
-      color:#8FAEFF;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;border-radius:999px;
+      background:rgba(46,107,255,.08);
+      border:1px solid rgba(46,107,255,.2);
+      color:#8FAEFF;font-weight:700;font-size:12px;
+      letter-spacing:.04em;text-transform:uppercase;
     }
-
-    .hero{
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      border-radius: 18px;
-      padding: 22px;
-      backdrop-filter: blur(8px);
-    }
-
-    h1{
-      font-size: clamp(24px, 4vw, 38px);
-      font-weight: 900;
-      letter-spacing: -.02em;
-      line-height: 1.15;
-      margin-bottom: 10px;
-    }
-
-    .sub{ color:#AAB3C5; line-height: 1.6; font-size: 15px; }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .card{
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      border-radius: 16px;
-      padding: 18px;
-    }
-
-    .card h2{
-      font-size: 16px;
-      margin-bottom: 10px;
-      font-weight: 900;
-    }
-
-    ul{ padding-left: 18px; color:#E9EDFA; }
-    li{ margin: 6px 0; color:#C9D1E3; }
-
-    .cta{
-      margin-top: 16px;
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding: 12px 16px;
-      border-radius: 12px;
+    h1{margin:16px 0 8px; font-size:clamp(26px,4.2vw,44px); letter-spacing:-.02em}
+    p{margin:0 0 18px; color:var(--muted); line-height:1.7}
+    .grid{display:grid; gap:12px; grid-template-columns:1fr}
+    @media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+    a.card{
+      display:block;
       text-decoration:none;
-      font-weight: 900;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color:#F5F7FB;
-      transition:.25s ease;
+      color:inherit;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      transition:.2s ease;
     }
-    .btn:hover{ transform: translateY(-1px); border-color: rgba(46,107,255,.35); }
-
-    .btn-primary{
-      background: rgba(46,107,255,.18);
-      border-color: rgba(46,107,255,.35);
+    a.card:hover{transform:translateY(-2px); border-color:rgba(46,107,255,.35)}
+    .t{font-weight:800; margin:0 0 6px}
+    .d{margin:0; color:var(--muted); font-size:13px}
+    .pill{
+      display:inline-block;
+      margin-top:12px;
+      font-size:12px;
+      font-weight:800;
+      padding:8px 12px;
+      border-radius:999px;
+      background:linear-gradient(135deg, rgba(46,107,255,.18), rgba(200,109,215,.18));
+      border:1px solid rgba(255,255,255,.10);
     }
+    .footer{margin-top:18px; color:#7E879B; font-size:12px}
+    .footer a{color:#8FAEFF}
   </style>
 </head>
-
 <body>
   <div class="wrap">
+    <div class="badge">✂️ Curso de Cabelo</div>
+    <h1>Curso de Procedimentos Termicos</h1>
+    <p>Selecione uma aula para abrir.
 
-    <div class="topbar">
-      <a class="btn-back" href="index.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-        Voltar para Cursos
+    <div class="grid">
+      <a class="card" href="aulas/procedimentos-termicos/aula-01.html">
+        <div class="t">Aula 01 — Escovas Progressiva</div>
+        <p class="d">Tipos de Ativos e Quimica Capilar, Aplicação, Riscos e Cuidados, Precificação.</p>
+        <span class="pill">Abrir aula</span>
       </a>
 
-      <div class="badge">Curso 2</div>
+      <a class="card" href="aulas/procedimentos-termicos/aula-02.html">
+        <div class="t">Aula 02 — Selagem Térmica</div>
+        <p class="d">Tipos de Ativos e Quimica Capilar, Aplicação, Riscos e Cuidados e erros comuns.</p>
+        <span class="pill">Abrir aula</span>
+      </a>
     </div>
 
-    <section class="hero">
-      <h1>Procedimentos Térmicos</h1>
-      <p class="sub">
-        Conteúdo focado em técnicas com uso de calor (secador/escova/prancha) e protocolos relacionados,
-        com atenção ao diagnóstico do fio, segurança e manutenção.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h2>O que você vai aprender</h2>
-          <ul>
-            <li>Diagnóstico do cabelo e indicação do procedimento</li>
-            <li>Preparação: lavagem, secagem, divisão e aplicação</li>
-            <li>Uso correto de escova e prancha (temperatura e passadas)</li>
-            <li>Selagem, alinhamento e finalização</li>
-            <li>Cuidados pós-procedimento e manutenção</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Materiais (lista base)</h2>
-          <ul>
-            <li>Luvas, pente, presilhas, toalhas</li>
-            <li>Secador e escova</li>
-            <li>Prancha/chapinha com controle de temperatura</li>
-            <li>Produtos do protocolo (conforme a linha que você usa)</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Área de vídeo / aula (opcional)</h2>
-          <p class="sub">
-            Se você tiver um vídeo (YouTube/Vimeo/Drive), me manda o link que eu coloco aqui embutido.
-          </p>
-
-          <div class="cta">
-            <a class="btn btn-primary" href="#conteudo">Ir para o conteúdo</a>
-            <a class="btn" href="index.html">Voltar ao menu</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div id="conteudo" style="height: 1px;"></div>
+     <a class="card" href="aulas/procedimentos-termicos/aula-03.html">
+        <div class="t">Aula 03 — Botox Capilar</div>
+        <p class="d">Tipos de Ativos e Quimica Capilar, Aplicação, Riscos e Cuidados e cabelos cacheados.</p>
+        <span class="pill">Abrir aula</span>
+      </a>
+    </div>
+    
+    <div class="footer">
+    <strong>
+    </div>
   </div>
 </body>
 </html>
