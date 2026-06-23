@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Aula 1 - Estrutura e Fisiologia do Cabelo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #050816; font-family: 'Inter', sans-serif; }
+
+  /* ── PROGRESS ── */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 3px; z-index: 1000;
+    background: linear-gradient(90deg, #2E6BFF, #C86DD7, #2E6BFF);
+    background-size: 200% auto; animation: shimmer 3s linear infinite; transition: width .6s ease;
+  }
+
+  /* ── FULLSCREEN BTN ── */
+  .fs-btn {
+    position: fixed; top: 14px; right: 14px; z-index: 999;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    color: #7E879B; padding: 9px 14px; border-radius: 10px; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    transition: all .3s ease; backdrop-filter: blur(6px);
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+  .fs-btn svg { width: 13px; height: 13px; }
+  @media (max-width: 480px) { .fs-btn span { display: none; } .fs-btn { padding: 9px 10px; } }
+
+  /* ── SLIDE COUNTER ── */
+  .sc {
+    position: fixed; bottom: 20px; left: 16px; z-index: 998;
+    color: #7E879B; font-size: 12px; font-weight: 600; letter-spacing: .05em;
+    background: rgba(0,0,0,.35); padding: 8px 14px; border-radius: 10px;
+    backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.05);
+  }
+  .sc .cn { color: #2E6BFF; font-weight: 800; }
+
+  /* ── DOTS ── */
+  .ind {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 998;
+    display: flex; gap: 6px; background: rgba(0,0,0,.35); padding: 8px 14px;
+    border-radius: 20px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.05);
+    max-width: calc(100vw - 160px); overflow: hidden;
+  }
+  .ind .dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(255,255,255,.15); transition: all .4s ease; cursor: pointer;
+  }
+  .ind .dot.active { background: #2E6BFF; box-shadow: 0 0 12px rgba(46,107,255,.6); width: 26px; border-radius: 5px; }
+
+  /* ── NAV ARROWS ── */
+  .nav-arr { position: fixed; bottom: 16px; right: 14px; z-index: 998; display: flex; gap: 8px; }
+  .nav-arr button {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    color: #AAB3C5; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .3s ease; backdrop-filter: blur(6px);
+  }
+  .nav-arr button:hover { background: rgba(46,107,255,.2); border-color: rgba(46,107,255,.4); color: #fff; }
+  .nav-arr button:active { transform: scale(.94); }
+
+  /* ── PRESENTATION ── */
+  .presentation { width: 100vw; height: 100vh; overflow: hidden; }
+  .slides { display: flex; transition: transform .7s cubic-bezier(.22,1,.36,1); height: 100vh; }
+
+  .slide {
+    width: 100vw; height: 100vh; flex-shrink: 0;
+    display: flex; align-items: flex-start; justify-content: center;
+    position: relative; overflow-y: auto; overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .slide.v-center { align-items: center; }
+
+  .slide::before {
+    content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.14) 0%, transparent 42%),
+      radial-gradient(800px 380px at 35% 20%, rgba(35,110,255,.14) 0%, transparent 42%),
+      linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+  }
+  .slide::after {
+    content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .3;
+    background-image: radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);
+    background-size: 24px 24px;
+  }
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: translateY(0) } }
+  @keyframes fadeScale { from { opacity: 0; transform: scale(.88) } to { opacity: 1; transform: scale(1) } }
+  @keyframes shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
+  @keyframes lineG { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+  @keyframes glowP { 0%, 100% { box-shadow: 0 0 18px rgba(46,107,255,.12) } 50% { box-shadow: 0 0 36px rgba(46,107,255,.3) } }
+
+  .slide.active .au { animation: fadeUp .7s ease both; }
+  .slide.active .as { animation: fadeScale .7s ease both; }
+  .d1 { animation-delay: .1s !important } .d2 { animation-delay: .22s !important }
+  .d3 { animation-delay: .34s !important } .d4 { animation-delay: .46s !important }
+  .d5 { animation-delay: .58s !important } .d6 { animation-delay: .7s !important }
+  .d7 { animation-delay: .82s !important }
+
+  /* ── DESIGN TOKENS ── */
+  .gt {
+    background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
+    background-size: 200% auto; -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+  .gl {
+    width: 70px; height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, #2E6BFF, #C86DD7);
+    margin-bottom: 16px; animation: lineG .8s ease both; transform-origin: left;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 18px; border-radius: 999px; margin-bottom: 22px;
+    background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.2);
+    font-size: 12px; font-weight: 600; color: #8FAEFF;
+    letter-spacing: .05em; text-transform: uppercase;
+  }
+  .card {
+    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+    padding: 20px 16px; backdrop-filter: blur(8px); transition: all .4s ease;
+  }
+  .cp {
+    background: linear-gradient(145deg, rgba(18,11,43,.95) 0%, rgba(10,15,36,.98) 55%, rgba(5,8,22,1) 100%);
+    border: 1px solid rgba(255,255,255,.08); border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 40px rgba(46,107,255,.08);
+    padding: 20px 18px; backdrop-filter: blur(10px); transition: all .4s ease;
+  }
+  .tn {
+    width: 56px; height: 56px; border-radius: 16px;
+    margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: #fff; animation: glowP 3s ease-in-out infinite;
+  }
+  .tn.n1 { background: linear-gradient(145deg, #2E6BFF, #1E56D9); }
+  .tn.n2 { background: linear-gradient(145deg, #5B3FD6, #4530B3); animation-delay: .5s; }
+  .tn.n3 { background: linear-gradient(145deg, #C86DD7, #A854BF); animation-delay: 1s; }
+
+  h1 { font-weight: 900; letter-spacing: -.03em; line-height: 1.08; color: #F5F7FB; }
+  h2 { font-weight: 800; letter-spacing: -.025em; line-height: 1.18; color: #F5F7FB; }
+  h3 { font-weight: 700; letter-spacing: -.01em; color: #F5F7FB; }
+  p  { font-weight: 400; line-height: 1.7; color: #AAB3C5; }
+
+  /* ── SLIDE 1 (CAPA) ── */
+  .s1-wrap {
+    text-align: center; padding: 40px 24px;
+    width: 100%; max-width: 860px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh;
+  }
+  .s1-wrap h1 { font-size: clamp(34px, 7vw, 78px); margin-bottom: 20px; }
+  .s1-wrap .tag { font-size: clamp(15px, 2.2vw, 22px); color: #AAB3C5; max-width: 540px; margin: 0 auto; line-height: 1.6; }
+
+  /* ── SLIDE INNER (conteúdo geral) ── */
+  .slide-inner {
+    width: 100%; max-width: 1100px;
+    padding: 64px 20px 88px;
+  }
+  .slide-header { margin-bottom: 24px; }
+  .slide-header h2 { font-size: clamp(19px, 3vw, 38px); }
+  .slide-header p  { font-size: clamp(13px, 1.5vw, 16px); color: #AAB3C5; margin-top: 8px; max-width: 680px; line-height: 1.7; }
+
+  /* ── GRIDS ── */
+  .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+
+  .emoji-big { font-size: 34px; margin-bottom: 12px; display: block; }
+  .card-title { font-size: 15px; font-weight: 700; color: #F5F7FB; margin-bottom: 8px; }
+  .card-text  { font-size: 13px; color: #AAB3C5; line-height: 1.7; }
+
+  .hbox { background: rgba(46,107,255,.06); border: 1px solid rgba(46,107,255,.18); border-radius: 13px; padding: 12px 16px; margin-top: 12px; }
+  .hbox p { font-size: 12px; color: #8FAEFF; font-weight: 600; line-height: 1.5; }
+
+  .s5c { position: relative; padding-left: 24px !important; overflow: hidden; }
+  .s5c::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 2px 0 0 2px; }
+  .s5c.b1::before { background: #2E6BFF; }
+  .s5c.b2::before { background: #5B3FD6; }
+  .s5c.b3::before { background: #C86DD7; }
+  .s5c.b4::before { background: linear-gradient(180deg,#2E6BFF,#C86DD7); }
+
+  .s6n { font-size: clamp(30px,4vw,48px); font-weight: 900; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 6px; }
+  .s6n.c1 { color: #2E6BFF; } .s6n.c2 { color: #5B3FD6; } .s6n.c3 { color: #C86DD7; }
+  .s6n.c4 { background: linear-gradient(135deg,#2E6BFF 0%,#C86DD7 100%); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .metric-label { font-size: 13px; font-weight: 700; color: #F5F7FB; margin-bottom: 4px; }
+  .metric-desc  { font-size: 11px; color: #7E879B; line-height: 1.5; }
+
+  /* ── FLOW (ciclo) ── */
+  .fl { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px; margin-bottom: 20px; }
+  .fs-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 6px 10px; min-width: 90px; }
+  .fs-step .fi {
+    width: 64px; height: 64px; border-radius: 18px; font-size: 28px;
+    background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.18);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 10px;
+  }
+  .fs-step .fn { font-size: 13px; font-weight: 700; color: #F5F7FB; }
+  .fs-step .fd { font-size: 11px; color: #7E879B; margin-top: 3px; }
+  .fs-step .ft { font-size: 11px; font-weight: 700; margin-top: 4px; }
+  .fa { display: flex; align-items: center; padding-bottom: 22px; }
+  .fa svg { width: 20px; height: 20px; color: #7E879B; }
+  .fs-step.act .fi { background: linear-gradient(180deg,#2E6BFF,#1E56D9); border-color: transparent; box-shadow: 0 10px 22px rgba(46,107,255,.3); }
+
+  /* ── COMPARE ── */
+  .bwc { border-radius: 16px; padding: 18px 16px; }
+  .bwc.cr { background: rgba(255,80,80,.05); border: 1px solid rgba(255,80,80,.12); }
+  .bwc.cy { background: rgba(255,200,60,.05); border: 1px solid rgba(255,200,60,.12); }
+  .bwc.cg { background: rgba(80,220,120,.05); border: 1px solid rgba(80,220,120,.12); }
+  .bwc .bwt { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .bwc.cr .bwt { color: #FF6B6B; } .bwc.cy .bwt { color: #FFD460; } .bwc.cg .bwt { color: #5EE89A; }
+  .bwc ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .bwc ul li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #AAB3C5; line-height: 1.5; }
+  .bwd { width: 6px; height: 6px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .cr .bwd { background: #FF6B6B; } .cy .bwd { background: #FFD460; } .cg .bwd { background: #5EE89A; }
+
+  /* ── CONCLUSION ── */
+  .conc-wrap {
+    text-align: center; padding: 40px 24px;
+    width: 100%; max-width: 800px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh;
+  }
+  .conc-wrap h2  { font-size: clamp(24px,4.5vw,52px); margin-bottom: 16px; }
+  .conc-wrap .sub { font-size: clamp(13px,1.8vw,18px); color: #AAB3C5; max-width: 600px; margin: 0 auto 28px; line-height: 1.7; }
+  .pill-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .pill { padding: 10px 18px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+  .pill.p1 { background: rgba(46,107,255,.12); border: 1px solid rgba(46,107,255,.3); color: #8FAEFF; }
+  .pill.p2 { background: rgba(91,63,214,.12); border: 1px solid rgba(91,63,214,.3); color: #B09EFF; }
+  .pill.p3 { background: rgba(200,109,215,.12); border: 1px solid rgba(200,109,215,.3); color: #E8AAEF; }
+
+  /* ── TIP BOX ── */
+  .tip {
+    background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 14px; padding: 14px 16px; margin-top: 16px;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .tip-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .tip p { font-size: 12px; color: #AAB3C5; line-height: 1.6; }
+  .tip strong { color: #F5F7FB; }
+
+  /* ════════════════════════════
+     MOBILE BREAKPOINTS
+  ════════════════════════════ */
+  @media (max-width: 700px) {
+    .grid3 { grid-template-columns: 1fr; }
+    .grid2 { grid-template-columns: 1fr; }
+    .grid4 { grid-template-columns: repeat(2,1fr); }
+    .slide-inner { padding: 56px 16px 80px; }
+    .slide-header { margin-bottom: 18px; }
+    .fl { gap: 2px; }
+    .fa { display: none; }
+    .fs-step { min-width: 80px; }
+  }
+
+  @media (max-width: 420px) {
+    .slide-inner { padding: 52px 14px 76px; }
+    .grid4 { grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .s6n { font-size: 28px; }
+    .card { padding: 16px 14px; }
+    .cp   { padding: 16px 14px; }
+    .bwc  { padding: 16px 14px; }
+    .fs-step .fi { width: 54px; height: 54px; font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+  <!-- SLIDE 1 — CAPA -->
+  <section class="slide v-center active">
+    <div class="s1-wrap">
+      <div class="badge au d1">✂️ Curso de Cabelo — Do Zero</div>
+      <h1 class="au d2">O Cabelo <span class="gt">por Dentro</span></h1>
+      <p class="tag au d3">Vamos descobrir juntas o que é o cabelo, como ele nasce e por que ele precisa de tanto cuidado. Simples assim! 💛</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 — O QUE É O CABELO -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">O cabelo é <span class="gt">parte do nosso corpo</span></h2>
+        <p class="au d3">Ele não é só bonito — ele protege, sente e mostra como a gente está de saúde.</p>
+      </div>
+      <div class="grid3">
+        <div class="card au d4" style="text-align:center;">
+          <span class="emoji-big">🧬</span>
+          <div class="card-title">Feito de queratina</div>
+          <div class="card-text">O cabelo é feito de uma proteína chamada <strong style="color:#F5F7FB;">queratina</strong> — a mesma que forma as suas unhas!</div>
+        </div>
+        <div class="card au d5" style="text-align:center;">
+          <span class="emoji-big">💆‍♀️</span>
+          <div class="card-title">Nasce na pele</div>
+          <div class="card-text">Cada fio nasce dentro de um buraquinho na pele da cabeça, chamado de <strong style="color:#F5F7FB;">folículo piloso</strong>.</div>
+        </div>
+        <div class="card au d6" style="text-align:center;">
+          <span class="emoji-big">💯</span>
+          <div class="card-title">100 mil fios!</div>
+          <div class="card-text">A nossa cabeça tem em média <strong style="color:#F5F7FB;">100 mil fios</strong>. É muita coisa para cuidar — por isso o conhecimento faz diferença!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 — HASTE E RAIZ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">O que a gente vê… e o que fica <span class="gt">escondido</span></h2>
+        <p class="au d3">O fio de cabelo tem duas partes principais. Cada uma tem um papel diferente.</p>
+      </div>
+      <div class="grid2">
+        <div class="cp au d4">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+            <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">💇‍♀️</div>
+            <div>
+              <h3 style="font-size:19px;margin-bottom:3px;">A Haste</h3>
+              <span style="font-size:12px;color:#7E879B;">A parte que a gente vê</span>
+            </div>
+          </div>
+          <p style="font-size:13px;margin-bottom:14px;line-height:1.7;">É a parte do fio que fica <strong style="color:#F5F7FB;">para fora da cabeça</strong>. É o que a gente penteia, lava, pinta e corta todo dia.</p>
+          <div class="hbox"><p>⚠️ A haste é feita de células <strong>mortas</strong> — por isso ela não sente dor quando cortamos!</p></div>
+        </div>
+        <div class="cp au d5">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+            <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#C86DD7,#A854BF);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">🌱</div>
+            <div>
+              <h3 style="font-size:19px;margin-bottom:3px;">A Raiz</h3>
+              <span style="font-size:12px;color:#7E879B;">A parte que fica escondida</span>
+            </div>
+          </div>
+          <p style="font-size:13px;margin-bottom:14px;line-height:1.7;">Fica <strong style="color:#F5F7FB;">dentro da pele da cabeça</strong>. É aqui que o fio nasce e cresce. É cheio de células vivas e recebe nutrição do sangue.</p>
+          <div class="hbox" style="background:rgba(200,109,215,.06);border-color:rgba(200,109,215,.2);"><p style="color:#E8AAEF;">💡 Cuidar da raiz é cuidar do futuro do cabelo!</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 — 3 CAMADAS -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Por dentro, o fio tem <span class="gt">3 camadas</span></h2>
+        <p class="au d3">Pense no cabelo como um lápis de cor — tem a casca de fora, o miolo e o centro.</p>
+      </div>
+      <div class="grid3">
+        <div class="card au d4" style="text-align:center;">
+          <div class="tn n1">1</div>
+          <div class="card-title" style="font-size:16px;margin-bottom:8px;">Cutícula</div>
+          <div class="card-text" style="margin-bottom:10px;">É a <strong style="color:#F5F7FB;">casca de fora</strong> do fio. Tem escamazinhas que ficam fechadas quando o fio está saudável — como telhas de um telhado.</div>
+          <div class="hbox"><p>✅ Fechada: fio brilhante e liso. Aberta: fio opaco e arrepiado.</p></div>
+        </div>
+        <div class="card au d5" style="text-align:center;">
+          <div class="tn n2">2</div>
+          <div class="card-title" style="font-size:16px;margin-bottom:8px;">Córtex</div>
+          <div class="card-text" style="margin-bottom:10px;">É o <strong style="color:#F5F7FB;">miolo do fio</strong>. É onde fica a força, a elasticidade e a <strong style="color:#F5F7FB;">cor natural</strong>. A tinta do salão age aqui!</div>
+          <div class="hbox" style="background:rgba(91,63,214,.06);border-color:rgba(91,63,214,.2);"><p style="color:#B09EFF;">🎨 Coloração e relaxamento atuam aqui.</p></div>
+        </div>
+        <div class="card au d6" style="text-align:center;">
+          <div class="tn n3">3</div>
+          <div class="card-title" style="font-size:16px;margin-bottom:8px;">Medula</div>
+          <div class="card-text" style="margin-bottom:10px;">É o <strong style="color:#F5F7FB;">centro do fio</strong>. Cabelos finos podem nem ter medula. Nos grossos ela aparece mais.</div>
+          <div class="hbox" style="background:rgba(200,109,215,.06);border-color:rgba(200,109,215,.2);"><p style="color:#E8AAEF;">ℹ️ Ela não interfere no trabalho do salão.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 — FOLÍCULO -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">O buraquinho de onde <span class="gt">nasce o fio</span></h2>
+        <p class="au d3">Dentro da pele existe uma estrutura chamada <strong style="color:#F5F7FB;">folículo piloso</strong>. É a "fábrica" do cabelo!</p>
+      </div>
+      <div class="grid2">
+        <div class="card s5c b1 au d4">
+          <span style="font-size:24px;display:block;margin-bottom:10px;">🩸</span>
+          <div class="card-title">Papila Dérmica</div>
+          <div class="card-text">É o <strong style="color:#F5F7FB;">"coração"</strong> do fio. Recebe sangue com nutrição e envia tudo para o fio crescer. Se ela morrer, o fio para de nascer.</div>
+        </div>
+        <div class="card s5c b2 au d5">
+          <span style="font-size:24px;display:block;margin-bottom:10px;">🏭</span>
+          <div class="card-title">Matriz Germinativa</div>
+          <div class="card-text">É a <strong style="color:#F5F7FB;">"fábrica"</strong> do fio. As células se multiplicam aqui e vão formando o cabelo novo que cresce para cima.</div>
+        </div>
+        <div class="card s5c b3 au d6">
+          <span style="font-size:24px;display:block;margin-bottom:10px;">💧</span>
+          <div class="card-title">Glândula Sebácea</div>
+          <div class="card-text">Produz uma <strong style="color:#F5F7FB;">gordurinha natural</strong> chamada sebo. Protege e hidrata o fio. Quando produz demais, o cabelo fica oleoso.</div>
+        </div>
+        <div class="card s5c b4 au d7">
+          <span style="font-size:24px;display:block;margin-bottom:10px;">🥶</span>
+          <div class="card-title">Músculo do Pelo</div>
+          <div class="card-text">Faz o <strong style="color:#F5F7FB;">cabelo ficar arrepiado</strong> quando a gente sente frio ou susto. Já reparou nisso nos braços?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6 — QUERATINA -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">A queratina é o <span class="gt">tijolo do cabelo</span></h2>
+        <p class="au d3">O cabelo é feito quase todo de queratina. Entender isso ajuda a fazer os procedimentos com mais segurança.</p>
+      </div>
+      <div class="grid4" style="margin-bottom:16px;">
+        <div class="cp au d4" style="text-align:center;padding:18px 12px;">
+          <div class="s6n c1">95%</div>
+          <div class="metric-label">do fio</div>
+          <div class="metric-desc">é feito de queratina</div>
+        </div>
+        <div class="cp au d5" style="text-align:center;padding:18px 12px;">
+          <div class="s6n c2">S-S</div>
+          <div class="metric-label">Pontes dissulfeto</div>
+          <div class="metric-desc">dão forma e força ao fio</div>
+        </div>
+        <div class="cp au d6" style="text-align:center;padding:18px 12px;">
+          <div class="s6n c3">🔥</div>
+          <div class="metric-label">Calor e química</div>
+          <div class="metric-desc">quebram a queratina</div>
+        </div>
+        <div class="cp au d7" style="text-align:center;padding:18px 12px;">
+          <div class="s6n c4">💉</div>
+          <div class="metric-label">Proteínas</div>
+          <div class="metric-desc">recolocam queratina no fio</div>
+        </div>
+      </div>
+      <div class="tip au d7">
+        <span class="tip-icon">💡</span>
+        <p>Quando a gente faz <strong>relaxamento, escova progressiva ou descoloração</strong>, estamos mexendo diretamente na queratina. Por isso é tão importante usar o produto certo e respeitar o tempo de ação!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7 — CICLO DE VIDA -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">O cabelo nasce, cresce e cai — <span class="gt">e tudo bem!</span></h2>
+        <p class="au d3">Todo fio passa por 3 fases na vida. Isso é completamente normal e acontece com todo mundo.</p>
+      </div>
+      <div class="fl au d4">
+        <div class="fs-step act">
+          <div class="fi">🌱</div>
+          <span class="fn">Crescendo</span>
+          <span class="fd">Fase Anágena</span>
+          <span class="ft" style="color:#2E6BFF;">2 a 7 anos</span>
+        </div>
+        <div class="fa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="fs-step">
+          <div class="fi" style="background:rgba(91,63,214,.08);border-color:rgba(91,63,214,.18);">⏸️</div>
+          <span class="fn">Descansando</span>
+          <span class="fd">Fase Catágena</span>
+          <span class="ft" style="color:#5B3FD6;">2 a 3 sem.</span>
+        </div>
+        <div class="fa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="fs-step">
+          <div class="fi" style="background:rgba(200,109,215,.08);border-color:rgba(200,109,215,.18);">🍂</div>
+          <span class="fn">Caindo</span>
+          <span class="fd">Fase Telógena</span>
+          <span class="ft" style="color:#C86DD7;">3 a 4 meses</span>
+        </div>
+      </div>
+      <div class="grid3">
+        <div class="card au d5" style="padding:14px 16px;text-align:center;">
+          <p style="font-size:13px;">Cair <strong style="color:#F5F7FB;">50 a 100 fios</strong> por dia é completamente normal! 🙆‍♀️</p>
+        </div>
+        <div class="card au d6" style="padding:14px 16px;text-align:center;">
+          <p style="font-size:13px;">O fio cresce em média <strong style="color:#F5F7FB;">1 cm por mês</strong> — ou seja, 12 cm por ano! 📏</p>
+        </div>
+        <div class="card au d7" style="padding:14px 16px;text-align:center;">
+          <p style="font-size:13px;">Quando um fio cai, <strong style="color:#F5F7FB;">um novo já começa</strong> a nascer no mesmo lugar. 🌿</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 — COR DO CABELO -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">De onde vem a <span class="gt">cor do cabelo?</span></h2>
+        <p class="au d3">A cor natural do cabelo vem de uma substância chamada <strong style="color:#F5F7FB;">melanina</strong>, que fica dentro do fio.</p>
+      </div>
+      <div class="grid2" style="margin-bottom:14px;">
+        <div class="cp au d4">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <span style="font-size:32px;">🖤</span>
+            <div>
+              <h3 style="font-size:17px;margin-bottom:3px;">Eumelanina</h3>
+              <span style="font-size:12px;color:#7E879B;">Para cabelos escuros</span>
+            </div>
+          </div>
+          <p style="font-size:13px;margin-bottom:12px;line-height:1.7;">Dá as cores <strong style="color:#F5F7FB;">pretas e castanhas</strong>. Quanto mais tiver no fio, mais escuro o cabelo fica.</p>
+          <div class="hbox"><p>👩‍🦱 Cabelos pretos e castanhos têm muito dessa melanina.</p></div>
+        </div>
+        <div class="cp au d5">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <span style="font-size:32px;">🌟</span>
+            <div>
+              <h3 style="font-size:17px;margin-bottom:3px;">Feomelanina</h3>
+              <span style="font-size:12px;color:#7E879B;">Para cabelos claros</span>
+            </div>
+          </div>
+          <p style="font-size:13px;margin-bottom:12px;line-height:1.7;">Dá as cores <strong style="color:#F5F7FB;">loiras e ruivas</strong>. Está presente em menor quantidade nos cabelos claros.</p>
+          <div class="hbox" style="background:rgba(200,109,215,.06);border-color:rgba(200,109,215,.2);"><p style="color:#E8AAEF;">👱‍♀️ Cabelos loiros e ruivos têm mais dessa melanina.</p></div>
+        </div>
+      </div>
+      <div class="tip au d6">
+        <span class="tip-icon">👴</span>
+        <p>Com o tempo, o corpo <strong>para de produzir melanina</strong> — e o cabelo fica branco ou grisalho. Por isso os cabelos brancos aparecem com a idade!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 — O QUE FAZ MAL E BEM -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">O que <span class="gt">estraga</span> e o que cuida do cabelo</h2>
+        <p class="au d3">Saber o que prejudica e o que ajuda o fio é o primeiro passo para um atendimento de qualidade.</p>
+      </div>
+      <div class="grid3">
+        <div class="bwc cr au d4">
+          <div class="bwt">🚫 O que estraga</div>
+          <ul>
+            <li><span class="bwd"></span>Chapinha e secador com calor demais</li>
+            <li><span class="bwd"></span>Química forte sem cuidado</li>
+            <li><span class="bwd"></span>Sol sem proteção</li>
+            <li><span class="bwd"></span>Prender o cabelo muito apertado</li>
+            <li><span class="bwd"></span>Falta de hidratação</li>
+          </ul>
+        </div>
+        <div class="bwc cy au d5">
+          <div class="bwt">⚠️ Atenção redobrada</div>
+          <ul>
+            <li><span class="bwd"></span>Descoloração em cabelo danificado</li>
+            <li><span class="bwd"></span>Dois processos químicos no mesmo dia</li>
+            <li><span class="bwd"></span>Escova progressiva com frequência</li>
+            <li><span class="bwd"></span>Água muito quente para lavar</li>
+            <li><span class="bwd"></span>Pentear o cabelo molhado com força</li>
+          </ul>
+        </div>
+        <div class="bwc cg au d6">
+          <div class="bwt">✅ O que cuida</div>
+          <ul>
+            <li><span class="bwd"></span>Hidratação regular com máscara</li>
+            <li><span class="bwd"></span>Beber bastante água</li>
+            <li><span class="bwd"></span>Protetor térmico antes do calor</li>
+            <li><span class="bwd"></span>Cortar as pontas com frequência</li>
+            <li><span class="bwd"></span>Comer bem: proteínas e vitaminas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 — CONCLUSÃO -->
+  <section class="slide v-center">
+    <div class="conc-wrap">
+      <div class="badge au d1" style="margin:0 auto 22px;">🎉 Parabéns!</div>
+      <h2 class="au d2">Agora você já sabe o que tem <span class="gt">dentro do fio!</span></h2>
+      <p class="sub au d3">Conhecer o cabelo por dentro te ajuda a atender melhor, escolher o produto certo e trabalhar com muito mais segurança e confiança. Você está no caminho certo! 💛✂️</p>
+      <div class="pill-row au d4">
+        <div class="pill p1">🧬 Haste e Raiz</div>
+        <div class="pill p2">🎨 Cutícula · Córtex · Medula</div>
+        <div class="pill p3">🌱 Nasce · Cresce · Renova</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script>
+  const T = 10; let C = 0;
+  const W  = document.getElementById('sw');
+  const CN = document.getElementById('cn');
+  const P  = document.getElementById('prog');
+  const I  = document.getElementById('ind');
+
+  for (let i = 0; i < T; i++) {
+    const d = document.createElement('div');
+    d.classList.add('dot');
+    if (i === 0) d.classList.add('active');
+    d.onclick = () => go(i);
+    I.appendChild(d);
+  }
+
+  function upd() {
+    I.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === C));
+    CN.textContent = C + 1;
+    P.style.width = ((C + 1) / T * 100) + '%';
+    document.querySelectorAll('.slide').forEach((s, i) => {
+      s.classList.toggle('active', i === C);
+      if (i === C) s.scrollTop = 0;
+    });
+  }
+
+  function go(i) {
+    if (i < 0 || i >= T) return;
+    C = i;
+    W.style.transform = `translateX(-${C * 100}vw)`;
+    upd();
+  }
+  function next() { if (C < T-1) go(C+1); }
+  function prev() { if (C > 0)   go(C-1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); prev(); }
+    if (e.key === 'f' || e.key === 'F') toggleFs();
+  });
+
+  let tx = 0, ty = 0;
+  document.addEventListener('touchstart', e => {
+    tx = e.changedTouches[0].clientX;
+    ty = e.changedTouches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = tx - e.changedTouches[0].clientX;
+    const dy = ty - e.changedTouches[0].clientY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 48) {
+      dx > 0 ? next() : prev();
+    }
+  }, { passive: true });
+
+  function toggleFs() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(()=>{});
+    } else {
+      document.exitFullscreen();
+    }
+  }
+  document.addEventListener('fullscreenchange', () => {
+    const btn = document.getElementById('fsTxt');
+    if (btn) btn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
+  });
+
+  upd();
+</script>
+</body>
+</html>
