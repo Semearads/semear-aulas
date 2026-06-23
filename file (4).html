@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semear — Cabeleireiro Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #050816;
+  overflow: hidden;
+  width: 100vw; height: 100vh;
+}
+
+.presentation { width: 100vw; height: 100vh; overflow: hidden; }
+
+.slides {
+  display: flex;
+  transition: transform .7s cubic-bezier(.22,1,.36,1);
+  height: 100vh;
+}
+
+.slide {
+  width: 100vw; height: 100vh; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+}
+
+.slide::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.14) 0%, transparent 42%),
+    radial-gradient(800px 380px at 35% 20%, rgba(35,110,255,.14) 0%, transparent 42%),
+    linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+}
+
+.slide::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .3;
+  background-image: radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);
+  background-size: 24px 24px;
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+h1 { font-weight: 900; letter-spacing: -.03em; line-height: 1.08; color: #F5F7FB; }
+h2 { font-weight: 800; letter-spacing: -.025em; line-height: 1.12; color: #F5F7FB; }
+h3 { font-weight: 700; letter-spacing: -.015em; color: #F5F7FB; }
+p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
+
+.gt {
+  background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
+
+.gl {
+  width: 90px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, #2E6BFF, #C86DD7);
+  margin-bottom: 22px;
+  animation: lineG .8s ease both; transform-origin: left;
+}
+.gl.ce { margin: 0 auto 22px auto; transform-origin: center; }
+@keyframes lineG { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 24px; border-radius: 999px; margin-bottom: 16px;
+  background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.2);
+  font-size: 14px; font-weight: 600; color: #8FAEFF;
+  letter-spacing: .05em; text-transform: uppercase;
+}
+
+.card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 22px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+  padding: 32px 28px;
+  backdrop-filter: blur(8px);
+  transition: all .4s ease;
+}
+.card:hover {
+  border-color: rgba(46,107,255,.2);
+  transform: translateY(-3px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08);
+}
+
+.cp {
+  background: linear-gradient(145deg, rgba(18,11,43,.95) 0%, rgba(10,15,36,.98) 55%, rgba(5,8,22,1) 100%);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 40px rgba(46,107,255,.08);
+  padding: 34px 30px;
+  backdrop-filter: blur(10px);
+  transition: all .4s ease;
+}
+.cp:hover {
+  border-color: rgba(46,107,255,.25);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 28px 64px rgba(0,0,0,.55), 0 0 50px rgba(46,107,255,.12);
+}
+
+.tn {
+  width: 72px; height: 72px; border-radius: 18px;
+  margin: 0 auto 26px; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 900; color: #fff;
+  animation: glowP 3s ease-in-out infinite;
+}
+.tn.n1 { background: linear-gradient(145deg, #2E6BFF, #1E56D9); }
+.tn.n2 { background: linear-gradient(145deg, #5B3FD6, #4530B3); animation-delay: .5s; }
+.tn.n3 { background: linear-gradient(145deg, #C86DD7, #A854BF); animation-delay: 1s; }
+.tn.n4 { background: linear-gradient(145deg, #2E6BFF, #C86DD7); animation-delay: 1.5s; }
+.tn.n5 { background: linear-gradient(145deg, #5B3FD6, #2E6BFF); animation-delay: 2s; }
+.tn.n6 { background: linear-gradient(145deg, #C86DD7, #5B3FD6); animation-delay: 2.5s; }
+@keyframes glowP {
+  0%, 100% { box-shadow: 0 0 18px rgba(46,107,255,.12) }
+  50% { box-shadow: 0 0 36px rgba(46,107,255,.3) }
+}
+
+.ic {
+  width: 54px; height: 54px; border-radius: 14px; margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(46,107,255,.08);
+}
+.ic svg { width: 26px; height: 26px; color: #2E6BFF; }
+
+.s5c { position: relative; overflow: hidden; padding-left: 20px !important; }
+.s5c::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 5px; height: 100%; border-radius: 2px 0 0 2px;
+}
+.s5c.b1::before { background: #2E6BFF; }
+.s5c.b2::before { background: #5B3FD6; }
+.s5c.b3::before { background: #C86DD7; }
+
+.s5n {
+  font-size: 58px; font-weight: 900; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 10px;
+}
+
+.fl { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.fs { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 135px; padding: 0 8px; }
+.fs .fi {
+  width: 76px; height: 76px; border-radius: 20px;
+  background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.18);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.fs .fi svg { width: 34px; height: 34px; color: #2E6BFF; }
+.fs span { font-size: 15px; font-weight: 600; color: #F5F7FB; }
+.fa { display: flex; align-items: center; padding-bottom: 30px; margin: 0 6px; }
+.fa svg { width: 26px; height: 26px; color: #7E879B; }
+.fs.act .fi {
+  background: linear-gradient(180deg, #2E6BFF, #1E56D9);
+  border-color: transparent;
+  box-shadow: 0 10px 22px rgba(46,107,255,.28);
+}
+.fs.act .fi svg { color: #fff; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(35px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes fadeScale { from { opacity: 0; transform: scale(.88) } to { opacity: 1; transform: scale(1) } }
+
+.slide.active .au { animation: fadeUp .7s ease both; }
+.slide.active .as { animation: fadeScale .7s ease both; }
+.d1 { animation-delay: .1s !important }
+.d2 { animation-delay: .22s !important }
+.d3 { animation-delay: .34s !important }
+.d4 { animation-delay: .46s !important }
+.d5 { animation-delay: .58s !important }
+.d6 { animation-delay: .7s !important }
+.d7 { animation-delay: .82s !important }
+
+.progress {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 1000;
+  background: linear-gradient(90deg, #2E6BFF, #C86DD7, #2E6BFF);
+  background-size: 200% auto; animation: shimmer 3s linear infinite;
+  transition: width .6s ease;
+}
+
+.fs-btn {
+  position: fixed; top: 20px; right: 20px; z-index: 999;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  color: #7E879B; padding: 12px 18px; border-radius: 12px; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+  transition: all .3s ease; backdrop-filter: blur(6px);
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.fs-btn:hover { background: rgba(255,255,255,.08); color: #F5F7FB; border-color: rgba(46,107,255,.3); }
+.fs-btn svg { width: 16px; height: 16px; }
+
+.sc {
+  position: fixed; bottom: 36px; left: 40px; z-index: 998;
+  color: #7E879B; font-size: 14px; font-weight: 600; letter-spacing: .05em;
+  background: rgba(0,0,0,.3); padding: 10px 18px; border-radius: 10px;
+  backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.05);
+}
+.sc .cn { color: #2E6BFF; font-weight: 800; }
+
+.ind {
+  position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 998;
+  display: flex; gap: 7px; background: rgba(0,0,0,.3); padding: 10px 16px;
+  border-radius: 20px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.05);
+}
+.ind .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,.15); transition: all .4s ease; cursor: pointer;
+}
+.ind .dot.active {
+  background: #2E6BFF; box-shadow: 0 0 14px rgba(46,107,255,.6);
+  width: 34px; border-radius: 5px;
+}
+
+.nav-arr { position: fixed; bottom: 32px; right: 40px; z-index: 998; display: flex; gap: 10px; }
+.nav-arr button {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  color: #AAB3C5; font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .3s ease; backdrop-filter: blur(6px);
+}
+.nav-arr button:hover {
+  background: rgba(46,107,255,.2); border-color: rgba(46,107,255,.4);
+  color: #fff; transform: scale(1.05);
+}
+
+/* SLIDE 1 */
+.s1-wrap { text-align: center; max-width: 1000px; padding: 0 40px; }
+.s1-brand { font-size: clamp(48px, 7vw, 88px); font-weight: 900; letter-spacing: -.04em; line-height: 1; margin-bottom: 10px; }
+.s1-escola { font-size: clamp(13px, 1.4vw, 17px); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #7E879B; margin-bottom: 36px; }
+.s1-wrap h1 { font-size: clamp(36px, 5vw, 62px); margin-bottom: 26px; }
+.s1-wrap .tag { font-size: clamp(15px, 1.8vw, 20px); color: #AAB3C5; max-width: 580px; margin: 0 auto; line-height: 1.6; }
+
+/* SLIDE 2 */
+.s2-wrap { max-width: 900px; padding: 0 40px; width: 100%; }
+.s2-wrap h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 16px; }
+.s2-bullets { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+.s2-bullets li { display: flex; align-items: flex-start; gap: 14px; }
+.s2-bullets li .dot-b { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg,#2E6BFF,#C86DD7); flex-shrink: 0; margin-top: 7px; }
+.s2-bullets li p { font-size: 18px; color: #AAB3C5; }
+
+/* SLIDE 3 */
+.s3-wrap { max-width: 1100px; padding: 0 40px; width: 100%; text-align: center; }
+.s3-wrap h2 { font-size: clamp(28px, 3.5vw, 46px); margin-bottom: 10px; }
+.s3-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+
+/* SLIDE 4 */
+.s4-wrap { max-width: 1200px; padding: 0 40px; width: 100%; text-align: center; }
+.s4-wrap h2 { font-size: clamp(28px, 3.5vw, 46px); margin-bottom: 10px; }
+.s4-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+.s4-card { text-align: center; }
+.s4-card h3 { font-size: 15px; margin-bottom: 8px; line-height: 1.4; }
+.s4-card p { font-size: 13px; color: #7E879B; }
+
+/* SLIDE 5 */
+.s5-wrap { max-width: 1100px; padding: 0 40px; width: 100%; text-align: center; }
+.s5-wrap h2 { font-size: clamp(28px, 3.5vw, 46px); margin-bottom: 10px; }
+
+/* SLIDE 6 */
+.s6-wrap { max-width: 860px; padding: 0 40px; width: 100%; }
+.s6-wrap h2 { font-size: clamp(26px, 3vw, 40px); margin-bottom: 16px; }
+.s6-topics { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+.s6-topics li { display: flex; align-items: center; gap: 14px; font-size: 16px; color: #AAB3C5; }
+.s6-topics li .num { width: 32px; height: 32px; border-radius: 10px; background: rgba(46,107,255,.12); border: 1px solid rgba(46,107,255,.25); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #2E6BFF; flex-shrink: 0; }
+
+/* SLIDE 7 */
+.s7-wrap { max-width: 1100px; padding: 0 40px; width: 100%; text-align: center; }
+.s7-wrap h2 { font-size: clamp(28px, 3.5vw, 46px); margin-bottom: 10px; }
+.s7-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
+
+/* SLIDE 8 */
+.s8-wrap { max-width: 900px; padding: 0 40px; width: 100%; text-align: center; }
+.s8-wrap h2 { font-size: clamp(28px, 3.5vw, 48px); margin-bottom: 16px; }
+.s8-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+.s8-metrics .met { text-align: center; }
+.s8-metrics .met .num { font-size: 52px; font-weight: 900; letter-spacing: -.03em; line-height: 1; margin-bottom: 8px; }
+.s8-metrics .met .lbl { font-size: 14px; color: #7E879B; font-weight: 500; }
+
+/* SLIDE 9 */
+.s9-wrap { max-width: 1100px; padding: 0 40px; width: 100%; text-align: center; }
+.s9-wrap h2 { font-size: clamp(28px, 3.5vw, 46px); margin-bottom: 10px; }
+.s9-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+.s9-name { font-size: 14px; font-weight: 700; color: #F5F7FB; margin-bottom: 10px; }
+.s9-quote { font-size: 16px; color: #AAB3C5; font-style: italic; line-height: 1.6; }
+
+/* SLIDE 10 */
+.s10-wrap { text-align: center; max-width: 900px; padding: 0 40px; }
+.s10-wrap h1 { font-size: clamp(48px, 6.5vw, 78px); margin-bottom: 26px; }
+.s10-wrap .tag { font-size: clamp(16px, 2vw, 20px); color: #AAB3C5; max-width: 560px; margin: 0 auto 36px; line-height: 1.6; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 40px; border-radius: 16px; cursor: pointer;
+  background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
+  border: none; color: #fff; font-family: 'Inter', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: .01em;
+  box-shadow: 0 10px 30px rgba(46,107,255,.35);
+  transition: all .3s ease;
+}
+.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(46,107,255,.5); }
+
+/* PORTAL INFO BOX */
+.portal-box {
+  background: rgba(46,107,255,.06);
+  border: 1px solid rgba(46,107,255,.18);
+  border-radius: 16px;
+  padding: 18px 24px;
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-top: 20px;
+  text-align: left;
+}
+.portal-box svg { flex-shrink: 0; margin-top: 2px; }
+.portal-box p { font-size: 14px; color: #8FAEFF; line-height: 1.6; }
+.portal-box strong { color: #F5F7FB; }
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width: 10%;"></div>
+
+<button class="fs-btn" id="fsBtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"></path>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="next()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+  <!-- SLIDE 1 -->
+  <section class="slide active">
+    <div class="s1-wrap">
+      <div class="badge au d1">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Formação Profissional
+      </div>
+      <div class="s1-brand au d2"><span class="gt">SEMEAR</span></div>
+      <p class="s1-escola au d3">A Escola da Mulher Empreendedora</p>
+      <h1 class="au d4">Cabeleireiro <span class="gt">Profissional</span></h1>
+      <p class="tag au d5">Aulas 100% presenciais com suporte teórico completo no portal — aprenda de verdade, com estrutura e propósito. ✂️🌱</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 -->
+  <section class="slide">
+    <div class="s2-wrap">
+      <div class="gl au d1"></div>
+      <h2 class="au d2">Sobre o <span class="gt">Curso</span></h2>
+      <p class="au d3" style="font-size:18px; max-width:680px;">Uma formação completa pensada especialmente para mulheres que desejam entrar no mercado da beleza com confiança, técnica e propósito.</p>
+      <div class="cp au d4" style="margin-top:32px;">
+        <ul class="s2-bullets">
+          <li>
+            <div class="dot-b"></div>
+            <p><strong style="color:#F5F7FB;">Você não precisa de experiência</strong> — só de vontade de aprender e transformar vidas através da beleza.</p>
+          </li>
+          <li>
+            <div class="dot-b"></div>
+            <p><strong style="color:#F5F7FB;">Aulas 100% presenciais na escola</strong> — você pratica ao vivo, com acompanhamento de profissionais, num ambiente preparado pra você evoluir.</p>
+          </li>
+          <li>
+            <div class="dot-b"></div>
+            <p><strong style="color:#F5F7FB;">Portal como suporte teórico</strong> — todo o conteúdo teórico fica disponível no portal para você consultar quando quiser, antes ou depois das aulas.</p>
+          </li>
+          <li>
+            <div class="dot-b"></div>
+            <p><strong style="color:#F5F7FB;">6 cursos completos</strong> — do conhecimento técnico ao atendimento profissional, tudo em um só lugar.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 -->
+  <section class="slide">
+    <div class="s3-wrap">
+      <div class="gl ce au d1"></div>
+      <h2 class="au d2">O que você vai <span class="gt">aprender</span></h2>
+      <p class="au d3" style="color:#AAB3C5; font-size:17px;">Competências reais para você atuar com segurança no mercado</p>
+      <div class="s3-grid">
+        <div class="card au d2">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2E6BFF" stroke-width="2"><path d="M9.5 2a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM2 13s1-1 4-1 4 1 4 1v3H2v-3zM14.5 7a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM7 20s1-1 4-1 4 1 4 1v2H7v-2zM19 12s1-1 3-1v5h-3v-4z"/></svg>
+          </div>
+          <h3 style="font-size:16px; margin-bottom:8px;">Fisiologia Capilar</h3>
+          <p style="font-size:14px; color:#7E879B;">Entenda a estrutura do cabelo de dentro para fora</p>
+        </div>
+        <div class="card au d3">
+          <div class="ic" style="background:rgba(91,63,214,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5B3FD6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 style="font-size:16px; margin-bottom:8px;">Cabelos Saudáveis</h3>
+          <p style="font-size:14px; color:#7E879B;">Pilares do cuidado, hidratação e nutrição capilar</p>
+        </div>
+        <div class="card au d4">
+          <div class="ic" style="background:rgba(200,109,215,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3 style="font-size:16px; margin-bottom:8px;">Química Capilar</h3>
+          <p style="font-size:14px; color:#7E879B;">Progressiva, selagem e botox com segurança</p>
+        </div>
+        <div class="card au d4">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2E6BFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3 style="font-size:16px; margin-bottom:8px;">Colorimetria</h3>
+          <p style="font-size:14px; color:#7E879B;">Teoria das cores aplicada ao cabelo</p>
+        </div>
+        <div class="card au d5">
+          <div class="ic" style="background:rgba(91,63,214,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5B3FD6" stroke-width="2"><path d="M6 3v18M18 3v18M3 6h18M3 18h18"/></svg>
+          </div>
+          <h3 style="font-size:16px; margin-bottom:8px;">Cortes e Modelagens</h3>
+          <p style="font-size:14px; color:#7E879B;">Técnicas modernas de corte para todos os tipos</p>
+        </div>
+        <div class="card au d6">
+          <div class="ic" style="background:rgba(200,109,215,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3 style="font-size:16px; margin-bottom:8px;">Empreendedorismo</h3>
+          <p style="font-size:14px; color:#7E879B;">Tratamentos, pacotes e serviços profissionais</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 -->
+  <section class="slide">
+    <div class="s4-wrap">
+      <div class="gl ce au d1"></div>
+      <h2 class="au d2">Os <span class="gt">6 Cursos</span> da Formação</h2>
+      <p class="au d3" style="color:#AAB3C5; font-size:17px;">Uma trilha completa, do fundamento à prática profissional</p>
+      <div class="s4-grid">
+        <div class="card s4-card au d2">
+          <div class="tn n1">1</div>
+          <h3>Estrutura e Fisiologia do Fio de Cabelo</h3>
+          <p>Entenda como o cabelo é formado e funciona</p>
+        </div>
+        <div class="card s4-card au d3">
+          <div class="tn n2">2</div>
+          <h3>Os Pilares dos Cabelos Saudáveis</h3>
+          <p>Hidratação, nutrição e reconstrução na prática</p>
+        </div>
+        <div class="card s4-card au d4">
+          <div class="tn n3">3</div>
+          <h3>Progressiva x Selagem x Botox</h3>
+          <p>Diferenças, técnicas e aplicação segura</p>
+        </div>
+        <div class="card s4-card au d4">
+          <div class="tn n4">4</div>
+          <h3>Colorimetria Capilar</h3>
+          <p>Teoria das cores e aplicação com resultado</p>
+        </div>
+        <div class="card s4-card au d5">
+          <div class="tn n5">5</div>
+          <h3>Cortes e Modelagens</h3>
+          <p>Técnicas modernas para diferentes perfis</p>
+        </div>
+        <div class="card s4-card au d6">
+          <div class="tn n6">6</div>
+          <h3>Tratamentos, Pacotes e Serviços Complementares</h3>
+          <p>Monte seu cardápio e atenda com excelência</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 -->
+  <section class="slide">
+    <div class="s5-wrap">
+      <div class="gl ce au d1"></div>
+      <h2 class="au d2">Sua <span class="gt">Jornada</span> de Aprendizado</h2>
+      <p class="au d3" style="color:#AAB3C5; font-size:17px; margin-bottom:48px;">Cada passo te leva mais perto da sua nova carreira</p>
+      <div class="fl au d4">
+        <div class="fs act">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <span>Inscrição</span>
+        </div>
+        <div class="fa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <span>Portal Teórico</span>
+        </div>
+        <div class="fa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span>Aula Presencial</span>
+        </div>
+        <div class="fa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <span>Certificado</span>
+        </div>
+        <div class="fa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <span>Carreira</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6 -->
+  <section class="slide">
+    <div class="s6-wrap">
+      <div class="badge au d1">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+        Disponível Agora
+      </div>
+      <h2 class="au d2">Curso 1 — <span class="gt">Estrutura e Fisiologia</span> do Fio de Cabelo</h2>
+      <p class="au d3" style="font-size:17px; margin-bottom:28px; color:#AAB3C5;">O ponto de partida de toda profissional de cabelo. Entender o fio é a base de tudo.</p>
+      <div class="cp au d4">
+        <ul class="s6-topics">
+          <li><div class="num">1</div>O que é o fio de cabelo: composição e estrutura</li>
+          <li><div class="num">2</div>Cutícula, córtex e medula — o que cada parte faz</li>
+          <li><div class="num">3</div>Tipos de cabelo: liso, ondulado, cacheado e crespo</li>
+          <li><div class="num">4</div>Porosidade, elasticidade e resistência capilar</li>
+          <li><div class="num">5</div>Como o diagnóstico capilar guia o tratamento certo</li>
+          <li><div class="num">6</div>Atividade prática: análise do fio ao toque e visual</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7 -->
+  <section class="slide">
+    <div class="s7-wrap">
+      <div class="gl ce au d1"></div>
+      <h2 class="au d2">Como funciona o <span class="gt">Portal + Escola</span></h2>
+      <p class="au d3" style="color:#AAB3C5; font-size:17px;">O portal prepara, a escola transforma — juntos, formam a experiência completa</p>
+      <div class="s7-grid">
+        <div class="card au d2" style="text-align:center;">
+          <div class="ic" style="margin:0 auto 18px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2E6BFF" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <h3 style="font-size:17px; margin-bottom:10px;">Acesse o Portal</h3>
+          <p style="font-size:14px; color:#7E879B;">Estude o conteúdo teórico antes de ir à escola — no seu ritmo, quando quiser</p>
+        </div>
+        <div class="card au d3" style="text-align:center;">
+          <div class="ic" style="margin:0 auto 18px; background:rgba(91,63,214,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5B3FD6" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 style="font-size:17px; margin-bottom:10px;">Vá à Escola</h3>
+          <p style="font-size:14px; color:#7E879B;">Aulas 100% presenciais com prática real, ferramentas e orientação ao vivo</p>
+        </div>
+        <div class="card au d4" style="text-align:center;">
+          <div class="ic" style="margin:0 auto 18px; background:rgba(200,109,215,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3 style="font-size:17px; margin-bottom:10px;">Pratique</h3>
+          <p style="font-size:14px; color:#7E879B;">Fixe o aprendizado com atividades práticas supervisionadas na escola</p>
+        </div>
+        <div class="card au d5" style="text-align:center;">
+          <div class="ic" style="margin:0 auto 18px; background:rgba(46,107,255,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2E6BFF" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3 style="font-size:17px; margin-bottom:10px;">Avance</h3>
+          <p style="font-size:14px; color:#7E879B;">Acompanhe seu progresso no portal e desbloqueie os próximos cursos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 -->
+  <section class="slide">
+    <div class="s8-wrap">
+      <div class="gl ce au d1"></div>
+      <h2 class="au d2">Seu <span class="gt">Certificado</span> te espera</h2>
+      <p class="au d3" style="color:#AAB3C5; font-size:17px; max-width:600px; margin:0 auto;">Ao concluir a formação completa, você recebe um certificado que comprova sua qualificação profissional</p>
+      <div class="cp au d4" style="margin-top:36px; padding: 40px 48px;">
+        <div class="s8-metrics">
+          <div class="met">
+            <div class="s5n" style="color:#2E6BFF;">6</div>
+            <div class="lbl">Cursos Completos</div>
+          </div>
+          <div class="met">
+            <div class="s5n" style="background: linear-gradient(135deg, #2E6BFF, #C86DD7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">100%</div>
+            <div class="lbl">Presencial na Escola</div>
+          </div>
+          <div class="met">
+            <div class="s5n" style="color:#C86DD7;">✓</div>
+            <div class="lbl">Certificado Incluso</div>
+          </div>
+        </div>
+        <p style="text-align:center; margin-top:28px; font-size:16px; color:#AAB3C5; font-style:italic;">"Sua dedicação merece ser reconhecida. O Semear acredita em você."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 -->
+  <section class="slide">
+    <div class="s9-wrap">
+      <div class="gl ce au d1"></div>
+      <h2 class="au d2">Vozes que <span class="gt">inspiram</span></h2>
+      <p class="au d3" style="color:#AAB3C5; font-size:17px;">Histórias reais de transformação através do aprendizado presencial</p>
+      <div class="s9-grid">
+        <div class="card s5c b1 au d3">
+          <p class="s9-name">Ana Paula, 34 anos</p>
+          <p class="s9-quote">"Comecei sem saber nada. As aulas presenciais me deram a prática que eu precisava. Hoje atendo em casa e tenho uma renda que mudou a minha vida."</p>
+        </div>
+        <div class="card s5c b2 au d4">
+          <p class="s9-name">Cláudia, 28 anos</p>
+          <p class="s9-quote">"O Semear me deu mais do que técnica — me deu confiança para me posicionar como profissional e cobrar o que meu trabalho vale."</p>
+        </div>
+        <div class="card s5c b3 au d5">
+          <p class="s9-name">Renata, 42 anos</p>
+          <p class="s9-quote">"Estudei a teoria no portal antes de cada aula e cheguei à escola preparada. A combinação do conteúdo teórico com a prática presencial fez toda a diferença na minha formação."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 -->
+  <section class="slide">
+    <div class="s10-wrap">
+      <div class="badge au d1">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Curso 1 disponível agora
+      </div>
+      <h1 class="au d2">Sua transformação<br><span class="gt">começa hoje</span></h1>
+      <p class="tag au d3">A profissional que você quer ser já está dentro de você. O Semear une teoria no portal e prática presencial para revelar o seu melhor. 🌱</p>
+      <button class="cta-btn au d4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Começar o Curso 1
+      </button>
+      <p class="au d5" style="margin-top:24px; font-size:14px; color:#7E879B;">SEMEAR — A Escola da Mulher Empreendedora</p>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script>
+const T = 10; let C = 0;
+const W = document.getElementById('sw');
+const CN = document.getElementById('cn');
+const P = document.getElementById('prog');
+const I = document.getElementById('ind');
+
+for (let i = 0; i < T; i++) {
+  const d = document.createElement('div');
+  d.classList.add('dot');
+  if (i === 0) d.classList.add('active');
+  d.onclick = () => go(i);
+  I.appendChild(d);
+}
+
+function upd() {
+  I.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === C));
+  CN.textContent = C + 1;
+  P.style.width = ((C + 1) / T * 100) + '%';
+  document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === C));
+}
+
+function go(i) { if (i < 0 || i >= T) return; C = i; W.style.transform = `translateX(-${C * 100}vw)`; upd(); }
+function next() { if (C < T - 1) go(C + 1); }
+function prev() { if (C > 0) go(C - 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+  if (e.key === 'f' || e.key === 'F') toggleFs();
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => tx = e.changedTouches[0].screenX);
+document.addEventListener('touchend', e => { const d = tx - e.changedTouches[0].screenX; if (Math.abs(d) > 50) { d > 0 ? next() : prev(); } });
+
+function toggleFs() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+document.addEventListener('fullscreenchange', () => {
+  const btn = document.getElementById('fsTxt');
+  if (btn) btn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
