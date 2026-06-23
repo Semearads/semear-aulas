@@ -1,1 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progressiva Capilar — Do Zero ao Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #050816; font-family: 'Inter', sans-serif; }
+
+  .progress {
+    position: fixed; top: 0; left: 0; height: 3px; z-index: 1000;
+    background: linear-gradient(90deg, #2E6BFF, #C86DD7, #2E6BFF);
+    background-size: 200% auto; animation: shimmer 3s linear infinite;
+    transition: width .6s ease;
+  }
+
+  .fs-btn {
+    position: fixed; top: 20px; right: 20px; z-index: 999;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    color: #7E879B; padding: 12px 18px; border-radius: 12px; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+    transition: all .3s ease; backdrop-filter: blur(6px);
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+  .fs-btn:hover { background: rgba(255,255,255,.08); color: #F5F7FB; border-color: rgba(46,107,255,.3); }
+  .fs-btn svg { width: 16px; height: 16px; }
+
+  .sc {
+    position: fixed; bottom: 36px; left: 40px; z-index: 998;
+    color: #7E879B; font-size: 14px; font-weight: 600; letter-spacing: .05em;
+    background: rgba(0,0,0,.3); padding: 10px 18px; border-radius: 10px;
+    backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.05);
+  }
+  .sc .cn { color: #2E6BFF; font-weight: 800; }
+
+  .ind {
+    position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 998;
+    display: flex; gap: 7px; background: rgba(0,0,0,.3); padding: 10px 16px;
+    border-radius: 20px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.05);
+  }
+  .ind .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,.15); transition: all .4s ease; cursor: pointer;
+  }
+  .ind .dot.active {
+    background: #2E6BFF; box-shadow: 0 0 14px rgba(46,107,255,.6);
+    width: 34px; border-radius: 5px;
+  }
+
+  .nav-arr { position: fixed; bottom: 32px; right: 40px; z-index: 998; display: flex; gap: 10px; }
+  .nav-arr button {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    color: #AAB3C5; font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .3s ease; backdrop-filter: blur(6px);
+  }
+  .nav-arr button:hover {
+    background: rgba(46,107,255,.2); border-color: rgba(46,107,255,.4);
+    color: #fff; transform: scale(1.05);
+  }
+
+  .presentation { width: 100vw; height: 100vh; overflow: hidden; }
+  .slides { display: flex; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+
+  .slide {
+    width: 100vw; height: 100vh; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+  }
+  .slide::before {
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.14) 0%, transparent 42%),
+      radial-gradient(800px 380px at 35% 20%, rgba(35,110,255,.14) 0%, transparent 42%),
+      linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+  }
+  .slide::after {
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .3;
+    background-image: radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);
+    background-size: 24px 24px;
+  }
+  .slide > * { position: relative; z-index: 1; }
+
+  .gt {
+    background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: shimmer 4s linear infinite;
+  }
+  @keyframes shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
+
+  .gl {
+    width: 90px; height: 4px; border-radius: 2px;
+    background: linear-gradient(90deg, #2E6BFF, #C86DD7);
+    margin-bottom: 22px; animation: lineG .8s ease both; transform-origin: left;
+  }
+  .gl.ce { margin: 0 auto 22px auto; transform-origin: center; }
+  @keyframes lineG { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 24px; border-radius: 999px; margin-bottom: 32px;
+    background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.2);
+    font-size: 14px; font-weight: 600; color: #8FAEFF;
+    letter-spacing: .05em; text-transform: uppercase;
+  }
+
+  .card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 22px;
+    box-shadow: 0 16px 48px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+    padding: 28px 24px; backdrop-filter: blur(8px); transition: all .4s ease;
+  }
+  .card:hover {
+    border-color: rgba(46,107,255,.2); transform: translateY(-3px);
+    box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08);
+  }
+
+  .cp {
+    background: linear-gradient(145deg, rgba(18,11,43,.95) 0%, rgba(10,15,36,.98) 55%, rgba(5,8,22,1) 100%);
+    border: 1px solid rgba(255,255,255,.08); border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 40px rgba(46,107,255,.08);
+    padding: 28px 24px; backdrop-filter: blur(10px); transition: all .4s ease;
+  }
+  .cp:hover {
+    border-color: rgba(46,107,255,.25); transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 28px 64px rgba(0,0,0,.55), 0 0 50px rgba(46,107,255,.12);
+  }
+
+  .tn {
+    width: 60px; height: 60px; border-radius: 16px;
+    margin: 0 auto 18px; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: #fff;
+    animation: glowP 3s ease-in-out infinite;
+  }
+  .tn.n1 { background: linear-gradient(145deg, #2E6BFF, #1E56D9); }
+  .tn.n2 { background: linear-gradient(145deg, #5B3FD6, #4530B3); animation-delay: .5s; }
+  .tn.n3 { background: linear-gradient(145deg, #C86DD7, #A854BF); animation-delay: 1s; }
+  .tn.n4 { background: linear-gradient(145deg, #2EC4B6, #1A9E92); animation-delay: 1.5s; }
+  .tn.n5 { background: linear-gradient(145deg, #FF6B6B, #D94F4F); animation-delay: 2s; }
+  @keyframes glowP {
+    0%, 100% { box-shadow: 0 0 18px rgba(46,107,255,.12) }
+    50% { box-shadow: 0 0 36px rgba(46,107,255,.3) }
+  }
+
+  .ic {
+    width: 54px; height: 54px; border-radius: 14px; margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(46,107,255,.08);
+  }
+  .ic svg { width: 26px; height: 26px; color: #2E6BFF; }
+
+  .s5c { position: relative; overflow: hidden; }
+  .s5c::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 5px; height: 100%; border-radius: 2px 0 0 2px;
+  }
+  .s5c.b1::before { background: #2E6BFF; }
+  .s5c.b2::before { background: #5B3FD6; }
+  .s5c.b3::before { background: #C86DD7; }
+  .s5c.b4::before { background: #2EC4B6; }
+  .s5c.b5::before { background: linear-gradient(180deg,#2E6BFF,#C86DD7); }
+
+  .s5n { font-size: 48px; font-weight: 900; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 8px; }
+
+  .fl { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+  .fs2 { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 120px; padding: 0 6px; }
+  .fs2 .fi {
+    width: 68px; height: 68px; border-radius: 18px;
+    background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.18);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+  }
+  .fs2 .fi svg { width: 30px; height: 30px; color: #2E6BFF; }
+  .fs2 span { font-size: 13px; font-weight: 600; color: #F5F7FB; }
+  .fs2 small { font-size: 11px; color: #7E879B; margin-top: 4px; display: block; }
+  .fa2 { display: flex; align-items: center; padding-bottom: 28px; margin: 0 4px; }
+  .fa2 svg { width: 22px; height: 22px; color: #7E879B; }
+  .fs2.act .fi {
+    background: linear-gradient(180deg, #2E6BFF, #1E56D9); border-color: transparent;
+    box-shadow: 0 10px 22px rgba(46,107,255,.28);
+  }
+  .fs2.act .fi svg { color: #fff; }
+
+  .bwc { border-radius: 20px; padding: 24px 20px; }
+  .bwc.cr { background: rgba(255,80,80,.05); border: 1px solid rgba(255,80,80,.12); }
+  .bwc.cy { background: rgba(255,200,60,.05); border: 1px solid rgba(255,200,60,.12); }
+  .bwc.cg { background: rgba(80,220,120,.05); border: 1px solid rgba(80,220,120,.12); }
+
+  h1 { font-weight: 900; letter-spacing: -.03em; line-height: 1.08; color: #F5F7FB; }
+  h2 { font-weight: 800; letter-spacing: -.025em; line-height: 1.12; color: #F5F7FB; }
+  h3 { font-weight: 700; letter-spacing: -.015em; color: #F5F7FB; }
+  p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(35px) } to { opacity: 1; transform: translateY(0) } }
+  @keyframes fadeScale { from { opacity: 0; transform: scale(.88) } to { opacity: 1; transform: scale(1) } }
+  @keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+
+  .slide.active .au { animation: fadeUp .7s ease both; }
+  .slide.active .as { animation: fadeScale .7s ease both; }
+  .d1 { animation-delay: .1s !important }
+  .d2 { animation-delay: .22s !important }
+  .d3 { animation-delay: .34s !important }
+  .d4 { animation-delay: .46s !important }
+  .d5 { animation-delay: .58s !important }
+  .d6 { animation-delay: .7s !important }
+  .d7 { animation-delay: .82s !important }
+
+  /* Slide 1 */
+  .s1-wrap { text-align: center; max-width: 900px; padding: 0 40px; }
+  .s1-wrap h1 { font-size: clamp(48px, 6.5vw, 78px); margin-bottom: 24px; }
+  .s1-wrap .tag { font-size: 20px; color: #AAB3C5; max-width: 580px; margin: 0 auto; line-height: 1.6; }
+
+  /* Slide layout helpers */
+  .slide-inner { width: 100%; max-width: 1200px; padding: 80px 60px 100px; }
+  .slide-inner.sm { max-width: 1100px; padding: 70px 50px 100px; }
+  .slide-header { margin-bottom: 40px; }
+  .slide-header h2 { font-size: clamp(28px, 3.5vw, 42px); }
+  .slide-header p { font-size: 16px; color: #7E879B; margin-top: 8px; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+
+  .tipo-card { text-align: center; padding: 28px 18px; }
+  .tipo-card h3 { font-size: 15px; margin-bottom: 8px; }
+  .tipo-card p { font-size: 13px; color: #7E879B; line-height: 1.5; }
+  .tipo-card .tag-label { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 14px; }
+
+  .diff-row { display: grid; grid-template-columns: 180px 1fr 1fr 1fr 1fr 1fr; gap: 0; margin-bottom: 2px; align-items: center; }
+  .diff-head { display: grid; grid-template-columns: 180px 1fr 1fr 1fr 1fr 1fr; gap: 0; margin-bottom: 8px; }
+  .diff-cell { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,.04); }
+  .diff-cell.lbl { font-weight: 700; color: #F5F7FB; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+  .diff-cell.hd { font-weight: 700; color: #8FAEFF; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; background: rgba(46,107,255,.06); border-radius: 8px 8px 0 0; text-align: center; }
+  .diff-cell.val { text-align: center; font-size: 12px; color: #AAB3C5; }
+  .diff-table { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); border-radius: 18px; overflow: hidden; padding: 8px 4px; }
+
+  .pill-low { background: rgba(94,232,154,.12); color: #5EE89A; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .pill-med { background: rgba(255,212,96,.12); color: #FFD460; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .pill-high { background: rgba(255,107,107,.12); color: #FF6B6B; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #AAB3C5; }
+  .checklist li .ck { width: 20px; height: 20px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .ck.ok { background: rgba(94,232,154,.15); }
+  .ck.ok svg { width: 12px; height: 12px; color: #5EE89A; }
+  .ck.warn { background: rgba(255,212,96,.15); }
+  .ck.warn svg { width: 12px; height: 12px; color: #FFD460; }
+  .ck.bad { background: rgba(255,107,107,.15); }
+  .ck.bad svg { width: 12px; height: 12px; color: #FF6B6B; }
+
+  .cabelo-card { padding: 20px 18px; display: flex; align-items: flex-start; gap: 14px; }
+  .cabelo-card .dot-c { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .cabelo-card h3 { font-size: 14px; margin-bottom: 4px; }
+  .cabelo-card p { font-size: 13px; color: #7E879B; }
+
+  .final-cta { background: linear-gradient(135deg, rgba(46,107,255,.12), rgba(200,109,215,.12)); border: 1px solid rgba(46,107,255,.2); border-radius: 24px; padding: 36px 40px; text-align: center; }
+  .final-cta h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 14px; }
+  .final-cta p { font-size: 16px; max-width: 560px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+
+<button class="fs-btn" id="fsBtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"></path>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="next()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+  <!-- SLIDE 1 -->
+  <section class="slide active">
+    <div class="s1-wrap">
+      <div class="badge au d1">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        Curso Completo · SEMEAR
+      </div>
+      <h1 class="au d2"><span class="gt">Progressiva Capilar</span><br>Do Zero ao Profissional</h1>
+      <p class="tag au d3">Tudo o que você precisa saber para realizar o procedimento com segurança, técnica e excelência</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">O Que É a <span class="gt">Progressiva Capilar?</span></h2>
+        <p class="au d3">Entenda o procedimento, sua finalidade e por que é tão popular</p>
+      </div>
+      <div class="grid3 au d4">
+        <div class="card" style="text-align:center; padding:32px 24px;">
+          <div class="ic" style="margin:0 auto 16px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3 style="margin-bottom:10px; font-size:16px;">O Que É</h3>
+          <p style="font-size:13px;">Técnica que alisa e suaviza os fios por meio da combinação de <strong style="color:#F5F7FB;">produto químico + calor</strong>, reestruturando os fios temporariamente.</p>
+        </div>
+        <div class="card" style="text-align:center; padding:32px 24px;">
+          <div class="ic" style="margin:0 auto 16px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3 style="margin-bottom:10px; font-size:16px;">Para Que Serve</h3>
+          <p style="font-size:13px;">Eliminar volume, reduzir frizz e facilitar o dia a dia. Resultado: fios <strong style="color:#F5F7FB;">lisos, brilhosos e fáceis de pentear</strong> por meses.</p>
+        </div>
+        <div class="card" style="text-align:center; padding:32px 24px;">
+          <div class="ic" style="margin:0 auto 16px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 style="margin-bottom:10px; font-size:16px;">Por Que É Popular</h3>
+          <p style="font-size:13px;">Um dos procedimentos <strong style="color:#F5F7FB;">mais realizados no Brasil</strong>, presente em salões de todos os portes, com alta demanda e retorno financeiro.</p>
+        </div>
+      </div>
+      <div class="card au d5" style="margin-top:18px; padding:20px 28px; display:flex; align-items:center; gap:16px;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#2E6BFF; flex-shrink:0;"></div>
+        <p style="font-size:14px; color:#AAB3C5;"><strong style="color:#F5F7FB;">Como funciona:</strong> O produto penetra na cutícula do fio, quebra as pontes dissulfeto responsáveis pela ondulação, e o calor da chapinha sela o novo formato — deixando os fios lisos por 2 a 6 meses.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 -->
+  <section class="slide">
+    <div class="slide-inner sm">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Os <span class="gt">5 Tipos</span> de Progressiva</h2>
+        <p class="au d3">Cada tipo tem composição, efeito e indicação diferentes</p>
+      </div>
+      <div class="grid5 au d4">
+        <div class="card tipo-card">
+          <div class="tn n1">G</div>
+          <span class="tag-label" style="background:rgba(46,107,255,.12); color:#8FAEFF;">Glutaraldeído</span>
+          <h3>Com Glutaraldeído</h3>
+          <p>Resultado intenso e duradouro. Ideal para cabelos muito crespos. Exige boa ventilação.</p>
+        </div>
+        <div class="card tipo-card">
+          <div class="tn n2">F</div>
+          <span class="tag-label" style="background:rgba(91,63,214,.12); color:#A98FFF;">Sem Formol</span>
+          <h3>Sem Formol</h3>
+          <p>Mais segura e com aroma suave. Usa substitutos como ácido glioxílico ou cisteína.</p>
+        </div>
+        <div class="card tipo-card">
+          <div class="tn n3">A</div>
+          <span class="tag-label" style="background:rgba(200,109,215,.12); color:#D890E8;">Aminoácidos</span>
+          <h3>De Aminoácidos</h3>
+          <p>Respeita a estrutura do fio. Resultado mais natural, menos agressiva, ideal para cabelos sensíveis.</p>
+        </div>
+        <div class="card tipo-card">
+          <div class="tn n4">K</div>
+          <span class="tag-label" style="background:rgba(46,196,182,.12); color:#5EE8DC;">Queratina</span>
+          <h3>Com Queratina</h3>
+          <p>Reconstrói e alisa ao mesmo tempo. Devolve brilho e maciez enquanto reduz o volume.</p>
+        </div>
+        <div class="card tipo-card">
+          <div class="tn n5">O</div>
+          <span class="tag-label" style="background:rgba(94,232,154,.12); color:#5EE89A;">Orgânica</span>
+          <h3>Orgânica / Vegana</h3>
+          <p>Fórmula sem químicos agressivos. Resultado mais suave, indicada para quem busca alternativas naturais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Diferenças <span class="gt">Entre os Tipos</span></h2>
+        <p class="au d3">Compare composição, efeito, durabilidade e impacto na saúde</p>
+      </div>
+      <div class="diff-table au d3">
+        <div class="diff-head" style="padding:0 4px;">
+          <div class="diff-cell hd" style="background:transparent;"></div>
+          <div class="diff-cell hd">Glutaraldeído</div>
+          <div class="diff-cell hd">Sem Formol</div>
+          <div class="diff-cell hd">Aminoácidos</div>
+          <div class="diff-cell hd">Queratina</div>
+          <div class="diff-cell hd">Orgânica</div>
+        </div>
+        <div class="diff-row" style="background:rgba(255,255,255,.02);">
+          <div class="diff-cell lbl">Composição</div>
+          <div class="diff-cell val">Glutaraldeído</div>
+          <div class="diff-cell val">Ác. Glioxílico</div>
+          <div class="diff-cell val">Aminoácidos</div>
+          <div class="diff-cell val">Queratina hidrol.</div>
+          <div class="diff-cell val">Extratos vegetais</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-cell lbl">Alisamento</div>
+          <div class="diff-cell val"><span class="pill-high">Intenso</span></div>
+          <div class="diff-cell val"><span class="pill-med">Médio</span></div>
+          <div class="diff-cell val"><span class="pill-low">Suave</span></div>
+          <div class="diff-cell val"><span class="pill-med">Médio</span></div>
+          <div class="diff-cell val"><span class="pill-low">Suave</span></div>
+        </div>
+        <div class="diff-row" style="background:rgba(255,255,255,.02);">
+          <div class="diff-cell lbl">Durabilidade</div>
+          <div class="diff-cell val">4–6 meses</div>
+          <div class="diff-cell val">3–5 meses</div>
+          <div class="diff-cell val">2–4 meses</div>
+          <div class="diff-cell val">3–5 meses</div>
+          <div class="diff-cell val">2–3 meses</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-cell lbl">Risco à Saúde</div>
+          <div class="diff-cell val"><span class="pill-high">Alto</span></div>
+          <div class="diff-cell val"><span class="pill-med">Médio</span></div>
+          <div class="diff-cell val"><span class="pill-low">Baixo</span></div>
+          <div class="diff-cell val"><span class="pill-low">Baixo</span></div>
+          <div class="diff-cell val"><span class="pill-low">Baixo</span></div>
+        </div>
+        <div class="diff-row" style="background:rgba(255,255,255,.02);">
+          <div class="diff-cell lbl">Indicação</div>
+          <div class="diff-cell val" style="font-size:11px;">Crespos resistentes</div>
+          <div class="diff-cell val" style="font-size:11px;">Uso geral</div>
+          <div class="diff-cell val" style="font-size:11px;">Fios sensíveis</div>
+          <div class="diff-cell val" style="font-size:11px;">Danificados</div>
+          <div class="diff-cell val" style="font-size:11px;">Coloridos/veganos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Vantagens e <span class="gt">Desvantagens</span></h2>
+        <p class="au d3">Prós, contras e riscos que todo profissional precisa conhecer</p>
+      </div>
+      <div class="grid3 au d3">
+        <div class="bwc cg">
+          <h3 style="color:#5EE89A; font-size:16px; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+            <span style="font-size:20px;">✅</span> Vantagens
+          </h3>
+          <ul class="checklist">
+            <li><div class="ck ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>Fios lisos por meses</li>
+            <li><div class="ck ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>Redução intensa do frizz</li>
+            <li><div class="ck ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>Brilho e suavidade intensos</li>
+            <li><div class="ck ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>Praticidade no dia a dia</li>
+            <li><div class="ck ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>Alta demanda no mercado</li>
+          </ul>
+        </div>
+        <div class="bwc cy">
+          <h3 style="color:#FFD460; font-size:16px; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+            <span style="font-size:20px;">⚠️</span> Atenção
+          </h3>
+          <ul class="checklist">
+            <li><div class="ck warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 9v4M12 17h.01"/></svg></div>Necessita manutenção periódica</li>
+            <li><div class="ck warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 9v4M12 17h.01"/></svg></div>Uso de produtos específicos</li>
+            <li><div class="ck warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 9v4M12 17h.01"/></svg></div>Resultado varia por tipo de fio</li>
+            <li><div class="ck warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 9v4M12 17h.01"/></svg></div>Custo mais elevado</li>
+            <li><div class="ck warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 9v4M12 17h.01"/></svg></div>Exige técnica profissional</li>
+          </ul>
+        </div>
+        <div class="bwc cr">
+          <h3 style="color:#FF6B6B; font-size:16px; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+            <span style="font-size:20px;">🚫</span> Riscos
+          </h3>
+          <ul class="checklist">
+            <li><div class="ck bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Irritação no couro cabeludo</li>
+            <li><div class="ck bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Quebra em fios fragilizados</li>
+            <li><div class="ck bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Cheiro forte (alguns tipos)</li>
+            <li><div class="ck bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Ressecamento se mal aplicado</li>
+            <li><div class="ck bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Reações alérgicas possíveis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Passo a Passo do <span class="gt">Procedimento</span></h2>
+        <p class="au d3">5 etapas essenciais para uma aplicação segura e eficiente</p>
+      </div>
+      <div class="fl au d3">
+        <div class="fs2 act">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <span>1. Lavagem</span>
+          <small>Shampoo sem condicionador</small>
+        </div>
+        <div class="fa2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs2">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </div>
+          <span>2. Aplicação</span>
+          <small>Mecha a mecha uniforme</small>
+        </div>
+        <div class="fa2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs2">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <span>3. Tempo de Ação</span>
+          <small>Conforme fabricante</small>
+        </div>
+        <div class="fa2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs2">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><path d="M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+          </div>
+          <span>4. Chapinha</span>
+          <small>Temperatura ideal por fio</small>
+        </div>
+        <div class="fa2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+        <div class="fs2">
+          <div class="fi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span>5. Finalização</span>
+          <small>Lavagem + hidratação</small>
+        </div>
+      </div>
+      <div class="card au d4" style="margin-top:28px; padding:18px 24px; display:flex; gap:14px; align-items:flex-start;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#FFD460; flex-shrink:0; margin-top:6px;"></div>
+        <p style="font-size:13px;"><strong style="color:#FFD460;">Dica importante:</strong> A temperatura da chapinha varia conforme o tipo de fio — fios finos: 180–200°C | fios normais: 200–220°C | fios grossos/resistentes: 220–230°C. Nunca ultrapasse sem avaliar o estado do cabelo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Cuidados <span class="gt">Pós-Progressiva</span></h2>
+        <p class="au d3">Orientações para preservar o efeito e a saúde dos fios</p>
+      </div>
+      <div class="grid4 au d3">
+        <div class="card s5c b1" style="padding:24px 20px 24px 28px;">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3 style="font-size:14px; margin-bottom:10px;">Primeiras 72h</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+            <li style="font-size:12px; color:#AAB3C5;">• Não lavar o cabelo</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Não prender ou amarrar</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Evitar acessórios e elásticos</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Dormir com o cabelo solto</li>
+          </ul>
+        </div>
+        <div class="card s5c b2" style="padding:24px 20px 24px 28px;">
+          <div class="ic" style="background:rgba(91,63,214,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#5B3FD6;"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <h3 style="font-size:14px; margin-bottom:10px;">Produtos Certos</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+            <li style="font-size:12px; color:#AAB3C5;">• Shampoo sem sulfato</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Condicionador sem sal</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Leave-in finalizador</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Máscaras de nutrição</li>
+          </ul>
+        </div>
+        <div class="card s5c b3" style="padding:24px 20px 24px 28px;">
+          <div class="ic" style="background:rgba(200,109,215,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6M12 16h.01"/></svg>
+          </div>
+          <h3 style="font-size:14px; margin-bottom:10px;">O Que Evitar</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+            <li style="font-size:12px; color:#AAB3C5;">• Piscina e praia (1ª semana)</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Suor excessivo</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Shampoos com sulfato</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Produtos com sal</li>
+          </ul>
+        </div>
+        <div class="card s5c b4" style="padding:24px 20px 24px 28px;">
+          <div class="ic" style="background:rgba(46,196,182,.08);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#2EC4B6;"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          </div>
+          <h3 style="font-size:14px; margin-bottom:10px;">Retoque e Manutenção</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+            <li style="font-size:12px; color:#AAB3C5;">• Retoque: 3 a 6 meses</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Hidratação semanal</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Cronograma capilar</li>
+            <li style="font-size:12px; color:#AAB3C5;">• Protetor térmico ao usar calor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Considerações de <span class="gt">Segurança</span></h2>
+        <p class="au d3">Dicas essenciais antes, durante e após o procedimento</p>
+      </div>
+      <div class="grid2 au d3" style="gap:20px;">
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="card s5c b1" style="padding:20px 20px 20px 28px; display:flex; gap:14px; align-items:flex-start;">
+            <div class="ck ok" style="width:28px; height:28px; flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div><h3 style="font-size:14px; margin-bottom:4px;">Teste de Mecha Obrigatório</h3><p style="font-size:13px;">Sempre realize um teste antes da aplicação completa para verificar a reação do fio ao produto e ao calor.</p></div>
+          </div>
+          <div class="card s5c b2" style="padding:20px 20px 20px 28px; display:flex; gap:14px; align-items:flex-start;">
+            <div class="ck warn" style="width:28px; height:28px; flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 9v4M12 17h.01"/></svg></div>
+            <div><h3 style="font-size:14px; margin-bottom:4px;">Ambiente Ventilado</h3><p style="font-size:13px;">Nunca aplique em ambiente fechado. A inalação de vapores químicos pode causar irritação respiratória.</p></div>
+          </div>
+          <div class="card s5c b3" style="padding:20px 20px 20px 28px; display:flex; gap:14px; align-items:flex-start;">
+            <div class="ck ok" style="width:28px; height:28px; flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div><h3 style="font-size:14px; margin-bottom:4px;">Use EPI Sempre</h3><p style="font-size:13px;">Luvas nitrílicas, máscara de proteção e óculos são obrigatórios para proteger o profissional.</p></div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="card s5c b4" style="padding:20px 20px 20px 28px; display:flex; gap:14px; align-items:flex-start;">
+            <div class="ck bad" style="width:28px; height:28px; flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
+            <div><h3 style="font-size:14px; margin-bottom:4px;">Contraindicações</h3><p style="font-size:13px;">Gestantes, lactantes, couro cabeludo com feridas, cabelos extremamente danificados ou recém-descoloridos.</p></div>
+          </div>
+          <div class="card s5c b5" style="padding:20px 20px 20px 28px; display:flex; gap:14px; align-items:flex-start;">
+            <div class="ck ok" style="width:28px; height:28px; flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div><h3 style="font-size:14px; margin-bottom:4px;">Anamnese com a Cliente</h3><p style="font-size:13px;">Pergunte sobre histórico de alergias, procedimentos anteriores e estado atual do cabelo antes de iniciar.</p></div>
+          </div>
+          <div class="card" style="padding:20px; display:flex; gap:14px; align-items:flex-start;">
+            <div class="ck ok" style="width:28px; height:28px; flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div><h3 style="font-size:14px; margin-bottom:4px;">Profissional Certificado</h3><p style="font-size:13px;">Invista em capacitação e cursos reconhecidos. A técnica correta faz toda a diferença no resultado e segurança.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <div class="gl au d1"></div>
+        <h2 class="au d2">Como Escolher o <span class="gt">Tipo Certo?</span></h2>
+        <p class="au d3">Guia prático para indicar a progressiva ideal para cada cliente</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;" class="au d3">
+        <div class="cp cabelo-card">
+          <div class="dot-c" style="background:#2E6BFF;"></div>
+          <div>
+            <h3 style="font-size:15px; margin-bottom:6px;">Cabelo Virgem ou Pouco Danificado</h3>
+            <p style="font-size:13px;">Ideal: <strong style="color:#8FAEFF;">Queratina</strong> ou <strong style="color:#8FAEFF;">Aminoácidos</strong> — preservam a estrutura e entregam brilho sem agredir.</p>
+          </div>
+        </div>
+        <div class="cp cabelo-card">
+          <div class="dot-c" style="background:#5B3FD6;"></div>
+          <div>
+            <h3 style="font-size:15px; margin-bottom:6px;">Cabelo Crespo com Muito Volume</h3>
+            <p style="font-size:13px;">Ideal: <strong style="color:#A98FFF;">Glutaraldeído</strong> ou <strong style="color:#A98FFF;">Sem Formol</strong> — alisamento intenso e duradouro para fios resistentes.</p>
+          </div>
+        </div>
+        <div class="cp cabelo-card">
+          <div class="dot-c" style="background:#C86DD7;"></div>
+          <div>
+            <h3 style="font-size:15px; margin-bottom:6px;">Cabelo Colorido ou Descolorido</h3>
+            <p style="font-size:13px;">Ideal: <strong style="color:#D890E8;">Orgânica</strong> ou <strong style="color:#D890E8;">Aminoácidos</strong> — formulações delicadas que não comprometem a cor.</p>
+          </div>
+        </div>
+        <div class="cp cabelo-card">
+          <div class="dot-c" style="background:#2EC4B6;"></div>
+          <div>
+            <h3 style="font-size:15px; margin-bottom:6px;">Couro Cabeludo Sensível</h3>
+            <p style="font-size:13px;">Ideal: <strong style="color:#5EE8DC;">Sem Formol</strong> ou <strong style="color:#5EE8DC;">Orgânica</strong> — fórmulas mais suaves com menor risco de irritação.</p>
+          </div>
+        </div>
+        <div class="cp cabelo-card" style="grid-column:1/-1;">
+          <div class="dot-c" style="background:linear-gradient(180deg,#2E6BFF,#C86DD7);"></div>
+          <div>
+            <h3 style="font-size:15px; margin-bottom:6px;">Quer Resultado Natural / Progressiva Suave</h3>
+            <p style="font-size:13px;">Ideal: <strong style="color:#8FAEFF;">Aminoácidos</strong> — resultado gradual, respeita as ondas naturais do fio e proporciona saúde e brilho sem alisamento total.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 -->
+  <section class="slide">
+    <div class="slide-inner" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+      <div class="gl ce au d1"></div>
+      <h2 class="au d2" style="font-size:clamp(28px, 4vw, 48px); margin-bottom:16px; max-width:800px;">Você está <span class="gt">pronta</span> para atender com confiança e técnica!</h2>
+      <p class="au d3" style="font-size:16px; max-width:600px; margin-bottom:36px;">Dominar a progressiva capilar é dominar uma das técnicas mais requisitadas do mercado. Segurança, conhecimento e prática fazem toda a diferença.</p>
+
+      <div class="grid3 au d4" style="max-width:900px; width:100%; margin-bottom:32px;">
+        <div class="card" style="padding:22px 18px; text-align:center;">
+          <div class="s5n" style="color:#2E6BFF; font-size:36px;">5</div>
+          <p style="font-size:13px;">tipos de progressiva para dominar</p>
+        </div>
+        <div class="card" style="padding:22px 18px; text-align:center;">
+          <div class="s5n" style="color:#C86DD7; font-size:36px;">72h</div>
+          <p style="font-size:13px;">de cuidado pós-procedimento essencial</p>
+        </div>
+        <div class="card" style="padding:22px 18px; text-align:center;">
+          <div class="s5n" style="color:#5EE89A; font-size:36px;">100%</div>
+          <p style="font-size:13px;">de foco em segurança e resultado</p>
+        </div>
+      </div>
+
+      <div class="final-cta au d5" style="max-width:700px; width:100%;">
+        <h2 style="font-size:22px;">🎓 SEMEAR — Formando Profissionais de Excelência</h2>
+        <p style="font-size:15px; margin-top:10px;">Continue seus estudos, pratique com dedicação e transforme cada cliente com segurança e amor pelo que faz.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script>
+const T = 10; let C = 0;
+const W = document.getElementById('sw');
+const CN = document.getElementById('cn');
+const P = document.getElementById('prog');
+const I = document.getElementById('ind');
+
+for (let i = 0; i < T; i++) {
+  const d = document.createElement('div');
+  d.classList.add('dot');
+  if (i === 0) d.classList.add('active');
+  d.onclick = () => go(i);
+  I.appendChild(d);
+}
+
+function upd() {
+  I.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === C));
+  CN.textContent = C + 1;
+  P.style.width = ((C + 1) / T * 100) + '%';
+  document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === C));
+}
+
+function go(i) { if (i < 0 || i >= T) return; C = i; W.style.transform = `translateX(-${C * 100}vw)`; upd(); }
+function next() { if (C < T - 1) go(C + 1); }
+function prev() { if (C > 0) go(C - 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+  if (e.key === 'f' || e.key === 'F') toggleFs();
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => tx = e.changedTouches[0].screenX);
+document.addEventListener('touchend', e => { const d = tx - e.changedTouches[0].screenX; if (Math.abs(d) > 50) { d > 0 ? next() : prev(); } });
+
+function toggleFs() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+document.addEventListener('fullscreenchange', () => {
+  const btn = document.getElementById('fsTxt');
+  if (btn) btn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
 
