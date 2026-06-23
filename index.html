@@ -35,7 +35,7 @@
     backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.05);
   }
   .sc .cn { color: #2E6BFF; font-weight: 800; }
- 
+
   .ind {
     position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 998;
     display: flex; gap: 7px; background: rgba(0,0,0,.3); padding: 10px 16px;
@@ -86,7 +86,6 @@
   }
   .slide > * { position: relative; z-index: 1; }
 
-  /* Gradiente texto */
   .gt {
     background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
     background-size: 200% auto;
@@ -94,7 +93,6 @@
     background-clip: text; animation: shimmer 4s linear infinite;
   }
 
-  /* Linha decorativa */
   .gl {
     width: 90px; height: 4px; border-radius: 2px;
     background: linear-gradient(90deg, #2E6BFF, #C86DD7);
@@ -102,7 +100,6 @@
   }
   .gl.ce { margin: 0 auto 22px auto; transform-origin: center; }
 
-  /* Badge */
   .badge {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 10px 24px; border-radius: 999px; margin-bottom: 32px;
@@ -111,7 +108,6 @@
     letter-spacing: .05em; text-transform: uppercase;
   }
 
-  /* Cards */
   .card {
     background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
     border-radius: 22px;
@@ -134,7 +130,6 @@
     box-shadow: 0 28px 64px rgba(0,0,0,.55), 0 0 50px rgba(46,107,255,.12);
   }
 
-  /* Ícone container */
   .ic {
     width: 54px; height: 54px; border-radius: 14px; margin-bottom: 18px;
     display: flex; align-items: center; justify-content: center;
@@ -142,7 +137,6 @@
   }
   .ic svg { width: 26px; height: 26px; color: #2E6BFF; }
 
-  /* Números numerados */
   .tn {
     width: 72px; height: 72px; border-radius: 18px;
     margin: 0 auto 26px; display: flex; align-items: center; justify-content: center;
@@ -154,7 +148,6 @@
   .tn.n3 { background: linear-gradient(145deg, #C86DD7, #A854BF); animation-delay: 1s; }
   .tn.n4 { background: linear-gradient(145deg, #2E6BFF, #5B3FD6); animation-delay: 1.5s; }
 
-  /* Fluxo */
   .fl { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
   .fs { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 135px; padding: 0 8px; }
   .fs .fi {
@@ -172,7 +165,6 @@
   }
   .fs.act .fi svg { color: #fff; }
 
-  /* Animações */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(35px) } to { opacity: 1; transform: translateY(0) } }
   @keyframes fadeScale { from { opacity: 0; transform: scale(.88) } to { opacity: 1; transform: scale(1) } }
   @keyframes shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
@@ -193,7 +185,33 @@
   /* Slide 1 */
   .s1-wrap { text-align: center; max-width: 1000px; padding: 0 40px; }
   .s1-wrap h1 { font-size: clamp(52px, 7vw, 82px); font-weight: 900; letter-spacing: -.03em; line-height: 1.08; color: #F5F7FB; margin-bottom: 26px; }
-  .s1-wrap .tag { font-size: 22px; color: #AAB3C5; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+  .s1-wrap .tag { font-size: 22px; color: #AAB3C5; max-width: 600px; margin: 0 auto 36px; line-height: 1.5; }
+
+  /* Botão de apresentação no Slide 1 */
+  .play-presentation-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.14);
+    color: #F5F7FB; font-size: 15px; font-weight: 700;
+    padding: 14px 28px; border-radius: 14px; cursor: pointer;
+    font-family: 'Inter', sans-serif; letter-spacing: .01em;
+    backdrop-filter: blur(8px);
+    transition: all .3s ease;
+  }
+  .play-presentation-btn:hover {
+    background: rgba(46,107,255,.15);
+    border-color: rgba(46,107,255,.4);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(46,107,255,.2);
+  }
+  .play-presentation-btn .play-ring {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, #2E6BFF, #C86DD7);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 16px rgba(46,107,255,.5);
+    flex-shrink: 0;
+  }
+  .play-presentation-btn .play-ring svg { width: 16px; height: 16px; color: #fff; margin-left: 2px; }
 
   /* Slide 2 */
   .s2-wrap { max-width: 1100px; width: 100%; padding: 0 40px; }
@@ -255,6 +273,97 @@
   }
   .cta-btn:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 20px 48px rgba(46,107,255,.5); }
   .cta-btn svg { width: 22px; height: 22px; }
+
+  /* ===== MODAL DE VÍDEO ===== */
+  .vm {
+    position: fixed; inset: 0; z-index: 2000;
+    display: none; align-items: center; justify-content: center;
+    padding: 22px 16px;
+    background: rgba(2, 6, 20, .80);
+    backdrop-filter: blur(12px);
+    animation: vmFadeIn .3s ease both;
+  }
+  .vm.on { display: flex; }
+
+  @keyframes vmFadeIn { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes vmSlideUp { from { opacity: 0; transform: translateY(28px) scale(.97) } to { opacity: 1; transform: translateY(0) scale(1) } }
+
+  .vm-box {
+    width: min(920px, 100%);
+    border-radius: 22px;
+    background: linear-gradient(160deg, rgba(14,10,36,.97) 0%, rgba(8,12,28,.99) 100%);
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 60px rgba(46,107,255,.08);
+    overflow: hidden;
+    animation: vmSlideUp .4s cubic-bezier(.22,1,.36,1) both;
+  }
+
+  .vm-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    background: rgba(255,255,255,.02);
+  }
+  .vm-head-left { display: flex; align-items: center; gap: 12px; }
+  .vm-head-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, #2E6BFF, #C86DD7);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 18px rgba(46,107,255,.35);
+  }
+  .vm-head-icon svg { width: 16px; height: 16px; color: #fff; margin-left: 2px; }
+  .vm-title { font-weight: 800; font-size: 14px; color: #F5F7FB; letter-spacing: .01em; }
+  .vm-subtitle { font-size: 12px; color: #7E879B; font-weight: 500; margin-top: 1px; }
+
+  .vm-close {
+    appearance: none; border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04); color: #AAB3C5;
+    width: 38px; height: 38px; border-radius: 11px;
+    cursor: pointer; font-size: 18px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: .2s ease; flex-shrink: 0;
+  }
+  .vm-close:hover { background: rgba(255,80,80,.12); border-color: rgba(255,80,80,.3); color: #FF6B6B; }
+
+  .vm-body { padding: 16px 20px 20px; }
+
+  .vm-video {
+    position: relative; width: 100%; padding-top: 56.25%;
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,.07);
+    background: #000;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  }
+  .vm-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .vm-footer {
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 12px;
+    margin-top: 14px;
+  }
+  .vm-footer-text { font-size: 13px; color: #7E879B; }
+  .vm-footer-text strong { color: #AAB3C5; }
+
+  .vm-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .vm-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    color: #AAB3C5; font-weight: 600; font-size: 13px;
+    cursor: pointer; text-decoration: none;
+    transition: .2s ease; font-family: 'Inter', sans-serif;
+  }
+  .vm-btn:hover { border-color: rgba(46,107,255,.35); color: #F5F7FB; transform: translateY(-1px); }
+  .vm-btn svg { width: 15px; height: 15px; }
+
+  .vm-btn.primary {
+    background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
+    border-color: transparent; color: #fff;
+    box-shadow: 0 8px 24px rgba(46,107,255,.3);
+  }
+  .vm-btn.primary:hover { box-shadow: 0 12px 32px rgba(46,107,255,.45); }
 </style>
 </head>
 <body>
@@ -279,6 +388,61 @@
   </button>
 </div>
 
+<!-- ===== MODAL DE VÍDEO ===== -->
+<div class="vm on" id="videoModal" role="dialog" aria-modal="true" aria-label="Apresentação do Portal">
+  <div class="vm-box">
+
+    <div class="vm-head">
+      <div class="vm-head-left">
+        <div class="vm-head-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div>
+          <div class="vm-title">Apresentação do Portal</div>
+          <div class="vm-subtitle">SEMEAR — A Escola da Mulher Empreendedora</div>
+        </div>
+      </div>
+      <button class="vm-close" id="videoClose" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="vm-body">
+      <div class="vm-video">
+        <iframe
+          id="videoFrame"
+          src="https://www.youtube.com/embed/rEgZHaNSHZg?autoplay=1&rel=0&modestbranding=1"
+          title="Apresentação do Portal SEMEAR"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="vm-footer">
+        <div class="vm-footer-text">Assista aqui ou <strong>abra no YouTube</strong> — você fica na plataforma.</div>
+        <div class="vm-actions">
+          <a class="vm-btn" href="https://youtu.be/rEgZHaNSHZg" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Ver no YouTube
+          </a>
+          <button class="vm-btn primary" id="videoKeep">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Entrar no Portal
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div class="presentation">
   <div class="slides" id="sw">
 
@@ -291,6 +455,14 @@
         </div>
         <h1 class="au d2">Bem-vindo à sua<br><span class="gt">Área do Aluno</span></h1>
         <p class="tag au d3">Tudo o que você precisa para aprender está aqui — videoaulas, materiais e muito mais, disponíveis a qualquer hora.</p>
+
+        <!-- Botão para reabrir o vídeo -->
+        <button class="play-presentation-btn au d4" onclick="openVideoModal()">
+          <div class="play-ring">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          Assistir apresentação do portal
+        </button>
       </div>
     </section>
 
@@ -475,6 +647,7 @@
 </div>
 
 <script>
+  // ===== SLIDES =====
   const T = 6; let C = 0;
   const W = document.getElementById('sw');
   const CN = document.getElementById('cn');
@@ -501,6 +674,8 @@
   function prev() { if (C > 0) go(C - 1); }
 
   document.addEventListener('keydown', e => {
+    // Não navegar slides quando modal estiver aberto
+    if (document.getElementById('videoModal').classList.contains('on')) return;
     if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
     if (e.key === 'f' || e.key === 'F') toggleFs();
@@ -508,7 +683,11 @@
 
   let tx = 0;
   document.addEventListener('touchstart', e => tx = e.changedTouches[0].screenX);
-  document.addEventListener('touchend', e => { const d = tx - e.changedTouches[0].screenX; if (Math.abs(d) > 50) { d > 0 ? next() : prev(); } });
+  document.addEventListener('touchend', e => {
+    if (document.getElementById('videoModal').classList.contains('on')) return;
+    const d = tx - e.changedTouches[0].screenX;
+    if (Math.abs(d) > 50) { d > 0 ? next() : prev(); }
+  });
 
   function toggleFs() {
     if (!document.fullscreenElement) {
@@ -524,6 +703,33 @@
   });
 
   upd();
+
+  // ===== MODAL DE VÍDEO =====
+  const vm   = document.getElementById('videoModal');
+  const vf   = document.getElementById('videoFrame');
+  const VIDEO_SRC = 'https://www.youtube.com/embed/rEgZHaNSHZg?autoplay=1&rel=0&modestbranding=1';
+
+  function openVideoModal() {
+    vf.src = VIDEO_SRC;
+    vm.classList.add('on');
+  }
+
+  function closeVideoModal() {
+    vm.classList.remove('on');
+    // Para o vídeo imediatamente ao fechar
+    vf.src = '';
+  }
+
+  document.getElementById('videoClose').addEventListener('click', closeVideoModal);
+  document.getElementById('videoKeep').addEventListener('click', closeVideoModal);
+
+  // Clique no backdrop fecha
+  vm.addEventListener('click', e => { if (e.target === vm) closeVideoModal(); });
+
+  // ESC fecha (quando modal aberto)
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && vm.classList.contains('on')) closeVideoModal();
+  });
 </script>
 </body>
 </html>
