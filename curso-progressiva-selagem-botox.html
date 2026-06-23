@@ -3,324 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curso: Progressiva, Selagem e Botox — SEMEAR</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <title>Curso: Progressiva, Selagem e Botox — Sistema de 3 Aulas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      width: 100%; min-height: 100%;
-      background: #050816;
-      font-family: 'Inter', sans-serif;
-      -webkit-font-smoothing: antialiased;
+    :root{
+      --bg:#050816;
+      --txt:#AAB3C5;
+      --txt-strong:#F5F7FB;
+      --pri:#2E6BFF;
+      --sec:#C86DD7;
+      --card-bg:rgba(255,255,255,.03);
+      --card-bd:rgba(255,255,255,.07);
     }
-
-    body {
-      display: flex; align-items: center; justify-content: center;
-      min-height: 100vh; padding: 40px 24px;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Inter',system-ui,Arial,Helvetica,sans-serif;
       background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
-      position: relative; overflow-x: hidden;
+      color:var(--txt);
+      -webkit-font-smoothing:antialiased; padding:32px 20px;
     }
+    .wrap{max-width:1100px;margin:0 auto}
+    header{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+    .back{color:#8FAEFF;text-decoration:none;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+    .back:hover{text-decoration:underline}
+    h1{color:var(--txt-strong);font-size:clamp(22px,3.5vw,32px);font-weight:900;letter-spacing:-.02em}
+    .badge{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 14px;border-radius:999px;
+      background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);
+      color:#8FAEFF;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase
+    }
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px
+    }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} }
 
-    /* ── Fundo pontilhado igual ao das aulas ── */
-    body::after {
-      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .3;
-      background-image: radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);
-      background-size: 24px 24px;
+    .card{
+      background:var(--card-bg); border:1px solid var(--card-bd); border-radius:18px;
+      padding:22px 20px; box-shadow:0 16px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+      transition:transform .25s ease,border-color .25s ease, box-shadow .25s ease;
     }
-
-    /* ── Blobs de luz ── */
-    body::before {
-      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background:
-        radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.13) 0%, transparent 42%),
-        radial-gradient(800px 380px at 28% 75%, rgba(35,110,255,.13) 0%, transparent 42%);
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(46,107,255,.2);
+      box-shadow:0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08);
     }
-
-    /* ── Wrapper ── */
-    .wrap {
-      position: relative; z-index: 1;
-      width: 100%; max-width: 1060px;
-      display: flex; flex-direction: column; align-items: center; gap: 48px;
+    .tag{
+      display:inline-block; margin-bottom:10px; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+      color:#8FAEFF; background:rgba(46,107,255,.08); border:1px solid rgba(46,107,255,.2); padding:6px 10px; border-radius:999px;
     }
-
-    /* ── Header ── */
-    .hd-top {
-      text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px;
+    .card h2{color:var(--txt-strong);font-size:18px;letter-spacing:-.01em;margin-bottom:6px}
+    .card p{font-size:14px;line-height:1.55;margin-bottom:14px}
+    .btn{
+      display:inline-block; text-decoration:none; font-weight:700; letter-spacing:.02em;
+      color:#fff; padding:10px 14px; border-radius:12px;
+      background:linear-gradient(135deg, var(--pri), var(--sec));
+      box-shadow:0 10px 22px rgba(46,107,255,.28);
+      transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
     }
-
-    .badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 24px; border-radius: 999px;
-      background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.2);
-      font-size: 13px; font-weight: 700; color: #8FAEFF;
-      letter-spacing: .05em; text-transform: uppercase;
-      animation: fadeUp .6s ease both;
-    }
-
-    .badge svg { width: 15px; height: 15px; }
-
-    h1 {
-      font-size: clamp(32px, 5vw, 58px);
-      font-weight: 900; letter-spacing: -.03em; line-height: 1.08;
-      color: #F5F7FB;
-      animation: fadeUp .7s .1s ease both;
-    }
-
-    .gt {
-      background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; animation: shimmer 4s linear infinite;
-    }
-
-    .sub {
-      font-size: 17px; color: #7E879B; max-width: 520px; line-height: 1.6;
-      animation: fadeUp .7s .2s ease both;
-    }
-
-    /* ── Linha decorativa ── */
-    .gl {
-      width: 80px; height: 4px; border-radius: 2px;
-      background: linear-gradient(90deg, #2E6BFF, #C86DD7);
-      animation: lineG .8s .3s ease both; transform-origin: center; transform: scaleX(0);
-    }
-
-    /* ── Grid de aulas ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px; width: 100%;
-    }
-
-    @media (max-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
-
-    /* ── Card de aula ── */
-    .card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: 24px;
-      padding: 32px 26px;
-      box-shadow: 0 16px 48px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
-      backdrop-filter: blur(10px);
-      display: flex; flex-direction: column; gap: 20px;
-      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
-      animation: fadeUp .7s ease both;
-    }
-
-    .card:nth-child(1) { animation-delay: .2s; }
-    .card:nth-child(2) { animation-delay: .34s; }
-    .card:nth-child(3) { animation-delay: .48s; }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(46,107,255,.28);
-      box-shadow: 0 28px 64px rgba(0,0,0,.55), 0 0 40px rgba(46,107,255,.1);
-    }
-
-    /* ── Número da aula ── */
-    .num {
-      width: 58px; height: 58px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 900; color: #fff;
-      animation: glowP 3s ease-in-out infinite;
-    }
-    .num.n1 { background: linear-gradient(145deg, #2E6BFF, #1E56D9); }
-    .num.n2 { background: linear-gradient(145deg, #5B3FD6, #4530B3); animation-delay: .5s; }
-    .num.n3 { background: linear-gradient(145deg, #C86DD7, #A854BF); animation-delay: 1s; }
-
-    .card-label {
-      font-size: 11px; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; color: #8FAEFF;
-    }
-
-    .card h2 {
-      font-size: 19px; font-weight: 800;
-      color: #F5F7FB; letter-spacing: -.015em; line-height: 1.2;
-    }
-
-    .card p {
-      font-size: 14px; color: #7E879B; line-height: 1.6; flex: 1;
-    }
-
-    /* ── Tópicos ── */
-    .topics {
-      display: flex; flex-direction: column; gap: 8px;
-      list-style: none; padding: 0;
-    }
-
-    .topics li {
-      display: flex; align-items: center; gap: 9px;
-      font-size: 13px; color: #AAB3C5;
-    }
-
-    .topics li::before {
-      content: '';
-      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-    }
-
-    .n1-topics li::before { background: #2E6BFF; }
-    .n2-topics li::before { background: #5B3FD6; }
-    .n3-topics li::before { background: #C86DD7; }
-
-    /* ── Botão ── */
-    .btn {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      text-decoration: none; font-weight: 700; font-size: 14px;
-      color: #fff; padding: 14px 20px; border-radius: 14px;
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-      letter-spacing: .02em;
-    }
-
-    .btn.b1 {
-      background: linear-gradient(135deg, #2E6BFF, #1E56D9);
-      box-shadow: 0 10px 26px rgba(46,107,255,.35);
-    }
-    .btn.b2 {
-      background: linear-gradient(135deg, #5B3FD6, #4530B3);
-      box-shadow: 0 10px 26px rgba(91,63,214,.35);
-    }
-    .btn.b3 {
-      background: linear-gradient(135deg, #C86DD7, #A854BF);
-      box-shadow: 0 10px 26px rgba(200,109,215,.35);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: .92;
-    }
-
-    .btn svg { width: 16px; height: 16px; }
-
-    /* ── Footer ── */
-    .footer-txt {
-      font-size: 13px; color: #7E879B; letter-spacing: .04em;
-      animation: fadeUp .7s .6s ease both;
-    }
-
-    /* ── Back link ── */
-    .back {
-      position: fixed; top: 22px; left: 22px; z-index: 999;
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-      color: #7E879B; padding: 10px 16px; border-radius: 12px;
-      text-decoration: none; font-size: 12px; font-weight: 600;
-      letter-spacing: .04em; text-transform: uppercase;
-      transition: all .3s ease; backdrop-filter: blur(6px);
-    }
-    .back:hover { background: rgba(255,255,255,.08); color: #F5F7FB; border-color: rgba(46,107,255,.3); }
-    .back svg { width: 16px; height: 16px; }
-
-    /* ── Animações ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes shimmer {
-      0%   { background-position: -200% center; }
-      100% { background-position:  200% center; }
-    }
-    @keyframes lineG {
-      from { transform: scaleX(0); }
-      to   { transform: scaleX(1); }
-    }
-    @keyframes glowP {
-      0%, 100% { box-shadow: 0 0 18px rgba(46,107,255,.12); }
-      50%       { box-shadow: 0 0 36px rgba(46,107,255,.35); }
-    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 14px 28px rgba(46,107,255,.35)}
+    footer{margin-top:28px; font-size:12px; color:#7E879B; text-align:center}
   </style>
 </head>
 <body>
-
-  <a class="back" href="index.html">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-    Início
-  </a>
-
   <div class="wrap">
+    <header>
+      <a class="back" href="index.html">← Início</a>
+      <h1>Curso: Progressiva, Selagem e Botox</h1>
+      <span class="badge">Sistema de 3 aulas</span>
+    </header>
 
-    <!-- Header -->
-    <div class="hd-top">
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        Curso Completo · SEMEAR
-      </div>
-      <h1>Progressiva, Selagem<br>e <span class="gt">Botox Capilar</span></h1>
-      <p class="sub">Escolha a aula e domine cada técnica com segurança, conhecimento e excelência profissional.</p>
-      <div class="gl"></div>
-    </div>
-
-    <!-- Cards -->
-    <div class="grid">
-
+    <main class="grid" aria-label="Lista de aulas">
       <!-- Aula 1 -->
-      <div class="card">
-        <div class="num n1">1</div>
-        <div>
-          <span class="card-label">Aula 1</span>
-          <h2>Progressiva Capilar — Do Zero ao Profissional</h2>
-        </div>
-        <p>Fundamentos, tipos, diferenças entre fórmulas, passo a passo completo e segurança na aplicação.</p>
-        <ul class="topics n1-topics">
-          <li>5 tipos de progressiva</li>
-          <li>Tabela comparativa completa</li>
-          <li>Passo a passo da aplicação</li>
-          <li>Cuidados pós-procedimento</li>
-          <li>Contraindicações e EPIs</li>
-        </ul>
-       <a class="btn" href="curso-progressiva.html">Acessar Aula 1</a>
+      <article class="card">
+        <span class="tag">Aula 1</span>
+        <h2>Progressiva Capilar — Do Zero ao Profissional</h2>
+        <p>Fundamentos, tipos, passo a passo e segurança para executar com excelência.</p>
+        <!-- Ajuste o href se o nome da sua Aula 1 for diferente -->
+        <a class="btn" href="curso-progressiva.html">Acessar Aula 1</a>
       </article>
-         
-        </a>
-      </div>
 
       <!-- Aula 2 -->
-      <div class="card">
-        <div class="num n2">2</div>
-        <div>
-          <span class="card-label">Aula 2</span>
-          <h2>Selagem Capilar — Técnica e Aplicação</h2>
-        </div>
-        <p>Composição do produto, técnica de aplicação mecha a mecha, ajustes por tipo de fio e manutenção.</p>
-        <ul class="topics n2-topics">
-          <li>O que é selagem capilar</li>
-          <li>Diferença para a progressiva</li>
-          <li>Técnica de aplicação</li>
-          <li>Temperatura e tempo de ação</li>
-          <li>Cuidados e durabilidade</li>
-        </ul>
-        <a class="btn b2" href="selagem-capilar.html">
-          Acessar Aula 2
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-        </a>
-      </div>
+      <article class="card">
+        <span class="tag">Aula 2</span>
+        <h2>Selagem Capilar — Técnica e Segurança</h2>
+        <p>Composição, aplicação mecha a mecha, ajustes por tipo de fio e manutenção.</p>
+        <a class="btn" href="selagem-capilar.html">Acessar Aula 2</a>
+      </article>
 
       <!-- Aula 3 -->
-      <div class="card">
-        <div class="num n3">3</div>
-        <div>
-          <span class="card-label">Aula 3</span>
-          <h2>Botox Capilar — Tratamento e Finalização</h2>
-        </div>
-        <p>Reposição de massa, reconstrução dos fios, acabamento profissional e cuidados pós-tratamento.</p>
-        <ul class="topics n3-topics">
-          <li>O que é o botox capilar</li>
-          <li>Diferença para outros tratamentos</li>
-          <li>Passo a passo completo</li>
-          <li>Tipos de fios e indicações</li>
-          <li>Resultados e manutenção</li>
-        </ul>
-        <a class="btn b3" href="botox-capilar.html">
-          Acessar Aula 3
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-        </a>
-      </div>
+      <article class="card">
+        <span class="tag">Aula 3</span>
+        <h2>Botox Capilar — Tratamento e Finalização</h2>
+        <p>Reposição de massa, reconstrução, acabamento e cuidados pós-tratamento.</p>
+        <a class="btn" href="botox-capilar.html">Acessar Aula 3</a>
+      </article>
+    </main>
 
-    </div>
-
-    <p class="footer-txt">🎓 SEMEAR — Formando Profissionais de Excelência</p>
-
+    <footer>SEMEAR — Formando Profissionais de Excelência</footer>
   </div>
 </body>
 </html>
