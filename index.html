@@ -15,7 +15,6 @@
     background-size: 200% auto; animation: shimmer 3s linear infinite;
     transition: width .6s ease;
   }
-
   .fs-btn {
     position: fixed; top: 20px; right: 20px; z-index: 999;
     background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
@@ -27,7 +26,6 @@
   }
   .fs-btn:hover { background: rgba(255,255,255,.08); color: #F5F7FB; border-color: rgba(46,107,255,.3); }
   .fs-btn svg { width: 16px; height: 16px; }
-
   .sc {
     position: fixed; bottom: 36px; left: 40px; z-index: 998;
     color: #7E879B; font-size: 14px; font-weight: 600; letter-spacing: .05em;
@@ -35,7 +33,6 @@
     backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.05);
   }
   .sc .cn { color: #2E6BFF; font-weight: 800; }
-
   .ind {
     position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 998;
     display: flex; gap: 7px; background: rgba(0,0,0,.3); padding: 10px 16px;
@@ -49,7 +46,6 @@
     background: #2E6BFF; box-shadow: 0 0 14px rgba(46,107,255,.6);
     width: 34px; border-radius: 5px;
   }
-
   .nav-arr { position: fixed; bottom: 32px; right: 40px; z-index: 998; display: flex; gap: 10px; }
   .nav-arr button {
     width: 52px; height: 52px; border-radius: 14px;
@@ -62,10 +58,8 @@
     background: rgba(46,107,255,.2); border-color: rgba(46,107,255,.4);
     color: #fff; transform: scale(1.05);
   }
-
   .presentation { width: 100vw; height: 100vh; overflow: hidden; }
   .slides { display: flex; transition: transform .7s cubic-bezier(.22,1,.36,1); }
-
   .slide {
     width: 100vw; height: 100vh; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
@@ -85,21 +79,18 @@
     background-size: 24px 24px;
   }
   .slide > * { position: relative; z-index: 1; }
-
   .gt {
     background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
     background-size: 200% auto;
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text; animation: shimmer 4s linear infinite;
   }
-
   .gl {
     width: 90px; height: 4px; border-radius: 2px;
     background: linear-gradient(90deg, #2E6BFF, #C86DD7);
     margin-bottom: 22px; animation: lineG .8s ease both; transform-origin: left;
   }
   .gl.ce { margin: 0 auto 22px auto; transform-origin: center; }
-
   .badge {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 10px 24px; border-radius: 999px; margin-bottom: 32px;
@@ -107,160 +98,24 @@
     font-size: 14px; font-weight: 600; color: #8FAEFF;
     letter-spacing: .05em; text-transform: uppercase;
   }
-
   .card {
     background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
     border-radius: 22px;
     box-shadow: 0 16px 48px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
     padding: 32px 28px; backdrop-filter: blur(8px); transition: all .4s ease;
   }
-  .card:hover {
-    border-color: rgba(46,107,255,.2); transform: translateY(-3px);
-    box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08);
-  }
-
-  .cp {
-    background: linear-gradient(145deg, rgba(18,11,43,.95) 0%, rgba(10,15,36,.98) 55%, rgba(5,8,22,1) 100%);
-    border: 1px solid rgba(255,255,255,.08); border-radius: 22px;
-    box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 40px rgba(46,107,255,.08);
-    padding: 34px 30px; backdrop-filter: blur(10px); transition: all .4s ease;
-  }
-  .cp:hover {
-    border-color: rgba(46,107,255,.25); transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 28px 64px rgba(0,0,0,.55), 0 0 50px rgba(46,107,255,.12);
-  }
-
-  .ic {
-    width: 54px; height: 54px; border-radius: 14px; margin-bottom: 18px;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(46,107,255,.08);
-  }
+  .card:hover { border-color: rgba(46,107,255,.2); transform: translateY(-3px); box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08); }
+  .ic { width: 54px; height: 54px; border-radius: 14px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; background: rgba(46,107,255,.08); }
   .ic svg { width: 26px; height: 26px; color: #2E6BFF; }
-
-  .tn {
-    width: 72px; height: 72px; border-radius: 18px;
-    margin: 0 auto 26px; display: flex; align-items: center; justify-content: center;
-    font-size: 24px; font-weight: 900; color: #fff;
-    animation: glowP 3s ease-in-out infinite;
-  }
-  .tn.n1 { background: linear-gradient(145deg, #2E6BFF, #1E56D9); }
-  .tn.n2 { background: linear-gradient(145deg, #5B3FD6, #4530B3); animation-delay: .5s; }
-  .tn.n3 { background: linear-gradient(145deg, #C86DD7, #A854BF); animation-delay: 1s; }
-  .tn.n4 { background: linear-gradient(145deg, #2E6BFF, #5B3FD6); animation-delay: 1.5s; }
-
   .fl { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
-  .fs { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 135px; padding: 0 8px; }
-  .fs .fi {
-    width: 76px; height: 76px; border-radius: 20px;
-    background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.18);
-    display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
-  }
-  .fs .fi svg { width: 34px; height: 34px; color: #2E6BFF; }
-  .fs span { font-size: 15px; font-weight: 600; color: #F5F7FB; }
+  .fs-step { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 135px; padding: 0 8px; }
+  .fs-step .fi { width: 76px; height: 76px; border-radius: 20px; background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.18); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .fs-step .fi svg { width: 34px; height: 34px; color: #2E6BFF; }
+  .fs-step span { font-size: 15px; font-weight: 600; color: #F5F7FB; }
   .fa { display: flex; align-items: center; padding-bottom: 30px; margin: 0 6px; }
   .fa svg { width: 26px; height: 26px; color: #7E879B; }
-  .fs.act .fi {
-    background: linear-gradient(180deg, #2E6BFF, #1E56D9); border-color: transparent;
-    box-shadow: 0 10px 22px rgba(46,107,255,.28);
-  }
-  .fs.act .fi svg { color: #fff; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(35px) } to { opacity: 1; transform: translateY(0) } }
-  @keyframes fadeScale { from { opacity: 0; transform: scale(.88) } to { opacity: 1; transform: scale(1) } }
-  @keyframes shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
-  @keyframes lineG { from { transform: scaleX(0) } to { transform: scaleX(1) } }
-  @keyframes glowP {
-    0%, 100% { box-shadow: 0 0 18px rgba(46,107,255,.12) }
-    50% { box-shadow: 0 0 36px rgba(46,107,255,.3) }
-  }
-  @keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
-
-  .slide.active .au { animation: fadeUp .7s ease both; }
-  .slide.active .as { animation: fadeScale .7s ease both; }
-  .d1 { animation-delay: .1s !important } .d2 { animation-delay: .22s !important }
-  .d3 { animation-delay: .34s !important } .d4 { animation-delay: .46s !important }
-  .d5 { animation-delay: .58s !important } .d6 { animation-delay: .7s !important }
-  .d7 { animation-delay: .82s !important }
-
-  /* Slide 1 */
-  .s1-wrap { text-align: center; max-width: 1000px; padding: 0 40px; }
-  .s1-wrap h1 { font-size: clamp(52px, 7vw, 82px); font-weight: 900; letter-spacing: -.03em; line-height: 1.08; color: #F5F7FB; margin-bottom: 26px; }
-  .s1-wrap .tag { font-size: 22px; color: #AAB3C5; max-width: 600px; margin: 0 auto 36px; line-height: 1.5; }
-
-  /* Botão de apresentação no Slide 1 */
-  .play-presentation-btn {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.14);
-    color: #F5F7FB; font-size: 15px; font-weight: 700;
-    padding: 14px 28px; border-radius: 14px; cursor: pointer;
-    font-family: 'Inter', sans-serif; letter-spacing: .01em;
-    backdrop-filter: blur(8px);
-    transition: all .3s ease;
-  }
-  .play-presentation-btn:hover {
-    background: rgba(46,107,255,.15);
-    border-color: rgba(46,107,255,.4);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(46,107,255,.2);
-  }
-  .play-presentation-btn .play-ring {
-    width: 38px; height: 38px; border-radius: 50%;
-    background: linear-gradient(135deg, #2E6BFF, #C86DD7);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 16px rgba(46,107,255,.5);
-    flex-shrink: 0;
-  }
-  .play-presentation-btn .play-ring svg { width: 16px; height: 16px; color: #fff; margin-left: 2px; }
-
-  /* Slide 2 */
-  .s2-wrap { max-width: 1100px; width: 100%; padding: 0 40px; }
-  .s2-wrap h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 800; letter-spacing: -.025em; line-height: 1.12; color: #F5F7FB; margin-bottom: 12px; }
-  .s2-wrap .sub { font-size: 18px; color: #AAB3C5; margin-bottom: 48px; }
-  .s2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .s2-grid .card { display: flex; flex-direction: column; }
-  .s2-grid .card h3 { font-size: 22px; font-weight: 700; color: #F5F7FB; margin-bottom: 12px; }
-  .s2-grid .card p { font-size: 15px; color: #AAB3C5; line-height: 1.6; }
-  .curso-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(200,109,215,.08); border: 1px solid rgba(200,109,215,.2);
-    border-radius: 999px; padding: 6px 16px; font-size: 13px; font-weight: 600;
-    color: #C86DD7; margin-top: 16px; letter-spacing: .04em;
-  }
-
-  /* Slide 3 */
-  .s3-wrap { max-width: 900px; width: 100%; padding: 0 40px; }
-  .s3-wrap h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 800; letter-spacing: -.025em; color: #F5F7FB; margin-bottom: 12px; }
-  .s3-wrap .sub { font-size: 17px; color: #AAB3C5; margin-bottom: 40px; }
-  .s3-bullets { display: flex; flex-direction: column; gap: 16px; }
-  .s3-bullet { display: flex; align-items: flex-start; gap: 18px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 16px; padding: 22px 24px; transition: all .3s ease; }
-  .s3-bullet:hover { border-color: rgba(46,107,255,.2); transform: translateX(4px); }
-  .s3-bullet .bicon { width: 44px; height: 44px; min-width: 44px; border-radius: 12px; background: rgba(46,107,255,.1); display: flex; align-items: center; justify-content: center; }
-  .s3-bullet .bicon svg { width: 22px; height: 22px; color: #2E6BFF; }
-  .s3-bullet .btxt strong { font-size: 16px; font-weight: 700; color: #F5F7FB; display: block; margin-bottom: 4px; }
-  .s3-bullet .btxt span { font-size: 14px; color: #AAB3C5; }
-
-  /* Slide 4 */
-  .s4-wrap { max-width: 900px; width: 100%; padding: 0 40px; }
-  .s4-wrap h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 800; letter-spacing: -.025em; color: #F5F7FB; margin-bottom: 12px; }
-  .s4-wrap .sub { font-size: 17px; color: #AAB3C5; margin-bottom: 40px; }
-  .s4-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .s4-item { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 18px; padding: 26px 24px; display: flex; align-items: flex-start; gap: 16px; transition: all .3s ease; }
-  .s4-item:hover { border-color: rgba(200,109,215,.2); transform: translateY(-2px); }
-  .s4-item .sicon { width: 44px; height: 44px; min-width: 44px; border-radius: 12px; background: rgba(200,109,215,.08); display: flex; align-items: center; justify-content: center; }
-  .s4-item .sicon svg { width: 22px; height: 22px; color: #C86DD7; }
-  .s4-item strong { font-size: 15px; font-weight: 700; color: #F5F7FB; display: block; margin-bottom: 4px; }
-  .s4-item span { font-size: 13px; color: #AAB3C5; line-height: 1.5; }
-
-  /* Slide 5 */
-  .s5-wrap { max-width: 1100px; width: 100%; padding: 0 40px; }
-  .s5-wrap h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 800; letter-spacing: -.025em; color: #F5F7FB; margin-bottom: 12px; }
-  .s5-wrap .sub { font-size: 17px; color: #AAB3C5; margin-bottom: 48px; }
-
-  /* Slide 6 */
-  .s6-wrap { text-align: center; max-width: 860px; padding: 0 40px; }
-  .s6-wrap h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -.03em; line-height: 1.1; color: #F5F7FB; margin-bottom: 20px; }
-  .s6-wrap .sub { font-size: 19px; color: #AAB3C5; line-height: 1.6; margin-bottom: 44px; max-width: 580px; margin-left: auto; margin-right: auto; }
+  .fs-step.act .fi { background: linear-gradient(180deg, #2E6BFF, #1E56D9); border-color: transparent; box-shadow: 0 10px 22px rgba(46,107,255,.28); }
+  .fs-step.act .fi svg { color: #fff; }
   .cta-btn {
     display: inline-flex; align-items: center; gap: 12px;
     background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
@@ -274,105 +129,207 @@
   .cta-btn:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 20px 48px rgba(46,107,255,.5); }
   .cta-btn svg { width: 22px; height: 22px; }
 
-  /* ===== MODAL DE VÍDEO ===== */
-  .vm {
-    position: fixed; inset: 0; z-index: 2000;
-    display: none; align-items: center; justify-content: center;
-    padding: 22px 16px;
-    background: rgba(2, 6, 20, .80);
-    backdrop-filter: blur(12px);
-    animation: vmFadeIn .3s ease both;
+  @keyframes fadeUp    { from { opacity:0; transform:translateY(35px) } to { opacity:1; transform:translateY(0) } }
+  @keyframes fadeScale { from { opacity:0; transform:scale(.88) }        to { opacity:1; transform:scale(1) } }
+  @keyframes shimmer   { 0%   { background-position:-200% center }       100% { background-position:200% center } }
+  @keyframes lineG     { from { transform:scaleX(0) }                    to   { transform:scaleX(1) } }
+  @keyframes float     { 0%,100% { transform:translateY(0) }             50%  { transform:translateY(-10px) } }
+  @keyframes pipEntrance {
+    from { opacity:0; transform:translateY(18px) scale(.94) }
+    to   { opacity:1; transform:translateY(0)    scale(1)   }
   }
-  .vm.on { display: flex; }
+  @keyframes pipLeave {
+    from { opacity:1; transform:translateY(0)    scale(1)   }
+    to   { opacity:0; transform:translateY(18px) scale(.94) }
+  }
+  @keyframes livePulse {
+    0%,100% { box-shadow:0 0 0 0   rgba(46,107,255,.5) }
+    60%     { box-shadow:0 0 0 5px rgba(46,107,255,0)   }
+  }
 
-  @keyframes vmFadeIn { from { opacity: 0 } to { opacity: 1 } }
-  @keyframes vmSlideUp { from { opacity: 0; transform: translateY(28px) scale(.97) } to { opacity: 1; transform: translateY(0) scale(1) } }
+  .slide.active .au { animation: fadeUp .7s ease both; }
+  .slide.active .as { animation: fadeScale .7s ease both; }
+  .d1{animation-delay:.10s!important} .d2{animation-delay:.22s!important}
+  .d3{animation-delay:.34s!important} .d4{animation-delay:.46s!important}
+  .d5{animation-delay:.58s!important} .d6{animation-delay:.70s!important}
+  .d7{animation-delay:.82s!important}
 
-  .vm-box {
-    width: min(920px, 100%);
-    border-radius: 22px;
-    background: linear-gradient(160deg, rgba(14,10,36,.97) 0%, rgba(8,12,28,.99) 100%);
-    border: 1px solid rgba(255,255,255,.10);
-    box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 60px rgba(46,107,255,.08);
+  /* ─────────────────────────────────────────
+     PiP WIDGET
+  ───────────────────────────────────────── */
+  #pip {
+    position: fixed;
+    bottom: 108px;        /* fica acima das setas */
+    right: 24px;
+    z-index: 1500;
+    width: 260px;         /* tamanho padrão — discreto */
+    border-radius: 16px;
     overflow: hidden;
-    animation: vmSlideUp .4s cubic-bezier(.22,1,.36,1) both;
-  }
-
-  .vm-head {
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(255,255,255,.07);
-    background: rgba(255,255,255,.02);
-  }
-  .vm-head-left { display: flex; align-items: center; gap: 12px; }
-  .vm-head-icon {
-    width: 36px; height: 36px; border-radius: 10px;
-    background: linear-gradient(135deg, #2E6BFF, #C86DD7);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 18px rgba(46,107,255,.35);
-  }
-  .vm-head-icon svg { width: 16px; height: 16px; color: #fff; margin-left: 2px; }
-  .vm-title { font-weight: 800; font-size: 14px; color: #F5F7FB; letter-spacing: .01em; }
-  .vm-subtitle { font-size: 12px; color: #7E879B; font-weight: 500; margin-top: 1px; }
-
-  .vm-close {
-    appearance: none; border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.04); color: #AAB3C5;
-    width: 38px; height: 38px; border-radius: 11px;
-    cursor: pointer; font-size: 18px; line-height: 1;
-    display: flex; align-items: center; justify-content: center;
-    transition: .2s ease; flex-shrink: 0;
-  }
-  .vm-close:hover { background: rgba(255,80,80,.12); border-color: rgba(255,80,80,.3); color: #FF6B6B; }
-
-  .vm-body { padding: 16px 20px 20px; }
-
-  .vm-video {
-    position: relative; width: 100%; padding-top: 56.25%;
-    border-radius: 14px; overflow: hidden;
-    border: 1px solid rgba(255,255,255,.07);
-    background: #000;
-    box-shadow: 0 12px 40px rgba(0,0,0,.5);
-  }
-  .vm-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-  .vm-footer {
-    display: flex; flex-wrap: wrap; align-items: center;
-    justify-content: space-between; gap: 12px;
-    margin-top: 14px;
-  }
-  .vm-footer-text { font-size: 13px; color: #7E879B; }
-  .vm-footer-text strong { color: #AAB3C5; }
-
-  .vm-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-  .vm-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 11px 20px; border-radius: 12px;
+    background: linear-gradient(160deg,#0E0A2B 0%,#080C1C 100%);
     border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.04);
-    color: #AAB3C5; font-weight: 600; font-size: 13px;
-    cursor: pointer; text-decoration: none;
-    transition: .2s ease; font-family: 'Inter', sans-serif;
+    box-shadow: 0 20px 56px rgba(0,0,0,.60), 0 0 32px rgba(46,107,255,.08);
+    animation: pipEntrance .55s cubic-bezier(.22,1,.36,1) both;
+    transition: width .35s cubic-bezier(.22,1,.36,1),
+                box-shadow .3s ease,
+                bottom .35s ease;
   }
-  .vm-btn:hover { border-color: rgba(46,107,255,.35); color: #F5F7FB; transform: translateY(-1px); }
-  .vm-btn svg { width: 15px; height: 15px; }
+  #pip.big   { width: 380px; }
+  #pip.gone  { animation: pipLeave .28s ease forwards; pointer-events:none; }
 
-  .vm-btn.primary {
-    background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
-    border-color: transparent; color: #fff;
-    box-shadow: 0 8px 24px rgba(46,107,255,.3);
+  /* Cabeçalho */
+  .pip-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 12px;
+    background: rgba(255,255,255,.025);
+    border-bottom: 1px solid rgba(255,255,255,.06);
   }
-  .vm-btn.primary:hover { box-shadow: 0 12px 32px rgba(46,107,255,.45); }
+  .pip-bar-l { display: flex; align-items: center; gap: 8px; }
+  .pip-live {
+    width: 7px; height: 7px; border-radius: 50%; background: #2E6BFF;
+    animation: livePulse 2s ease-in-out infinite;
+  }
+  .pip-title { font-size: 11px; font-weight: 700; color: #8FAEFF; letter-spacing: .06em; text-transform: uppercase; }
+  .pip-bar-r { display: flex; gap: 5px; }
+  .pip-ibtn {
+    width: 26px; height: 26px; border-radius: 7px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+    color: #7E879B; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: .2s ease;
+  }
+  .pip-ibtn:hover                { background: rgba(255,255,255,.10); color: #F5F7FB; }
+  .pip-ibtn.pip-close:hover      { background: rgba(255,60,60,.12); border-color: rgba(255,60,60,.3); color: #FF6B6B; }
+  .pip-ibtn svg { width: 12px; height: 12px; }
+
+  /* ── Estado FECHADO: thumbnail ── */
+  .pip-thumb {
+    position: relative; width: 100%; padding-top: 56.25%;
+    cursor: pointer; overflow: hidden; background: #000;
+    display: block;
+  }
+  .pip-thumb img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(.65);
+    transition: filter .35s ease, transform .4s ease;
+  }
+  .pip-thumb:hover img { filter: brightness(.45); transform: scale(1.04); }
+
+  /* degradê sobre thumb */
+  .pip-tgrad {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg,rgba(46,107,255,.12) 0%,rgba(200,109,215,.08) 100%);
+    transition: opacity .3s;
+  }
+  .pip-thumb:hover .pip-tgrad { opacity: 1.4; }
+
+  /* botão play */
+  .pip-play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 46px; height: 46px; border-radius: 50%;
+    background: rgba(255,255,255,.13);
+    border: 2px solid rgba(255,255,255,.28);
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: all .3s ease;
+  }
+  .pip-thumb:hover .pip-play {
+    background: linear-gradient(135deg,#2E6BFF,#C86DD7);
+    border-color: transparent;
+    transform: translate(-50%,-50%) scale(1.14);
+    box-shadow: 0 0 26px rgba(46,107,255,.55);
+  }
+  .pip-play svg { width: 16px; height: 16px; color: #fff; margin-left: 3px; }
+
+  /* texto na thumb */
+  .pip-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 12px 10px;
+    background: linear-gradient(0deg,rgba(0,0,0,.72) 0%,transparent 100%);
+  }
+  .pip-caption strong { font-size: 12px; font-weight: 700; color: #F5F7FB; display: block; line-height: 1.3; }
+  .pip-caption span   { font-size: 10px; color: #AAB3C5; }
+
+  /* ── Estado ATIVO: iframe ── */
+  .pip-player {
+    display: none;
+    position: relative; width: 100%; padding-top: 56.25%;
+    background: #000;
+  }
+  .pip-player.on { display: block; }
+  .pip-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* Rodapé */
+  .pip-foot {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 9px 12px;
+  }
+  .pip-foot-l { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .pip-icon {
+    width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0;
+    background: linear-gradient(135deg,#2E6BFF,#C86DD7);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pip-icon svg { width: 11px; height: 11px; color: #fff; margin-left: 1px; }
+  .pip-info strong { font-size: 11px; font-weight: 700; color: #F5F7FB; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+  .pip-info span   { font-size: 10px; color: #7E879B; }
+  .pip-yt {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 5px 10px; border-radius: 8px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    color: #7E879B; font-size: 10px; font-weight: 600; text-decoration: none;
+    transition: .2s ease; white-space: nowrap; flex-shrink: 0;
+  }
+  .pip-yt:hover { color: #F5F7FB; border-color: rgba(46,107,255,.3); background: rgba(46,107,255,.08); }
+  .pip-yt svg { width: 10px; height: 10px; }
+
+  /* ── Slides de conteúdo ── */
+  .s1-wrap { text-align:center; max-width:1000px; padding:0 40px; }
+  .s1-wrap h1 { font-size:clamp(52px,7vw,82px); font-weight:900; letter-spacing:-.03em; line-height:1.08; color:#F5F7FB; margin-bottom:26px; }
+  .s1-wrap .tag { font-size:22px; color:#AAB3C5; max-width:600px; margin:0 auto; line-height:1.5; }
+  .s2-wrap { max-width:1100px; width:100%; padding:0 40px; }
+  .s2-wrap h2 { font-size:clamp(32px,4vw,52px); font-weight:800; letter-spacing:-.025em; line-height:1.12; color:#F5F7FB; margin-bottom:12px; }
+  .s2-wrap .sub { font-size:18px; color:#AAB3C5; margin-bottom:48px; }
+  .s2-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .s2-grid .card h3 { font-size:22px; font-weight:700; color:#F5F7FB; margin-bottom:12px; }
+  .s2-grid .card p  { font-size:15px; color:#AAB3C5; line-height:1.6; }
+  .curso-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(200,109,215,.08); border:1px solid rgba(200,109,215,.2); border-radius:999px; padding:6px 16px; font-size:13px; font-weight:600; color:#C86DD7; margin-top:16px; letter-spacing:.04em; }
+  .s3-wrap { max-width:900px; width:100%; padding:0 40px; }
+  .s3-wrap h2 { font-size:clamp(30px,4vw,48px); font-weight:800; letter-spacing:-.025em; color:#F5F7FB; margin-bottom:12px; }
+  .s3-wrap .sub { font-size:17px; color:#AAB3C5; margin-bottom:40px; }
+  .s3-bullets { display:flex; flex-direction:column; gap:16px; }
+  .s3-bullet { display:flex; align-items:flex-start; gap:18px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:22px 24px; transition:all .3s ease; }
+  .s3-bullet:hover { border-color:rgba(46,107,255,.2); transform:translateX(4px); }
+  .s3-bullet .bicon { width:44px; height:44px; min-width:44px; border-radius:12px; background:rgba(46,107,255,.1); display:flex; align-items:center; justify-content:center; }
+  .s3-bullet .bicon svg { width:22px; height:22px; color:#2E6BFF; }
+  .s3-bullet .btxt strong { font-size:16px; font-weight:700; color:#F5F7FB; display:block; margin-bottom:4px; }
+  .s3-bullet .btxt span   { font-size:14px; color:#AAB3C5; }
+  .s4-wrap { max-width:900px; width:100%; padding:0 40px; }
+  .s4-wrap h2 { font-size:clamp(30px,4vw,48px); font-weight:800; letter-spacing:-.025em; color:#F5F7FB; margin-bottom:12px; }
+  .s4-wrap .sub { font-size:17px; color:#AAB3C5; margin-bottom:40px; }
+  .s4-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .s4-item { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); border-radius:18px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:all .3s ease; }
+  .s4-item:hover { border-color:rgba(200,109,215,.2); transform:translateY(-2px); }
+  .s4-item .sicon { width:44px; height:44px; min-width:44px; border-radius:12px; background:rgba(200,109,215,.08); display:flex; align-items:center; justify-content:center; }
+  .s4-item .sicon svg { width:22px; height:22px; color:#C86DD7; }
+  .s4-item strong { font-size:15px; font-weight:700; color:#F5F7FB; display:block; margin-bottom:4px; }
+  .s4-item span   { font-size:13px; color:#AAB3C5; line-height:1.5; }
+  .s5-wrap { max-width:1100px; width:100%; padding:0 40px; }
+  .s5-wrap h2 { font-size:clamp(30px,4vw,48px); font-weight:800; letter-spacing:-.025em; color:#F5F7FB; margin-bottom:12px; }
+  .s5-wrap .sub { font-size:17px; color:#AAB3C5; margin-bottom:48px; }
+  .s6-wrap { text-align:center; max-width:860px; padding:0 40px; }
+  .s6-wrap h2 { font-size:clamp(36px,5vw,64px); font-weight:900; letter-spacing:-.03em; line-height:1.1; color:#F5F7FB; margin-bottom:20px; }
+  .s6-wrap .sub { font-size:19px; color:#AAB3C5; line-height:1.6; margin-bottom:44px; max-width:580px; margin-left:auto; margin-right:auto; }
 </style>
 </head>
 <body>
 
-<div class="progress" id="prog" style="width: 16.6%;"></div>
+<div class="progress" id="prog" style="width:16.6%"></div>
 
-<button class="fs-btn" id="fsBtn" onclick="toggleFs()">
+<button class="fs-btn" onclick="toggleFs()">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"></path>
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
   </svg>
   <span id="fsTxt">Tela cheia</span>
 </button>
@@ -380,69 +337,84 @@
 <div class="sc"><span class="cn" id="cn">1</span> / 6</div>
 <div class="ind" id="ind"></div>
 <div class="nav-arr">
-  <button onclick="prev()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
-  <button onclick="next()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-  </button>
+  <button onclick="prev()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button onclick="next()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
 </div>
 
-<!-- ===== MODAL DE VÍDEO ===== -->
-<div class="vm on" id="videoModal" role="dialog" aria-modal="true" aria-label="Apresentação do Portal">
-  <div class="vm-box">
+<!-- ══════════════════════════════
+     PiP — WIDGET FLUTUANTE
+══════════════════════════════ -->
+<div id="pip">
 
-    <div class="vm-head">
-      <div class="vm-head-left">
-        <div class="vm-head-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-        <div>
-          <div class="vm-title">Apresentação do Portal</div>
-          <div class="vm-subtitle">SEMEAR — A Escola da Mulher Empreendedora</div>
-        </div>
-      </div>
-      <button class="vm-close" id="videoClose" aria-label="Fechar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+  <!-- Barra superior -->
+  <div class="pip-bar">
+    <div class="pip-bar-l">
+      <div class="pip-live"></div>
+      <span class="pip-title">Apresentação</span>
+    </div>
+    <div class="pip-bar-r">
+      <button class="pip-ibtn" id="pipExpandBtn" title="Expandir" onclick="pipToggleSize()">
+        <svg id="pipExpandIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+          <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+        </svg>
+      </button>
+      <button class="pip-ibtn pip-close" title="Fechar" onclick="pipClose()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
     </div>
+  </div>
 
-    <div class="vm-body">
-      <div class="vm-video">
-        <iframe
-          id="videoFrame"
-          src="https://www.youtube.com/embed/rEgZHaNSHZg?autoplay=1&rel=0&modestbranding=1"
-          title="Apresentação do Portal SEMEAR"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+  <!-- Thumbnail (estado inicial) -->
+  <div class="pip-thumb" id="pipThumb" onclick="pipPlay()">
+    <img
+      id="pipThumbImg"
+      src="https://img.youtube.com/vi/rEgZHaNSHZg/maxresdefault.jpg"
+      alt="Thumbnail"
+      onerror="this.src='https://img.youtube.com/vi/rEgZHaNSHZg/hqdefault.jpg'"
+    />
+    <div class="pip-tgrad"></div>
+    <div class="pip-play">
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </div>
+    <div class="pip-caption">
+      <strong>Conheça a Área do Aluno</strong>
+      <span>Clique para assistir · SEMEAR</span>
+    </div>
+  </div>
+
+  <!-- Player (após clicar) -->
+  <div class="pip-player" id="pipPlayer">
+    <iframe id="pipFrame" src="" title="Apresentação SEMEAR"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+
+  <!-- Rodapé -->
+  <div class="pip-foot">
+    <div class="pip-foot-l">
+      <div class="pip-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </div>
-
-      <div class="vm-footer">
-        <div class="vm-footer-text">Assista aqui ou <strong>abra no YouTube</strong> — você fica na plataforma.</div>
-        <div class="vm-actions">
-          <a class="vm-btn" href="https://youtu.be/rEgZHaNSHZg" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-            Ver no YouTube
-          </a>
-          <button class="vm-btn primary" id="videoKeep">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
-            Entrar no Portal
-          </button>
-        </div>
+      <div class="pip-info">
+        <strong>Apresentação do Portal</strong>
+        <span>SEMEAR</span>
       </div>
     </div>
-
+    <a class="pip-yt" href="https://youtu.be/rEgZHaNSHZg" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+        <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+      YouTube
+    </a>
   </div>
-</div>
 
+</div><!-- /pip -->
+
+<!-- ══════════ SLIDES ══════════ -->
 <div class="presentation">
   <div class="slides" id="sw">
 
@@ -455,14 +427,6 @@
         </div>
         <h1 class="au d2">Bem-vindo à sua<br><span class="gt">Área do Aluno</span></h1>
         <p class="tag au d3">Tudo o que você precisa para aprender está aqui — videoaulas, materiais e muito mais, disponíveis a qualquer hora.</p>
-
-        <!-- Botão para reabrir o vídeo -->
-        <button class="play-presentation-btn au d4" onclick="openVideoModal()">
-          <div class="play-ring">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </div>
-          Assistir apresentação do portal
-        </button>
       </div>
     </section>
 
@@ -474,14 +438,12 @@
         <p class="sub au d3">Uma plataforma simples, organizada e feita para você aprender de verdade.</p>
         <div class="s2-grid">
           <div class="card au d4">
-            <div class="ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-            </div>
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></div>
             <h3>📹 Videoaulas Gravadas</h3>
             <p>Assista às aulas no seu ritmo, quando e onde quiser, quantas vezes precisar.</p>
           </div>
           <div class="card au d5">
-            <div class="ic" style="background: rgba(200,109,215,.08);">
+            <div class="ic" style="background:rgba(200,109,215,.08)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             </div>
             <h3>📄 Materiais de Apoio</h3>
@@ -503,31 +465,16 @@
         <p class="sub au d3">Aulas gravadas disponíveis 24h por dia, 7 dias por semana.</p>
         <div class="s3-bullets">
           <div class="s3-bullet au d4">
-            <div class="bicon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="btxt">
-              <strong>Acesso ilimitado</strong>
-              <span>Assista quantas vezes quiser, sem prazo de expiração.</span>
-            </div>
+            <div class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="btxt"><strong>Acesso ilimitado</strong><span>Assista quantas vezes quiser, sem prazo de expiração.</span></div>
           </div>
           <div class="s3-bullet au d5">
-            <div class="bicon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
-            </div>
-            <div class="btxt">
-              <strong>Em qualquer dispositivo</strong>
-              <span>Celular, tablet ou computador — onde você estiver.</span>
-            </div>
+            <div class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+            <div class="btxt"><strong>Em qualquer dispositivo</strong><span>Celular, tablet ou computador — onde você estiver.</span></div>
           </div>
           <div class="s3-bullet au d6">
-            <div class="bicon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-            </div>
-            <div class="btxt">
-              <strong>Conteúdo prático e direto</strong>
-              <span>Aprenda técnicas reais aplicadas no mercado de trabalho.</span>
-            </div>
+            <div class="bicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg></div>
+            <div class="btxt"><strong>Conteúdo prático e direto</strong><span>Aprenda técnicas reais aplicadas no mercado de trabalho.</span></div>
           </div>
         </div>
       </div>
@@ -541,40 +488,20 @@
         <p class="sub au d3">Acesse conteúdos complementares para reforçar cada etapa da sua formação.</p>
         <div class="s4-grid">
           <div class="s4-item au d4">
-            <div class="sicon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div>
-              <strong>Apostilas em PDF</strong>
-              <span>Materiais organizados por módulo para facilitar seus estudos.</span>
-            </div>
+            <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div><strong>Apostilas em PDF</strong><span>Materiais organizados por módulo para facilitar seus estudos.</span></div>
           </div>
           <div class="s4-item au d5">
-            <div class="sicon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-            </div>
-            <div>
-              <strong>Exercícios práticos</strong>
-              <span>Atividades para fixar o conteúdo de cada aula.</span>
-            </div>
+            <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+            <div><strong>Exercícios práticos</strong><span>Atividades para fixar o conteúdo de cada aula.</span></div>
           </div>
           <div class="s4-item au d6">
-            <div class="sicon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-            </div>
-            <div>
-              <strong>Conteúdo complementar</strong>
-              <span>Referências e leituras extras para aprofundar seu conhecimento.</span>
-            </div>
+            <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+            <div><strong>Conteúdo complementar</strong><span>Referências e leituras extras para aprofundar seu conhecimento.</span></div>
           </div>
           <div class="s4-item au d7">
-            <div class="sicon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </div>
-            <div>
-              <strong>Download liberado</strong>
-              <span>Salve os materiais e estude mesmo sem internet.</span>
-            </div>
+            <div class="sicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+            <div><strong>Download liberado</strong><span>Salve os materiais e estude mesmo sem internet.</span></div>
           </div>
         </div>
       </div>
@@ -587,42 +514,28 @@
         <h2 class="au d2">Como acessar sua<br><span class="gt">Área do Aluno</span></h2>
         <p class="sub au d3">4 passos simples para começar sua jornada de aprendizado.</p>
         <div class="fl au d4">
-          <div class="fs act">
-            <div class="fi">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-            </div>
+          <div class="fs-step act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
             <span>Acesse o site</span>
           </div>
-          <div class="fa">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-          </div>
-          <div class="fs">
-            <div class="fi">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
+          <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+          <div class="fs-step">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
             <span>Faça login</span>
           </div>
-          <div class="fa">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-          </div>
-          <div class="fs">
-            <div class="fi">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
+          <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+          <div class="fs-step">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
             <span>Escolha o curso</span>
           </div>
-          <div class="fa">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-          </div>
-          <div class="fs">
-            <div class="fi">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
-            </div>
+          <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+          <div class="fs-step">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg></div>
             <span>Comece a aprender</span>
           </div>
         </div>
-        <div style="margin-top: 48px; text-align: center;" class="au d5">
-          <a href="cabeleireiro.html" class="cta-btn" style="animation: none; display: inline-flex;">
+        <div style="margin-top:48px;text-align:center" class="au d5">
+          <a href="cabeleireiro.html" class="cta-btn" style="animation:none;display:inline-flex">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
             Acessar Curso de Cabeleireiro
           </a>
@@ -647,89 +560,95 @@
 </div>
 
 <script>
-  // ===== SLIDES =====
-  const T = 6; let C = 0;
-  const W = document.getElementById('sw');
-  const CN = document.getElementById('cn');
-  const P = document.getElementById('prog');
-  const I = document.getElementById('ind');
+/* ── SLIDES ── */
+const T=6; let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const Prog=document.getElementById('prog');
+const Ind=document.getElementById('ind');
 
-  for (let i = 0; i < T; i++) {
-    const d = document.createElement('div');
-    d.classList.add('dot');
-    if (i === 0) d.classList.add('active');
-    d.onclick = () => go(i);
-    I.appendChild(d);
-  }
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0) d.classList.add('active');
+  d.onclick=()=>go(i);
+  Ind.appendChild(d);
+}
+function upd(){
+  Ind.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  Prog.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
 
-  function upd() {
-    I.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === C));
-    CN.textContent = C + 1;
-    P.style.width = ((C + 1) / T * 100) + '%';
-    document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === C));
-  }
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F') toggleFs();
+});
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.changedTouches[0].screenX);
+document.addEventListener('touchend',e=>{
+  const d=tx-e.changedTouches[0].screenX;
+  if(Math.abs(d)>50){d>0?next():prev();}
+});
+function toggleFs(){
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+  else document.exitFullscreen();
+}
+document.addEventListener('fullscreenchange',()=>{
+  const t=document.getElementById('fsTxt');
+  if(t) t.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+upd();
 
-  function go(i) { if (i < 0 || i >= T) return; C = i; W.style.transform = `translateX(-${C * 100}vw)`; upd(); }
-  function next() { if (C < T - 1) go(C + 1); }
-  function prev() { if (C > 0) go(C - 1); }
+/* ── PiP ── */
+const pip       = document.getElementById('pip');
+const pipThumb  = document.getElementById('pipThumb');
+const pipPlayer = document.getElementById('pipPlayer');
+const pipFrame  = document.getElementById('pipFrame');
+const VIDEO_SRC = 'https://www.youtube.com/embed/rEgZHaNSHZg?autoplay=1&rel=0&modestbranding=1';
+let   isBig     = false;
 
-  document.addEventListener('keydown', e => {
-    // Não navegar slides quando modal estiver aberto
-    if (document.getElementById('videoModal').classList.contains('on')) return;
-    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
-    if (e.key === 'f' || e.key === 'F') toggleFs();
-  });
+// Clicou na thumbnail → inicia o vídeo e expande
+function pipPlay() {
+  pipThumb.style.display = 'none';
+  pipPlayer.classList.add('on');
+  pipFrame.src = VIDEO_SRC;
+  // expande automaticamente para melhor visualização
+  if (!isBig) { isBig = true; pip.classList.add('big'); setExpandIcon(); }
+}
 
-  let tx = 0;
-  document.addEventListener('touchstart', e => tx = e.changedTouches[0].screenX);
-  document.addEventListener('touchend', e => {
-    if (document.getElementById('videoModal').classList.contains('on')) return;
-    const d = tx - e.changedTouches[0].screenX;
-    if (Math.abs(d) > 50) { d > 0 ? next() : prev(); }
-  });
+// Alterna tamanho manualmente
+function pipToggleSize() {
+  isBig = !isBig;
+  pip.classList.toggle('big', isBig);
+  setExpandIcon();
+}
 
-  function toggleFs() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
-    } else {
-      document.exitFullscreen();
-    }
-  }
+function setExpandIcon() {
+  document.getElementById('pipExpandIcon').innerHTML = isBig
+    // ícone recolher
+    ? `<polyline points="4 14 10 14 10 20"/>
+       <polyline points="20 10 14 10 14 4"/>
+       <line x1="10" y1="14" x2="3" y2="21"/>
+       <line x1="21" y1="3" x2="14" y2="10"/>`
+    // ícone expandir
+    : `<polyline points="15 3 21 3 21 9"/>
+       <polyline points="9 21 3 21 3 15"/>
+       <line x1="21" y1="3" x2="14" y2="10"/>
+       <line x1="3" y1="21" x2="10" y2="14"/>`;
+}
 
-  document.addEventListener('fullscreenchange', () => {
-    const btn = document.getElementById('fsTxt');
-    if (btn) btn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
-  });
-
-  upd();
-
-  // ===== MODAL DE VÍDEO =====
-  const vm   = document.getElementById('videoModal');
-  const vf   = document.getElementById('videoFrame');
-  const VIDEO_SRC = 'https://www.youtube.com/embed/rEgZHaNSHZg?autoplay=1&rel=0&modestbranding=1';
-
-  function openVideoModal() {
-    vf.src = VIDEO_SRC;
-    vm.classList.add('on');
-  }
-
-  function closeVideoModal() {
-    vm.classList.remove('on');
-    // Para o vídeo imediatamente ao fechar
-    vf.src = '';
-  }
-
-  document.getElementById('videoClose').addEventListener('click', closeVideoModal);
-  document.getElementById('videoKeep').addEventListener('click', closeVideoModal);
-
-  // Clique no backdrop fecha
-  vm.addEventListener('click', e => { if (e.target === vm) closeVideoModal(); });
-
-  // ESC fecha (quando modal aberto)
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && vm.classList.contains('on')) closeVideoModal();
-  });
+// Fecha e para o vídeo
+function pipClose() {
+  pip.classList.add('gone');
+  setTimeout(()=>{ pip.style.display='none'; }, 300);
+  pipFrame.src = '';
+}
 </script>
 </body>
 </html>
