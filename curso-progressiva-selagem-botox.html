@@ -3,53 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curso Progressiva, Selagem e Botox</title>
+  <title>Curso: Progressiva, Selagem e Botox — Sistema de 3 Aulas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    body{font-family:Arial, Helvetica, sans-serif; margin:24px; line-height:1.4;}
-    header{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;}
-    nav a{margin-right:12px; text-decoration:none; color:#0b57d0;}
-    nav a:hover{text-decoration:underline;}
-    .aulas{margin-top:18px;}
-    .aulas ol{padding-left:18px;}
-    .badge{font-size:12px; padding:2px 8px; border:1px solid #ddd; border-radius:999px; color:#444;}
+    :root{
+      --bg:#050816;
+      --txt:#AAB3C5;
+      --txt-strong:#F5F7FB;
+      --pri:#2E6BFF;
+      --sec:#C86DD7;
+      --card-bg:rgba(255,255,255,.03);
+      --card-bd:rgba(255,255,255,.07);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Inter',system-ui,Arial,Helvetica,sans-serif;
+      background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+      color:var(--txt);
+      -webkit-font-smoothing:antialiased; padding:32px 20px;
+    }
+    .wrap{max-width:1100px;margin:0 auto}
+    header{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+    .back{color:#8FAEFF;text-decoration:none;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+    .back:hover{text-decoration:underline}
+    h1{color:var(--txt-strong);font-size:clamp(22px,3.5vw,32px);font-weight:900;letter-spacing:-.02em}
+    .badge{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 14px;border-radius:999px;
+      background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);
+      color:#8FAEFF;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase
+    }
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px
+    }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background:var(--card-bg); border:1px solid var(--card-bd); border-radius:18px;
+      padding:22px 20px; box-shadow:0 16px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+      transition:transform .25s ease,border-color .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(46,107,255,.2);
+      box-shadow:0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08);
+    }
+    .tag{
+      display:inline-block; margin-bottom:10px; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+      color:#8FAEFF; background:rgba(46,107,255,.08); border:1px solid rgba(46,107,255,.2); padding:6px 10px; border-radius:999px;
+    }
+    .card h2{color:var(--txt-strong);font-size:18px;letter-spacing:-.01em;margin-bottom:6px}
+    .card p{font-size:14px;line-height:1.55;margin-bottom:14px}
+    .btn{
+      display:inline-block; text-decoration:none; font-weight:700; letter-spacing:.02em;
+      color:#fff; padding:10px 14px; border-radius:12px;
+      background:linear-gradient(135deg, var(--pri), var(--sec));
+      box-shadow:0 10px 22px rgba(46,107,255,.28);
+      transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 14px 28px rgba(46,107,255,.35)}
+    footer{margin-top:28px; font-size:12px; color:#7E879B; text-align:center}
   </style>
 </head>
-
 <body>
-  <header>
-    <div>
-      <h1 style="margin:0;">Curso Progressiva, Selagem e Botox</h1>
-      <div class="badge">Sistema de 3 aulas</div>
-    </div>
+  <div class="wrap">
+    <header>
+      <a class="back" href="index.html">← Início</a>
+      <h1>Curso: Progressiva, Selagem e Botox</h1>
+      <span class="badge">Sistema de 3 aulas</span>
+    </header>
 
-    <!-- MENU -->
-    <nav aria-label="Menu do curso">
-      <a href="index.html">Início</a>
-      <a href="#aula1">Aula 1</a>
-      <a href="#aula2">Aula 2</a>
-      <a href="#aula3">Aula 3</a>
-    </nav>
-  </header>
+    <main class="grid" aria-label="Lista de aulas">
+      <!-- Aula 1 -->
+      <article class="card">
+        <span class="tag">Aula 1</span>
+        <h2>Progressiva Capilar — Do Zero ao Profissional</h2>
+        <p>Fundamentos, tipos, passo a passo e segurança para executar com excelência.</p>
+        <!-- Ajuste o href se o nome da sua Aula 1 for diferente -->
+        <a class="btn" href="curso-progressiva.html">Acessar Aula 1</a>
+      </article>
 
-  <main class="aulas">
-    <p>Selecione uma aula no menu acima.</p>
+      <!-- Aula 2 -->
+      <article class="card">
+        <span class="tag">Aula 2</span>
+        <h2>Selagem Capilar — Técnica e Segurança</h2>
+        <p>Composição, aplicação mecha a mecha, ajustes por tipo de fio e manutenção.</p>
+        <a class="btn" href="selagem-capilar.html">Acessar Aula 2</a>
+      </article>
 
-    <section id="aula1">
-      <h2>Aula 1 — Introdução</h2>
-      <p>Conteúdo da Aula 1 aqui.</p>
-    </section>
+      <!-- Aula 3 -->
+      <article class="card">
+        <span class="tag">Aula 3</span>
+        <h2>Botox Capilar — Tratamento e Finalização</h2>
+        <p>Reposição de massa, reconstrução, acabamento e cuidados pós-tratamento.</p>
+        <a class="btn" href="botox-capilar.html">Acessar Aula 3</a>
+      </article>
+    </main>
 
-    <section id="aula2">
-      <h2>Aula 2 — Passo a passo</h2>
-      <p>Conteúdo da Aula 2 aqui.</p>
-    </section>
-
-    <section id="aula3">
-      <h2>Aula 3 — Finalização e cuidados</h2>
-      <p>Conteúdo da Aula 3 aqui.</p>
-    </section>
-
-    <p><a href="index.html">Voltar</a></p>
-  </main>
+    <footer>SEMEAR — Formando Profissionais de Excelência</footer>
+  </div>
 </body>
 </html>
