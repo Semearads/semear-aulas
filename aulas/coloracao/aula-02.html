@@ -1,1 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Cobertura de Fios Brancos — Guia Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+.slide{
+  width:100vw;min-height:100vh;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;position:relative;
+  overflow-y:auto;overflow-x:hidden;
+  padding:58px 18px 112px;
+  -webkit-overflow-scrolling:touch;
+}
+.slide.vcenter{justify-content:center;}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-thumb{background:rgba(255,180,60,.35);border-radius:4px;}
+
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 860px 400px at 78% 12%,rgba(255,160,40,.13) 0%,transparent 55%),
+    radial-gradient(ellipse 780px 360px at 22% 88%,rgba(46,107,255,.12) 0%,transparent 55%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1;}
+.inner{width:100%;max-width:920px;}
+
+/* TIPO */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p,li{font-weight:400;line-height:1.65;color:#AAB3C5;}
+
+/* GRADIENTES */
+.ggold{background:linear-gradient(135deg,#FFD460 0%,#FF8C30 50%,#FFD460 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gwhite{background:linear-gradient(135deg,#F5F7FB 0%,#AAB3C5 50%,#F5F7FB 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gblue{background:linear-gradient(135deg,#2E6BFF 0%,#5B3FD6 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.ggreen{background:linear-gradient(135deg,#5EE89A 0%,#27AE60 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gred{background:linear-gradient(135deg,#FF6B6B 0%,#CC2200 50%,#FF6B6B 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* LINHA */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#FFD460,#FF8C30);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:999px;margin-bottom:22px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.25);font-size:12px;font-weight:600;color:#FFD460;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px 18px;backdrop-filter:blur(8px);transition:all .4s ease;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);}
+.card:hover{border-color:rgba(255,212,96,.2);transform:translateY(-3px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95),rgba(10,15,36,.98),rgba(5,8,22,1));border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(255,212,96,.06);padding:22px 18px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(255,212,96,.25);transform:translateY(-3px) scale(1.008);}
+
+/* ÍCONE NÚMERO */
+.tn{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;animation:glowN 3s ease-in-out infinite;flex-shrink:0;}
+.na{background:linear-gradient(145deg,#FFD460,#FF8C00);}
+.nb{background:linear-gradient(145deg,#FF6B6B,#CC2200);animation-delay:.5s;}
+.nc{background:linear-gradient(145deg,#5EE89A,#27AE60);animation-delay:.3s;}
+.nd{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:.7s;}
+.ne{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.2s;}
+.nf{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:.6s;}
+.ng{background:linear-gradient(145deg,#F5F7FB,#AAB3C5);animation-delay:.4s;}
+@keyframes glowN{0%,100%{box-shadow:0 0 18px rgba(255,212,96,.1)}50%{box-shadow:0 0 36px rgba(255,212,96,.35)}}
+
+/* INFO */
+.info{padding:13px 15px;border-radius:14px;}
+.info.gold{background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.22);}
+.info.red{background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.22);}
+.info.green{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.22);}
+.info.blue{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.22);}
+.info.white{background:rgba(245,247,251,.04);border:1px solid rgba(245,247,251,.14);}
+.info.orange{background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.22);}
+
+/* COMPARATIVO */
+.bwc{border-radius:16px;padding:18px 16px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.14);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.14);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.14);}
+.bwc.cb{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.14);}
+.bwc.cw{background:rgba(245,247,251,.03);border:1px solid rgba(245,247,251,.12);}
+
+/* FLOW */
+.fi{display:flex;align-items:flex-start;gap:13px;padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.fi.act{background:rgba(255,212,96,.07);border-color:rgba(255,212,96,.2);}
+.fi.actr{background:rgba(255,80,80,.06);border-color:rgba(255,80,80,.2);}
+.fi.actg{background:rgba(80,220,120,.06);border-color:rgba(80,220,120,.2);}
+.fn{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;}
+
+/* BARRA DE PROGRESSO RESISTÊNCIA */
+.rb{height:10px;border-radius:5px;background:rgba(255,255,255,.06);margin-top:7px;overflow:hidden;}
+.rf{height:100%;border-radius:5px;transition:width 1.2s ease;}
+
+/* OX CARD */
+.ox{border-radius:14px;padding:14px 10px;text-align:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);transition:all .3s;}
+.ox:hover{transform:translateY(-3px);}
+.oxn{font-size:32px;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:4px;}
+
+/* STEP NUMERADO GRANDE */
+.stepn{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .68s ease both;}
+.slide.active .as{animation:fadeScale .68s ease both;}
+.d1{animation-delay:.07s!important}.d2{animation-delay:.17s!important}
+.d3{animation-delay:.27s!important}.d4{animation-delay:.37s!important}
+.d5{animation-delay:.47s!important}.d6{animation-delay:.57s!important}
+.d7{animation-delay:.67s!important}.d8{animation-delay:.77s!important}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#FFD460,#FF8C30,#FFD460,#FFFFFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fsbtn{position:fixed;top:13px;right:13px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 14px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fsbtn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(255,212,96,.35);}
+.fsbtn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.45);padding:8px 14px;border-radius:11px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#FFD460;font-weight:900;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.45);padding:8px 14px;border-radius:22px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:linear-gradient(90deg,#FFD460,#FF8C30);box-shadow:0 0 12px rgba(255,212,96,.6);width:28px;border-radius:5px;}
+
+.navarr{position:fixed;bottom:17px;right:14px;z-index:998;display:flex;gap:8px;}
+.navarr button{width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
+.navarr button:hover{background:rgba(255,212,96,.18);border-color:rgba(255,212,96,.4);color:#fff;}
+.navarr button svg{width:18px;height:18px;}
+
+/* RESPONSIVO */
+@media(max-width:680px){
+  .slide{padding:52px 13px 110px;}
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  .fsbtn span{display:none;}
+  .fsbtn{padding:9px 11px;}
+}
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fsbtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════════════════ -->
+<section class="slide vcenter active">
+  <div style="width:100%;max-width:800px;text-align:center;">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Guia Profissional Completo 2025
+    </div>
+    <h1 class="au d2" style="font-size:clamp(26px,6.5vw,78px);margin-bottom:14px;">
+      Cobertura de<br/><span class="ggold">Fios Brancos</span>
+    </h1>
+    <div class="gl ce au d3"></div>
+    <p class="au d4" style="font-size:clamp(13px,2.2vw,17px);color:#AAB3C5;max-width:580px;margin:0 auto 28px;line-height:1.6;">
+      Da anamnese à finalização — tudo que você precisa para dominar a técnica mais desafiadora da colorimetria profissional com <strong style="color:#F5F7FB;">100% de cobertura garantida</strong>.
+    </p>
+    <div class="g4 au d5" style="max-width:580px;margin:0 auto;">
+      <div style="padding:13px 8px;border-radius:13px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.22);text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">🔬</div>
+        <p style="font-size:11px;font-weight:700;color:#FFD460;">Diagnóstico</p>
+      </div>
+      <div style="padding:13px 8px;border-radius:13px;background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.22);text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">⚗️</div>
+        <p style="font-size:11px;font-weight:700;color:#FF8080;">Resistência</p>
+      </div>
+      <div style="padding:13px 8px;border-radius:13px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.22);text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">🖌️</div>
+        <p style="font-size:11px;font-weight:700;color:#8FAEFF;">Técnicas</p>
+      </div>
+      <div style="padding:13px 8px;border-radius:13px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.22);text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">✨</div>
+        <p style="font-size:11px;font-weight:700;color:#5EE89A;">Resultado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 2 — POR QUE OS FIOS EMBRANQUECEM
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;">Por que os Fios <span class="gwhite">Embranquecem?</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:18px;">Entender a origem do fio branco é o primeiro passo para uma cobertura eficaz. O <strong style="color:#F5F7FB;">fio branco não tem melanina</strong> — e isso muda tudo na abordagem técnica.</p>
+
+    <div class="g3 au d4" style="margin-bottom:15px;">
+      <div class="cp" style="text-align:center;">
+        <div class="tn na" style="margin:0 auto 14px;">🧬</div>
+        <h3 style="font-size:13px;margin-bottom:7px;">Ausência de Melanina</h3>
+        <p style="font-size:12px;">Os melanócitos param de produzir melanina. Sem pigmento, o fio cresce transparente — a luz reflete nele e cria o efeito branco ou prateado.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn nb" style="margin:0 auto 14px;">⏰</div>
+        <h3 style="font-size:13px;margin-bottom:7px;">Fatores Genéticos</h3>
+        <p style="font-size:12px;">A genética determina quando começa. Filhos de pais precocemente grisalhos tendem a embranquecer mais cedo — independente do estilo de vida.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn nc" style="margin:0 auto 14px;">🔬</div>
+        <h3 style="font-size:13px;margin-bottom:7px;">Estrutura Diferente</h3>
+        <p style="font-size:12px;">A cutícula do fio branco é mais compacta, com escamas mais fechadas. Isso cria a <strong style="color:#F5F7FB;">resistência</strong> que dificulta a penetração do pigmento artificial.</p>
+      </div>
+    </div>
+
+    <div class="card au d5" style="margin-bottom:14px;">
+      <h3 style="font-size:14px;color:#FFD460;margin-bottom:12px;">📊 Classificação por Porcentagem de Brancos</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:13px;font-weight:600;">Grau 1 — Incipiente</span>
+            <span style="font-size:13px;color:#5EE89A;font-weight:700;">até 25%</span>
+          </div>
+          <div class="rb"><div class="rf" style="width:25%;background:linear-gradient(90deg,#5EE89A,#27AE60);"></div></div>
+          <p style="font-size:11px;color:#7E879B;margin-top:4px;">Brancos dispersos, geralmente nas têmporas. Coloração global padrão resolve facilmente.</p>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:13px;font-weight:600;">Grau 2 — Moderado</span>
+            <span style="font-size:13px;color:#FFD460;font-weight:700;">25% a 50%</span>
+          </div>
+          <div class="rb"><div class="rf" style="width:50%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+          <p style="font-size:11px;color:#7E879B;margin-top:4px;">Brancos visíveis em várias regiões. Requer atenção à técnica e ao tempo de exposição.</p>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:13px;font-weight:600;">Grau 3 — Avançado</span>
+            <span style="font-size:13px;color:#FFA040;font-weight:700;">50% a 75%</span>
+          </div>
+          <div class="rb"><div class="rf" style="width:75%;background:linear-gradient(90deg,#FFA040,#FF6020);"></div></div>
+          <p style="font-size:11px;color:#7E879B;margin-top:4px;">Maioria dos fios brancos. Técnica reforçada, OX 20 vol e mix específico são necessários.</p>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:13px;font-weight:600;">Grau 4 — Total</span>
+            <span style="font-size:13px;color:#FF6B6B;font-weight:700;">acima de 75%</span>
+          </div>
+          <div class="rb"><div class="rf" style="width:95%;background:linear-gradient(90deg,#FF6B6B,#CC2200);"></div></div>
+          <p style="font-size:11px;color:#7E879B;margin-top:4px;">Quase todos os fios brancos. Exige pré-pigmentação ou técnica dupla para 100% de cobertura.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info gold au d6">
+      <p style="font-size:12px;color:#FFD460;">💡 <strong style="color:#F5F7FB;">Por que o fio branco é tão resistente?</strong> A cutícula compacta age como uma barreira. O pigmento artificial precisa de mais tempo, OX adequado e às vezes de um pré-tratamento para penetrar e se fixar corretamente no córtex.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 3 — DIAGNÓSTICO E ANAMNESE
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;"><span class="ggold">Diagnóstico</span> — O Passo Que Garante o Resultado</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      Nenhuma técnica funciona sem um diagnóstico preciso. <strong style="color:#F5F7FB;">Identifique o tipo de branco antes de abrir qualquer produto</strong> — isso define todo o protocolo.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div class="card">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:12px;">📋 Perguntas Essenciais da Anamnese</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="fi act">
+            <span style="font-size:16px;flex-shrink:0;">❓</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Histórico:</strong> já coloriu antes? Com qual marca/tom? Quando foi o último retoque?</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:16px;flex-shrink:0;">💊</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Medicamentos:</strong> alguns remédios alteram a estrutura capilar e dificultam a cobertura.</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:16px;flex-shrink:0;">🧪</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Química anterior:</strong> progressiva ou relaxamento comprometem a fixação do pigmento.</p>
+          </div>
+          <div class="fi act">
+            <span style="font-size:16px;flex-shrink:0;">🎯</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Expectativa:</strong> cobertura total ou aceitação dos brancos com blend/reflexo?</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:16px;flex-shrink:0;">💧</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Rotina de lavagem:</strong> lava todos os dias? Qual shampoo? Isso afeta a durabilidade.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:12px;">🔍 Testes Técnicos Obrigatórios</h3>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <div style="padding:12px 13px;border-radius:12px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.18);">
+            <p style="font-size:12px;font-weight:700;color:#8FAEFF;margin-bottom:4px;">🧪 Teste de Mecha</p>
+            <p style="font-size:12px;">Separe uma mecha pequena e aplique o produto planejado. Aguarde e avalie. <strong style="color:#F5F7FB;">Obrigatório em fios com química</strong> ou histórico de reação.</p>
+          </div>
+          <div style="padding:12px 13px;border-radius:12px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);">
+            <p style="font-size:12px;font-weight:700;color:#FFD460;margin-bottom:4px;">💧 Teste de Porosidade</p>
+            <p style="font-size:12px;">Mergulhe o fio em água. Afunda rápido = alta porosidade. O fio branco poroso absorve mais, mas pode desvanecer mais rápido.</p>
+          </div>
+          <div style="padding:12px 13px;border-radius:12px;background:rgba(255,80,80,.07);border:1px solid rgba(255,80,80,.18);">
+            <p style="font-size:12px;font-weight:700;color:#FF8080;margin-bottom:4px;">💪 Teste de Elasticidade</p>
+            <p style="font-size:12px;">Estique o fio molhado. <strong style="color:#F5F7FB;">Não volta = fragilizado.</strong> Não aplique coloração — trate primeiro com reconstrutor.</p>
+          </div>
+          <div style="padding:12px 13px;border-radius:12px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:4px;">✋ Teste de Resistência Visual</p>
+            <p style="font-size:12px;">Observe o brilho do fio branco. Fio branco muito brilhante e duro = cutícula extremamente fechada = <strong style="color:#F5F7FB;">altíssima resistência.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3 au d5">
+      <div style="padding:14px 13px;border-radius:14px;background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.15);text-align:center;">
+        <div style="font-size:24px;margin-bottom:7px;">👩‍🦳</div>
+        <h3 style="font-size:12px;color:#FFD460;margin-bottom:5px;">Fio Virgem Branco</h3>
+        <p style="font-size:11px;">Nunca colorido. Mais previsível, mas cutícula fechada. Responde bem ao protocolo padrão reforçado.</p>
+      </div>
+      <div style="padding:14px 13px;border-radius:14px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);text-align:center;">
+        <div style="font-size:24px;margin-bottom:7px;">🔄</div>
+        <h3 style="font-size:12px;color:#FF8080;margin-bottom:5px;">Retoque de Raiz</h3>
+        <p style="font-size:11px;">Área nova vs. comprimentos já coloridos. Aplicar na raiz primeiro e nos comprimentos nos últimos 10 min.</p>
+      </div>
+      <div style="padding:14px 13px;border-radius:14px;background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.15);text-align:center;">
+        <div style="font-size:24px;margin-bottom:7px;">⚠️</div>
+        <h3 style="font-size:12px;color:#8FAEFF;margin-bottom:5px;">Branco Resistente</h3>
+        <p style="font-size:11px;">Brilhante, duro ao toque, rejeita pigmento. Exige técnica avançada: pré-pigmentação ou dupla aplicação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 4 — ESCALA DE RESISTÊNCIA
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;">Escala de <span class="gred">Resistência</span> — O Inimigo Número 1</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      A resistência do fio branco varia de pessoa para pessoa e exige <strong style="color:#F5F7FB;">protocolos completamente diferentes</strong>. Identificar o nível antes é o que separa cobertura perfeita de falha.
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:16px;" class="au d4">
+      <!-- Nível 1 -->
+      <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 16px;border-radius:16px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+        <div class="tn nc" style="width:52px;height:52px;font-size:18px;flex-shrink:0;">1</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#5EE89A;">Baixa Resistência</h3>
+            <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(94,232,154,.15);color:#5EE89A;font-weight:700;">OX 20 vol · 35 min</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">Fio opaco, poroso, amolecido. Aceita cor com facilidade. Pode até absorver demais e desbotar rápido.</p>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Fio opaco</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Macio ao toque</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Absorve rápido</span>
+          </div>
+        </div>
+      </div>
+      <!-- Nível 2 -->
+      <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 16px;border-radius:16px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.18);">
+        <div class="tn na" style="width:52px;height:52px;font-size:18px;flex-shrink:0;">2</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FFD460;">Resistência Média</h3>
+            <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,212,96,.15);color:#FFD460;font-weight:700;">OX 20 vol · 40 min</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">O tipo mais comum. Responde bem à técnica padrão reforçada. Aplicar raiz pura por 10–15 min antes de espalhar.</p>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Semi-brilhante</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Textura normal</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Responde ao protocolo</span>
+          </div>
+        </div>
+      </div>
+      <!-- Nível 3 -->
+      <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 16px;border-radius:16px;background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.18);">
+        <div class="tn nf" style="width:52px;height:52px;font-size:18px;flex-shrink:0;">3</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FFA040;">Alta Resistência</h3>
+            <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,140,0,.15);color:#FFA040;font-weight:700;">Técnica 50/50 · 45 min</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">Fio brilhante, duro, cutícula fechada. Rejeita o pigmento mesmo com tempo estendido. Requer técnica especial.</p>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Fio brilhante</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Duro ao toque</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Rejeita pigmento</span>
+          </div>
+        </div>
+      </div>
+      <!-- Nível 4 -->
+      <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 16px;border-radius:16px;background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.18);">
+        <div class="tn nb" style="width:52px;height:52px;font-size:18px;flex-shrink:0;">4</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FF6B6B;">Resistência Extrema</h3>
+            <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,80,80,.15);color:#FF6B6B;font-weight:700;">Pré-pigmentação · 2 etapas</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">Fio vítreo, quase translúcido de tão resistente. A coloração convencional não penetra. Protocolo de duas etapas obrigatório.</p>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Vítreo / translúcido</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Rigidez extrema</span>
+            <span style="font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);color:#AAB3C5;border:1px solid rgba(255,255,255,.1);">Pode precisar de 2 sessões</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info orange au d5">
+      <p style="font-size:12px;color:#FFB060;">⚡ <strong style="color:#F5F7FB;">Dica rápida de campo:</strong> passe os dedos por uma mecha de brancos em cabelo seco. Fio macio e sem brilho = baixa resistência. Fio duro, vítreo, com reflexo de luz = extremamente resistente. Esse toque é o diagnóstico mais rápido que existe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 5 — OX E PROPORÇÃO DE MISTURA
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;">OX e <span class="gblue">Proporção de Mistura</span> — A Equação Certa</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      Para fios brancos, o <strong style="color:#F5F7FB;">volume do peróxido e a proporção de mistura</strong> são determinantes. Usar o OX errado é a causa número 1 de falha na cobertura.
+    </p>
+
+    <div class="g4 au d4" style="margin-bottom:15px;">
+      <div class="ox">
+        <div class="oxn" style="color:#8FAEFF;">10</div>
+        <p style="font-size:9px;color:#8FAEFF;font-weight:700;margin-bottom:5px;">Vol — 3%</p>
+        <p style="font-size:11px;color:#AAB3C5;margin-bottom:8px;">Apenas deposita. <strong style="color:#FF8080;">Não cobre brancos</strong> — não abre a cutícula.</p>
+        <span style="font-size:10px;padding:3px 9px;border-radius:20px;background:rgba(255,80,80,.12);color:#FF8080;border:1px solid rgba(255,80,80,.25);font-weight:700;">❌ Sem cobertura</span>
+      </div>
+      <div class="ox" style="border-color:rgba(255,212,96,.25);">
+        <div class="oxn" style="color:#FFD460;">20</div>
+        <p style="font-size:9px;color:#FFD460;font-weight:700;margin-bottom:5px;">Vol — 6%</p>
+        <p style="font-size:11px;color:#AAB3C5;margin-bottom:8px;"><strong style="color:#F5F7FB;">Ideal para brancos.</strong> Abre a cutícula sem agressão excessiva e fixa o pigmento profundamente.</p>
+        <span style="font-size:10px;padding:3px 9px;border-radius:20px;background:rgba(94,232,154,.12);color:#5EE89A;border:1px solid rgba(94,232,154,.25);font-weight:700;">✅ Recomendado</span>
+      </div>
+      <div class="ox">
+        <div class="oxn" style="color:#FFA040;">30</div>
+        <p style="font-size:9px;color:#FFA040;font-weight:700;margin-bottom:5px;">Vol — 9%</p>
+        <p style="font-size:11px;color:#AAB3C5;margin-bottom:8px;">Clareia e deposita. Para brancos + mudança de tom. Usar com cuidado em cabelos sensíveis.</p>
+        <span style="font-size:10px;padding:3px 9px;border-radius:20px;background:rgba(255,212,96,.12);color:#FFD460;border:1px solid rgba(255,212,96,.25);font-weight:700;">⚠️ Situacional</span>
+      </div>
+      <div class="ox">
+        <div class="oxn" style="color:#FF6B6B;">40</div>
+        <p style="font-size:9px;color:#FF6B6B;font-weight:700;margin-bottom:5px;">Vol — 12%</p>
+        <p style="font-size:11px;color:#AAB3C5;margin-bottom:8px;">Clareia muito. Em brancos pode causar desvio de cor e dano sem melhorar cobertura.</p>
+        <span style="font-size:10px;padding:3px 9px;border-radius:20px;background:rgba(255,80,80,.12);color:#FF8080;border:1px solid rgba(255,80,80,.25);font-weight:700;">🚫 Evitar</span>
+      </div>
+    </div>
+
+    <div class="card au d5" style="margin-bottom:14px;">
+      <h3 style="font-size:14px;color:#FFD460;margin-bottom:13px;">⚖️ Proporções de Mistura para Cobertura</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:13px;background:rgba(94,232,154,.05);border:1px solid rgba(94,232,154,.15);">
+          <div style="min-width:60px;text-align:center;">
+            <p style="font-size:20px;font-weight:900;color:#5EE89A;line-height:1;">1:1</p>
+            <p style="font-size:9px;color:#5EE89A;">Padrão</p>
+          </div>
+          <div style="flex:1;">
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:3px;">1 parte de tinta + 1 parte de OX 20 vol</p>
+            <p style="font-size:12px;">Proporção clássica. Funciona em brancos de baixa a média resistência com bom resultado.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:13px;background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.15);">
+          <div style="min-width:60px;text-align:center;">
+            <p style="font-size:20px;font-weight:900;color:#FFD460;line-height:1;">1:1.5</p>
+            <p style="font-size:9px;color:#FFD460;">Reforçada</p>
+          </div>
+          <div style="flex:1;">
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:3px;">1 parte de tinta + 1,5 de OX 20 vol</p>
+            <p style="font-size:12px;">Maior fluidez do produto, melhora a penetração. Indicado para média a alta resistência.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:13px;background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.15);">
+          <div style="min-width:60px;text-align:center;">
+            <p style="font-size:20px;font-weight:900;color:#D98EEA;line-height:1;">50/50</p>
+            <p style="font-size:9px;color:#D98EEA;">Mix Duplo</p>
+          </div>
+          <div style="flex:1;">
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:3px;">50% tom desejado + 50% tom .0 mesmo nível</p>
+            <p style="font-size:12px;">Ex: 5.4 + 5.0. A cor natural (.0) reforça a estrutura de cobertura. Para alta resistência.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:13px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);">
+          <div style="min-width:60px;text-align:center;">
+            <p style="font-size:20px;font-weight:900;color:#FF8080;line-height:1;">2x</p>
+            <p style="font-size:9px;color:#FF8080;">Dupla</p>
+          </div>
+          <div style="flex:1;">
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:3px;">Aplicação dupla em duas etapas</p>
+            <p style="font-size:12px;">Primeira aplicação penetra. Segunda fixa e satura. Para resistência extrema ou falha anterior.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info gold au d6">
+      <p style="font-size:12px;color:#FFD460;">🎯 <strong style="color:#F5F7FB;">Regra de ouro:</strong> para cobertura de brancos, o OX 20 vol sempre será mais eficaz que o 30 ou 40. O peróxido alto agride sem melhorar a fixação — o pigmento precisa de tempo de contato, não de força.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 6 — TÉCNICAS PASSO A PASSO
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;">Técnicas <span class="ggold">Passo a Passo</span> — 4 Protocolos</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      Cada nível de resistência tem um protocolo específico. <strong style="color:#F5F7FB;">Nunca use a mesma técnica para todos os clientes</strong> — adapte ao diagnóstico que você fez.
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:13px;" class="au d4">
+
+      <!-- Protocolo 1 -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;gap:9px;">
+          <div class="tn nc" style="width:44px;height:44px;font-size:16px;flex-shrink:0;">P1</div>
+          <div>
+            <h3 style="font-size:14px;color:#5EE89A;">Protocolo Padrão — Baixa/Média Resistência</h3>
+            <p style="font-size:11px;color:#7E879B;">Brancos opacos, porosos · OX 20 vol · Prop. 1:1</p>
+          </div>
+        </div>
+        <div class="g2" style="gap:8px;">
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">1</div>
+              <p style="font-size:12px;padding-top:10px;">Aplicar o produto na <strong style="color:#F5F7FB;">raiz virgem branca primeiro</strong>, de trás para frente.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">2</div>
+              <p style="font-size:12px;padding-top:10px;">Espalhar nos comprimentos após <strong style="color:#F5F7FB;">10 minutos</strong>.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">3</div>
+              <p style="font-size:12px;padding-top:10px;">Nas pontas apenas nos <strong style="color:#F5F7FB;">últimos 5 minutos</strong> (mais porosas).</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">4</div>
+              <p style="font-size:12px;padding-top:10px;">Aguardar <strong style="color:#F5F7FB;">35 a 40 minutos</strong> no total sem tampão plástico.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">5</div>
+              <p style="font-size:12px;padding-top:10px;">Emulsionar com <strong style="color:#F5F7FB;">água morna</strong> por 3 min antes de lavar.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">6</div>
+              <p style="font-size:12px;padding-top:10px;">Finalizar com <strong style="color:#F5F7FB;">acidificante ou máscara</strong> para fechar a cutícula.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Protocolo 2 -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;gap:9px;">
+          <div class="tn na" style="width:44px;height:44px;font-size:16px;flex-shrink:0;">P2</div>
+          <div>
+            <h3 style="font-size:14px;color:#FFD460;">Mix 50/50 — Alta Resistência</h3>
+            <p style="font-size:11px;color:#7E879B;">Fios brilhantes, resistentes · OX 20 vol · 50% cor + 50% tom .0</p>
+          </div>
+        </div>
+        <div class="g2" style="gap:8px;">
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">1</div>
+              <p style="font-size:12px;padding-top:10px;">Misture <strong style="color:#F5F7FB;">50% da cor desejada + 50% do tom .0</strong> do mesmo nível. Ex: 6.3 + 6.0.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">2</div>
+              <p style="font-size:12px;padding-top:10px;">Aplicar <strong style="color:#F5F7FB;">puro na raiz branca</strong> por 15 minutos antes de espalhar.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">3</div>
+              <p style="font-size:12px;padding-top:10px;">Espalhar nos comprimentos e <strong style="color:#F5F7FB;">embrulhar com plástico</strong> para gerar calor.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">4</div>
+              <p style="font-size:12px;padding-top:10px;">Aguardar <strong style="color:#F5F7FB;">40 a 45 minutos</strong> no total.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">5</div>
+              <p style="font-size:12px;padding-top:10px;">Verificar a cobertura antes de lavar. Se incompleta, aguardar mais 10 min.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div class="stepn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">6</div>
+              <p style="font-size:12px;padding-top:10px;">Emulsionar, lavar, <strong style="color:#F5F7FB;">acidificar</strong> e hidratar obrigatoriamente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 7 — PRÉ-PIGMENTAÇÃO
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;"><span class="gred">Pré-Pigmentação</span> — Protocolo Avançado</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      A pré-pigmentação é a <strong style="color:#F5F7FB;">técnica mais eficaz para fios brancos de alta e extrema resistência</strong>. Funciona como uma âncora — prepara o fio para receber e reter o pigmento.
+    </p>
+
+    <div class="info red au d4" style="margin-bottom:15px;">
+      <p style="font-size:12px;color:#FF8080;">🔬 <strong style="color:#F5F7FB;">Por que funciona?</strong> O fio branco, sem melanina, não tem onde "ancorar" o pigmento artificial. A pré-pigmentação deposita moléculas pequenas de pigmento na estrutura do fio, criando uma base para que a cor definitiva se fixe com muito mais intensidade e durabilidade.</p>
+    </div>
+
+    <div class="g2 au d5" style="margin-bottom:14px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:4px;">📋 Passo a Passo Completo</h3>
+        <div class="fi act">
+          <div class="fn" style="background:linear-gradient(145deg,#FF6B6B,#CC2200);">1</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Prepare o pigmento corretivo</p>
+            <p style="font-size:12px;">Use um pigmento diluído ou tonalizante do subtom complementar ao objetivo final. Ex: avermelhado para cobrir com castanho.</p>
+          </div>
+        </div>
+        <div class="fi">
+          <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">2</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Aplique nos brancos secos</p>
+            <p style="font-size:12px;">Sem diluição, diretamente nos fios brancos. Usando pente fino ou pincel. Foco nas áreas com maior concentração.</p>
+          </div>
+        </div>
+        <div class="fi">
+          <div class="fn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">3</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Aguarde 10 a 15 minutos</p>
+            <p style="font-size:12px;">Sem enxaguar. O pigmento penetra na estrutura do fio e cria a base de ancoragem para a cor definitiva.</p>
+          </div>
+        </div>
+        <div class="fi act">
+          <div class="fn" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">4</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Aplique a cor definitiva por cima</p>
+            <p style="font-size:12px;">SEM enxaguar o pré-pigmento. A cor definitiva vai por cima. A combinação das duas camadas garante cobertura total.</p>
+          </div>
+        </div>
+        <div class="fi">
+          <div class="fn" style="background:linear-gradient(145deg,#5B3FD6,#4530B3);">5</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Aguarde 40 a 45 minutos</p>
+            <p style="font-size:12px;">Com plástico para potencializar o calor. O tempo maior compensa a resistência da cutícula.</p>
+          </div>
+        </div>
+        <div class="fi actg">
+          <div class="fn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">6</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Emulsione, lave e finalize</p>
+            <p style="font-size:12px;">Emulsionar por 5 min antes de lavar. Acidificar com pH 4,5 e hidratar com máscara de manutenção da cor.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#D98EEA;margin-bottom:11px;">🎨 Guia de Pigmento por Tom Final</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.15);">
+              <div style="width:22px;height:22px;border-radius:6px;background:#8B3010;flex-shrink:0;"></div>
+              <div>
+                <p style="font-size:12px;font-weight:700;color:#F5F7FB;">Tom Castanho / Bordô</p>
+                <p style="font-size:11px;color:#AAB3C5;">Pré-pig.: cobre avermelhado (.4 ou .5)</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.15);">
+              <div style="width:22px;height:22px;border-radius:6px;background:#8B6010;flex-shrink:0;"></div>
+              <div>
+                <p style="font-size:12px;font-weight:700;color:#F5F7FB;">Tom Loiro / Dourado</p>
+                <p style="font-size:11px;color:#AAB3C5;">Pré-pig.: dourado suave (.3)</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;background:rgba(200,200,200,.04);border:1px solid rgba(200,200,200,.12);">
+              <div style="width:22px;height:22px;border-radius:6px;background:#404040;flex-shrink:0;"></div>
+              <div>
+                <p style="font-size:12px;font-weight:700;color:#F5F7FB;">Tom Cinza / Grisalho</p>
+                <p style="font-size:11px;color:#AAB3C5;">Pré-pig.: cinza suave (.1) sem excesso</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);">
+              <div style="width:22px;height:22px;border-radius:6px;background:#5B3FD6;flex-shrink:0;"></div>
+              <div>
+                <p style="font-size:12px;font-weight:700;color:#F5F7FB;">Tom Preto / Escuro</p>
+                <p style="font-size:11px;color:#AAB3C5;">Pré-pig.: tom natural (.0) nível 3–4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info white">
+          <p style="font-size:12px;color:#AAB3C5;">⚠️ <strong style="color:#F5F7FB;">Atenção ao subtom:</strong> se o pré-pigmento for muito saturado, ele pode alterar o resultado final. Use sempre de forma suave — o objetivo é ancorar, não colorir.</p>
+        </div>
+        <div class="info green">
+          <p style="font-size:12px;color:#5EE89A;">💡 <strong style="color:#F5F7FB;">Quando usar:</strong> fio branco brilhante, vítreo, que já falhou em colorações anteriores, ou clientes com mais de 75% de brancos de alta resistência.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 8 — MAPA DE APLICAÇÃO
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;">Mapa de <span class="ggold">Aplicação</span> — Ordem Faz Diferença</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      A <strong style="color:#F5F7FB;">sequência de aplicação</strong> afeta diretamente o resultado. Cada zona do cabelo tem comportamento diferente — respeitar essa ordem garante uniformidade total.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div class="card">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:12px;">🗺️ Zonas do Cabelo</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="padding:11px 13px;border-radius:12px;background:rgba(255,80,80,.07);border:1px solid rgba(255,80,80,.18);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+              <p style="font-size:12px;font-weight:700;color:#FF8080;">Zona 1 — Nuca</p>
+              <span style="font-size:10px;color:#FF8080;font-weight:600;">Começa aqui</span>
+            </div>
+            <p style="font-size:12px;">Região mais fria do couro cabeludo. Reação mais lenta — por isso é a <strong style="color:#F5F7FB;">primeira a receber produto</strong>.</p>
+          </div>
+          <div style="padding:11px 13px;border-radius:12px;background:rgba(255,140,0,.07);border:1px solid rgba(255,140,0,.18);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+              <p style="font-size:12px;font-weight:700;color:#FFA040;">Zona 2 — Laterais</p>
+              <span style="font-size:10px;color:#FFA040;font-weight:600;">Segunda etapa</span>
+            </div>
+            <p style="font-size:12px;">Temperatura moderada. Aplicar após a nuca estar coberta, avançando para as laterais esquerda e direita.</p>
+          </div>
+          <div style="padding:11px 13px;border-radius:12px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+              <p style="font-size:12px;font-weight:700;color:#FFD460;">Zona 3 — Topo/Coroa</p>
+              <span style="font-size:10px;color:#FFD460;font-weight:600;">Terceira etapa</span>
+            </div>
+            <p style="font-size:12px;">Mais quente — reage mais rápido. Aplicar depois para equilibrar o tempo de processamento com as outras zonas.</p>
+          </div>
+          <div style="padding:11px 13px;border-radius:12px;background:rgba(255,80,80,.07);border:1px solid rgba(255,80,80,.18);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+              <p style="font-size:12px;font-weight:700;color:#FF8080;">⚡ Linha de Contorno</p>
+              <span style="font-size:10px;color:#FF8080;font-weight:600;">Última!</span>
+            </div>
+            <p style="font-size:12px;">Frente, entradas e têmporas. Alta concentração de brancos, mas reagem muito rápido. Sempre por último para evitar saturação.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:12px;">⏱️ Linha do Tempo da Aplicação</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:11px;align-items:flex-start;">
+            <div style="min-width:52px;text-align:center;padding:8px 5px;border-radius:10px;background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.2);">
+              <p style="font-size:11px;font-weight:900;color:#FFD460;">0:00</p>
+            </div>
+            <p style="font-size:12px;padding-top:5px;"><strong style="color:#F5F7FB;">Início:</strong> aplicar na nuca, raiz virgem branca, pura (sem diluir nos comprimentos ainda).</p>
+          </div>
+          <div style="display:flex;gap:11px;align-items:flex-start;">
+            <div style="min-width:52px;text-align:center;padding:8px 5px;border-radius:10px;background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.2);">
+              <p style="font-size:11px;font-weight:900;color:#FFD460;">+5 min</p>
+            </div>
+            <p style="font-size:12px;padding-top:5px;"><strong style="color:#F5F7FB;">Laterais:</strong> avançar pelas laterais, mantendo o produto somente na raiz.</p>
+          </div>
+          <div style="display:flex;gap:11px;align-items:flex-start;">
+            <div style="min-width:52px;text-align:center;padding:8px 5px;border-radius:10px;background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.2);">
+              <p style="font-size:11px;font-weight:900;color:#FFD460;">+10 min</p>
+            </div>
+            <p style="font-size:12px;padding-top:5px;"><strong style="color:#F5F7FB;">Topo + contorno:</strong> finalizar aplicação. Espalhar nos comprimentos neste momento.</p>
+          </div>
+          <div style="display:flex;gap:11px;align-items:flex-start;">
+            <div style="min-width:52px;text-align:center;padding:8px 5px;border-radius:10px;background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.2);">
+              <p style="font-size:11px;font-weight:900;color:#FFD460;">+25 min</p>
+            </div>
+            <p style="font-size:12px;padding-top:5px;"><strong style="color:#F5F7FB;">Pontas:</strong> passar o produto nas pontas apenas agora — são as mais porosas, reagem rápido.</p>
+          </div>
+          <div style="display:flex;gap:11px;align-items:flex-start;">
+            <div style="min-width:52px;text-align:center;padding:8px 5px;border-radius:10px;background:rgba(94,232,154,.1);border:1px solid rgba(94,232,154,.2);">
+              <p style="font-size:11px;font-weight:900;color:#5EE89A;">+35 min</p>
+            </div>
+            <p style="font-size:12px;padding-top:5px;"><strong style="color:#F5F7FB;">Emulsão:</strong> adicionar água morna, massagear por 3 min e enxaguar completamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3 au d5">
+      <div class="info white" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:6px;">🌡️</p>
+        <p style="font-size:12px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">Use o Calor</p>
+        <p style="font-size:12px;">Touca ou plástico por 15 min ajuda a abrir a cutícula em fios de alta resistência.</p>
+      </div>
+      <div class="info gold" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:6px;">🔍</p>
+        <p style="font-size:12px;font-weight:700;color:#FFD460;margin-bottom:4px;">Verifique Antes de Lavar</p>
+        <p style="font-size:12px;">Separe uma mecha e limpe com lenço. Fio branco ainda visível? Aguarde mais 10 min.</p>
+      </div>
+      <div class="info green" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:6px;">💧</p>
+        <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:4px;">Emulsione Sempre</p>
+        <p style="font-size:12px;">Jamais tire direto na ducha. A emulsão abre o processo corretamente e melhora o resultado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 9 — ERROS COMUNS E SOLUÇÕES
+══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4vw,42px);margin-bottom:8px;"><span class="gred">Erros Comuns</span> — e Como Corrigir</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      Conhecer os erros mais frequentes é o que <strong style="color:#F5F7FB;">transforma um resultado frustrante em sucesso</strong>. Identifique, corrija e previna antes que aconteça.
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:14px;" class="au d4">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;">
+        <div class="bwc cr" style="padding:15px 14px;">
+          <p style="font-size:12px;font-weight:700;color:#FF6B6B;margin-bottom:6px;">❌ ERRO 1</p>
+          <h3 style="font-size:13px;margin-bottom:5px;">Brancos não cobertos</h3>
+          <p style="font-size:12px;margin-bottom:8px;">Fios brancos aparecem mesmo após a coloração. Causa: OX alto demais, tempo insuficiente ou aplicação incorreta.</p>
+          <div style="padding:9px 10px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:3px;">✅ Solução</p>
+            <p style="font-size:11px;">Use OX 20 vol, aplique primeiro na raiz branca, estenda o tempo para 40+ min e adicione tom .0 no mix.</p>
+          </div>
+        </div>
+        <div class="bwc cr" style="padding:15px 14px;">
+          <p style="font-size:12px;font-weight:700;color:#FF6B6B;margin-bottom:6px;">❌ ERRO 2</p>
+          <h3 style="font-size:13px;margin-bottom:5px;">Cor desbota rápido</h3>
+          <p style="font-size:12px;margin-bottom:8px;">Cliente volta em 2 semanas com brancos aparentes. Causa: alta porosidade, pH não fechado ou shampoo agressivo.</p>
+          <div style="padding:9px 10px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:3px;">✅ Solução</p>
+            <p style="font-size:11px;">Acidificar pós-coloração, indicar shampoo para coloridos e orientar sobre frequência de lavagem.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;">
+        <div class="bwc cr" style="padding:15px 14px;">
+          <p style="font-size:12px;font-weight:700;color:#FF6B6B;margin-bottom:6px;">❌ ERRO 3</p>
+          <h3 style="font-size:13px;margin-bottom:5px;">Tom desigual na raiz</h3>
+          <p style="font-size:12px;margin-bottom:8px;">Brancos e fios naturais absorvem de forma diferente — resultado manchado ou com variação de intensidade.</p>
+          <div style="padding:9px 10px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:3px;">✅ Solução</p>
+            <p style="font-size:11px;">Aplicar na raiz branca primeiro e aguardar 10 min antes de avançar para os fios pigmentados.</p>
+          </div>
+        </div>
+        <div class="bwc cr" style="padding:15px 14px;">
+          <p style="font-size:12px;font-weight:700;color:#FF6B6B;margin-bottom:6px;">❌ ERRO 4</p>
+          <h3 style="font-size:13px;margin-bottom:5px;">Reflexo indesejado</h3>
+          <p style="font-size:12px;margin-bottom:8px;">Tom ficou avermelhado, alaranjado ou amarelado. Causa: fundo de clareamento não considerado ou subton errado.</p>
+          <div style="padding:9px 10px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:3px;">✅ Solução</p>
+            <p style="font-size:11px;">Matizar com o complementar. Vermelho → verde. Amarelo → violeta. Laranja → azul/cinza.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;">
+        <div class="bwc cr" style="padding:15px 14px;">
+          <p style="font-size:12px;font-weight:700;color:#FF6B6B;margin-bottom:6px;">❌ ERRO 5</p>
+          <h3 style="font-size:13px;margin-bottom:5px;">Fio fragilizado pós-coloração</h3>
+          <p style="font-size:12px;margin-bottom:8px;">Cabelo quebra ou resseca após a coloração. Causa: OX alto, tempo excessivo ou fio já comprometido.</p>
+          <div style="padding:9px 10px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:3px;">✅ Solução</p>
+            <p style="font-size:11px;">Sempre faça o teste de elasticidade antes. Se frágil, reconstrua primeiro. Nunca aplique cor em fio sem estrutura.</p>
+          </div>
+        </div>
+        <div class="bwc cr" style="padding:15px 14px;">
+          <p style="font-size:12px;font-weight:700;color:#FF6B6B;margin-bottom:6px;">❌ ERRO 6</p>
+          <h3 style="font-size:13px;margin-bottom:5px;">Reação alérgica</h3>
+          <p style="font-size:12px;margin-bottom:8px;">Coceira, vermelhidão ou inchaço no couro cabeludo ou orelhas. Causa: PPD (parafenilenediamina) nas tintas.</p>
+          <div style="padding:9px 10px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:3px;">✅ Solução</p>
+            <p style="font-size:11px;">Teste de alergologia 48h antes em novos clientes ou mudança de marca. Optar por tintas PPD-free em casos sensíveis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info gold au d5">
+      <p style="font-size:12px;color:#FFD460;">📸 <strong style="color:#F5F7FB;">Documente sempre:</strong> tire fotos antes e depois de cada atendimento. Isso protege você legalmente, ajuda no diagnóstico do próximo retoque e comprova o resultado para a cliente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 10 — MANUTENÇÃO E DURABILIDADE
+══════════════════════════════════════════ -->
+<section class="slide vcenter">
+  <div class="inner" style="text-align:center;">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,4.5vw,52px);margin-bottom:12px;">
+      <span class="ggold">Manutenção</span> e<br/>Fidelização da Cliente
+    </h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);max-width:580px;margin:0 auto 22px;color:#AAB3C5;">
+      Uma cobertura perfeita no salão precisa de suporte em casa. <strong style="color:#F5F7FB;">Oriente sua cliente</strong> — isso é o que garante o retorno e a fidelidade.
+    </p>
+
+    <div class="g2 au d4" style="text-align:left;margin-bottom:16px;">
+      <div class="card">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:12px;">🏠 Rotina Em Casa Obrigatória</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="fi act">
+            <span style="font-size:16px;flex-shrink:0;">🧴</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Shampoo para coloridos</strong> — sem sulfato agressivo. Lavar com água fria ou morna.</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:16px;flex-shrink:0;">💆</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Máscara semanal</strong> — hidratação + nutrição para repor o que a química retira.</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:16px;flex-shrink:0;">🔥</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Protetor térmico</strong> — obrigatório antes de chapinha. Fio colorido resiste menos ao calor.</p>
+          </div>
+          <div class="fi act">
+            <span style="font-size:16px;flex-shrink:0;">☀️</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Protetor solar capilar</strong> — UV desbota qualquer cor em cabelos brancos tingidos mais rápido.</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:16px;flex-shrink:0;">🏊</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Pré-piscina:</strong> saturar o fio com água limpa reduz a absorção de cloro e preserva a cor.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:10px;">📅 Intervalos de Retoque</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:10px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.14);">
+              <span style="font-size:12px;font-weight:600;">Cobertura global brancos</span>
+              <span style="font-size:12px;color:#FFD460;font-weight:800;">3–4 sem</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:10px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.14);">
+              <span style="font-size:12px;font-weight:600;">Blend / camouflage</span>
+              <span style="font-size:12px;color:#8FAEFF;font-weight:800;">6–8 sem</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:10px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.14);">
+              <span style="font-size:12px;font-weight:600;">Transição para grisalho</span>
+              <span style="font-size:12px;color:#5EE89A;font-weight:800;">8–12 sem</span>
+            </div>
+          </div>
+        </div>
+        <div class="bwc cg" style="padding:14px;">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:8px;">✅ Checklist Final da Colorista</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Anamnese + teste de elasticidade</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Nível de resistência identificado</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>OX 20 vol + proporção correta</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Aplicação nuca → laterais → topo → contorno</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Raiz primeiro, comprimentos depois</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Tempo mínimo 35–45 min</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Verificar cobertura antes de lavar</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Emulsionar + acidificar + hidratar</p>
+            <p style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Orientar cliente para manutenção</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="au d5" style="padding:20px 22px;border-radius:18px;background:linear-gradient(135deg,rgba(255,212,96,.07),rgba(255,140,0,.06));border:1px solid rgba(255,212,96,.2);">
+      <p style="font-size:clamp(13px,2.1vw,15px);font-style:italic;color:#F5F7FB;margin-bottom:7px;">
+        "Cobrir fios brancos com perfeição não é sorte — é diagnóstico preciso, protocolo correto e técnica consistente. Domine isso e cada cliente sai do salão fidelizada."
+      </p>
+      <p style="font-size:11px;color:#7E879B;font-weight:600;">Cobertura de Fios Brancos — Guia Profissional 2025</p>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<!-- CHROME -->
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="navarr">
+  <button onclick="prev()" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    const was=s.classList.contains('active');
+    s.classList.toggle('active',i===C);
+    if(i===C&&!was)s.scrollTop=0;
+  });
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;scrolling=false;},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-tx);
+  const dy=Math.abs(e.changedTouches[0].clientY-ty);
+  if(dy>dx+5)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=ty-e.changedTouches[0].clientY;
+  if(Math.abs(dx)>Math.abs(dy)*1.4&&Math.abs(dx)>52){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
 
