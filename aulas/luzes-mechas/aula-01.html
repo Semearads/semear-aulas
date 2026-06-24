@@ -1,1 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Colorimetria Capilar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+
+/* PRESENTATION */
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+/* SLIDE BASE */
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  position:relative;overflow-y:auto;overflow-x:hidden;
+  padding:56px 20px 100px;
+  scroll-behavior:smooth;
+}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-track{background:transparent;}
+.slide::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:4px;}
+
+/* CENTERING HELPER — slides que cabem na tela sem scroll */
+.slide.center-v{justify-content:center;}
+
+/* BACKGROUND */
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),
+             radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),
+             linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
+  background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+/* TYPOGRAPHY */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.15;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p{font-weight:400;line-height:1.6;color:#AAB3C5;}
+li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+
+/* GRADIENT TEXT */
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* DECORATIVE LINE */
+.gl{width:70px;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,#2E6BFF,#C86DD7);
+  margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;
+  margin-bottom:20px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);
+  font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARD */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);
+  padding:20px 18px;backdrop-filter:blur(8px);transition:all .4s ease;}
+
+/* CARD PREMIUM */
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.08);
+  padding:24px 20px;backdrop-filter:blur(10px);transition:all .4s ease;}
+
+/* NUMBERED ICON */
+.tn{width:56px;height:56px;border-radius:16px;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(46,107,255,.12)}50%{box-shadow:0 0 36px rgba(46,107,255,.3)}}
+
+/* COMPARATIVO */
+.bwc{border-radius:18px;padding:20px 18px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.12);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.12);}
+
+/* NEUTRALIZAÇÃO */
+.neu-pair{border-radius:18px;padding:20px 18px;text-align:center;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.neu-dots{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
+.neu-dot{width:32px;height:32px;border-radius:50%;box-shadow:0 0 16px rgba(0,0,0,.4);}
+.neu-x{font-size:16px;font-weight:900;color:#7E879B;}
+
+/* OX CARD */
+.ox-card{border-radius:16px;padding:18px 14px;text-align:center;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.ox-num{font-size:32px;font-weight:900;letter-spacing:-.03em;margin-bottom:4px;}
+
+/* STAR ITEM */
+.star-item{border-radius:16px;padding:16px 14px;text-align:center;border:1px solid rgba(255,255,255,.08);}
+.star-dot{width:38px;height:38px;border-radius:50%;margin:0 auto 10px;box-shadow:0 0 24px rgba(0,0,0,.5);}
+
+/* RECAP */
+.recap-item{border-radius:16px;padding:16px 14px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);display:flex;align-items:flex-start;gap:12px;}
+.recap-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* ESCALA TOM */
+.tom-bar{display:flex;width:100%;border-radius:14px;overflow:hidden;height:44px;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.tom-cell{flex:1;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6);}
+
+/* FUNDO BAR */
+.fundo-bar{display:flex;width:100%;border-radius:14px;overflow:hidden;height:56px;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.fundo-cell{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.7);gap:1px;}
+.fundo-cell .num{font-size:14px;font-weight:900;}
+.fundo-cell .label{font-size:8px;line-height:1.1;text-align:center;padding:0 1px;}
+
+/* PROCESS FLOW — vertical on mobile */
+.flow-list{display:flex;flex-direction:column;gap:12px;width:100%;}
+.flow-item{display:flex;align-items:center;gap:14px;padding:14px 16px;
+  border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.flow-item.act{background:rgba(46,107,255,.08);border-color:rgba(46,107,255,.25);}
+.flow-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;color:#fff;flex-shrink:0;}
+.flow-num.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.flow-num.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);}
+.flow-num.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);}
+.flow-num.n4{background:linear-gradient(145deg,#2E6BFF,#5B3FD6);}
+.flow-num.n5{background:linear-gradient(145deg,#C86DD7,#2E6BFF);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}
+.d3{animation-delay:.28s!important}.d4{animation-delay:.38s!important}
+.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;
+  background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);
+  background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#7E879B;padding:9px 14px;border-radius:10px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+  display:flex;align-items:center;gap:6px;transition:all .3s ease;
+  backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:20px;z-index:998;color:#7E879B;
+  font-size:13px;font-weight:600;letter-spacing:.05em;
+  background:rgba(0,0,0,.4);padding:8px 14px;border-radius:10px;
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;
+  display:flex;gap:6px;background:rgba(0,0,0,.4);padding:8px 14px;
+  border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);
+  transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);
+  width:28px;border-radius:5px;}
+
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:8px;}
+.nav-arr button{width:46px;height:46px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* DESKTOP — layouts em grid horizontal */
+@media(min-width:769px){
+  .slide{padding:64px 48px 100px;}
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .g3-2{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .g6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .flow-list{flex-direction:row;align-items:stretch;}
+  .flow-item{flex-direction:column;align-items:center;text-align:center;flex:1;padding:20px 14px;}
+  .flow-item .flow-text{text-align:center;}
+  .fundo-cell .label{font-size:9px;}
+  .tom-cell{font-size:14px;}
+}
+
+/* TABLET */
+@media(min-width:481px) and (max-width:768px){
+  .slide{padding:60px 28px 96px;}
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .g3{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .g4{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .g3-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .g6{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .fundo-cell .label{font-size:7px;}
+  .tom-cell{font-size:11px;}
+}
+
+/* MOBILE */
+@media(max-width:480px){
+  .slide{padding:52px 16px 96px;}
+  .g2{display:grid;grid-template-columns:1fr;gap:12px;}
+  .g3{display:grid;grid-template-columns:1fr;gap:12px;}
+  .g4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .g3-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .g6{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .fundo-cell .label{display:none;}
+  .fundo-cell .num{font-size:12px;}
+  .fundo-bar{height:44px;}
+  .tom-cell{font-size:11px;}
+  .tom-bar{height:38px;}
+  .fs-btn span{display:none;}
+  .fs-btn{padding:9px 10px;}
+  .tn{width:48px;height:48px;font-size:18px;}
+}
+
+/* VERY SMALL */
+@media(max-width:360px){
+  .g4{grid-template-columns:1fr;}
+  .g3-2{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══════════════════════════════ SLIDE 1 ═══════════════════════════════ -->
+<section class="slide center-v active" style="text-align:center;">
+  <div style="width:100%;max-width:720px;">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2a7 7 0 017 7"/></svg>
+      Curso de Beleza Profissional
+    </div>
+    <h1 class="au d2" style="font-size:clamp(32px,7vw,72px);margin-bottom:12px;">
+      A <span class="gt">Ciência das Cores</span> no Cabelo
+    </h1>
+    <div class="gl ce au d3"></div>
+    <p class="au d4" style="font-size:clamp(14px,2.5vw,18px);max-width:480px;margin:0 auto 28px;">
+      Colorimetria Capilar — do fundamento teórico à aplicação prática
+    </p>
+    <div class="au d5 g4" style="max-width:560px;margin:0 auto;">
+      <div style="padding:10px 12px;border-radius:12px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);font-size:12px;font-weight:600;color:#8FAEFF;text-align:center;">⭐ Estrela de Oswald</div>
+      <div style="padding:10px 12px;border-radius:12px;background:rgba(91,63,214,.08);border:1px solid rgba(91,63,214,.18);font-size:12px;font-weight:600;color:#A98EFF;text-align:center;">🎚️ Altura de Tom</div>
+      <div style="padding:10px 12px;border-radius:12px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:12px;font-weight:600;color:#D98EEA;text-align:center;">🎨 Descoloração</div>
+      <div style="padding:10px 12px;border-radius:12px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);font-size:12px;font-weight:600;color:#8FAEFF;text-align:center;">✨ Tonalização</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 2 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(22px,4vw,44px);margin-bottom:10px;">O Que é <span class="gt">Colorimetria Capilar?</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:24px;">
+      A ciência que estuda as cores, sua composição e comportamento nos fios — a base de toda transformação profissional.
+    </p>
+    <div class="g3 au d4">
+      <div class="cp" style="text-align:center;">
+        <div class="tn n1">🎨</div>
+        <h3 style="font-size:16px;margin-bottom:8px;">Teoria</h3>
+        <p style="font-size:13px;">Compreender o círculo cromático, tons, meios-tons e suas interações no fio capilar.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n2">⚗️</div>
+        <h3 style="font-size:16px;margin-bottom:8px;">Técnica</h3>
+        <p style="font-size:13px;">Aplicar descoloração, neutralização e tonalização com precisão e segurança química.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n3">✨</div>
+        <h3 style="font-size:16px;margin-bottom:8px;">Resultado</h3>
+        <p style="font-size:13px;">Entregar a cor desejada com saúde, brilho e durabilidade, superando a expectativa.</p>
+      </div>
+    </div>
+    <div class="au d5" style="margin-top:20px;padding:16px 18px;border-radius:14px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);">
+      <p style="font-size:13px;color:#8FAEFF;">💡 <strong style="color:#F5F7FB;">Dominar a colorimetria</strong> transforma uma cabeleireira em uma verdadeira artista — capaz de criar, corrigir e encantar com segurança.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 3 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Estrela de Oswald — <span class="gt">O Mapa das Cores</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:20px;">
+      O círculo cromático que guia toda decisão de cor. Cores <strong style="color:#F5F7FB;">opostas</strong> se neutralizam — essa é a regra de ouro.
+    </p>
+    <div class="g3-2 au d4">
+      <div class="star-item" style="background:rgba(255,60,60,.06);border-color:rgba(255,60,60,.2);">
+        <div class="star-dot" style="background:#FF3C3C;"></div>
+        <h3 style="font-size:13px;color:#FF7070;margin-bottom:4px;">VERMELHO</h3>
+        <p style="font-size:12px;color:#7E879B;">Primária — quente<br/>Neutraliza: <strong style="color:#AAB3C5;">Verde</strong></p>
+      </div>
+      <div class="star-item" style="background:rgba(255,220,30,.06);border-color:rgba(255,220,30,.2);">
+        <div class="star-dot" style="background:#FFDC1E;"></div>
+        <h3 style="font-size:13px;color:#FFE566;margin-bottom:4px;">AMARELO</h3>
+        <p style="font-size:12px;color:#7E879B;">Primária — quente<br/>Neutraliza: <strong style="color:#AAB3C5;">Violeta</strong></p>
+      </div>
+      <div class="star-item" style="background:rgba(46,107,255,.06);border-color:rgba(46,107,255,.2);">
+        <div class="star-dot" style="background:#2E6BFF;"></div>
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:4px;">AZUL</h3>
+        <p style="font-size:12px;color:#7E879B;">Primária — frio<br/>Neutraliza: <strong style="color:#AAB3C5;">Laranja</strong></p>
+      </div>
+      <div class="star-item" style="background:rgba(255,140,0,.06);border-color:rgba(255,140,0,.2);">
+        <div class="star-dot" style="background:#FF8C00;"></div>
+        <h3 style="font-size:13px;color:#FFB040;margin-bottom:4px;">LARANJA</h3>
+        <p style="font-size:12px;color:#7E879B;">Secundária (R+A)<br/>Neutraliza: <strong style="color:#AAB3C5;">Azul</strong></p>
+      </div>
+      <div class="star-item" style="background:rgba(91,63,214,.06);border-color:rgba(91,63,214,.2);">
+        <div class="star-dot" style="background:#7B3FD6;"></div>
+        <h3 style="font-size:13px;color:#A98EFF;margin-bottom:4px;">VIOLETA</h3>
+        <p style="font-size:12px;color:#7E879B;">Secundária (A+V)<br/>Neutraliza: <strong style="color:#AAB3C5;">Amarelo</strong></p>
+      </div>
+      <div class="star-item" style="background:rgba(30,200,80,.06);border-color:rgba(30,200,80,.2);">
+        <div class="star-dot" style="background:#1EC850;"></div>
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:4px;">VERDE</h3>
+        <p style="font-size:12px;color:#7E879B;">Secundária (A+V)<br/>Neutraliza: <strong style="color:#AAB3C5;">Vermelho</strong></p>
+      </div>
+    </div>
+    <div class="au d5" style="margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.15);">
+      <p style="font-size:13px;color:#D98EEA;">🔑 <strong style="color:#F5F7FB;">Regra de ouro:</strong> cores opostas no círculo se <strong style="color:#F5F7FB;">cancelam</strong> — base da neutralização capilar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 4 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;"><span class="gt">Altura de Tom</span> — Escala do Claro ao Escuro</h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:18px;">
+      Escala numérica que define a luminosidade — do <strong style="color:#F5F7FB;">1 (preto)</strong> ao <strong style="color:#F5F7FB;">10 (loiro extra claro)</strong>.
+    </p>
+
+    <div class="tom-bar au d4" style="margin-bottom:8px;">
+      <div class="tom-cell" style="background:#1A1008;">1</div>
+      <div class="tom-cell" style="background:#2E1A0A;">2</div>
+      <div class="tom-cell" style="background:#4A2810;">3</div>
+      <div class="tom-cell" style="background:#6B3A14;">4</div>
+      <div class="tom-cell" style="background:#8B5016;">5</div>
+      <div class="tom-cell" style="background:#A8681C;">6</div>
+      <div class="tom-cell" style="background:#C48828;">7</div>
+      <div class="tom-cell" style="background:#D4A83A;">8</div>
+      <div class="tom-cell" style="background:#E8CC70;">9</div>
+      <div class="tom-cell" style="background:#F5E6A0;color:#5A4A00;">10</div>
+    </div>
+    <div class="au d4" style="display:flex;justify-content:space-between;margin-bottom:20px;">
+      <span style="font-size:11px;color:#7E879B;">◀ Mais escuro</span>
+      <span style="font-size:11px;color:#7E879B;">Mais claro ▶</span>
+    </div>
+
+    <div class="g3 au d5">
+      <div class="card" style="padding:14px 12px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;color:#5C2E0C;margin-bottom:4px;">1–2</div>
+        <h3 style="font-size:13px;margin-bottom:4px;">Preto / Cast. Escuro</h3>
+        <p style="font-size:12px;color:#7E879B;">Tom natural mais comum em brasileiras</p>
+      </div>
+      <div class="card" style="padding:14px 12px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;color:#A8681C;margin-bottom:4px;">3–5</div>
+        <h3 style="font-size:13px;margin-bottom:4px;">Castanho Médio</h3>
+        <p style="font-size:12px;color:#7E879B;">Fundo laranja ao clarear</p>
+      </div>
+      <div class="card" style="padding:14px 12px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;color:#C48828;margin-bottom:4px;">6–7</div>
+        <h3 style="font-size:13px;margin-bottom:4px;">Cast. Claro / Loiro Esc.</h3>
+        <p style="font-size:12px;color:#7E879B;">Fundo dourado/amarelo</p>
+      </div>
+      <div class="card" style="padding:14px 12px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;color:#D4A83A;margin-bottom:4px;">8–9</div>
+        <h3 style="font-size:13px;margin-bottom:4px;">Loiro Médio / Claro</h3>
+        <p style="font-size:12px;color:#7E879B;">Ideal para tons frios</p>
+      </div>
+      <div class="card" style="padding:14px 12px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;color:#E8CC70;margin-bottom:4px;">10</div>
+        <h3 style="font-size:13px;margin-bottom:4px;">Loiro Extra Claro</h3>
+        <p style="font-size:12px;color:#7E879B;">Platinado, pérola, fantasia</p>
+      </div>
+    </div>
+    <div class="au d6" style="margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);">
+      <p style="font-size:13px;color:#8FAEFF;">🎯 <strong style="color:#F5F7FB;">Como usar:</strong> identifique o tom natural → defina o desejado → calcule a diferença → escolha a técnica certa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 5 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;"><span class="gt">Fundo de Clareamento</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:18px;">
+      Durante a descoloração, o fio passa por estágios de pigmentação residual. Ignorá-los gera resultados indesejados.
+    </p>
+
+    <div class="fundo-bar au d4" style="margin-bottom:8px;">
+      <div class="fundo-cell" style="background:#2A1A0A;"><span class="num">1</span><span class="label">Preto</span></div>
+      <div class="fundo-cell" style="background:#5C2E0C;"><span class="num">2</span><span class="label">Castanho</span></div>
+      <div class="fundo-cell" style="background:#8B3A10;"><span class="num">3</span><span class="label">Cast.</span></div>
+      <div class="fundo-cell" style="background:#B84A14;"><span class="num">4</span><span class="label">Laranja Esc.</span></div>
+      <div class="fundo-cell" style="background:#D46018;"><span class="num">5</span><span class="label">Laranja</span></div>
+      <div class="fundo-cell" style="background:#E08020;"><span class="num">6</span><span class="label">Lar. Claro</span></div>
+      <div class="fundo-cell" style="background:#D4A030;"><span class="num">7</span><span class="label">Am. Ouro</span></div>
+      <div class="fundo-cell" style="background:#E0C040;color:#333;"><span class="num">8</span><span class="label">Amarelo</span></div>
+      <div class="fundo-cell" style="background:#ECDC70;color:#333;"><span class="num">9</span><span class="label">Am. Claro</span></div>
+      <div class="fundo-cell" style="background:#F5EEA0;color:#333;"><span class="num">10</span><span class="label">Pálido</span></div>
+    </div>
+    <div class="au d4" style="display:flex;justify-content:space-between;margin-bottom:18px;">
+      <span style="font-size:11px;color:#7E879B;">◀ Início da descoloração</span>
+      <span style="font-size:11px;color:#7E879B;">Mais clareado ▶</span>
+    </div>
+
+    <div class="g3 au d5">
+      <div class="card" style="border-left:4px solid #B84A14;padding:16px;">
+        <h3 style="font-size:14px;color:#FF8C60;margin-bottom:6px;">🔴 Tons 1–4</h3>
+        <p style="font-size:12px;">Castanhos e alaranjados intensos. Exige mais tempo e produto.</p>
+      </div>
+      <div class="card" style="border-left:4px solid #D46018;padding:16px;">
+        <h3 style="font-size:14px;color:#FFB060;margin-bottom:6px;">🟠 Tons 5–7</h3>
+        <p style="font-size:12px;">Fundo laranja a dourado — zona crítica de maior risco de erros.</p>
+      </div>
+      <div class="card" style="border-left:4px solid #E0C040;padding:16px;">
+        <h3 style="font-size:14px;color:#FFE566;margin-bottom:6px;">🟡 Tons 8–10</h3>
+        <p style="font-size:12px;">Amarelo a pálido. Ideal para loiros frios, platinados e fantasias.</p>
+      </div>
+    </div>
+    <div class="au d6" style="margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.2);">
+      <p style="font-size:13px;color:#FFB060;">⚠️ Fundo laranja → neutralizar com <strong style="color:#F5F7FB;">azul</strong>. Fundo amarelo → neutralizar com <strong style="color:#F5F7FB;">violeta</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 6 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;"><span class="gt">Descoloração</span> — Controlando o Processo</h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:20px;">
+      A descoloração remove a melanina do fio por oxidação. O controle da <strong style="color:#F5F7FB;">água oxigenada (OX)</strong> define a velocidade e o dano.
+    </p>
+    <div class="g4 au d4" style="margin-bottom:18px;">
+      <div class="ox-card">
+        <div class="ox-num" style="color:#5EE89A;">10</div>
+        <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:6px;">Vol. — 3%</p>
+        <p style="font-size:12px;">Apenas deposita cor. Tonalização e matização.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FFD460;">20</div>
+        <p style="font-size:11px;color:#FFD460;font-weight:700;margin-bottom:6px;">Vol. — 6%</p>
+        <p style="font-size:12px;">Clareia 1–2 tons. Coloração suave. Raiz sensível.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FF8C60;">30</div>
+        <p style="font-size:11px;color:#FF8C60;font-weight:700;margin-bottom:6px;">Vol. — 9%</p>
+        <p style="font-size:12px;">Clareia até 3 tons. Mais utilizado. Equilíbrio seguro.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FF6B6B;">40</div>
+        <p style="font-size:11px;color:#FF6B6B;font-weight:700;margin-bottom:6px;">Vol. — 12%</p>
+        <p style="font-size:12px;">Clareia até 4 tons. Alto impacto — avalie o fio antes.</p>
+      </div>
+    </div>
+    <div class="g2 au d5">
+      <div class="card" style="padding:16px;">
+        <h3 style="font-size:14px;margin-bottom:10px;">🧪 Tipos de Descolorante</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;"><span style="color:#2E6BFF;font-weight:700;">•</span> Pó (persulfatos) — mais potente</li>
+          <li style="font-size:13px;"><span style="color:#5B3FD6;font-weight:700;">•</span> Creme — mais seguro e controlado</li>
+          <li style="font-size:13px;"><span style="color:#C86DD7;font-weight:700;">•</span> Pasta de mel — efeitos naturais</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:16px;">
+        <h3 style="font-size:14px;margin-bottom:10px;">⚠️ Cuidados Essenciais</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;"><span style="color:#FF6B6B;font-weight:700;">•</span> Nunca aplicar em couro irritado</li>
+          <li style="font-size:13px;"><span style="color:#FF6B6B;font-weight:700;">•</span> Respeitar o tempo máximo</li>
+          <li style="font-size:13px;"><span style="color:#FF6B6B;font-weight:700;">•</span> Avaliar histórico químico do fio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 7 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;"><span class="gt">Neutralização</span> — Cancelando o Indesejado</h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:20px;">
+      Aplicamos a cor <strong style="color:#F5F7FB;">oposta</strong> para eliminar reflexos indesejados, usando a Estrela de Oswald como guia.
+    </p>
+    <div class="g3 au d4">
+      <div class="neu-pair">
+        <div class="neu-dots">
+          <div class="neu-dot" style="background:#FF8C00;"></div>
+          <span class="neu-x">×</span>
+          <div class="neu-dot" style="background:#2E6BFF;"></div>
+        </div>
+        <h3 style="font-size:14px;margin-bottom:6px;">Laranja × Azul</h3>
+        <p style="font-size:12px;">Neutraliza fundo laranja após descoloração de castanhos. Use matizador azul.</p>
+      </div>
+      <div class="neu-pair">
+        <div class="neu-dots">
+          <div class="neu-dot" style="background:#FFDC1E;"></div>
+          <span class="neu-x">×</span>
+          <div class="neu-dot" style="background:#7B3FD6;"></div>
+        </div>
+        <h3 style="font-size:14px;margin-bottom:6px;">Amarelo × Violeta</h3>
+        <p style="font-size:12px;">Elimina amarelado do loiro para tons frios e platinados. Matizador roxo.</p>
+      </div>
+      <div class="neu-pair">
+        <div class="neu-dots">
+          <div class="neu-dot" style="background:#FF3C3C;"></div>
+          <span class="neu-x">×</span>
+          <div class="neu-dot" style="background:#1EC850;"></div>
+        </div>
+        <h3 style="font-size:14px;margin-bottom:6px;">Vermelho × Verde</h3>
+        <p style="font-size:12px;">Suaviza reflexos avermelhados em castanhos. Usar com cautela e precisão.</p>
+      </div>
+    </div>
+    <div class="g2 au d5" style="margin-top:16px;">
+      <div style="padding:16px;border-radius:14px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);">
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:6px;">🧴 Como Neutralizar</h3>
+        <p style="font-size:13px;">Matizador + OX 10vol, 20–30 min. Controle o tempo para evitar cinza ou esverdeado.</p>
+      </div>
+      <div style="padding:16px;border-radius:14px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.15);">
+        <h3 style="font-size:13px;color:#D98EEA;margin-bottom:6px;">⚖️ Proporção Ideal</h3>
+        <p style="font-size:13px;">Quanto mais intenso o fundo, maior a concentração do matizador. Comece devagar e avalie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 8 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;"><span class="gt">Tonalização</span> — Cor Sem Compromisso</h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:20px;">
+      Técnica <strong style="color:#F5F7FB;">sem amônia</strong> que acidifica o pH, sela as cutículas e deposita cor temporária com brilho e saúde.
+    </p>
+    <div class="g3 au d4">
+      <div class="bwc cg" style="padding:18px 16px;">
+        <h3 style="font-size:15px;color:#5EE89A;margin-bottom:12px;">✅ Tonalização</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#5EE89A;margin-top:6px;flex-shrink:0;"></span>Sem amônia — não danifica</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#5EE89A;margin-top:6px;flex-shrink:0;"></span>Dura 8 a 16 lavagens</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#5EE89A;margin-top:6px;flex-shrink:0;"></span>Sela cutículas — mais brilho</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#5EE89A;margin-top:6px;flex-shrink:0;"></span>Ideal para matizar e refrescar</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#5EE89A;margin-top:6px;flex-shrink:0;"></span>OX 10vol ou sem oxidante</li>
+        </ul>
+      </div>
+      <div class="bwc cy" style="padding:18px 16px;">
+        <h3 style="font-size:15px;color:#FFD460;margin-bottom:12px;">⚡ Coloração</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FFD460;margin-top:6px;flex-shrink:0;"></span>Com amônia — abre cutícula</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FFD460;margin-top:6px;flex-shrink:0;"></span>Dura 4 a 8 semanas</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FFD460;margin-top:6px;flex-shrink:0;"></span>Penetra no córtex do fio</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FFD460;margin-top:6px;flex-shrink:0;"></span>Cobre cabelos brancos</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FFD460;margin-top:6px;flex-shrink:0;"></span>OX 20 a 40vol</li>
+        </ul>
+      </div>
+      <div class="bwc cr" style="padding:18px 16px;">
+        <h3 style="font-size:15px;color:#FF6B6B;margin-bottom:12px;">🔥 Descoloração</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FF6B6B;margin-top:6px;flex-shrink:0;"></span>Remove pigmento — mais danoso</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FF6B6B;margin-top:6px;flex-shrink:0;"></span>Efeito permanente</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FF6B6B;margin-top:6px;flex-shrink:0;"></span>Destrói melanina por oxidação</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FF6B6B;margin-top:6px;flex-shrink:0;"></span>Exige laudo e cuidado técnico</li>
+          <li style="display:flex;gap:8px;align-items:flex-start;font-size:12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FF6B6B;margin-top:6px;flex-shrink:0;"></span>OX 30 a 40vol + pó</li>
+        </ul>
+      </div>
+    </div>
+    <div class="au d5" style="margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.2);">
+      <p style="font-size:13px;color:#5EE89A;">💚 <strong style="color:#F5F7FB;">Quando indicar tonalização:</strong> clientes que querem brilho, refrescar a cor ou testar um tom sem compromisso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 9 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:700px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Do Diagnóstico ao Resultado — <span class="gt">O Fluxo Profissional</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:20px;">
+      5 passos para uma consulta de colorimetria precisa, segura e com resultados que encantam.
+    </p>
+    <div class="flow-list au d4">
+      <div class="flow-item act">
+        <div class="flow-num n1">1</div>
+        <div class="flow-text">
+          <h3 style="font-size:14px;margin-bottom:3px;">Diagnóstico</h3>
+          <p style="font-size:12px;color:#7E879B;">Analisar o histórico e o estado atual do fio</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num n2">2</div>
+        <div class="flow-text">
+          <h3 style="font-size:14px;margin-bottom:3px;">Altura de Tom</h3>
+          <p style="font-size:12px;color:#7E879B;">Identificar tom natural e o tom desejado</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num n3">3</div>
+        <div class="flow-text">
+          <h3 style="font-size:14px;margin-bottom:3px;">Fundo de Clareamento</h3>
+          <p style="font-size:12px;color:#7E879B;">Identificar qual fundo será atingido</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num n4">4</div>
+        <div class="flow-text">
+          <h3 style="font-size:14px;margin-bottom:3px;">Descolorar</h3>
+          <p style="font-size:12px;color:#7E879B;">Controlar o processo com OX correto</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num n5">5</div>
+        <div class="flow-text">
+          <h3 style="font-size:14px;margin-bottom:3px;">Neutralizar e Tonalizar</h3>
+          <p style="font-size:12px;color:#7E879B;">Finalizar com a cor desejada e saúde</p>
+        </div>
+      </div>
+    </div>
+    <div class="au d5" style="margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);">
+      <p style="font-size:13px;color:#8FAEFF;">📋 <strong style="color:#F5F7FB;">Anote sempre a fórmula</strong> usada para replicar ou corrigir em atendimentos futuros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SLIDE 10 ═══════════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;text-align:center;">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(22px,4vw,48px);margin-bottom:10px;">Você Agora É uma <span class="gt">Colorista Profissional!</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,16px);max-width:520px;margin:0 auto 24px;">
+      6 conceitos dominados, 1 nova habilidade conquistada. Agora é hora de praticar! 🎨
+    </p>
+    <div class="g6 au d4" style="text-align:left;margin-bottom:20px;">
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(46,107,255,.12);">⭐</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Estrela de Oswald</h3><p style="font-size:11px;color:#7E879B;">Mapa das cores e complementares</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(91,63,214,.12);">🎚️</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Altura de Tom</h3><p style="font-size:11px;color:#7E879B;">Escala 1 a 10 — escuro ao claro</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(200,109,215,.12);">🔥</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Fundo de Clareamento</h3><p style="font-size:11px;color:#7E879B;">Pigmentos residuais do processo</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(255,140,0,.12);">⚗️</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Descoloração</h3><p style="font-size:11px;color:#7E879B;">OX, pó e controle do processo</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(46,107,255,.12);">🔵</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Neutralização</h3><p style="font-size:11px;color:#7E879B;">Cancelar reflexos indesejados</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(94,232,154,.12);">✨</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Tonalização</h3><p style="font-size:11px;color:#7E879B;">Cor sem amônia, brilho e saúde</p></div>
+      </div>
+    </div>
+    <div class="au d5" style="padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,rgba(46,107,255,.08),rgba(200,109,215,.08));border:1px solid rgba(46,107,255,.2);">
+      <p style="font-size:clamp(13px,2vw,15px);font-style:italic;color:#F5F7FB;">"A colorimetria não é só técnica — é a arte de traduzir o desejo do cliente em cor, com ciência e sensibilidade."</p>
+      <p style="font-size:12px;color:#7E879B;margin-top:8px;">SEMEAR — Escola da Mulher Empreendedora</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()" aria-label="Slide anterior">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo slide">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10; let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+// Build dots
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    s.classList.toggle('active',i===C);
+    // reset scroll on each slide change
+    if(i===C) s.scrollTop=0;
+  });
+}
+
+function go(i){ if(i<0||i>=T)return; C=i; W.style.transform=`translateX(-${C*100}vw)`; upd(); }
+function next(){ if(C<T-1)go(C+1); }
+function prev(){ if(C>0)go(C-1); }
+
+// Keyboard
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+// Touch — only horizontal swipes navigate, vertical scrolls the slide
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].clientX;
+  ty=e.changedTouches[0].clientY;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=ty-e.changedTouches[0].clientY;
+  // Only trigger navigation if horizontal movement dominates
+  if(Math.abs(dx)>Math.abs(dy)*1.5 && Math.abs(dx)>52){
+    dx>0?next():prev();
+  }
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
 
