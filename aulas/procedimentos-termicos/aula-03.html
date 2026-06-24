@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Botox Capilar</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -11,8 +11,8 @@
 body {
   font-family: 'Inter', sans-serif;
   background: #050816;
-  overflow: hidden;
   width: 100vw; height: 100vh;
+  overflow: hidden;
 }
 
 .presentation { width: 100vw; height: 100vh; overflow: hidden; }
@@ -20,285 +20,289 @@ body {
 .slides {
   display: flex;
   transition: transform .7s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
 }
 
 .slide {
   width: 100vw; height: 100vh;
   flex-shrink: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
 }
 
 .slide::before {
   content: '';
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background:
     radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.14) 0%, transparent 42%),
     radial-gradient(800px 380px at 35% 20%, rgba(35,110,255,.14) 0%, transparent 42%),
     linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
 }
-
 .slide::after {
   content: '';
-  position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .3;
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .25;
   background-image: radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);
   background-size: 24px 24px;
 }
-
 .slide > * { position: relative; z-index: 1; }
 
-/* ANIMAÇÕES */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(35px) } to { opacity: 1; transform: translateY(0) } }
-@keyframes fadeScale { from { opacity: 0; transform: scale(.88) } to { opacity: 1; transform: scale(1) } }
-@keyframes shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
-@keyframes lineG { from { transform: scaleX(0) } to { transform: scaleX(1) } }
-@keyframes glowP { 0%, 100% { box-shadow: 0 0 18px rgba(46,107,255,.12) } 50% { box-shadow: 0 0 36px rgba(46,107,255,.3) } }
+/* ── Animações ── */
+@keyframes fadeUp    { from { opacity:0; transform:translateY(28px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeScale { from { opacity:0; transform:scale(.9) }         to { opacity:1; transform:scale(1) } }
+@keyframes shimmer   { 0%   { background-position:-200% center }       100%{ background-position:200% center } }
+@keyframes lineG     { from { transform:scaleX(0) }                     to  { transform:scaleX(1) } }
+@keyframes glowP     { 0%,100%{ box-shadow:0 0 18px rgba(46,107,255,.12) } 50%{ box-shadow:0 0 36px rgba(46,107,255,.3) } }
 
-.slide.active .au { animation: fadeUp .7s ease both; }
+.slide.active .au { animation: fadeUp   .7s ease both; }
 .slide.active .as { animation: fadeScale .7s ease both; }
-.d1 { animation-delay: .1s !important }
-.d2 { animation-delay: .22s !important }
-.d3 { animation-delay: .34s !important }
-.d4 { animation-delay: .46s !important }
-.d5 { animation-delay: .58s !important }
-.d6 { animation-delay: .7s !important }
-.d7 { animation-delay: .82s !important }
+.d1{animation-delay:.1s!important}  .d2{animation-delay:.22s!important}
+.d3{animation-delay:.34s!important} .d4{animation-delay:.46s!important}
+.d5{animation-delay:.58s!important} .d6{animation-delay:.7s!important}
+.d7{animation-delay:.82s!important}
 
-/* TEXTO GRADIENTE */
+/* ── Texto gradiente ── */
 .gt {
   background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
   background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; animation: shimmer 4s linear infinite;
 }
 
-/* LINHA DECORATIVA */
 .gl {
-  width: 90px; height: 4px; border-radius: 2px;
+  width: 70px; height: 4px; border-radius: 2px;
   background: linear-gradient(90deg, #2E6BFF, #C86DD7);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   animation: lineG .8s ease both; transform-origin: left;
 }
-.gl.ce { margin: 0 auto 22px auto; transform-origin: center; }
 
-/* BADGE */
+/* ── Badge ── */
 .badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 10px 24px; border-radius: 999px; margin-bottom: 32px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; border-radius: 999px; margin-bottom: 24px;
   background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.2);
-  font-size: 14px; font-weight: 600; color: #8FAEFF;
+  font-size: clamp(11px,2.5vw,13px); font-weight: 600; color: #8FAEFF;
   letter-spacing: .05em; text-transform: uppercase;
+  flex-wrap: wrap; justify-content: center;
 }
 
-/* CARDS */
+/* ── Cards ── */
 .card {
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.07);
-  border-radius: 22px;
-  box-shadow: 0 16px 48px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
-  padding: 32px 28px;
+  border-radius: 18px;
+  box-shadow: 0 12px 36px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+  padding: 20px 16px;
   backdrop-filter: blur(8px);
   transition: all .4s ease;
 }
-.card:hover {
-  border-color: rgba(46,107,255,.2);
-  transform: translateY(-3px);
-  box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08);
-}
+.card:hover { border-color: rgba(46,107,255,.2); }
 
 .cp {
   background: linear-gradient(145deg, rgba(18,11,43,.95) 0%, rgba(10,15,36,.98) 55%, rgba(5,8,22,1) 100%);
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 22px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 40px rgba(46,107,255,.08);
-  padding: 34px 30px;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.45), 0 0 30px rgba(46,107,255,.06);
+  padding: 20px 16px;
   backdrop-filter: blur(10px);
   transition: all .4s ease;
 }
-.cp:hover {
-  border-color: rgba(46,107,255,.25);
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 28px 64px rgba(0,0,0,.55), 0 0 50px rgba(46,107,255,.12);
-}
 
-/* ÍCONE CONTAINER */
+/* ── Ícones ── */
 .ic {
-  width: 54px; height: 54px; border-radius: 14px; margin-bottom: 18px;
+  width: 46px; height: 46px; border-radius: 12px; margin-bottom: 14px;
   display: flex; align-items: center; justify-content: center;
   background: rgba(46,107,255,.08);
 }
-.ic svg { width: 26px; height: 26px; color: #2E6BFF; }
+.ic svg { width: 22px; height: 22px; color: #2E6BFF; }
 
-/* NÚMEROS */
+/* ── Números ── */
 .tn {
-  width: 72px; height: 72px; border-radius: 18px;
-  margin: 0 auto 26px; display: flex; align-items: center; justify-content: center;
-  font-size: 24px; font-weight: 900; color: #fff;
+  width: 56px; height: 56px; border-radius: 15px;
+  margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 900; color: #fff;
   animation: glowP 3s ease-in-out infinite;
 }
-.tn.n1 { background: linear-gradient(145deg, #2E6BFF, #1E56D9); }
-.tn.n2 { background: linear-gradient(145deg, #5B3FD6, #4530B3); animation-delay: .5s; }
-.tn.n3 { background: linear-gradient(145deg, #C86DD7, #A854BF); animation-delay: 1s; }
-.tn.n4 { background: linear-gradient(145deg, #2E6BFF, #5B3FD6); animation-delay: 1.5s; }
-.tn.n5 { background: linear-gradient(145deg, #5B3FD6, #C86DD7); animation-delay: 2s; }
-.tn.n6 { background: linear-gradient(145deg, #C86DD7, #2E6BFF); animation-delay: 2.5s; }
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+.tn.n4{background:linear-gradient(145deg,#2E6BFF,#5B3FD6);animation-delay:1.5s;}
+.tn.n5{background:linear-gradient(145deg,#5B3FD6,#C86DD7);animation-delay:2s;}
+.tn.n6{background:linear-gradient(145deg,#C86DD7,#2E6BFF);animation-delay:2.5s;}
 
-/* FLUXO */
-.fl { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
-.fs { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 135px; padding: 0 8px; }
+/* ── Fluxo ── */
+.fl { display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap; row-gap:16px; }
+.fs { display:flex; flex-direction:column; align-items:center; text-align:center; min-width:75px; max-width:105px; padding:0 4px; }
 .fs .fi {
-  width: 76px; height: 76px; border-radius: 20px;
-  background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.18);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  width:60px; height:60px; border-radius:16px;
+  background:rgba(46,107,255,.08); border:1px solid rgba(46,107,255,.18);
+  display:flex; align-items:center; justify-content:center; margin-bottom:10px;
+  transition:all .3s ease;
 }
-.fs .fi svg { width: 34px; height: 34px; color: #2E6BFF; }
-.fs span { font-size: 15px; font-weight: 600; color: #F5F7FB; }
-.fa { display: flex; align-items: center; padding-bottom: 30px; margin: 0 6px; }
-.fa svg { width: 26px; height: 26px; color: #7E879B; }
+.fs .fi svg { width:26px; height:26px; color:#2E6BFF; }
+.fs span { font-size:clamp(11px,2vw,13px); font-weight:600; color:#F5F7FB; line-height:1.4; }
+.fa { display:flex; align-items:center; padding-bottom:22px; margin:0 2px; }
+.fa svg { width:18px; height:18px; color:#7E879B; }
 .fs.act .fi {
-  background: linear-gradient(180deg, #2E6BFF, #1E56D9);
-  border-color: transparent;
-  box-shadow: 0 10px 22px rgba(46,107,255,.28);
+  background:linear-gradient(180deg,#2E6BFF,#1E56D9);
+  border-color:transparent;
+  box-shadow:0 8px 18px rgba(46,107,255,.3);
 }
-.fs.act .fi svg { color: #fff; }
+.fs.act .fi svg { color:#fff; }
 
-/* MÉTRICAS */
-.s5n {
-  font-size: 58px; font-weight: 900; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 10px;
-}
+/* ── Métricas ── */
+.s5n { font-size:clamp(34px,7vw,56px); font-weight:900; letter-spacing:-.03em; line-height:1.1; margin-bottom:8px; }
 
-/* BORDA LATERAL */
-.s5c { position: relative; overflow: hidden; padding-left: 20px !important; }
+/* ── Borda lateral ── */
+.s5c { position:relative; overflow:hidden; padding-left:18px !important; }
 .s5c::before {
-  content: ''; position: absolute; top: 0; left: 0;
-  width: 5px; height: 100%; border-radius: 2px 0 0 2px;
+  content:''; position:absolute; top:0; left:0;
+  width:4px; height:100%; border-radius:2px 0 0 2px;
 }
-.s5c.b1::before { background: #2E6BFF; }
-.s5c.b2::before { background: #5B3FD6; }
-.s5c.b3::before { background: #C86DD7; }
-.s5c.b4::before { background: linear-gradient(180deg, #2E6BFF, #C86DD7); }
-.s5c.b5::before { background: #8FAEFF; }
+.s5c.b1::before{background:#2E6BFF;}
+.s5c.b2::before{background:#5B3FD6;}
+.s5c.b3::before{background:#C86DD7;}
+.s5c.b4::before{background:linear-gradient(180deg,#2E6BFF,#C86DD7);}
+.s5c.b5::before{background:#8FAEFF;}
 
-/* COMPARATIVO */
-.bwc { border-radius: 20px; padding: 28px 24px; }
-.bwc.cr { background: rgba(255,80,80,.05); border: 1px solid rgba(255,80,80,.12); }
-.bwc.cy { background: rgba(255,200,60,.05); border: 1px solid rgba(255,200,60,.12); }
-.bwc.cg { background: rgba(80,220,120,.05); border: 1px solid rgba(80,220,120,.12); }
-.bwd { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+/* ── Comparativo ── */
+.bwc { border-radius:16px; padding:18px 14px; }
+.bwc.cr{ background:rgba(255,80,80,.05);   border:1px solid rgba(255,80,80,.12); }
+.bwc.cy{ background:rgba(255,200,60,.05);  border:1px solid rgba(255,200,60,.12); }
+.bwc.cg{ background:rgba(80,220,120,.05);  border:1px solid rgba(80,220,120,.12); }
+.bwd{ width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:6px; }
 
-/* CHROME */
+/* ── Chrome ── */
 .progress {
-  position: fixed; top: 0; left: 0; height: 3px; z-index: 1000;
-  background: linear-gradient(90deg, #2E6BFF, #C86DD7, #2E6BFF);
-  background-size: 200% auto; animation: shimmer 3s linear infinite;
-  transition: width .6s ease;
+  position:fixed; top:0; left:0; height:3px; z-index:1000;
+  background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);
+  background-size:200% auto; animation:shimmer 3s linear infinite;
+  transition:width .6s ease;
 }
 
 .fs-btn {
-  position: fixed; top: 20px; right: 20px; z-index: 999;
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-  color: #7E879B; padding: 12px 18px; border-radius: 12px; cursor: pointer;
-  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
-  display: flex; align-items: center; gap: 8px;
-  transition: all .3s ease; backdrop-filter: blur(6px);
-  letter-spacing: .04em; text-transform: uppercase;
+  position:fixed; top:14px; right:14px; z-index:999;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+  color:#7E879B; padding:10px 14px; border-radius:10px; cursor:pointer;
+  font-family:'Inter',sans-serif; font-size:11px; font-weight:600;
+  display:flex; align-items:center; gap:6px;
+  transition:all .3s ease; backdrop-filter:blur(6px);
+  letter-spacing:.04em; text-transform:uppercase;
 }
-.fs-btn:hover { background: rgba(255,255,255,.08); color: #F5F7FB; border-color: rgba(46,107,255,.3); }
-.fs-btn svg { width: 16px; height: 16px; }
+.fs-btn svg { width:14px; height:14px; flex-shrink:0; }
 
 .sc {
-  position: fixed; bottom: 36px; left: 40px; z-index: 998;
-  color: #7E879B; font-size: 14px; font-weight: 600; letter-spacing: .05em;
-  background: rgba(0,0,0,.3); padding: 10px 18px; border-radius: 10px;
-  backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.05);
+  position:fixed; bottom:24px; left:16px; z-index:998;
+  color:#7E879B; font-size:12px; font-weight:600;
+  background:rgba(0,0,0,.4); padding:8px 14px; border-radius:10px;
+  backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.05);
 }
-.sc .cn { color: #2E6BFF; font-weight: 800; }
+.sc .cn{ color:#2E6BFF; font-weight:800; }
 
 .ind {
-  position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 998;
-  display: flex; gap: 7px; background: rgba(0,0,0,.3); padding: 10px 16px;
-  border-radius: 20px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.05);
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:998;
+  display:flex; gap:6px; background:rgba(0,0,0,.4); padding:8px 12px;
+  border-radius:20px; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.05);
 }
 .ind .dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: rgba(255,255,255,.15); transition: all .4s ease; cursor: pointer;
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,255,255,.15); transition:all .4s ease; cursor:pointer;
 }
 .ind .dot.active {
-  background: #2E6BFF; box-shadow: 0 0 14px rgba(46,107,255,.6);
-  width: 34px; border-radius: 5px;
+  background:#2E6BFF; box-shadow:0 0 10px rgba(46,107,255,.6);
+  width:26px; border-radius:4px;
 }
 
-.nav-arr { position: fixed; bottom: 32px; right: 40px; z-index: 998; display: flex; gap: 10px; }
+.nav-arr{ position:fixed; bottom:20px; right:14px; z-index:998; display:flex; gap:8px; }
 .nav-arr button {
-  width: 52px; height: 52px; border-radius: 14px;
-  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
-  color: #AAB3C5; font-size: 20px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .3s ease; backdrop-filter: blur(6px);
+  width:44px; height:44px; border-radius:12px;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .3s ease; backdrop-filter:blur(6px);
 }
-.nav-arr button:hover {
-  background: rgba(46,107,255,.2); border-color: rgba(46,107,255,.4);
-  color: #fff; transform: scale(1.05);
+.nav-arr button:hover{ background:rgba(46,107,255,.2); border-color:rgba(46,107,255,.4); color:#fff; }
+
+/* ── Tipografia ── */
+h1{ font-weight:900; letter-spacing:-.03em; line-height:1.1; color:#F5F7FB; }
+h2{ font-weight:800; letter-spacing:-.025em; line-height:1.12; color:#F5F7FB; }
+h3{ font-weight:700; letter-spacing:-.015em; color:#F5F7FB; }
+p,span,li{ font-weight:400; line-height:1.6; color:#AAB3C5; word-break:break-word; }
+
+/* ── Layouts ── */
+.slide-inner { width:100%; max-width:1100px; padding:52px 20px 88px; }
+.slide-inner h2  { font-size:clamp(20px,4vw,40px); margin-bottom:8px; }
+.slide-inner .sub{ font-size:clamp(12px,2vw,15px); color:#7E879B; margin-bottom:28px; }
+
+/* Grids responsivos */
+.g3 { display:grid; grid-template-columns:1fr; gap:14px; }
+.g2 { display:grid; grid-template-columns:1fr; gap:14px; }
+.g4 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.g6 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.g3c{ display:grid; grid-template-columns:1fr; gap:14px; }
+.g3r{ display:grid; grid-template-columns:1fr; gap:12px; }
+
+@media(min-width:600px){
+  .g3 { grid-template-columns:repeat(3,1fr); }
+  .g2 { grid-template-columns:1fr 1fr; }
+  .g4 { grid-template-columns:repeat(4,1fr); }
+  .g3c{ grid-template-columns:repeat(3,1fr); }
+  .g3r{ grid-template-columns:repeat(3,1fr); }
+}
+@media(min-width:900px){
+  .g6 { grid-template-columns:repeat(3,1fr); }
 }
 
-h1 { font-weight: 900; letter-spacing: -.03em; line-height: 1.08; color: #F5F7FB; }
-h2 { font-weight: 800; letter-spacing: -.025em; line-height: 1.12; color: #F5F7FB; }
-h3 { font-weight: 700; letter-spacing: -.015em; color: #F5F7FB; }
-p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
+/* ── Checklist ── */
+.check-list{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+.check-list li{ display:flex; align-items:flex-start; gap:10px; font-size:clamp(12px,2vw,14px); }
+.check-icon{ width:26px; height:26px; border-radius:8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.check-icon.ok{ background:rgba(94,232,154,.12); }
+.check-icon.no{ background:rgba(255,107,107,.12); }
+.check-icon svg{ width:14px; height:14px; }
 
-.s1-wrap { text-align: center; max-width: 1000px; padding: 40px; }
-.s1-wrap h1 { font-size: clamp(52px, 7vw, 82px); margin-bottom: 26px; }
-.s1-wrap .tag { font-size: 22px; color: #AAB3C5; max-width: 600px; margin: 0 auto; line-height: 1.5; }
-
-.slide-inner { width: 100%; max-width: 1200px; padding: 60px 60px 100px; }
-.slide-inner h2 { font-size: clamp(28px, 3.5vw, 44px); margin-bottom: 10px; }
-.slide-inner .sub { font-size: 16px; color: #7E879B; margin-bottom: 40px; }
-
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.grid23 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.grid32 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-.card h3 { font-size: 17px; margin-bottom: 10px; }
-.card p { font-size: 14px; }
-
-/* SLIDE 9 */
-.check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: #AAB3C5; }
-.check-icon { width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.check-icon.ok { background: rgba(94,232,154,.12); }
-.check-icon.no { background: rgba(255,107,107,.12); }
-.check-icon svg { width: 16px; height: 16px; }
-
-/* SLIDE 10 */
-.cta-wrap { text-align: center; max-width: 860px; padding: 40px; }
-.cta-wrap h2 { font-size: clamp(36px, 5vw, 62px); margin-bottom: 24px; }
-.cta-wrap p { font-size: 20px; color: #AAB3C5; max-width: 580px; margin: 0 auto 40px; line-height: 1.6; }
-.cta-btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 18px 44px; border-radius: 16px;
-  background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
-  color: #fff; font-size: 18px; font-weight: 700; letter-spacing: -.01em;
-  box-shadow: 0 16px 40px rgba(46,107,255,.35);
-  transition: all .3s ease; cursor: pointer; border: none; font-family: 'Inter', sans-serif;
+/* ── Slide 1 ── */
+.s1-wrap{
+  text-align:center; max-width:900px;
+  padding:60px 24px 100px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100vh;
 }
-.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 24px 50px rgba(46,107,255,.45); }
+.s1-wrap h1  { font-size:clamp(30px,7vw,74px); margin-bottom:20px; }
+.s1-wrap .tag{ font-size:clamp(14px,2.5vw,19px); color:#AAB3C5; max-width:600px; margin:0 auto; line-height:1.6; }
+
+/* ── CTA (slide 10) ── */
+.cta-wrap{
+  text-align:center; max-width:860px;
+  padding:60px 24px 100px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100vh;
+}
+.cta-wrap h2  { font-size:clamp(24px,5vw,54px); margin-bottom:18px; }
+.cta-wrap .desc{ font-size:clamp(13px,2.2vw,17px); color:#AAB3C5; max-width:580px; margin:0 auto 32px; line-height:1.6; }
+.cta-btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 36px; border-radius:14px;
+  background:linear-gradient(135deg,#2E6BFF,#5B3FD6);
+  color:#fff; font-size:clamp(14px,2.2vw,16px); font-weight:700;
+  box-shadow:0 14px 36px rgba(46,107,255,.35);
+  transition:all .3s ease; cursor:pointer; border:none; font-family:'Inter',sans-serif;
+}
+.cta-btn:hover{ transform:translateY(-3px); box-shadow:0 22px 46px rgba(46,107,255,.45); }
 </style>
 </head>
 <body>
 
-<div class="progress" id="prog" style="width: 10%;"></div>
+<div class="progress" id="prog" style="width:10%;"></div>
 
 <button class="fs-btn" id="fsBtn" onclick="toggleFs()">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"></path>
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
   </svg>
   <span id="fsTxt">Tela cheia</span>
 </button>
@@ -310,7 +314,7 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
     <section class="slide active">
       <div class="s1-wrap">
         <div class="badge au d1">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           Tratamento Capilar Premium
         </div>
         <h1 class="au d2"><span class="gt">Botox Capilar</span><br>A Revolução que Seus<br>Cabelos Merecem</h1>
@@ -324,27 +328,27 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2">O Que É o <span class="gt">Botox Capilar</span>?</h2>
         <p class="sub au d3">Entenda o que realmente acontece com seu cabelo durante o tratamento</p>
-        <div class="grid3 au d4">
-          <div class="card">
+        <div class="g3">
+          <div class="card au d3">
             <div class="ic">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             </div>
-            <h3>O que é</h3>
-            <p>Um tratamento de reconstrução capilar profunda que restaura a fibra do cabelo de dentro para fora — sem toxina botulínica.</p>
+            <h3 style="font-size:clamp(13px,2.2vw,16px); margin-bottom:8px;">O que é</h3>
+            <p style="font-size:clamp(12px,1.9vw,14px);">Um tratamento de reconstrução capilar profunda que restaura a fibra do cabelo de dentro para fora — sem toxina botulínica.</p>
           </div>
-          <div class="card">
+          <div class="card au d4">
             <div class="ic">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
             </div>
-            <h3>O que contém</h3>
-            <p>Colágeno hidrolisado, queratina, óleos vegetais, vitaminas do complexo B e aminoácidos que nutrem e reconstroem.</p>
+            <h3 style="font-size:clamp(13px,2.2vw,16px); margin-bottom:8px;">O que contém</h3>
+            <p style="font-size:clamp(12px,1.9vw,14px);">Colágeno hidrolisado, queratina, óleos vegetais, vitaminas do complexo B e aminoácidos que nutrem e reconstroem.</p>
           </div>
-          <div class="card">
+          <div class="card au d5">
             <div class="ic">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
             </div>
-            <h3>O que faz</h3>
-            <p>Preenche porosidades, sela a cutícula, elimina o frizz, devolve brilho e maleabilidade aos fios danificados.</p>
+            <h3 style="font-size:clamp(13px,2.2vw,16px); margin-bottom:8px;">O que faz</h3>
+            <p style="font-size:clamp(12px,1.9vw,14px);">Preenche porosidades, sela a cutícula, elimina o frizz, devolve brilho e maleabilidade aos fios danificados.</p>
           </div>
         </div>
       </div>
@@ -356,7 +360,7 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2">Como Funciona <span class="gt">Por Dentro</span>?</h2>
         <p class="sub au d3">O mecanismo de ação do botox na fibra capilar — passo a passo</p>
-        <div class="fl au d4">
+        <div class="fl au d4" style="margin-bottom:24px;">
           <div class="fs act">
             <div class="fi">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -385,22 +389,22 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
             <span>Selamento<br>da fibra</span>
           </div>
         </div>
-        <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:20px; margin-top:40px;">
-          <div class="card au d5" style="text-align:center; padding:20px;">
-            <p style="font-size:13px; color:#7E879B;">Resultado imediato</p>
-            <p style="font-weight:700; color:#F5F7FB; margin-top:6px;">Brilho intenso</p>
+        <div class="g4">
+          <div class="card au d5" style="text-align:center; padding:16px 12px;">
+            <p style="font-size:clamp(11px,1.8vw,13px); color:#7E879B;">Resultado imediato</p>
+            <p style="font-weight:700; color:#F5F7FB; margin-top:6px; font-size:clamp(12px,2vw,14px);">Brilho intenso</p>
           </div>
-          <div class="card au d5" style="text-align:center; padding:20px;">
-            <p style="font-size:13px; color:#7E879B;">Textura</p>
-            <p style="font-weight:700; color:#F5F7FB; margin-top:6px;">Mais denso e macio</p>
+          <div class="card au d5" style="text-align:center; padding:16px 12px;">
+            <p style="font-size:clamp(11px,1.8vw,13px); color:#7E879B;">Textura</p>
+            <p style="font-weight:700; color:#F5F7FB; margin-top:6px; font-size:clamp(12px,2vw,14px);">Mais denso e macio</p>
           </div>
-          <div class="card au d6" style="text-align:center; padding:20px;">
-            <p style="font-size:13px; color:#7E879B;">Frizz</p>
-            <p style="font-weight:700; color:#F5F7FB; margin-top:6px;">Redução visível</p>
+          <div class="card au d6" style="text-align:center; padding:16px 12px;">
+            <p style="font-size:clamp(11px,1.8vw,13px); color:#7E879B;">Frizz</p>
+            <p style="font-weight:700; color:#F5F7FB; margin-top:6px; font-size:clamp(12px,2vw,14px);">Redução visível</p>
           </div>
-          <div class="card au d6" style="text-align:center; padding:20px;">
-            <p style="font-size:13px; color:#7E879B;">Durabilidade</p>
-            <p style="font-weight:700; color:#F5F7FB; margin-top:6px;">Até 90 dias</p>
+          <div class="card au d6" style="text-align:center; padding:16px 12px;">
+            <p style="font-size:clamp(11px,1.8vw,13px); color:#7E879B;">Durabilidade</p>
+            <p style="font-weight:700; color:#F5F7FB; margin-top:6px; font-size:clamp(12px,2vw,14px);">Até 90 dias</p>
           </div>
         </div>
       </div>
@@ -412,36 +416,36 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2">Para Quem é <span class="gt">Indicado</span>?</h2>
         <p class="sub au d3">O botox capilar atende diferentes perfis — do cabelo mais danificado ao mais saudável</p>
-        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:22px;">
+        <div class="g3">
           <div class="card au d3">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-            <h3>Cabelos danificados por química</h3>
-            <p>Colorações, descolorações e relaxamentos que comprometem a estrutura dos fios.</p>
+            <h3 style="font-size:clamp(13px,2.2vw,15px); margin-bottom:6px;">Cabelos danificados por química</h3>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Colorações, descolorações e relaxamentos que comprometem a estrutura dos fios.</p>
           </div>
           <div class="card au d3">
-            <div class="ic" style="background:rgba(91,63,214,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#5B3FD6"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
-            <h3>Cabelos ressecados</h3>
-            <p>Fios sem hidratação, ásperos ao toque e com dificuldade de absorver nutrientes.</p>
+            <div class="ic" style="background:rgba(91,63,214,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="#5B3FD6" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+            <h3 style="font-size:clamp(13px,2.2vw,15px); margin-bottom:6px;">Cabelos ressecados</h3>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Fios sem hidratação, ásperos ao toque e com dificuldade de absorver nutrientes.</p>
           </div>
           <div class="card au d4">
-            <div class="ic" style="background:rgba(200,109,215,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
-            <h3>Frizz intenso</h3>
-            <p>Cabelos que incham com umidade e perdem o controle em qualquer condição climática.</p>
+            <div class="ic" style="background:rgba(200,109,215,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+            <h3 style="font-size:clamp(13px,2.2vw,15px); margin-bottom:6px;">Frizz intenso</h3>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Cabelos que incham com umidade e perdem o controle em qualquer condição climática.</p>
           </div>
           <div class="card au d4">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg></div>
-            <h3>Cabelos quebradiços</h3>
-            <p>Fios frágeis com pontas duplas, que se quebram com facilidade ao pentear.</p>
+            <h3 style="font-size:clamp(13px,2.2vw,15px); margin-bottom:6px;">Cabelos quebradiços</h3>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Fios frágeis com pontas duplas, que se quebram com facilidade ao pentear.</p>
           </div>
           <div class="card au d5">
-            <div class="ic" style="background:rgba(91,63,214,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#5B3FD6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3>Sem brilho</h3>
-            <p>Cabelos opacos e sem vida, que precisam de reposição de nutrientes e selamento da cutícula.</p>
+            <div class="ic" style="background:rgba(91,63,214,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="#5B3FD6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3 style="font-size:clamp(13px,2.2vw,15px); margin-bottom:6px;">Sem brilho</h3>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Cabelos opacos e sem vida, que precisam de reposição de nutrientes e selamento da cutícula.</p>
           </div>
           <div class="card au d5">
-            <div class="ic" style="background:rgba(200,109,215,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7"><path d="M5 13l4 4L19 7"/></svg></div>
-            <h3>Manutenção preventiva</h3>
-            <p>Cabelos saudáveis que desejam manter o brilho, a maciez e a proteção no dia a dia.</p>
+            <div class="ic" style="background:rgba(200,109,215,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg></div>
+            <h3 style="font-size:clamp(13px,2.2vw,15px); margin-bottom:6px;">Manutenção preventiva</h3>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Cabelos saudáveis que desejam manter o brilho, a maciez e a proteção no dia a dia.</p>
           </div>
         </div>
       </div>
@@ -453,26 +457,26 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2">Principais <span class="gt">Ativos</span> e Suas Funções</h2>
         <p class="sub au d3">Conheça o que compõe a fórmula e como cada ingrediente age</p>
-        <div style="display:flex; flex-direction:column; gap:16px;">
-          <div class="card s5c b1 au d3" style="display:flex; align-items:center; gap:24px;">
-            <div style="min-width:120px;"><p style="font-weight:700; color:#2E6BFF; font-size:16px;">Colágeno hidrolisado</p></div>
-            <p style="font-size:14px;">Preenche as porosidades da fibra capilar, devolvendo estrutura, espessura e resistência ao fio.</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="card s5c b1 au d3" style="display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; padding:16px 16px 16px 22px;">
+            <p style="font-weight:700; color:#2E6BFF; font-size:clamp(13px,2vw,15px); min-width:130px;">Colágeno hidrolisado</p>
+            <p style="font-size:clamp(12px,1.9vw,13px); flex:1; min-width:160px;">Preenche as porosidades da fibra capilar, devolvendo estrutura, espessura e resistência ao fio.</p>
           </div>
-          <div class="card s5c b2 au d3" style="display:flex; align-items:center; gap:24px;">
-            <div style="min-width:120px;"><p style="font-weight:700; color:#5B3FD6; font-size:16px;">Queratina</p></div>
-            <p style="font-size:14px;">Proteína idêntica à do cabelo — reconstrói a estrutura interna e sela a cutícula para redução do frizz.</p>
+          <div class="card s5c b2 au d3" style="display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; padding:16px 16px 16px 22px;">
+            <p style="font-weight:700; color:#5B3FD6; font-size:clamp(13px,2vw,15px); min-width:130px;">Queratina</p>
+            <p style="font-size:clamp(12px,1.9vw,13px); flex:1; min-width:160px;">Proteína idêntica à do cabelo — reconstrói a estrutura interna e sela a cutícula para redução do frizz.</p>
           </div>
-          <div class="card s5c b3 au d4" style="display:flex; align-items:center; gap:24px;">
-            <div style="min-width:120px;"><p style="font-weight:700; color:#C86DD7; font-size:16px;">Óleos vegetais</p></div>
-            <p style="font-size:14px;">Argan, coco e macadâmia — oferecem hidratação profunda, brilho e proteção contra agentes externos.</p>
+          <div class="card s5c b3 au d4" style="display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; padding:16px 16px 16px 22px;">
+            <p style="font-weight:700; color:#C86DD7; font-size:clamp(13px,2vw,15px); min-width:130px;">Óleos vegetais</p>
+            <p style="font-size:clamp(12px,1.9vw,13px); flex:1; min-width:160px;">Argan, coco e macadâmia — oferecem hidratação profunda, brilho e proteção contra agentes externos.</p>
           </div>
-          <div class="card s5c b4 au d4" style="display:flex; align-items:center; gap:24px;">
-            <div style="min-width:120px;"><p style="font-weight:700; color:#8FAEFF; font-size:16px;">Vitaminas B3, B5, B7</p></div>
-            <p style="font-size:14px;">Estimulam o crescimento, fortalecem os fios e aumentam a elasticidade e vitalidade dos cabelos.</p>
+          <div class="card s5c b4 au d4" style="display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; padding:16px 16px 16px 22px;">
+            <p style="font-weight:700; color:#8FAEFF; font-size:clamp(13px,2vw,15px); min-width:130px;">Vitaminas B3, B5, B7</p>
+            <p style="font-size:clamp(12px,1.9vw,13px); flex:1; min-width:160px;">Estimulam o crescimento, fortalecem os fios e aumentam a elasticidade e vitalidade dos cabelos.</p>
           </div>
-          <div class="card s5c b5 au d5" style="display:flex; align-items:center; gap:24px;">
-            <div style="min-width:120px;"><p style="font-weight:700; color:#AAB3C5; font-size:16px;">Aminoácidos</p></div>
-            <p style="font-size:14px;">Blocos de construção dos cabelos — restauram a cadeia proteica e aumentam a resistência à quebra.</p>
+          <div class="card s5c b5 au d5" style="display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; padding:16px 16px 16px 22px;">
+            <p style="font-weight:700; color:#AAB3C5; font-size:clamp(13px,2vw,15px); min-width:130px;">Aminoácidos</p>
+            <p style="font-size:clamp(12px,1.9vw,13px); flex:1; min-width:160px;">Blocos de construção dos cabelos — restauram a cadeia proteica e aumentam a resistência à quebra.</p>
           </div>
         </div>
       </div>
@@ -484,36 +488,36 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2">Passo a Passo da <span class="gt">Aplicação</span></h2>
         <p class="sub au d3">Protocolo completo para um resultado profissional e duradouro</p>
-        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:22px;">
-          <div class="card au d3" style="text-align:center;">
+        <div class="g6">
+          <div class="card au d3" style="text-align:center; padding:20px 14px;">
             <div class="tn n1">1</div>
-            <h3 style="margin-bottom:10px;">Lavagem</h3>
-            <p style="font-size:14px;">Higienize com shampoo antirresíduo para remover impurezas e abrir as cutículas para melhor absorção.</p>
+            <h3 style="margin-bottom:6px; font-size:clamp(13px,2.2vw,15px);">Lavagem</h3>
+            <p style="font-size:clamp(11px,1.8vw,13px);">Higienize com shampoo antirresíduo para remover impurezas e abrir as cutículas.</p>
           </div>
-          <div class="card au d3" style="text-align:center;">
+          <div class="card au d3" style="text-align:center; padding:20px 14px;">
             <div class="tn n2">2</div>
-            <h3 style="margin-bottom:10px;">Secagem parcial</h3>
-            <p style="font-size:14px;">Seque cerca de 70% com o secador. O cabelo não deve estar nem muito úmido, nem completamente seco.</p>
+            <h3 style="margin-bottom:6px; font-size:clamp(13px,2.2vw,15px);">Secagem parcial</h3>
+            <p style="font-size:clamp(11px,1.8vw,13px);">Seque cerca de 70% com o secador — nem muito úmido, nem completamente seco.</p>
           </div>
-          <div class="card au d4" style="text-align:center;">
+          <div class="card au d4" style="text-align:center; padding:20px 14px;">
             <div class="tn n3">3</div>
-            <h3 style="margin-bottom:10px;">Divisão em mechas</h3>
-            <p style="font-size:14px;">Separe o cabelo em 4 quadrantes para garantir aplicação uniforme em todos os fios.</p>
+            <h3 style="margin-bottom:6px; font-size:clamp(13px,2.2vw,15px);">Divisão em mechas</h3>
+            <p style="font-size:clamp(11px,1.8vw,13px);">Separe o cabelo em 4 quadrantes para aplicação uniforme em todos os fios.</p>
           </div>
-          <div class="card au d4" style="text-align:center;">
+          <div class="card au d4" style="text-align:center; padding:20px 14px;">
             <div class="tn n4">4</div>
-            <h3 style="margin-bottom:10px;">Aplicação do produto</h3>
-            <p style="font-size:14px;">Aplique mecha por mecha do comprimento às pontas, evitando o couro cabeludo.</p>
+            <h3 style="margin-bottom:6px; font-size:clamp(13px,2.2vw,15px);">Aplicação</h3>
+            <p style="font-size:clamp(11px,1.8vw,13px);">Aplique mecha por mecha do comprimento às pontas, evitando o couro cabeludo.</p>
           </div>
-          <div class="card au d5" style="text-align:center;">
+          <div class="card au d5" style="text-align:center; padding:20px 14px;">
             <div class="tn n5">5</div>
-            <h3 style="margin-bottom:10px;">Tempo de ação</h3>
-            <p style="font-size:14px;">Aguarde de 20 a 40 minutos conforme o grau de dano do cabelo para a absorção completa dos ativos.</p>
+            <h3 style="margin-bottom:6px; font-size:clamp(13px,2.2vw,15px);">Tempo de ação</h3>
+            <p style="font-size:clamp(11px,1.8vw,13px);">Aguarde 20 a 40 minutos conforme o grau de dano para absorção completa.</p>
           </div>
-          <div class="card au d5" style="text-align:center;">
+          <div class="card au d5" style="text-align:center; padding:20px 14px;">
             <div class="tn n6">6</div>
-            <h3 style="margin-bottom:10px;">Escova e prancha</h3>
-            <p style="font-size:14px;">Seque com escova e finalize com chapinha a 230°C para selar a cutícula e potencializar o brilho.</p>
+            <h3 style="margin-bottom:6px; font-size:clamp(13px,2.2vw,15px);">Escova e prancha</h3>
+            <p style="font-size:clamp(11px,1.8vw,13px);">Seque com escova e finalize com chapinha a 230°C para selar a cutícula.</p>
           </div>
         </div>
       </div>
@@ -525,32 +529,32 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2"><span class="gt">Botox x Progressiva x Selagem</span></h2>
         <p class="sub au d3">Entenda as diferenças e saiba qual tratamento indicar para cada cliente</p>
-        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:24px;">
+        <div class="g3c">
           <div class="bwc cr au d3">
-            <p style="font-weight:800; font-size:18px; color:#FF6B6B; margin-bottom:20px;">🔵 Botox Capilar</p>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Formulação</p><p style="font-size:13px;">Colágeno, queratina e óleos — sem formol</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Resultado</p><p style="font-size:13px;">Nutrição, brilho e redução parcial do volume</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Duração</p><p style="font-size:13px;">60 a 90 dias</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Indicação</p><p style="font-size:13px;">Todos os tipos de cabelo</p></div></div>
+            <p style="font-weight:800; font-size:clamp(14px,2.5vw,17px); color:#FF6B6B; margin-bottom:14px;">🔵 Botox Capilar</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Formulação</p><p style="font-size:clamp(11px,1.7vw,12px);">Colágeno, queratina e óleos — sem formol</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Resultado</p><p style="font-size:clamp(11px,1.7vw,12px);">Nutrição, brilho e redução parcial do volume</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Duração</p><p style="font-size:clamp(11px,1.7vw,12px);">60 a 90 dias</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FF6B6B;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Indicação</p><p style="font-size:clamp(11px,1.7vw,12px);">Todos os tipos de cabelo</p></div></div>
             </div>
           </div>
           <div class="bwc cy au d4">
-            <p style="font-weight:800; font-size:18px; color:#FFD460; margin-bottom:20px;">⚡ Progressiva</p>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FFD460; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Formulação</p><p style="font-size:13px;">Queratina com formol ou ativo equivalente</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FFD460; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Resultado</p><p style="font-size:13px;">Alisamento intenso e durável</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FFD460; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Duração</p><p style="font-size:13px;">3 a 6 meses</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#FFD460; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Indicação</p><p style="font-size:13px;">Cabelos com muito volume e frizz</p></div></div>
+            <p style="font-weight:800; font-size:clamp(14px,2.5vw,17px); color:#FFD460; margin-bottom:14px;">⚡ Progressiva</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FFD460;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Formulação</p><p style="font-size:clamp(11px,1.7vw,12px);">Queratina com formol ou equivalente</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FFD460;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Resultado</p><p style="font-size:clamp(11px,1.7vw,12px);">Alisamento intenso e durável</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FFD460;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Duração</p><p style="font-size:clamp(11px,1.7vw,12px);">3 a 6 meses</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#FFD460;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Indicação</p><p style="font-size:clamp(11px,1.7vw,12px);">Cabelos com muito volume e frizz</p></div></div>
             </div>
           </div>
           <div class="bwc cg au d5">
-            <p style="font-weight:800; font-size:18px; color:#5EE89A; margin-bottom:20px;">✨ Selagem</p>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Formulação</p><p style="font-size:13px;">Ativos hidratantes e lacrador da cutícula</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Resultado</p><p style="font-size:13px;">Hidratação e fechamento da cutícula</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Duração</p><p style="font-size:13px;">30 a 45 dias</p></div></div>
-              <div style="display:flex; gap:10px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A; margin-top:6px;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:14px;">Indicação</p><p style="font-size:13px;">Manutenção e cabelos sensibilizados</p></div></div>
+            <p style="font-weight:800; font-size:clamp(14px,2.5vw,17px); color:#5EE89A; margin-bottom:14px;">✨ Selagem</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Formulação</p><p style="font-size:clamp(11px,1.7vw,12px);">Ativos hidratantes e lacrador da cutícula</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Resultado</p><p style="font-size:clamp(11px,1.7vw,12px);">Hidratação e fechamento da cutícula</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Duração</p><p style="font-size:clamp(11px,1.7vw,12px);">30 a 45 dias</p></div></div>
+              <div style="display:flex; gap:8px; align-items:flex-start;"><div class="bwd" style="background:#5EE89A;"></div><div><p style="font-weight:600; color:#F5F7FB; font-size:clamp(11px,1.9vw,13px);">Indicação</p><p style="font-size:clamp(11px,1.7vw,12px);">Manutenção e cabelos sensibilizados</p></div></div>
             </div>
           </div>
         </div>
@@ -563,42 +567,40 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2">Resultados <span class="gt">Esperados</span></h2>
         <p class="sub au d3">Números reais que transformam a experiência do cliente no salão</p>
-        <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:24px; margin-bottom:30px;">
-          <div class="cp au d3" style="text-align:center;">
+        <div class="g4" style="margin-bottom:20px;">
+          <div class="cp au d3" style="text-align:center; padding:18px 12px;">
             <p class="s5n" style="color:#2E6BFF;">+70%</p>
-            <p style="font-weight:600; color:#F5F7FB; font-size:15px;">Hidratação</p>
-            <p style="font-size:13px; margin-top:6px;">Aumento na retenção de umidade nos fios</p>
+            <p style="font-weight:600; color:#F5F7FB; font-size:clamp(12px,2vw,14px);">Hidratação</p>
+            <p style="font-size:clamp(11px,1.7vw,12px); margin-top:4px;">Aumento na retenção de umidade</p>
           </div>
-          <div class="cp au d3" style="text-align:center;">
+          <div class="cp au d3" style="text-align:center; padding:18px 12px;">
             <p class="s5n" style="color:#5B3FD6;">-80%</p>
-            <p style="font-weight:600; color:#F5F7FB; font-size:15px;">Frizz</p>
-            <p style="font-size:13px; margin-top:6px;">Redução do volume indesejado e arrepiado</p>
+            <p style="font-weight:600; color:#F5F7FB; font-size:clamp(12px,2vw,14px);">Frizz</p>
+            <p style="font-size:clamp(11px,1.7vw,12px); margin-top:4px;">Redução do volume indesejado</p>
           </div>
-          <div class="cp au d4" style="text-align:center;">
+          <div class="cp au d4" style="text-align:center; padding:18px 12px;">
             <p class="s5n" style="color:#C86DD7;">90</p>
-            <p style="font-weight:600; color:#F5F7FB; font-size:15px;">Dias de duração</p>
-            <p style="font-size:13px; margin-top:6px;">Resultados duradouros com cuidado correto</p>
+            <p style="font-weight:600; color:#F5F7FB; font-size:clamp(12px,2vw,14px);">Dias de duração</p>
+            <p style="font-size:clamp(11px,1.7vw,12px); margin-top:4px;">Com cuidados corretos</p>
           </div>
-          <div class="cp au d4" style="text-align:center;">
-            <p class="s5n">
-              <span style="background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">1ª</span>
-            </p>
-            <p style="font-weight:600; color:#F5F7FB; font-size:15px;">Sessão</p>
-            <p style="font-size:13px; margin-top:6px;">Brilho visível já na primeira aplicação</p>
+          <div class="cp au d4" style="text-align:center; padding:18px 12px;">
+            <p class="s5n"><span style="background:linear-gradient(135deg,#2E6BFF,#C86DD7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">1ª</span></p>
+            <p style="font-weight:600; color:#F5F7FB; font-size:clamp(12px,2vw,14px);">Sessão</p>
+            <p style="font-size:clamp(11px,1.7vw,12px); margin-top:4px;">Brilho visível logo na primeira vez</p>
           </div>
         </div>
-        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px;">
-          <div class="card au d5" style="display:flex; gap:16px; align-items:center;">
-            <div style="width:10px; height:10px; border-radius:50%; background:#2E6BFF; flex-shrink:0;"></div>
-            <p style="font-size:14px;">Maciez e suavidade imediata ao toque</p>
+        <div class="g3r">
+          <div class="card au d5" style="display:flex; gap:12px; align-items:center; padding:16px 16px;">
+            <div style="width:9px;height:9px;border-radius:50%;background:#2E6BFF;flex-shrink:0;"></div>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Maciez e suavidade imediata ao toque</p>
           </div>
-          <div class="card au d5" style="display:flex; gap:16px; align-items:center;">
-            <div style="width:10px; height:10px; border-radius:50%; background:#5B3FD6; flex-shrink:0;"></div>
-            <p style="font-size:14px;">Penteados duram mais tempo</p>
+          <div class="card au d5" style="display:flex; gap:12px; align-items:center; padding:16px 16px;">
+            <div style="width:9px;height:9px;border-radius:50%;background:#5B3FD6;flex-shrink:0;"></div>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Penteados duram mais tempo</p>
           </div>
-          <div class="card au d6" style="display:flex; gap:16px; align-items:center;">
-            <div style="width:10px; height:10px; border-radius:50%; background:#C86DD7; flex-shrink:0;"></div>
-            <p style="font-size:14px;">Cabelo mais fácil de desembaraçar</p>
+          <div class="card au d6" style="display:flex; gap:12px; align-items:center; padding:16px 16px;">
+            <div style="width:9px;height:9px;border-radius:50%;background:#C86DD7;flex-shrink:0;"></div>
+            <p style="font-size:clamp(12px,1.9vw,13px);">Cabelo mais fácil de desembaraçar</p>
           </div>
         </div>
       </div>
@@ -610,55 +612,31 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
         <div class="gl au d1"></div>
         <h2 class="au d2">Cuidados <span class="gt">Pós-Tratamento</span></h2>
         <p class="sub au d3">O resultado dura muito mais com os cuidados certos em casa</p>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:32px;">
+        <div class="g2">
           <div class="cp au d3">
-            <p style="font-weight:800; color:#5EE89A; font-size:16px; margin-bottom:24px;">✅ Faça isso</p>
+            <p style="font-weight:800; color:#5EE89A; font-size:clamp(13px,2.2vw,15px); margin-bottom:18px; display:flex; align-items:center; gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+              Faça isso
+            </p>
             <ul class="check-list">
-              <li>
-                <div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                Use shampoo e condicionador sem sulfato para prolongar o efeito
-              </li>
-              <li>
-                <div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                Aplique máscara nutritiva uma vez por semana
-              </li>
-              <li>
-                <div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                Use protetor térmico antes de usar secador ou chapinha
-              </li>
-              <li>
-                <div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                Retorne ao salão a cada 60–90 dias para manutenção
-              </li>
-              <li>
-                <div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                Hidrate com leave-in após cada lavagem
-              </li>
+              <li><div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>Use shampoo e condicionador sem sulfato para prolongar o efeito</li>
+              <li><div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>Aplique máscara nutritiva uma vez por semana</li>
+              <li><div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>Use protetor térmico antes de usar secador ou chapinha</li>
+              <li><div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>Retorne ao salão a cada 60–90 dias para manutenção</li>
+              <li><div class="check-icon ok"><svg viewBox="0 0 24 24" fill="none" stroke="#5EE89A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>Hidrate com leave-in após cada lavagem</li>
             </ul>
           </div>
           <div class="cp au d4">
-            <p style="font-weight:800; color:#FF6B6B; font-size:16px; margin-bottom:24px;">❌ Evite isso</p>
+            <p style="font-weight:800; color:#FF6B6B; font-size:clamp(13px,2.2vw,15px); margin-bottom:18px; display:flex; align-items:center; gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              Evite isso
+            </p>
             <ul class="check-list">
-              <li>
-                <div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
-                Molhar o cabelo nas primeiras 48h após o tratamento
-              </li>
-              <li>
-                <div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
-                Usar shampoos com sulfato, sal ou parabenos
-              </li>
-              <li>
-                <div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
-                Prender o cabelo ou usar acessórios nas primeiras 24h
-              </li>
-              <li>
-                <div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
-                Tomar sol intenso sem proteção nos primeiros dias
-              </li>
-              <li>
-                <div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>
-                Fazer outros procedimentos químicos logo após
-              </li>
+              <li><div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Molhar o cabelo nas primeiras 48h após o tratamento</li>
+              <li><div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Usar shampoos com sulfato, sal ou parabenos</li>
+              <li><div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Prender o cabelo nas primeiras 24h</li>
+              <li><div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Tomar sol intenso sem proteção nos primeiros dias</li>
+              <li><div class="check-icon no"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg></div>Fazer outros procedimentos químicos logo após</li>
             </ul>
           </div>
         </div>
@@ -669,27 +647,27 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
     <section class="slide">
       <div class="cta-wrap">
         <div class="badge au d1">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           Próximo Passo
         </div>
         <h2 class="au d2">Eleve seu Serviço ao<br><span class="gt">Próximo Nível</span></h2>
-        <p class="au d3">Domine a técnica do botox capilar, aumente o ticket médio do seu salão e fidelize clientes com resultados que falam por si mesmos.</p>
-        <div style="display:flex; gap:20px; justify-content:center; margin-bottom:50px;" class="au d4">
-          <div class="card" style="padding:20px 30px; text-align:center; min-width:160px;">
-            <p style="font-size:28px; font-weight:900; color:#2E6BFF;">3x</p>
-            <p style="font-size:13px;">mais fidelização</p>
+        <p class="desc au d3">Domine a técnica do botox capilar, aumente o ticket médio do seu salão e fidelize clientes com resultados que falam por si mesmos.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-bottom:36px;" class="au d4">
+          <div class="card" style="padding:16px 22px; text-align:center; min-width:120px; flex:1;">
+            <p style="font-size:clamp(22px,5vw,26px); font-weight:900; color:#2E6BFF;">3x</p>
+            <p style="font-size:clamp(11px,1.8vw,12px);">mais fidelização</p>
           </div>
-          <div class="card" style="padding:20px 30px; text-align:center; min-width:160px;">
-            <p style="font-size:28px; font-weight:900; color:#5B3FD6;">+40%</p>
-            <p style="font-size:13px;">no ticket médio</p>
+          <div class="card" style="padding:16px 22px; text-align:center; min-width:120px; flex:1;">
+            <p style="font-size:clamp(22px,5vw,26px); font-weight:900; color:#5B3FD6;">+40%</p>
+            <p style="font-size:clamp(11px,1.8vw,12px);">no ticket médio</p>
           </div>
-          <div class="card" style="padding:20px 30px; text-align:center; min-width:160px;">
-            <p style="font-size:28px; font-weight:900; color:#C86DD7;">100%</p>
-            <p style="font-size:13px;">de satisfação</p>
+          <div class="card" style="padding:16px 22px; text-align:center; min-width:120px; flex:1;">
+            <p style="font-size:clamp(22px,5vw,26px); font-weight:900; color:#C86DD7;">100%</p>
+            <p style="font-size:clamp(11px,1.8vw,12px);">de satisfação</p>
           </div>
         </div>
         <button class="cta-btn au d5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           Comece a Dominar a Técnica
         </button>
       </div>
@@ -698,24 +676,23 @@ p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
   </div>
 </div>
 
-<!-- CHROME -->
 <div class="sc"><span class="cn" id="cn">1</span> / 10</div>
 <div class="ind" id="ind"></div>
 <div class="nav-arr">
   <button onclick="prev()">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
   <button onclick="next()">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
   </button>
 </div>
 
 <script>
 const T = 10; let C = 0;
-const W = document.getElementById('sw');
+const W  = document.getElementById('sw');
 const CN = document.getElementById('cn');
-const P = document.getElementById('prog');
-const I = document.getElementById('ind');
+const P  = document.getElementById('prog');
+const I  = document.getElementById('ind');
 
 for (let i = 0; i < T; i++) {
   const d = document.createElement('div');
@@ -729,7 +706,10 @@ function upd() {
   I.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === C));
   CN.textContent = C + 1;
   P.style.width = ((C + 1) / T * 100) + '%';
-  document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === C));
+  document.querySelectorAll('.slide').forEach((s, i) => {
+    s.classList.toggle('active', i === C);
+    if (i === C) s.scrollTop = 0;
+  });
 }
 
 function go(i) { if (i < 0 || i >= T) return; C = i; W.style.transform = `translateX(-${C * 100}vw)`; upd(); }
@@ -742,9 +722,18 @@ document.addEventListener('keydown', e => {
   if (e.key === 'f' || e.key === 'F') toggleFs();
 });
 
-let tx = 0;
-document.addEventListener('touchstart', e => tx = e.changedTouches[0].screenX);
-document.addEventListener('touchend', e => { const d = tx - e.changedTouches[0].screenX; if (Math.abs(d) > 50) { d > 0 ? next() : prev(); } });
+let tx = 0, ty = 0;
+document.addEventListener('touchstart', e => {
+  tx = e.changedTouches[0].screenX;
+  ty = e.changedTouches[0].screenY;
+});
+document.addEventListener('touchend', e => {
+  const dx = tx - e.changedTouches[0].screenX;
+  const dy = ty - e.changedTouches[0].screenY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+    dx > 0 ? next() : prev();
+  }
+});
 
 function toggleFs() {
   if (!document.fullscreenElement) {
@@ -763,4 +752,3 @@ upd();
 </script>
 </body>
 </html>
-
