@@ -1,1 +1,768 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Luzes na Touca — Técnica Zero Dor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+/* SLIDE BASE */
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  position:relative;overflow-y:auto;overflow-x:hidden;
+  padding:56px 20px 100px;
+}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-track{background:transparent;}
+.slide::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:4px;}
+.slide.center-v{justify-content:center;}
+
+/* BG */
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),
+    radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
+  background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+/* TYPOGRAPHY */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.15;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+
+/* GRADIENT TEXT */
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;}
+.gt2{background:linear-gradient(135deg,#C86DD7 0%,#FF8FAB 50%,#C86DD7 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* DECO LINE */
+.gl{width:70px;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,#2E6BFF,#C86DD7);
+  margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;
+  margin-bottom:20px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);
+  font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;padding:20px 18px;backdrop-filter:blur(8px);transition:all .4s ease;
+  box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.08);
+  padding:22px 18px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.25);transform:translateY(-2px) scale(1.01);}
+
+/* NUMBERED */
+.tn{width:54px;height:54px;border-radius:16px;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;flex-shrink:0;}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+.tn.n4{background:linear-gradient(145deg,#FF8FAB,#C86DD7);animation-delay:1.5s;}
+.tn.n5{background:linear-gradient(145deg,#2E6BFF,#C86DD7);animation-delay:.3s;}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(46,107,255,.12)}50%{box-shadow:0 0 32px rgba(46,107,255,.3)}}
+
+/* COMPARATIVO */
+.bwc{border-radius:18px;padding:18px 16px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.12);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.12);}
+.bwc.cp2{background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.15);}
+
+/* OX CARD */
+.ox-card{border-radius:16px;padding:16px 12px;text-align:center;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.ox-num{font-size:30px;font-weight:900;letter-spacing:-.03em;margin-bottom:4px;}
+
+/* FLOW */
+.flow-list{display:flex;flex-direction:column;gap:10px;width:100%;}
+.flow-item{display:flex;align-items:center;gap:14px;padding:14px 16px;
+  border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.flow-item.act{background:rgba(46,107,255,.08);border-color:rgba(46,107,255,.25);}
+.flow-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;color:#fff;flex-shrink:0;}
+.fn1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.fn2{background:linear-gradient(145deg,#5B3FD6,#4530B3);}
+.fn3{background:linear-gradient(145deg,#C86DD7,#A854BF);}
+.fn4{background:linear-gradient(145deg,#FF8FAB,#C86DD7);}
+.fn5{background:linear-gradient(145deg,#2E6BFF,#C86DD7);}
+
+/* ZONA CARD */
+.zona{border-radius:18px;padding:18px 16px;border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);}
+.zona-num{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900;color:#fff;margin-bottom:12px;}
+
+/* EFEITO CARD */
+.ef-card{border-radius:18px;padding:18px 16px;border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);transition:all .35s ease;}
+.ef-card:hover{transform:translateY(-2px);border-color:rgba(200,109,215,.25);}
+.ef-dot{width:42px;height:42px;border-radius:50%;margin-bottom:12px;
+  box-shadow:0 0 20px rgba(0,0,0,.5);}
+
+/* CONTORNO CARD */
+.cont-card{border-radius:18px;padding:20px 16px;border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);}
+.cont-ico{width:54px;height:54px;border-radius:50%;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  border:2px solid rgba(255,255,255,.1);}
+
+/* RECAP */
+.recap-item{border-radius:16px;padding:14px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);display:flex;align-items:flex-start;gap:12px;}
+.recap-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:16px;}
+
+/* INFO BOX */
+.info{padding:14px 16px;border-radius:14px;}
+.info.blue{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);}
+.info.pink{background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.15);}
+.info.orange{background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.2);}
+.info.green{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.2);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}
+.d3{animation-delay:.28s!important}.d4{animation-delay:.38s!important}
+.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;
+  background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);
+  background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#7E879B;padding:9px 14px;border-radius:10px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+  display:flex;align-items:center;gap:6px;transition:all .3s ease;
+  backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+.sc{position:fixed;bottom:22px;left:20px;z-index:998;color:#7E879B;
+  font-size:13px;font-weight:600;letter-spacing:.05em;
+  background:rgba(0,0,0,.4);padding:8px 14px;border-radius:10px;
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;
+  display:flex;gap:6px;background:rgba(0,0,0,.4);padding:8px 14px;
+  border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);
+  transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);
+  width:28px;border-radius:5px;}
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:8px;}
+.nav-arr button{width:46px;height:46px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;}
+
+/* ── GRIDS RESPONSIVOS ── */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.g2x3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.g23{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+
+@media(max-width:768px){
+  .slide{padding:52px 16px 96px;}
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  .g2x3{grid-template-columns:repeat(2,1fr);}
+  .g23{grid-template-columns:repeat(2,1fr);}
+  .fs-btn span{display:none;}
+  .fs-btn{padding:9px 10px;}
+}
+@media(max-width:480px){
+  .slide{padding:50px 14px 94px;}
+  .g3{grid-template-columns:1fr;}
+  .g2x3{grid-template-columns:repeat(2,1fr);}
+  .g23{grid-template-columns:1fr;}
+}
+@media(max-width:360px){
+  .g4{grid-template-columns:1fr;}
+  .g2x3{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════ SLIDE 1 ══════════════════════════ -->
+<section class="slide center-v active">
+  <div style="width:100%;max-width:720px;text-align:center;">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      Técnica Profissional de Colorimetria
+    </div>
+    <h1 class="au d2" style="font-size:clamp(30px,6.5vw,70px);margin-bottom:14px;">
+      Luzes na <span class="gt">Touca</span><br/>
+      <span class="gt2">Técnica Zero Dor</span>
+    </h1>
+    <div class="gl ce au d3"></div>
+    <p class="au d4" style="font-size:clamp(14px,2.2vw,18px);max-width:500px;margin:0 auto 28px;">
+      Mapeamento, efeitos, contornos e aplicação profissional passo a passo
+    </p>
+    <div class="g4 au d5" style="max-width:580px;margin:0 auto;">
+      <div style="padding:10px 10px;border-radius:12px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);font-size:12px;font-weight:600;color:#8FAEFF;text-align:center;">💆 Zero Dor</div>
+      <div style="padding:10px 10px;border-radius:12px;background:rgba(91,63,214,.08);border:1px solid rgba(91,63,214,.18);font-size:12px;font-weight:600;color:#A98EFF;text-align:center;">🗺️ Mapeamento</div>
+      <div style="padding:10px 10px;border-radius:12px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:12px;font-weight:600;color:#D98EEA;text-align:center;">✨ Efeitos</div>
+      <div style="padding:10px 10px;border-radius:12px;background:rgba(255,143,171,.08);border:1px solid rgba(255,143,171,.18);font-size:12px;font-weight:600;color:#FFA8BF;text-align:center;">🎨 Contornos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 2 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">O Que é a <span class="gt">Técnica da Touca?</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:22px;">
+      Uma técnica clássica e segura que usa uma touca perfurada para selecionar meches com <strong style="color:#F5F7FB;">precisão cirúrgica</strong> — sem papel laminado e com mínimo desconforto.
+    </p>
+    <div class="g3 au d4" style="margin-bottom:18px;">
+      <div class="cp" style="text-align:center;">
+        <div class="tn n1">💡</div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Conceito</h3>
+        <p style="font-size:13px;">Touca perfurada sobre o couro cabeludo permite puxar mechas exatas sem contato direto do produto com a raiz.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n2">👩</div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Para Quem</h3>
+        <p style="font-size:13px;">Ideal para iniciantes, clientes sensíveis, cabelos curtos a médios e quem deseja resultados naturais e sutis.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n3">🏆</div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Vantagens</h3>
+        <p style="font-size:13px;">Mais econômica, rápida, menor risco de manchas, manutenção mais simples e resultado delicado.</p>
+      </div>
+    </div>
+    <div class="g2 au d5">
+      <div class="info blue">
+        <p style="font-size:13px;color:#8FAEFF;">✅ <strong style="color:#F5F7FB;">Por que "Zero Dor"?</strong> Quando a técnica de puxão é correta — com agulha adequada, movimento suave e mechas finas — o desconforto é mínimo ou inexistente.</p>
+      </div>
+      <div class="info pink">
+        <p style="font-size:13px;color:#D98EEA;">⚡ <strong style="color:#F5F7FB;">Resultado:</strong> luzes naturais e multidimensionais que imitam o efeito do sol, com crescimento mais discreto que o ombré.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 3 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Conhecendo a <span class="gt">Touca — Peças e Anatomia</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:22px;">
+      Antes de aplicar, é fundamental conhecer cada componente e sua função para garantir <strong style="color:#F5F7FB;">precisão e segurança.</strong>
+    </p>
+    <div class="g2 au d4" style="margin-bottom:16px;">
+      <div class="zona">
+        <div class="zona-num" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">🧢</div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Touca de Silicone</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Material mais durável e higiênico. Fácil higienização entre clientes. Mais aderente ao couro cabeludo, mantém melhor a posição durante o processo.</p>
+        <div style="padding:8px 12px;border-radius:10px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.12);">
+          <p style="font-size:12px;color:#8FAEFF;">✔ Mais indicada para uso profissional diário</p>
+        </div>
+      </div>
+      <div class="zona">
+        <div class="zona-num" style="background:linear-gradient(145deg,#5B3FD6,#4530B3);">🪡</div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Touca Plástica / Descartável</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Opção econômica para clientes eventuais. Furos pré-marcados ou personalizados com agulha. Menor aderência — requer cuidado extra no posicionamento.</p>
+        <div style="padding:8px 12px;border-radius:10px;background:rgba(91,63,214,.06);border:1px solid rgba(91,63,214,.12);">
+          <p style="font-size:12px;color:#A98EFF;">✔ Prática para demos e atendimentos rápidos</p>
+        </div>
+      </div>
+      <div class="zona">
+        <div class="zona-num" style="background:linear-gradient(145deg,#C86DD7,#A854BF);">🪝</div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Agulha de Tração</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Instrumento que passa pelo furo da touca e puxa os fios. Deve ter ponta arredondada (não cortante). Movimentos curtos, deslizantes e sem pressão.</p>
+        <div style="padding:8px 12px;border-radius:10px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.12);">
+          <p style="font-size:12px;color:#D98EEA;">✔ Segredo do Zero Dor está no uso correto desta peça</p>
+        </div>
+      </div>
+      <div class="zona">
+        <div class="zona-num" style="background:linear-gradient(145deg,#FF8FAB,#C86DD7);">🔧</div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Acessórios Complementares</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Prendedores para fixar a touca nas laterais, pente de cabo fino para organizar os fios antes da colocação e toalha para proteger o pescoço do cliente.</p>
+        <div style="padding:8px 12px;border-radius:10px;background:rgba(255,143,171,.06);border:1px solid rgba(255,143,171,.12);">
+          <p style="font-size:12px;color:#FFA8BF;">✔ Organização = conforto e resultado superior</p>
+        </div>
+      </div>
+    </div>
+    <div class="info orange au d5">
+      <p style="font-size:13px;color:#FFB060;">🔑 <strong style="color:#F5F7FB;">Dica profissional:</strong> sempre desinfete a touca de silicone entre atendimentos com álcool 70%. Nunca reutilize toucas descartáveis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 4 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Mapeamento na Touca — <span class="gt">Onde Puxar os Mechas</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:22px;">
+      O mapeamento define <strong style="color:#F5F7FB;">quais furos serão usados</strong> em cada zona da touca — é ele que determina o efeito final e a distribuição da luz.
+    </p>
+    <div class="g2 au d4" style="margin-bottom:16px;">
+      <div class="zona" style="border-color:rgba(46,107,255,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">①</div>
+        <h3 style="font-size:15px;margin-bottom:6px;color:#8FAEFF;">Zona da Frente (Franja)</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Área de maior impacto visual. Furos mais próximos entre si para criar iluminação intensa ao redor do rosto.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#2E6BFF;">•</span> Efeito clarão: todos os furos da fileira frontal</li>
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#2E6BFF;">•</span> Efeito natural: 1 sim, 1 não</li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(91,63,214,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#5B3FD6,#4530B3);">②</div>
+        <h3 style="font-size:15px;margin-bottom:6px;color:#A98EFF;">Zona Lateral (Têmporas)</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Define o contorno do rosto. Furos alternados criam movimento. Furos concentrados formam destaque na lateral.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#5B3FD6;">•</span> Contorno facial: furos nas beiradas</li>
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#5B3FD6;">•</span> Movimento: distribuição diagonal</li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(200,109,215,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#C86DD7,#A854BF);">③</div>
+        <h3 style="font-size:15px;margin-bottom:6px;color:#D98EEA;">Zona do Topo (Coroa)</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Área de maior volume. Luzes aqui criam profundidade e sensação de leveza. Espaçamento regular para efeito uniforme.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#C86DD7;">•</span> Efeito volume: furos em grid regular</li>
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#C86DD7;">•</span> Leveza: furos esparsos e alternados</li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(255,143,171,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#FF8FAB,#C86DD7);">④</div>
+        <h3 style="font-size:15px;margin-bottom:6px;color:#FFA8BF;">Zona da Nuca</h3>
+        <p style="font-size:13px;margin-bottom:8px;">Área mais sensível — menor densidade de furos. Luzes aqui ficam mais escondidas e criam profundidade na parte de baixo do cabelo.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#FF8FAB;">•</span> Usar com parcimônia — 30% dos furos</li>
+          <li style="font-size:12px;color:#7E879B;"><span style="color:#FF8FAB;">•</span> Evitar no primeiro atendimento</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info blue au d5">
+      <p style="font-size:13px;color:#8FAEFF;">🗺️ <strong style="color:#F5F7FB;">Regra de mapeamento:</strong> comece sempre da frente para a nuca. Marque os furos com caneta própria antes de puxar — isso evita erros de distribuição.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 5 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:760px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Técnica <span class="gt">Zero Dor</span> — Passo a Passo</h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:22px;">
+      O segredo está na <strong style="color:#F5F7FB;">preparação do cabelo</strong> e na técnica correta de puxão — não força, apenas deslizamento suave.
+    </p>
+    <div class="flow-list au d4">
+      <div class="flow-item act">
+        <div class="flow-num fn1">1</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Preparação do Cabelo</h3>
+          <p style="font-size:12px;color:#7E879B;">Lave e seque completamente o cabelo. Fio seco desliza melhor na touca e reduz o atrito — menos dor, mais precisão na seleção dos mechas.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn2">2</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Posicionamento da Touca</h3>
+          <p style="font-size:12px;color:#7E879B;">Coloque a touca sobre o couro cabeludo como uma tiara, da frente para a nuca. Fixe com prendedores nas laterais. A borda deve estar na linha do cabelo, sem dobras.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn3">3</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Técnica de Puxão Zero Dor</h3>
+          <p style="font-size:12px;color:#7E879B;">Insira a agulha pelo furo com a ponta voltada para baixo. Gire levemente, capture 3 a 5 fios e deslize para fora com movimento CONTÍNUO e suave — nunca arrancando.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn4">4</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Quantidade e Distribuição</h3>
+          <p style="font-size:12px;color:#7E879B;">Mechas finas (3–5 fios): efeito natural e baby light. Mechas médias (6–10 fios): efeito sol. Mechas grossas (+10 fios): destaque intenso. Não ultrapasse 15 fios por furo.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn5">5</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Aplicação do Descolorante</h3>
+          <p style="font-size:12px;color:#7E879B;">Aplique o descolorante da raiz puxada até a ponta, formando uma camada uniforme. Cubra com plástico filme se necessário. Aguarde o tempo conforme o fundo desejado.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info green au d5" style="margin-top:16px;">
+      <p style="font-size:13px;color:#5EE89A;">💚 <strong style="color:#F5F7FB;">Segredo do Zero Dor:</strong> aplique uma gotinha de óleo de argan na borda da touca antes de começar — os fios deslizam ainda mais facilmente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 6 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;"><span class="gt">OX e Descolorante</span> — A Fórmula Certa</h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:20px;">
+      Na touca, o OX e o tipo de descolorante determinam a <strong style="color:#F5F7FB;">velocidade, intensidade e segurança</strong> do processo.
+    </p>
+    <div class="g4 au d4" style="margin-bottom:16px;">
+      <div class="ox-card">
+        <div class="ox-num" style="color:#5EE89A;">10</div>
+        <p style="font-size:11px;color:#5EE89A;font-weight:700;margin-bottom:6px;">Vol. — 3%</p>
+        <p style="font-size:12px;">Apenas deposita tom. Não clareia. Usar para matizar após o processo.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FFD460;">20</div>
+        <p style="font-size:11px;color:#FFD460;font-weight:700;margin-bottom:6px;">Vol. — 6%</p>
+        <p style="font-size:12px;">Clareia 1–2 tons. Ideal para cabelos finos e sensíveis na touca.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FF8C60;">30</div>
+        <p style="font-size:11px;color:#FF8C60;font-weight:700;margin-bottom:6px;">Vol. — 9%</p>
+        <p style="font-size:12px;">Clareia até 3 tons. Mais usado na touca — equilibrio perfeito.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FF6B6B;">40</div>
+        <p style="font-size:11px;color:#FF6B6B;font-weight:700;margin-bottom:6px;">Vol. — 12%</p>
+        <p style="font-size:12px;">Clareia 4+ tons. Usar com cautela — risco maior em fios finos.</p>
+      </div>
+    </div>
+    <div class="g2 au d5" style="margin-bottom:16px;">
+      <div class="bwc cg" style="padding:18px 16px;">
+        <h3 style="font-size:14px;color:#5EE89A;margin-bottom:10px;">✅ Pó Descolorante</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#5EE89A;margin-top:4px;flex-shrink:0;">•</span>Maior poder de clareamento</li>
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#5EE89A;margin-top:4px;flex-shrink:0;">•</span>Ideal para cabelos castanhos a pretos</li>
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#5EE89A;margin-top:4px;flex-shrink:0;">•</span>Proporção: 1 pó + 2 OX (cremoso)</li>
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#5EE89A;margin-top:4px;flex-shrink:0;">•</span>Não resseca a touca — fácil aplicação</li>
+        </ul>
+      </div>
+      <div class="bwc cy" style="padding:18px 16px;">
+        <h3 style="font-size:14px;color:#FFD460;margin-bottom:10px;">⚡ Creme Descolorante</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#FFD460;margin-top:4px;flex-shrink:0;">•</span>Mais controlado e suave</li>
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#FFD460;margin-top:4px;flex-shrink:0;">•</span>Indicado para cabelos loiros ou finos</li>
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#FFD460;margin-top:4px;flex-shrink:0;">•</span>Textura encorpada facilita cobertura</li>
+          <li style="font-size:12px;display:flex;gap:8px;align-items:flex-start;"><span style="color:#FFD460;margin-top:4px;flex-shrink:0;">•</span>Menor risco de escorregamento</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info orange au d6">
+      <p style="font-size:13px;color:#FFB060;">⏱️ <strong style="color:#F5F7FB;">Tempo médio na touca:</strong> 20 a 45 min dependendo do fundo desejado. Verifique a cada 10 min puxando um mecha com papel toalha para checar o clareamento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 7 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Efeitos que Você Pode <span class="gt2">Criar</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:22px;">
+      Com variações no <strong style="color:#F5F7FB;">mapeamento, espessura dos mechas e fundo de clareamento</strong>, uma única touca entrega efeitos completamente diferentes.
+    </p>
+    <div class="g2x3 au d4" style="margin-bottom:16px;">
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#F5E6A0,#E8CC70);"></div>
+        <h3 style="font-size:14px;margin-bottom:6px;">✨ Baby Lights</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Mechas finíssimas (2–4 fios), distribuídas em todos os furos. Resultado: iluminação imperceptível e extremamente natural.</p>
+        <div style="padding:6px 10px;border-radius:8px;background:rgba(255,230,160,.06);border:1px solid rgba(255,230,160,.15);font-size:11px;color:#FFE566;">Fundo: tom 8–9</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#FFD460,#FF8C00);"></div>
+        <h3 style="font-size:14px;margin-bottom:6px;">☀️ Efeito Sol</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Mechas médias concentradas no topo e frente. Parece que o sol bateu no cabelo — clareamento dourado e vibrante.</p>
+        <div style="padding:6px 10px;border-radius:8px;background:rgba(255,200,60,.06);border:1px solid rgba(255,200,60,.15);font-size:11px;color:#FFD460;">Fundo: tom 7–8</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#F5EEA0,#fff);"></div>
+        <h3 style="font-size:14px;margin-bottom:6px;">❄️ Efeito Neve</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Clareamento máximo (fundo 9–10) e matização com violeta ou prata. Mechas bem distribuídas e finas para o branco polar.</p>
+        <div style="padding:6px 10px;border-radius:8px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.15);font-size:11px;color:#D98EEA;">Fundo: tom 9–10 + matiz</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#C48828,#8B5016);"></div>
+        <h3 style="font-size:14px;margin-bottom:6px;">🔥 Mecha Grossa</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Furos agrupados em blocos de 2–3 juntos. Mechas com 10–15 fios cada. Cria destaque visual forte e dramático.</p>
+        <div style="padding:6px 10px;border-radius:8px;background:rgba(200,140,40,.06);border:1px solid rgba(200,140,40,.15);font-size:11px;color:#C48828;">Fundo: tom 6–7</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#2E6BFF,#C86DD7);"></div>
+        <h3 style="font-size:14px;margin-bottom:6px;">🎨 Fantasia Colorida</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Mechas clareadas até fundo 9–10 e tonalizadas com cores vibrantes (azul, rosa, lilás). A touca delimita perfeitamente cada mecha.</p>
+        <div style="padding:6px 10px;border-radius:8px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);font-size:11px;color:#8FAEFF;">Fundo: tom 9–10 + tonalização</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#D4A83A,#8B5016);"></div>
+        <h3 style="font-size:14px;margin-bottom:6px;">🌿 Degradê Natural</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Mais mechas na frente, diminuindo gradualmente para a nuca. Cria transição suave do claro ao escuro sem linha de demarcação.</p>
+        <div style="padding:6px 10px;border-radius:8px;background:rgba(212,168,58,.06);border:1px solid rgba(212,168,58,.15);font-size:11px;color:#D4A83A;">Fundo: tom 7–8 na frente</div>
+      </div>
+    </div>
+    <div class="info pink au d5">
+      <p style="font-size:13px;color:#D98EEA;">💡 <strong style="color:#F5F7FB;">Combine efeitos!</strong> Use baby lights na frente + mechas médias no topo para um resultado sofisticado e multidimensional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 8 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Contornos — <span class="gt">Moldando o Rosto com Luz</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:22px;">
+      A posição das luzes <strong style="color:#F5F7FB;">muda a percepção do formato do rosto</strong> — é a técnica de contouring capilar que toda profissional precisa dominar.
+    </p>
+    <div class="g3 au d4" style="margin-bottom:16px;">
+      <div class="cont-card">
+        <div class="cont-ico" style="background:rgba(46,107,255,.08);border-color:rgba(46,107,255,.2);">🌕</div>
+        <h3 style="font-size:14px;color:#8FAEFF;margin-bottom:8px;text-align:center;">Rosto Redondo</h3>
+        <p style="font-size:12px;margin-bottom:10px;text-align:center;">Objetivo: alongar e afinar visualmente.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Concentrar luzes no topo (coroa)</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Evitar mechas nas têmporas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Franja com luzes centralizadas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Laterais mais escuras = ilusão de afinar</li>
+        </ul>
+      </div>
+      <div class="cont-card">
+        <div class="cont-ico" style="background:rgba(200,109,215,.08);border-color:rgba(200,109,215,.2);">🥚</div>
+        <h3 style="font-size:14px;color:#D98EEA;margin-bottom:8px;text-align:center;">Rosto Oval</h3>
+        <p style="font-size:12px;margin-bottom:10px;text-align:center;">Objetivo: realçar e harmonizar.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Distribuição uniforme em toda a touca</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Aproveite as têmporas e a frente</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Baby lights ao redor do rosto</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Qualquer efeito funciona bem</li>
+        </ul>
+      </div>
+      <div class="cont-card">
+        <div class="cont-ico" style="background:rgba(255,143,171,.08);border-color:rgba(255,143,171,.2);">🔷</div>
+        <h3 style="font-size:14px;color:#FFA8BF;margin-bottom:8px;text-align:center;">Rosto Longo / Angular</h3>
+        <p style="font-size:12px;margin-bottom:10px;text-align:center;">Objetivo: encurtar e suavizar.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FF8FAB;flex-shrink:0;">✦</span>Concentrar luzes nas laterais e têmporas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FF8FAB;flex-shrink:0;">✦</span>Evitar excesso no topo da cabeça</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FF8FAB;flex-shrink:0;">✦</span>Franja com luzes distribuídas nas pontas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FF8FAB;flex-shrink:0;">✦</span>Volume nas laterais cria largura visual</li>
+        </ul>
+      </div>
+    </div>
+    <div class="g2 au d5">
+      <div class="info blue">
+        <p style="font-size:13px;color:#8FAEFF;">👁️ <strong style="color:#F5F7FB;">Iluminar o olhar:</strong> puxe mechas nos furos da linha frontal central — mesmo 4 mechas finas ao redor da testa já iluminam toda a expressão do rosto.</p>
+      </div>
+      <div class="info pink">
+        <p style="font-size:13px;color:#D98EEA;">📐 <strong style="color:#F5F7FB;">Dica de contorno:</strong> fotografe o rosto do cliente de frente antes do atendimento para identificar o formato e planejar o mapeamento ideal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 9 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:760px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,3.8vw,42px);margin-bottom:10px;">Do Diagnóstico ao Resultado — <span class="gt">Fluxo Profissional</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,15px);margin-bottom:20px;">
+      5 etapas para um atendimento de luzes na touca <strong style="color:#F5F7FB;">impecável, seguro e com resultado que encanta.</strong>
+    </p>
+    <div class="flow-list au d4">
+      <div class="flow-item act">
+        <div class="flow-num fn1">1</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Consulta e Diagnóstico</h3>
+          <p style="font-size:12px;color:#7E879B;">Avaliar tom natural, histórico químico (relaxamento, progressiva, coloração anterior), textura e saúde do fio. Definir o efeito desejado com a cliente.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn2">2</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Mapeamento da Touca</h3>
+          <p style="font-size:12px;color:#7E879B;">Marcar os furos que serão usados conforme o efeito e o contorno facial planejados. Definir zonas prioritárias e densidade dos mechas antes de começar o puxão.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn3">3</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Puxão e Aplicação</h3>
+          <p style="font-size:12px;color:#7E879B;">Posicionar a touca, puxar os mechas com técnica Zero Dor, aplicar descolorante com pincel do centro para as pontas e cobrir uniformemente.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn4">4</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Controle da Descoloração</h3>
+          <p style="font-size:12px;color:#7E879B;">Monitorar o fundo de clareamento a cada 10 minutos. Remover a touca quando o fundo desejado for atingido. Enxaguar sem retirar completamente se precisar matizar.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn5">5</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Finalização e Tonalização</h3>
+          <p style="font-size:12px;color:#7E879B;">Após retirar a touca, avaliar o resultado. Aplicar matizador ou tonalizante se necessário. Finalizar com tratamento hidratante e orientar sobre manutenção em casa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="g2 au d5" style="margin-top:16px;">
+      <div class="info blue">
+        <p style="font-size:13px;color:#8FAEFF;">📋 <strong style="color:#F5F7FB;">Registre sempre:</strong> OX usado, descolorante, tempo de exposição e fundo atingido para replicar na próxima visita.</p>
+      </div>
+      <div class="info green">
+        <p style="font-size:13px;color:#5EE89A;">🏠 <strong style="color:#F5F7FB;">Orientação pós:</strong> shampoo para loiros, leave-in e protetor térmico. Retorno em 6 a 8 semanas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SLIDE 10 ══════════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;text-align:center;">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(22px,4vw,48px);margin-bottom:10px;">
+      Você é uma <span class="gt2">Especialista</span><br/>em Luzes na Touca!
+    </h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,16px);max-width:520px;margin:0 auto 22px;">
+      Técnica dominada, cliente encantada. Agora é hora de pegar a agulha e brilhar! ✨
+    </p>
+    <div class="g23 au d4" style="text-align:left;margin-bottom:20px;">
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(46,107,255,.12);">🧢</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Anatomia da Touca</h3><p style="font-size:11px;color:#7E879B;">Silicone, plástica, agulha e acessórios</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(91,63,214,.12);">🗺️</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Mapeamento</h3><p style="font-size:11px;color:#7E879B;">Zonas: frente, lateral, topo e nuca</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(200,109,215,.12);">💆</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Técnica Zero Dor</h3><p style="font-size:11px;color:#7E879B;">Puxão suave, deslizante, sem força</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(255,143,171,.12);">⚗️</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">OX e Descolorante</h3><p style="font-size:11px;color:#7E879B;">Pó vs creme, 20 a 40 vol</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(255,200,60,.12);">✨</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Efeitos</h3><p style="font-size:11px;color:#7E879B;">Baby light, sol, neve, fantasia e degradê</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(94,232,154,.12);">🎨</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Contornos Faciais</h3><p style="font-size:11px;color:#7E879B;">Redondo, oval e longo com luz</p></div>
+      </div>
+    </div>
+    <div class="au d5" style="padding:20px 22px;border-radius:18px;background:linear-gradient(135deg,rgba(200,109,215,.08),rgba(255,143,171,.08));border:1px solid rgba(200,109,215,.2);">
+      <p style="font-size:clamp(13px,2vw,15px);font-style:italic;color:#F5F7FB;margin-bottom:8px;">
+        "A touca não é só uma ferramenta — é o pincel com o qual você pinta luz na vida das suas clientes."
+      </p>
+      <p style="font-size:12px;color:#7E879B;">SEMEAR — Escola da Mulher Empreendedora</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()" aria-label="Anterior">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    s.classList.toggle('active',i===C);
+    if(i===C)s.scrollTop=0;
+  });
+}
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=ty-e.changedTouches[0].clientY;
+  if(Math.abs(dx)>Math.abs(dy)*1.5&&Math.abs(dx)>52){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
 
