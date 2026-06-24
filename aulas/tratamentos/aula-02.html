@@ -11,30 +11,35 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:
 
 .presentation{width:100%;height:100%;overflow:hidden;}
 .slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
 .slide{
   width:100vw;height:100vh;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-  padding:20px 20px 90px;
+  display:flex;align-items:flex-start;justify-content:center;
+  position:relative;
+  overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  padding:52px 16px 90px;
 }
+.slide.v-center{align-items:center;}
+
 .slide::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
     radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),
     radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),
     linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
 }
 .slide::after{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.25;
   background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
   background-size:24px 24px;
 }
 .slide>*{position:relative;z-index:1;}
 
-h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
-h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
-h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;}
-p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;font-size:clamp(28px,7vw,56px);}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;font-size:clamp(20px,5vw,36px);}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;font-size:clamp(13px,3.5vw,17px);}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5;font-size:clamp(12px,3vw,15px);}
 
 .gt{
   background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);
@@ -44,96 +49,98 @@ p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
 }
 @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
 
-.gl{width:70px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:18px;animation:lineG .8s ease both;transform-origin:left;}
-.gl.ce{margin:0 auto 18px;transform-origin:center;}
+.gl{width:60px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 14px;transform-origin:center;}
 @keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
 .badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:8px 18px;border-radius:999px;margin-bottom:24px;
+  display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;
+  padding:7px 16px;border-radius:999px;margin-bottom:16px;
   background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);
-  font-size:12px;font-weight:600;color:#8FAEFF;
+  font-size:11px;font-weight:600;color:#8FAEFF;
   letter-spacing:.05em;text-transform:uppercase;
 }
 
 .card{
   background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
-  border-radius:18px;box-shadow:0 12px 36px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);
-  padding:22px 18px;backdrop-filter:blur(8px);transition:all .4s ease;
+  border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);
+  padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;
 }
-.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px);}
 .cp{
   background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
-  border:1px solid rgba(255,255,255,.08);border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);border-radius:16px;
   box-shadow:0 16px 40px rgba(0,0,0,.45),0 0 30px rgba(46,107,255,.08);
-  padding:26px 22px;backdrop-filter:blur(10px);transition:all .4s ease;
+  padding:18px 16px;backdrop-filter:blur(10px);transition:all .4s ease;
 }
 
-.tn{width:60px;height:60px;border-radius:16px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;}
+.tn{width:52px;height:52px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;}
 .tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
 .tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
 .tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
 .tn.n4{background:linear-gradient(145deg,#2EC4B6,#1A9B8F);animation-delay:1.5s;}
 @keyframes glowP{0%,100%{box-shadow:0 0 14px rgba(46,107,255,.12)}50%{box-shadow:0 0 28px rgba(46,107,255,.35)}}
 
-.fl{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;}
-.fs-item{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:90px;padding:0 6px;}
-.fs-item .fi{width:60px;height:60px;border-radius:16px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
-.fs-item .fi svg{width:28px;height:28px;color:#2E6BFF;}
-.fs-item span{font-size:13px;font-weight:600;color:#F5F7FB;}
-.fa{display:flex;align-items:center;padding-bottom:26px;margin:0 4px;}
-.fa svg{width:20px;height:20px;color:#7E879B;}
+.fl{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin-bottom:14px;}
+.fs-item{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:78px;padding:0 4px;}
+.fs-item .fi{width:54px;height:54px;border-radius:14px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.fs-item .fi svg{width:24px;height:24px;color:#2E6BFF;}
+.fs-item span{font-size:12px;font-weight:600;color:#F5F7FB;}
+.fa{display:flex;align-items:center;padding-bottom:22px;margin:0 2px;}
+.fa svg{width:18px;height:18px;color:#7E879B;}
 .fs-item.act .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 8px 18px rgba(46,107,255,.28);}
 .fs-item.act .fi svg{color:#fff;}
+@media(max-width:480px){.fa{display:none;}}
 
-.bwc{border-radius:16px;padding:20px 16px;}
+.bwc{border-radius:14px;padding:16px 14px;}
 .bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);}
 .bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.15);}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
 .slide.active .au{animation:fadeUp .7s ease both;}
 .slide.active .as{animation:fadeScale .7s ease both;}
 .d1{animation-delay:.1s!important}.d2{animation-delay:.22s!important}.d3{animation-delay:.34s!important}
 .d4{animation-delay:.46s!important}.d5{animation-delay:.58s!important}.d6{animation-delay:.7s!important}.d7{animation-delay:.82s!important}
 
+/* Chrome */
 .progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
-.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:10px 14px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
-.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;}
-.fs-btn svg{width:14px;height:14px;}
-.sc{position:fixed;bottom:28px;left:20px;z-index:998;color:#7E879B;font-size:13px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 12px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn svg{width:13px;height:13px;flex-shrink:0;}
+@media(max-width:480px){.fs-btn span{display:none;}.fs-btn{padding:9px 10px;}}
+.sc{position:fixed;bottom:20px;left:14px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.35);padding:7px 12px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
 .sc .cn{color:#2E6BFF;font-weight:800;}
-.ind{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
-.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
-.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);width:28px;border-radius:4px;}
-.nav-arr{position:fixed;bottom:24px;right:20px;z-index:998;display:flex;gap:8px;}
-.nav-arr button{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
+.ind{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 12px;border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);max-width:calc(100vw - 160px);overflow:hidden;}
+.ind .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);width:24px;border-radius:4px;}
+.nav-arr{position:fixed;bottom:16px;right:14px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
 .nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;}
 
-.sw{width:100%;max-width:480px;text-align:center;}
-.sl{width:100%;max-width:480px;}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
-.gc{display:grid;gap:12px;}
+/* Layout helpers */
+.sw{width:100%;max-width:500px;text-align:center;}
+.sl{width:100%;max-width:520px;}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.gc{display:grid;gap:10px;}
 
-.alert{background:rgba(255,200,60,.06);border:1px solid rgba(255,200,60,.2);border-radius:14px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px;}
-.alert svg{width:20px;height:20px;color:#FFD460;flex-shrink:0;margin-top:2px;}
-.alert p{font-size:13px;color:#FFD460;line-height:1.5;}
+.alert{background:rgba(255,200,60,.06);border:1px solid rgba(255,200,60,.2);border-radius:12px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.alert svg{width:18px;height:18px;color:#FFD460;flex-shrink:0;margin-top:2px;}
+.alert p{font-size:clamp(11px,2.8vw,13px);color:#FFD460;line-height:1.5;}
 
-.s5c{position:relative;overflow:hidden;border-radius:14px;padding:16px 16px 16px 20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.s5c{position:relative;overflow:hidden;border-radius:12px;padding:14px 14px 14px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
 .s5c::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
 .s5c.b1::before{background:#2E6BFF;}
 .s5c.b2::before{background:#5B3FD6;}
 .s5c.b3::before{background:#C86DD7;}
 .s5c.b4::before{background:#2EC4B6;}
+.s5c h3{font-size:clamp(12px,2.8vw,13px);margin-bottom:4px;}
+.s5c p{font-size:clamp(11px,2.6vw,12px);}
 
-.wk{border-radius:16px;padding:18px 14px;text-align:center;}
-
-h1{font-size:clamp(32px,7vw,56px);}
-h2{font-size:clamp(22px,5vw,36px);}
-h3{font-size:clamp(15px,3.5vw,20px);}
-p{font-size:clamp(13px,3vw,15px);}
-small{font-size:12px;}
+/* Responsivo para grids em mobile */
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr;}
+  .g2{grid-template-columns:1fr 1fr;}
+}
 </style>
 </head>
 <body>
@@ -151,15 +158,16 @@ small{font-size:12px;}
   <div class="slides" id="sw">
 
     <!-- SLIDE 1 -->
-    <section class="slide active">
+    <section class="slide v-center active">
       <div class="sw">
         <div class="badge au d1">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           Curso de Beleza
         </div>
         <h1 class="au d2">Os <span class="gt">4 Pilares</span> do Cabelo Saudável</h1>
         <div class="gl ce au d3"></div>
-        <p class="au d4" style="font-size:clamp(14px,3.5vw,17px);color:#AAB3C5;margin-top:8px;">Hidratação · Nutrição · Restauração · Reconstrução<br><span style="color:#7E879B;font-size:13px;">Guia para quem está começando na cabeleiraria 💜</span></p>
+        <p class="au d4" style="margin-top:8px;font-size:clamp(13px,3.5vw,17px);">Hidratação · Nutrição · Restauração · Reconstrução</p>
+        <p class="au d5" style="font-size:clamp(11px,2.8vw,13px);color:#7E879B;margin-top:8px;">Guia para quem está começando na cabeleiraria 💜</p>
       </div>
     </section>
 
@@ -168,22 +176,22 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <h2 class="au d2">Entendendo o <span class="gt">Dano Capilar</span></h2>
-        <p class="au d3" style="margin-bottom:18px;">Antes de tratar, precisamos entender por que o cabelo sofre. Veja os 3 vilões principais:</p>
+        <p class="au d3" style="margin-bottom:16px;">Antes de tratar, precisamos entender por que o cabelo sofre. Veja os 3 vilões principais:</p>
         <div class="g3 au d4">
           <div class="card" style="text-align:center;">
-            <div style="font-size:28px;margin-bottom:10px;">🔥</div>
-            <h3 style="font-size:13px;margin-bottom:6px;">Calor</h3>
-            <p style="font-size:12px;">Chapinha, babyliss e secador em excesso</p>
+            <div style="font-size:clamp(24px,5vw,28px);margin-bottom:8px;">🔥</div>
+            <h3 style="margin-bottom:5px;">Calor</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">Chapinha, babyliss e secador em excesso</p>
           </div>
           <div class="card" style="text-align:center;">
-            <div style="font-size:28px;margin-bottom:10px;">⚗️</div>
-            <h3 style="font-size:13px;margin-bottom:6px;">Química</h3>
-            <p style="font-size:12px;">Coloração, descoloração e relaxamento</p>
+            <div style="font-size:clamp(24px,5vw,28px);margin-bottom:8px;">⚗️</div>
+            <h3 style="margin-bottom:5px;">Química</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">Coloração, descoloração e relaxamento</p>
           </div>
           <div class="card" style="text-align:center;">
-            <div style="font-size:28px;margin-bottom:10px;">☀️</div>
-            <h3 style="font-size:13px;margin-bottom:6px;">Sol & Cloro</h3>
-            <p style="font-size:12px;">Exposição sem proteção capilar</p>
+            <div style="font-size:clamp(24px,5vw,28px);margin-bottom:8px;">☀️</div>
+            <h3 style="margin-bottom:5px;">Sol & Cloro</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">Exposição sem proteção capilar</p>
           </div>
         </div>
         <div class="alert au d5" style="margin-top:14px;">
@@ -198,23 +206,23 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <div class="badge au d1" style="background:rgba(46,107,255,.1);border-color:rgba(46,107,255,.3);">💧 Pilar 1</div>
-        <h2 class="au d2"><span class="gt">Hidratação</span><br>A Base de Tudo</h2>
-        <div class="cp au d3" style="margin:16px 0;">
-          <h3 style="margin-bottom:8px;font-size:15px;">O que faz?</h3>
-          <p style="font-size:13px;">Repõe a <strong style="color:#8FAEFF;">água</strong> perdida dentro do fio, devolvendo maciez, brilho e leveza.</p>
+        <h2 class="au d2"><span class="gt">Hidratação</span> — A Base de Tudo</h2>
+        <div class="cp au d3" style="margin:14px 0;">
+          <h3 style="margin-bottom:6px;font-size:clamp(13px,3vw,15px);">O que faz?</h3>
+          <p>Repõe a <strong style="color:#8FAEFF;">água</strong> perdida dentro do fio, devolvendo maciez, brilho e leveza.</p>
         </div>
         <div class="gc au d4">
           <div class="s5c b1">
-            <h3 style="font-size:13px;margin-bottom:4px;">🌿 Ingredientes chave</h3>
-            <p style="font-size:12px;">Água, aloe vera, géis e cremes aquosos, babosa</p>
+            <h3>🌿 Ingredientes chave</h3>
+            <p>Água, aloe vera, géis e cremes aquosos, babosa</p>
           </div>
           <div class="s5c b2">
-            <h3 style="font-size:13px;margin-bottom:4px;">📅 Frequência</h3>
-            <p style="font-size:12px;">1x por semana — é o tratamento mais frequente!</p>
+            <h3>📅 Frequência</h3>
+            <p>1x por semana — é o tratamento mais frequente!</p>
           </div>
           <div class="s5c b3">
-            <h3 style="font-size:13px;margin-bottom:4px;">🔎 Quando usar?</h3>
-            <p style="font-size:12px;">Cabelo opaco, sem brilho, ressecado e quebradiço</p>
+            <h3>🔎 Quando usar?</h3>
+            <p>Cabelo opaco, sem brilho, ressecado e quebradiço</p>
           </div>
         </div>
       </div>
@@ -225,33 +233,33 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <div class="badge au d1" style="background:rgba(200,109,215,.1);border-color:rgba(200,109,215,.3);color:#D9A0E8;">🥑 Pilar 2</div>
-        <h2 class="au d2"><span class="gt">Nutrição</span><br>Gordura que Transforma</h2>
-        <p class="au d3" style="margin-bottom:14px;font-size:13px;">Repõe os <strong style="color:#C86DD7;">óleos e lipídios</strong> naturais — aquela camada protetora que o fio perde com o tempo.</p>
+        <h2 class="au d2"><span class="gt">Nutrição</span> — Gordura que Transforma</h2>
+        <p class="au d3" style="margin-bottom:14px;">Repõe os <strong style="color:#C86DD7;">óleos e lipídios</strong> naturais — aquela camada protetora que o fio perde com o tempo.</p>
         <div class="g3 au d4">
           <div class="card" style="text-align:center;">
-            <div style="font-size:24px;margin-bottom:8px;">🥥</div>
-            <h3 style="font-size:12px;margin-bottom:4px;">Óleo de Coco</h3>
-            <p style="font-size:11px;">Penetra fundo e sela a umidade</p>
+            <div style="font-size:clamp(22px,5vw,26px);margin-bottom:7px;">🥥</div>
+            <h3 style="font-size:clamp(11px,2.8vw,13px);margin-bottom:4px;">Óleo de Coco</h3>
+            <p style="font-size:clamp(10px,2.5vw,11px);">Penetra fundo e sela a umidade</p>
           </div>
           <div class="card" style="text-align:center;">
-            <div style="font-size:24px;margin-bottom:8px;">✨</div>
-            <h3 style="font-size:12px;margin-bottom:4px;">Óleo de Argan</h3>
-            <p style="font-size:11px;">Brilho intenso e antifrizz</p>
+            <div style="font-size:clamp(22px,5vw,26px);margin-bottom:7px;">✨</div>
+            <h3 style="font-size:clamp(11px,2.8vw,13px);margin-bottom:4px;">Óleo de Argan</h3>
+            <p style="font-size:clamp(10px,2.5vw,11px);">Brilho intenso e antifrizz</p>
           </div>
           <div class="card" style="text-align:center;">
-            <div style="font-size:24px;margin-bottom:8px;">🌱</div>
-            <h3 style="font-size:12px;margin-bottom:4px;">Óleo de Rícino</h3>
-            <p style="font-size:11px;">Crescimento e fortalecimento</p>
+            <div style="font-size:clamp(22px,5vw,26px);margin-bottom:7px;">🌱</div>
+            <h3 style="font-size:clamp(11px,2.8vw,13px);margin-bottom:4px;">Óleo de Rícino</h3>
+            <p style="font-size:clamp(10px,2.5vw,11px);">Crescimento e fortalecimento</p>
           </div>
         </div>
         <div class="gc au d5" style="margin-top:12px;">
           <div class="s5c b2">
-            <h3 style="font-size:13px;margin-bottom:4px;">📅 Frequência</h3>
-            <p style="font-size:12px;">A cada 15 dias ou conforme necessidade</p>
+            <h3>📅 Frequência</h3>
+            <p>A cada 15 dias ou conforme necessidade</p>
           </div>
           <div class="s5c b3">
-            <h3 style="font-size:13px;margin-bottom:4px;">🔎 Quando usar?</h3>
-            <p style="font-size:12px;">Cabelo ressecado, sem maciez e com pontas duplas</p>
+            <h3>🔎 Quando usar?</h3>
+            <p>Cabelo ressecado, sem maciez e com pontas duplas</p>
           </div>
         </div>
       </div>
@@ -262,20 +270,20 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <div class="badge au d1" style="background:rgba(91,63,214,.1);border-color:rgba(91,63,214,.3);color:#9B85FF;">🔬 Pilar 3</div>
-        <h2 class="au d2"><span class="gt">Restauração</span><br>Proteínas em Ação</h2>
-        <p class="au d3" style="margin-bottom:14px;font-size:13px;">Repõe as <strong style="color:#9B85FF;">proteínas</strong> da estrutura do fio — como a queratina, que dá resistência e elasticidade.</p>
+        <h2 class="au d2"><span class="gt">Restauração</span> — Proteínas em Ação</h2>
+        <p class="au d3" style="margin-bottom:14px;">Repõe as <strong style="color:#9B85FF;">proteínas</strong> da estrutura do fio — como a queratina, que dá resistência e elasticidade.</p>
         <div class="gc au d4">
           <div class="s5c b1">
-            <h3 style="font-size:13px;margin-bottom:4px;">🧪 Ingredientes chave</h3>
-            <p style="font-size:12px;">Queratina, colágeno, aminoácidos e proteína de trigo</p>
+            <h3>🧪 Ingredientes chave</h3>
+            <p>Queratina, colágeno, aminoácidos e proteína de trigo</p>
           </div>
           <div class="s5c b2">
-            <h3 style="font-size:13px;margin-bottom:4px;">🔎 Quando usar?</h3>
-            <p style="font-size:12px;">Cabelos porosos, sem elasticidade e com muita quebra</p>
+            <h3>🔎 Quando usar?</h3>
+            <p>Cabelos porosos, sem elasticidade e com muita quebra</p>
           </div>
           <div class="s5c b3">
-            <h3 style="font-size:13px;margin-bottom:4px;">📅 Frequência</h3>
-            <p style="font-size:12px;">1x por mês — não exagere!</p>
+            <h3>📅 Frequência</h3>
+            <p>1x por mês — não exagere!</p>
           </div>
         </div>
         <div class="alert au d5" style="margin-top:12px;">
@@ -290,23 +298,23 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <div class="badge au d1" style="background:rgba(46,196,182,.1);border-color:rgba(46,196,182,.3);color:#5EE8DA;">🛠️ Pilar 4</div>
-        <h2 class="au d2"><span class="gt">Reconstrução</span><br>O Resgate do Fio</h2>
+        <h2 class="au d2"><span class="gt">Reconstrução</span> — O Resgate do Fio</h2>
         <div class="cp au d3" style="margin:14px 0;">
-          <p style="font-size:13px;margin-bottom:10px;">É o tratamento mais <strong style="color:#5EE8DA;">intenso e poderoso</strong>. Reconstrói a estrutura interna do fio a partir de dentro para fora.</p>
-          <p style="font-size:13px;">Usa proteínas de <strong style="color:#5EE8DA;">alto peso molecular</strong> que preenchem os "buracos" do fio danificado.</p>
+          <p style="margin-bottom:10px;">É o tratamento mais <strong style="color:#5EE8DA;">intenso e poderoso</strong>. Reconstrói a estrutura interna do fio a partir de dentro para fora.</p>
+          <p>Usa proteínas de <strong style="color:#5EE8DA;">alto peso molecular</strong> que preenchem os "buracos" do fio danificado.</p>
         </div>
         <div class="gc au d4">
           <div class="s5c b4">
-            <h3 style="font-size:13px;margin-bottom:4px;">🔎 Quando usar?</h3>
-            <p style="font-size:12px;">Cabelos muito danificados, quebradiços e com porosidade alta</p>
+            <h3>🔎 Quando usar?</h3>
+            <p>Cabelos muito danificados, quebradiços e com porosidade alta</p>
           </div>
           <div class="s5c b1">
-            <h3 style="font-size:13px;margin-bottom:4px;">📅 Frequência</h3>
-            <p style="font-size:12px;">Conforme avaliação — pode ser semanal em casos extremos</p>
+            <h3>📅 Frequência</h3>
+            <p>Conforme avaliação — pode ser semanal em casos extremos</p>
           </div>
         </div>
         <div class="card au d5" style="margin-top:12px;text-align:center;border-color:rgba(46,196,182,.2);">
-          <p style="font-size:13px;font-style:italic;color:#5EE8DA;">"Quando o fio grita por socorro — a reconstrução é a resposta." 💚</p>
+          <p style="font-style:italic;color:#5EE8DA;">"Quando o fio grita por socorro — a reconstrução é a resposta." 💚</p>
         </div>
       </div>
     </section>
@@ -316,8 +324,8 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <h2 class="au d2">Como Escolher o <span class="gt">Tratamento Certo?</span></h2>
-        <p class="au d3" style="margin-bottom:16px;font-size:13px;">A regra de ouro da cabeleireira profissional:</p>
-        <div class="fl au d4" style="margin-bottom:16px;">
+        <p class="au d3" style="margin-bottom:14px;">A regra de ouro da cabeleireira profissional:</p>
+        <div class="fl au d4">
           <div class="fs-item">
             <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
             <span>Observe</span>
@@ -335,12 +343,12 @@ small{font-size:12px;}
         </div>
         <div class="gc au d5">
           <div class="s5c b1">
-            <h3 style="font-size:13px;margin-bottom:4px;">💧 Teste da Porosidade</h3>
-            <p style="font-size:12px;">Coloque um fio em um copo d'água. Se afundar rápido = alta porosidade. Se flutuar = baixa porosidade.</p>
+            <h3>💧 Teste da Porosidade</h3>
+            <p>Coloque um fio em um copo d'água. Se afundar rápido = alta porosidade. Se flutuar = baixa porosidade.</p>
           </div>
           <div class="s5c b3">
-            <h3 style="font-size:13px;margin-bottom:4px;">🔁 Teste de Elasticidade</h3>
-            <p style="font-size:12px;">Estique o fio molhado. Se voltar = saudável. Se quebrar = precisa de proteína urgente!</p>
+            <h3>🔁 Teste de Elasticidade</h3>
+            <p>Estique o fio molhado. Se voltar = saudável. Se quebrar = precisa de proteína urgente!</p>
           </div>
         </div>
       </div>
@@ -351,31 +359,31 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <h2 class="au d2">Cronograma Capilar —<br><span class="gt">Sua Arma Secreta</span></h2>
-        <p class="au d3" style="margin-bottom:16px;font-size:13px;">Organize os tratamentos ao longo do mês para resultados incríveis:</p>
+        <p class="au d3" style="margin-bottom:14px;">Organize os tratamentos ao longo do mês para resultados incríveis:</p>
         <div class="g2 au d4">
-          <div class="wk card" style="border-color:rgba(46,107,255,.2);text-align:center;">
-            <div class="tn n1" style="width:48px;height:48px;border-radius:12px;font-size:18px;">1</div>
-            <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:4px;">Semana 1</h3>
-            <p style="font-size:12px;">💧 Hidratação<br>Repõe a água</p>
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.2);">
+            <div class="tn n1" style="width:44px;height:44px;border-radius:12px;font-size:17px;">1</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#8FAEFF;margin-bottom:4px;">Semana 1</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">💧 Hidratação<br>Repõe a água</p>
           </div>
-          <div class="wk card" style="border-color:rgba(91,63,214,.2);text-align:center;">
-            <div class="tn n2" style="width:48px;height:48px;border-radius:12px;font-size:18px;">2</div>
-            <h3 style="font-size:13px;color:#9B85FF;margin-bottom:4px;">Semana 2</h3>
-            <p style="font-size:12px;">🥑 Nutrição<br>Repõe os óleos</p>
+          <div class="card" style="text-align:center;border-color:rgba(91,63,214,.2);">
+            <div class="tn n2" style="width:44px;height:44px;border-radius:12px;font-size:17px;">2</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#9B85FF;margin-bottom:4px;">Semana 2</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">🥑 Nutrição<br>Repõe os óleos</p>
           </div>
-          <div class="wk card" style="border-color:rgba(200,109,215,.2);text-align:center;">
-            <div class="tn n3" style="width:48px;height:48px;border-radius:12px;font-size:18px;">3</div>
-            <h3 style="font-size:13px;color:#D9A0E8;margin-bottom:4px;">Semana 3</h3>
-            <p style="font-size:12px;">🔬 Restauração<br>Repõe proteínas</p>
+          <div class="card" style="text-align:center;border-color:rgba(200,109,215,.2);">
+            <div class="tn n3" style="width:44px;height:44px;border-radius:12px;font-size:17px;">3</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#D9A0E8;margin-bottom:4px;">Semana 3</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">🔬 Restauração<br>Repõe proteínas</p>
           </div>
-          <div class="wk card" style="border-color:rgba(46,107,255,.2);text-align:center;">
-            <div class="tn n4" style="width:48px;height:48px;border-radius:12px;font-size:18px;background:linear-gradient(145deg,#2E6BFF,#1E56D9);">4</div>
-            <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:4px;">Semana 4</h3>
-            <p style="font-size:12px;">💧 Hidratação<br>Finaliza o ciclo</p>
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.2);">
+            <div class="tn n1" style="width:44px;height:44px;border-radius:12px;font-size:17px;">4</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#8FAEFF;margin-bottom:4px;">Semana 4</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">💧 Hidratação<br>Finaliza o ciclo</p>
           </div>
         </div>
         <div class="card au d5" style="margin-top:12px;border-color:rgba(46,196,182,.15);">
-          <p style="font-size:12px;text-align:center;color:#5EE8DA;">💡 A Reconstrução entra quando necessário, substituindo qualquer semana conforme diagnóstico.</p>
+          <p style="text-align:center;color:#5EE8DA;font-size:clamp(11px,2.8vw,13px);">💡 A Reconstrução entra quando necessário, substituindo qualquer semana conforme diagnóstico.</p>
         </div>
       </div>
     </section>
@@ -385,23 +393,35 @@ small{font-size:12px;}
       <div class="sl">
         <div class="gl au d1"></div>
         <h2 class="au d2">⚠️ Erros Mais <span class="gt">Comuns</span></h2>
-        <p class="au d3" style="margin-bottom:14px;font-size:13px;">Todo mundo erra no início — o importante é aprender! 💜 Fique de olho nesses:</p>
+        <p class="au d3" style="margin-bottom:14px;">Todo mundo erra no início — o importante é aprender! 💜 Fique de olho nesses:</p>
         <div class="gc au d4">
           <div class="bwc cr" style="display:flex;align-items:flex-start;gap:10px;">
             <span style="font-size:18px;flex-shrink:0;">❌</span>
-            <div><h3 style="font-size:13px;color:#FF6B6B;margin-bottom:3px;">Excesso de Proteína</h3><p style="font-size:12px;">Usar restauração toda semana resseca e endurece o fio.</p></div>
+            <div>
+              <h3 style="font-size:clamp(12px,3vw,14px);color:#FF6B6B;margin-bottom:3px;">Excesso de Proteína</h3>
+              <p style="font-size:clamp(11px,2.6vw,12px);">Usar restauração toda semana resseca e endurece o fio.</p>
+            </div>
           </div>
           <div class="bwc cy" style="display:flex;align-items:flex-start;gap:10px;">
             <span style="font-size:18px;flex-shrink:0;">⚠️</span>
-            <div><h3 style="font-size:13px;color:#FFD460;margin-bottom:3px;">Pular o Diagnóstico</h3><p style="font-size:12px;">Aplicar qualquer produto sem avaliar o tipo de cabelo primeiro.</p></div>
+            <div>
+              <h3 style="font-size:clamp(12px,3vw,14px);color:#FFD460;margin-bottom:3px;">Pular o Diagnóstico</h3>
+              <p style="font-size:clamp(11px,2.6vw,12px);">Aplicar qualquer produto sem avaliar o tipo de cabelo primeiro.</p>
+            </div>
           </div>
           <div class="bwc cr" style="display:flex;align-items:flex-start;gap:10px;">
             <span style="font-size:18px;flex-shrink:0;">❌</span>
-            <div><h3 style="font-size:13px;color:#FF6B6B;margin-bottom:3px;">Misturar Sem Critério</h3><p style="font-size:12px;">Combinar produtos incompatíveis pode travar o fio e piorar o dano.</p></div>
+            <div>
+              <h3 style="font-size:clamp(12px,3vw,14px);color:#FF6B6B;margin-bottom:3px;">Misturar Sem Critério</h3>
+              <p style="font-size:clamp(11px,2.6vw,12px);">Combinar produtos incompatíveis pode travar o fio e piorar o dano.</p>
+            </div>
           </div>
           <div class="bwc cy" style="display:flex;align-items:flex-start;gap:10px;">
             <span style="font-size:18px;flex-shrink:0;">⚠️</span>
-            <div><h3 style="font-size:13px;color:#FFD460;margin-bottom:3px;">Ignorar a Porosidade</h3><p style="font-size:12px;">Cabelos de alta porosidade absorvem tudo — precisa de cuidado redobrado.</p></div>
+            <div>
+              <h3 style="font-size:clamp(12px,3vw,14px);color:#FFD460;margin-bottom:3px;">Ignorar a Porosidade</h3>
+              <p style="font-size:clamp(11px,2.6vw,12px);">Cabelos de alta porosidade absorvem tudo — precisa de cuidado redobrado.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -412,32 +432,32 @@ small{font-size:12px;}
       <div class="sl" style="text-align:center;">
         <div class="gl ce au d1"></div>
         <h2 class="au d2">Agora é a <span class="gt">Sua Vez!</span> 🚀</h2>
-        <p class="au d3" style="margin-bottom:20px;font-size:13px;">Você já conhece os 4 pilares. Lembre-se sempre:</p>
+        <p class="au d3" style="margin-bottom:16px;">Você já conhece os 4 pilares. Lembre-se sempre:</p>
         <div class="g2 au d4">
           <div class="card" style="text-align:center;">
-            <div style="font-size:26px;margin-bottom:8px;">💧</div>
-            <h3 style="font-size:13px;color:#8FAEFF;">Hidratação</h3>
-            <p style="font-size:11px;">Água para o fio</p>
+            <div style="font-size:clamp(22px,5vw,26px);margin-bottom:8px;">💧</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#8FAEFF;">Hidratação</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">Água para o fio</p>
           </div>
           <div class="card" style="text-align:center;">
-            <div style="font-size:26px;margin-bottom:8px;">🥑</div>
-            <h3 style="font-size:13px;color:#C86DD7;">Nutrição</h3>
-            <p style="font-size:11px;">Óleos para o fio</p>
+            <div style="font-size:clamp(22px,5vw,26px);margin-bottom:8px;">🥑</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#C86DD7;">Nutrição</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">Óleos para o fio</p>
           </div>
           <div class="card" style="text-align:center;">
-            <div style="font-size:26px;margin-bottom:8px;">🔬</div>
-            <h3 style="font-size:13px;color:#9B85FF;">Restauração</h3>
-            <p style="font-size:11px;">Proteína para o fio</p>
+            <div style="font-size:clamp(22px,5vw,26px);margin-bottom:8px;">🔬</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#9B85FF;">Restauração</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">Proteína para o fio</p>
           </div>
           <div class="card" style="text-align:center;">
-            <div style="font-size:26px;margin-bottom:8px;">🛠️</div>
-            <h3 style="font-size:13px;color:#5EE8DA;">Reconstrução</h3>
-            <p style="font-size:11px;">Resgate do fio</p>
+            <div style="font-size:clamp(22px,5vw,26px);margin-bottom:8px;">🛠️</div>
+            <h3 style="font-size:clamp(12px,3vw,14px);color:#5EE8DA;">Reconstrução</h3>
+            <p style="font-size:clamp(11px,2.6vw,12px);">Resgate do fio</p>
           </div>
         </div>
-        <div class="cp au d5" style="margin-top:16px;">
-          <p style="font-size:14px;font-style:italic;color:#C86DD7;text-align:center;">"Uma boa cabeleireira não só corta — ela cuida, transforma e encanta." 💜</p>
-          <p style="font-size:12px;color:#7E879B;text-align:center;margin-top:8px;">Pratique o diagnóstico no seu próximo atendimento!<br><span style="color:#5B3FD6;font-weight:600;">SEMEAR — A Escola da Mulher Empreendedora</span></p>
+        <div class="cp au d5" style="margin-top:14px;">
+          <p style="font-style:italic;color:#C86DD7;text-align:center;font-size:clamp(12px,3vw,14px);">"Uma boa cabeleireira não só corta — ela cuida, transforma e encanta." 💜</p>
+          <p style="font-size:clamp(11px,2.6vw,12px);color:#7E879B;text-align:center;margin-top:8px;">Pratique o diagnóstico no seu próximo atendimento!<br><strong style="color:#5B3FD6;">SEMEAR — A Escola da Mulher Empreendedora</strong></p>
         </div>
       </div>
     </section>
@@ -449,10 +469,10 @@ small{font-size:12px;}
 <div class="ind" id="ind"></div>
 <div class="nav-arr">
   <button onclick="prev()">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
   <button onclick="next()">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
 </div>
 
@@ -475,7 +495,10 @@ function upd(){
   I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
   CN.textContent=C+1;
   P.style.width=((C+1)/T*100)+'%';
-  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    s.classList.toggle('active',i===C);
+    if(i===C) s.scrollTop=0;
+  });
 }
 function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
 function next(){if(C<T-1)go(C+1);}
@@ -487,9 +510,13 @@ document.addEventListener('keydown',e=>{
   if(e.key==='f'||e.key==='F')toggleFs();
 });
 
-let tx=0;
-document.addEventListener('touchstart',e=>tx=e.changedTouches[0].screenX);
-document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?next():prev();}});
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=ty-e.changedTouches[0].clientY;
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>48){dx>0?next():prev();}
+},{passive:true});
 
 function toggleFs(){
   if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
