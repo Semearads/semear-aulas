@@ -1,1 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Luzes no Papel Alumínio — A Arte da Precisão</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  position:relative;overflow-y:auto;overflow-x:hidden;
+  padding:56px 20px 100px;
+}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-track{background:transparent;}
+.slide::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:4px;}
+.slide.center-v{justify-content:center;}
+
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),
+    radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
+  background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.15;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;}
+.gt2{background:linear-gradient(135deg,#FFD460 0%,#FF8C60 50%,#FFD460 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;}
+.gt3{background:linear-gradient(135deg,#C86DD7 0%,#FF8FAB 50%,#C86DD7 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.gl{width:70px;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,#2E6BFF,#C86DD7);
+  margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;
+  margin-bottom:20px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);
+  font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;padding:20px 18px;backdrop-filter:blur(8px);transition:all .4s ease;
+  box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px);}
+
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.08);
+  padding:22px 18px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.25);transform:translateY(-2px) scale(1.005);}
+
+.tn{width:54px;height:54px;border-radius:16px;margin:0 auto 16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;flex-shrink:0;}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+.tn.n4{background:linear-gradient(145deg,#FFD460,#FF8C00);animation-delay:1.5s;}
+.tn.n5{background:linear-gradient(145deg,#5EE89A,#27AE60);animation-delay:.3s;}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(46,107,255,.12)}50%{box-shadow:0 0 32px rgba(46,107,255,.3)}}
+
+.bwc{border-radius:18px;padding:18px 16px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.12);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.12);}
+.bwc.cb{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.12);}
+
+.ox-card{border-radius:16px;padding:16px 12px;text-align:center;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.ox-num{font-size:32px;font-weight:900;letter-spacing:-.03em;margin-bottom:4px;}
+
+.flow-list{display:flex;flex-direction:column;gap:10px;width:100%;}
+.flow-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;
+  border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}
+.flow-item.act{background:rgba(46,107,255,.08);border-color:rgba(46,107,255,.25);}
+.flow-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;}
+.fn1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.fn2{background:linear-gradient(145deg,#5B3FD6,#4530B3);}
+.fn3{background:linear-gradient(145deg,#C86DD7,#A854BF);}
+.fn4{background:linear-gradient(145deg,#FFD460,#FF8C00);}
+.fn5{background:linear-gradient(145deg,#5EE89A,#27AE60);}
+
+.zona{border-radius:18px;padding:18px 16px;border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);}
+.zona-num{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:900;color:#fff;margin-bottom:12px;}
+
+.ef-card{border-radius:18px;padding:18px 16px;border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);transition:all .35s ease;}
+.ef-card:hover{transform:translateY(-2px);border-color:rgba(200,109,215,.25);}
+.ef-dot{width:44px;height:44px;border-radius:50%;margin-bottom:12px;
+  box-shadow:0 0 20px rgba(0,0,0,.5);}
+
+.cont-card{border-radius:18px;padding:20px 16px;border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);}
+.cont-ico{width:56px;height:56px;border-radius:50%;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;font-size:26px;
+  border:2px solid rgba(255,255,255,.1);}
+
+.recap-item{border-radius:16px;padding:14px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);display:flex;align-items:flex-start;gap:12px;}
+.recap-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:17px;}
+
+.info{padding:14px 16px;border-radius:14px;}
+.info.blue{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);}
+.info.pink{background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.15);}
+.info.orange{background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.2);}
+.info.green{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.2);}
+.info.yellow{background:rgba(255,210,60,.06);border:1px solid rgba(255,210,60,.2);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}
+.d3{animation-delay:.28s!important}.d4{animation-delay:.38s!important}
+.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;
+  background:linear-gradient(90deg,#FFD460,#FF8C60,#C86DD7,#2E6BFF);
+  background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#7E879B;padding:9px 14px;border-radius:10px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+  display:flex;align-items:center;gap:6px;transition:all .3s ease;
+  backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:20px;z-index:998;color:#7E879B;
+  font-size:13px;font-weight:600;letter-spacing:.05em;
+  background:rgba(0,0,0,.4);padding:8px 14px;border-radius:10px;
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#FFD460;font-weight:800;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;
+  display:flex;gap:6px;background:rgba(0,0,0,.4);padding:8px 14px;
+  border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);
+  transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:linear-gradient(90deg,#FFD460,#FF8C60);
+  box-shadow:0 0 12px rgba(255,212,96,.5);width:28px;border-radius:5px;}
+
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:8px;}
+.nav-arr button{width:46px;height:46px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(255,212,96,.15);border-color:rgba(255,212,96,.4);color:#FFD460;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.g2x3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.g22{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+
+@media(max-width:768px){
+  .slide{padding:52px 16px 96px;}
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  .g2x3{grid-template-columns:repeat(2,1fr);}
+  .g22{grid-template-columns:1fr;}
+  .fs-btn span{display:none;}
+  .fs-btn{padding:9px 10px;}
+}
+@media(max-width:480px){
+  .slide{padding:50px 14px 94px;}
+  .g3{grid-template-columns:1fr;}
+  .g2x3{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:380px){
+  .g4{grid-template-columns:1fr;}
+  .g2x3{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══════════════════════ SLIDE 1 ═══════════════════════ -->
+<section class="slide center-v active">
+  <div style="width:100%;max-width:740px;text-align:center;">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Colorimetria Profissional Avançada
+    </div>
+    <h1 class="au d2" style="font-size:clamp(28px,6.5vw,72px);margin-bottom:14px;">
+      Luzes no <span class="gt2">Papel Alumínio</span><br/>
+      <span class="gt">A Arte da Precisão</span>
+    </h1>
+    <div class="gl ce au d3"></div>
+    <p class="au d4" style="font-size:clamp(13px,2.2vw,17px);max-width:520px;margin:0 auto 28px;color:#AAB3C5;">
+      Técnica de aplicação, mapeamento capilar, efeitos e contornos para um resultado impecável e personalizado
+    </p>
+    <div class="g4 au d5" style="max-width:580px;margin:0 auto;">
+      <div style="padding:10px 8px;border-radius:12px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.2);font-size:11px;font-weight:700;color:#FFD460;text-align:center;">🥇 Técnica</div>
+      <div style="padding:10px 8px;border-radius:12px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);font-size:11px;font-weight:700;color:#8FAEFF;text-align:center;">🗺️ Mapeamento</div>
+      <div style="padding:10px 8px;border-radius:12px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:11px;font-weight:700;color:#D98EEA;text-align:center;">✨ Efeitos</div>
+      <div style="padding:10px 8px;border-radius:12px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.18);font-size:11px;font-weight:700;color:#5EE89A;text-align:center;">🎨 Contornos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 2 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;">Por Que o Alumínio é a Técnica <span class="gt">Mais Precisa?</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      O papel alumínio cria um <strong style="color:#F5F7FB;">microambiente isolado</strong> para cada mecha — controle total de temperatura, produto e resultado individual.
+    </p>
+    <div class="g3 au d4" style="margin-bottom:16px;">
+      <div class="cp" style="text-align:center;">
+        <div class="tn n1">💡</div>
+        <h3 style="font-size:14px;margin-bottom:8px;">O Conceito</h3>
+        <p style="font-size:12px;">Cada mecha recebe o descolorante dentro de um envelope de alumínio que reflete o calor corporal, acelerando e uniformizando o processo sem interferir nas mechas vizinhas.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n2">👩‍🎨</div>
+        <h3 style="font-size:14px;margin-bottom:8px;">Para Quem</h3>
+        <p style="font-size:12px;">Indicada para todos os tipos de cabelo — curto, médio ou longo. Essencial para efeitos intensos, coloração fantasiosa, clientes com cabelos tingidos e resultados de alto impacto.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n3">🏆</div>
+        <h3 style="font-size:14px;margin-bottom:8px;">Vantagens</h3>
+        <p style="font-size:12px;">Máxima precisão por mecha, isolamento total do produto, possibilidade de diferentes tempos por zona, resultado mais dramático e durável que a touca.</p>
+      </div>
+    </div>
+    <div class="g2 au d5">
+      <div class="info blue">
+        <p style="font-size:13px;color:#8FAEFF;">⚡ <strong style="color:#F5F7FB;">Alumínio vs Touca:</strong> o alumínio permite mechas mais longas, maior controle do fundo de clareamento por zona e aplicação em qualquer comprimento de cabelo.</p>
+      </div>
+      <div class="info yellow">
+        <p style="font-size:13px;color:#FFD460;">🌡️ <strong style="color:#F5F7FB;">O calor do alumínio</strong> reflete a temperatura corporal e potencializa a ação do descolorante — resultado até 30% mais rápido que sem a folha.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 3 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;">Materiais, <span class="gt2">Preparo</span> e Espessura do Alumínio</h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      Ter os materiais certos e o cabelo preparado corretamente é o <strong style="color:#F5F7FB;">primeiro segredo de um resultado impecável.</strong>
+    </p>
+    <div class="g2 au d4" style="margin-bottom:16px;">
+      <div class="zona" style="border-color:rgba(255,212,96,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">🗂️</div>
+        <h3 style="font-size:14px;margin-bottom:8px;color:#FFD460;">Tipos de Alumínio</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span><span><strong style="color:#F5F7FB;">Fino (doméstico):</strong> funciona bem, mais acessível, dobra com facilidade</span></li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span><span><strong style="color:#F5F7FB;">Médio (profissional):</strong> mais resistente, não rasgadum durante o processo</span></li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span><span><strong style="color:#F5F7FB;">Pré-cortado:</strong> otimiza o tempo e padroniza o tamanho das folhas</span></li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(46,107,255,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">📐</div>
+        <h3 style="font-size:14px;margin-bottom:8px;color:#8FAEFF;">Tamanho Ideal das Folhas</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">•</span><span><strong style="color:#F5F7FB;">Curto/Médio:</strong> 15×20 cm — cobre da raiz às pontas com folga</span></li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">•</span><span><strong style="color:#F5F7FB;">Longo:</strong> 20×30 cm — garante cobertura total sem dobrar a mecha</span></li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">•</span><span><strong style="color:#F5F7FB;">Baby lights:</strong> tiras estreitas de 6×20 cm para mechas finíssimas</span></li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(200,109,215,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#C86DD7,#A854BF);">🖌️</div>
+        <h3 style="font-size:14px;margin-bottom:8px;color:#D98EEA;">Ferramentas Essenciais</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">•</span>Pincel de mechas (largo e flat)</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">•</span>Pente de cabo fino para separação</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">•</span>Tigela e suporte profissional</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">•</span>Presilhas de segurança por zona</li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(94,232,154,.2);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">🧴</div>
+        <h3 style="font-size:14px;margin-bottom:8px;color:#5EE89A;">Preparo do Cabelo</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Cabelo <strong style="color:#F5F7FB;">seco e sem condicionador</strong> na raiz</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Não lavar no dia — oleosidade natural protege</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Escovar bem antes para fios alinhados</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Dividir em 4 quadrantes antes de iniciar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info orange au d5">
+      <p style="font-size:13px;color:#FFB060;">🔑 <strong style="color:#F5F7FB;">Dica de ouro:</strong> pré-corte todas as folhas de alumínio antes de iniciar o atendimento. Isso economiza até 20 minutos e mantém o ritmo do trabalho sem interrupções.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 4 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;">Mapeamento — <span class="gt">Onde e Como Distribuir as Mechas</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      O mapeamento é o <strong style="color:#F5F7FB;">planejamento visual</strong> do resultado final — define zonas, espessura e espaçamento antes de colocar a primeira folha.
+    </p>
+    <div class="g2 au d4" style="margin-bottom:16px;">
+      <div class="zona" style="border-color:rgba(255,212,96,.25);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">①</div>
+        <h3 style="font-size:14px;margin-bottom:6px;color:#FFD460;">Zona da Frente (Franja)</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Área de maior impacto visual — as mechas aqui emolduram o rosto e são as primeiras vistas. Exigem precisão máxima.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#FFD460;">▸</span> Mechas finas = efeito natural e sutil</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#FFD460;">▸</span> Mechas médias = quadro luminoso ao rosto</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#FFD460;">▸</span> Espaçamento: 0,5 cm entre cada mecha</li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(46,107,255,.25);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">②</div>
+        <h3 style="font-size:14px;margin-bottom:6px;color:#8FAEFF;">Zona Lateral (Têmporas)</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Define o contorno e a largura visual do rosto. Mechas aqui criam movimento e molduram as maçãs do rosto.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#2E6BFF;">▸</span> Distribuição diagonal para movimento</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#2E6BFF;">▸</span> Iniciar separação de 1,5 cm da raiz</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#2E6BFF;">▸</span> Mecha 1 sim, 1 não para leveza</li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(200,109,215,.25);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#C86DD7,#A854BF);">③</div>
+        <h3 style="font-size:14px;margin-bottom:6px;color:#D98EEA;">Zona do Topo (Coroa)</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Responsável pela luminosidade e volume visual. Mechas mais espaçadas que na frente para efeito de profundidade e dimensão.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#C86DD7;">▸</span> Espaçamento maior: 1 cm entre mechas</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#C86DD7;">▸</span> Mechas médias a grossas para volume</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#C86DD7;">▸</span> Distribuição em xadrez (alternado)</li>
+        </ul>
+      </div>
+      <div class="zona" style="border-color:rgba(94,232,154,.25);">
+        <div class="zona-num" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">④</div>
+        <h3 style="font-size:14px;margin-bottom:6px;color:#5EE89A;">Zona da Nuca</h3>
+        <p style="font-size:12px;margin-bottom:8px;">Área mais densa e com menor circulação de ar — o produto age mais lentamente. Requer atenção especial ao tempo.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:4px;">
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#5EE89A;">▸</span> Iniciar o processo sempre pela nuca</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#5EE89A;">▸</span> Menor densidade: 40% das mechas</li>
+          <li style="font-size:11px;color:#7E879B;"><span style="color:#5EE89A;">▸</span> Verificar primeiro durante o controle</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info blue au d5">
+      <p style="font-size:13px;color:#8FAEFF;">📐 <strong style="color:#F5F7FB;">Regra de ouro do mapeamento:</strong> sempre divida o cabelo em 4 quadrantes com pente antes de começar. Fotografe cada quadrante para garantir simetria e replicar na próxima visita.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 5 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:760px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;">Passo a Passo — <span class="gt2">Do Papel à Mecha Perfeita</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      5 etapas executadas com <strong style="color:#F5F7FB;">precisão e ritmo constante</strong> garantem um resultado homogêneo do início ao fim do atendimento.
+    </p>
+    <div class="flow-list au d4">
+      <div class="flow-item act">
+        <div class="flow-num fn1">1</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Separação da Mecha</h3>
+          <p style="font-size:12px;color:#7E879B;">Use o cabo do pente para traçar uma linha reta e limpa. A espessura ideal é de 3 mm a 1 cm — quanto mais fina, mais natural; quanto mais grossa, mais dramática. Nunca puxe, sempre deslize.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn2">2</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Posicionamento do Alumínio</h3>
+          <p style="font-size:12px;color:#7E879B;">Coloque a folha sob a mecha separada, bem junto à raiz. Dobre a borda inferior 1 cm para criar uma "bandeja" que evita o escorrimento do produto para as mechas abaixo.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn3">3</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Aplicação do Descolorante</h3>
+          <p style="font-size:12px;color:#7E879B;">Aplique da raiz para as pontas em movimentos suaves com o pincel flat. Cubra 100% dos fios sem deixar raízes secas. A camada deve ser generosa mas sem excesso — 2 mm de espessura ideal.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn4">4</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Dobra e Fechamento do Alumínio</h3>
+          <p style="font-size:12px;color:#7E879B;">Dobre a folha ao meio sobre a mecha e pressione suavemente pelas bordas. A dobra deve ser firme o suficiente para não abrir, mas sem amassar os fios. Dobre as laterais para vedar completamente.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn5">5</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Controle e Verificação</h3>
+          <p style="font-size:12px;color:#7E879B;">Verifique a cada 10–15 min abrindo uma folha da nuca (primeira zona aplicada). Limpe o produto com papel toalha e observe o fundo de clareamento sob a luz natural. Nunca deixe passar do amarelo claro sem intenção.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info pink au d5" style="margin-top:16px;">
+      <p style="font-size:13px;color:#D98EEA;">⚡ <strong style="color:#F5F7FB;">Técnica de velocidade:</strong> pré-posicione 5 folhas de alumínio na beira da pia antes de separar as mechas — isso cria um ritmo contínuo e reduz o tempo total em até 25%.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 6 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;"><span class="gt">Fórmula Certa</span> — OX, Descolorante e Proporções</h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      A escolha do OX e do descolorante define a <strong style="color:#F5F7FB;">velocidade, segurança e resultado</strong> — nenhum detalhe pode ser deixado ao acaso.
+    </p>
+    <div class="g4 au d4" style="margin-bottom:16px;">
+      <div class="ox-card">
+        <div class="ox-num" style="color:#5EE89A;">10</div>
+        <p style="font-size:10px;color:#5EE89A;font-weight:700;margin-bottom:6px;">Vol — 3%</p>
+        <p style="font-size:11px;">Apenas deposição de cor. Sem clareamento. Ideal pós-processo para matizar.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#8FAEFF;">20</div>
+        <p style="font-size:10px;color:#8FAEFF;font-weight:700;margin-bottom:6px;">Vol — 6%</p>
+        <p style="font-size:11px;">Clareia 1–2 tons. Para fios finos, loiros ou muito sensíveis no alumínio.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FFD460;">30</div>
+        <p style="font-size:10px;color:#FFD460;font-weight:700;margin-bottom:6px;">Vol — 9%</p>
+        <p style="font-size:11px;">Clareia até 3 tons. O mais usado no alumínio — equilíbrio perfeito.</p>
+      </div>
+      <div class="ox-card">
+        <div class="ox-num" style="color:#FF6B6B;">40</div>
+        <p style="font-size:10px;color:#FF6B6B;font-weight:700;margin-bottom:6px;">Vol — 12%</p>
+        <p style="font-size:11px;">Clareia 4+ tons. Para castanhos muito escuros — usar com cautela.</p>
+      </div>
+    </div>
+    <div class="g2 au d5" style="margin-bottom:16px;">
+      <div class="bwc cg" style="padding:18px 16px;">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">✅ Pó Descolorante</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Maior poder de clareamento</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Proporção: 1 pó + 2 partes de OX</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Ideal para castanhos e escuros</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Consistência cremosa ao misturar</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">•</span>Não escorre dentro do alumínio</li>
+        </ul>
+      </div>
+      <div class="bwc cy" style="padding:18px 16px;">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">⚡ Creme Descolorante</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span>Ação mais controlada e uniforme</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span>Proporção: 1:1 com o OX</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span>Ideal para loiros e fios finos</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span>Menor risco de dano capilar</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">•</span>Textura encorpada — ótima cobertura</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info orange au d6">
+      <p style="font-size:13px;color:#FFB060;">⏱️ <strong style="color:#F5F7FB;">Tempo no alumínio:</strong> 25 a 55 min dependendo do fundo desejado e do tipo de descolorante. O alumínio potencializa o calor — verifique 5 min antes do tempo estimado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 7 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:880px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;">Do Sutil ao <span class="gt3">Dramático</span> — Efeitos que Você Pode Criar</h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      O alumínio é o <strong style="color:#F5F7FB;">canvas mais versátil da colorimetria</strong> — variando mapeamento, espessura e fundo, você entrega resultados completamente diferentes.
+    </p>
+    <div class="g2x3 au d4" style="margin-bottom:16px;">
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#F5E6A0,#E8CC70);"></div>
+        <h3 style="font-size:13px;margin-bottom:5px;">✨ Baby Lights</h3>
+        <p style="font-size:11px;margin-bottom:7px;">Mechas finíssimas (1–3 mm) em toda a extensão. Resultado ultra-natural, quase imperceptível na raiz.</p>
+        <div style="padding:5px 9px;border-radius:8px;background:rgba(245,230,160,.06);border:1px solid rgba(245,230,160,.15);font-size:10px;color:#FFE566;">Fundo: tom 8–9</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#FFD460,#FF8C00);"></div>
+        <h3 style="font-size:13px;margin-bottom:5px;">☀️ Californianas</h3>
+        <p style="font-size:11px;margin-bottom:7px;">Mechas médias concentradas no topo e pontas. Raiz preservada, claridade progressiva do meio às pontas.</p>
+        <div style="padding:5px 9px;border-radius:8px;background:rgba(255,200,60,.06);border:1px solid rgba(255,200,60,.15);font-size:10px;color:#FFD460;">Fundo: tom 7–8</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#FFFFFF,#E8E8E8);"></div>
+        <h3 style="font-size:13px;margin-bottom:5px;">❄️ Efeito Neve</h3>
+        <p style="font-size:11px;margin-bottom:7px;">Clareamento máximo + matização violeta ou prata. Mechas bem separadas e uniformes para o branco polar.</p>
+        <div style="padding:5px 9px;border-radius:8px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.15);font-size:10px;color:#D98EEA;">Fundo: tom 9–10 + matiz</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#C48828,#6B3A10);"></div>
+        <h3 style="font-size:13px;margin-bottom:5px;">🔥 Mechas Dramáticas</h3>
+        <p style="font-size:11px;margin-bottom:7px;">Mechas grossas (1–1,5 cm) em blocos estratégicos. Alto contraste e destaque visual forte.</p>
+        <div style="padding:5px 9px;border-radius:8px;background:rgba(196,136,40,.06);border:1px solid rgba(196,136,40,.15);font-size:10px;color:#C48828;">Fundo: tom 6–7</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#2E6BFF,#C86DD7);"></div>
+        <h3 style="font-size:13px;margin-bottom:5px;">🎨 Fantasia Colorida</h3>
+        <p style="font-size:11px;margin-bottom:7px;">Mechas clareadas ao máximo e tonalizadas com cores vibrantes. O alumínio isola cada cor perfeitamente.</p>
+        <div style="padding:5px 9px;border-radius:8px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15);font-size:10px;color:#8FAEFF;">Fundo: tom 9–10 + tonalização</div>
+      </div>
+      <div class="ef-card">
+        <div class="ef-dot" style="background:linear-gradient(135deg,#D4A83A,#7A4F10);"></div>
+        <h3 style="font-size:13px;margin-bottom:5px;">🌿 Balayage com Alumínio</h3>
+        <p style="font-size:11px;margin-bottom:7px;">Produto aplicado à mão na mecha antes de fechar o alumínio. Efeito degradê natural com potência máxima.</p>
+        <div style="padding:5px 9px;border-radius:8px;background:rgba(212,168,58,.06);border:1px solid rgba(212,168,58,.15);font-size:10px;color:#D4A83A;">Fundo: tom 7–8 nas pontas</div>
+      </div>
+    </div>
+    <div class="info pink au d5">
+      <p style="font-size:13px;color:#D98EEA;">💡 <strong style="color:#F5F7FB;">Mix de efeitos:</strong> combine baby lights na frente com californianas no corpo para um resultado multidimensional e sofisticado em uma única sessão.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 8 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;">Contouring Capilar — <span class="gt2">Luz que Transforma o Rosto</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      Onde você coloca as mechas <strong style="color:#F5F7FB;">muda a percepção do formato do rosto</strong> — é a escultura capilar com luz e sombra.
+    </p>
+    <div class="g22 au d4" style="margin-bottom:16px;">
+      <div class="cont-card">
+        <div class="cont-ico" style="background:rgba(255,212,96,.08);border-color:rgba(255,212,96,.2);">🌕</div>
+        <h3 style="font-size:14px;color:#FFD460;margin-bottom:6px;text-align:center;">Rosto Redondo</h3>
+        <p style="font-size:12px;margin-bottom:8px;text-align:center;">Objetivo: alongar e criar estrutura vertical.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">✦</span>Mechas concentradas no topo e centro</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">✦</span>Evitar mechas largas nas têmporas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">✦</span>Franja com claridade centralizada</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#FFD460;flex-shrink:0;">✦</span>Nuca mais escura cria profundidade</li>
+        </ul>
+      </div>
+      <div class="cont-card">
+        <div class="cont-ico" style="background:rgba(200,109,215,.08);border-color:rgba(200,109,215,.2);">🥚</div>
+        <h3 style="font-size:14px;color:#D98EEA;margin-bottom:6px;text-align:center;">Rosto Oval</h3>
+        <p style="font-size:12px;margin-bottom:8px;text-align:center;">Objetivo: realçar a harmonia natural.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Distribuição uniforme em todas as zonas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Todos os efeitos funcionam bem</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Baby lights ao redor do rosto</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#C86DD7;flex-shrink:0;">✦</span>Aproveitar têmporas e franja livremente</li>
+        </ul>
+      </div>
+      <div class="cont-card">
+        <div class="cont-ico" style="background:rgba(46,107,255,.08);border-color:rgba(46,107,255,.2);">🔷</div>
+        <h3 style="font-size:14px;color:#8FAEFF;margin-bottom:6px;text-align:center;">Rosto Longo / Angular</h3>
+        <p style="font-size:12px;margin-bottom:8px;text-align:center;">Objetivo: encurtar e suavizar ângulos.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Concentrar mechas nas laterais/têmporas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Evitar excesso de claridade no topo</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Mechas horizontais criam largura visual</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#2E6BFF;flex-shrink:0;">✦</span>Franja clara na ponta suaviza o queixo</li>
+        </ul>
+      </div>
+      <div class="cont-card">
+        <div class="cont-ico" style="background:rgba(94,232,154,.08);border-color:rgba(94,232,154,.2);">♥️</div>
+        <h3 style="font-size:14px;color:#5EE89A;margin-bottom:6px;text-align:center;">Rosto Coração</h3>
+        <p style="font-size:12px;margin-bottom:8px;text-align:center;">Objetivo: equilibrar testa e queixo.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✦</span>Franja com menos mechas na parte central</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✦</span>Claridade maior nos comprimentos e pontas</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✦</span>Mechas nas laterais inferiores iluminam queixo</li>
+          <li style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✦</span>Evitar mechas grossas no alto da testa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info blue au d5">
+      <p style="font-size:13px;color:#8FAEFF;">📸 <strong style="color:#F5F7FB;">Diagnóstico visual:</strong> fotografe o rosto do cliente de frente com cabelo preso antes de mapear. Identifique o formato e planeje o posicionamento das folhas como um projeto de iluminação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 9 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:760px;">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,3.8vw,40px);margin-bottom:10px;">Do Diagnóstico ao Salão — <span class="gt">O Processo Completo</span></h2>
+    <p class="au d3" style="font-size:clamp(13px,1.9vw,15px);margin-bottom:20px;">
+      Um atendimento profissional de luzes no alumínio segue <strong style="color:#F5F7FB;">5 etapas inegociáveis</strong> que garantem segurança, resultado e fidelização.
+    </p>
+    <div class="flow-list au d4">
+      <div class="flow-item act">
+        <div class="flow-num fn1">1</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Consulta e Diagnóstico</h3>
+          <p style="font-size:12px;color:#7E879B;">Avaliar: histórico de química (relaxamento, coloração, progressiva), porosidade dos fios, tom natural e desejado. Fazer teste de mecha em caso de cabelo muito poroso ou comprometido.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn2">2</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Mapeamento e Planejamento</h3>
+          <p style="font-size:12px;color:#7E879B;">Definir efeito desejado, formato do rosto, zonas prioritárias, espessura das mechas e tipo de alumínio. Dividir o cabelo em 4 quadrantes e marcar as separações com pente antes de iniciar.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn3">3</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Aplicação — Nuca até a Frente</h3>
+          <p style="font-size:12px;color:#7E879B;">Iniciar sempre pela nuca (maior tempo de ação) e finalizar na frente (menor tempo necessário). Manter ritmo constante — cada folha em no máximo 60 segundos para controle de tempo uniforme.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn4">4</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Controle do Clareamento</h3>
+          <p style="font-size:12px;color:#7E879B;">Verificar a cada 10 min. Abrir folha da nuca, limpar com papel toalha e observar o fundo. Tom 7 = dourado, tom 8 = amarelo, tom 9 = amarelo pálido, tom 10 = quase branco. Remover no ponto ideal.</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num fn5">5</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:3px;">Finalização e Pós-atendimento</h3>
+          <p style="font-size:12px;color:#7E879B;">Remover todos os alumínios, enxaguar, aplicar matizador ou tonalizante se necessário. Finalizar com tratamento reconstrutivo. Orientar sobre rotina de manutenção e agendar retorno em 6–8 semanas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="g2 au d5" style="margin-top:16px;">
+      <div class="info blue">
+        <p style="font-size:12px;color:#8FAEFF;">📋 <strong style="color:#F5F7FB;">Ficha técnica:</strong> registre OX, descolorante, proporção, tempo e fundo atingido. Isso garante a replicação do resultado na próxima visita.</p>
+      </div>
+      <div class="info green">
+        <p style="font-size:12px;color:#5EE89A;">🏠 <strong style="color:#F5F7FB;">Orientação domiciliar:</strong> shampoo para cabelos coloridos ou loiros, máscara semanal, protetor térmico e evitar água muito quente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SLIDE 10 ═══════════════════════ -->
+<section class="slide">
+  <div style="width:100%;max-width:860px;text-align:center;">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(22px,4.2vw,50px);margin-bottom:10px;">
+      Você Domina a <span class="gt2">Técnica</span><br/>Agora é Só <span class="gt">Brilhar!</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(13px,2vw,16px);max-width:520px;margin:0 auto 22px;">
+      Do diagnóstico ao resultado — cada folha de alumínio é uma oportunidade de transformar e encantar. 🥇
+    </p>
+    <div class="g2x3 au d4" style="text-align:left;margin-bottom:20px;">
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(255,212,96,.12);">🗂️</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Materiais e Preparo</h3><p style="font-size:11px;color:#7E879B;">Alumínio certo, cabelo preparado</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(46,107,255,.12);">🗺️</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Mapeamento</h3><p style="font-size:11px;color:#7E879B;">4 zonas: frente, lateral, topo, nuca</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(200,109,215,.12);">📐</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Técnica de Aplicação</h3><p style="font-size:11px;color:#7E879B;">Separação, alumínio, dobra e controle</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(94,232,154,.12);">⚗️</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">OX e Descolorante</h3><p style="font-size:11px;color:#7E879B;">Pó vs creme, 20–40 vol, proporções</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(255,143,171,.12);">✨</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">6 Efeitos Dominados</h3><p style="font-size:11px;color:#7E879B;">Baby light, cal., neve, drama, fantasia, balayage</p></div>
+      </div>
+      <div class="recap-item">
+        <div class="recap-icon" style="background:rgba(255,212,96,.12);">🎨</div>
+        <div><h3 style="font-size:13px;margin-bottom:3px;">Contouring Capilar</h3><p style="font-size:11px;color:#7E879B;">Redondo, oval, longo e coração</p></div>
+      </div>
+    </div>
+    <div class="au d5" style="padding:20px 22px;border-radius:18px;background:linear-gradient(135deg,rgba(255,212,96,.06),rgba(200,109,215,.08));border:1px solid rgba(255,212,96,.18);">
+      <p style="font-size:clamp(13px,2vw,15px);font-style:italic;color:#F5F7FB;margin-bottom:8px;">
+        "O papel alumínio é o pincel da colorista — na mão certa, ele não aplica produto, ele pinta luz, movimento e identidade."
+      </p>
+      <p style="font-size:12px;color:#7E879B;">SEMEAR — Escola da Mulher Empreendedora</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()" aria-label="Anterior">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    s.classList.toggle('active',i===C);
+    if(i===C)s.scrollTop=0;
+  });
+}
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].clientX;
+  ty=e.changedTouches[0].clientY;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=ty-e.changedTouches[0].clientY;
+  if(Math.abs(dx)>Math.abs(dy)*1.5&&Math.abs(dx)>52){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen();
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
 
