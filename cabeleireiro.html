@@ -2,84 +2,106 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Pacote Cabeleireiro – Instituto Semear</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
     body {
       font-family: Inter, sans-serif;
       min-height: 100vh;
       background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
       color: #F5F7FB;
-      padding: 50px 22px 60px;
+      padding: 44px 16px 60px;
     }
 
-    .wrap { max-width: 800px; margin: 0 auto; }
+    .wrap { max-width: 800px; margin: 0 auto; width: 100%; }
 
-    .header { text-align: center; margin-bottom: 48px; }
-    .header .badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 24px; border-radius: 999px; margin-bottom: 24px;
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 40px; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: 999px; margin-bottom: 20px;
       background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.2);
-      font-size: 13px; font-weight: 600; color: #8FAEFF;
+      font-size: clamp(11px, 2.5vw, 13px); font-weight: 600; color: #8FAEFF;
       letter-spacing: .05em; text-transform: uppercase;
+      flex-wrap: wrap; justify-content: center; line-height: 1.4;
     }
+
     .header h1 {
-      font-size: clamp(28px, 4vw, 42px);
+      font-size: clamp(26px, 5.5vw, 42px);
       font-weight: 900;
       letter-spacing: -.02em;
-      line-height: 1.1;
-      margin-bottom: 14px;
+      line-height: 1.15;
+      margin-bottom: 12px;
     }
+
     .gt {
       background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%);
       background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; animation: shimmer 4s linear infinite;
     }
-    .header p { color: #AAB3C5; font-size: 16px; line-height: 1.6; }
+
+    .header p {
+      color: #AAB3C5;
+      font-size: clamp(13px, 2.5vw, 16px);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
     .gl {
       width: 70px; height: 4px; border-radius: 2px;
       background: linear-gradient(90deg, #2E6BFF, #C86DD7);
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
     }
 
+    /* ── Lista de cursos ── */
     .cursos-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .curso-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 22px 28px;
+      gap: 12px;
+      padding: 18px 20px;
       background: rgba(255,255,255,.03);
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 16px;
       text-decoration: none;
       color: #F5F7FB;
       font-weight: 700;
-      font-size: 17px;
+      font-size: clamp(13px, 2.8vw, 16px);
       transition: all .3s ease;
       backdrop-filter: blur(8px);
       cursor: pointer;
+      width: 100%;
     }
-    .curso-btn:hover {
+
+    .curso-btn:hover,
+    .curso-btn:active {
       background: rgba(46,107,255,.08);
       border-color: rgba(46,107,255,.35);
-      transform: translateX(6px);
       box-shadow: 0 8px 32px rgba(46,107,255,.15);
+    }
+
+    @media (min-width: 600px) {
+      .curso-btn:hover { transform: translateX(6px); }
     }
 
     .curso-btn .left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
+      flex: 1;
+      min-width: 0;
     }
 
     .curso-num {
@@ -87,6 +109,7 @@
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 15px; font-weight: 900; color: #fff;
+      flex-shrink: 0;
     }
     .n1 { background: linear-gradient(135deg, #2E6BFF, #1E56D9); }
     .n2 { background: linear-gradient(135deg, #5B3FD6, #4530B3); }
@@ -95,33 +118,45 @@
     .n5 { background: linear-gradient(135deg, #1E56D9, #C86DD7); }
     .n6 { background: linear-gradient(135deg, #A854BF, #2E6BFF); }
 
+    /* Texto do botão: quebra normalmente, sem truncar */
+    .curso-btn .label {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.35;
+      word-break: break-word;
+      hyphens: auto;
+    }
+
     .curso-btn .arrow {
       color: #7E879B;
       transition: all .3s ease;
+      flex-shrink: 0;
     }
-    .curso-btn:hover .arrow {
+    .curso-btn:hover .arrow,
+    .curso-btn:active .arrow {
       color: #2E6BFF;
-      transform: translateX(4px);
     }
 
+    /* ── Botão voltar ── */
     .btn-back {
       display: inline-flex; align-items: center; gap: 10px;
-      margin-top: 40px;
+      margin-top: 36px;
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.10);
       color: #AAB3C5;
-      padding: 14px 22px;
+      padding: 13px 20px;
       border-radius: 12px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 14px;
+      font-size: clamp(13px, 2.5vw, 14px);
       transition: .25s ease;
     }
     .btn-back:hover { color: #F5F7FB; border-color: rgba(46,107,255,.3); }
+    .btn-back svg { flex-shrink: 0; }
 
     @keyframes shimmer {
-      0% { background-position: -200% center }
-      100% { background-position: 200% center }
+      0%   { background-position: -200% center }
+      100% { background-position:  200% center }
     }
   </style>
 </head>
@@ -129,9 +164,7 @@
   <div class="wrap">
 
     <div class="header">
-      <div class="badge">
-        ✂️ Pacote Cabeleireiro
-      </div>
+      <div class="badge">✂️ Pacote Cabeleireiro</div>
       <div class="gl"></div>
       <h1>Escolha seu <span class="gt">curso</span></h1>
       <p>Seu pacote inclui 6 cursos completos. Clique em qualquer um para começar.</p>
@@ -142,29 +175,29 @@
       <a href="curso-tratamentos.html" class="curso-btn">
         <div class="left">
           <div class="curso-num n1">1</div>
-          <span>Tratamentos, Pacotes e Serviços Complementares</span>
+          <span class="label">Tratamentos, Pacotes e Serviços Complementares</span>
         </div>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
-      
-  <a href="curso-procedimentos-termicos.html" class="curso-btn">
+
+      <a href="curso-procedimentos-termicos.html" class="curso-btn">
         <div class="left">
           <div class="curso-num n2">2</div>
-          <span>Procedimentos Termicos</span>
+          <span class="label">Procedimentos Térmicos</span>
         </div>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
-      
+
       <a href="curso-colorimetria-ozonio.html" class="curso-btn">
         <div class="left">
           <div class="curso-num n3">3</div>
-          <span>Colorimetria e Ozonioterapia Capilar</span>
+          <span class="label">Colorimetria e Ozonioterapia Capilar</span>
         </div>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
@@ -172,9 +205,9 @@
       <a href="curso-luzes-morena.html" class="curso-btn">
         <div class="left">
           <div class="curso-num n4">4</div>
-          <span>Luzes e Morena Iluminada</span>
+          <span class="label">Luzes e Morena Iluminada</span>
         </div>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
@@ -182,9 +215,9 @@
       <a href="curso-coloracao.html" class="curso-btn">
         <div class="left">
           <div class="curso-num n5">5</div>
-          <span>Coloração</span>
+          <span class="label">Coloração</span>
         </div>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
@@ -192,9 +225,9 @@
       <a href="curso-cortes-modelagens.html" class="curso-btn">
         <div class="left">
           <div class="curso-num n6">6</div>
-          <span>Cortes e Modelagens</span>
+          <span class="label">Cortes e Modelagens</span>
         </div>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
