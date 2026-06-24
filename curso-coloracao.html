@@ -35,7 +35,6 @@
       width: 100%;
     }
 
-    /* ── Badge ── */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -52,7 +51,6 @@
       flex-wrap: wrap;
     }
 
-    /* ── Título e subtítulo ── */
     h1 {
       margin: 16px 0 8px;
       font-size: clamp(22px, 5vw, 44px);
@@ -68,7 +66,6 @@
       font-size: clamp(13px, 2.5vw, 15px);
     }
 
-    /* ── Grid ── */
     .grid {
       display: grid;
       gap: 12px;
@@ -79,7 +76,6 @@
       .grid { grid-template-columns: 1fr 1fr; }
     }
 
-    /* ── Card ── */
     a.card {
       display: flex;
       flex-direction: column;
@@ -129,7 +125,6 @@
       white-space: nowrap;
     }
 
-    /* ── Botão voltar ── */
     .btn-back {
       display: inline-flex;
       align-items: center;
@@ -155,7 +150,6 @@
 
     .btn-back svg { flex-shrink: 0; }
 
-    /* ── Footer ── */
     .footer {
       margin-top: 24px;
       color: #7E879B;
@@ -168,28 +162,28 @@
 <body>
   <div class="wrap">
 
-    <div class="badge">✂️ Curso de Cabelo</div>
+    <div class="badge">🎨 Coloração Capilar</div>
     <h1>Curso de Coloração Capilar</h1>
     <p class="subtitle">Selecione uma aula para abrir.</p>
 
     <div class="grid">
 
       <a class="card" href="aulas/coloracao/aula-01.html">
-        <div class="card-title">Aula 01 —</div>
-        <p class="card-desc">Entenda fundamentos</p>
+        <div class="card-title">Aula 01 — Teoria das Cores e Fundamentos</div>
+        <p class="card-desc">Entenda o círculo cromático, estrela das cores e a base para combinações harmônicas.</p>
         <span class="pill">Abrir aula</span>
       </a>
 
       <a class="card" href="aulas/coloracao/aula-02.html">
-        <div class="card-title">Aula 02 —</div>
-        <p class="card-desc">Detalhes</p>
+        <div class="card-title">Aula 02 — Técnicas de Coloração Profissional</div>
+        <p class="card-desc">Conheça tipos de tinturas, preparação do cabelo e aplicação prática para resultados duradouros.</p>
         <span class="pill">Abrir aula</span>
       </a>
 
     </div>
 
     <a href="cabeleireiro.html" class="btn-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true" focusable="false">
         <path d="M15 18l-6-6 6-6"/>
       </svg>
       Voltar ao Pacote Cabeleireiro
