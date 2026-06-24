@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Modelagem Capilar — Guia Profissional 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+.slide{
+  width:100vw;min-height:100vh;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;position:relative;
+  overflow-y:auto;overflow-x:hidden;
+  padding:56px 16px 112px;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+}
+.slide.vcenter{justify-content:center;}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-thumb{background:rgba(46,107,255,.35);border-radius:4px;}
+
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 900px 420px at 75% 8%,rgba(46,107,255,.13) 0%,transparent 52%),
+    radial-gradient(ellipse 700px 380px at 15% 88%,rgba(91,63,214,.11) 0%,transparent 52%),
+    radial-gradient(ellipse 550px 280px at 55% 55%,rgba(200,109,215,.07) 0%,transparent 60%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.18;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1;}
+.inner{width:100%;max-width:940px;}
+
+/* TIPOGRAFIA */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p,li{font-weight:400;line-height:1.65;color:#AAB3C5;}
+strong{color:#F5F7FB;}
+
+/* GRADIENTES */
+.gblue{background:linear-gradient(135deg,#2E6BFF 0%,#7B5CF0 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gviolet{background:linear-gradient(135deg,#7B5CF0 0%,#C86DD7 50%,#7B5CF0 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.grose{background:linear-gradient(135deg,#FF6FB7 0%,#C86DD7 50%,#FF6FB7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.ggold{background:linear-gradient(135deg,#FFD460 0%,#FF8C30 50%,#FFD460 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.ggreen{background:linear-gradient(135deg,#5EE89A 0%,#27AE60 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gcyan{background:linear-gradient(135deg,#00D2FF 0%,#2E6BFF 50%,#00D2FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* LINHA DECO */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#7B5CF0);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+.gl.rose{background:linear-gradient(90deg,#FF6FB7,#C86DD7);}
+.gl.gold{background:linear-gradient(90deg,#FFD460,#FF8C30);}
+.gl.green{background:linear-gradient(90deg,#5EE89A,#27AE60);}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:999px;margin-bottom:22px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.28);font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px 17px;backdrop-filter:blur(8px);transition:all .4s ease;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);}
+.card:hover{border-color:rgba(46,107,255,.22);transform:translateY(-3px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95),rgba(10,15,36,.98),rgba(5,8,22,1));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px 17px;backdrop-filter:blur(10px);transition:all .4s ease;box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.07);}
+.cp:hover{border-color:rgba(46,107,255,.25);transform:translateY(-3px) scale(1.008);}
+
+/* NÚMERO */
+.tn{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0;animation:glowN 3s ease-in-out infinite;}
+.na{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.nb{background:linear-gradient(145deg,#7B5CF0,#5B3FD6);animation-delay:.5s;}
+.nc{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:.3s;}
+.nd{background:linear-gradient(145deg,#FF6FB7,#D94F97);animation-delay:.7s;}
+.ne{background:linear-gradient(145deg,#FFD460,#FF8C00);animation-delay:.2s;}
+.nf{background:linear-gradient(145deg,#5EE89A,#27AE60);animation-delay:.6s;}
+.ng{background:linear-gradient(145deg,#00D2FF,#0099CC);animation-delay:.4s;}
+@keyframes glowN{0%,100%{box-shadow:0 0 18px rgba(46,107,255,.1)}50%{box-shadow:0 0 36px rgba(46,107,255,.38)}}
+
+/* INFOBOX */
+.info{padding:13px 15px;border-radius:14px;}
+.info.blue{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.22);}
+.info.violet{background:rgba(123,92,240,.06);border:1px solid rgba(123,92,240,.22);}
+.info.rose{background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.22);}
+.info.gold{background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.22);}
+.info.green{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.22);}
+.info.red{background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.22);}
+.info.white{background:rgba(245,247,251,.04);border:1px solid rgba(245,247,251,.12);}
+.info.cyan{background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.22);}
+
+/* FLOW ITEM */
+.fi{display:flex;align-items:flex-start;gap:11px;padding:11px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.fi.acb{background:rgba(46,107,255,.06);border-color:rgba(46,107,255,.18);}
+.fi.acv{background:rgba(123,92,240,.06);border-color:rgba(123,92,240,.18);}
+.fi.acr{background:rgba(200,109,215,.06);border-color:rgba(200,109,215,.18);}
+.fi.acg{background:rgba(80,220,120,.06);border-color:rgba(80,220,120,.18);}
+.fi.acy{background:rgba(255,212,96,.06);border-color:rgba(255,212,96,.18);}
+.fi.acp{background:rgba(255,111,183,.06);border-color:rgba(255,111,183,.18);}
+.fi.acc{background:rgba(0,210,255,.06);border-color:rgba(0,210,255,.18);}
+.fn{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;}
+
+/* TAG */
+.tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.04em;}
+.tag.blue{background:rgba(46,107,255,.15);color:#8FAEFF;border:1px solid rgba(46,107,255,.25);}
+.tag.violet{background:rgba(123,92,240,.15);color:#A98AF5;border:1px solid rgba(123,92,240,.25);}
+.tag.rose{background:rgba(200,109,215,.15);color:#D98EEA;border:1px solid rgba(200,109,215,.25);}
+.tag.gold{background:rgba(255,212,96,.15);color:#FFD460;border:1px solid rgba(255,212,96,.25);}
+.tag.green{background:rgba(94,232,154,.15);color:#5EE89A;border:1px solid rgba(94,232,154,.25);}
+.tag.red{background:rgba(255,80,80,.15);color:#FF8080;border:1px solid rgba(255,80,80,.25);}
+.tag.pink{background:rgba(255,111,183,.15);color:#FF9FD0;border:1px solid rgba(255,111,183,.25);}
+.tag.cyan{background:rgba(0,210,255,.15);color:#00D2FF;border:1px solid rgba(0,210,255,.25);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+
+/* BARRA */
+.rb{height:7px;border-radius:4px;background:rgba(255,255,255,.06);margin-top:5px;overflow:hidden;}
+.rf{height:100%;border-radius:4px;}
+
+/* COMPARATIVO */
+.bwc{border-radius:16px;padding:15px 13px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.14);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.14);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.14);}
+.bwc.cb{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.14);}
+.bwc.cv{background:rgba(123,92,240,.05);border:1px solid rgba(123,92,240,.14);}
+.bwc.cp2{background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.14);}
+.bwc.cc{background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.14);}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.slide.active .au{animation:fadeUp .68s ease both;}
+.slide.active .as{animation:fadeScale .68s ease both;}
+.d1{animation-delay:.07s!important}.d2{animation-delay:.17s!important}
+.d3{animation-delay:.27s!important}.d4{animation-delay:.37s!important}
+.d5{animation-delay:.47s!important}.d6{animation-delay:.57s!important}
+.d7{animation-delay:.67s!important}.d8{animation-delay:.77s!important}
+
+/* TEMP VISUAL */
+.temp-bar{height:10px;border-radius:5px;overflow:hidden;background:rgba(255,255,255,.05);margin-top:5px;}
+.temp-fill{height:100%;border-radius:5px;transition:width .8s ease;}
+
+/* HEAT MAP */
+.heat{display:inline-block;width:20px;height:20px;border-radius:5px;}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#7B5CF0,#00D2FF,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+.fsbtn{position:fixed;top:12px;right:12px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 13px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fsbtn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.35);}
+.fsbtn svg{width:14px;height:14px;}
+.sc{position:fixed;bottom:20px;left:14px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.45);padding:8px 13px;border-radius:11px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:900;}
+.ind{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.45);padding:8px 14px;border-radius:22px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:linear-gradient(90deg,#2E6BFF,#7B5CF0);box-shadow:0 0 12px rgba(46,107,255,.6);width:28px;border-radius:5px;}
+.navarr{position:fixed;bottom:15px;right:13px;z-index:998;display:flex;gap:8px;}
+.navarr button{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
+.navarr button:hover{background:rgba(46,107,255,.18);border-color:rgba(46,107,255,.4);color:#fff;}
+.navarr button svg{width:18px;height:18px;}
+
+/* MOBILE */
+@media(max-width:680px){
+  .slide{padding:50px 12px 110px;}
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  .fsbtn span{display:none;}
+  .fsbtn{padding:9px 11px;}
+  h2{font-size:clamp(18px,5vw,32px)!important;}
+}
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fsbtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════════ -->
+<section class="slide vcenter active">
+  <div style="width:100%;max-width:820px;text-align:center;">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.522 4.82 3.889 6.115L6 21l4.447-2.24A10.54 10.54 0 0012 19c4.97 0 9-3.185 9-7.115C21 7.185 16.97 3 12 3z"/></svg>
+      Guia Profissional Completo · 2026
+    </div>
+    <h1 class="au d2" style="font-size:clamp(30px,7.5vw,88px);margin-bottom:14px;">
+      Modelagem<br/><span class="gblue">Capilar</span>
+    </h1>
+    <div class="gl ce au d3"></div>
+    <p class="au d4" style="font-size:clamp(13px,2.2vw,17px);color:#AAB3C5;max-width:620px;margin:0 auto 28px;line-height:1.65;">
+      Do diagnóstico ao acabamento perfeito — técnicas, ferramentas, temperaturas e protocolos profissionais para dominar a modelagem em qualquer tipo de fio.
+    </p>
+    <div class="g4 au d5" style="max-width:580px;margin:0 auto 20px;">
+      <div style="padding:14px 8px;border-radius:14px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.22);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">🌡️</div>
+        <p style="font-size:11px;font-weight:700;color:#8FAEFF;">Temperatura</p>
+      </div>
+      <div style="padding:14px 8px;border-radius:14px;background:rgba(123,92,240,.08);border:1px solid rgba(123,92,240,.22);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">🔧</div>
+        <p style="font-size:11px;font-weight:700;color:#A98AF5;">Ferramentas</p>
+      </div>
+      <div style="padding:14px 8px;border-radius:14px;background:rgba(0,210,255,.08);border:1px solid rgba(0,210,255,.22);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">💇</div>
+        <p style="font-size:11px;font-weight:700;color:#00D2FF;">Técnicas</p>
+      </div>
+      <div style="padding:14px 8px;border-radius:14px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.22);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">🛡️</div>
+        <p style="font-size:11px;font-weight:700;color:#5EE89A;">Proteção</p>
+      </div>
+    </div>
+    <p class="au d6" style="font-size:11px;color:#7E879B;">Navegue com as setas ← → ou deslize na tela</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 2 — DIAGNÓSTICO CAPILAR
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;">Diagnóstico Capilar — <span class="gblue">A Base de Tudo</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">Modelar sem diagnosticar é o maior erro da modelagem. O <strong>diagnóstico preciso</strong> define qual técnica usar, qual temperatura aplicar e quais produtos escolher — antes de ligar qualquer ferramenta.</p>
+
+    <div class="g3 au d4" style="margin-bottom:14px;">
+      <div class="cp" style="text-align:center;">
+        <div style="font-size:28px;margin-bottom:10px;">🔬</div>
+        <h3 style="font-size:13px;margin-bottom:8px;">Porosidade</h3>
+        <p style="font-size:12px;margin-bottom:10px;">A capacidade do fio de absorver e reter umidade. Define quanto calor e produto o cabelo suporta.</p>
+        <div style="display:flex;flex-direction:column;gap:5px;text-align:left;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;font-weight:700;color:#5EE89A;">Baixa</p>
+            <p style="font-size:10px;">Cutícula fechada, repele produto. Mais calor necessário.</p>
+          </div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);">
+            <p style="font-size:11px;font-weight:700;color:#FFD460;">Média</p>
+            <p style="font-size:10px;">Estado ideal. Absorção equilibrada. Responde bem ao calor.</p>
+          </div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,80,80,.07);border:1px solid rgba(255,80,80,.18);">
+            <p style="font-size:11px;font-weight:700;color:#FF8080;">Alta</p>
+            <p style="font-size:10px;">Cutícula aberta, porosa, frágil. Calor baixo obrigatório.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cp" style="text-align:center;">
+        <div style="font-size:28px;margin-bottom:10px;">💪</div>
+        <h3 style="font-size:13px;margin-bottom:8px;">Elasticidade</h3>
+        <p style="font-size:12px;margin-bottom:10px;">Capacidade de esticar e voltar sem quebrar. Fio sem elasticidade quebra ao modelar.</p>
+        <div style="display:flex;flex-direction:column;gap:5px;text-align:left;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;font-weight:700;color:#5EE89A;">Alta (&gt;30% esticamento)</p>
+            <p style="font-size:10px;">Medula intacta. Seguro para modelagem com calor.</p>
+          </div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);">
+            <p style="font-size:11px;font-weight:700;color:#FFD460;">Média (15–30%)</p>
+            <p style="font-size:10px;">Moderada. Usar proteção térmica reforçada.</p>
+          </div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,80,80,.07);border:1px solid rgba(255,80,80,.18);">
+            <p style="font-size:11px;font-weight:700;color:#FF8080;">Baixa (&lt;15%)</p>
+            <p style="font-size:10px;">Fio quebradiço. Evitar calor direto. Reconstruir antes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cp" style="text-align:center;">
+        <div style="font-size:28px;margin-bottom:10px;">🧴</div>
+        <h3 style="font-size:13px;margin-bottom:8px;">Densidade & Espessura</h3>
+        <p style="font-size:12px;margin-bottom:10px;">Quantidade de fios por cm² (densidade) e espessura de cada fio. Ambos afetam tempo e temperatura.</p>
+        <div style="display:flex;flex-direction:column;gap:5px;text-align:left;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.18);">
+            <p style="font-size:11px;font-weight:700;color:#8FAEFF;">Fino + Baixa densidade</p>
+            <p style="font-size:10px;">Calor baixo. Modelagem rápida. Cuidado com sobrecarga.</p>
+          </div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(123,92,240,.07);border:1px solid rgba(123,92,240,.18);">
+            <p style="font-size:11px;font-weight:700;color:#A98AF5;">Médio + Média densidade</p>
+            <p style="font-size:10px;">Temperatura moderada. Resultado equilibrado e duradouro.</p>
+          </div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.18);">
+            <p style="font-size:11px;font-weight:700;color:#D98EEA;">Grosso + Alta densidade</p>
+            <p style="font-size:10px;">Maior calor e tempo. Seccionamento preciso essencial.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card au d5" style="margin-bottom:12px;">
+      <h3 style="font-size:14px;color:#8FAEFF;margin-bottom:12px;">🧪 Testes Rápidos de Diagnóstico — Execute Antes de Modelar</h3>
+      <div class="g2" style="gap:10px;">
+        <div class="fi acb">
+          <span style="font-size:20px;flex-shrink:0;">💧</span>
+          <div><p style="font-size:12px;"><strong>Teste do copo d'água (porosidade):</strong> coloque um fio limpo na água. Afunda rápido = alta porosidade. Flutua = baixa. Meio = média.</p></div>
+        </div>
+        <div class="fi acv">
+          <span style="font-size:20px;flex-shrink:0;">🤏</span>
+          <div><p style="font-size:12px;"><strong>Teste do estiramento (elasticidade):</strong> estique um fio molhado. Se quebra sem esticar = sem elasticidade. Se estica e volta = saudável.</p></div>
+        </div>
+        <div class="fi acr">
+          <span style="font-size:20px;flex-shrink:0;">✌️</span>
+          <div><p style="font-size:12px;"><strong>Teste do deslize (porosidade tátil):</strong> deslize dois dedos do fio da ponta para a raiz. Áspero e irregular = alta porosidade. Liso = baixa.</p></div>
+        </div>
+        <div class="fi acg">
+          <span style="font-size:20px;flex-shrink:0;">🌡️</span>
+          <div><p style="font-size:12px;"><strong>Teste do calor (resistência):</strong> passe o secador a 30 cm. Fios que dobram sem volume ao esfriar = precisam de reconstrução antes de modelar.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info blue au d6">
+      <p style="font-size:12px;color:#8FAEFF;">🎯 <strong>Regra de ouro:</strong> nunca inicie a modelagem sem diagnóstico. Um fio de alta porosidade com baixa elasticidade submetido a 230°C pode quebrar durante o atendimento. A triagem protege você e a cliente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 3 — FERRAMENTAS PROFISSIONAIS
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;">Ferramentas — <span class="gviolet">Conhecer Para Dominar</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">Cada ferramenta de modelagem tem características únicas que determinam o <strong>resultado, a durabilidade e o risco</strong> para o fio. Escolher errado compromete o trabalho inteiro.</p>
+
+    <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:14px;" class="au d4">
+
+      <div style="padding:16px 15px;border-radius:16px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+          <div class="tn na" style="width:44px;height:44px;font-size:20px;">💨</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;">
+              <h3 style="font-size:14px;">Secador Profissional</h3>
+              <span class="tag blue">base</span><span class="tag green">todos os tipos</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">A ferramenta mais versátil da modelagem. Base para todas as técnicas de escova.</p>
+          </div>
+        </div>
+        <div class="g3" style="gap:8px;">
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">⚡ Potência</p>
+            <p style="font-size:11px;">Mínimo 2000W para uso profissional. Abaixo disso, demora mais e superaquece o fio.</p>
+          </div>
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">🌡️ Temp. ideal</p>
+            <p style="font-size:11px;">Finos: 60–80°C. Médios: 90–110°C. Grossos: 120–140°C. Sempre com difusor ou bico.</p>
+          </div>
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">💡 Dica pro</p>
+            <p style="font-size:11px;">Íon negativo reduz frizz e fecha a cutícula. Preferência para cabelos danificados.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:16px 15px;border-radius:16px;background:rgba(123,92,240,.06);border:1px solid rgba(123,92,240,.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+          <div class="tn nb" style="width:44px;height:44px;font-size:20px;">🔥</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;">
+              <h3 style="font-size:14px;">Prancha / Chapinha</h3>
+              <span class="tag violet">liso + defin.</span><span class="tag red">atenção ao calor</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">Ferramenta de maior risco térmico. Exige domínio total de temperatura e passadas.</p>
+          </div>
+        </div>
+        <div class="g2" style="gap:8px;">
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:5px;">🔲 Placa de Titânio</p>
+            <p style="font-size:11px;">Aquece rápido e distribui calor uniforme. Alta temperatura. Para fios resistentes e grossos. Não recomendado para fios finos ou danificados.</p>
+          </div>
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:5px;">💎 Placa de Turmalina/Cerâmica</p>
+            <p style="font-size:11px;">Emite íons negativos, menos agressiva, calor mais suave e homogêneo. Ideal para fios finos, danificados e com química.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:16px 15px;border-radius:16px;background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+          <div class="tn ng" style="width:44px;height:44px;font-size:20px;">🌀</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;">
+              <h3 style="font-size:14px;">Babyliss / Modelador de Cachos</h3>
+              <span class="tag cyan">ondas + cachos</span><span class="tag gold">tendência 2026</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">A ferramenta que mais cresceu em demanda nos últimos 2 anos. Versatilidade total.</p>
+          </div>
+        </div>
+        <div class="g3" style="gap:8px;">
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">9–13mm</p>
+            <p style="font-size:11px;">Cachos bem definidos e pequenos. Efeito "frizz beauty" e spiral curls.</p>
+          </div>
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">25–32mm</p>
+            <p style="font-size:11px;">Ondas naturais e cachos médios. O diâmetro mais versátil do portfólio.</p>
+          </div>
+          <div style="padding:9px 10px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">38–50mm</p>
+            <p style="font-size:11px;">Beach waves e ondas soltas. Resultado natural e romântico. Alta procura.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:16px 15px;border-radius:16px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+          <div class="tn ne" style="width:44px;height:44px;font-size:20px;">🔩</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;">
+              <h3 style="font-size:14px;">Escovas Profissionais</h3>
+              <span class="tag gold">escova + secador</span><span class="tag blue">forma + volume</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">A escova define a silhueta e o volume enquanto o secador fixa a forma. Combinação clássica de alto impacto.</p>
+          </div>
+        </div>
+        <div class="g4" style="gap:8px;">
+          <div style="padding:8px 9px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);text-align:center;">
+            <p style="font-size:18px;margin-bottom:4px;">🔵</p>
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;">Redonda</p>
+            <p style="font-size:10px;">Volume, brilho e curvatura nas pontas</p>
+          </div>
+          <div style="padding:8px 9px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);text-align:center;">
+            <p style="font-size:18px;margin-bottom:4px;">⬜</p>
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;">Raquete</p>
+            <p style="font-size:10px;">Alisamento, brilho e queda natural</p>
+          </div>
+          <div style="padding:8px 9px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);text-align:center;">
+            <p style="font-size:18px;margin-bottom:4px;">🌀</p>
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;">Cerda Natural</p>
+            <p style="font-size:10px;">Brilho intenso e leveza. Porosa e fina.</p>
+          </div>
+          <div style="padding:8px 9px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);text-align:center;">
+            <p style="font-size:18px;margin-bottom:4px;">⚙️</p>
+            <p style="font-size:11px;font-weight:700;color:#F5F7FB;">Misto/Nylon</p>
+            <p style="font-size:10px;">Versatilidade. Todos os tipos de fio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info violet au d5">
+      <p style="font-size:12px;color:#A98AF5;">🔧 <strong>Manutenção das ferramentas:</strong> limpe as placas após cada uso com pano de microfibra levemente úmido (frio). Ferramentas sujas acumulam resíduo de produto que queima no fio e contamina o resultado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 4 — GUIA DE TEMPERATURAS
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;">Guia de <span class="ggold">Temperaturas</span> — O Mapa do Calor</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">A temperatura errada é a principal causa de dano por calor em salões. <strong>Não existe uma temperatura universal</strong> — ela depende do tipo, saúde e espessura do fio.</p>
+
+    <div class="card au d4" style="margin-bottom:14px;">
+      <h3 style="font-size:14px;color:#FFD460;margin-bottom:14px;">🌡️ Tabela de Temperaturas por Perfil de Fio</h3>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+
+        <div style="padding:12px 14px;border-radius:13px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#5EE89A;flex-shrink:0;"></div>
+              <p style="font-size:13px;font-weight:700;color:#5EE89A;">Fios Finos + Alta Porosidade + Com Química</p>
+            </div>
+            <span class="tag green">120°C – 150°C</span>
+          </div>
+          <div class="temp-bar"><div class="temp-fill" style="width:35%;background:linear-gradient(90deg,#5EE89A,#27AE60);"></div></div>
+          <p style="font-size:11px;margin-top:7px;">Fios mais vulneráveis ao calor. Acima de 150°C há risco real de quebra e fusão proteica. Sempre usar protetor térmico de alta concentração.</p>
+        </div>
+
+        <div style="padding:12px 14px;border-radius:13px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.18);">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#FFD460;flex-shrink:0;"></div>
+              <p style="font-size:13px;font-weight:700;color:#FFD460;">Fios Finos a Médios Saudáveis</p>
+            </div>
+            <span class="tag gold">150°C – 180°C</span>
+          </div>
+          <div class="temp-bar"><div class="temp-fill" style="width:52%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+          <p style="font-size:11px;margin-top:7px;">Faixa segura para a maioria dos fios em bom estado de saúde. Eficaz para a maioria das modelagens. Protetor térmico indispensável.</p>
+        </div>
+
+        <div style="padding:12px 14px;border-radius:13px;background:rgba(255,150,50,.06);border:1px solid rgba(255,150,50,.18);">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#FF9632;flex-shrink:0;"></div>
+              <p style="font-size:13px;font-weight:700;color:#FF9632;">Fios Médios a Grossos Saudáveis</p>
+            </div>
+            <span style="padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;background:rgba(255,150,50,.15);color:#FF9632;border:1px solid rgba(255,150,50,.25);">180°C – 210°C</span>
+          </div>
+          <div class="temp-bar"><div class="temp-fill" style="width:72%;background:linear-gradient(90deg,#FF9632,#FF5500);"></div></div>
+          <p style="font-size:11px;margin-top:7px;">Para fios resistentes sem histórico de química pesada. Resultado duradouro. Nunca ultrapassar esse limite sem checar saúde capilar previamente.</p>
+        </div>
+
+        <div style="padding:12px 14px;border-radius:13px;background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.18);">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:9px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#FF5050;flex-shrink:0;"></div>
+              <p style="font-size:13px;font-weight:700;color:#FF8080;">Fios Grossos Muito Resistentes / Sem Tratamento</p>
+            </div>
+            <span class="tag red">210°C – 230°C</span>
+          </div>
+          <div class="temp-bar"><div class="temp-fill" style="width:92%;background:linear-gradient(90deg,#FF5050,#CC0000);"></div></div>
+          <p style="font-size:11px;margin-top:7px;">Zona de alto risco. Nunca usar em fios com química ou danificados. O fio pode suportar, mas o uso frequente nessa faixa acumula dano irreversível.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3 au d5" style="margin-bottom:13px;">
+      <div class="bwc cr" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:7px;">🚫</p>
+        <h3 style="font-size:12px;color:#FF8080;margin-bottom:6px;">NUNCA Usar</h3>
+        <p style="font-size:11px;">Fios com química recente (&lt;15 dias), elasticidade zero, quebradiços ou após descoloração extrema. Risco de quebra instantânea.</p>
+      </div>
+      <div class="bwc cy" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:7px;">⚠️</p>
+        <h3 style="font-size:12px;color:#FFD460;margin-bottom:6px;">Usar com Cautela</h3>
+        <p style="font-size:11px;">Fios com algum dano, quimicamente tratados ou coloridos. Temperatura mínima eficaz + proteção máxima + menos passadas.</p>
+      </div>
+      <div class="bwc cg" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:7px;">✅</p>
+        <h3 style="font-size:12px;color:#5EE89A;margin-bottom:6px;">Zona Segura</h3>
+        <p style="font-size:11px;">Fios virgens saudáveis com proteção térmica aplicada corretamente. Temperatura adequada ao perfil + seccionamento correto.</p>
+      </div>
+    </div>
+
+    <div class="info gold au d6">
+      <p style="font-size:12px;color:#FFD460;">⚡ <strong>Regra prática 2026:</strong> sempre comece pela temperatura mais baixa eficaz. Se o resultado não for satisfatório após 2 passadas, suba 10°C. Essa abordagem progressiva previne 90% dos danos térmicos em salão.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 5 — PROTEÇÃO TÉRMICA
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl green au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;"><span class="ggreen">Proteção Térmica</span> — A Linha Entre Brilho e Dano</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">O protetor térmico não é opcional — é <strong>obrigatório em qualquer modelagem</strong>. A diferença entre um cabelo saudável depois de um ano de modelagem e um fio destruído está na proteção aplicada corretamente.</p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">🛡️ Como o Protetor Age</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="fi acg">
+              <span style="font-size:16px;flex-shrink:0;">🔬</span>
+              <p style="font-size:12px;"><strong>Película protetora:</strong> cria uma camada sobre a cutícula que distribui o calor de forma homogênea, evitando pontos de superaquecimento.</p>
+            </div>
+            <div class="fi acg">
+              <span style="font-size:16px;flex-shrink:0;">💧</span>
+              <p style="font-size:12px;"><strong>Retenção de umidade:</strong> o calor evapora a água do fio. O protetor diminui drasticamente essa perda hídrica durante a modelagem.</p>
+            </div>
+            <div class="fi acg">
+              <span style="font-size:16px;flex-shrink:0;">✨</span>
+              <p style="font-size:12px;"><strong>Selamento da cutícula:</strong> fecha as escamas abertas antes do calor, garantindo brilho e lisura superiores no resultado final.</p>
+            </div>
+            <div class="fi acg">
+              <span style="font-size:16px;flex-shrink:0;">🔗</span>
+              <p style="font-size:12px;"><strong>Proteção proteica:</strong> compostos como queratina hidrolisada no protetor reforçam as ligações do fio antes da exposição ao calor.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:10px;">📋 Tipos de Protetores Térmicos</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#8FAEFF;">Leave-in Térmico</p>
+                <span class="tag blue">uso diário</span>
+              </div>
+              <p style="font-size:11px;">Aplicado em fios úmidos antes de secar. Proteção até ~220°C. Mais versátil e acessível.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(123,92,240,.07);border:1px solid rgba(123,92,240,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#A98AF5;">Sérum Térmico</p>
+                <span class="tag violet">alta proteção</span>
+              </div>
+              <p style="font-size:11px;">Óleo ou sérum concentrado. Mais oclusivo. Ideal para fios grossos e de alta resistência. Protege até 230°C+.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(0,210,255,.07);border:1px solid rgba(0,210,255,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#00D2FF;">Spray Protetor</p>
+                <span class="tag cyan">finos/oleosos</span>
+              </div>
+              <p style="font-size:11px;">Distribuição uniforme e levíssima. Não pesa. Ideal para fios finos ou oleosos que não toleram texturas mais densas.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#5EE89A;">Máscara Termo-ativa</p>
+                <span class="tag green">pré-modelagem</span>
+              </div>
+              <p style="font-size:11px;">Usada 10 min antes. Repõe proteínas e cria barreira máxima. Ideal antes de modelagens intensas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">✅ Protocolo Correto de Aplicação</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="fi acy">
+              <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">1</div>
+              <p style="font-size:12px;"><strong>Lavar e condicionar</strong> com produtos compatíveis com o tipo de serviço.</p>
+            </div>
+            <div class="fi acy">
+              <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">2</div>
+              <p style="font-size:12px;"><strong>Retirar excesso de água</strong> com toalha de microfibra — nunca esfregar.</p>
+            </div>
+            <div class="fi acy">
+              <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">3</div>
+              <p style="font-size:12px;"><strong>Aplicar o protetor</strong> de comprimento a ponta. Nunca na raiz — causa oleosidade e perde efeito.</p>
+            </div>
+            <div class="fi acy">
+              <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">4</div>
+              <p style="font-size:12px;"><strong>Distribuir com pente</strong> de dentes largos para uniformidade. Sem protetor irregular = proteção irregular.</p>
+            </div>
+            <div class="fi acy">
+              <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">5</div>
+              <p style="font-size:12px;"><strong>Secar parcialmente</strong> antes de usar prancha ou modelador. Calor em fio úmido causa bolhas na cutícula.</p>
+            </div>
+            <div class="fi acy">
+              <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">6</div>
+              <p style="font-size:12px;"><strong>Modelar em seções</strong> organizadas — o protetor não se redistribui depois de seco.</p>
+            </div>
+          </div>
+        </div>
+        <div class="info red">
+          <p style="font-size:12px;font-weight:700;color:#FF8080;margin-bottom:8px;">🚫 Erros Fatais na Proteção</p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <p style="font-size:11px;">❌ Passar prancha em fio com protetor ainda úmido</p>
+            <p style="font-size:11px;">❌ Usar protetor em excesso — forma "crosta" que queima</p>
+            <p style="font-size:11px;">❌ Não aplicar e compensar com temperatura menor (não funciona)</p>
+            <p style="font-size:11px;">❌ Usar produtos de finalização oleosos como protetor</p>
+            <p style="font-size:11px;">❌ Reaplicar protetor em fio já seco sem relavar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info green au d5">
+      <p style="font-size:12px;color:#5EE89A;">🌟 <strong>Insight profissional:</strong> o protetor térmico correto pode melhorar o resultado da modelagem em até 40% — mais brilho, mais durabilidade e menos passadas necessárias. É investimento, não gasto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 6 — TÉCNICA DE ESCOVA
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;">Técnica de <span class="gblue">Escova Profissional</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">A escova profissional é a técnica de maior versatilidade — <strong>alisa, dá volume, cria ondas e define movimento</strong> dependendo de como é executada. O segredo está no seccionamento e na coordenação de movimentos.</p>
+
+    <div class="card au d4" style="margin-bottom:13px;">
+      <h3 style="font-size:14px;color:#8FAEFF;margin-bottom:13px;">📐 Seccionamento Profissional — A Base do Resultado</h3>
+      <div class="g2" style="gap:10px;">
+        <div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="fi acb">
+              <div class="fn" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">1</div>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Nuca — Seção Base</p><p style="font-size:11px;">Dividir horizontalmente em 2–3 subseções. Começar sempre por baixo — as camadas superiores cobrem enquanto trabalha.</p></div>
+            </div>
+            <div class="fi acb">
+              <div class="fn" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">2</div>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Laterais — Seções Médias</p><p style="font-size:11px;">Dividir orelha a orelha em 2 seções por lado. Lateral direita, depois esquerda, sempre pela linha do rosto.</p></div>
+            </div>
+            <div class="fi acb">
+              <div class="fn" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">3</div>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Topo — Seção Final</p><p style="font-size:11px;">Trabalhar do centro para as laterais. O topo é o que aparece primeiro — cuidado redobrado aqui.</p></div>
+            </div>
+            <div class="fi acb">
+              <div class="fn" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">4</div>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Acabamento — Frente e Franja</p><p style="font-size:11px;">Por último. Com secador na frente, escova curva para dar caimento ou rolar as pontas.</p></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="info blue" style="margin-bottom:2px;">
+              <p style="font-size:12px;font-weight:700;color:#8FAEFF;margin-bottom:6px;">📏 Espessura da Mecha por Tipo de Fio</p>
+              <div style="display:flex;flex-direction:column;gap:5px;">
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;">Fio fino</span><span class="tag green">1–2 cm</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;">Fio médio</span><span class="tag blue">2–3 cm</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;">Fio grosso</span><span class="tag violet">3–4 cm</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;">Cabelo volumoso</span><span class="tag rose">1–2 cm</span></div>
+              </div>
+            </div>
+            <div class="info cyan">
+              <p style="font-size:12px;font-weight:700;color:#00D2FF;margin-bottom:6px;">🌡️ Distância Secador → Fio</p>
+              <div style="display:flex;flex-direction:column;gap:5px;">
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;">Fio fino/danificado</span><span class="tag cyan">10–15 cm</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;">Fio médio saudável</span><span class="tag blue">7–10 cm</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;">Fio grosso resistente</span><span class="tag violet">5–7 cm</span></div>
+              </div>
+            </div>
+            <div class="info green">
+              <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:5px;">✅ Movimento correto da escova</p>
+              <p style="font-size:11px;">Escova gira de dentro para fora — puxar do couro até a ponta, rotacionando 180° enquanto o secador segue em cima. Movimentos lentos e constantes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3 au d5" style="margin-bottom:13px;">
+      <div class="bwc cb" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:7px;">💇</p>
+        <h3 style="font-size:12px;color:#8FAEFF;margin-bottom:6px;">Escova Lisinha</h3>
+        <p style="font-size:11px;">Escova raquete, movimento linear, secador acompanha a escova da raiz à ponta. Resultado: liso, brilhante e com queda natural.</p>
+      </div>
+      <div class="bwc cv" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:7px;">🌊</p>
+        <h3 style="font-size:12px;color:#A98AF5;margin-bottom:6px;">Escova com Volume</h3>
+        <p style="font-size:11px;">Escova redonda, puxar para cima na raiz enquanto seca. Criar ângulo de 90°+ para volume máximo na coroa.</p>
+      </div>
+      <div class="bwc cp2" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:7px;">🌀</p>
+        <h3 style="font-size:12px;color:#D98EEA;margin-bottom:6px;">Escova com Curvatura</h3>
+        <p style="font-size:11px;">Escova redonda maior, rolar as pontas para dentro ou fora enquanto seca. Cria o "flip" ou curvatura suave nas pontas.</p>
+      </div>
+    </div>
+
+    <div class="info blue au d6">
+      <p style="font-size:12px;color:#8FAEFF;">💡 <strong>Técnica do ar frio:</strong> ao finalizar cada mecha, aplique 5–10 segundos de ar frio antes de liberar a escova. Isso "trava" a forma e aumenta a durabilidade da modelagem em até 2x. Poucos fazem, todas deveriam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 7 — BEACH WAVES & ONDAS
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl rose au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;"><span class="grose">Beach Waves & Ondas</span> — O Coringa da Modelagem</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">As ondas soltas são o look <strong>mais solicitado e mais difícil de acertar</strong> no salão. Parecem simples, mas exigem técnica específica, ferramentas corretas e acabamento preciso para ficarem naturais.</p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="cp">
+          <h3 style="font-size:13px;color:#D98EEA;margin-bottom:10px;">🌊 Beach Waves com Babyliss</h3>
+          <p style="font-size:12px;margin-bottom:10px;">Técnica mais eficiente para ondas soltas e naturais. Use barril de 32–38mm. Resultado: 3 a 4 horas de duração média.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div class="fi acp">
+              <div class="fn" style="background:linear-gradient(145deg,#FF6FB7,#D94F97);">1</div>
+              <p style="font-size:11px;">Dividir o cabelo em 4 seções: 2 na nuca, 2 no topo.</p>
+            </div>
+            <div class="fi acp">
+              <div class="fn" style="background:linear-gradient(145deg,#FF6FB7,#D94F97);">2</div>
+              <p style="font-size:11px;">Mechas de 3–4 cm. Alternar a direção das mechas (para frente e para trás) para efeito natural.</p>
+            </div>
+            <div class="fi acp">
+              <div class="fn" style="background:linear-gradient(145deg,#FF6FB7,#D94F97);">3</div>
+              <p style="font-size:11px;">Enrolar a mecha deixando as pontas soltas (sem enrolar as últimas 3–5cm). Segredo do look natural.</p>
+            </div>
+            <div class="fi acp">
+              <div class="fn" style="background:linear-gradient(145deg,#FF6FB7,#D94F97);">4</div>
+              <p style="font-size:11px;">Manter 8–12 segundos (fios finos) ou 12–16 segundos (grossos). Soltar sem puxar.</p>
+            </div>
+            <div class="fi acp">
+              <div class="fn" style="background:linear-gradient(145deg,#FF6FB7,#D94F97);">5</div>
+              <p style="font-size:11px;">Aguardar esfriar completamente antes de desfazer. Esse passo define a durabilidade.</p>
+            </div>
+            <div class="fi acp">
+              <div class="fn" style="background:linear-gradient(145deg,#FF6FB7,#D94F97);">6</div>
+              <p style="font-size:11px;">Desfazer com os dedos (não com pente). Finalizar com spray fixador leve.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:13px;color:#A98AF5;margin-bottom:10px;">🌊 Ondas com Prancha (Flat Wave)</h3>
+          <p style="font-size:12px;margin-bottom:9px;">Técnica de onda com prancha reta — resultado mais geométrico e definido. Alta durabilidade.</p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="fi acv"><span style="font-size:14px;flex-shrink:0;">▶</span><p style="font-size:11px;">Pegar mecha e girar 180° com a prancha — a ponta fica para cima.</p></div>
+            <div class="fi acv"><span style="font-size:14px;flex-shrink:0;">▶</span><p style="font-size:11px;">Deslizar a prancha lentamente pelo fio torcido, sem parar em um ponto.</p></div>
+            <div class="fi acv"><span style="font-size:14px;flex-shrink:0;">▶</span><p style="font-size:11px;">Alternar a torção (horário / anti-horário) a cada mecha.</p></div>
+            <div class="fi acv"><span style="font-size:14px;flex-shrink:0;">▶</span><p style="font-size:11px;">Resultado: ondas em S, mais abertas e com brilho intenso.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">⏱️ Guia de Tempo por Tipo de Fio</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;">Fio fino — temp. 150°C</span><span class="tag gold">7–10 seg</span></div>
+              <div class="rb"><div class="rf" style="width:30%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;">Fio médio — temp. 180°C</span><span class="tag gold">10–14 seg</span></div>
+              <div class="rb"><div class="rf" style="width:52%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size name= 12px;">Fio grosso — temp. 200°C</span><span class="tag gold">14–18 seg</span></div>
+              <div class="rb"><div class="rf" style="width:72%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;">Fio crespo resistente — 210°C</span><span class="tag gold">18–22 seg</span></div>
+              <div class="rb"><div class="rf" style="width:88%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:13px;color:#00D2FF;margin-bottom:10px;">💨 Ondas Sem Calor (Heat-Free)</h3>
+          <p style="font-size:12px;margin-bottom:9px;">Tendência crescente em 2026 para clientes que querem resultado bonito com zero calor. Exige mais tempo, mas preserva 100% do fio.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div class="fi acc">
+              <span style="font-size:14px;flex-shrink:0;">🧣</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Método do pano / trança</p><p style="font-size:11px;">Fio úmido torcido ou trançado, seco naturalmente ou com difusor no frio. Ondas suaves e naturais.</p></div>
+            </div>
+            <div class="fi acc">
+              <span style="font-size:14px;flex-shrink:0;">🌀</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Pin Curls</p><p style="font-size:11px;">Enrolar mechas no dedo e fixar com grampo. Secar. Liberar e ter cachos suaves sem calor.</p></div>
+            </div>
+            <div class="fi acc">
+              <span style="font-size:14px;flex-shrink:0;">🎀</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Bun Waves (Coque Onda)</p><p style="font-size:11px;">Cabelo em coque ainda úmido. Secar com difusor. Soltar depois de completamente seco. Ondas soltas e volumosas.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="info rose">
+          <p style="font-size:12px;color:#D98EEA;font-weight:700;margin-bottom:5px;">🌟 Produto final para Beach Waves</p>
+          <p style="font-size:11px;">Sal marinho spray para textura, mousse leve para definição suave ou creme de ondas para controle de frizz. Nunca finalizar com spray de fixação pesada — mata o movimento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 8 — DURABILIDADE & FINALIZAÇÃO
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl gold au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;"><span class="ggold">Durabilidade & Finalização</span> — O Detalhe Que Faz a Diferença</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">O acabamento define se a modelagem vai durar 4 horas ou 4 dias. <strong>A finalização profissional</strong> é onde os últimos 10% do trabalho entregam os 50% do impacto final.</p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FFD460;margin-bottom:11px;">⏳ O Que Define a Durabilidade</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="fi acy">
+              <span style="font-size:16px;flex-shrink:0;">🌡️</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Temperatura adequada</p><p style="font-size:11px;">Calor insuficiente = onda que cai em horas. Calor excessivo = onda bonita mas fio danificado. Equilíbrio é chave.</p></div>
+            </div>
+            <div class="fi acy">
+              <span style="font-size:16px;flex-shrink:0;">❄️</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Resfriamento antes de soltar</p><p style="font-size:11px;">Aguardar o fio esfriar completamente enquanto ainda enrolado. É o que cristaliza a forma no fio.</p></div>
+            </div>
+            <div class="fi acy">
+              <span style="font-size:16px;flex-shrink:0;">🧴</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Produto de finalização correto</p><p style="font-size:11px;">Cada tipo de modelagem pede um produto específico. Usar o errado reverte o resultado em horas.</p></div>
+            </div>
+            <div class="fi acy">
+              <span style="font-size:16px;flex-shrink:0;">💧</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Umidade do ar</p><p style="font-size:11px;">Em dias úmidos, o fio poroso absorve vapor d'água e reverte. Uso de anti-umidade/anti-frizz é indispensável.</p></div>
+            </div>
+            <div class="fi acy">
+              <span style="font-size:16px;flex-shrink:0;">🔤</span>
+              <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Saúde do fio</p><p style="font-size:11px;">Fio danificado e poroso reverte a modelagem muito mais rápido — cutícula aberta libera a forma facilmente.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="info gold">
+          <p style="font-size:12px;font-weight:700;color:#FFD460;margin-bottom:7px;">📊 Durabilidade Média por Técnica</p>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:11px;">Escova profissional</span><span style="font-size:11px;color:#FFD460;font-weight:700;">2–4 dias</span></div>
+              <div class="rb"><div class="rf" style="width:60%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:11px;">Beach waves babyliss</span><span style="font-size:11px;color:#FFD460;font-weight:700;">1–2 dias</span></div>
+              <div class="rb"><div class="rf" style="width:38%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:11px;">Prancha / liso</span><span style="font-size:11px;color:#FFD460;font-weight:700;">3–5 dias</span></div>
+              <div class="rb"><div class="rf" style="width:80%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:11px;">Cachos definidos</span><span style="font-size:11px;color:#FFD460;font-weight:700;">2–3 dias</span></div>
+              <div class="rb"><div class="rf" style="width:55%;background:linear-gradient(90deg,#FFD460,#FF8C00);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#A98AF5;margin-bottom:11px;">🧴 Guia de Produtos de Finalização</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#8FAEFF;">Sérum de Brilho</p>
+                <span class="tag blue">liso/escova</span>
+              </div>
+              <p style="font-size:11px;">Poucas gotas nas pontas. Sela a cutícula e reflete a luz. Resultado espelhado. Não usar na raiz.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(0,210,255,.07);border:1px solid rgba(0,210,255,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#00D2FF;">Spray Fixador Leve</p>
+                <span class="tag cyan">ondas/cachos</span>
+              </div>
+              <p style="font-size:11px;">Mantém o movimento sem rigidez. Aplicar longe do fio (30 cm) em névoa fina. Movimen to preservado.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#5EE89A;">Anti-frizz / Anti-umidade</p>
+                <span class="tag green">todos</span>
+              </div>
+              <p style="font-size:11px;">Essencial em dias úmidos. Cria barreira contra a humidade do ar que reverte a modelagem.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#D98EEA;">Creme de Textura</p>
+                <span class="tag rose">beach waves</span>
+              </div>
+              <p style="font-size:11px;">Dá definição e textura sem pesar. Aplicar amassando no fio, nunca puxando. Para ondas naturais.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px;flex-wrap:wrap;gap:5px;">
+                <p style="font-size:12px;font-weight:700;color:#FFD460;">Pó de Volume</p>
+                <span class="tag gold">raiz/volume</span>
+              </div>
+              <p style="font-size:11px;">Aplicar na raiz para volume imediato. Excelente para fios finos. Pouco produto vai muito longe.</p>
+            </div>
+          </div>
+        </div>
+        <div class="info blue">
+          <p style="font-size:12px;color:#8FAEFF;font-weight:700;margin-bottom:6px;">💡 Técnica do "Scrunch Frio"</p>
+          <p style="font-size:11px;">Após finalizar ondas com babyliss, aplicar o produto com a palma da mão fazendo movimento de "amassar" de baixo para cima com o secador no ar frio. Resulta em ondas mais definidas e com mais durabilidade que o método convencional.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info violet au d5">
+      <p style="font-size:12px;color:#A98AF5;">🎯 <strong>Instrução pós-serviço obrigatória:</strong> oriente sempre a cliente sobre como dormir (coque froucho ou trança), quando lavar (mínimo 48h) e como reativar entre lavagens (água e creme). Clientes orientadas voltam mais satisfeitas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 9 — ERROS + SOLUÇÕES
+══════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl rose au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:8px;">Erros Comuns — <span class="grose">Identificar, Corrigir, Evitar</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">Toda profissional comete erros — as <strong>melhores aprendem a identificar e corrigir</strong>. Conhecer os erros mais frequentes da modelagem é o caminho mais rápido para a excelência.</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;" class="au d4">
+
+      <div style="display:flex;gap:11px;padding:14px 15px;border-radius:15px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.16);">
+        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,80,80,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">❌</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FF8080;">Modelar o fio úmido</h3>
+            <span class="tag red">dano térmico</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">A água residual no fio ferve instantaneamente ao contato com prancha ou babyliss, formando bolhas dentro da cutícula. Resultado: porosidade e quebra progressiva.</p>
+          <div style="padding:8px 11px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;color:#5EE89A;">✅ Solução: secar 95–100% antes de qualquer ferramenta de calor intenso. O "teste do fio" — pressionar entre os dedos: se sair qualquer frieza, ainda está úmido.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:14px 15px;border-radius:15px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.16);">
+        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,80,80,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">❌</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FF8080;">Passar a prancha múltiplas vezes no mesmo fio</h3>
+            <span class="tag red">superaquecimento</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">Cada passada acumula calor. 5 passadas no mesmo fio pode equivaler a dobrar a temperatura configurada. Fios finos quebram na 3ª passada com temp. inadequada.</p>
+          <div style="padding:8px 11px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;color:#5EE89A;">✅ Solução: máximo 2–3 passadas lentas. Se não alisou/modelou, revisar a temperatura e o protetor — não aumentar as passadas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:14px 15px;border-radius:15px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.16);">
+        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,80,80,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">❌</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FF8080;">Seções grandes demais</h3>
+            <span class="tag red">resultado irregular</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">Mechas grossas impedem o calor de penetrar uniformemente. O externo fica modelado, o interno permanece como estava. Resultado: modelagem que cai rápido e fica irregular.</p>
+          <div style="padding:8px 11px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;color:#5EE89A;">✅ Solução: mechas máximo de 3–4 cm de largura e 1–2 cm de espessura. Menos é mais na modelagem profissional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:14px 15px;border-radius:15px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.16);">
+        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,80,80,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">❌</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FF8080;">Ignorar a saúde capilar pré-modelagem</h3>
+            <span class="tag red">risco alto</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">Modelar sobre fio desidratado, com química recente ou com elasticidade comprometida pode causar quebra em tempo real — dentro do salão, na presença da cliente.</p>
+          <div style="padding:8px 11px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;color:#5EE89A;">✅ Solução: sempre diagnóstico antes. Se o fio não suporta modelagem, oferecer hidratação ou reconstrução primeiro. Nunca forçar o processo por pressão da cliente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:14px 15px;border-radius:15px;background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.16);">
+        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,80,80,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">❌</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px;">
+            <h3 style="font-size:13px;color:#FF8080;">Não desfazer o anel antes de esfriar (babyliss)</h3>
+            <span class="tag red">perde o resultado</span>
+          </div>
+          <p style="font-size:12px;margin-bottom:7px;">Soltar o cacho imediatamente após o calor enquanto o fio ainda está quente apaga a memória da forma. O cacho esfria já aberto — resultado: onda fraca que cai em 1–2 horas.</p>
+          <div style="padding:8px 11px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;color:#5EE89A;">✅ Solução: ao soltar do babyliss, dobrar o anel e segurar com a palma da mão por 15–20 segundos até esfriar. Só então soltar. Isso dobra a durabilidade.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info gold au d5">
+      <p style="font-size:12px;color:#FFD460;">🏆 <strong>Mentalidade da profissional de excelência:</strong> cada erro é informação. Quando a modelagem não ficou como esperado, pergunte: o fio estava pronto? A temperatura era adequada? O produto correto? A técnica foi precisa? Diagnose, ajuste e evolua.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SLIDE 10 — PROTOCOLO COMPLETO
+══════════════════════════════════ -->
+<section class="slide vcenter">
+  <div class="inner" style="text-align:center;">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,4.8vw,52px);margin-bottom:12px;">
+      Protocolo Profissional &<br/><span class="gcyan">Checklist da Modelagem</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);max-width:620px;margin:0 auto 20px;color:#AAB3C5;">
+      Profissionais de alto nível não dependem de inspiração — dependem de <strong>protocolo</strong>. Este é o fluxo completo para uma modelagem consistente e impecável em cada atendimento.
+    </p>
+
+    <div class="g2 au d4" style="text-align:left;margin-bottom:14px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <h3 style="font-size:13px;color:#00D2FF;margin-bottom:5px;">📋 Protocolo Passo a Passo</h3>
+        <div class="fi acc">
+          <div class="fn" style="background:linear-gradient(145deg,#00D2FF,#0099CC);">1</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Anamnese + diagnóstico</p><p style="font-size:11px;">Porosidade, elasticidade, histórico químico, tipo de fio, expectativas da cliente.</p></div>
+        </div>
+        <div class="fi acb">
+          <div class="fn" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">2</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Lavagem preparatória</p><p style="font-size:11px;">Shampoo adequado ao tipo de serviço. Eliminar resíduos que interferem na modelagem.</p></div>
+        </div>
+        <div class="fi acv">
+          <div class="fn" style="background:linear-gradient(145deg,#7B5CF0,#5B3FD6);">3</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Aplicação do protetor</p><p style="font-size:11px;">Comprimento às pontas, distribuído com pente. Nenhuma mecha sem proteção.</p></div>
+        </div>
+        <div class="fi acr">
+          <div class="fn" style="background:linear-gradient(145deg,#C86DD7,#A854BF);">4</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Pré-secagem</p><p style="font-size:11px;">Secar 70–80% com secador e escova antes de usar prancha ou babyliss.</p></div>
+        </div>
+        <div class="fi acg">
+          <div class="fn" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">5</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Seccionamento e modelagem</p><p style="font-size:11px;">Nuca → laterais → topo → frente. Mechas finas, temperatura calibrada.</p></div>
+        </div>
+        <div class="fi acy">
+          <div class="fn" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">6</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Finalização + produto</p><p style="font-size:11px;">Produto correto para o estilo desejado. Toque final com ar frio. Brilho e acabamento.</p></div>
+        </div>
+        <div class="fi acc">
+          <div class="fn" style="background:linear-gradient(145deg,#00D2FF,#0099CC);">7</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Orientação pós-serviço</p><p style="font-size:11px;">Como dormir, quando lavar, como reativar e quando retornar.</p></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="bwc cg" style="padding:14px 13px;">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">✅ Checklist — Antes de Liberar</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Diagnóstico realizado e registrado</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Protetor térmico aplicado em 100% do fio</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Temperatura calibrada para o perfil do fio</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Fio completamente seco antes do calor intenso</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Modelagem uniforme em todas as seções</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Acabamento e produto de finalização aplicados</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Cliente orientada sobre manutenção em casa</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Foto antes/depois documentada</p>
+            <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Próximo agendamento sugerido</p>
+          </div>
+        </div>
+        <div class="info blue">
+          <p style="font-size:12px;font-weight:700;color:#8FAEFF;margin-bottom:6px;">🚀 Seu diferencial em Modelagem 2026</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <p style="font-size:11px;">→ Dominar o diagnóstico antes de qualquer modelagem</p>
+            <p style="font-size:11px;">→ Calibrar temperatura por perfil de fio</p>
+            <p style="font-size:11px;">→ Usar protetor térmico como etapa obrigatória</p>
+            <p style="font-size:11px;">→ Ensinar a cliente a manter o resultado</p>
+            <p style="font-size:11px;">→ Documentar e mostrar evolução dos atendimentos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="au d5" style="padding:20px 22px;border-radius:18px;background:linear-gradient(135deg,rgba(46,107,255,.07),rgba(0,210,255,.05));border:1px solid rgba(46,107,255,.2);">
+      <p style="font-size:clamp(13px,2.1vw,15px);font-style:italic;color:#F5F7FB;margin-bottom:7px;">
+        "A modelagem perfeita começa antes de ligar qualquer ferramenta. Ela começa no diagnóstico, no respeito ao fio e no compromisso com a saúde capilar de quem confia em você."
+      </p>
+      <p style="font-size:11px;color:#7E879B;font-weight:600;">Modelagem Capilar Profissional — Guia Completo 2026</p>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<!-- CHROME FIXO -->
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="navarr">
+  <button onclick="prev()" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    const was=s.classList.contains('active');
+    s.classList.toggle('active',i===C);
+    if(i===C&&!was)s.scrollTop=0;
+  });
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;scrolling=false;},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-tx);
+  const dy=Math.abs(e.changedTouches[0].clientY-ty);
+  if(dy>dx+5)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=ty-e.changedTouches[0].clientY;
+  if(Math.abs(dx)>Math.abs(dy)*1.4&&Math.abs(dx)>52){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
