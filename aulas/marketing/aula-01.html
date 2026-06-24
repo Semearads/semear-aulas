@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Posicionamento, Público-Alvo e Diferencial — Salões de Beleza 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+.slide{
+  width:100vw;min-height:100vh;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;position:relative;
+  overflow-y:auto;overflow-x:hidden;
+  padding:52px 14px 110px;
+  -webkit-overflow-scrolling:touch;
+}
+.slide.vcenter{justify-content:center;}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:4px;}
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 900px 400px at 80% 5%,rgba(200,109,215,.12) 0%,transparent 52%),
+    radial-gradient(ellipse 700px 360px at 10% 90%,rgba(46,107,255,.11) 0%,transparent 52%),
+    radial-gradient(ellipse 500px 280px at 55% 50%,rgba(255,111,183,.06) 0%,transparent 60%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.16;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1;}
+.inner{width:100%;max-width:960px;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p,li{font-weight:400;line-height:1.65;color:#AAB3C5;}
+strong{color:#F5F7FB;}
+
+/* GRADIENTS */
+.gt{background:linear-gradient(135deg,#FF6FB7 0%,#C86DD7 50%,#FF6FB7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gb{background:linear-gradient(135deg,#2E6BFF 0%,#7B5CF0 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gg{background:linear-gradient(135deg,#5EE89A 0%,#27AE60 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.go{background:linear-gradient(135deg,#FFD460 0%,#FF8C30 50%,#FFD460 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gc{background:linear-gradient(135deg,#00D2FF 0%,#2E6BFF 50%,#00D2FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gv{background:linear-gradient(135deg,#7B5CF0 0%,#C86DD7 50%,#7B5CF0 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* LINES */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#FF6FB7,#C86DD7);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+.gl.blue{background:linear-gradient(90deg,#2E6BFF,#7B5CF0);}
+.gl.green{background:linear-gradient(90deg,#5EE89A,#27AE60);}
+.gl.gold{background:linear-gradient(90deg,#FFD460,#FF8C30);}
+.gl.cyan{background:linear-gradient(90deg,#00D2FF,#2E6BFF);}
+.gl.violet{background:linear-gradient(90deg,#7B5CF0,#C86DD7);}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:999px;margin-bottom:22px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.28);font-size:12px;font-weight:600;color:#D98EEA;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:18px 16px;backdrop-filter:blur(8px);transition:all .4s ease;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);}
+.card:hover{border-color:rgba(200,109,215,.22);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95),rgba(10,15,36,.98),rgba(5,8,22,1));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px 16px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(200,109,215,.25);transform:translateY(-2px);}
+
+/* NUMS */
+.tn{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:#fff;flex-shrink:0;animation:glowN 3s ease-in-out infinite;}
+.na{background:linear-gradient(145deg,#FF6FB7,#D94F97);}
+.nb{background:linear-gradient(145deg,#7B5CF0,#5B3FD6);animation-delay:.5s;}
+.nc{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:.3s;}
+.nd{background:linear-gradient(145deg,#FFD460,#FF8C00);animation-delay:.7s;}
+.ne{background:linear-gradient(145deg,#5EE89A,#27AE60);animation-delay:.2s;}
+.nf{background:linear-gradient(145deg,#00D2FF,#0099CC);animation-delay:.6s;}
+.ng{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:.4s;}
+@keyframes glowN{0%,100%{box-shadow:0 0 18px rgba(200,109,215,.1)}50%{box-shadow:0 0 32px rgba(200,109,215,.35)}}
+
+/* INFO BOXES */
+.info{padding:12px 14px;border-radius:13px;}
+.ip{background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.22);}
+.ib{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.22);}
+.iv{background:rgba(123,92,240,.06);border:1px solid rgba(123,92,240,.22);}
+.ig{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.22);}
+.io{background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.22);}
+.ie{background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.22);}
+.ic2{background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.22);}
+
+/* FI ITEMS */
+.fi{display:flex;align-items:flex-start;gap:10px;padding:10px 11px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.fip{background:rgba(200,109,215,.06);border-color:rgba(200,109,215,.18);}
+.fib{background:rgba(46,107,255,.06);border-color:rgba(46,107,255,.18);}
+.fiv{background:rgba(123,92,240,.06);border-color:rgba(123,92,240,.18);}
+.fig{background:rgba(80,220,120,.06);border-color:rgba(80,220,120,.18);}
+.fio{background:rgba(255,212,96,.06);border-color:rgba(255,212,96,.18);}
+.fie{background:rgba(255,80,80,.06);border-color:rgba(255,80,80,.18);}
+.fic{background:rgba(0,210,255,.06);border-color:rgba(0,210,255,.18);}
+.fn{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;}
+
+/* TAGS */
+.tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.04em;white-space:nowrap;}
+.tp2{background:rgba(200,109,215,.15);color:#D98EEA;border:1px solid rgba(200,109,215,.25);}
+.tb{background:rgba(46,107,255,.15);color:#8FAEFF;border:1px solid rgba(46,107,255,.25);}
+.tv{background:rgba(123,92,240,.15);color:#A98AF5;border:1px solid rgba(123,92,240,.25);}
+.to{background:rgba(255,212,96,.15);color:#FFD460;border:1px solid rgba(255,212,96,.25);}
+.tg{background:rgba(94,232,154,.15);color:#5EE89A;border:1px solid rgba(94,232,154,.25);}
+.te{background:rgba(255,80,80,.15);color:#FF8080;border:1px solid rgba(255,80,80,.25);}
+.tc{background:rgba(0,210,255,.15);color:#00D2FF;border:1px solid rgba(0,210,255,.25);}
+.tpk{background:rgba(255,111,183,.15);color:#FF9FD0;border:1px solid rgba(255,111,183,.25);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
+
+/* PROGRESS BAR */
+.rb{height:7px;border-radius:4px;background:rgba(255,255,255,.06);margin-top:4px;overflow:hidden;}
+.rf{height:100%;border-radius:4px;}
+
+/* COMPARE */
+.bwce{border-radius:14px;padding:13px 12px;}
+.bwce.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.14);}
+.bwce.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.14);}
+.bwce.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.14);}
+.bwce.cb{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.14);}
+.bwce.cp2{background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.14);}
+.bwce.cc{background:rgba(0,210,255,.05);border:1px solid rgba(0,210,255,.14);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .68s ease both;}
+.slide.active .as{animation:fadeScale .68s ease both;}
+.d1{animation-delay:.07s!important}.d2{animation-delay:.17s!important}
+.d3{animation-delay:.27s!important}.d4{animation-delay:.37s!important}
+.d5{animation-delay:.47s!important}.d6{animation-delay:.57s!important}
+.d7{animation-delay:.67s!important}.d8{animation-delay:.77s!important}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#FF6FB7,#C86DD7,#7B5CF0,#FF6FB7);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+.fsbtn{position:fixed;top:11px;right:11px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:8px 12px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fsbtn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(200,109,215,.35);}
+.fsbtn svg{width:13px;height:13px;}
+.sc{position:fixed;bottom:18px;left:12px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.5);padding:7px 12px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#FF6FB7;font-weight:900;}
+.ind{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.5);padding:7px 13px;border-radius:22px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:linear-gradient(90deg,#FF6FB7,#C86DD7);box-shadow:0 0 10px rgba(200,109,215,.6);width:26px;border-radius:4px;}
+.navarr{position:fixed;bottom:13px;right:12px;z-index:998;display:flex;gap:7px;}
+.navarr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
+.navarr button:hover{background:rgba(200,109,215,.18);border-color:rgba(200,109,215,.4);color:#fff;}
+.navarr button svg{width:17px;height:17px;}
+
+@media(max-width:680px){
+  .slide{padding:48px 12px 108px;}
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  h2{font-size:clamp(17px,5vw,30px)!important;}
+  .fsbtn span{display:none;}
+}
+@media(max-width:390px){
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fsbtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════ -->
+<section class="slide vcenter active">
+  <div style="width:100%;max-width:820px;text-align:center;">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Estratégia de Negócios · Salões de Beleza 2026
+    </div>
+    <h1 class="au d2" style="font-size:clamp(28px,7.5vw,82px);margin-bottom:14px;">
+      <span class="gt">Posicionamento</span>,<br/>Público & Diferencial
+    </h1>
+    <div class="gl ce au d3"></div>
+    <p class="au d4" style="font-size:clamp(13px,2.2vw,17px);color:#AAB3C5;max-width:640px;margin:0 auto 28px;line-height:1.7;">
+      Como construir uma identidade de marca irresistível, atrair as clientes certas e se tornar a <strong style="color:#F5F7FB;">referência incontestável</strong> no seu mercado — com estratégia, clareza e intenção.
+    </p>
+    <div class="g3 au d5" style="max-width:600px;margin:0 auto 22px;">
+      <div style="padding:16px 10px;border-radius:14px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.22);text-align:center;">
+        <div style="font-size:26px;margin-bottom:7px;">🎯</div>
+        <p style="font-size:11px;font-weight:700;color:#D98EEA;">Posicionamento</p>
+        <p style="font-size:10px;margin-top:3px;color:#7E879B;">Onde você se encaixa no mercado</p>
+      </div>
+      <div style="padding:16px 10px;border-radius:14px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.22);text-align:center;">
+        <div style="font-size:26px;margin-bottom:7px;">👥</div>
+        <p style="font-size:11px;font-weight:700;color:#8FAEFF;">Público-Alvo</p>
+        <p style="font-size:10px;margin-top:3px;color:#7E879B;">Para quem você trabalha de verdade</p>
+      </div>
+      <div style="padding:16px 10px;border-radius:14px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.22);text-align:center;">
+        <div style="font-size:26px;margin-bottom:7px;">💎</div>
+        <p style="font-size:11px;font-weight:700;color:#5EE89A;">Diferencial</p>
+        <p style="font-size:10px;margin-top:3px;color:#7E879B;">Por que escolhem você e não a concorrência</p>
+      </div>
+    </div>
+    <p class="au d6" style="font-size:11px;color:#7E879B;">Use as setas ← → ou deslize para navegar · 10 slides</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 2 — POR QUE POSICIONAMENTO IMPORTA
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">Por que a maioria dos salões <span class="gt">não se destaca</span>?</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:16px;">O Brasil tem mais de <strong>1,5 milhão de salões</strong> registrados. Com tanta concorrência, quem não tem posicionamento claro compete apenas por preço — e essa é uma batalha que ninguém vence no longo prazo.</p>
+
+    <div class="g2 au d4" style="margin-bottom:13px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FF8080;margin-bottom:10px;">😰 O cenário da maioria</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div class="fi fie"><span style="font-size:15px;flex-shrink:0;">❌</span><p style="font-size:11px;">Tenta atender <strong>todo mundo</strong> — e não se especializa em ninguém</p></div>
+            <div class="fi fie"><span style="font-size:15px;flex-shrink:0;">❌</span><p style="font-size:11px;">Compete por preço e entra em guerra com salões maiores</p></div>
+            <div class="fi fie"><span style="font-size:15px;flex-shrink:0;">❌</span><p style="font-size:11px;">Não sabe comunicar o que faz de diferente</p></div>
+            <div class="fi fie"><span style="font-size:15px;flex-shrink:0;">❌</span><p style="font-size:11px;">Atrai clientes aleatórias que não valorizam o serviço</p></div>
+            <div class="fi fie"><span style="font-size:15px;flex-shrink:0;">❌</span><p style="font-size:11px;">Depende de promoções para lotar a agenda</p></div>
+            <div class="fi fie"><span style="font-size:15px;flex-shrink:0;">❌</span><p style="font-size:11px;">Profissional cansada, subvalorizada e sem crescimento</p></div>
+          </div>
+        </div>
+        <div class="info io">
+          <p style="font-size:12px;color:#FFD460;font-weight:700;margin-bottom:5px;">📊 Dado de mercado 2025</p>
+          <p style="font-size:11px;">72% dos salões brasileiros fecham em até 3 anos — e a principal causa não é falta de técnica, é falta de <strong style="color:#F5F7FB;">estratégia de posicionamento e identidade de marca.</strong></p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">🚀 O cenário de quem se posiciona</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div class="fi fig"><span style="font-size:15px;flex-shrink:0;">✅</span><p style="font-size:11px;">Atrai clientes ideais que <strong>já chegam querendo pagar</strong> o seu preço</p></div>
+            <div class="fi fig"><span style="font-size:15px;flex-shrink:0;">✅</span><p style="font-size:11px;">Fideliza por identificação, não só por conveniência</p></div>
+            <div class="fi fig"><span style="font-size:15px;flex-shrink:0;">✅</span><p style="font-size:11px;">Indica para amigas com o mesmo perfil — marketing orgânico</p></div>
+            <div class="fi fig"><span style="font-size:15px;flex-shrink:0;">✅</span><p style="font-size:11px;">Cobra mais caro e é valorizada por isso</p></div>
+            <div class="fi fig"><span style="font-size:15px;flex-shrink:0;">✅</span><p style="font-size:11px;">Constrói reputação e autoridade na sua especialidade</p></div>
+            <div class="fi fig"><span style="font-size:15px;flex-shrink:0;">✅</span><p style="font-size:11px;">Agenda cheia sem precisar de promoção constante</p></div>
+          </div>
+        </div>
+        <div class="info ig">
+          <p style="font-size:12px;color:#5EE89A;font-weight:700;margin-bottom:5px;">💡 A virada de chave</p>
+          <p style="font-size:11px;">Posicionamento não é sobre ser a mais barata ou a mais cara. É sobre ser a <strong style="color:#F5F7FB;">escolha óbvia</strong> para um grupo específico de clientes que se identificam com o que você representa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card au d5" style="margin-bottom:0;">
+      <h3 style="font-size:13px;color:#D98EEA;margin-bottom:10px;">🧩 O Triângulo Estratégico do Salão de Sucesso</h3>
+      <div class="g3" style="gap:9px;">
+        <div style="padding:12px 10px;border-radius:12px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.2);text-align:center;">
+          <p style="font-size:22px;margin-bottom:6px;">🎯</p>
+          <p style="font-size:12px;font-weight:700;color:#D98EEA;margin-bottom:4px;">POSICIONAMENTO</p>
+          <p style="font-size:10px;">"Quem sou, onde atuo e o que prometo ao mercado"</p>
+        </div>
+        <div style="padding:12px 10px;border-radius:12px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.2);text-align:center;">
+          <p style="font-size:22px;margin-bottom:6px;">👥</p>
+          <p style="font-size:12px;font-weight:700;color:#8FAEFF;margin-bottom:4px;">PÚBLICO-ALVO</p>
+          <p style="font-size:10px;">"Para quem falo, quem quero servir e quem me valoriza"</p>
+        </div>
+        <div style="padding:12px 10px;border-radius:12px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.2);text-align:center;">
+          <p style="font-size:22px;margin-bottom:6px;">💎</p>
+          <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:4px;">DIFERENCIAL</p>
+          <p style="font-size:10px;">"Por que me escolhem e não a outra que está na mesma rua"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 3 — TIPOS DE POSICIONAMENTO
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl violet au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">Os <span class="gv">5 Tipos de Posicionamento</span> para Salões</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:15px;">Não existe posicionamento certo ou errado — existe posicionamento <strong>coerente ou incoerente</strong> com quem você é, o que oferece e para quem quer atender. Conheça os 5 modelos que funcionam no mercado beauty.</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:13px;" class="au d4">
+
+      <div style="padding:15px 14px;border-radius:16px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.2);">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:9px;flex-wrap:wrap;">
+          <div class="tn nd" style="font-size:22px;">👑</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px;">
+              <h3 style="font-size:13px;">Premium / Luxo</h3>
+              <span class="tag to">alta margem</span><span class="tag tg">baixo volume</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">Experiência exclusiva, atendimento impecável e preços premium justificados pelo valor entregue.</p>
+          </div>
+        </div>
+        <div class="g3" style="gap:7px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FFD460;margin-bottom:2px;">Ticket médio</p><p style="font-size:10px;">R$200–R$800+ por visita</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FFD460;margin-bottom:2px;">Diferencial chave</p><p style="font-size:10px;">Ambiente, produtos importados, tempo dedicado</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FFD460;margin-bottom:2px;">Exemplo de nome</p><p style="font-size:10px;">"Studio Atelier", "Maison Beauté", "Private Salon"</p></div>
+        </div>
+      </div>
+
+      <div style="padding:15px 14px;border-radius:16px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.2);">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:9px;flex-wrap:wrap;">
+          <div class="tn ng" style="font-size:22px;">🎯</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px;">
+              <h3 style="font-size:13px;">Especializado / Nichado</h3>
+              <span class="tag tp2">autoridade</span><span class="tag tpk">🔥 tendência</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">Foco total em um tipo de serviço ou público. Referência absoluta no nicho escolhido.</p>
+          </div>
+        </div>
+        <div class="g3" style="gap:7px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#D98EEA;margin-bottom:2px;">Exemplos de nicho</p><p style="font-size:10px;">Cabelos afros, noivas, masculino, cacheados, química</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#D98EEA;margin-bottom:2px;">Vantagem</p><p style="font-size:10px;">Cobra mais por ser referência. Menos concorrência direta.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#D98EEA;margin-bottom:2px;">Comunicação</p><p style="font-size:10px;">"Especialistas em cabelos crespos e cacheados"</p></div>
+        </div>
+      </div>
+
+      <div style="padding:15px 14px;border-radius:16px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.2);">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:9px;flex-wrap:wrap;">
+          <div class="tn nc" style="font-size:22px;">🌿</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px;">
+              <h3 style="font-size:13px;">Sustentável / Consciente</h3>
+              <span class="tag tb">propósito</span><span class="tag tg">crescimento acelerado</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">Produtos naturais, orgânicos, cruelty-free. Atrai público que consome com valores e propósito.</p>
+          </div>
+        </div>
+        <div class="g3" style="gap:7px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#8FAEFF;margin-bottom:2px;">Público</p><p style="font-size:10px;">Millennials e Gen Z com consciência ambiental</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#8FAEFF;margin-bottom:2px;">Crescimento</p><p style="font-size:10px;">Segmento cresceu 38% no Brasil entre 2023–2025</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#8FAEFF;margin-bottom:2px;">Cobrança</p><p style="font-size:10px;">Preço 15–25% acima da média aceito pelo público</p></div>
+        </div>
+      </div>
+
+      <div style="padding:15px 14px;border-radius:16px;background:rgba(0,210,255,.06);border:1px solid rgba(0,210,255,.2);">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:9px;flex-wrap:wrap;">
+          <div class="tn nf" style="font-size:22px;">⚡</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px;">
+              <h3 style="font-size:13px;">Conveniência / Express</h3>
+              <span class="tag tc">alto volume</span><span class="tag tb">agilidade</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">Rapidez e praticidade como proposta central. Atende quem tem pouco tempo e valoriza eficiência.</p>
+          </div>
+        </div>
+        <div class="g3" style="gap:7px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#00D2FF;margin-bottom:2px;">Modelo</p><p style="font-size:10px;">Agendamento online, sem espera, serviço cronometrado</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#00D2FF;margin-bottom:2px;">Localização</p><p style="font-size:10px;">Shopping, centro comercial ou home studio</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#00D2FF;margin-bottom:2px;">Comunicação</p><p style="font-size:10px;">"Beleza na sua agenda, no seu tempo"</p></div>
+        </div>
+      </div>
+
+      <div style="padding:15px 14px;border-radius:16px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.2);">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:9px;flex-wrap:wrap;">
+          <div class="tn ne" style="font-size:22px;">🤝</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px;">
+              <h3 style="font-size:13px;">Relacionamento / Comunidade</h3>
+              <span class="tag tg">fidelização</span><span class="tag tv">indicação</span>
+            </div>
+            <p style="font-size:11px;color:#7E879B;">A experiência e o vínculo são o produto. Clientes viram fãs e embaixadoras do salão.</p>
+          </div>
+        </div>
+        <div class="g3" style="gap:7px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Ferramentas</p><p style="font-size:10px;">Clube de fidelidade, aniversário, follow-up personalizado</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Retenção</p><p style="font-size:10px;">Taxa de retenção acima de 75% é o benchmark ideal</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Comunicação</p><p style="font-size:10px;">"Aqui você é mais que cliente, você é parte da nossa história"</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info ip au d5">
+      <p style="font-size:12px;color:#D98EEA;">💡 <strong>Insight estratégico:</strong> os posicionamentos podem se combinar — um salão de cabelos afros (nichado) também pode ser sustentável e de relacionamento. O importante é ter <strong style="color:#F5F7FB;">um posicionamento principal</strong> que guia todas as decisões.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 4 — COMO DEFINIR SEU POSICIONAMENTO
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl blue au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">Como <span class="gb">Definir Seu Posicionamento</span> em 5 Passos</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:15px;">O posicionamento nasce da <strong>interseção entre o que você faz de melhor, o que seu público mais valoriza e onde a concorrência é mais fraca.</strong> Este exercício transforma clareza em estratégia.</p>
+
+    <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:13px;" class="au d4">
+      <div class="fi fip">
+        <div class="tn na" style="font-size:18px;">1</div>
+        <div style="flex:1;">
+          <p style="font-size:13px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">🔍 Analise seus pontos fortes reais</p>
+          <p style="font-size:11px;">Pergunte às suas clientes atuais: "Por que você escolhe vir aqui?" e "Qual serviço você indica para amigas?". As respostas revelam seu diferencial real — que muitas vezes não é o que você acha que é.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">
+            <span class="tag tp2">pesquisa com clientes</span>
+            <span class="tag tpk">google reviews</span>
+            <span class="tag tv">feedback direto</span>
+          </div>
+        </div>
+      </div>
+      <div class="fi fib">
+        <div class="tn nc" style="font-size:18px;">2</div>
+        <div style="flex:1;">
+          <p style="font-size:13px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">🗺️ Mapeie a concorrência local</p>
+          <p style="font-size:11px;">Visite (ou pesquise) os 5 principais salões do seu entorno. Anote: preço, público, comunicação, especialidade, pontos fracos. <strong>Onde existe lacuna que você pode ocupar?</strong> É lá que mora sua oportunidade.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">
+            <span class="tag tb">análise de mercado</span>
+            <span class="tag tc">instagram dos concorrentes</span>
+            <span class="tag tg">cliente oculto</span>
+          </div>
+        </div>
+      </div>
+      <div class="fi fiv">
+        <div class="tn nb" style="font-size:18px;">3</div>
+        <div style="flex:1;">
+          <p style="font-size:13px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">🧭 Defina sua Proposta de Valor Única (PVU)</p>
+          <p style="font-size:11px;">Complete a frase: <em style="color:#A98AF5;">"[Nome do salão] é o único salão de [localidade] que [diferencial único] para [público específico] que quer [resultado desejado]."</em> Essa frase deve guiar todas as suas decisões de marketing.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">
+            <span class="tag tv">proposta única</span>
+            <span class="tag tp2">mensagem clara</span>
+          </div>
+        </div>
+      </div>
+      <div class="fi fig">
+        <div class="tn ne" style="font-size:18px;">4</div>
+        <div style="flex:1;">
+          <p style="font-size:13px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">🎨 Aligne identidade visual e comunicação</p>
+          <p style="font-size:11px;">Cores, fontes, linguagem usada nas legendas, tipo de foto postada, música ambiente, cheiro do salão — tudo precisa comunicar o mesmo posicionamento. <strong>Inconsistência confunde e afasta o público certo.</strong></p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">
+            <span class="tag tg">branding</span>
+            <span class="tag tb">identidade visual</span>
+            <span class="tag to">tom de voz</span>
+          </div>
+        </div>
+      </div>
+      <div class="fi fio">
+        <div class="tn nd" style="font-size:18px;">5</div>
+        <div style="flex:1;">
+          <p style="font-size:13px;font-weight:700;color:#F5F7FB;margin-bottom:4px;">📈 Teste, meça e ajuste</p>
+          <p style="font-size:11px;">Posicionamento não é estático. A cada 6 meses, avalie: o tipo de cliente que está chegando é o que você quer? Sua comunicação está atraindo quem você planejou? Ajuste onde necessário — sem drama, com dados.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;">
+            <span class="tag to">revisão semestral</span>
+            <span class="tag tc">métricas de aquisição</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card au d5">
+      <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:10px;">✏️ Exercício Prático — Construa sua Frase de Posicionamento</h3>
+      <div class="g2" style="gap:9px;">
+        <div style="padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+          <p style="font-size:11px;font-weight:700;color:#D98EEA;margin-bottom:6px;">❌ Posicionamento fraco</p>
+          <p style="font-size:11px;font-style:italic;color:#7E879B;">"Fazemos todos os serviços de cabelo com qualidade e preço justo para toda a família."</p>
+          <p style="font-size:10px;margin-top:6px;color:#FF8080;">→ Genérico. Não diferencia em nada. Toda concorrente pode dizer o mesmo.</p>
+        </div>
+        <div style="padding:10px 12px;border-radius:12px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+          <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:6px;">✅ Posicionamento forte</p>
+          <p style="font-size:11px;font-style:italic;color:#F5F7FB;">"Somos o único estúdio de coloração especializado em técnicas de cor para cabelos afros e cacheados em Moema — para mulheres que querem cor sem abrir mão da saúde do fio."</p>
+          <p style="font-size:10px;margin-top:6px;color:#5EE89A;">→ Específico, exclusivo, com benefício claro. Atrai e filtra o público certo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 5 — PÚBLICO-ALVO: ENTENDENDO SUA CLIENTE IDEAL
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl gold au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">Público-Alvo — <span class="go">Conheça Sua Cliente Ideal</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:15px;">Público-alvo não é "mulheres de 20 a 50 anos". Isso é vago demais para guiar qualquer decisão. Você precisa criar a <strong>persona</strong> — um retrato detalhado da sua cliente ideal que orienta comunicação, preço, serviços e até decoração do espaço.</p>
+
+    <div class="g2 au d4" style="margin-bottom:13px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">🗂️ As 4 Dimensões da Persona</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="padding:9px 11px;border-radius:10px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.17);">
+              <p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:3px;">1. Perfil Demográfico</p>
+              <p style="font-size:11px;">Idade, renda familiar, profissão, bairro, estado civil, se tem filhos. Dados objetivos que definem capacidade e disposição de gasto.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:10px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.17);">
+              <p style="font-size:11px;font-weight:700;color:#D98EEA;margin-bottom:3px;">2. Perfil Psicográfico</p>
+              <p style="font-size:11px;">Valores, estilo de vida, o que lê, onde se inspira (Pinterest? Instagram? TikTok?), sonhos, medos e aspirações de beleza.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:10px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.17);">
+              <p style="font-size:11px;font-weight:700;color:#8FAEFF;margin-bottom:3px;">3. Comportamento de Compra</p>
+              <p style="font-size:11px;">Frequência de visita, quanto gasta por mês com beleza, como pesquisa salões, se decide por preço, referência ou indicação.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:10px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.17);">
+              <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">4. Dores e Desejos</p>
+              <p style="font-size:11px;">O que a frustra nos salões que já foi? Qual resultado ela sonha mas nunca conseguiu? O que a faria indicar um salão para todas as amigas?</p>
+            </div>
+          </div>
+        </div>
+        <div class="info io">
+          <p style="font-size:12px;font-weight:700;color:#FFD460;margin-bottom:6px;">🎯 Por que isso importa?</p>
+          <p style="font-size:11px;">Salões que definem sua persona com clareza <strong style="color:#F5F7FB;">aumentam em até 3x a eficiência do marketing</strong>, atraem clientes que gastam mais e indicam mais, e param de desperdiçar dinheiro tentando agradar todo mundo.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FF9FD0;margin-bottom:10px;">👩 Exemplo de Persona Completa</h3>
+          <div style="padding:12px 12px;border-radius:12px;background:rgba(255,111,183,.06);border:1px solid rgba(255,111,183,.18);margin-bottom:9px;">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;">
+              <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FF6FB7,#C86DD7);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">👩‍💼</div>
+              <div>
+                <p style="font-size:13px;font-weight:700;color:#F5F7FB;">Camila, 32 anos</p>
+                <p style="font-size:10px;color:#7E879B;">Gerente de marketing · Pinheiros, SP</p>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="display:flex;gap:7px;"><span style="color:#FFD460;font-size:11px;flex-shrink:0;">💰</span><p style="font-size:11px;">Renda R$6–10k. Gasta R$400–700/mês com beleza.</p></div>
+              <div style="display:flex;gap:7px;"><span style="color:#FF9FD0;font-size:11px;flex-shrink:0;">📱</span><p style="font-size:11px;">Pesquisa no Instagram e TikTok. Decide por estética e reviews.</p></div>
+              <div style="display:flex;gap:7px;"><span style="color:#5EE89A;font-size:11px;flex-shrink:0;">✨</span><p style="font-size:11px;">Quer cabelo saudável e estiloso sem perder 4h no salão.</p></div>
+              <div style="display:flex;gap:7px;"><span style="color:#FF8080;font-size:11px;flex-shrink:0;">😤</span><p style="font-size:11px;">Frustrações: salões que não respeitam o horário marcado e que não entendem seu tipo de fio.</p></div>
+              <div style="display:flex;gap:7px;"><span style="color:#8FAEFF;font-size:11px;flex-shrink:0;">🏆</span><p style="font-size:11px;">Indica para amigas quando se sente especial e ouvida.</p></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="tag tpk">urbana</span>
+            <span class="tag to">profissional ocupada</span>
+            <span class="tag tg">valoriza saúde capilar</span>
+            <span class="tag tb">ativa nas redes</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:13px;color:#A98AF5;margin-bottom:9px;">📋 Perguntas para Descobrir Sua Persona</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">❓</span><p style="font-size:11px;">Quem são as 5 clientes que eu mais gosto de atender? O que elas têm em comum?</p></div>
+            <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">❓</span><p style="font-size:11px;">Qual serviço é mais solicitado e mais valorizado pelas minhas melhores clientes?</p></div>
+            <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">❓</span><p style="font-size:11px;">O que elas falam quando indicam meu salão para outras pessoas?</p></div>
+            <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">❓</span><p style="font-size:11px;">Onde elas passam o tempo online? Que conteúdo consomem?</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 6 — SEGMENTAÇÃO DE PÚBLICO
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl cyan au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;"><span class="gc">Segmentação</span> — Diferentes Públicos, Diferentes Estratégias</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:15px;">Um salão pode ter mais de um segmento de público — mas precisa comunicar de forma diferente para cada um. Conheça os <strong>principais perfis de clientes</strong> do mercado beauty e como impactar cada um.</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:13px;" class="au d4">
+
+      <div style="padding:14px 13px;border-radius:15px;background:rgba(255,111,183,.06);border:1px solid rgba(255,111,183,.2);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap;">
+          <span style="font-size:26px;">👩‍🎓</span>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:2px;">Geração Z (18–26 anos)</h3>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tpk">TikTok</span><span class="tag tv">tendências</span><span class="tag tg">autenticidade</span></div>
+          </div>
+        </div>
+        <div class="g3" style="gap:8px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FF9FD0;margin-bottom:2px;">O que valorizam</p><p style="font-size:10px;">Inclusão, originalidade, estética forte e posicionamento político/social do salão.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FF9FD0;margin-bottom:2px;">Como atrair</p><p style="font-size:10px;">TikTok, Reels, estética visualmente marcante, before/after autêntico, linguagem descontraída.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FF9FD0;margin-bottom:2px;">Gatilho de compra</p><p style="font-size:10px;">Tendência viral, conteúdo aspiracional, avaliações de peers, preço justo.</p></div>
+        </div>
+      </div>
+
+      <div style="padding:14px 13px;border-radius:15px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.2);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap;">
+          <span style="font-size:26px;">👩‍💼</span>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:2px;">Millennials (27–42 anos)</h3>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tp2">Instagram</span><span class="tag tb">resultado</span><span class="tag to">praticidade</span></div>
+          </div>
+        </div>
+        <div class="g3" style="gap:8px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#D98EEA;margin-bottom:2px;">O que valorizam</p><p style="font-size:10px;">Resultado comprovado, saúde do cabelo, pontualidade, experiência premium, custo-benefício.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#D98EEA;margin-bottom:2px;">Como atrair</p><p style="font-size:10px;">Feed bem produzido, depoimentos reais, cardápio claro, agendamento online, comunicação profissional.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#D98EEA;margin-bottom:2px;">Gatilho de compra</p><p style="font-size:10px;">Indicação de amiga confiável, reviews no Google, portfólio de resultados reais.</p></div>
+        </div>
+      </div>
+
+      <div style="padding:14px 13px;border-radius:15px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.2);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap;">
+          <span style="font-size:26px;">👩‍🦳</span>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:2px;">Geração X / Baby Boomers (43–65 anos)</h3>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag to">fidelidade</span><span class="tag tg">confiança</span><span class="tag tb">presencial</span></div>
+          </div>
+        </div>
+        <div class="g3" style="gap:8px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FFD460;margin-bottom:2px;">O que valorizam</p><p style="font-size:10px;">Relacionamento com o profissional, confiança, qualidade consistente e conforto no atendimento.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FFD460;margin-bottom:2px;">Como atrair</p><p style="font-size:10px;">WhatsApp personalizado, ligação de retorno, cartão fidelidade físico, programa de indicação.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#FFD460;margin-bottom:2px;">Gatilho de compra</p><p style="font-size:10px;">Indicação pessoal, tempo de mercado da profissional, atendimento exclusivo e atenção.</p></div>
+        </div>
+      </div>
+
+      <div style="padding:14px 13px;border-radius:15px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.2);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap;">
+          <span style="font-size:26px;">🧔</span>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:2px;">Público Masculino (todas as idades)</h3>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tb">objetividade</span><span class="tag tc">resultado rápido</span><span class="tag tg">crescimento</span></div>
+          </div>
+        </div>
+        <div class="g3" style="gap:8px;">
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#8FAEFF;margin-bottom:2px;">O que valorizam</p><p style="font-size:10px;">Agilidade, profissionalismo, ambiente confortável, resultado impecável e expertise comprovada.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#8FAEFF;margin-bottom:2px;">Oportunidade</p><p style="font-size:10px;">Mercado masculino de beleza cresceu 48% nos últimos 3 anos. Ainda pouco atendido por salões femininos.</p></div>
+          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);"><p style="font-size:10px;font-weight:700;color:#8FAEFF;margin-bottom:2px;">Gatilho de compra</p><p style="font-size:10px;">Indicação masculina, antes/depois de barba + cabelo, pacotes completos de cuidado.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info ib au d5">
+      <p style="font-size:12px;color:#8FAEFF;">🧩 <strong>Dica de segmentação:</strong> escolha no máximo 2 segmentos para focar no início. Tentar falar para todos ao mesmo tempo dilui a mensagem e confunde potenciais clientes sobre o que você realmente é.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 7 — CONSTRUINDO O DIFERENCIAL
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl green au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">Construindo Seu <span class="gg">Diferencial Competitivo</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:15px;">Diferencial não é o que você <em>acha</em> que é bom — é o que sua cliente <em>percebe e conta para outras pessoas</em>. Existem 3 categorias de diferencial, e o mais poderoso combina as três.</p>
+
+    <div class="g3 au d4" style="margin-bottom:13px;">
+      <div class="cp" style="text-align:center;">
+        <p style="font-size:28px;margin-bottom:8px;">🔬</p>
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:7px;">Diferencial Técnico</h3>
+        <p style="font-size:11px;margin-bottom:9px;">Domínio de técnicas que poucas dominam ou certificações específicas que comprovam expertise.</p>
+        <div style="display:flex;flex-direction:column;gap:5px;text-align:left;">
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:10px;">✓ Especialização em colorimetria avançada</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:10px;">✓ Certificação internacional em técnicas</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:10px;">✓ Método exclusivo desenvolvido por você</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.15);">
+            <p style="font-size:10px;">✓ Parceria com marcas profissionais</p>
+          </div>
+        </div>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <p style="font-size:28px;margin-bottom:8px;">💫</p>
+        <h3 style="font-size:13px;color:#D98EEA;margin-bottom:7px;">Diferencial de Experiência</h3>
+        <p style="font-size:11px;margin-bottom:9px;">Como a cliente se sente durante e após o atendimento. Muitas vezes mais poderoso que o técnico.</p>
+        <div style="display:flex;flex-direction:column;gap:5px;text-align:left;">
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.15);">
+            <p style="font-size:10px;">✓ Consulta de cor + diagnóstico inclusos</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.15);">
+            <p style="font-size:10px;">✓ Bebida especial e ambiente pensado</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.15);">
+            <p style="font-size:10px;">✓ Follow-up 5 dias após o serviço</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.15);">
+            <p style="font-size:10px;">✓ Guia de manutenção personalizado</p>
+          </div>
+        </div>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <p style="font-size:28px;margin-bottom:8px;">🏷️</p>
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:7px;">Diferencial de Marca</h3>
+        <p style="font-size:11px;margin-bottom:9px;">A percepção e o prestígio que envolvem o nome do seu salão no mercado e na mente das clientes.</p>
+        <div style="display:flex;flex-direction:column;gap:5px;text-align:left;">
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.15);">
+            <p style="font-size:10px;">✓ Estética visual única e reconhecível</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.15);">
+            <p style="font-size:10px;">✓ Propósito e valores claros e vividos</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.15);">
+            <p style="font-size:10px;">✓ Presença digital forte e consistente</p>
+          </div>
+          <div style="padding:5px 8px;border-radius:8px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.15);">
+            <p style="font-size:10px;">✓ Reputação construída por anos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card au d5" style="margin-bottom:12px;">
+      <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">⚠️ Diferenciais que NÃO são diferenciais reais</h3>
+      <div class="g2" style="gap:9px;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div class="fi fie"><span style="font-size:13px;flex-shrink:0;">❌</span><p style="font-size:11px;">"Atendimento personalizado" — <em>toda concorrente diz isso</em></p></div>
+          <div class="fi fie"><span style="font-size:13px;flex-shrink:0;">❌</span><p style="font-size:11px;">"Produtos de qualidade" — <em>qual salão diria que usa produto ruim?</em></p></div>
+          <div class="fi fie"><span style="font-size:13px;flex-shrink:0;">❌</span><p style="font-size:11px;">"Preço justo" — <em>vago, relativo e não posiciona</em></p></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div class="fi fie"><span style="font-size:13px;flex-shrink:0;">❌</span><p style="font-size:11px;">"Ambiente agradável" — <em>expectativa mínima, não diferencial</em></p></div>
+          <div class="fi fie"><span style="font-size:13px;flex-shrink:0;">❌</span><p style="font-size:11px;">"Profissionais experientes" — <em>todos alegam experiência</em></p></div>
+          <div class="fi fie"><span style="font-size:13px;flex-shrink:0;">❌</span><p style="font-size:11px;">"Localização central" — <em>conveniência, não diferencial estratégico</em></p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info ig au d6">
+      <p style="font-size:12px;color:#5EE89A;">🌟 <strong>Teste do diferencial real:</strong> se sua concorrente mais próxima pode dizer exatamente a mesma coisa sobre si mesma, não é um diferencial. Um diferencial verdadeiro é <strong style="color:#F5F7FB;">único, verificável e memorável</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 8 — COMUNICAÇÃO DO POSICIONAMENTO
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">Comunicar <span class="gt">Posicionamento</span> nas Redes Sociais</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:15px;">Posicionamento não declarado não existe para o mercado. É preciso <strong>comunicar ativamente e de forma consistente</strong> em todos os pontos de contato — do Instagram ao atendimento presencial.</p>
+
+    <div class="g2 au d4" style="margin-bottom:13px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FF9FD0;margin-bottom:10px;">📸 Instagram — A Vitrine Principal</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(255,111,183,.07);border:1px solid rgba(255,111,183,.17);">
+              <p style="font-size:11px;font-weight:700;color:#FF9FD0;margin-bottom:3px;">Bio estratégica</p>
+              <p style="font-size:11px;">Deve responder: "O que faço, para quem e com qual resultado." Ex.: "✂️ Especialista em coloração em SP | Cabelos saudáveis e cor intensa | Agende pelo link 👇"</p>
+            </div>
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(255,111,183,.07);border:1px solid rgba(255,111,183,.17);">
+              <p style="font-size:11px;font-weight:700;color:#FF9FD0;margin-bottom:3px;">Feed coerente</p>
+              <p style="font-size:11px;">Paleta de cores consistente. Fotos de resultado + bastidores + depoimentos. Proporção 60% resultado / 30% processo / 10% pessoal.</p>
+            </div>
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(255,111,183,.07);border:1px solid rgba(255,111,183,.17);">
+              <p style="font-size:11px;font-weight:700;color:#FF9FD0;margin-bottom:3px;">Stories diários</p>
+              <p style="font-size:11px;">Humanizam a marca. Mostrar bastidores, rotina, dicas rápidas, depoimentos espontâneos e interações com seguidores.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">🎵 TikTok & Reels — Alcance Orgânico</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="fi fio"><span style="font-size:14px;flex-shrink:0;">🎬</span><p style="font-size:11px;"><strong>Antes & depois</strong> — o conteúdo de maior conversão no beauty. Mostrar transformação real em 15–30 segundos.</p></div>
+            <div class="fi fio"><span style="font-size:14px;flex-shrink:0;">🤫</span><p style="font-size:11px;"><strong>Bastidores & educacional</strong> — "Como funciona o babyliss", "3 erros no cabelo". Constrói autoridade.</p></div>
+            <div class="fi fio"><span style="font-size:14px;flex-shrink:0;">💬</span><p style="font-size:11px;"><strong>Depoimentos em vídeo</strong> — cliente falando sobre a experiência vale 10x mais que qualquer legenda.</p></div>
+            <div class="fi fio"><span style="font-size:14px;flex-shrink:0;">📣</span><p style="font-size:11px;"><strong>Tendências adaptadas</strong> — usar sons e trends populares com o contexto do salão aumenta alcance orgânico.</p></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">💬 WhatsApp Business — Relacionamento & Conversão</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.17);">
+              <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Catálogo profissional</p>
+              <p style="font-size:11px;">Serviços com foto, descrição e preço. Elimina dúvidas e posiciona seu nível antes do primeiro contato.</p>
+            </div>
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.17);">
+              <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Status estratégico</p>
+              <p style="font-size:11px;">Resultados do dia, vagas disponíveis, promoções pontuais. Quem vê já é cliente quente.</p>
+            </div>
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.17);">
+              <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Follow-up automático</p>
+              <p style="font-size:11px;">"Oi Camila, faz 30 dias desde sua última visita. Que tal agendar uma manutenção?" — personalização que fideliza.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:10px;">⭐ Google Meu Negócio — Autoridade Local</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="fi fib"><span style="font-size:14px;flex-shrink:0;">📍</span><p style="font-size:11px;">Perfil completo com fotos, horários e serviços aumenta em <strong>70%</strong> a chance de aparecer nas buscas locais.</p></div>
+            <div class="fi fib"><span style="font-size:14px;flex-shrink:0;">⭐</span><p style="font-size:11px;">Peça avaliações ativamente após cada atendimento. Responda <strong>todas</strong> — positivas e negativas — com profissionalismo.</p></div>
+            <div class="fi fib"><span style="font-size:14px;flex-shrink:0;">📸</span><p style="font-size:11px;">Atualize as fotos semanalmente. Perfis ativos recebem 35% mais cliques que perfis desatualizados.</p></div>
+          </div>
+        </div>
+        <div class="info ip">
+          <p style="font-size:12px;color:#D98EEA;">🎯 <strong>Regra de consistência:</strong> o mesmo tom de voz, paleta visual e mensagem principal deve aparecer no Instagram, TikTok, WhatsApp, Google e no salão físico. Consistência é o que transforma presença em marca.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 9 — PRECIFICAÇÃO ALINHADA AO POSICIONAMENTO
+══════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl gold au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;"><span class="go">Precificação</span> Alinhada ao Posicionamento</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);margin-bottom:15px;">O preço comunica posicionamento antes de qualquer palavra. Um preço baixo demais destrói a percepção de valor de um salão premium. <strong>Cobrar certo é respeitar seu trabalho e atrair a cliente certa.</strong></p>
+
+    <div class="g2 au d4" style="margin-bottom:13px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">💰 Os 3 Erros de Precificação mais Comuns</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.17);">
+              <p style="font-size:12px;font-weight:700;color:#FF8080;margin-bottom:3px;">❌ Erro 1 — Copiar o preço da concorrência</p>
+              <p style="font-size:11px;">Você não sabe a estrutura de custos delas. Pode estar copiando uma estratégia que dá prejuízo — ou subestimando seu nível técnico.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.17);">
+              <p style="font-size:12px;font-weight:700;color:#FF8080;margin-bottom:3px;">❌ Erro 2 — Cobrar só pelo produto/tempo</p>
+              <p style="font-size:11px;">Não inclui sua especialidade, anos de estudo, atendimento, estrutura e garantia de resultado. Você vende transformação, não hora de trabalho.</p>
+            </div>
+            <div style="padding:9px 11px;border-radius:11px;background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.17);">
+              <p style="font-size:12px;font-weight:700;color:#FF8080;margin-bottom:3px;">❌ Erro 3 — Dar desconto fácil demais</p>
+              <p style="font-size:11px;">Desconto fácil sinaliza que o preço original era inflado. Destrói percepção de valor e atrai quem só volta com desconto.</p>
+            </div>
+          </div>
+        </div>
+        <div class="info io">
+          <p style="font-size:12px;font-weight:700;color:#FFD460;margin-bottom:7px;">📐 Fórmula de Precificação Inteligente</p>
+          <div style="padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);margin-bottom:7px;">
+            <p style="font-size:11px;text-align:center;color:#F5F7FB;font-weight:600;">(Custo do produto + Custo operacional por hora + Pró-labore desejado) × Margem de posicionamento = Preço final</p>
+          </div>
+          <p style="font-size:11px;margin-bottom:4px;">A <strong style="color:#FFD460;">margem de posicionamento</strong> é o fator que diferencia você da média:</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="tag to">Básico: ×1.3</span>
+            <span class="tag tp2">Intermediário: ×1.6</span>
+            <span class="tag tg">Premium: ×2.0+</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">🎯 Como Justificar Preços Premium</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div class="fi fig"><span style="font-size:14px;flex-shrink:0;">🏆</span><div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Portfólio de resultados visível</p><p style="font-size:11px;">Antes/depois de clientes reais mostrando o impacto do serviço. Prova social é o argumento mais poderoso.</p></div></div>
+            <div class="fi fig"><span style="font-size:14px;flex-shrink:0;">📜</span><div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Certificações e formações</p><p style="font-size:11px;">Mostrar cursos, especializações e marcas parceiras. Conhecimento validado justifica preço mais alto.</p></div></div>
+            <div class="fi fig"><span style="font-size:14px;flex-shrink:0;">💼</span><div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Experiência de atendimento superior</p><p style="font-size:11px;">Consulta incluída, diagnóstico, guia de manutenção, ambiente premium — entregáveis que a concorrente não oferece.</p></div></div>
+            <div class="fi fig"><span style="font-size:14px;flex-shrink:0;">⭐</span><div><p style="font-size:12px;font-weight:600;color:#F5F7FB;margin-bottom:2px;">Reputação e avaliações</p><p style="font-size:11px;">Média acima de 4.8 no Google com volume de avaliações é prova de que o preço premium é justo.</p></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:13px;color:#A98AF5;margin-bottom:10px;">📦 Estratégia de Pacotes e Bundles</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(123,92,240,.07);border:1px solid rgba(123,92,240,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:2px;flex-wrap:wrap;gap:4px;"><p style="font-size:11px;font-weight:700;color:#A98AF5;">Pacote Manutenção Mensal</p><span class="tag tv">fidelização</span></div>
+              <p style="font-size:10px;">Hidratação + escova + finalização. Mensalidade com desconto de 15% vs. avulso. Garante retorno recorrente.</p>
+            </div>
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:2px;flex-wrap:wrap;gap:4px;"><p style="font-size:11px;font-weight:700;color:#D98EEA;">Pacote Transformação</p><span class="tag tp2">ticket alto</span></div>
+              <p style="font-size:10px;">Coloração + tratamento + corte + finalização. Ticket médio 2–3x maior. Apresentar como investimento.</p>
+            </div>
+            <div style="padding:8px 10px;border-radius:10px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.17);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:2px;flex-wrap:wrap;gap:4px;"><p style="font-size:11px;font-weight:700;color:#FFD460;">Vale-presente</p><span class="tag to">indicação</span></div>
+              <p style="font-size:10px;">Atrai novas clientes com o perfil certo (amiga de cliente satisfeita). ROI altíssimo para aquisição de cliente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info ip au d5">
+      <p style="font-size:12px;color:#D98EEA;">💡 <strong>Mentalidade de precificação:</strong> o preço que você cobra educa o mercado sobre quem você é. Uma cliente que pagou R$300 em um serviço vai defender seu trabalho com muito mais convicção do que quem pagou R$80.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SLIDE 10 — PLANO DE AÇÃO
+══════════════════════════════ -->
+<section class="slide vcenter">
+  <div class="inner" style="text-align:center;">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(20px,4.8vw,52px);margin-bottom:10px;">
+      Plano de Ação —<br/><span class="gc">Implementando em 90 Dias</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,14px);max-width:660px;margin:0 auto 18px;color:#AAB3C5;">
+      Conhecimento sem ação não muda negócio. Este plano de 90 dias transforma tudo que você aprendeu em <strong style="color:#F5F7FB;">resultados reais e mensuráveis</strong> para o seu salão.
+    </p>
+
+    <div class="g3 au d4" style="text-align:left;margin-bottom:13px;">
+      <div style="padding:14px 13px;border-radius:15px;background:rgba(255,111,183,.06);border:1px solid rgba(255,111,183,.2);">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px;">
+          <div class="tn na" style="font-size:20px;">1</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#FF9FD0;">Mês 1</p>
+            <p style="font-size:11px;color:#7E879B;">Diagnóstico & Estratégia</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;gap:7px;"><span style="color:#FF9FD0;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Entrevistar 10 clientes atuais sobre o que valorizam</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#FF9FD0;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Mapear os 5 principais concorrentes locais</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#FF9FD0;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Definir posicionamento principal e escrever a PVU</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#FF9FD0;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Criar a persona detalhada da cliente ideal</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#FF9FD0;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Revisar precificação com base no posicionamento</p></div>
+        </div>
+      </div>
+      <div style="padding:14px 13px;border-radius:15px;background:rgba(123,92,240,.06);border:1px solid rgba(123,92,240,.2);">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px;">
+          <div class="tn nb" style="font-size:20px;">2</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#A98AF5;">Mês 2</p>
+            <p style="font-size:11px;color:#7E879B;">Comunicação & Presença</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;gap:7px;"><span style="color:#A98AF5;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Atualizar bio do Instagram com a PVU</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#A98AF5;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Criar paleta visual consistente para o feed</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#A98AF5;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Começar a publicar 3–4x/semana com estratégia</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#A98AF5;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Otimizar o perfil do Google Meu Negócio</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#A98AF5;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Implementar catálogo no WhatsApp Business</p></div>
+        </div>
+      </div>
+      <div style="padding:14px 13px;border-radius:15px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.2);">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px;">
+          <div class="tn ne" style="font-size:20px;">3</div>
+          <div>
+            <p style="font-size:12px;font-weight:700;color:#5EE89A;">Mês 3</p>
+            <p style="font-size:11px;color:#7E879B;">Crescimento & Ajuste</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;gap:7px;"><span style="color:#5EE89A;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Analisar que tipo de cliente chegou nos últimos 60 dias</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#5EE89A;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Criar primeiro pacote de serviços alinhado ao público</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#5EE89A;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Solicitar avaliações no Google ativamente</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#5EE89A;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Criar programa de indicação para clientes fiéis</p></div>
+          <div style="display:flex;gap:7px;"><span style="color:#5EE89A;font-size:11px;flex-shrink:0;">▸</span><p style="font-size:11px;">Ajustar estratégia com base nos dados coletados</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g2 au d5" style="text-align:left;margin-bottom:13px;">
+      <div class="bwce cg" style="padding:14px 13px;">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">📊 KPIs para Acompanhar</h3>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">→</span>% de clientes novas que chegam com o perfil desejado</p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">→</span>Taxa de retorno (benchmark: &gt;65% em 60 dias)</p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">→</span>Ticket médio por atendimento mês a mês</p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">→</span>Número de indicações orgânicas por mês</p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#5EE89A;flex-shrink:0;">→</span>Nota média no Google e total de avaliações</p>
+        </div>
+      </div>
+      <div style="padding:14px 13px;border-radius:16px;background:linear-gradient(135deg,rgba(200,109,215,.07),rgba(255,111,183,.05));border:1px solid rgba(200,109,215,.2);">
+        <h3 style="font-size:13px;color:#D98EEA;margin-bottom:9px;">💎 Os 5 Princípios Finais</h3>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#D98EEA;flex-shrink:0;">1.</span><span>Posicionamento claro atrai mais do que qualquer promoção</span></p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#D98EEA;flex-shrink:0;">2.</span><span>Cliente ideal não é a que paga menos — é a que mais valoriza</span></p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#D98EEA;flex-shrink:0;">3.</span><span>Diferencial real é percebido, não apenas declarado</span></p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#D98EEA;flex-shrink:0;">4.</span><span>Consistência de comunicação = construção de marca</span></p>
+          <p style="font-size:12px;display:flex;gap:8px;"><span style="color:#D98EEA;flex-shrink:0;">5.</span><span>Seu preço deve educar o mercado sobre quem você é</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="au d6" style="padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(200,109,215,.07),rgba(46,107,255,.05));border:1px solid rgba(200,109,215,.2);">
+      <p style="font-size:clamp(12px,2vw,14px);font-style:italic;color:#F5F7FB;margin-bottom:6px;">
+        "O salão que sabe exatamente quem é, para quem trabalha e por que é diferente não precisa competir por preço — ele cria um mercado próprio onde é a escolha óbvia."
+      </p>
+      <p style="font-size:11px;color:#7E879B;font-weight:600;">Posicionamento, Público-Alvo e Diferencial para Salões de Beleza · 2026</p>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<!-- CHROME FIXO -->
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="navarr">
+  <button onclick="prev()" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    const was=s.classList.contains('active');
+    s.classList.toggle('active',i===C);
+    if(i===C&&!was)s.scrollTop=0;
+  });
+}
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;scrolling=false;},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-tx);
+  const dy=Math.abs(e.changedTouches[0].clientY-ty);
+  if(dy>dx+8)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=Math.abs(ty-e.changedTouches[0].clientY);
+  if(Math.abs(dx)>dy*1.5&&Math.abs(dx)>55){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+upd();
+</script>
+</body>
+</html>
