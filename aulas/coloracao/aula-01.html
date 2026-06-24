@@ -1,1 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Coloração Capilar — Guia Profissional Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+.slide{
+  width:100vw;min-height:100vh;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;position:relative;
+  overflow-y:auto;overflow-x:hidden;
+  padding:56px 20px 110px;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+}
+.slide.vcenter{justify-content:center;}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-thumb{background:rgba(200,109,215,.4);border-radius:4px;}
+
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 900px 420px at 75% 15%,rgba(200,109,215,.15) 0%,transparent 55%),
+    radial-gradient(ellipse 800px 380px at 25% 85%,rgba(46,107,255,.13) 0%,transparent 55%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.25;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1;}
+
+.inner{width:100%;max-width:900px;}
+
+/* TIPOGRAFIA */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p,li{font-weight:400;line-height:1.65;color:#AAB3C5;}
+
+/* GRADIENTES DE TEXTO */
+.gpink{background:linear-gradient(135deg,#C86DD7 0%,#FF8FAB 55%,#C86DD7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gblue{background:linear-gradient(135deg,#2E6BFF 0%,#5B3FD6 55%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.ggold{background:linear-gradient(135deg,#FFD460 0%,#FF8C60 55%,#FFD460 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.ggreen{background:linear-gradient(135deg,#5EE89A 0%,#2E9F6B 55%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* LINHA DECORATIVA */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#C86DD7,#2E6BFF);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:999px;margin-bottom:22px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.22);font-size:12px;font-weight:600;color:#D98EEA;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px 18px;backdrop-filter:blur(8px);transition:all .4s ease;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);}
+.card:hover{border-color:rgba(200,109,215,.2);transform:translateY(-3px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95),rgba(10,15,36,.98),rgba(5,8,22,1));border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(200,109,215,.06);padding:22px 18px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(200,109,215,.25);transform:translateY(-3px) scale(1.008);}
+
+/* NÚMERO ÍCONE */
+.tn{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;flex-shrink:0;}
+.n1{background:linear-gradient(145deg,#C86DD7,#A854BF);}
+.n2{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:.4s;}
+.n3{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.8s;}
+.n4{background:linear-gradient(145deg,#FFD460,#FF8C00);animation-delay:1.2s;}
+.n5{background:linear-gradient(145deg,#5EE89A,#27AE60);animation-delay:.2s;}
+.n6{background:linear-gradient(145deg,#FF6B6B,#CC3333);animation-delay:.6s;}
+.n7{background:linear-gradient(145deg,#FF8FAB,#C8355A);animation-delay:1s;}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(200,109,215,.1)}50%{box-shadow:0 0 36px rgba(200,109,215,.35)}}
+
+/* INFO BOXES */
+.info{padding:14px 16px;border-radius:14px;}
+.info.blue{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.18);}
+.info.pink{background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.18);}
+.info.orange{background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.22);}
+.info.green{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.22);}
+.info.yellow{background:rgba(255,210,60,.06);border:1px solid rgba(255,210,60,.22);}
+.info.red{background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.22);}
+
+/* COMPARATIVO */
+.bwc{border-radius:16px;padding:18px 16px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.14);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.14);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.14);}
+.bwc.cb{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.14);}
+.bwc.cp2{background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.14);}
+
+/* FLOW ITEM */
+.fi{display:flex;align-items:flex-start;gap:13px;padding:13px 15px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.fi.act{background:rgba(200,109,215,.07);border-color:rgba(200,109,215,.22);}
+.fn2{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;}
+
+/* OX CARD */
+.ox{border-radius:14px;padding:16px 10px;text-align:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);transition:all .3s;}
+.ox:hover{transform:translateY(-3px);}
+.oxn{font-size:32px;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:5px;}
+
+/* RODA DAS CORES */
+.cwheel{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;}
+.cwc{border-radius:13px;padding:13px 8px;text-align:center;transition:all .3s;}
+.cwc:hover{transform:translateY(-3px) scale(1.04);}
+.cwd{width:38px;height:38px;border-radius:50%;margin:0 auto 9px;box-shadow:0 4px 16px rgba(0,0,0,.55);}
+
+/* ESCALA DE TONS */
+.tomrow{display:flex;gap:5px;width:100%;}
+.tomi{flex:1;padding:16px 4px;text-align:center;font-size:11px;font-weight:700;min-width:0;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .68s ease both;}
+.slide.active .as{animation:fadeScale .68s ease both;}
+.d1{animation-delay:.07s!important}.d2{animation-delay:.17s!important}
+.d3{animation-delay:.27s!important}.d4{animation-delay:.37s!important}
+.d5{animation-delay:.47s!important}.d6{animation-delay:.57s!important}
+.d7{animation-delay:.67s!important}.d8{animation-delay:.77s!important}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#C86DD7,#FF8FAB,#2E6BFF,#C86DD7);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fsbtn{position:fixed;top:13px;right:13px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 14px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fsbtn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(200,109,215,.35);}
+.fsbtn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.45);padding:8px 14px;border-radius:11px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#C86DD7;font-weight:900;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.45);padding:8px 14px;border-radius:22px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:linear-gradient(90deg,#C86DD7,#FF8FAB);box-shadow:0 0 12px rgba(200,109,215,.6);width:28px;border-radius:5px;}
+
+.navarr{position:fixed;bottom:17px;right:14px;z-index:998;display:flex;gap:8px;}
+.navarr button{width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
+.navarr button:hover{background:rgba(200,109,215,.18);border-color:rgba(200,109,215,.4);color:#fff;}
+.navarr button svg{width:18px;height:18px;}
+
+/* RESPONSIVO */
+@media(max-width:680px){
+  .slide{padding:52px 14px 108px;}
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  .g5{grid-template-columns:repeat(3,1fr);}
+  .cwheel{grid-template-columns:repeat(4,1fr);}
+  .tomrow{flex-wrap:wrap;}
+  .tomi{min-width:calc(25% - 5px);flex:none;border-radius:10px;margin-bottom:4px;}
+  .fsbtn span{display:none;}
+  .fsbtn{padding:9px 11px;}
+}
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr;}
+  .g5{grid-template-columns:repeat(2,1fr);}
+  .cwheel{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+
+<button class="fsbtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 1 — CAPA
+════════════════════════════════════════════ -->
+<section class="slide vcenter active">
+  <div style="width:100%;max-width:780px;text-align:center;">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+      Guia Profissional Completo
+    </div>
+    <h1 class="au d2" style="font-size:clamp(28px,7vw,80px);margin-bottom:16px;">
+      <span class="gpink">Coloração</span><br/>
+      <span class="gblue">Capilar</span>
+    </h1>
+    <div class="gl ce au d3"></div>
+    <p class="au d4" style="font-size:clamp(13px,2.2vw,17px);color:#AAB3C5;max-width:560px;margin:0 auto 28px;line-height:1.6;">
+      Da teoria das cores à execução perfeita — tudo que uma colorista precisa dominar para transformar cabelos com segurança, técnica e resultado impecável.
+    </p>
+    <div class="g4 au d5" style="max-width:560px;margin:0 auto;">
+      <div style="padding:11px 8px;border-radius:13px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.22);font-size:11px;font-weight:700;color:#D98EEA;text-align:center;">🎨 Teoria</div>
+      <div style="padding:11px 8px;border-radius:13px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.22);font-size:11px;font-weight:700;color:#8FAEFF;text-align:center;">⚗️ Química</div>
+      <div style="padding:11px 8px;border-radius:13px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.22);font-size:11px;font-weight:700;color:#FFD460;text-align:center;">🖌️ Técnicas</div>
+      <div style="padding:11px 8px;border-radius:13px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.22);font-size:11px;font-weight:700;color:#5EE89A;text-align:center;">💡 Correção</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 2 — RODA DAS CORES
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;">A <span class="gpink">Roda das Cores</span> — Base de Tudo</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:18px;">O círculo cromático é o <strong style="color:#F5F7FB;">alicerce da colorimetria</strong>. Ele define quais cores se somam, se anulam e se potencializam nos fios.</p>
+
+    <div class="cwheel au d4" style="margin-bottom:16px;">
+      <div class="cwc" style="background:rgba(255,50,50,.08);border:1px solid rgba(255,50,50,.2);">
+        <div class="cwd" style="background:linear-gradient(145deg,#FF3232,#CC1A1A);"></div>
+        <p style="font-size:11px;font-weight:700;color:#FF7070;">Vermelho</p>
+        <p style="font-size:10px;color:#7E879B;">Primária</p>
+      </div>
+      <div class="cwc" style="background:rgba(255,130,0,.08);border:1px solid rgba(255,130,0,.2);">
+        <div class="cwd" style="background:linear-gradient(145deg,#FF8200,#CC6600);"></div>
+        <p style="font-size:11px;font-weight:700;color:#FFA040;">Laranja</p>
+        <p style="font-size:10px;color:#7E879B;">Secundária</p>
+      </div>
+      <div class="cwc" style="background:rgba(255,210,0,.08);border:1px solid rgba(255,210,0,.2);">
+        <div class="cwd" style="background:linear-gradient(145deg,#FFD200,#CCB000);"></div>
+        <p style="font-size:11px;font-weight:700;color:#FFE040;">Amarelo</p>
+        <p style="font-size:10px;color:#7E879B;">Primária</p>
+      </div>
+      <div class="cwc" style="background:rgba(50,200,80,.08);border:1px solid rgba(50,200,80,.2);">
+        <div class="cwd" style="background:linear-gradient(145deg,#32C850,#1A9A3A);"></div>
+        <p style="font-size:11px;font-weight:700;color:#5EE87A;">Verde</p>
+        <p style="font-size:10px;color:#7E879B;">Secundária</p>
+      </div>
+      <div class="cwc" style="background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);">
+        <div class="cwd" style="background:linear-gradient(145deg,#2E6BFF,#1E4FCC);"></div>
+        <p style="font-size:11px;font-weight:700;color:#8FAEFF;">Azul</p>
+        <p style="font-size:10px;color:#7E879B;">Primária</p>
+      </div>
+      <div class="cwc" style="background:rgba(160,60,220,.08);border:1px solid rgba(160,60,220,.2);">
+        <div class="cwd" style="background:linear-gradient(145deg,#A03CDC,#7020AA);"></div>
+        <p style="font-size:11px;font-weight:700;color:#C86DD7;">Violeta</p>
+        <p style="font-size:10px;color:#7E879B;">Secundária</p>
+      </div>
+    </div>
+
+    <div class="g3 au d5" style="margin-bottom:15px;">
+      <div class="bwc cp2">
+        <h3 style="font-size:13px;color:#D98EEA;margin-bottom:9px;">🔵 Cores Frias</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Azul, verde e violeta. Neutralizam tons quentes indesejados. Base dos matizadores platinado, cinza e titânio.</p>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <span style="background:rgba(46,107,255,.15);border:1px solid rgba(46,107,255,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#8FAEFF;font-weight:600;">Azul</span>
+          <span style="background:rgba(50,200,80,.15);border:1px solid rgba(50,200,80,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#5EE87A;font-weight:600;">Verde</span>
+          <span style="background:rgba(160,60,220,.15);border:1px solid rgba(160,60,220,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#C86DD7;font-weight:600;">Violeta</span>
+        </div>
+      </div>
+      <div class="bwc cy">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:9px;">🔴 Cores Quentes</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Vermelho, laranja e amarelo. Emergem durante o clareamento — base dos tons dourados, cobres e avermelhados.</p>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <span style="background:rgba(255,50,50,.15);border:1px solid rgba(255,50,50,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#FF7070;font-weight:600;">Vermelho</span>
+          <span style="background:rgba(255,130,0,.15);border:1px solid rgba(255,130,0,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#FFA040;font-weight:600;">Laranja</span>
+          <span style="background:rgba(255,210,0,.15);border:1px solid rgba(255,210,0,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#FFE040;font-weight:600;">Amarelo</span>
+        </div>
+      </div>
+      <div class="bwc cg">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">🟢 Complementares</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Opostos na roda — se anulam mutuamente. Fundamento da neutralização e correção de cor.</p>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <span style="background:rgba(200,109,215,.15);border:1px solid rgba(200,109,215,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#D98EEA;font-weight:600;">Violeta ≠ Amarelo</span>
+          <span style="background:rgba(50,200,80,.15);border:1px solid rgba(50,200,80,.3);padding:3px 9px;border-radius:20px;font-size:10px;color:#5EE87A;font-weight:600;">Verde ≠ Vermelho</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info pink au d6">
+      <p style="font-size:12px;color:#D98EEA;">💡 <strong style="color:#F5F7FB;">Regra de ouro:</strong> para neutralizar um tom indesejado, use a cor diretamente oposta na roda. Amarelo demais → Violeta. Vermelho → Verde. Laranja → Azul. Essa lógica guia desde a matização até a correção avançada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 3 — ESCALA DE TONS
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;">Escala de <span class="ggold">Tons 1 ao 10</span> — O Mapa do Cabelo</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:18px;">A numeração indica a <strong style="color:#F5F7FB;">luminosidade (claridade)</strong> do fio. Quanto maior o número, mais claro. Cada tom revela um <strong style="color:#F5F7FB;">fundo pigmentar natural</strong> ao ser clareado.</p>
+
+    <div class="au d4" style="margin-bottom:16px;overflow-x:auto;">
+      <div class="tomrow" style="min-width:520px;border-radius:14px;overflow:hidden;">
+        <div class="tomi" style="background:#150C06;color:#AAB3C5;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">1</div><div style="font-size:9px;">Preto</div></div>
+        <div class="tomi" style="background:#271508;color:#AAB3C5;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">2</div><div style="font-size:9px;">Cast. Esc.</div></div>
+        <div class="tomi" style="background:#42200C;color:#AAB3C5;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">3</div><div style="font-size:9px;">Cast. Méd.</div></div>
+        <div class="tomi" style="background:#5E300E;color:#F5F7FB;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">4</div><div style="font-size:9px;">Cast. Claro</div></div>
+        <div class="tomi" style="background:#7E4014;color:#F5F7FB;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">5</div><div style="font-size:9px;">Cast. Acob.</div></div>
+        <div class="tomi" style="background:#B86818;color:#1A1008;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">6</div><div style="font-size:9px;">Loiro Esc.</div></div>
+        <div class="tomi" style="background:#CC9024;color:#1A1008;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">7</div><div style="font-size:9px;">Loiro Méd.</div></div>
+        <div class="tomi" style="background:#E4C040;color:#1A1008;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">8</div><div style="font-size:9px;">Loiro Claro</div></div>
+        <div class="tomi" style="background:#EDD862;color:#1A1008;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">9</div><div style="font-size:9px;">Loiro M. Claro</div></div>
+        <div class="tomi" style="background:#F6EEBB;color:#1A1008;"><div style="font-size:18px;font-weight:900;margin-bottom:3px;">10</div><div style="font-size:9px;">Platinado</div></div>
+      </div>
+    </div>
+
+    <div class="g2 au d5" style="margin-bottom:15px;">
+      <div class="card">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:11px;">🔥 Fundo de Clareamento</h3>
+        <p style="font-size:12px;margin-bottom:10px;">Ao clarear, cada tom libera pigmentos naturais residuais na ordem:</p>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:16px;height:16px;border-radius:5px;background:#7E4014;flex-shrink:0;"></div>
+            <span style="font-size:12px;"><strong style="color:#F5F7FB;">Tom 4–5:</strong> vermelho / cobre intenso</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:16px;height:16px;border-radius:5px;background:#B86818;flex-shrink:0;"></div>
+            <span style="font-size:12px;"><strong style="color:#F5F7FB;">Tom 6–7:</strong> laranja / dourado</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:16px;height:16px;border-radius:5px;background:#E4C040;flex-shrink:0;"></div>
+            <span style="font-size:12px;"><strong style="color:#F5F7FB;">Tom 8–9:</strong> amarelo / palha</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:16px;height:16px;border-radius:5px;background:#F6EEBB;flex-shrink:0;"></div>
+            <span style="font-size:12px;"><strong style="color:#F5F7FB;">Tom 10:</strong> amarelo pálido / quase branco</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:11px;">📋 Subtons e Reflexos</h3>
+        <p style="font-size:12px;margin-bottom:10px;">Após o número do tom, vem o <strong style="color:#F5F7FB;">reflexo</strong> indicado pelo decimal:</p>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.0</span> — Natural / Neutro</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.1</span> — Cinza / Acinzentado</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.2</span> — Irisé / Violeta perolado</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.3</span> — Dourado</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.4</span> — Cobre</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.5</span> — Mogno / Acaju</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.6</span> — Vermelho / Bordô</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.7</span> — Verde (corretivo)</div>
+          <div style="font-size:12px;"><span style="color:#F5F7FB;font-weight:700;">.8</span> — Azul (corretivo)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info orange au d6">
+      <p style="font-size:12px;color:#FFB060;">🎯 <strong style="color:#F5F7FB;">Exemplo prático:</strong> "8.3" = Loiro Claro Dourado | "6.66" = Loiro Escuro Vermelho Intenso (reflexo dobrado = cor mais vibrante) | "7.17" = Loiro Médio Cinza Irisé.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 4 — QUÍMICA DA COLORAÇÃO
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;">Química da <span class="gblue">Coloração</span> — O Que Acontece no Fio</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">Entender a reação química <strong style="color:#F5F7FB;">garante previsibilidade e segurança</strong> — saber por que funciona é tão importante quanto saber como aplicar.</p>
+
+    <div class="g3 au d4" style="margin-bottom:15px;">
+      <div class="cp" style="text-align:center;">
+        <div class="tn n1" style="margin:0 auto 14px;">🧬</div>
+        <h3 style="font-size:13px;margin-bottom:7px;">Estrutura do Fio</h3>
+        <p style="font-size:12px;">3 camadas: <strong style="color:#F5F7FB;">cutícula</strong> (proteção), <strong style="color:#F5F7FB;">córtex</strong> (onde a cor age) e <strong style="color:#F5F7FB;">medula</strong> (centro). O OX abre a cutícula para o pigmento penetrar no córtex.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n2" style="margin:0 auto 14px;">⚗️</div>
+        <h3 style="font-size:13px;margin-bottom:7px;">Reação Oxidativa</h3>
+        <p style="font-size:12px;">O <strong style="color:#F5F7FB;">peróxido</strong> abre a cutícula e oxidiza a melanina enquanto o precursor de cor se polimeriza, formando moléculas maiores que <strong style="color:#F5F7FB;">não saem na lavagem</strong>.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n3" style="margin:0 auto 14px;">🎨</div>
+        <h3 style="font-size:13px;margin-bottom:7px;">Melanina Natural</h3>
+        <p style="font-size:12px;"><strong style="color:#F5F7FB;">Eumelanina</strong> (escura — castanho e preto) e <strong style="color:#F5F7FB;">Feomelanina</strong> (clara — avermelhado e amarelado). Sua proporção define a cor natural de cada pessoa.</p>
+      </div>
+    </div>
+
+    <h3 class="au d5" style="font-size:13px;margin-bottom:11px;color:#AAB3C5;">⚡ Volumes de Peróxido (OX) e seus efeitos</h3>
+    <div class="g4 au d5" style="margin-bottom:15px;">
+      <div class="ox">
+        <div class="oxn" style="color:#5EE89A;">10</div>
+        <p style="font-size:9px;color:#5EE89A;font-weight:700;margin-bottom:5px;">Vol — 3%</p>
+        <p style="font-size:11px;">Apenas deposição. Sem clareamento. Tonalização e matização. Fios sensíveis ou virgem fino.</p>
+      </div>
+      <div class="ox">
+        <div class="oxn" style="color:#8FAEFF;">20</div>
+        <p style="font-size:9px;color:#8FAEFF;font-weight:700;margin-bottom:5px;">Vol — 6%</p>
+        <p style="font-size:11px;">Clareia 1–2 tons. Cobertura suave de brancos. Fios coloridos e sensíveis.</p>
+      </div>
+      <div class="ox">
+        <div class="oxn" style="color:#FFD460;">30</div>
+        <p style="font-size:9px;color:#FFD460;font-weight:700;margin-bottom:5px;">Vol — 9%</p>
+        <p style="font-size:11px;">Clareia até 3 tons. O mais versátil. Coloração com mudança moderada de tom.</p>
+      </div>
+      <div class="ox">
+        <div class="oxn" style="color:#FF6B6B;">40</div>
+        <p style="font-size:9px;color:#FF6B6B;font-weight:700;margin-bottom:5px;">Vol — 12%</p>
+        <p style="font-size:11px;">Clareia 4+ tons. Loirificação intensa. Usar com cautela em fios fragilizados.</p>
+      </div>
+    </div>
+
+    <div class="g2 au d6">
+      <div class="bwc cg" style="padding:15px;">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:8px;">✅ Coloração Permanente</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Cor penetra no córtex do fio</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Dura até o crescimento da raiz</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Cobre cabelos brancos 100%</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Retoque a cada 4–6 semanas</li>
+        </ul>
+      </div>
+      <div class="bwc cb" style="padding:15px;">
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:8px;">💧 Semipermanente / Tonalização</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#8FAEFF;flex-shrink:0;">▸</span>Age na superfície do fio</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#8FAEFF;flex-shrink:0;">▸</span>Dura 6–20 lavagens</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#8FAEFF;flex-shrink:0;">▸</span>Não clareia — apenas deposita</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#8FAEFF;flex-shrink:0;">▸</span>Sem amônia — menos agressiva</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 5 — DIAGNÓSTICO CAPILAR
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;">Diagnóstico <span class="gpink">Capilar</span> — O Primeiro Passo</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      A <strong style="color:#F5F7FB;">anamnese e o diagnóstico</strong> evitam erros irreversíveis e garantem um resultado seguro, previsível e personalizado para cada cliente.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div class="card">
+        <h3 style="font-size:13px;color:#D98EEA;margin-bottom:11px;">📋 Perguntas da Anamnese</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="fi act">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">❓</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Histórico químico:</strong> progressiva, relaxamento, coloração anterior, descoloração?</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">💊</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Saúde capilar:</strong> quebra, queda, couro sensível ou irritado?</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">🎯</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Objetivo:</strong> qual resultado espera? Referência de cor disponível?</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">🧪</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Alergias:</strong> histórico de reação a produtos químicos capilares?</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:11px;">🔍 Diagnóstico Técnico</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="fi">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">💧</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Porosidade:</strong> molhe uma mecha. Absorção rápida = alta porosidade → usar OX mais fraco.</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">💪</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Elasticidade:</strong> estique o fio molhado. Não volta = fragilizado → tratar antes de colorir.</p>
+          </div>
+          <div class="fi act">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">🎨</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Teste de mecha:</strong> obrigatório em fios porosos, tingidos ou com química anterior.</p>
+          </div>
+          <div class="fi">
+            <span style="font-size:18px;flex-shrink:0;margin-top:1px;">👩‍🦳</span>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">% de brancos:</strong> acima de 50% exige técnica específica de cobertura máxima.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3 au d5">
+      <div class="info green">
+        <p style="font-size:12px;color:#5EE89A;">🟢 <strong style="color:#F5F7FB;">Fio Virgem</strong><br/>Nunca recebeu química. Resultado mais previsível. OX padrão.</p>
+      </div>
+      <div class="info yellow">
+        <p style="font-size:12px;color:#FFD460;">🟡 <strong style="color:#F5F7FB;">Fio Tingido</strong><br/>Verificar cor base e pigmentos residuais. Pode gerar reflexos inesperados.</p>
+      </div>
+      <div class="info red">
+        <p style="font-size:12px;color:#FF8080;">🔴 <strong style="color:#F5F7FB;">Fio Descolorado</strong><br/>Alta porosidade. OX 10–20 vol. Hidratação obrigatória antes e depois.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 6 — TÉCNICAS DE APLICAÇÃO
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;">Técnicas de <span class="ggold">Aplicação</span> — Cada Efeito, um Método</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      A escolha certa da técnica é o que <strong style="color:#F5F7FB;">diferencia o resultado mediano do extraordinário</strong>. Cada método tem indicação, mapeamento e execução específicos.
+    </p>
+
+    <div class="g3 au d4" style="margin-bottom:13px;">
+      <div class="cp" style="text-align:center;">
+        <div class="tn n1" style="margin:0 auto 13px;">🖌️</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Coloração Global</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Aplicação uniforme em todo o cabelo. Mudança total de cor, cobertura de brancos ou uniformização.</p>
+        <div style="padding:8px;border-radius:10px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.15);">
+          <p style="font-size:10px;color:#D98EEA;"><strong>OX:</strong> 20–30 vol | Raiz → comprimentos → pontas</p>
+        </div>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n2" style="margin:0 auto 13px;">✨</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Mechas / Luzes</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Fios selecionados clareados em papel alumínio. Cria dimensão, movimento e luminosidade.</p>
+        <div style="padding:8px;border-radius:10px;background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.15);">
+          <p style="font-size:10px;color:#8FAEFF;"><strong>OX:</strong> 30–40 vol | Descolorante pó ou creme</p>
+        </div>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n3" style="margin:0 auto 13px;">🌊</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Balayage</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Técnica francesa de pincel livre. Produto aplicado à mão em varredura — efeito natural e degradê.</p>
+        <div style="padding:8px;border-radius:10px;background:rgba(91,63,214,.07);border:1px solid rgba(91,63,214,.15);">
+          <p style="font-size:10px;color:#9B8AFF;"><strong>OX:</strong> 30–40 vol | Sem alumínio na maior parte</p>
+        </div>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n4" style="margin:0 auto 13px;">🔥</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Ombré / Sombré</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Transição gradual do escuro (raiz) ao claro (pontas). Ombré marcado, sombré suave e esfumado.</p>
+        <div style="padding:8px;border-radius:10px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.15);">
+          <p style="font-size:10px;color:#FFD460;"><strong>Início:</strong> meio do comprimento | Esfumar a transição</p>
+        </div>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n5" style="margin:0 auto 13px;">💎</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Fantasia / Fashion</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Cores vibrantes (rosa, azul, verde, roxo). Exige base loira clara (tom 9–10) para máxima saturação.</p>
+        <div style="padding:8px;border-radius:10px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.15);">
+          <p style="font-size:10px;color:#5EE89A;"><strong>Base:</strong> tom 9–10 | Sem OX — tonalização direta</p>
+        </div>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="tn n7" style="margin:0 auto 13px;">👩‍🦳</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Cobertura de Brancos</h3>
+        <p style="font-size:12px;margin-bottom:9px;">Técnica para fios resistentes. Mistura especial ou dupla aplicação para cobertura de 100%.</p>
+        <div style="padding:8px;border-radius:10px;background:rgba(255,80,80,.07);border:1px solid rgba(255,80,80,.15);">
+          <p style="font-size:10px;color:#FF8080;"><strong>OX:</strong> 20 vol | Raiz primeiro | +15 min de exposição</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info pink au d5">
+      <p style="font-size:12px;color:#D98EEA;">⏱️ <strong style="color:#F5F7FB;">Regra do tempo:</strong> sempre comece pela área mais resistente (raiz virgem ou zona problemática). Finalize nas pontas, que possuem maior porosidade e reagem mais rapidamente ao produto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 7 — COBERTURA DE BRANCOS
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;"><span class="gpink">Cobertura de Brancos</span> — A Arte da Camuflagem</h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      Os fios brancos não têm melanina — são <strong style="color:#F5F7FB;">resistentes e exigem técnica específica</strong> para cobertura uniforme e duradoura. Fio branco brilhante = resistência extrema.
+    </p>
+
+    <div class="g3 au d4" style="margin-bottom:14px;">
+      <div class="bwc cg" style="padding:17px 15px;">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">🟢 Cobertura Total<br/><span style="font-size:11px;font-weight:500;">Acima de 50% brancos</span></h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Aplicar na raiz pura (sem diluir) por 10 min</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Depois espalhar nos comprimentos</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>OX 20 vol para maior fixação</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Subton .0 no mix para reforço</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">▸</span>Tempo total: 35–45 min</li>
+        </ul>
+      </div>
+      <div class="bwc cy" style="padding:17px 15px;">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:9px;">🟡 Técnica 50/50<br/><span style="font-size:11px;font-weight:500;">Mix de cores</span></h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FFD460;flex-shrink:0;">▸</span>Misturar a cor desejada + cor .0 mesma tonalidade</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FFD460;flex-shrink:0;">▸</span>Proporção 50:50</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FFD460;flex-shrink:0;">▸</span>Ex: 6.4 + 6.0 em partes iguais</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FFD460;flex-shrink:0;">▸</span>Resultado mais uniforme e sólido</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FFD460;flex-shrink:0;">▸</span>Excelente custo-benefício de técnica</li>
+        </ul>
+      </div>
+      <div class="bwc cp2" style="padding:17px 15px;">
+        <h3 style="font-size:13px;color:#D98EEA;margin-bottom:9px;">🟣 Pré-pigmentação<br/><span style="font-size:11px;font-weight:500;">Resultado premium</span></h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#C86DD7;flex-shrink:0;">▸</span>Aplicar pigmento corretivo no fio branco</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#C86DD7;flex-shrink:0;">▸</span>Aguardar 10 min antes da tinta</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#C86DD7;flex-shrink:0;">▸</span>Resultado mais duradouro e saturado</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#C86DD7;flex-shrink:0;">▸</span>Indicado para brancos extremamente resistentes</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#C86DD7;flex-shrink:0;">▸</span>Cobertura 100% mesmo em fios difíceis</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card au d5" style="margin-bottom:13px;">
+      <h3 style="font-size:13px;margin-bottom:11px;">⚡ Escala de Resistência dos Brancos</h3>
+      <div class="g4">
+        <div style="text-align:center;padding:11px 8px;border-radius:12px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+          <div style="font-size:22px;margin-bottom:6px;">1️⃣</div>
+          <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">Baixa</p>
+          <p style="font-size:11px;">Fio poroso, absorve bem. OX 20 vol suficiente.</p>
+        </div>
+        <div style="text-align:center;padding:11px 8px;border-radius:12px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.15);">
+          <div style="font-size:22px;margin-bottom:6px;">2️⃣</div>
+          <p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:3px;">Média</p>
+          <p style="font-size:11px;">Aplicação inicial sem diluição na raiz.</p>
+        </div>
+        <div style="text-align:center;padding:11px 8px;border-radius:12px;background:rgba(255,140,0,.06);border:1px solid rgba(255,140,0,.15);">
+          <div style="font-size:22px;margin-bottom:6px;">3️⃣</div>
+          <p style="font-size:11px;font-weight:700;color:#FFA040;margin-bottom:3px;">Alta</p>
+          <p style="font-size:11px;">Técnica 50/50 ou dupla aplicação necessária.</p>
+        </div>
+        <div style="text-align:center;padding:11px 8px;border-radius:12px;background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.15);">
+          <div style="font-size:22px;margin-bottom:6px;">4️⃣</div>
+          <p style="font-size:11px;font-weight:700;color:#FF8080;margin-bottom:3px;">Extrema</p>
+          <p style="font-size:11px;">Pré-pigmentação obrigatória. Pode exigir 2 sessões.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info orange au d6">
+      <p style="font-size:12px;color:#FFB060;">📌 <strong style="color:#F5F7FB;">Dica profissional:</strong> fios brancos muito brilhantes e duros ao toque tendem a ser os mais resistentes. Identifique a textura na anamnese e planeje a técnica adequada antes mesmo de misturar o produto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 8 — MATIZAÇÃO E CORREÇÃO
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;">Matização e <span class="ggreen">Correção de Cor</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      A matização é o <strong style="color:#F5F7FB;">pós-processo que define o resultado final</strong> — neutraliza indesejados e entrega o tom perfeito após o clareamento.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div class="card">
+        <h3 style="font-size:13px;color:#D98EEA;margin-bottom:11px;">🎨 Guia de Neutralização</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(160,60,220,.08);border:1px solid rgba(160,60,220,.18);">
+            <div style="width:22px;height:22px;border-radius:6px;background:#A03CDC;flex-shrink:0;"></div>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Violeta:</strong> neutraliza amarelo. Platinado, cinza, gelo. Fundo 9–10.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(50,170,80,.08);border:1px solid rgba(50,170,80,.18);">
+            <div style="width:22px;height:22px;border-radius:6px;background:#32AA50;flex-shrink:0;"></div>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Verde:</strong> neutraliza vermelho. Castanhos e cobres indesejados.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);">
+            <div style="width:22px;height:22px;border-radius:6px;background:#2E6BFF;flex-shrink:0;"></div>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Azul:</strong> neutraliza laranja. Loiro escuro ou após descoloração média.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(255,150,50,.08);border:1px solid rgba(255,150,50,.18);">
+            <div style="width:22px;height:22px;border-radius:6px;background:#FF9632;flex-shrink:0;"></div>
+            <p style="font-size:12px;"><strong style="color:#F5F7FB;">Cobre/Coral:</strong> neutraliza azulado excessivo em fios porosos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:11px;">⏱️ Controle do Tempo</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.14);">
+            <p style="font-size:12px;color:#FFD460;font-weight:700;margin-bottom:3px;">5 minutos</p>
+            <p style="font-size:12px;">Tom levemente frio. Mantém calor. Loiro dourado acinzentado.</p>
+          </div>
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.14);">
+            <p style="font-size:12px;color:#D98EEA;font-weight:700;margin-bottom:3px;">10–15 minutos</p>
+            <p style="font-size:12px;">Neutralização média. Loiro natural, bege, mel. O mais solicitado.</p>
+          </div>
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.14);">
+            <p style="font-size:12px;color:#8FAEFF;font-weight:700;margin-bottom:3px;">20–30 minutos</p>
+            <p style="font-size:12px;">Resultado intenso e frio. Platinado, prata, gelo, titânio.</p>
+          </div>
+          <div class="info red">
+            <p style="font-size:12px;color:#FF8080;">⚠️ <strong style="color:#F5F7FB;">Atenção:</strong> passar do tempo deixa o fio esverdeado ou arroxeado intenso. Observe a cada 5 minutos!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3 au d5" style="margin-bottom:13px;">
+      <div class="fi act" style="flex-direction:column;align-items:flex-start;">
+        <h3 style="font-size:13px;margin-bottom:5px;">🔴 Remover Vermelho</h3>
+        <p style="font-size:12px;color:#AAB3C5;">Use verde como corretivo direto (tonalização sem OX) antes da cor desejada. Reduz interferência do pigmento vermelho residual.</p>
+      </div>
+      <div class="fi" style="flex-direction:column;align-items:flex-start;">
+        <h3 style="font-size:13px;margin-bottom:5px;">🟡 Remover Amarelo</h3>
+        <p style="font-size:12px;color:#AAB3C5;">Matização violeta ou tonalização cinza. Se persistir, pode indicar necessidade de nova etapa de clareamento.</p>
+      </div>
+      <div class="fi" style="flex-direction:column;align-items:flex-start;">
+        <h3 style="font-size:13px;margin-bottom:5px;">🟠 Remover Laranja</h3>
+        <p style="font-size:12px;color:#AAB3C5;">Matização azul ou cinza frio intenso. Se muito alaranjado, o fundo ainda está no tom 5–6 e precisa clarear mais.</p>
+      </div>
+    </div>
+    <div class="info blue au d6">
+      <p style="font-size:12px;color:#8FAEFF;">💡 <strong style="color:#F5F7FB;">Matizador vs Tonalização:</strong> matizador age na cutícula e dura 6–10 lavagens. A tonalização com tinta semipermanente penetra mais fundo e tem durabilidade de até 20 lavagens — resultado mais profissional e duradouro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 9 — PÓS-COLORAÇÃO E MANUTENÇÃO
+════════════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(19px,4vw,42px);margin-bottom:8px;">Pós-Coloração — <span class="ggold">Manutenção que Fideliza</span></h2>
+    <p class="au d3" style="font-size:clamp(12px,2vw,15px);margin-bottom:16px;">
+      O resultado sai perfeito do salão — mas a <strong style="color:#F5F7FB;">orientação em casa define quanto tempo ele dura</strong>. Clientes bem orientadas viram clientes fiéis.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:14px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="fi act">
+          <div class="fn2" style="background:linear-gradient(145deg,#C86DD7,#A854BF);">1</div>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:3px;">Shampoo Específico</h3>
+            <p style="font-size:12px;color:#7E879B;">Use shampoo para coloridos — pH balanceado fecha a cutícula e preserva o pigmento. Evitar SLS agressivo.</p>
+          </div>
+        </div>
+        <div class="fi">
+          <div class="fn2" style="background:linear-gradient(145deg,#2E6BFF,#1E56D9);">2</div>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:3px;">Máscara Semanal</h3>
+            <p style="font-size:12px;color:#7E879B;">Mínimo 1× por semana. Proteínas e ceramidas repõem a estrutura danificada pelo processo oxidativo.</p>
+          </div>
+        </div>
+        <div class="fi">
+          <div class="fn2" style="background:linear-gradient(145deg,#5B3FD6,#4530B3);">3</div>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:3px;">Protetor Térmico</h3>
+            <p style="font-size:12px;color:#7E879B;">Obrigatório antes de chapinha e babyliss. Fios coloridos são mais sensíveis — sem proteção perdem pigmento rapidamente.</p>
+          </div>
+        </div>
+        <div class="fi">
+          <div class="fn2" style="background:linear-gradient(145deg,#FFD460,#FF8C00);">4</div>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:3px;">Matizador em Casa</h3>
+            <p style="font-size:12px;color:#7E879B;">Para loiras: 1× por semana, máx. 10 min. Evita amarelamento. Ensinar a frequência certa é essencial.</p>
+          </div>
+        </div>
+        <div class="fi">
+          <div class="fn2" style="background:linear-gradient(145deg,#5EE89A,#27AE60);">5</div>
+          <div>
+            <h3 style="font-size:13px;margin-bottom:3px;">Sol e Piscina</h3>
+            <p style="font-size:12px;color:#7E879B;">Protetor solar capilar no dia a dia. Antes da piscina: saturar o fio com água filtrada reduz absorção do cloro.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="card">
+          <h3 style="font-size:13px;color:#D98EEA;margin-bottom:11px;">📅 Frequência de Retoque</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 11px;border-radius:10px;background:rgba(255,255,255,.03);">
+              <span style="font-size:12px;font-weight:600;">Coloração global</span>
+              <span style="font-size:12px;color:#FFD460;font-weight:700;">4–6 semanas</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 11px;border-radius:10px;background:rgba(255,255,255,.03);">
+              <span style="font-size:12px;font-weight:600;">Mechas / Luzes</span>
+              <span style="font-size:12px;color:#8FAEFF;font-weight:700;">8–12 semanas</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 11px;border-radius:10px;background:rgba(255,255,255,.03);">
+              <span style="font-size:12px;font-weight:600;">Balayage</span>
+              <span style="font-size:12px;color:#5EE89A;font-weight:700;">10–16 semanas</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 11px;border-radius:10px;background:rgba(255,255,255,.03);">
+              <span style="font-size:12px;font-weight:600;">Cobertura de brancos</span>
+              <span style="font-size:12px;color:#FF8080;font-weight:700;">3–4 semanas</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 11px;border-radius:10px;background:rgba(255,255,255,.03);">
+              <span style="font-size:12px;font-weight:600;">Cor fantasia</span>
+              <span style="font-size:12px;color:#D98EEA;font-weight:700;">3–5 semanas</span>
+            </div>
+          </div>
+        </div>
+        <div class="info green">
+          <p style="font-size:12px;color:#5EE89A;">🌿 <strong style="color:#F5F7FB;">Cronograma capilar:</strong> alterne umectação → nutrição → reconstrução a cada semana. Mantém o fio colorido estruturado e vibrante por muito mais tempo.</p>
+        </div>
+        <div class="info pink">
+          <p style="font-size:12px;color:#D98EEA;">💜 <strong style="color:#F5F7FB;">Temperatura da água:</strong> lavar com água fria ou morna — água quente abre a cutícula e o pigmento escapa. Dica simples com impacto imediato na durabilidade.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 10 — CONCLUSÃO
+════════════════════════════════════════════ -->
+<section class="slide vcenter">
+  <div class="inner" style="text-align:center;">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(22px,4.5vw,52px);margin-bottom:12px;">
+      Da <span class="gpink">Teoria</span> à Prática —<br/><span class="gblue">Agora Você Domina!</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(13px,2.1vw,16px);max-width:560px;margin:0 auto 24px;color:#AAB3C5;">
+      Colorimetria profissional é a união entre ciência, técnica e sensibilidade artística. Cada fio é único — e agora você tem todas as ferramentas para transformá-lo. 🎨
+    </p>
+
+    <div class="g2 au d4" style="text-align:left;margin-bottom:18px;">
+      <div class="bwc cr" style="padding:16px 15px;">
+        <h3 style="font-size:13px;color:#FF6B6B;margin-bottom:9px;">⛔ Erros que Destroem o Resultado</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FF6B6B;flex-shrink:0;">✗</span>Não fazer diagnóstico antes da aplicação</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FF6B6B;flex-shrink:0;">✗</span>Usar OX errado para o tipo de cabelo</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FF6B6B;flex-shrink:0;">✗</span>Ignorar o fundo de clareamento</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FF6B6B;flex-shrink:0;">✗</span>Não considerar cor residual no fio</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FF6B6B;flex-shrink:0;">✗</span>Matizar sem controlar o tempo</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#FF6B6B;flex-shrink:0;">✗</span>Não orientar a cliente para manutenção</li>
+        </ul>
+      </div>
+      <div class="bwc cg" style="padding:16px 15px;">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">✅ O Checklist da Colorista</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Anamnese completa + teste de mecha</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Escala de tons 1–10 e subtons dominados</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>OX correto para o objetivo e tipo de fio</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Aplicar da raiz resistente às pontas porosas</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Controlar o tempo e observar o resultado</li>
+          <li style="font-size:12px;display:flex;gap:7px;"><span style="color:#5EE89A;flex-shrink:0;">✓</span>Matizar, hidratar e orientar manutenção</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="g5 au d5" style="margin-bottom:18px;">
+      <div style="padding:11px 7px;border-radius:13px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.2);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">🎨</div>
+        <p style="font-size:10px;font-weight:700;color:#D98EEA;">Roda das Cores</p>
+      </div>
+      <div style="padding:11px 7px;border-radius:13px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.2);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">📊</div>
+        <p style="font-size:10px;font-weight:700;color:#FFD460;">Escala 1–10</p>
+      </div>
+      <div style="padding:11px 7px;border-radius:13px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">⚗️</div>
+        <p style="font-size:10px;font-weight:700;color:#8FAEFF;">Química OX</p>
+      </div>
+      <div style="padding:11px 7px;border-radius:13px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.2);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">🖌️</div>
+        <p style="font-size:10px;font-weight:700;color:#5EE89A;">6 Técnicas</p>
+      </div>
+      <div style="padding:11px 7px;border-radius:13px;background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);text-align:center;">
+        <div style="font-size:22px;margin-bottom:5px;">💎</div>
+        <p style="font-size:10px;font-weight:700;color:#FF8080;">Matização</p>
+      </div>
+    </div>
+
+    <div class="au d6" style="padding:20px 22px;border-radius:18px;background:linear-gradient(135deg,rgba(200,109,215,.07),rgba(46,107,255,.08));border:1px solid rgba(200,109,215,.2);">
+      <p style="font-size:clamp(13px,2.1vw,15px);font-style:italic;color:#F5F7FB;margin-bottom:7px;">
+        "A cor certa não apenas muda o cabelo — ela muda como a pessoa se vê no espelho. Esse é o verdadeiro poder da colorista profissional."
+      </p>
+      <p style="font-size:11px;color:#7E879B;font-weight:600;">Colorimetria Profissional — Guia Completo 2025</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<!-- CHROME FIXO -->
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="navarr">
+  <button onclick="prev()" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+// Criar dots
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    const wasActive=s.classList.contains('active');
+    s.classList.toggle('active',i===C);
+    if(i===C&&!wasActive)s.scrollTop=0;
+  });
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+// Teclado
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+// Touch — detecta scroll vertical vs swipe horizontal
+let tx=0,ty=0,isScrolling=false;
+document.addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].clientX;
+  ty=e.changedTouches[0].clientY;
+  isScrolling=false;
+},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-tx);
+  const dy=Math.abs(e.changedTouches[0].clientY-ty);
+  if(dy>dx+5)isScrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(isScrolling)return;
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=ty-e.changedTouches[0].clientY;
+  if(Math.abs(dx)>Math.abs(dy)*1.4&&Math.abs(dx)>52){dx>0?next():prev();}
+},{passive:true});
+
+// Fullscreen
+function toggleFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen();
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
 
