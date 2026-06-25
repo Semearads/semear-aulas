@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Micropigmentação Labial — Marcação, Cuidados, Indicações & Contraindicações</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: #050816; font-family: 'Inter', sans-serif;
+}
+
+.presentation { width: 100vw; height: 100vh; overflow: hidden; position: relative; }
+
+.slides {
+  display: flex;
+  transition: transform .7s cubic-bezier(.22,1,.36,1);
+  height: 100vh;
+  will-change: transform;
+}
+
+.slide {
+  width: 100vw; height: 100vh; flex-shrink: 0;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 52px 18px 112px;
+}
+
+.slide::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(900px 420px at 75% 15%, rgba(255,120,180,.14) 0%, transparent 42%),
+    radial-gradient(800px 380px at 25% 78%, rgba(200,109,215,.12) 0%, transparent 42%),
+    radial-gradient(600px 300px at 38% 22%, rgba(35,110,255,.11) 0%, transparent 42%),
+    linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%);
+}
+
+.slide::after {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .22;
+  background-image: radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);
+  background-size: 24px 24px;
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+.slide-inner {
+  position: relative; z-index: 1; width: 100%; max-width: 940px;
+  display: flex; flex-direction: column; align-items: center;
+  overflow-y: auto; max-height: calc(100vh - 160px);
+  scrollbar-width: none; -ms-overflow-style: none;
+  padding: 4px 2px;
+}
+.slide-inner::-webkit-scrollbar { display: none; }
+
+/* ── Typography ── */
+h1 { font-weight: 900; letter-spacing: -.03em; line-height: 1.08; color: #F5F7FB; }
+h2 { font-weight: 800; letter-spacing: -.025em; line-height: 1.12; color: #F5F7FB; }
+h3 { font-weight: 700; letter-spacing: -.015em; color: #F5F7FB; }
+p, span, li { font-weight: 400; line-height: 1.6; color: #AAB3C5; }
+
+/* ── Gradient text ── */
+.gt {
+  background: linear-gradient(135deg, #FF6B9D 0%, #C86DD7 45%, #2E6BFF 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+.gt2 {
+  background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #FF6B9D 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+
+/* ── Gradient line ── */
+.gl {
+  width: 90px; height: 4px; border-radius: 2px;
+  background: linear-gradient(90deg, #FF6B9D, #C86DD7, #2E6BFF);
+  margin-bottom: 18px; animation: lineG .8s ease both; transform-origin: left;
+}
+.gl.ce { margin: 0 auto 18px; transform-origin: center; }
+@keyframes lineG { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 20px; border-radius: 999px; margin-bottom: 24px;
+  background: rgba(255,107,157,.08); border: 1px solid rgba(255,107,157,.25);
+  font-size: 11px; font-weight: 600; color: #FF9DC0;
+  letter-spacing: .07em; text-transform: uppercase;
+}
+.badge svg { width: 14px; height: 14px; }
+
+/* ── Cards ── */
+.card {
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 16px; box-shadow: 0 14px 42px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.04);
+  padding: 20px 16px; backdrop-filter: blur(8px); transition: all .4s ease;
+}
+.card:hover { border-color: rgba(200,109,215,.22); transform: translateY(-2px); }
+
+.cp {
+  background: linear-gradient(145deg, rgba(18,11,43,.95) 0%, rgba(10,15,36,.98) 55%, rgba(5,8,22,1) 100%);
+  border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+  box-shadow: 0 18px 46px rgba(0,0,0,.42), 0 0 36px rgba(200,109,215,.05);
+  padding: 22px 18px; backdrop-filter: blur(10px); transition: all .4s ease;
+}
+.cp:hover { border-color: rgba(200,109,215,.22); transform: translateY(-2px) scale(1.005); }
+
+/* ── Icon container ── */
+.ic {
+  width: 46px; height: 46px; border-radius: 12px; margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,107,157,.1); flex-shrink: 0;
+}
+.ic svg { width: 22px; height: 22px; color: #FF6B9D; }
+.ic.blue   { background: rgba(46,107,255,.1); }
+.ic.blue svg   { color: #2E6BFF; }
+.ic.purple { background: rgba(200,109,215,.1); }
+.ic.purple svg { color: #C86DD7; }
+.ic.coral  { background: rgba(255,130,80,.1); }
+.ic.coral svg  { color: #FF8250; }
+.ic.green  { background: rgba(80,220,120,.1); }
+.ic.green svg  { color: #5EE89A; }
+.ic.red    { background: rgba(255,80,80,.1); }
+.ic.red svg    { color: #FF6B6B; }
+.ic.gold   { background: rgba(255,200,60,.1); }
+.ic.gold svg   { color: #FFD460; }
+
+/* ── Numbers ── */
+.tn {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; color: #fff;
+  animation: glowP 3s ease-in-out infinite;
+}
+.tn.n1 { background: linear-gradient(145deg,#FF6B9D,#D9456F); }
+.tn.n2 { background: linear-gradient(145deg,#C86DD7,#A040C0); animation-delay:.5s; }
+.tn.n3 { background: linear-gradient(145deg,#2E6BFF,#1E56D9); animation-delay:1s; }
+.tn.n4 { background: linear-gradient(145deg,#FF8250,#D96030); animation-delay:1.5s; }
+.tn.n5 { background: linear-gradient(145deg,#FFD460,#E0A820); animation-delay:2s; }
+.tn.n6 { background: linear-gradient(145deg,#5EE89A,#30C870); animation-delay:2.5s; }
+@keyframes glowP { 0%,100%{box-shadow:0 0 16px rgba(255,107,157,.1)} 50%{box-shadow:0 0 32px rgba(255,107,157,.32)} }
+
+/* ── Grids ── */
+.g2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; width: 100%; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 11px; width: 100%; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; width: 100%; }
+
+/* ── Section title ── */
+.stitle { text-align: center; margin-bottom: 22px; width: 100%; }
+.stitle h2 { font-size: clamp(20px,4vw,32px); margin-bottom: 10px; }
+.stitle p  { font-size: 13px; color: #7E879B; max-width: 640px; margin: 0 auto; line-height: 1.7; }
+
+/* ── Tag small ── */
+.tag-sm { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 5px; }
+.tag-sm.pink   { color:#FF6B9D; }
+.tag-sm.blue   { color:#2E6BFF; }
+.tag-sm.purple { color:#C86DD7; }
+.tag-sm.coral  { color:#FF8250; }
+.tag-sm.green  { color:#5EE89A; }
+.tag-sm.gold   { color:#FFD460; }
+.tag-sm.red    { color:#FF6B6B; }
+.tag-sm.white  { color:#F5F7FB; }
+
+/* ── Pills ── */
+.pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
+}
+.pill.pink   { background:rgba(255,107,157,.1); border:1px solid rgba(255,107,157,.25); color:#FF9DC0; }
+.pill.blue   { background:rgba(46,107,255,.1);  border:1px solid rgba(46,107,255,.25);  color:#8FAEFF; }
+.pill.purple { background:rgba(200,109,215,.1); border:1px solid rgba(200,109,215,.25); color:#D98FE8; }
+.pill.coral  { background:rgba(255,130,80,.1);  border:1px solid rgba(255,130,80,.25);  color:#FFB08A; }
+.pill.green  { background:rgba(80,220,120,.1);  border:1px solid rgba(80,220,120,.25);  color:#5EE89A; }
+.pill.red    { background:rgba(255,80,80,.1);   border:1px solid rgba(255,80,80,.25);   color:#FF8080; }
+.pill.gold   { background:rgba(255,200,60,.1);  border:1px solid rgba(255,200,60,.25);  color:#FFD460; }
+
+/* ── Checklist ── */
+.chk { display:flex; align-items:flex-start; gap:9px; margin-bottom:9px; }
+.chk-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; margin-top:6px; }
+.chk-dot.pink   { background:#FF6B9D; }
+.chk-dot.blue   { background:#2E6BFF; }
+.chk-dot.purple { background:#C86DD7; }
+.chk-dot.coral  { background:#FF8250; }
+.chk-dot.green  { background:#5EE89A; }
+.chk-dot.gold   { background:#FFD460; }
+.chk-dot.red    { background:#FF6B6B; }
+.chk-dot.white  { background:#F5F7FB; }
+
+/* ── Colored border card ── */
+.bc { position:relative; overflow:hidden; }
+.bc::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; border-radius:2px 0 0 2px; }
+.bc.b-pink::before   { background:#FF6B9D; }
+.bc.b-purple::before { background:#C86DD7; }
+.bc.b-blue::before   { background:#2E6BFF; }
+.bc.b-coral::before  { background:#FF8250; }
+.bc.b-gold::before   { background:#FFD460; }
+.bc.b-green::before  { background:#5EE89A; }
+.bc.b-red::before    { background:#FF6B6B; }
+.bc { padding-left: 20px !important; }
+
+/* ── Step row ── */
+.step-row { display:flex; gap:12px; align-items:flex-start; margin-bottom:11px; }
+
+/* ── Metric big ── */
+.metric-num { font-size: clamp(30px,6vw,50px); font-weight:900; letter-spacing:-.03em; line-height:1.1; margin-bottom:5px; }
+
+/* ── Alert card ── */
+.alert-card {
+  border-radius: 14px; padding: 14px 16px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.alert-card.red    { background:rgba(255,80,80,.05);   border:1px solid rgba(255,80,80,.18); }
+.alert-card.gold   { background:rgba(255,200,60,.05);  border:1px solid rgba(255,200,60,.18); }
+.alert-card.green  { background:rgba(80,220,120,.05);  border:1px solid rgba(80,220,120,.18); }
+.alert-card.purple { background:rgba(200,109,215,.05); border:1px solid rgba(200,109,215,.18); }
+.alert-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.alert-icon.red    { background:rgba(255,80,80,.15); }
+.alert-icon.gold   { background:rgba(255,200,60,.15); }
+.alert-icon.green  { background:rgba(80,220,120,.15); }
+.alert-icon.purple { background:rgba(200,109,215,.15); }
+.alert-icon svg { width:18px; height:18px; }
+.alert-icon.red svg    { color:#FF6B6B; }
+.alert-icon.gold svg   { color:#FFD460; }
+.alert-icon.green svg  { color:#5EE89A; }
+.alert-icon.purple svg { color:#C86DD7; }
+
+/* ── Anatomy point ── */
+.anat-point {
+  display:flex; align-items:center; gap:10px; padding:10px 14px;
+  background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+  border-radius:10px; margin-bottom:8px;
+}
+.anat-num { width:28px; height:28px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#fff; flex-shrink:0; }
+
+/* ── Timeline ── */
+.tl-item { display:flex; gap:14px; align-items:flex-start; margin-bottom:0; }
+.tl-left { display:flex; flex-direction:column; align-items:center; gap:0; }
+.tl-circle { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff; flex-shrink:0; }
+.tl-line { width:2px; flex:1; min-height:18px; border-radius:1px; }
+
+/* ── Slide 1 ── */
+.s1-wrap { text-align:center; max-width:880px; }
+.s1-wrap h1 { font-size:clamp(34px,6.5vw,74px); margin-bottom:18px; }
+.s1-wrap .tag { font-size:clamp(13px,2.2vw,18px); color:#AAB3C5; max-width:560px; margin:0 auto 26px; line-height:1.65; }
+.s1-pills { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+
+/* ── Animations ── */
+@keyframes fadeUp    { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeScale { from{opacity:0;transform:scale(.88)}       to{opacity:1;transform:scale(1)} }
+
+.slide.active .au { animation: fadeUp    .7s ease both; }
+.slide.active .as { animation: fadeScale .7s ease both; }
+.d1{animation-delay:.10s!important} .d2{animation-delay:.22s!important}
+.d3{animation-delay:.34s!important} .d4{animation-delay:.46s!important}
+.d5{animation-delay:.58s!important} .d6{animation-delay:.70s!important}
+.d7{animation-delay:.82s!important} .d8{animation-delay:.94s!important}
+
+/* ── Chrome ── */
+.progress {
+  position:fixed; top:0; left:0; height:3px; z-index:1000;
+  background:linear-gradient(90deg,#FF6B9D,#C86DD7,#2E6BFF,#FF6B9D);
+  background-size:300% auto; animation:shimmer 3s linear infinite;
+  transition:width .6s ease;
+}
+
+.fs-btn {
+  position:fixed; top:13px; right:13px; z-index:999;
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+  color:#7E879B; padding:8px 12px; border-radius:10px; cursor:pointer;
+  font-family:'Inter',sans-serif; font-size:10px; font-weight:600;
+  display:flex; align-items:center; gap:6px;
+  transition:all .3s ease; backdrop-filter:blur(6px);
+  letter-spacing:.04em; text-transform:uppercase;
+}
+.fs-btn:hover { background:rgba(255,255,255,.08); color:#F5F7FB; border-color:rgba(255,107,157,.3); }
+.fs-btn svg { width:12px; height:12px; }
+
+.sc {
+  position:fixed; bottom:24px; left:14px; z-index:998;
+  color:#7E879B; font-size:11px; font-weight:600; letter-spacing:.05em;
+  background:rgba(0,0,0,.35); padding:6px 12px; border-radius:9px;
+  backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,.05);
+}
+.sc .cn { color:#FF6B9D; font-weight:800; }
+
+.ind {
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:998;
+  display:flex; gap:5px; background:rgba(0,0,0,.35); padding:7px 12px;
+  border-radius:20px; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.05);
+  max-width:calc(100vw - 180px); overflow:hidden;
+}
+.ind .dot {
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,.14); transition:all .4s ease; cursor:pointer; flex-shrink:0;
+}
+.ind .dot.active {
+  background:#FF6B9D; box-shadow:0 0 10px rgba(255,107,157,.6);
+  width:24px; border-radius:4px;
+}
+
+.nav-arr { position:fixed; bottom:20px; right:13px; z-index:998; display:flex; gap:7px; }
+.nav-arr button {
+  width:42px; height:42px; border-radius:10px;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .3s ease; backdrop-filter:blur(6px);
+}
+.nav-arr button:hover { background:rgba(255,107,157,.2); border-color:rgba(255,107,157,.4); color:#fff; transform:scale(1.06); }
+.nav-arr button svg { width:16px; height:16px; }
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .slide { padding:50px 12px 112px; }
+  .g3 { grid-template-columns:repeat(2,1fr); }
+  .g4 { grid-template-columns:repeat(2,1fr); }
+  .g2 { grid-template-columns:1fr; }
+}
+@media(max-width:400px){
+  .g3 { grid-template-columns:1fr; }
+  .badge { font-size:9px; padding:6px 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%"></div>
+
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button onclick="next()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — TÍTULO
+══════════════════════════════════════ -->
+<section class="slide active">
+  <div class="slide-inner">
+    <div class="s1-wrap">
+      <div class="badge au d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+        Micropigmentação Labial
+      </div>
+      <h1 class="au d2">Lábios Perfeitos Começam<br>com <span class="gt">Técnica</span></h1>
+      <p class="tag au d3">Do estudo anatômico à cicatrização segura — domine marcação, indicações, contraindicações e cuidados para resultados excepcionais.</p>
+      <div class="s1-pills au d4">
+        <span class="pill pink">✦ Marcação</span>
+        <span class="pill green">✦ Indicações</span>
+        <span class="pill red">✦ Contraindicações</span>
+        <span class="pill blue">✦ Cuidados</span>
+        <span class="pill purple">✦ Documentação</span>
+        <span class="pill gold">✦ Profilaxia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — O QUE É
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>Muito Além de uma<br><span class="gt">Cor nos Lábios</span></h2>
+      <p>A micropigmentação labial é um procedimento técnico de alta precisão que deposita pigmento na derme superficial — diferente da tatuagem e com resultado semi-permanente.</p>
+    </div>
+
+    <div class="g4 au d2" style="margin-bottom:14px;">
+      <div class="cp" style="text-align:center;">
+        <div class="ic blue" style="margin:0 auto 12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="tag-sm blue">Profundidade</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Derme Superficial</h3>
+        <p style="font-size:12px;">0,8–1,2 mm de profundidade. Acima da tatuagem convencional (2–3 mm), garantindo semi-permanência.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="ic" style="margin:0 auto 12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="tag-sm pink">Durabilidade</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">1 a 3 Anos</h3>
+        <p style="font-size:12px;">Varia por fototipo, metabolismo, exposição solar e qualidade do pigmento utilizado.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="ic purple" style="margin:0 auto 12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div class="tag-sm purple">Pigmento</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Base Aquosa/Glicerinada</h3>
+        <p style="font-size:12px;">Formulados para dissipar gradualmente. Não devem conter metais pesados ou compostos tóxicos.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div class="ic coral" style="margin:0 auto 12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="tag-sm coral">Objetivo</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Estético e Corretivo</h3>
+        <p style="font-size:12px;">Revitalização, efeito batom, correção de assimetrias, neutralização de tons indesejados e reconstrução labial.</p>
+      </div>
+    </div>
+
+    <div class="g3 au d3">
+      <div class="card" style="text-align:center;padding:14px;">
+        <div class="tag-sm green" style="margin-bottom:6px;">Micropigmentação</div>
+        <p style="font-size:12px;">Derme superficial · Semi-permanente · Pigmentos que dissipam · Resultado natural</p>
+      </div>
+      <div class="card" style="text-align:center;padding:14px;border-color:rgba(255,80,80,.15);">
+        <div class="tag-sm red" style="margin-bottom:6px;">Tatuagem Convencional</div>
+        <p style="font-size:12px;">Derme profunda · Permanente · Tintas com metais pesados · Resultado definido e duradouro</p>
+      </div>
+      <div class="card" style="text-align:center;padding:14px;border-color:rgba(200,109,215,.15);">
+        <div class="tag-sm purple" style="margin-bottom:6px;">Dermopigmentação Médica</div>
+        <p style="font-size:12px;">Técnica médica/paramédica · Reconstrução areolar, vitiligo, cicatrizes · Necessita habilitação específica</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — INDICAÇÕES
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>Quem Se Beneficia<br>com o <span class="gt">Procedimento?</span></h2>
+      <p>A micropigmentação labial atende desde demandas estéticas cotidianas até necessidades reconstructivas e paramédicais.</p>
+    </div>
+
+    <div class="g3 au d2" style="margin-bottom:12px;">
+      <div class="card bc b-pink" style="padding:15px 16px;">
+        <div class="tag-sm pink" style="margin-bottom:8px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;vertical-align:middle;color:#FF6B9D;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Lábios Apagados
+        </div>
+        <p style="font-size:12px;">Pessoas com coloração labial muito pálida ou lábios sem definição que desejam aparência mais saudável e definida sem maquiagem diária.</p>
+      </div>
+      <div class="card bc b-purple" style="padding:15px 16px;">
+        <div class="tag-sm purple" style="margin-bottom:8px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;vertical-align:middle;color:#C86DD7;"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+          Assimetria Labial
+        </div>
+        <p style="font-size:12px;">Lábios com diferença de tamanho ou formato entre os lados, incluindo sequelas de paralisia facial ou cicatrizes que alteraram a morfologia.</p>
+      </div>
+      <div class="card bc b-blue" style="padding:15px 16px;">
+        <div class="tag-sm blue" style="margin-bottom:8px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;vertical-align:middle;color:#2E6BFF;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+          Lábios Finos
+        </div>
+        <p style="font-size:12px;">Técnica de sombreamento cria ilusão óptica de maior volume e projeção, sem necessidade de preenchimento com ácido hialurônico.</p>
+      </div>
+      <div class="card bc b-coral" style="padding:15px 16px;">
+        <div class="tag-sm coral" style="margin-bottom:8px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;vertical-align:middle;color:#FF8250;"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          Pós-Quimioterapia
+        </div>
+        <p style="font-size:12px;">Restaura a aparência labial afetada pelo tratamento oncológico. Exige laudo médico de alta e liberação oncológica por escrito.</p>
+      </div>
+      <div class="card bc b-gold" style="padding:15px 16px;">
+        <div class="tag-sm gold" style="margin-bottom:8px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;vertical-align:middle;color:#FFD460;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Vitiligo Labial
+        </div>
+        <p style="font-size:12px;">Manchas brancas no contorno labial causadas pelo vitiligo. Dermopigmentação paramédica camufla as áreas despigmentadas com precisão cromática.</p>
+      </div>
+      <div class="card bc b-green" style="padding:15px 16px;">
+        <div class="tag-sm green" style="margin-bottom:8px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;vertical-align:middle;color:#5EE89A;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Praticidade no Dia a Dia
+        </div>
+        <p style="font-size:12px;">Profissionais, mães e pessoas ativas que desejam acordar produzidas, praticar esportes e nadar sem perder a definição labial.</p>
+      </div>
+    </div>
+
+    <div class="card au d3" style="width:100%;background:rgba(80,220,120,.04);border-color:rgba(80,220,120,.15);">
+      <div class="tag-sm green" style="margin-bottom:8px;">✅ Candidata Ideal</div>
+      <p style="font-size:13px;">Mulher (ou homem) adulto/a, com saúde geral em dia, sem contraindicações ativas, que compreende a evolução da cor e tem expectativas realistas sobre o resultado — especialmente que a cor perde 30–40% da saturação após a cicatrização.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — CONTRAINDICAÇÕES ABSOLUTAS
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>Quando Dizer <span class="gt">NÃO</span><br>ao Procedimento</h2>
+      <p>Contraindicações absolutas impedem a realização do procedimento independentemente de qualquer circunstância. Nenhuma pressão comercial justifica ignorá-las.</p>
+    </div>
+
+    <div style="width:100%;display:flex;flex-direction:column;gap:9px;" class="au d2">
+      <div class="alert-card red">
+        <div class="alert-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <div class="tag-sm red">Gestação e Amamentação</div>
+          <p style="font-size:12px;">Risco de absorção de pigmento e anestésico pelo organismo materno. Contraindicado em qualquer trimestre e durante toda a amamentação.</p>
+        </div>
+      </div>
+      <div class="alert-card red">
+        <div class="alert-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <div class="tag-sm red">Herpes Labial Ativo (HSV)</div>
+          <p style="font-size:12px;">Procedimento em fase ativa pode disseminar o vírus e gerar surto severo. Aguardar resolução completa e realizar profilaxia antiviral preventiva.</p>
+        </div>
+      </div>
+      <div class="alert-card red">
+        <div class="alert-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <div class="tag-sm red">Hemofilia e Distúrbios de Coagulação</div>
+          <p style="font-size:12px;">Sangramento incontrolável compromete o procedimento e representa risco vital. Inclui uso contínuo de anticoagulantes (Varfarina, Rivaroxabana, etc.).</p>
+        </div>
+      </div>
+      <div class="alert-card red">
+        <div class="alert-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <div class="tag-sm red">Doenças Autoimunes em Atividade</div>
+          <p style="font-size:12px;">Lúpus, artrite reumatoide, psoríase em atividade, entre outras. O sistema imunológico alterado pode rejeitar o pigmento e causar reações graves.</p>
+        </div>
+      </div>
+      <div class="alert-card red">
+        <div class="alert-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <div class="tag-sm red">Histórico de Queloide</div>
+          <p style="font-size:12px;">Predisposição genética à formação de queloides. Procedimento pode desencadear formação de cicatriz hipertrófica permanente nos lábios.</p>
+        </div>
+      </div>
+      <div class="alert-card red">
+        <div class="alert-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <div class="tag-sm red">Uso de Isotretinoína (Roacutan)</div>
+          <p style="font-size:12px;">Aguardar mínimo de 6 meses após o término do tratamento. O medicamento altera a renovação celular e pode comprometer a fixação e cicatrização.</p>
+        </div>
+      </div>
+      <div class="alert-card red">
+        <div class="alert-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <div class="tag-sm red">Diabetes Descompensada · HIV Não Controlado · Câncer em Tratamento</div>
+          <p style="font-size:12px;">Condições que comprometem imunidade e cicatrização. Necessitam de avaliação e liberação médica específica — em muitos casos, contraindicação absoluta permanente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — CONTRAINDICAÇÕES RELATIVAS + PRÉ
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>Atenção Antes<br>de <span class="gt">Agendar</span></h2>
+      <p>Contraindicações relativas podem ser contornadas com cuidados específicos ou liberação médica. O checklist pré-procedimento é obrigatório.</p>
+    </div>
+
+    <div class="g2 au d2" style="margin-bottom:13px;">
+      <div>
+        <div class="tag-sm gold" style="margin-bottom:10px;">⚠️ Contraindicações Relativas</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="alert-card gold" style="padding:11px 13px;">
+            <div class="alert-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div><p style="font-size:12px;font-weight:600;color:#FFD460;">Diabetes Controlada</p><p style="font-size:11px;">Exige glicemia estabilizada e laudo médico recente.</p></div>
+          </div>
+          <div class="alert-card gold" style="padding:11px 13px;">
+            <div class="alert-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div><p style="font-size:12px;font-weight:600;color:#FFD460;">Preenchimento Recente</p><p style="font-size:11px;">Aguardar mínimo 30 dias após ácido hialurônico labial.</p></div>
+          </div>
+          <div class="alert-card gold" style="padding:11px 13px;">
+            <div class="alert-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div><p style="font-size:12px;font-weight:600;color:#FFD460;">Hipotireoidismo</p><p style="font-size:11px;">Pode alterar fixação — exige controle hormonal comprovado.</p></div>
+          </div>
+          <div class="alert-card gold" style="padding:11px 13px;">
+            <div class="alert-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div><p style="font-size:12px;font-weight:600;color:#FFD460;">Uso de AAS e Anti-inflamatórios</p><p style="font-size:11px;">Suspender 7 dias antes (com orientação médica).</p></div>
+          </div>
+          <div class="alert-card gold" style="padding:11px 13px;">
+            <div class="alert-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div><p style="font-size:12px;font-weight:600;color:#FFD460;">Menstruação / TPM</p><p style="font-size:11px;">Maior sensibilidade à dor. Não é impeditivo, mas recomendar agendamento fora do período.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="tag-sm green" style="margin-bottom:10px;">✅ Checklist Pré-Procedimento</div>
+        <div class="cp" style="padding:16px 14px;">
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Hidratação labial intensa nos <strong style="color:#F5F7FB;">7 dias anteriores</strong></p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Evitar exposição solar intensa nos <strong style="color:#F5F7FB;">15 dias anteriores</strong></p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Profilaxia antiviral <strong style="color:#F5F7FB;">(Aciclovir 400 mg 2×/dia)</strong> — 3 dias antes</p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Não ingerir álcool <strong style="color:#F5F7FB;">48 horas antes</strong></p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Fazer refeição leve antes do procedimento</p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Não usar batom no dia — vir com lábios limpos</p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Trazer referências fotográficas do resultado desejado</p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Preencher anamnese e assinar termo de consentimento</p></div>
+          <div class="chk"><div class="chk-dot green"></div><p style="font-size:13px;">Remover micropigmentação antiga anterior (avaliar necessidade de remoção ou correção)</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 6 — MARCAÇÃO LABIAL
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>A Arte da<br><span class="gt">Marcação Labial</span></h2>
+      <p>O desenho define tudo. Uma marcação precisa e anatômica é a diferença entre um resultado natural e um procedimento mal executado.</p>
+    </div>
+
+    <div class="g2 au d2" style="margin-bottom:13px;">
+      <div>
+        <div class="tag-sm pink" style="margin-bottom:10px;">📍 Pontos Anatômicos Obrigatórios</div>
+        <div class="anat-point">
+          <div class="anat-num" style="background:linear-gradient(135deg,#FF6B9D,#D9456F);">1</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;">Pico do Arco do Cupido</p><p style="font-size:11px;">Ponto mais alto do lábio superior — define o caráter e expressão labial.</p></div>
+        </div>
+        <div class="anat-point">
+          <div class="anat-num" style="background:linear-gradient(135deg,#C86DD7,#A040C0);">2</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;">Vale do Cupido</p><p style="font-size:11px;">Ponto central inferior do arco — deve ser marcado exatamente na linha médica.</p></div>
+        </div>
+        <div class="anat-point">
+          <div class="anat-num" style="background:linear-gradient(135deg,#2E6BFF,#1E56D9);">3</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;">Comissuras Labiais</p><p style="font-size:11px;">Cantos bilaterais — devem estar no mesmo nível horizontal para garantir simetria.</p></div>
+        </div>
+        <div class="anat-point">
+          <div class="anat-num" style="background:linear-gradient(135deg,#FF8250,#D96030);">4</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;">Ponto Central do Lábio Inferior</p><p style="font-size:11px;">Base da curva do lábio inferior — referência para proporção áurea vertical.</p></div>
+        </div>
+        <div class="anat-point">
+          <div class="anat-num" style="background:linear-gradient(135deg,#FFD460,#E0A820);">5</div>
+          <div><p style="font-size:12px;font-weight:600;color:#F5F7FB;">Filtro Labial</p><p style="font-size:11px;">Colunas verticais acima do arco — fundamentais para naturalidade e proporção.</p></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="tag-sm blue" style="margin-bottom:10px;">🛠️ Técnica de Marcação Passo a Passo</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="step-row" style="margin-bottom:0;">
+            <div class="tn n1">1</div>
+            <div class="card" style="flex:1;padding:10px 12px;">
+              <p style="font-size:12px;font-weight:600;color:#F5F7FB;">Higienização e posicionamento</p>
+              <p style="font-size:11px;">Limpar os lábios. Posicionar a cliente de frente, olhos no horizonte, relaxada — nunca com a boca aberta forçada.</p>
+            </div>
+          </div>
+          <div class="step-row" style="margin-bottom:0;">
+            <div class="tn n2">2</div>
+            <div class="card" style="flex:1;padding:10px 12px;">
+              <p style="font-size:12px;font-weight:600;color:#F5F7FB;">Identificar linha médica</p>
+              <p style="font-size:11px;">Traçar linha vertical imaginária no centro do rosto como referência para simetria bilateral.</p>
+            </div>
+          </div>
+          <div class="step-row" style="margin-bottom:0;">
+            <div class="tn n3">3</div>
+            <div class="card" style="flex:1;padding:10px 12px;">
+              <p style="font-size:12px;font-weight:600;color:#F5F7FB;">Marcar os 5 pontos anatômicos</p>
+              <p style="font-size:11px;">Com lápis dermográfico, pontuar os 5 referências antes de traçar qualquer linha contínua.</p>
+            </div>
+          </div>
+          <div class="step-row" style="margin-bottom:0;">
+            <div class="tn n4">4</div>
+            <div class="card" style="flex:1;padding:10px 12px;">
+              <p style="font-size:12px;font-weight:600;color:#F5F7FB;">Conectar os pontos suavemente</p>
+              <p style="font-size:11px;">Traçar o contorno respeitando a curva natural. Nunca ultrapassar a borda do vermelhão por mais de 0,5 mm.</p>
+            </div>
+          </div>
+          <div class="step-row" style="margin-bottom:0;">
+            <div class="tn n5">5</div>
+            <div class="card" style="flex:1;padding:10px 12px;">
+              <p style="font-size:12px;font-weight:600;color:#F5F7FB;">Fotografar e validar com a cliente</p>
+              <p style="font-size:11px;">Mostrar espelho frontal e lateral. Aprovar obrigatoriamente antes de iniciar a pigmentação.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card au d3" style="width:100%;background:rgba(255,107,157,.04);border-color:rgba(255,107,157,.15);">
+      <div class="tag-sm pink" style="margin-bottom:6px;">💡 Regra de Ouro da Marcação</div>
+      <p style="font-size:13px;">Nunca corrija assimetria real do rosto aumentando o lado menor para igualar o maior — isso chamará mais atenção para a assimetria. O objetivo é criar harmonia visual, não perfeição geométrica.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 7 — ERROS COMUNS NA MARCAÇÃO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>O Que Arruína um Procedimento<br><span class="gt">Antes de Começar</span></h2>
+      <p>Os erros de marcação são os mais difíceis de corrigir. Conhecê-los é o primeiro passo para nunca cometê-los.</p>
+    </div>
+
+    <div class="g3 au d2" style="margin-bottom:13px;">
+      <div class="card" style="border-color:rgba(255,80,80,.2);background:rgba(255,80,80,.03);">
+        <div class="alert-icon red" style="margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tag-sm red" style="margin-bottom:5px;">Erro #1</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Arco Muito Elevado</h3>
+        <p style="font-size:12px;">Picos do cupido excessivamente altos criam aparência artificial e "de boneca". O arco deve ter elevação suave e proporcional à anatomia.</p>
+      </div>
+      <div class="card" style="border-color:rgba(255,80,80,.2);background:rgba(255,80,80,.03);">
+        <div class="alert-icon red" style="margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tag-sm red" style="margin-bottom:5px;">Erro #2</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Excesso de Projeção Lateral</h3>
+        <p style="font-size:12px;">Alargamento exagerado das comissuras resulta em lábios que parecem "grudados" no rosto. Respeitar o limite natural das comissuras em repouso.</p>
+      </div>
+      <div class="card" style="border-color:rgba(255,80,80,.2);background:rgba(255,80,80,.03);">
+        <div class="alert-icon red" style="margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tag-sm red" style="margin-bottom:5px;">Erro #3</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Ignorar Assimetria Natural</h3>
+        <p style="font-size:12px;">Todo rosto tem assimetrias. Não identificá-las antes de marcar e não comunicar à cliente gera insatisfação pós-procedimento e conflitos.</p>
+      </div>
+      <div class="card" style="border-color:rgba(255,80,80,.2);background:rgba(255,80,80,.03);">
+        <div class="alert-icon red" style="margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tag-sm red" style="margin-bottom:5px;">Erro #4</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Marca Fora do Vermelhão</h3>
+        <p style="font-size:12px;">Ultrapassar mais de 0,5 mm da borda mucosa cria efeito artificial visível e deixa a área ao redor sem a textura adequada para fixação.</p>
+      </div>
+      <div class="card" style="border-color:rgba(255,80,80,.2);background:rgba(255,80,80,.03);">
+        <div class="alert-icon red" style="margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tag-sm red" style="margin-bottom:5px;">Erro #5</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Não Considerar Repouso do Rosto</h3>
+        <p style="font-size:12px;">Marcar com expressão facial diferente do repouso. Sempre avaliar com a cliente totalmente relaxada — sorrir modifica a anatomia labial.</p>
+      </div>
+      <div class="card" style="border-color:rgba(255,80,80,.2);background:rgba(255,80,80,.03);">
+        <div class="alert-icon red" style="margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tag-sm red" style="margin-bottom:5px;">Erro #6</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Pular a Validação com a Cliente</h3>
+        <p style="font-size:12px;">Iniciar a pigmentação sem mostrar e aprovar a marcação. Independente da pressa, essa etapa é obrigatória e protege profissional e cliente.</p>
+      </div>
+    </div>
+
+    <div class="card au d3" style="width:100%;background:rgba(255,200,60,.04);border-color:rgba(255,200,60,.15);">
+      <div class="tag-sm gold" style="margin-bottom:6px;">⚠️ Regra Anti-Erro</div>
+      <p style="font-size:13px;">Se tiver dúvida sobre qualquer ponto da marcação, apague e recomece. Demorar 10 minutos a mais na marcação vale mais do que horas de correção ou um resultado insatisfatório que prejudica sua reputação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 8 — CUIDADOS PÓS
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>A Cicatrização Também<br>é Parte do <span class="gt">Resultado</span></h2>
+      <p>Os cuidados pós-procedimento determinam até 50% da qualidade final da cor e da fixação. Cada dia importa.</p>
+    </div>
+
+    <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-bottom:13px;" class="au d2">
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-circle" style="background:linear-gradient(135deg,#FF6B9D,#D9456F);">D1</div>
+          <div class="tl-line" style="background:linear-gradient(180deg,#FF6B9D,#C86DD7);"></div>
+        </div>
+        <div class="card" style="flex:1;padding:12px 14px;margin-bottom:8px;">
+          <div class="tag-sm pink" style="margin-bottom:4px;">Dia 1 — Imediatamente Após</div>
+          <p style="font-size:12px;">Cor intensa e saturada — é normal. Leve edema e sensação de calor. Aplicar hidratante labial sem álcool a cada 2 horas. Não molhar com água por 12h. Evitar beijos.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-circle" style="background:linear-gradient(135deg,#C86DD7,#A040C0);">D3</div>
+          <div class="tl-line" style="background:linear-gradient(180deg,#C86DD7,#2E6BFF);"></div>
+        </div>
+        <div class="card" style="flex:1;padding:12px 14px;margin-bottom:8px;">
+          <div class="tag-sm purple" style="margin-bottom:4px;">Dias 2–4 — Início da Descamação</div>
+          <p style="font-size:12px;">Película fina começa a se soltar. NÃO arrancar, NÃO esfoliar. Continuar hidratação intensa. Evitar alimentos ácidos, picantes e muito quentes. Beber água com canudo se necessário.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-circle" style="background:linear-gradient(135deg,#2E6BFF,#1E56D9);">D7</div>
+          <div class="tl-line" style="background:linear-gradient(180deg,#2E6BFF,#FF8250);"></div>
+        </div>
+        <div class="card" style="flex:1;padding:12px 14px;margin-bottom:8px;">
+          <div class="tag-sm blue" style="margin-bottom:4px;">Dias 5–10 — Fase "Apagada"</div>
+          <p style="font-size:12px;">Cor aparece muito pálida após a descamação — COMUNICAR ANTES! A cliente pode se alarmar. É parte do processo. O pigmento está se fixando na derme e reaparecerá.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-circle" style="background:linear-gradient(135deg,#FF8250,#D96030);">D30</div>
+          <div class="tl-line" style="background:linear-gradient(180deg,#FF8250,#5EE89A);"></div>
+        </div>
+        <div class="card" style="flex:1;padding:12px 14px;margin-bottom:8px;">
+          <div class="tag-sm coral" style="margin-bottom:4px;">Dias 10–30 — Estabilização</div>
+          <p style="font-size:12px;">Cor real começa a aparecer. Perda de 30–40% da saturação inicial é normal. Começar a usar FPS labial diariamente. Evitar exposição solar excessiva que acelera o clareamento.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-circle" style="background:linear-gradient(135deg,#5EE89A,#30C870);">D45</div>
+        </div>
+        <div class="card" style="flex:1;padding:12px 14px;">
+          <div class="tag-sm green" style="margin-bottom:4px;">Dia 45 — Retoque</div>
+          <p style="font-size:12px;">Sessão de retoque obrigatória para consolidar cor, corrigir falhas de fixação e ajustar detalhes de contorno. É neste momento que o resultado final é verdadeiramente entregue.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="g2 au d3">
+      <div class="card" style="background:rgba(80,220,120,.04);border-color:rgba(80,220,120,.15);">
+        <div class="tag-sm green" style="margin-bottom:8px;">✅ Pode / Deve Fazer</div>
+        <div class="chk"><div class="chk-dot green"></div><p style="font-size:12px;">Hidratante labial sem álcool 4–5× ao dia</p></div>
+        <div class="chk"><div class="chk-dot green"></div><p style="font-size:12px;">FPS labial após cicatrização completa</p></div>
+        <div class="chk"><div class="chk-dot green"></div><p style="font-size:12px;">Alimentação macia nos primeiros 5 dias</p></div>
+        <div class="chk"><div class="chk-dot green"></div><p style="font-size:12px;">Continuar profilaxia antiviral por 5 dias pós</p></div>
+      </div>
+      <div class="card" style="background:rgba(255,80,80,.04);border-color:rgba(255,80,80,.15);">
+        <div class="tag-sm red" style="margin-bottom:8px;">⛔ Não Pode Fazer</div>
+        <div class="chk"><div class="chk-dot red"></div><p style="font-size:12px;">Arrancar ou esfregar a película descamante</p></div>
+        <div class="chk"><div class="chk-dot red"></div><p style="font-size:12px;">Piscina, sauna ou banho de mar por 15 dias</p></div>
+        <div class="chk"><div class="chk-dot red"></div><p style="font-size:12px;">Batom ou maquiagem sobre a área por 7 dias</p></div>
+        <div class="chk"><div class="chk-dot red"></div><p style="font-size:12px;">Exposição solar direta nos primeiros 30 dias</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 9 — PROFILAXIA ANTIVIRAL
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>Profilaxia Antiviral<br>e <span class="gt">Gestão de Riscos</span></h2>
+      <p>O HSV (herpes labial) é o principal risco infeccioso da micropigmentação labial. Proteger sua cliente é proteger sua reputação profissional.</p>
+    </div>
+
+    <div class="g2 au d2" style="margin-bottom:13px;">
+      <div>
+        <div class="tag-sm red" style="margin-bottom:10px;">⚠️ Por Que o HSV é Crítico?</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="card bc b-red" style="padding:12px 14px;">
+            <p style="font-size:12px;font-weight:600;color:#FF6B6B;">O trauma da agulha reativa o vírus</p>
+            <p style="font-size:11px;">Mesmo clientes sem histórico ativo podem ter o HSV latente. O procedimento cria microtraumas que são gatilho para reativação.</p>
+          </div>
+          <div class="card bc b-red" style="padding:12px 14px;">
+            <p style="font-size:12px;font-weight:600;color:#FF6B6B;">Surto severo compromete o resultado</p>
+            <p style="font-size:11px;">Herpes ativo durante a cicatrização pode destruir a pigmentação e deixar cicatrizes permanentes nos lábios.</p>
+          </div>
+          <div class="card bc b-red" style="padding:12px 14px;">
+            <p style="font-size:12px;font-weight:600;color:#FF6B6B;">Responsabilidade profissional</p>
+            <p style="font-size:11px;">Não orientar sobre profilaxia pode configurar negligência técnica. Sempre documentar a orientação na anamnese.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="tag-sm green" style="margin-bottom:10px;">💊 Protocolo de Profilaxia</div>
+        <div class="cp" style="padding:16px 14px;">
+          <div class="step-row">
+            <div class="tn n1" style="font-size:12px;">PRÉ</div>
+            <div>
+              <p style="font-size:13px;font-weight:600;color:#F5F7FB;">3 dias antes do procedimento</p>
+              <p style="font-size:12px;">Aciclovir 400 mg — 2× ao dia (manhã e noite). Iniciar no D-3 e manter até o D+5.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="tn n3" style="font-size:12px;">PÓS</div>
+            <div>
+              <p style="font-size:13px;font-weight:600;color:#F5F7FB;">5 dias após o procedimento</p>
+              <p style="font-size:12px;">Continuar Aciclovir 400 mg 2× ao dia durante toda a fase crítica de cicatrização.</p>
+            </div>
+          </div>
+          <div class="step-row" style="margin-bottom:0;">
+            <div class="tn n2" style="font-size:10px;">ALT</div>
+            <div>
+              <p style="font-size:13px;font-weight:600;color:#F5F7FB;">Alternativa: Valaciclovir 500 mg</p>
+              <p style="font-size:12px;">1× ao dia — posologia mais prática. Indicado por médico para pacientes com histórico frequente de herpes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3 au d3">
+      <div class="alert-card green" style="flex-direction:column;text-align:center;padding:14px;">
+        <div class="alert-icon green" style="margin:0 auto 8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="tag-sm green">Sem Histórico de Herpes</div>
+        <p style="font-size:12px;">Recomendar profilaxia. O risco existe mesmo sem histórico declarado.</p>
+      </div>
+      <div class="alert-card gold" style="flex-direction:column;text-align:center;padding:14px;">
+        <div class="alert-icon gold" style="margin:0 auto 8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="tag-sm gold">Com Histórico de Herpes</div>
+        <p style="font-size:12px;">Profilaxia obrigatória. Documentar histórico na anamnese e prescrição médica.</p>
+      </div>
+      <div class="alert-card red" style="flex-direction:column;text-align:center;padding:14px;">
+        <div class="alert-icon red" style="margin:0 auto 8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="tag-sm red">Herpes Ativo no Dia</div>
+        <p style="font-size:12px;">CANCELAR o procedimento. Reagendar apenas após resolução completa + 7 dias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 10 — DOCUMENTAÇÃO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="stitle au d1">
+      <div class="gl ce"></div>
+      <h2>Procedimento Seguro<br><span class="gt">Começa no Papel</span></h2>
+      <p>Anamnese completa, termo de consentimento detalhado e registro fotográfico padronizado são pilares da prática profissional responsável.</p>
+    </div>
+
+    <div class="g3 au d2" style="margin-bottom:13px;">
+      <div class="cp">
+        <div class="ic blue" style="margin-bottom:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div class="tag-sm blue" style="margin-bottom:10px;">📋 Anamnese Labial</div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Histórico de herpes e frequência de surtos</p></div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Doenças autoimunes ou crônicas</p></div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Uso de medicamentos (especialmente anticoagulantes, isotretinoína)</p></div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Preenchimentos anteriores e data</p></div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Alergias a anestésicos ou pigmentos</p></div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Histórico de queloides ou cicatrização hipertrófica</p></div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Gestação ou amamentação</p></div>
+        <div class="chk"><div class="chk-dot blue"></div><p style="font-size:12px;">Procedimentos oncológicos recentes</p></div>
+      </div>
+
+      <div class="cp">
+        <div class="ic purple" style="margin-bottom:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="tag-sm purple" style="margin-bottom:10px;">📄 Termo de Consentimento</div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Descrição detalhada do procedimento realizado</p></div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Pigmento utilizado com nome comercial e lote</p></div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Riscos e intercorrências possíveis</p></div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Evolução esperada da cor (D1 ao D45)</p></div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Cuidados pós obrigatórios e responsabilidade da cliente</p></div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Número de sessões e prazo para retoque</p></div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Assinatura da cliente + data + RG</p></div>
+        <div class="chk"><div class="chk-dot purple"></div><p style="font-size:12px;">Guardar por mínimo de 5 anos</p></div>
+      </div>
+
+      <div class="cp">
+        <div class="ic coral" style="margin-bottom:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="tag-sm coral" style="margin-bottom:10px;">📸 Registro Fotográfico</div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Foto frente — boca fechada em repouso</p></div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Foto frente — boca levemente aberta</p></div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Foto lateral direita e esquerda</p></div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Mesma iluminação, fundo e distância antes e depois</p></div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Foto da marcação antes de pigar</p></div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Foto imediatamente após o procedimento</p></div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Foto no retoque de D45 (antes e depois)</p></div>
+        <div class="chk"><div class="chk-dot coral"></div><p style="font-size:12px;">Autorização de uso de imagem assinada</p></div>
+      </div>
+    </div>
+
+    <div class="cp au d3" style="width:100%;text-align:center;background:linear-gradient(135deg,rgba(255,107,157,.07),rgba(200,109,215,.07),rgba(46,107,255,.07));border-color:rgba(255,107,157,.2);">
+      <div class="gl ce"></div>
+      <h3 style="font-size:clamp(15px,3vw,21px);margin-bottom:10px;">
+        <span class="gt2">Marcação Precisa · Indicação Consciente · Cuidado Completo</span>
+      </h3>
+      <p style="font-size:13px;max-width:600px;margin:0 auto 16px;color:#AAB3C5;">Dominar a técnica é apenas o começo. A excelência na micropigmentação labial nasce da junção entre conhecimento teórico, habilidade prática e responsabilidade com cada cliente.</p>
+      <div style="display:flex;gap:7px;justify-content:center;flex-wrap:wrap;">
+        <span class="pill pink">✦ Marcação</span>
+        <span class="pill green">✦ Indicações</span>
+        <span class="pill red">✦ Segurança</span>
+        <span class="pill blue">✦ Documentação</span>
+        <span class="pill gold">✦ Profilaxia</span>
+        <span class="pill purple">✦ Excelência</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T = 10;
+let C = 0;
+const W  = document.getElementById('sw');
+const CN = document.getElementById('cn');
+const P  = document.getElementById('prog');
+const I  = document.getElementById('ind');
+
+for (let i = 0; i < T; i++) {
+  const d = document.createElement('div');
+  d.classList.add('dot');
+  if (i === 0) d.classList.add('active');
+  d.onclick = () => go(i);
+  I.appendChild(d);
+}
+
+function upd() {
+  I.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === C));
+  CN.textContent = C + 1;
+  P.style.width = ((C + 1) / T * 100) + '%';
+  document.querySelectorAll('.slide').forEach((s,i) => s.classList.toggle('active', i === C));
+}
+
+function go(i) {
+  if (i < 0 || i >= T) return;
+  C = i;
+  W.style.transform = `translateX(-${C * 100}vw)`;
+  upd();
+}
+
+function next() { if (C < T - 1) go(C + 1); }
+function prev() { if (C > 0)     go(C - 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+  if (e.key === 'ArrowLeft')                   { e.preventDefault(); prev(); }
+  if (e.key === 'f' || e.key === 'F')          toggleFs();
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const d = tx - e.changedTouches[0].screenX;
+  if (Math.abs(d) > 45) { d > 0 ? next() : prev(); }
+}, { passive: true });
+
+function toggleFs() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+document.addEventListener('fullscreenchange', () => {
+  const btn = document.getElementById('fsTxt');
+  if (btn) btn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
