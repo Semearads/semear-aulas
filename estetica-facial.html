@@ -97,12 +97,8 @@
     .n3 { background: linear-gradient(135deg, #C86DD7, #A854BF); }
     .n4 { background: linear-gradient(135deg, #2E6BFF, #5B3FD6); }
     .label{
-      flex: 1;
-      min-width: 0;
-      line-height: 1.25;
-      color: #E9ECF7;
-      word-break: break-word;
-      hyphens: auto;
+      flex: 1; min-width: 0; line-height: 1.25; color: #E9ECF7;
+      word-break: break-word; hyphens: auto;
     }
     .arrow{ color:#7E879B; transition: color .2s ease; flex-shrink:0; }
     .curso-btn:hover .arrow{ color:#2E6BFF; }
@@ -127,7 +123,7 @@
       100% { background-position: 200% center }
     }
 
-    /* ===== Modal login do pacote ===== */
+    /* ===== Modal login do PACOTE (única senha) ===== */
     .login-lock{
       position: fixed; inset: 0; z-index: 9999;
       display: none; align-items: center; justify-content: center;
@@ -150,163 +146,35 @@
     .login-sub{ color: #AAB3C5; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
     .login-row{ display:flex; flex-direction:column; gap: 10px; margin: 12px 0 14px; }
     .login-field label{
-      display:block;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 6px;
-      color: #7E879B;
+      display:block; font-size: 12px; font-weight: 800; margin-bottom: 6px; color: #7E879B;
     }
     .login-field input{
-      width: 100%;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
-      color: #F5F7FB;
-      outline: none;
-      font-family: inherit;
-      font-size: 15px;
+      width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25); color: #F5F7FB; outline: none; font-family: inherit; font-size: 15px;
     }
     .login-field input:focus{
-      border-color: rgba(46,107,255,.55);
-      box-shadow: 0 0 0 4px rgba(46,107,255,.14);
+      border-color: rgba(46,107,255,.55); box-shadow: 0 0 0 4px rgba(46,107,255,.14);
     }
     .login-actions{ display:flex; gap: 10px; align-items:center; justify-content:flex-end; margin-top: 10px; }
     .login-btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: #F5F7FB;
-      font-weight: 900;
-      font-family: inherit;
-      cursor: pointer;
-      transition: .2s ease;
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06); color: #F5F7FB; font-weight: 900; font-family: inherit;
+      cursor: pointer; transition: .2s ease;
     }
     .login-btn:hover{
-      border-color: rgba(46,107,255,.45);
-      background: rgba(46,107,255,.10);
+      border-color: rgba(46,107,255,.45); background: rgba(46,107,255,.10);
     }
     .login-btn.primary{
-      border: none;
-      background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
+      border: none; background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
       box-shadow: 0 12px 36px rgba(46,107,255,.28);
     }
     .login-btn.primary:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 16px 42px rgba(46,107,255,.38);
+      transform: translateY(-1px); box-shadow: 0 16px 42px rgba(46,107,255,.38);
     }
-    .login-err{
-      min-height: 18px;
-      color: #FF6B6B;
-      font-size: 13px;
-      font-weight: 800;
-      margin-top: 8px;
-    }
+    .login-err{ min-height: 18px; color: #FF6B6B; font-size: 13px; font-weight: 800; margin-top: 8px; }
 
-    .top-logout{
-      position: fixed;
-      top: 14px;
-      left: 14px;
-      z-index: 50;
-    }
-
-    /* ===== Modal senha do curso (Design) ===== */
-    .lock-overlay{
-      position: fixed; inset: 0; z-index: 9998;
-      display: none; align-items: center; justify-content: center;
-      padding: 16px;
-      background: rgba(0,0,0,.65);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .lock-overlay.on{ display:flex; }
-    .lock-card{
-      width: 100%;
-      max-width: 480px;
-      background: rgba(14,10,28,.92);
-      border: 1px solid rgba(124,91,219,.28);
-      border-radius: 20px;
-      box-shadow: 0 24px 72px rgba(0,0,0,.60);
-      padding: 28px 22px 24px;
-    }
-    .lock-icon{ font-size: 28px; margin-bottom: 10px; display:block; }
-    .lock-title{
-      font-size: clamp(17px, 4vw, 20px);
-      font-weight: 900;
-      margin-bottom: 6px;
-      color: #F5F7FB;
-    }
-    .lock-sub{
-      font-size: clamp(12px, 2.5vw, 14px);
-      line-height: 1.55;
-      margin-bottom: 20px;
-      color: #AAB3C5;
-    }
-    .lock-label{
-      display:block;
-      font-size: 11px;
-      font-weight: 900;
-      margin-bottom: 7px;
-      color: #7E879B;
-    }
-    .lock-input{
-      width: 100%;
-      padding: 13px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.30);
-      color: #F5F7FB;
-      font-size: 15px;
-      outline: none;
-      transition: .2s;
-    }
-    .lock-input:focus{
-      border-color: rgba(124,91,219,.60);
-      box-shadow: 0 0 0 4px rgba(124,91,219,.15);
-    }
-    .lock-err{
-      min-height: 18px;
-      color: #FF6B6B;
-      font-size: 13px;
-      font-weight: 800;
-      margin-top: 8px;
-    }
-    .lock-actions{
-      display:flex;
-      gap: 10px;
-      justify-content:flex-end;
-      margin-top: 18px;
-    }
-    .lock-btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 11px 18px;
-      border-radius: 12px;
-      font-family: inherit;
-      font-weight: 900;
-      font-size: clamp(13px, 2.5vw, 14px);
-      cursor: pointer;
-      transition: .2s ease;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: #AAB3C5;
-    }
-    .lock-btn:hover{
-      color: #F5F7FB;
-      border-color: rgba(255,255,255,.22);
-    }
-    .lock-btn.primary{
-      border: none;
-      background: linear-gradient(135deg, #7C5BDB, #C86DD7);
-      color: #fff;
-      box-shadow: 0 10px 32px rgba(124,91,219,.32);
-    }
-    .lock-btn.primary:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 40px rgba(124,91,219,.44);
-    }
+    .top-logout{ position: fixed; top: 14px; left: 14px; z-index: 50; }
   </style>
 </head>
 
@@ -316,7 +184,7 @@
     <button class="btn-back" type="button" id="btnLogout">Sair</button>
   </div>
 
-  <!-- Modal login -->
+  <!-- Modal login (único) -->
   <div class="login-lock on" id="loginLock" aria-hidden="false">
     <div class="login-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
       <div class="badge">🔒 Acesso ao Pacote</div>
@@ -344,26 +212,6 @@
     </div>
   </div>
 
-  <!-- Modal senha do curso -->
-  <div class="lock-overlay" id="lockOverlay" aria-hidden="true">
-    <div class="lock-card" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
-      <span class="lock-icon">✂️</span>
-      <div class="lock-title" id="lockTitle">Acesso ao curso</div>
-      <div class="lock-sub">Digite a senha do curso de <strong>Design de Sobrancelhas</strong> para continuar.</div>
-
-      <form id="lockForm" autocomplete="off">
-        <label class="lock-label" for="lockSenha">Senha</label>
-        <input id="lockSenha" type="password" class="lock-input" placeholder="Digite a senha" required />
-        <div class="lock-err" id="lockErr"></div>
-
-        <div class="lock-actions">
-          <button type="button" class="lock-btn" id="lockCancelar">Cancelar</button>
-          <button type="submit" class="lock-btn primary">Entrar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- Conteúdo -->
   <div class="wrap">
     <div class="header">
@@ -373,7 +221,7 @@
       <p>Seu pacote inclui 4 cursos completos em estética facial. Clique em qualquer um para começar.</p>
     </div>
 
-    <div class="cursos-list">
+    <div class="cursos-list" id="listaCursos">
       <a href="curso-alongamento-de-cilios.html" class="curso-btn">
         <div class="left">
           <div class="curso-num n1">1</div>
@@ -382,7 +230,6 @@
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
       </a>
 
-      <!-- Design de Sobrancelhas (com senha) -->
       <a href="curso-design-de-sobrancelhas.html" class="curso-btn" id="btnDesignSobrancelhas">
         <div class="left">
           <div class="curso-num n2">2</div>
@@ -415,26 +262,14 @@
   </div>
 
   <script>
-    /***************
-     * AJUSTE AQUI *
-     ***************/
-    // Destino real da Aula 1 do Design (o arquivo "de aula" de verdade)
-    const DS_DESTINO = 'aulas/design-de-sobrancelhas/aula-01.html';
-
     /**********************
      * Login do PACOTE    *
+     * (única senha)      *
      **********************/
     const ACCESS_KEY = 'semear_access_ok_estetica';
     const NAME_KEY = 'semear_access_name';
-    const PASSWORD = 'semearfacial';
+    const PASSWORD = 'semeards'; // senha única do pacote
 
-    /**********************
-     * Senha do CURSO DS  *
-     **********************/
-    const DS_ACCESS_KEY = 'semear_access_ok_design_sobrancelhas';
-    const DS_PASSWORD = 'semeards';
-
-    // Elementos
     const loginLock = document.getElementById('loginLock');
     const loginForm = document.getElementById('loginForm');
     const loginErr = document.getElementById('loginErr');
@@ -443,21 +278,11 @@
     const logoutWrap = document.getElementById('logoutWrap');
     const btnLogout = document.getElementById('btnLogout');
 
-    const lockOverlay = document.getElementById('lockOverlay');
-    const lockForm = document.getElementById('lockForm');
-    const lockErr = document.getElementById('lockErr');
-    const lockSenha = document.getElementById('lockSenha');
-    const lockCancelar = document.getElementById('lockCancelar');
-
-    const btnDesign = document.getElementById('btnDesignSobrancelhas');
+    const listaCursos = document.getElementById('listaCursos');
 
     function isAuthedPacote() {
       return localStorage.getItem(ACCESS_KEY) === '1';
     }
-    function isAuthedDS() {
-      return localStorage.getItem(DS_ACCESS_KEY) === '1';
-    }
-
     function openLogin() {
       loginErr.textContent = '';
       loginLock.classList.add('on');
@@ -465,32 +290,15 @@
       logoutWrap.style.display = 'none';
       setTimeout(() => { if (nomeInp) nomeInp.focus(); }, 60);
     }
-
     function closeLogin() {
       loginLock.classList.remove('on');
       loginLock.setAttribute('aria-hidden', 'true');
       logoutWrap.style.display = 'block';
     }
-
     function logout() {
       localStorage.removeItem(ACCESS_KEY);
       localStorage.removeItem(NAME_KEY);
-      // opcional: deslogar do Design também
-      // localStorage.removeItem(DS_ACCESS_KEY);
       openLogin();
-    }
-
-    function openLock() {
-      lockErr.textContent = '';
-      lockSenha.value = '';
-      lockOverlay.classList.add('on');
-      lockOverlay.setAttribute('aria-hidden', 'false');
-      setTimeout(() => { lockSenha.focus(); }, 60);
-    }
-
-    function closeLock() {
-      lockOverlay.classList.remove('on');
-      lockOverlay.setAttribute('aria-hidden', 'true');
     }
 
     // Boot
@@ -517,53 +325,14 @@
 
     btnLogout.addEventListener('click', logout);
 
-    // Clique no curso Design
-    btnDesign.addEventListener('click', (e) => {
-      // Se não logou no pacote, não deixa avançar (evita bug)
+    // Qualquer curso só abre se estiver logado no pacote
+    listaCursos.addEventListener('click', (e) => {
+      const a = e.target.closest('a.curso-btn');
+      if (!a) return;
       if (!isAuthedPacote()) {
         e.preventDefault();
         openLogin();
-        return;
       }
-
-      // Se já está liberado, segue para o arquivo do curso (ponte) sem modal
-      if (isAuthedDS()) {
-        // deixa navegar normal para "curso-design-de-sobrancelhas.html"
-        return;
-      }
-
-      // Senão, segura a navegação e abre modal de senha do curso
-      e.preventDefault();
-      openLock();
-    });
-
-    // Modal DS: cancelar / overlay / esc
-    lockCancelar.addEventListener('click', closeLock);
-    lockOverlay.addEventListener('click', (e) => { if (e.target === lockOverlay) closeLock(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lockOverlay.classList.contains('on')) closeLock();
-    });
-
-    // Enviar senha do curso DS
-    lockForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      lockErr.textContent = '';
-
-      const senha = (lockSenha.value || '').trim();
-      if (!senha) { lockErr.textContent = 'Digite a senha.'; lockSenha.focus(); return; }
-
-      if (senha !== DS_PASSWORD) {
-        lockErr.textContent = 'Senha incorreta. Tente novamente.';
-        lockSenha.value = '';
-        lockSenha.focus();
-        return;
-      }
-
-      localStorage.setItem(DS_ACCESS_KEY, '1');
-      closeLock();
-
-      // Vai para a “ponte” do curso (que redireciona para a aula 1 real)
-      window.location.href = 'curso-design-de-sobrancelhas.html';
     });
   </script>
 </body>
