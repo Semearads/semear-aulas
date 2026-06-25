@@ -1,1 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Design de Sobrancelhas – Instituto Semear</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Inter, sans-serif; min-height: 100vh; background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%); color: #F5F7FB; padding: 44px 16px 60px; }
+    .wrap { max-width: 800px; margin: 0 auto; width: 100%; }
+    .header { text-align: center; margin-bottom: 34px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 999px; margin-bottom: 16px; background: rgba(46,107,255,.08); border: 1px solid rgba(46,107,255,.2); font-size: clamp(11px, 2.5vw, 13px); font-weight: 600; color: #8FAEFF; letter-spacing: .05em; text-transform: uppercase; flex-wrap: wrap; justify-content: center; line-height: 1.4; }
+    .header h1 { font-size: clamp(24px, 5.5vw, 40px); font-weight: 900; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 10px; }
+    .gt { background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 4s linear infinite; }
+    .header p { color: #AAB3C5; font-size: clamp(13px, 2.5vw, 16px); line-height: 1.6; max-width: 560px; margin: 0 auto; }
+    .gl { width: 70px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #2E6BFF, #C86DD7); margin: 0 auto 18px; }
+
+    .cursos-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .curso-btn {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      text-decoration: none;
+      color: #F5F7FB;
+      font-weight: 800;
+      font-size: clamp(13px, 2.8vw, 16px);
+      transition: all .3s ease;
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      width: 100%;
+    }
+    .curso-btn:hover, .curso-btn:active { background: rgba(46,107,255,.08); border-color: rgba(46,107,255,.35); box-shadow: 0 8px 32px rgba(46,107,255,.15); }
+    @media (min-width: 600px) { .curso-btn:hover { transform: translateX(6px); } }
+
+    .curso-btn .left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+    .curso-num {
+      width: 40px; height: 40px; min-width: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 900; color: #fff;
+      flex-shrink: 0;
+    }
+    .n1 { background: linear-gradient(135deg, #2E6BFF, #1E56D9); }
+    .n2 { background: linear-gradient(135deg, #5B3FD6, #4530B3); }
+    .n3 { background: linear-gradient(135deg, #C86DD7, #A854BF); }
+
+    .curso-btn .label { flex: 1; min-width: 0; line-height: 1.35; word-break: break-word; hyphens: auto; }
+    .curso-btn .arrow { color: #7E879B; transition: all .3s ease; flex-shrink: 0; }
+    .curso-btn:hover .arrow, .curso-btn:active .arrow { color: #2E6BFF; }
+
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 28px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: #AAB3C5;
+      padding: 13px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(13px, 2.5vw, 14px);
+      transition: .25s ease;
+    }
+    .btn-back:hover { color: #F5F7FB; border-color: rgba(46,107,255,.3); }
+    .btn-back svg { flex-shrink: 0; }
+
+    @keyframes shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
+
+    /* ===== Modal Login/Senha ===== */
+    .login-lock { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(0,0,0,.62); backdrop-filter: blur(10px); }
+    .login-lock.on { display: flex; }
+    .login-card { width: 100%; max-width: 520px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10); border-radius: 18px; box-shadow: 0 22px 70px rgba(0,0,0,.55); padding: 22px 18px; }
+    .login-title { font-size: 20px; font-weight: 900; letter-spacing: -.02em; margin-bottom: 6px; color: #F5F7FB; }
+    .login-sub { color: #AAB3C5; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+    .login-row { display: flex; flex-direction: column; gap: 10px; margin: 12px 0 14px; }
+    .login-field label { display: block; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #7E879B; margin-bottom: 6px; }
+    .login-field input { width: 100%; padding: 14px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.25); color: #F5F7FB; outline: none; }
+    .login-field input:focus { border-color: rgba(46,107,255,.55); box-shadow: 0 0 0 4px rgba(46,107,255,.14); }
+    .login-actions { display: flex; gap: 10px; align-items: center; justify-content: flex-end; margin-top: 10px; }
+    .login-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06); color: #F5F7FB; font-weight: 900; cursor: pointer; transition: .2s ease; }
+    .login-btn:hover { border-color: rgba(46,107,255,.45); background: rgba(46,107,255,.10); }
+    .login-btn.primary { border: none; background: linear-gradient(135deg, #2E6BFF, #5B3FD6); box-shadow: 0 12px 36px rgba(46,107,255,.28); }
+    .login-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 16px 42px rgba(46,107,255,.38); }
+    .login-err { min-height: 18px; color: #FF6B6B; font-size: 13px; font-weight: 800; margin-top: 8px; }
+  </style>
+</head>
+
+<body>
+  <!-- Modal de Senha (abre ao clicar em uma aula, se não estiver liberado) -->
+  <div class="login-lock" id="loginLock" aria-hidden="true">
+    <div class="login-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <div class="badge" style="margin-bottom:12px;">🔒 Acesso às aulas</div>
+      <div class="gl" style="margin: 0 0 14px;"></div>
+
+      <div class="login-title" id="loginTitle">Digite a senha para continuar</div>
+      <div class="login-sub">Para acessar as aulas de <b>Design de Sobrancelhas</b>, informe a senha do curso.</div>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="login-row">
+          <div class="login-field">
+            <label for="alunaSenha">Senha</label>
+            <input id="alunaSenha" name="alunaSenha" type="password" placeholder="Digite a senha" required />
+          </div>
+        </div>
+
+        <div class="login-actions">
+          <button class="login-btn" type="button" id="btnCancelar">Cancelar</button>
+          <button class="login-btn primary" type="submit">Entrar</button>
+        </div>
+
+        <div class="login-err" id="loginErr"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="header">
+      <div class="badge">✨ Curso • Design de Sobrancelhas</div>
+      <div class="gl"></div>
+      <h1>Selecione uma <span class="gt">aula</span></h1>
+      <p>Ao clicar em uma aula, será solicitada a senha do curso para liberar o acesso.</p>
+    </div>
+
+    <div class="cursos-list">
+      <a href="aulas/design-de-sobrancelhas/aula-01.html" class="curso-btn aula-link">
+        <div class="left">
+          <div class="curso-num n1">1</div>
+          <span class="label">Biossegurança e Mapeamento Facial</span>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <a href="aulas/design-de-sobrancelhas/aula-02.html" class="curso-btn aula-link">
+        <div class="left">
+          <div class="curso-num n2">2</div>
+          <span class="label">Modelagens na Pinça, Navalha e Epilação Egípcia</span>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+
+      <a href="aulas/design-de-sobrancelhas/aula-03.html" class="curso-btn aula-link">
+        <div class="left">
+          <div class="curso-num n3">3</div>
+          <span class="label">Aplicação e Colorimetria da Henna</span>
+        </div>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+
+    <!-- Voltar para o menu do pacote (ajuste o nome do arquivo se for outro) -->
+    <a href="pacote-estetica-facial.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+      Voltar ao Pacote Estética Facial
+    </a>
+  </div>
+
+  <script>
+    // ===== Proteção simples (front-end) =====
+    // Obs: isso é bloqueio por interface. Para proteção real, só com backend.
+    const ACCESS_KEY = 'semear_access_ok_design_sobrancelhas';
+    const PASSWORD   = 'semeards';
+
+    const loginLock  = document.getElementById('loginLock');
+    const loginForm  = document.getElementById('loginForm');
+    const loginErr   = document.getElementById('loginErr');
+    const senhaInp   = document.getElementById('alunaSenha');
+    const btnCancelar = document.getElementById('btnCancelar');
+
+    let pendingHref = null;
+
+    function isAuthed() {
+      return localStorage.getItem(ACCESS_KEY) === '1';
+    }
+
+    function openLock() {
+      loginErr.textContent = '';
+      senhaInp.value = '';
+      loginLock.classList.add('on');
+      loginLock.setAttribute('aria-hidden', 'false');
+      setTimeout(() => senhaInp && senhaInp.focus(), 60);
+    }
+
+    function closeLock() {
+      loginLock.classList.remove('on');
+      loginLock.setAttribute('aria-hidden', 'true');
+    }
+
+    function grantAccess() {
+      localStorage.setItem(ACCESS_KEY, '1');
+    }
+
+    // Intercepta clique nos links de aula
+    document.querySelectorAll('.aula-link').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        if (isAuthed()) return; // segue normal
+        e.preventDefault();
+        pendingHref = a.getAttribute('href');
+        openLock();
+      });
+    });
+
+    btnCancelar.addEventListener('click', () => {
+      pendingHref = null;
+      closeLock();
+    });
+
+    // Fecha ao clicar fora do card
+    loginLock.addEventListener('click', (e) => {
+      if (e.target === loginLock) {
+        pendingHref = null;
+        closeLock();
+      }
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginErr.textContent = '';
+
+      const senha = (senhaInp.value || '').trim();
+      if (senha !== PASSWORD) {
+        loginErr.textContent = 'Senha incorreta.';
+        senhaInp.focus();
+        return;
+      }
+
+      grantAccess();
+      closeLock();
+
+      if (pendingHref) {
+        const go = pendingHref;
+        pendingHref = null;
+        window.location.href = go;
+      }
+    });
+  </script>
+</body>
+</html>
 
