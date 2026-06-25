@@ -1,1 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Micropigmentação de Sobrancelhas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 14px;border-radius:12px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3)}
+.fs-btn svg{width:14px;height:14px}
+
+.sc{position:fixed;bottom:24px;left:20px;z-index:998;color:#7E879B;font-size:13px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05)}
+.sc .cn{color:#2E6BFF;font-weight:800}
+
+.ind{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.3);padding:9px 14px;border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05)}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 14px rgba(46,107,255,.6);width:28px;border-radius:5px}
+
+.nav-arr{position:fixed;bottom:20px;right:16px;z-index:998;display:flex;gap:8px}
+.nav-arr button{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px)}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05)}
+
+.presentation{width:100vw;height:100vh;overflow:hidden}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);will-change:transform}
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:56px 16px 90px}
+
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.13) 0%,transparent 42%),radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.13) 0%,transparent 42%),linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%)}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px}
+.slide>*{position:relative;z-index:1}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5}
+
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+.gl{width:70px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 16px;transform-origin:center}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;margin-bottom:22px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:18px 16px;backdrop-filter:blur(8px);transition:all .4s ease}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px)}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.08);padding:20px 18px;backdrop-filter:blur(10px);transition:all .4s ease}
+
+.ic{width:44px;height:44px;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:rgba(46,107,255,.08);flex-shrink:0}
+.ic svg{width:22px;height:22px;color:#2E6BFF}
+.ic.pr{background:rgba(200,109,215,.08)}
+.ic.pr svg{color:#C86DD7}
+.ic.gr{background:rgba(94,232,154,.08)}
+.ic.gr svg{color:#5EE89A}
+.ic.rd{background:rgba(255,80,80,.08)}
+.ic.rd svg{color:#FF6B6B}
+.ic.yw{background:rgba(255,212,96,.08)}
+.ic.yw svg{color:#FFD460}
+
+.tn{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;flex-shrink:0}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9)}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s}
+.tn.n4{background:linear-gradient(145deg,#5EE89A,#3ABF78);animation-delay:1.5s}
+
+.s5n{font-size:clamp(32px,7vw,52px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:6px}
+
+.bwc{border-radius:16px;padding:16px 14px}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12)}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.12)}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.12)}
+.bwc.cb{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.12)}
+
+.s5c{position:relative;overflow:hidden;padding-left:18px}
+.s5c::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.s5c.b1::before{background:#2E6BFF}
+.s5c.b2::before{background:#5B3FD6}
+.s5c.b3::before{background:#C86DD7}
+.s5c.b4::before{background:#5EE89A}
+.s5c.b5::before{background:#FFD460}
+.s5c.b6::before{background:#FF6B6B}
+
+.chk{display:flex;flex-direction:column;gap:8px}
+.chk-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px}
+.chk-dot{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#2E6BFF,#5B3FD6);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.chk-dot svg{width:11px;height:11px;color:#fff}
+.chk-dot.rd{background:linear-gradient(135deg,#FF6B6B,#D94F4F)}
+.chk-dot.yw{background:linear-gradient(135deg,#FFD460,#E6B800)}
+.chk-dot.gr{background:linear-gradient(135deg,#5EE89A,#3ABF78)}
+
+.alert{background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.18);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+.alert svg{width:18px;height:18px;color:#FF6B6B;flex-shrink:0;margin-top:2px}
+.alert p{font-size:12px;line-height:1.5;color:#FFB3B3}
+
+.info{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.18);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+.info svg{width:18px;height:18px;color:#2E6BFF;flex-shrink:0;margin-top:2px}
+.info p{font-size:12px;line-height:1.5;color:#AAC4FF}
+
+.tip{background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+.tip svg{width:18px;height:18px;color:#5EE89A;flex-shrink:0;margin-top:2px}
+.tip p{font-size:12px;line-height:1.5;color:#A8F5C8}
+
+.scroll-inner{width:100%;max-height:calc(100vh - 150px);overflow-y:auto;padding-right:4px;-webkit-overflow-scrolling:touch}
+.scroll-inner::-webkit-scrollbar{width:3px}
+.scroll-inner::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:3px}
+.scroll-inner::-webkit-scrollbar-thumb{background:rgba(46,107,255,.4);border-radius:3px}
+
+.slide-inner{width:100%;max-width:700px;display:flex;flex-direction:column;gap:0}
+
+.s1-wrap{text-align:center;max-width:540px;width:100%;padding:0 8px}
+.s1-wrap h1{font-size:clamp(28px,7vw,58px);margin-bottom:18px}
+.s1-wrap .tag{font-size:clamp(13px,3.2vw,17px);color:#AAB3C5;max-width:440px;margin:0 auto;line-height:1.6}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;width:100%}
+.g1{display:grid;grid-template-columns:1fr;gap:8px;width:100%}
+
+.sh{margin-bottom:16px}
+.sh h2{font-size:clamp(20px,5vw,32px)}
+.sh p{font-size:clamp(12px,2.8vw,14px);color:#AAB3C5;margin-top:6px}
+.tl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2E6BFF;margin-bottom:8px}
+.tl.pr{color:#C86DD7}
+.tl.gr{color:#5EE89A}
+.tl.rd{color:#FF6B6B}
+.tl.yw{color:#FFD460}
+
+/* SKIN LAYER */
+.skin-layer{border-radius:12px;padding:12px 14px;margin-bottom:6px;position:relative;overflow:hidden}
+.skin-layer::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%}
+.sl1{background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.15)}
+.sl1::before{background:#FFD460}
+.sl2{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15)}
+.sl2::before{background:#2E6BFF}
+.sl3{background:rgba(91,63,214,.06);border:1px solid rgba(91,63,214,.15)}
+.sl3::before{background:#5B3FD6}
+.sl-target{background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.25)}
+.sl-target::before{background:#5EE89A}
+
+/* STEP */
+.step{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px}
+.step-n{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#2E6BFF,#5B3FD6);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+
+/* WEEK */
+.wk{border-radius:12px;padding:12px 14px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+.wk-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+
+/* TAG PILL */
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;font-size:11px;font-weight:600;margin:2px}
+.pill.bl{background:rgba(46,107,255,.12);border:1px solid rgba(46,107,255,.2);color:#8FAEFF}
+.pill.pr{background:rgba(200,109,215,.12);border:1px solid rgba(200,109,215,.2);color:#E4A4ED}
+.pill.gr{background:rgba(94,232,154,.12);border:1px solid rgba(94,232,154,.2);color:#A8F5C8}
+.pill.rd{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.2);color:#FFB3B3}
+.pill.yw{background:rgba(255,212,96,.12);border:1px solid rgba(255,212,96,.2);color:#FFE580}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{background:rgba(46,107,255,.1);color:#8FAEFF;font-weight:700;padding:8px 10px;text-align:left;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+.tbl td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.05);color:#AAB3C5;vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(255,255,255,.02)}
+
+/* SPAULDING */
+.sp-row{display:flex;gap:8px;align-items:stretch;margin-bottom:8px}
+.sp-badge{width:90px;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font-size:11px;font-weight:700;flex-shrink:0}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(46,107,255,.12)}50%{box-shadow:0 0 36px rgba(46,107,255,.3)}}
+
+.slide.active .au{animation:fadeUp .7s ease both}
+.slide.active .as{animation:fadeScale .7s ease both}
+.d1{animation-delay:.1s!important}
+.d2{animation-delay:.22s!important}
+.d3{animation-delay:.34s!important}
+.d4{animation-delay:.46s!important}
+.d5{animation-delay:.58s!important}
+.d6{animation-delay:.7s!important}
+.d7{animation-delay:.82s!important}
+
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr 1fr}
+  .sp-badge{width:72px;font-size:10px}
+  .tbl th,.tbl td{padding:6px 8px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%"></div>
+
+<button class="fs-btn" id="fsBtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"></path></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button onclick="next()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- SLIDE 1 -->
+<section class="slide active">
+  <div class="s1-wrap">
+    <div class="badge au d1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Curso Profissional — Módulo Técnico
+    </div>
+    <h1 class="au d2"><span class="gt">Micropigmentação</span><br>de Sobrancelhas</h1>
+    <div class="gl ce au d3"></div>
+    <p class="tag au d4">Do fundamento à excelência — Biossegurança, Anatomia da Pele, Materiais, EPIs, Preparo e Cuidados Essenciais para uma prática segura e profissional.</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px" class="au d5">
+      <span class="pill bl">🧬 Biossegurança</span>
+      <span class="pill pr">🔬 Anatomia</span>
+      <span class="pill gr">🛡️ EPIs</span>
+      <span class="pill yw">⚗️ Materiais</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>O Que é <span class="gt">Micropigmentação?</span></h2>
+      <p>Conceito, regulamentação e diferenças técnicas fundamentais</p>
+    </div>
+    <div class="cp au d2" style="margin-bottom:10px;padding:18px">
+      <p class="tl">Definição Técnica</p>
+      <p style="font-size:13px;line-height:1.6">A micropigmentação é um <strong style="color:#F5F7FB">procedimento dermopigmentar</strong> que deposita pigmentos biocompatíveis nas camadas superficiais da derme papilar, simulando fios, sombras e volume nas sobrancelhas com resultado semipermanente.</p>
+    </div>
+    <div class="g2 au d3" style="margin-bottom:10px">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <h3 style="font-size:14px">Micropigmentação</h3>
+        </div>
+        <div class="chk" style="gap:6px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Derme papilar (0,5–1,5mm)</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Duração: 1 a 3 anos</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Pigmentos dermopigmentares</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <div class="ic rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+          <h3 style="font-size:14px">Tatuagem Comum</h3>
+        </div>
+        <div class="chk" style="gap:6px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><p style="font-size:11px">Derme reticular (2–4mm)</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><p style="font-size:11px">Duração: permanente</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><p style="font-size:11px">Tintas de tatuagem</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="g2 au d4">
+      <div class="info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div><p class="tl" style="margin-bottom:4px">ANVISA</p><p style="font-size:11px;line-height:1.5">Regulamentada pela RDC 56/2009 e RDC 185/2001 — pigmentos e equipamentos precisam de registro.</p></div>
+      </div>
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div><p class="tl gr" style="margin-bottom:4px">CBO 3241-15</p><p style="font-size:11px;line-height:1.5">Profissional reconhecido como Micropigmentador. Curso de capacitação comprovado é obrigatório.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>Anatomia e Biologia da <span class="gt">Pele</span></h2>
+      <p>O canvas do profissional — entender a pele é dominar o resultado</p>
+    </div>
+    <div class="g1 au d2" style="gap:7px;margin-bottom:10px">
+      <div class="skin-layer sl1">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><p style="font-size:11px;font-weight:700;color:#FFD460;text-transform:uppercase;letter-spacing:.06em">Epiderme</p><p style="font-size:12px;line-height:1.4;margin-top:3px">Camada mais superficial. Barreira protetora. Composta por queratinócitos. Renova-se a cada 28 dias.</p></div>
+          <span class="pill yw" style="flex-shrink:0;margin-left:8px">0–0,2mm</span>
+        </div>
+      </div>
+      <div class="skin-layer sl-target">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;text-transform:uppercase;letter-spacing:.06em">✦ Derme Papilar — ALVO</p><p style="font-size:12px;line-height:1.4;margin-top:3px">Camada-alvo da micropigmentação. Rica em colágeno, fibroblastos e capilares. Retém o pigmento com estabilidade.</p></div>
+          <span class="pill gr" style="flex-shrink:0;margin-left:8px">0,5–1,5mm</span>
+        </div>
+      </div>
+      <div class="skin-layer sl2">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><p style="font-size:11px;font-weight:700;color:#8FAEFF;text-transform:uppercase;letter-spacing:.06em">Derme Reticular</p><p style="font-size:12px;line-height:1.4;margin-top:3px">Camada mais profunda da derme. Penetrar aqui causa migração de pigmento e manchas azuladas (borrão).</p></div>
+          <span class="pill bl" style="flex-shrink:0;margin-left:8px">1,5–4mm</span>
+        </div>
+      </div>
+      <div class="skin-layer sl3">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><p style="font-size:11px;font-weight:700;color:#A893FF;text-transform:uppercase;letter-spacing:.06em">Hipoderme</p><p style="font-size:12px;line-height:1.4;margin-top:3px">Tecido adiposo subcutâneo. Nunca deve ser atingida no procedimento.</p></div>
+          <span class="pill pr" style="flex-shrink:0;margin-left:8px">4mm+</span>
+        </div>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="card" style="padding:14px">
+        <p class="tl">Tipos de Pele & Retenção</p>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><p style="font-size:12px">🟡 Oleosa</p><span class="pill yw" style="font-size:10px">Baixa retenção</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><p style="font-size:12px">🔵 Seca</p><span class="pill gr" style="font-size:10px">Alta retenção</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><p style="font-size:12px">🟢 Mista</p><span class="pill bl" style="font-size:10px">Média retenção</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><p style="font-size:12px">🔴 Sensível</p><span class="pill rd" style="font-size:10px">Requer cautela</span></div>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <p class="tl">Cicatrização</p>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <p style="font-size:11px;line-height:1.4">📍 <strong style="color:#F5F7FB">Dias 1–3:</strong> Vermelhidão e inchaço</p>
+          <p style="font-size:11px;line-height:1.4">📍 <strong style="color:#F5F7FB">Dias 4–7:</strong> Descamação normal</p>
+          <p style="font-size:11px;line-height:1.4">📍 <strong style="color:#F5F7FB">Dias 8–14:</strong> Pigmento clareia</p>
+          <p style="font-size:11px;line-height:1.4">📍 <strong style="color:#F5F7FB">Dias 30–40:</strong> Cor real aparece</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2><span class="gt">Biossegurança</span> — A Base de Tudo</h2>
+      <p>Proteger a cliente, o profissional e o ambiente é dever ético e legal</p>
+    </div>
+    <div class="cp au d2" style="margin-bottom:10px;padding:16px">
+      <p class="tl">Definição</p>
+      <p style="font-size:13px;line-height:1.6">Conjunto de <strong style="color:#F5F7FB">ações, medidas e procedimentos</strong> que visam prevenir, minimizar ou eliminar riscos inerentes às atividades que possam comprometer a saúde humana, animal e ambiental.</p>
+    </div>
+    <div class="g1 au d3" style="gap:8px;margin-bottom:10px">
+      <div style="background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12);border-radius:12px;padding:14px">
+        <p class="tl rd" style="margin-bottom:8px">Cadeia de Infecção — Rompa em qualquer elo</p>
+        <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+          <span class="pill rd">🦠 Agente</span>
+          <span style="color:#7E879B;font-size:14px">→</span>
+          <span class="pill rd">🚪 Porta de saída</span>
+          <span style="color:#7E879B;font-size:14px">→</span>
+          <span class="pill rd">💧 Transmissão</span>
+          <span style="color:#7E879B;font-size:14px">→</span>
+          <span class="pill rd">🚪 Porta de entrada</span>
+          <span style="color:#7E879B;font-size:14px">→</span>
+          <span class="pill rd">🧑 Hospedeiro</span>
+        </div>
+      </div>
+    </div>
+    <div class="g2 au d4" style="margin-bottom:10px">
+      <div class="card" style="padding:14px">
+        <p class="tl rd">Riscos Biológicos</p>
+        <div class="chk" style="gap:5px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><p style="font-size:11px">Hepatite B e C (HBV/HCV)</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><p style="font-size:11px">HIV / AIDS</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><p style="font-size:11px">Staphylococcus aureus</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot rd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><p style="font-size:11px">Herpes simples (HSV)</p></div>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <p class="tl gr">Barreiras de Proteção</p>
+        <div class="chk" style="gap:5px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">EPIs completos e corretos</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Agulhas descartáveis (uso único)</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Superfícies com barreira</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Higiene das mãos rigorosa</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="alert au d5">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p><strong>Acidente com perfurocortante?</strong> Lave imediatamente com água e sabão, notifique o responsável, registre em ficha de acidente e busque avaliação médica em até 2 horas para profilaxia de HIV.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>EPIs — Equipamentos de <span class="gt">Proteção Individual</span></h2>
+      <p>Nenhum procedimento começa sem a paramentação completa</p>
+    </div>
+    <div class="g2 au d2" style="margin-bottom:10px">
+      <div class="card" style="padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <div class="ic" style="width:40px;height:40px;border-radius:10px;margin-bottom:0;flex-shrink:0">🧤</div>
+        <div><h3 style="font-size:13px;margin-bottom:4px">Luvas Nitrílicas</h3><p style="font-size:11px;line-height:1.4">Nitrílica (não látex). Trocada a cada atendimento e sempre que houver perfuração. Par novo ao retornar ao ambiente.</p></div>
+      </div>
+      <div class="card" style="padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <div class="ic pr" style="width:40px;height:40px;border-radius:10px;margin-bottom:0;flex-shrink:0">😷</div>
+        <div><h3 style="font-size:13px;margin-bottom:4px">Máscara PFF2/N95</h3><p style="font-size:11px;line-height:1.4">Proteção contra aerossóis e partículas biológicas. Substituir a cada 4h ou quando úmida.</p></div>
+      </div>
+      <div class="card" style="padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <div class="ic yw" style="width:40px;height:40px;border-radius:10px;margin-bottom:0;flex-shrink:0">🥽</div>
+        <div><h3 style="font-size:13px;margin-bottom:4px">Óculos de Proteção</h3><p style="font-size:11px;line-height:1.4">Proteção lateral obrigatória. Higienizados com álcool 70% entre atendimentos.</p></div>
+      </div>
+      <div class="card" style="padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <div class="ic gr" style="width:40px;height:40px;border-radius:10px;margin-bottom:0;flex-shrink:0">🥼</div>
+        <div><h3 style="font-size:13px;margin-bottom:4px">Avental Impermeável</h3><p style="font-size:11px;line-height:1.4">Manga longa, material impermeável. Trocado entre clientes ou quando contaminado.</p></div>
+      </div>
+      <div class="card" style="padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <div class="ic" style="width:40px;height:40px;border-radius:10px;margin-bottom:0;flex-shrink:0">👒</div>
+        <div><h3 style="font-size:13px;margin-bottom:4px">Gorro Descartável</h3><p style="font-size:11px;line-height:1.4">Mantém cabelos afastados do campo de trabalho. Uso único por sessão.</p></div>
+      </div>
+      <div class="card" style="padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <div class="ic rd" style="width:40px;height:40px;border-radius:10px;margin-bottom:0;flex-shrink:0">👟</div>
+        <div><h3 style="font-size:13px;margin-bottom:4px">Calçado Fechado</h3><p style="font-size:11px;line-height:1.4">Proteção contra queda de materiais perfurocortantes. Obrigatório pela NR-32.</p></div>
+      </div>
+    </div>
+    <div class="cp au d3" style="padding:14px 16px">
+      <p class="tl">Ordem de Paramentação (Colocar)</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span class="pill bl">1. Higienizar mãos</span>
+        <span class="pill bl">2. Gorro</span>
+        <span class="pill bl">3. Máscara</span>
+        <span class="pill bl">4. Óculos</span>
+        <span class="pill bl">5. Avental</span>
+        <span class="pill bl">6. Luvas</span>
+      </div>
+      <p class="tl" style="margin-top:10px">Ordem de Desparamentação (Retirar)</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span class="pill rd">1. Luvas</span>
+        <span class="pill rd">2. Avental</span>
+        <span class="pill rd">3. Óculos</span>
+        <span class="pill rd">4. Gorro</span>
+        <span class="pill rd">5. Máscara</span>
+        <span class="pill rd">6. Higienizar mãos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>Materiais e <span class="gt">Equipamentos</span></h2>
+      <p>Conhecer cada ferramenta é dominar o procedimento</p>
+    </div>
+    <div class="g2 au d2" style="margin-bottom:10px">
+      <div class="card" style="padding:14px">
+        <p class="tl">Dermógrafo Digital</p>
+        <div class="chk" style="gap:5px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Velocidade regulável (Hz)</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Menor vibração e trauma</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Controle preciso de profundidade</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Recomendado para iniciantes</p></div>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <p class="tl pr">Dermógrafo Bobina</p>
+        <div class="chk" style="gap:5px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Movimento eletromagnético</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Mais potência para saturação</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Exige mais experiência técnica</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Maior ruído durante uso</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="au d3" style="margin-bottom:10px">
+      <div class="card" style="padding:14px">
+        <p class="tl yw">Tabela de Agulhas</p>
+        <div style="overflow-x:auto">
+          <table class="tbl">
+            <thead><tr><th>Agulha</th><th>Tipo</th><th>Uso Ideal</th></tr></thead>
+            <tbody>
+              <tr><td><span class="pill bl" style="font-size:10px">1RL</span></td><td style="color:#F5F7FB">Round Liner 1 ponta</td><td>Fio a fio, nanoblading</td></tr>
+              <tr><td><span class="pill bl" style="font-size:10px">3RL</span></td><td style="color:#F5F7FB">Round Liner 3 pontas</td><td>Fios com volume</td></tr>
+              <tr><td><span class="pill pr" style="font-size:10px">5RS</span></td><td style="color:#F5F7FB">Round Shader 5</td><td>Sombreamento suave</td></tr>
+              <tr><td><span class="pill pr" style="font-size:10px">7M</span></td><td style="color:#F5F7FB">Magnum 7</td><td>Preenchimento e ombre</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="g2 au d4">
+      <div class="card" style="padding:14px">
+        <p class="tl">Pigmentos</p>
+        <p style="font-size:11px;line-height:1.4;margin-bottom:6px">🟢 <strong style="color:#5EE89A">Orgânicos:</strong> base vegetal, mais suaves, podem dissipar com tom avermelhado</p>
+        <p style="font-size:11px;line-height:1.4">🔵 <strong style="color:#8FAEFF">Inorgânicos:</strong> base mineral (óxido de ferro), maior estabilidade e durabilidade</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <p class="tl rd">Anestésicos Tópicos</p>
+        <p style="font-size:11px;line-height:1.4;margin-bottom:6px">⚠️ Uso pré e trans-procedimento. Bases: lidocaína 4–5%.</p>
+        <p style="font-size:11px;line-height:1.4">❌ Contraindicado: alergia a amidas, gestantes, área com ferida aberta sem avaliação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>Esterilização e <span class="gt">Desinfecção</span></h2>
+      <p>Graus de limpeza — a segurança está nos detalhes</p>
+    </div>
+    <div class="g1 au d2" style="gap:7px;margin-bottom:10px">
+      <div class="sp-row">
+        <div class="sp-badge" style="background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.2);color:#FF6B6B">CRÍTICO</div>
+        <div class="card" style="flex:1;padding:12px 14px;border-radius:12px">
+          <p style="font-size:12px;line-height:1.4"><strong style="color:#F5F7FB">Penetram tecidos estéreis ou vascular.</strong> Agulhas, instrumentos cortantes → <strong style="color:#FF6B6B">ESTERILIZAÇÃO obrigatória.</strong> Idealmente descartáveis de uso único.</p>
+        </div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-badge" style="background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.2);color:#FFD460">SEMI-CRÍTICO</div>
+        <div class="card" style="flex:1;padding:12px 14px;border-radius:12px">
+          <p style="font-size:12px;line-height:1.4"><strong style="color:#F5F7FB">Contato com mucosas íntegras.</strong> Dermógrafo, adaptadores → <strong style="color:#FFD460">DESINFECÇÃO de alto nível</strong> (glutaraldeído 2% ou ácido peracético).</p>
+        </div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-badge" style="background:rgba(94,232,154,.1);border:1px solid rgba(94,232,154,.2);color:#5EE89A">NÃO-CRÍTICO</div>
+        <div class="card" style="flex:1;padding:12px 14px;border-radius:12px">
+          <p style="font-size:12px;line-height:1.4"><strong style="color:#F5F7FB">Contato apenas com pele íntegra.</strong> Maca, carrinho, superfícies → <strong style="color:#5EE89A">DESINFECÇÃO de nível médio/baixo</strong> (álcool 70%, hipoclorito).</p>
+        </div>
+      </div>
+    </div>
+    <div class="g2 au d3" style="margin-bottom:10px">
+      <div class="card" style="padding:14px">
+        <p class="tl">Álcool 70%</p>
+        <p style="font-size:12px;line-height:1.4">Bactericida, fungicida e viricida. Aplicar e aguardar <strong style="color:#F5F7FB">30 segundos</strong> para ação efetiva. Não usar em instrumental cirúrgico crítico.</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <p class="tl yw">Autoclave</p>
+        <p style="font-size:12px;line-height:1.4">Vapor saturado sob pressão <strong style="color:#F5F7FB">121°C / 15min</strong> ou 134°C / 3min. Padrão ouro para materiais reutilizáveis críticos.</p>
+      </div>
+    </div>
+    <div class="alert au d4">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p><strong>Nunca reutilize agulhas.</strong> Agulha usada vai diretamente ao descarpak (coletor de perfurocortantes) sem reencapar com as mãos. Descarpak é descartado quando atingir 2/3 da capacidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>Preparo do Ambiente <span class="gt">e do Cliente</span></h2>
+      <p>Anamnese completa e cabine preparada — sem exceções</p>
+    </div>
+    <div class="g2 au d2" style="margin-bottom:10px">
+      <div class="card" style="padding:14px">
+        <p class="tl">Checklist da Cabine</p>
+        <div class="chk" style="gap:5px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Maca com papel-lençol trocado</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Barreiras plásticas em equipamentos</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Materiais estéreis separados</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Descarpak visível e acessível</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Lixeira com tampa e pedal</p></div>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <p class="tl">Documentação Obrigatória</p>
+        <div class="chk" style="gap:5px">
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Ficha de anamnese completa</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Termo de consentimento assinado</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Fotos antes e depois (autorização)</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Ficha técnica do procedimento</p></div>
+          <div class="chk-item" style="padding:7px 10px"><div class="chk-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:11px">Arquivo por no mínimo 5 anos</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="au d3" style="margin-bottom:8px">
+      <div class="alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <p style="font-weight:700;color:#FF6B6B;font-size:12px;margin-bottom:4px">Contraindicações Absolutas — NÃO realizar:</p>
+          <div style="display:flex;gap:4px;flex-wrap:wrap">
+            <span class="pill rd">🤰 Gestação</span>
+            <span class="pill rd">🍼 Lactação</span>
+            <span class="pill rd">💊 Isotretinoína (aguardar 6m)</span>
+            <span class="pill rd">🩸 Anticoagulantes</span>
+            <span class="pill rd">⚡ Queloides</span>
+            <span class="pill rd">🦠 Herpes ativa</span>
+            <span class="pill rd">🔬 Doenças autoimunes ativas</span>
+            <span class="pill rd">🍺 Álcool/drogas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info au d4">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p><strong style="color:#8FAEFF">Contraindicações relativas</strong> (avaliar com médico): diabetes controlada, tireoidopatias, psoríase, vitiligo, HIV controlado, uso de corticoides.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>Execução — <span class="gt">Passo a Passo Técnico</span></h2>
+      <p>Da higienização ao resultado — cada etapa tem sua importância</p>
+    </div>
+    <div class="g1 au d2" style="gap:7px;margin-bottom:10px">
+      <div class="step"><div class="step-n">01</div><div><p style="font-size:13px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Higienização e Demaquilagem</p><p style="font-size:11px;line-height:1.4">Remover maquiagem com demaquilante oil-free. Limpar com clorexidina degermante 2%. Secar com gaze estéril.</p></div></div>
+      <div class="step"><div class="step-n" style="background:linear-gradient(135deg,#5B3FD6,#4530B3)">02</div><div><p style="font-size:13px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Mapeamento e Design</p><p style="font-size:11px;line-height:1.4">Régua de ouro / compasso para proporção áurea. Marcar início, arco e cauda. Validar com cliente antes de qualquer pigmentação.</p></div></div>
+      <div class="step"><div class="step-n" style="background:linear-gradient(135deg,#C86DD7,#A854BF)">03</div><div><p style="font-size:13px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Aplicação do Anestésico</p><p style="font-size:11px;line-height:1.4">Anestésico tópico pré-procedimento (15–30min). Durante: aplicar anestésico trans após abertura da pele. Respeitar tempo de ação.</p></div></div>
+      <div class="step"><div class="step-n" style="background:linear-gradient(135deg,#2E6BFF,#1E56D9)">04</div><div><p style="font-size:13px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Execução da Técnica</p><p style="font-size:11px;line-height:1.4">Fio a fio (hairstrokes), ombre, misto ou nanoblading. Ângulo de 45°, velocidade constante, pressão leve e uniforme.</p></div></div>
+      <div class="step"><div class="step-n" style="background:linear-gradient(135deg,#5EE89A,#3ABF78)">05</div><div><p style="font-size:13px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Finalização e Orientações</p><p style="font-size:11px;line-height:1.4">Limpeza com solução salina. Aplicar cicatrizante. Fotografar resultado. Entregar folha de cuidados impressa. Agendar retoque (30–45 dias).</p></div></div>
+    </div>
+    <div class="g2 au d3">
+      <div class="alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p><strong>Sangramento excessivo:</strong> compressa estéril com pressão leve. Não inserir mais pigmento. Avaliar uso de anticoagulantes na anamnese.</p>
+      </div>
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p><strong style="color:#5EE89A">Troque as luvas</strong> sempre que tocar em superfícies não estéreis e antes de voltar ao cliente. Higiene das mãos é contínua.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide">
+  <div class="slide-inner scroll-inner">
+    <div class="sh au d1">
+      <div class="gl"></div>
+      <h2>Pós-Procedimento e <span class="gt">Cicatrização</span></h2>
+      <p>O cuidado após o procedimento define a qualidade do resultado final</p>
+    </div>
+    <div class="g2 au d2" style="margin-bottom:10px">
+      <div class="wk" style="border-color:rgba(255,80,80,.2)">
+        <p class="wk-num" style="color:#FF6B6B">⏱ Primeiras 24h</p>
+        <p style="font-size:12px;line-height:1.4">Não molhar. Não tocar com as mãos. Aplicar cicatrizante com haste estéril. Inchaço e vermelhidão são normais.</p>
+      </div>
+      <div class="wk" style="border-color:rgba(255,212,96,.2)">
+        <p class="wk-num" style="color:#FFD460">📅 Dias 2 a 7</p>
+        <p style="font-size:12px;line-height:1.4">Descamação natural — não arrancar. Aplicar cicatrizante 2–3× ao dia. Evitar sol, piscina, sauna e suor intenso.</p>
+      </div>
+      <div class="wk" style="border-color:rgba(46,107,255,.2)">
+        <p class="wk-num" style="color:#2E6BFF">🔵 Dias 8 a 30</p>
+        <p style="font-size:12px;line-height:1.4">Pigmento clareia (normal). A cor real aparece após 30 dias. Usar protetor solar FPS 50 sobre a região.</p>
+      </div>
+      <div class="wk" style="border-color:rgba(94,232,154,.2)">
+        <p class="wk-num" style="color:#5EE89A">✦ Dia 30–45</p>
+        <p style="font-size:12px;line-height:1.4">Retoque de manutenção para corrigir falhas de retenção e ajustar forma e cor. Agendar na saída do cliente.</p>
+      </div>
+    </div>
+    <div class="alert au d3" style="margin-bottom:10px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div><p style="font-weight:700;color:#FF6B6B;font-size:12px;margin-bottom:4px">Sinais de Infecção — Orientar a cliente a buscar atendimento médico:</p><p style="font-size:11px;line-height:1.4">Pus ou secreção com odor · Inchaço progressivo após 72h · Febre · Vermelhidão que se expande além da sobrancelha · Dor intensa e pulsante.</p></div>
+    </div>
+    <div class="cp au d4" style="padding:16px;text-align:center">
+      <div class="gl ce"></div>
+      <h3 style="font-size:clamp(15px,4vw,20px);margin-bottom:8px">Biossegurança não é opcional<br><span class="gt">é a sua maior responsabilidade</span></h3>
+      <p style="font-size:12px;line-height:1.5">Conhecimento técnico + ética profissional = resultados seguros e duradouros. 🛡️</p>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  document.querySelectorAll('.scroll-inner').forEach(el=>el.scrollTop=0);
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd()}
+function next(){if(C<T-1)go(C+1)}
+function prev(){if(C>0)go(C-1)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+  if(e.key==='f'||e.key==='F')toggleFs()
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=ty-e.changedTouches[0].screenY;
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){dx>0?next():prev()}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{})}
+  else{document.exitFullscreen()}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
 
