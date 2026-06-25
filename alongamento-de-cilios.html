@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Curso de Alongamento de Cílios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050816;
+      --card: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.08);
+      --text: #F5F7FB;
+      --muted: #AAB3C5;
+      --pink: #D96BB0;
+      --gold: #D4A843;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 420px at 72% 18%, rgba(217,107,176,.16) 0%, transparent 42%),
+        radial-gradient(800px 380px at 35% 20%, rgba(212,168,67,.12) 0%, transparent 42%),
+        linear-gradient(180deg, #140A18 0%, #0F0810 45%, #050816 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 28px 16px 48px;
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(217,107,176,.10);
+      border: 1px solid rgba(217,107,176,.28);
+      color: #E8A0D0;
+      font-weight: 700;
+      font-size: clamp(11px, 2.5vw, 12px);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      flex-wrap: wrap;
+    }
+
+    /* ── Título e subtítulo ── */
+    h1 {
+      margin: 16px 0 8px;
+      font-size: clamp(22px, 5vw, 44px);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      word-break: break-word;
+      background: linear-gradient(135deg, #E8A0D0 0%, #D4A843 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: clamp(13px, 2.5vw, 15px);
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── Card ── */
+    a.card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 16px;
+      transition: .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a.card:hover,
+    a.card:active {
+      transform: translateY(-2px);
+      border-color: rgba(217,107,176,.40);
+      background: rgba(217,107,176,.06);
+    }
+
+    .card-title {
+      font-weight: 800;
+      font-size: clamp(14px, 3vw, 16px);
+      line-height: 1.4;
+      margin-bottom: 8px;
+      word-break: break-word;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: clamp(12px, 2.4vw, 13px);
+      line-height: 1.6;
+      flex: 1;
+      word-break: break-word;
+    }
+
+    .pill {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 14px;
+      font-size: clamp(11px, 2.2vw, 12px);
+      font-weight: 800;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(217,107,176,.22), rgba(212,168,67,.22));
+      border: 1px solid rgba(212,168,67,.20);
+      white-space: nowrap;
+      color: #E8C97A;
+    }
+
+    /* ── Botão voltar ── */
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: #AAB3C5;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: clamp(12px, 2.5vw, 14px);
+      transition: .25s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-back:hover,
+    .btn-back:active {
+      color: #F5F7FB;
+      border-color: rgba(217,107,176,.35);
+    }
+
+    .btn-back svg { flex-shrink: 0; }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 24px;
+      color: #7E879B;
+      font-size: clamp(11px, 2.2vw, 12px);
+    }
+
+    .footer a { color: #E8A0D0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="badge">👁️ Curso de Cílios</div>
+    <h1>Alongamento de Cílios</h1>
+    <p class="subtitle">Selecione uma aula para abrir.</p>
+
+    <div class="grid">
+
+      <a class="card" href="alongamento-de-cilios/aula-01.html">
+        <div class="card-title">Aula 01 — Introdução e Histórico</div>
+        <p class="card-desc">Origem da técnica, evolução do mercado e perfil profissional.</p>
+        <span class="pill">Abrir aula</span>
+      </a>
+
+      <a class="card" href="alongamento-de-cilios/aula-02.html">
+        <div class="card-title">Aula 02 — Materiais e Biossegurança</div>
+        <p class="card-desc">Tipos de cola, pinças, cílios fio a fio e higienização correta.</p>
+        <span class="pill">Abrir aula</span>
+      </a>
+
+      <a class="card" href="alongamento-de-cilios/aula-03.html">
+        <div class="card-title">Aula 03 — Técnicas de Aplicação</div>
+        <p class="card-desc">Fio a fio, volume russo, mega volume e mapeamento dos olhos.</p>
+        <span class="pill">Abrir aula</span>
+      </a>
+
+      <a class="card" href="alongamento-de-cilios/aula-04.html">
+        <div class="card-title">Aula 04 — Manutenção e Remoção</div>
+        <p class="card-desc">Cuidados pós-aplicação, retoque e remoção segura sem danos.</p>
+        <span class="pill">Abrir aula</span>
+      </a>
+
+    </div>
+
+    <a href="cilios.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+      Voltar ao Pacote Cílios
+    </a>
+
+    <div class="footer">
+      Instituto Semear &mdash; Todos os direitos reservados.
+    </div>
+
+  </div>
+</body>
+</html>
+
