@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>Design de Sobrancelhas — Biossegurança & Mapeamento Facial</title>
+<title>Técnicas 2026 & Mapeamento — Alongamento de Cílios</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -16,23 +16,24 @@ html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-ser
   display:flex;flex-direction:column;align-items:center;
   justify-content:flex-start;position:relative;
   overflow-y:auto;overflow-x:hidden;
-  padding:52px 13px 110px;
+  padding:54px 14px 112px;
   -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
 }
 .slide.vcenter{justify-content:center;}
 .slide::-webkit-scrollbar{width:3px;}
-.slide::-webkit-scrollbar-thumb{background:rgba(180,120,255,.25);border-radius:4px;}
+.slide::-webkit-scrollbar-thumb{background:rgba(200,109,215,.25);border-radius:4px;}
 
 .slide::before{
   content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 800px 400px at 80% 5%, rgba(180,100,255,.13) 0%,transparent 50%),
-    radial-gradient(ellipse 700px 360px at 5% 85%, rgba(100,160,255,.11) 0%,transparent 50%),
-    radial-gradient(ellipse 500px 300px at 50% 50%, rgba(200,130,255,.04) 0%,transparent 60%),
+    radial-gradient(ellipse 850px 400px at 80% 8%, rgba(200,109,215,.13) 0%,transparent 50%),
+    radial-gradient(ellipse 700px 360px at 5% 80%, rgba(94,59,214,.13) 0%,transparent 50%),
+    radial-gradient(ellipse 500px 280px at 50% 50%, rgba(200,109,215,.04) 0%,transparent 60%),
     linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
 }
 .slide::after{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.08;
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.09;
   background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
   background-size:24px 24px;
 }
@@ -45,86 +46,110 @@ h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
 p,li{font-weight:400;line-height:1.65;color:#AAB3C5;}
 strong{color:#F5F7FB;}
 
-/* GRADIENTS */
-.gv{background:linear-gradient(135deg,#B46FFF 0%,#7C3AED 50%,#B46FFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
-.gg{background:linear-gradient(135deg,#5EE89A 0%,#00DCA0 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+/* ── GRADIENTS ── */
+.gp{background:linear-gradient(135deg,#C86DD7 0%,#9B3DB8 50%,#C86DD7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gg{background:linear-gradient(135deg,#FF6FA3 0%,#C86DD7 50%,#FF6FA3 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
 .gb{background:linear-gradient(135deg,#60C3FF 0%,#2E6BFF 50%,#60C3FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
 .go{background:linear-gradient(135deg,#FFD460 0%,#FF8C30 50%,#FFD460 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gt{background:linear-gradient(135deg,#5EE89A 0%,#00DCA0 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
 .gr{background:linear-gradient(135deg,#FF6B6B 0%,#FF3D7F 50%,#FF6B6B 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
-.grose{background:linear-gradient(135deg,#FF9EC4 0%,#FF6FA3 50%,#FF9EC4 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
 @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
 
-/* LINES */
-.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#B46FFF,#7C3AED);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+/* ── LINES ── */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#C86DD7,#9B3DB8);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
 .gl.ce{margin:0 auto 16px;transform-origin:center;}
-.gl.green{background:linear-gradient(90deg,#5EE89A,#00DCA0);}
+.gl.pink{background:linear-gradient(90deg,#FF6FA3,#C86DD7);}
 .gl.blue{background:linear-gradient(90deg,#60C3FF,#2E6BFF);}
 .gl.gold{background:linear-gradient(90deg,#FFD460,#FF8C30);}
+.gl.green{background:linear-gradient(90deg,#5EE89A,#00DCA0);}
 .gl.red{background:linear-gradient(90deg,#FF6B6B,#FF3D7F);}
-.gl.rose{background:linear-gradient(90deg,#FF9EC4,#FF6FA3);}
 @keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-/* BADGE */
-.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 22px;border-radius:999px;margin-bottom:22px;background:rgba(180,111,255,.10);border:1px solid rgba(180,111,255,.32);font-size:12px;font-weight:600;color:#C89EFF;letter-spacing:.06em;text-transform:uppercase;}
+/* ── BADGE ── */
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 22px;border-radius:999px;margin-bottom:22px;background:rgba(200,109,215,.10);border:1px solid rgba(200,109,215,.32);font-size:12px;font-weight:600;color:#C86DD7;letter-spacing:.06em;text-transform:uppercase;}
 
-/* TAGS */
+/* ── TAGS ── */
 .tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.04em;white-space:nowrap;}
-.tv{background:rgba(180,111,255,.15);color:#C89EFF;border:1px solid rgba(180,111,255,.30);}
+.tp{background:rgba(200,109,215,.15);color:#DDA0EE;border:1px solid rgba(200,109,215,.30);}
+.tpk{background:rgba(255,111,163,.15);color:#FF9EC4;border:1px solid rgba(255,111,163,.28);}
 .tb{background:rgba(96,195,255,.15);color:#90D8FF;border:1px solid rgba(96,195,255,.28);}
 .to{background:rgba(255,212,96,.15);color:#FFD460;border:1px solid rgba(255,212,96,.28);}
 .tg{background:rgba(94,232,154,.15);color:#5EE89A;border:1px solid rgba(94,232,154,.28);}
 .tr{background:rgba(255,107,107,.15);color:#FF9090;border:1px solid rgba(255,107,107,.28);}
 .tw{background:rgba(255,255,255,.10);color:#F5F7FB;border:1px solid rgba(255,255,255,.20);}
-.trose{background:rgba(255,111,163,.15);color:#FF9EC4;border:1px solid rgba(255,111,163,.28);}
+.tn2{background:rgba(46,107,255,.15);color:#8FAEFF;border:1px solid rgba(46,107,255,.28);}
 
-/* CARDS */
-.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:15px 14px;backdrop-filter:blur(8px);}
-.cardv{background:linear-gradient(145deg,rgba(180,111,255,.08),rgba(124,58,237,.05));border:1px solid rgba(180,111,255,.22);border-radius:18px;padding:15px 14px;}
-.cardg{background:linear-gradient(145deg,rgba(94,232,154,.07),rgba(0,220,160,.04));border:1px solid rgba(94,232,154,.20);border-radius:18px;padding:15px 14px;}
+/* ── NUM BOXES ── */
+.nb{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;animation:glowN 3s ease-in-out infinite;}
+.na{background:linear-gradient(145deg,#C86DD7,#9B3DB8);}
+.nk{background:linear-gradient(145deg,#FF6FA3,#C84060);animation-delay:.4s;}
+.nc{background:linear-gradient(145deg,#60C3FF,#2E6BFF);animation-delay:.8s;}
+.nd{background:linear-gradient(145deg,#FFD460,#FF8C00);animation-delay:.3s;}
+.ne{background:linear-gradient(145deg,#5EE89A,#27AE60);animation-delay:.6s;}
+.nf{background:linear-gradient(145deg,#FF6B6B,#CC2020);animation-delay:.2s;}
+@keyframes glowN{0%,100%{box-shadow:0 0 14px rgba(200,109,215,.12)}50%{box-shadow:0 0 28px rgba(200,109,215,.35)}}
+
+/* ── CARDS ── */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:15px 14px;backdrop-filter:blur(8px);box-shadow:0 14px 40px rgba(0,0,0,.4);}
+.cardp{background:linear-gradient(145deg,rgba(200,109,215,.08),rgba(94,59,214,.06));border:1px solid rgba(200,109,215,.22);border-radius:18px;padding:15px 14px;}
 .cardb{background:linear-gradient(145deg,rgba(46,107,255,.07),rgba(94,59,214,.05));border:1px solid rgba(46,107,255,.22);border-radius:18px;padding:15px 14px;}
+.cardg{background:linear-gradient(145deg,rgba(94,232,154,.07),rgba(0,220,160,.04));border:1px solid rgba(94,232,154,.20);border-radius:18px;padding:15px 14px;}
 .cardo{background:linear-gradient(145deg,rgba(255,212,96,.07),rgba(255,140,0,.04));border:1px solid rgba(255,212,96,.20);border-radius:18px;padding:15px 14px;}
 .cardr{background:linear-gradient(145deg,rgba(255,107,107,.07),rgba(255,61,127,.04));border:1px solid rgba(255,107,107,.20);border-radius:18px;padding:15px 14px;}
-.cardrose{background:linear-gradient(145deg,rgba(255,111,163,.07),rgba(200,109,215,.04));border:1px solid rgba(255,111,163,.22);border-radius:18px;padding:15px 14px;}
+.cardpk{background:linear-gradient(145deg,rgba(255,111,163,.08),rgba(200,109,215,.05));border:1px solid rgba(255,111,163,.22);border-radius:18px;padding:15px 14px;}
 
-/* ITEMS */
+/* ── FI ITEMS ── */
 .fi{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
-.fiv{background:rgba(180,111,255,.06);border-color:rgba(180,111,255,.18);}
-.fig{background:rgba(94,232,154,.05);border-color:rgba(94,232,154,.18);}
+.fip{background:rgba(200,109,215,.05);border-color:rgba(200,109,215,.18);}
+.fipk{background:rgba(255,111,163,.05);border-color:rgba(255,111,163,.18);}
 .fib{background:rgba(46,107,255,.05);border-color:rgba(46,107,255,.18);}
+.fig{background:rgba(94,232,154,.05);border-color:rgba(94,232,154,.18);}
 .fio{background:rgba(255,212,96,.05);border-color:rgba(255,212,96,.18);}
 .fir{background:rgba(255,107,107,.05);border-color:rgba(255,107,107,.18);}
-.firose{background:rgba(255,111,163,.05);border-color:rgba(255,111,163,.18);}
 
-/* INFO */
+/* ── INFO BOXES ── */
 .info{padding:12px 14px;border-radius:13px;}
-.iv{background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.25);}
-.ig{background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.25);}
+.ip{background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.25);}
+.ipk{background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.25);}
 .ib{background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.25);}
+.ig{background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.25);}
 .io{background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.25);}
 .ir{background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.25);}
-.irose{background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.25);}
 
-/* STEP */
-.sf{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:13px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);}
-.sfn{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
-
-/* CHECK */
-.ck{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:10px;}
+/* ── CK ── */
+.ck{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border-radius:10px;}
 .ckok{background:rgba(94,232,154,.05);border:1px solid rgba(94,232,154,.18);}
 .ckno{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.18);}
-.ckic{width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
-.ckok .ckic{background:rgba(94,232,154,.2);color:#5EE89A;}
-.ckno .ckic{background:rgba(255,80,80,.2);color:#FF6060;}
+.ck-ic{width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.ckok .ck-ic{background:rgba(94,232,154,.2);color:#5EE89A;}
+.ckno .ck-ic{background:rgba(255,80,80,.2);color:#FF6060;}
 
-/* GRIDS */
+/* ── SF STEPS ── */
+.sf-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:13px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);}
+.sf-num{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+
+/* ── GRIDS ── */
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
 
-/* SVG FACE */
-.face-svg{width:100%;max-width:340px;margin:0 auto;display:block;}
+/* ── OLHO SVG ── */
+.eye-wrap{width:100%;max-width:340px;margin:0 auto;}
+.eye-zone{fill:none;stroke-width:1.5;opacity:.7;}
+.ez-center{stroke:#C86DD7;}
+.ez-inner{stroke:#FF6FA3;}
+.ez-mid{stroke:#FFD460;}
+.ez-outer{stroke:#60C3FF;}
+.ez-edge{stroke:#5EE89A;}
+.eye-lash{stroke:#F5F7FB;stroke-width:1;stroke-linecap:round;}
+.eye-label{font-family:'Inter',sans-serif;font-size:9px;fill:#AAB3C5;font-weight:600;}
 
-/* ANIM */
+/* ── TREND CARD ── */
+.trend{border-radius:18px;padding:14px 13px;position:relative;overflow:hidden;}
+.trend::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;opacity:.07;}
+.t-rank{font-size:28px;font-weight:900;line-height:1;margin-bottom:4px;}
+
+/* ── ANIM ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
 @keyframes pulse{0%,100%{opacity:.7}50%{opacity:1}}
@@ -135,32 +160,24 @@ strong{color:#F5F7FB;}
 .d5{animation-delay:.47s!important}.d6{animation-delay:.57s!important}
 .d7{animation-delay:.67s!important}.d8{animation-delay:.77s!important}
 
-/* CHROME */
-.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#B46FFF,#7C3AED,#B46FFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+/* ── CHROME ── */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#C86DD7,#FF6FA3,#9B3DB8,#C86DD7);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
 .fsbtn{position:fixed;top:10px;right:10px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:8px 13px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
-.fsbtn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(180,111,255,.35);}
+.fsbtn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(200,109,215,.35);}
 .fsbtn svg{width:13px;height:13px;}
 .sc{position:fixed;bottom:16px;left:11px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.55);padding:7px 12px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
-.sc .cn{color:#B46FFF;font-weight:900;}
+.sc .cn{color:#C86DD7;font-weight:900;}
 .ind{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.55);padding:7px 13px;border-radius:22px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
 .ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
-.ind .dot.active{background:linear-gradient(90deg,#B46FFF,#7C3AED);box-shadow:0 0 10px rgba(180,111,255,.55);width:26px;border-radius:4px;}
+.ind .dot.active{background:linear-gradient(90deg,#C86DD7,#FF6FA3);box-shadow:0 0 10px rgba(200,109,215,.55);width:26px;border-radius:4px;}
 .navarr{position:fixed;bottom:11px;right:11px;z-index:998;display:flex;gap:7px;}
 .navarr button{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
-.navarr button:hover{background:rgba(180,111,255,.18);border-color:rgba(180,111,255,.4);color:#fff;}
+.navarr button:hover{background:rgba(200,109,215,.18);border-color:rgba(200,109,215,.4);color:#fff;}
 .navarr button svg{width:17px;height:17px;}
 
-/* FACE DIAGRAM */
-.face-wrap{position:relative;width:100%;max-width:320px;margin:0 auto;}
-.face-wrap svg{width:100%;height:auto;}
-.dot-label{display:flex;align-items:center;gap:6px;margin-bottom:4px;}
-.dot-circle{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-
-/* PROPORTION TABLE */
-.prop-row{display:flex;align-items:center;gap:8px;padding:8px 11px;border-radius:11px;margin-bottom:5px;}
-
+/* ── MOBILE ── */
 @media(max-width:680px){
-  .slide{padding:44px 11px 106px;}
+  .slide{padding:46px 11px 108px;}
   .g2{grid-template-columns:1fr;}
   .g3{grid-template-columns:repeat(2,1fr);}
   .g4{grid-template-columns:repeat(2,1fr);}
@@ -185,1078 +202,1040 @@ strong{color:#F5F7FB;}
 <div class="presentation">
 <div class="slides" id="sw">
 
-<!-- ══════════════════════ SLIDE 1 — CAPA ══════════════════════ -->
+<!-- ══════════════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════════════ -->
 <section class="slide vcenter active">
-<div style="width:100%;max-width:920px;text-align:center;">
+  <div style="width:100%;max-width:880px;text-align:center;">
 
-  <div class="badge au d1">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    Curso Profissional · Módulo Design & Biossegurança
-  </div>
-
-  <h1 class="au d2" style="font-size:clamp(26px,7vw,82px);margin-bottom:14px;">
-    Design de<br/><span class="gv">Sobrancelhas</span>
-  </h1>
-
-  <div class="gl ce au d3"></div>
-
-  <p class="au d4" style="font-size:clamp(12px,2.2vw,17px);color:#AAB3C5;max-width:660px;margin:0 auto 28px;line-height:1.65;">
-    Biossegurança rigorosa, mapeamento facial preciso e domínio das técnicas de desenho que transformam rostos e constroem carreiras de alto padrão.
-  </p>
-
-  <div class="g4 au d5" style="max-width:840px;margin:0 auto 24px;">
-    <div style="padding:15px 10px;border-radius:18px;background:rgba(180,111,255,.09);border:1px solid rgba(180,111,255,.28);text-align:center;">
-      <div style="font-size:24px;margin-bottom:7px;">🛡️</div>
-      <p style="font-size:11px;font-weight:700;color:#C89EFF;">Biossegurança</p>
-      <p style="font-size:9px;color:#7E879B;margin-top:3px;">Protocolos & EPIs</p>
-    </div>
-    <div style="padding:15px 10px;border-radius:18px;background:rgba(96,195,255,.09);border:1px solid rgba(96,195,255,.25);text-align:center;">
-      <div style="font-size:24px;margin-bottom:7px;">📐</div>
-      <p style="font-size:11px;font-weight:700;color:#90D8FF;">Mapeamento</p>
-      <p style="font-size:9px;color:#7E879B;margin-top:3px;">Proporção áurea & zonas</p>
-    </div>
-    <div style="padding:15px 10px;border-radius:18px;background:rgba(94,232,154,.09);border:1px solid rgba(94,232,154,.25);text-align:center;">
-      <div style="font-size:24px;margin-bottom:7px;">✏️</div>
-      <p style="font-size:11px;font-weight:700;color:#5EE89A;">Desenho</p>
-      <p style="font-size:9px;color:#7E879B;margin-top:3px;">Formatos & adaptações</p>
-    </div>
-    <div style="padding:15px 10px;border-radius:18px;background:rgba(255,212,96,.09);border:1px solid rgba(255,212,96,.25);text-align:center;">
-      <div style="font-size:24px;margin-bottom:7px;">💎</div>
-      <p style="font-size:11px;font-weight:700;color:#FFD460;">Técnicas</p>
-      <p style="font-size:9px;color:#7E879B;margin-top:3px;">Henna, Design & Aplicação</p>
-    </div>
-  </div>
-
-  <p class="au d6" style="font-size:11px;color:#7E879B;">10 slides · Deslize ou use as setas para navegar</p>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 2 — BIOSSEGURANÇA: FUNDAMENTOS ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">Biossegurança — <span class="gv">Por que é Inegociável</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">Biossegurança não é burocracia — é a estrutura que protege a cliente, a profissional e o negócio. Uma falha de protocolo pode resultar em infecção grave, processo judicial e danos irreversíveis à reputação construída ao longo de anos.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <div class="cardv">
-        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:9px;">⚖️ Base Legal e Normativa</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">📋</span><p style="font-size:11px;"><strong>RDC ANVISA 15/2012:</strong> regulamenta o processamento de produtos para saúde — inclui instrumentos usados em estética</p></div>
-          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">📋</span><p style="font-size:11px;"><strong>RDC ANVISA 36/2013:</strong> ações de segurança e prevenção de danos em serviços de saúde e estética</p></div>
-          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">📋</span><p style="font-size:11px;"><strong>NR-32 (MTE):</strong> segurança e saúde no trabalho em serviços de saúde — referência para risco biológico em estética</p></div>
-          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">📋</span><p style="font-size:11px;"><strong>Código de Defesa do Consumidor:</strong> artigo 14 — responsabilidade objetiva do fornecedor de serviços por danos causados</p></div>
-          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">📋</span><p style="font-size:11px;"><strong>Vigilância Sanitária Municipal:</strong> alvará específico para estabelecimentos que realizam procedimentos estéticos invasivos ou semipermanentes</p></div>
-        </div>
-      </div>
-
-      <div class="cardr">
-        <h3 style="font-size:13px;color:#FF9090;margin-bottom:9px;">☣️ Riscos Biológicos no Design de Sobrancelhas</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div class="fi fir"><span style="font-size:13px;flex-shrink:0;">🦠</span><p style="font-size:11px;"><strong>Infecções bacterianas:</strong> Staphylococcus aureus e Streptococcus — pele periocular é área de risco elevado por proximidade à mucosa</p></div>
-          <div class="fi fir"><span style="font-size:13px;flex-shrink:0;">🦠</span><p style="font-size:11px;"><strong>Impetigo de contato:</strong> transmissão por instrumentos contaminados sem esterilização adequada entre clientes</p></div>
-          <div class="fi fir"><span style="font-size:13px;flex-shrink:0;">🦠</span><p style="font-size:11px;"><strong>Conjuntivite infecciosa:</strong> migração de microrganismos da região periocular para a conjuntiva durante o procedimento</p></div>
-          <div class="fi fir"><span style="font-size:13px;flex-shrink:0;">🦠</span><p style="font-size:11px;"><strong>Reações alérgicas graves:</strong> henna química, tinturas e removedores — alguns clientes desenvolvem reações sistêmicas</p></div>
-          <div class="fi fir"><span style="font-size:13px;flex-shrink:0;">🦠</span><p style="font-size:11px;"><strong>Dermatite de contato:</strong> por produtos químicos sem patch test prévio — pode evoluir para lesões extensas e cicatrizes</p></div>
-        </div>
-      </div>
-
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Curso Prático · Módulo Técnicas & Mapeamento 2026
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <div class="cardg">
-        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">🧹 Os 4 Pilares da Biossegurança</h3>
-        <div style="display:flex;flex-direction:column;gap:6px;">
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">1</div>
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Higienização das mãos</p>
-            </div>
-            <p style="font-size:11px;">Lavagem com água e sabão por 20 seg + álcool 70% antes e após cada cliente. Barreira primária contra transmissão cruzada.</p>
-          </div>
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#60C3FF,#2E6BFF);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">2</div>
-              <p style="font-size:12px;font-weight:700;color:#90D8FF;">EPI completo</p>
-            </div>
-            <p style="font-size:11px;">Luvas descartáveis nitrílicas, máscara cirúrgica/PFF2, óculos de proteção (procedimentos com risco de respingo) e avental.</p>
-          </div>
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#5EE89A,#27AE60);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">3</div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;">Esterilização e descarte</p>
-            </div>
-            <p style="font-size:11px;">Instrumentos reutilizáveis em autoclave. Pinças, espátulas e materiais de contato — esterilização entre cada cliente sem exceção.</p>
-          </div>
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#FFD460,#FF8C00);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">4</div>
-              <p style="font-size:12px;font-weight:700;color:#FFD460;">Gestão de resíduos</p>
-            </div>
-            <p style="font-size:11px;">Descarte correto em lixo infectante (vermelho/branco) para materiais com potencial biológico. Separação de resíduos químicos.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="info iv">
-        <p style="font-size:12px;color:#C89EFF;font-weight:700;margin-bottom:5px;">⚡ Biossegurança como Diferencial Competitivo</p>
-        <p style="font-size:11px;">Profissionais que divulgam seus protocolos de biossegurança nas redes sociais e no espaço físico constroem uma percepção de <strong>alto padrão técnico</strong> que justifica preços premium e atrai clientes mais exigentes — exatamente o público que mais fideliza.</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 3 — EPIs, AMBIENTE E ANAMNESE ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">EPIs, Ambiente & <span class="gv">Anamnese Completa</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">O espaço de trabalho, os equipamentos de proteção e o mapeamento de histórico da cliente formam o tripé que sustenta todo procedimento seguro. Negligenciar qualquer um desses elementos cria riscos reais e responsabilidade legal.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <!-- EPIs -->
-      <div class="cardv">
-        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:10px;">🧤 EPIs Obrigatórios — Design de Sobrancelhas</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.08);border:1px solid rgba(180,111,255,.20);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">🧤 Luvas Nitrílicas</p>
-              <span class="tag tv">obrigatório</span>
-            </div>
-            <p style="font-size:11px;">Nitrílica (não látex — risco de alergia). Trocar a cada cliente, nunca reutilizar. Trocar também se houver perfuração durante o serviço.</p>
-          </div>
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.18);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">😷 Máscara PFF2 ou Cirúrgica</p>
-              <span class="tag tv">obrigatório</span>
-            </div>
-            <p style="font-size:11px;">Protege contra vapores de produtos químicos (removedores, tinturas) e gotículas. Trocar a cada 2h de uso contínuo.</p>
-          </div>
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.16);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">👓 Óculos de Proteção</p>
-              <span class="tag tw">recomendado</span>
-            </div>
-            <p style="font-size:11px;">Especialmente em procedimentos com tintura ou henna com aplicador spray. Risco de respingo na mucosa ocular.</p>
-          </div>
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.06);border:1px solid rgba(180,111,255,.14);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">🥼 Avental Descartável ou Jaleco</p>
-              <span class="tag tv">obrigatório</span>
-            </div>
-            <p style="font-size:11px;">Barreira física contra respingos de tintura e contato direto de pele. Jaleco lavável com troca diária ou avental descartável por cliente.</p>
-          </div>
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.05);border:1px solid rgba(180,111,255,.12);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">💇 Touca ou Presilha</p>
-              <span class="tag tw">boas práticas</span>
-            </div>
-            <p style="font-size:11px;">Manter o cabelo preso e longe da área de trabalho — previne queda de fios sobre o rosto da cliente e contaminação.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ESTERILIZAÇÃO -->
-      <div class="cardg">
-        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">🧫 Esterilização de Instrumentos</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div class="fi fig">
-            <div style="flex-shrink:0;"><span style="font-size:13px;">🔬</span></div>
-            <div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Autoclave (método ouro)</p>
-              <p style="font-size:11px;">134°C por 18 minutos ou 121°C por 30 minutos. Único método que garante eliminação de esporos. Obrigatório para pinças metálicas reutilizáveis.</p>
-            </div>
-          </div>
-          <div class="fi fig">
-            <div style="flex-shrink:0;"><span style="font-size:13px;">🧴</span></div>
-            <div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Desinfecção de Alto Nível</p>
-              <p style="font-size:11px;">Glutaraldeído 2% por 20–30 min para materiais que não suportam calor. Seguido de enxágue com água estéril antes do uso.</p>
-            </div>
-          </div>
-          <div class="fi fig">
-            <div style="flex-shrink:0;"><span style="font-size:13px;">♻️</span></div>
-            <div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Materiais de Uso Único</p>
-              <p style="font-size:11px;">Navalha, espátula descartável, aplicadores de tintura, pincéis descartáveis — abrir na frente da cliente para demonstrar segurança.</p>
-            </div>
-          </div>
-          <div class="fi fig">
-            <div style="flex-shrink:0;"><span style="font-size:13px;">🗓️</span></div>
-            <div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Controle de Validade</p>
-              <p style="font-size:11px;">Embalagens de autoclave têm validade de 6 meses se mantidas lacradas e secas. Verificar integridade antes de cada uso.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <!-- AMBIENTE -->
-      <div class="cardb">
-        <h3 style="font-size:13px;color:#90D8FF;margin-bottom:9px;">🏠 Ambiente de Trabalho Seguro</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Superfícies laváveis:</strong> bancada e maca revestidas com material impermeável — fáceis de desinfetar com álcool 70% entre cada cliente</p></div>
-          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Iluminação adequada:</strong> luz LED fria de pelo menos 1000 lux na área de trabalho — essencial para mapeamento preciso e visibilidade do fio</p></div>
-          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Ventilação:</strong> ambiente ventilado com renovação de ar — reduz concentração de vapores de tintura, henna e removedores</p></div>
-          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Separação de áreas:</strong> área de atendimento separada de área de armazenamento de produtos — evita contaminação cruzada</p></div>
-          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Limpeza terminal:</strong> ao final do dia — piso, bancada, cadeira e acessórios com produto bactericida homologado</p></div>
-          <div class="ck ckno" style="margin-top:4px;"><div class="ckic">✗</div><p style="font-size:11px;">Nunca guardar produtos vencidos — verificar lotes mensalmente e descartar em descarte químico adequado</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Nunca usar o mesmo aplicador (pincel, espátula) em duas clientes sem esterilização — mesmo que "pareça limpo"</p></div>
-        </div>
-      </div>
-
-      <!-- ANAMNESE -->
-      <div class="cardo">
-        <h3 style="font-size:13px;color:#FFD460;margin-bottom:9px;">📋 Anamnese Obrigatória — O que Perguntar</h3>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">❓</span><p style="font-size:11px;"><strong>Histórico de alergias:</strong> especialmente a tintura capilar, henna, amônia, resorcinol — componentes comuns em tinturas de sobrancelhas</p></div>
-          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">❓</span><p style="font-size:11px;"><strong>Medicamentos em uso:</strong> Accutane/isotretinoína, anticoagulantes, corticoides tópicos — afetam a pele e contraindicam procedimentos</p></div>
-          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">❓</span><p style="font-size:11px;"><strong>Doenças de pele:</strong> psoríase, rosácea, dermatite seborreica, lúpus — contraindicam ou exigem adaptação do protocolo</p></div>
-          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">❓</span><p style="font-size:11px;"><strong>Procedimentos recentes:</strong> peeling, microagulhamento, botox — pele ainda em recuperação pode reagir adversamente</p></div>
-          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">❓</span><p style="font-size:11px;"><strong>Gestação ou amamentação:</strong> alguns produtos contraindicados — adaptar protocolo e obter consentimento específico</p></div>
-          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">❓</span><p style="font-size:11px;"><strong>Procedimentos anteriores:</strong> micropigmentação, design anterior — informam sobre a estrutura atual da sobrancelha e possíveis limitações</p></div>
-        </div>
-      </div>
-
-      <div class="info iv">
-        <p style="font-size:12px;color:#C89EFF;font-weight:700;margin-bottom:4px;">📄 Termo de Consentimento</p>
-        <p style="font-size:11px;">Sempre coletar assinatura do <strong>Termo de Consentimento Informado</strong> — documento que descreve o procedimento, riscos, cuidados pós e contraindicações. Protege juridicamente a profissional e demonstra comprometimento técnico à cliente.</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 4 — PATCH TEST E CONTRAINDICAÇÕES ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl red au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">Patch Test & <span class="gr">Contraindicações</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">O patch test é o procedimento mais subestimado e mais protetor da prática de design de sobrancelhas. Ignorá-lo é um risco clínico real e uma exposição legal desnecessária — especialmente em procedimentos com tintura e henna.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <div class="cardo">
-        <h3 style="font-size:13px;color:#FFD460;margin-bottom:9px;">🧪 Protocolo de Patch Test Correto</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div class="sf"><div class="sfn" style="background:#B8860B;">1</div><p style="font-size:11px;"><strong>Quando fazer:</strong> 48–72 horas antes do procedimento com tintura, henna vegetal ou henna química. Nunca no mesmo dia — não há tempo suficiente para identificar reação tardia</p></div>
-          <div class="sf"><div class="sfn" style="background:#B8860B;">2</div><p style="font-size:11px;"><strong>Onde aplicar:</strong> atrás da orelha ou na parte interna do cotovelo — áreas de pele fina e sensível que replicam a reação da região frontal</p></div>
-          <div class="sf"><div class="sfn" style="background:#B8860B;">3</div><p style="font-size:11px;"><strong>Quantidade:</strong> uma pequeníssima quantidade do produto misturado (proporção exata da aplicação real) — algumas gotas são suficientes</p></div>
-          <div class="sf"><div class="sfn" style="background:#B8860B;">4</div><p style="font-size:11px;"><strong>Avaliação:</strong> orientar a cliente a NÃO lavar o local por 48h e a monitorar: vermelhidão, coceira, inchaço, bolhas = reação positiva</p></div>
-          <div class="sf"><div class="sfn" style="background:#B8860B;">5</div><p style="font-size:11px;"><strong>Resultado positivo:</strong> NÃO realizar o procedimento. Encaminhar ao dermatologista. Oferecer alternativas sem o agente alergênico</p></div>
-          <div class="sf"><div class="sfn" style="background:#B8860B;">6</div><p style="font-size:11px;"><strong>Documentar:</strong> registrar o resultado do patch test na ficha de anamnese com data e assinatura da cliente — parte do processo de consentimento</p></div>
-        </div>
-      </div>
-
-      <div class="info io">
-        <p style="font-size:12px;color:#FFD460;font-weight:700;margin-bottom:4px;">⚠️ Patch test não garante 100% de segurança</p>
-        <p style="font-size:11px;">Sensibilizações podem ocorrer mesmo após múltiplas aplicações sem reação prévia (sensibilização cumulativa). Sempre manter linha de comunicação aberta com a cliente para reporte de qualquer sintoma nas horas e dias após o procedimento.</p>
-      </div>
-
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <div class="cardr">
-        <h3 style="font-size:13px;color:#FF9090;margin-bottom:9px;">🚫 Contraindicações Absolutas</h3>
-        <p style="font-size:11px;margin-bottom:8px;">Nestas condições, <strong>não realizar o procedimento</strong> independente da pressão da cliente:</p>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Reação positiva no patch test</strong> — risco de anafilaxia e lesões graves na área periocular</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Feridas abertas, herpes labial ativo ou lesões na área frontal</strong> — risco de disseminação e infecção cruzada</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Uso de Accutane (isotretinoína)</strong> nos últimos 6 meses — pele extremamente sensível, risco de cicatrizes e reações adversas</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Quimioterapia ou radioterapia em curso</strong> — sistema imune comprometido, pele hipersensível, risco de infecção</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Diabetes descompensada</strong> — cicatrização comprometida e risco elevado de infecção em qualquer procedimento estético</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Doença autoimune ativa</strong> na região (lúpus, psoríase em surto) — procedimento pode exacerbar o quadro</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Gestação (1º trimestre)</strong> para procedimentos com tintura oxidante — componentes químicos podem ter absorção sistêmica</p></div>
-        </div>
-      </div>
-
-      <div class="cardv">
-        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:9px;">⚡ Contraindicações Relativas — Adaptar</h3>
-        <p style="font-size:11px;margin-bottom:7px;">Nestas situações, adaptar o protocolo e obter consentimento específico:</p>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div class="ck ckok"><div class="ckic">!</div><p style="font-size:11px;"><strong>Pele oleosa ou com acne ativa leve</strong> — usar produtos não comedogênicos e adaptar fixador. Evitar área de lesões</p></div>
-          <div class="ck ckok"><div class="ckic">!</div><p style="font-size:11px;"><strong>Pele fina (idosas ou uso prolongado de corticoide)</strong> — cuidado extremo na remoção de fios, risco de microlesões</p></div>
-          <div class="ck ckok"><div class="ckic">!</div><p style="font-size:11px;"><strong>Gestação (2º e 3º trimestre)</strong> — evitar tinturas oxidantes, usar henna vegetal pura ou design sem coloração</p></div>
-          <div class="ck ckok"><div class="ckic">!</div><p style="font-size:11px;"><strong>Peeling químico recente (< 15 dias)</strong> — aguardar recuperação completa da barreira cutânea antes do design</p></div>
-          <div class="ck ckok"><div class="ckic">!</div><p style="font-size:11px;"><strong>Micropigmentação recente (< 30 dias)</strong> — design possível mas com cuidado especial para não remover crostas ou pigmentos</p></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 5 — ANATOMIA DA SOBRANCELHA ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl blue au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">Anatomia da <span class="gb">Sobrancelha Perfeita</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">Antes de mapear, é preciso entender a estrutura da sobrancelha — suas partes, o comportamento dos fios em cada região e como cada zona contribui para o resultado estético final.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <!-- SVG ANATOMIA -->
-      <div class="cardb" style="padding:16px;">
-        <h3 style="font-size:13px;color:#90D8FF;margin-bottom:12px;text-align:center;">Estrutura Anatômica da Sobrancelha</h3>
-        <svg viewBox="0 0 400 160" style="width:100%;max-width:400px;display:block;margin:0 auto 12px;" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background -->
-          <rect width="400" height="160" fill="rgba(10,15,36,0)" rx="12"/>
-          <!-- Eyebrow shape -->
-          <path d="M 40 100 C 60 75, 100 60, 160 65 C 200 68, 240 72, 280 85 C 310 94, 340 98, 360 95" stroke="#B46FFF" stroke-width="18" fill="none" stroke-linecap="round" opacity=".18"/>
-          <path d="M 40 100 C 60 75, 100 60, 160 65 C 200 68, 240 72, 280 85 C 310 94, 340 98, 360 95" stroke="url(#browGrad)" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- Hairs simulation -->
-          <g opacity=".4" stroke="#C89EFF" stroke-width="1.2">
-            <line x1="55" y1="105" x2="60" y2="90"/><line x1="65" y1="100" x2="70" y2="85"/>
-            <line x1="75" y1="94" x2="80" y2="79"/><line x1="85" y1="89" x2="90" y2="74"/>
-            <line x1="95" y1="83" x2="100" y2="68"/><line x1="108" y1="78" x2="112" y2="63"/>
-            <line x1="120" y1="74" x2="124" y2="60"/><line x1="133" y1="71" x2="137" y2="57"/>
-            <line x1="146" y1="70" x2="149" y2="57"/><line x1="160" y1="70" x2="162" y2="57"/>
-            <line x1="173" y1="71" x2="175" y2="59"/><line x1="186" y1="73" x2="188" y2="61"/>
-            <line x1="199" y1="75" x2="201" y2="64"/><line x1="212" y1="77" x2="214" y2="66"/>
-            <line x1="225" y1="79" x2="227" y2="69"/><line x1="238" y1="81" x2="240" y2="72"/>
-            <line x1="251" y1="83" x2="253" y2="74"/><line x1="264" y1="85" x2="266" y2="77"/>
-            <line x1="278" y1="87" x2="279" y2="79"/><line x1="292" y1="89" x2="293" y2="82"/>
-            <line x1="306" y1="91" x2="306" y2="84"/><line x1="320" y1="92" x2="320" y2="86"/>
-            <line x1="334" y1="93" x2="333" y2="87"/><line x1="348" y1="94" x2="346" y2="88"/>
-          </g>
-          <!-- Labels -->
-          <!-- Cabeça -->
-          <circle cx="50" cy="100" r="5" fill="#5EE89A" opacity=".9"/>
-          <line x1="50" y1="95" x2="50" y2="40" stroke="#5EE89A" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
-          <text x="50" y="35" fill="#5EE89A" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">CABEÇA</text>
-          <!-- Corpo -->
-          <circle cx="175" cy="71" r="5" fill="#60C3FF" opacity=".9"/>
-          <line x1="175" y1="66" x2="175" y2="25" stroke="#60C3FF" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
-          <text x="175" y="20" fill="#60C3FF" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">CORPO</text>
-          <!-- Arco -->
-          <circle cx="220" cy="76" r="5" fill="#FFD460" opacity=".9"/>
-          <line x1="220" y1="71" x2="240" y2="30" stroke="#FFD460" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
-          <text x="255" y="25" fill="#FFD460" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">ARCO</text>
-          <!-- Cauda -->
-          <circle cx="345" cy="93" r="5" fill="#FF9090" opacity=".9"/>
-          <line x1="345" y1="88" x2="360" y2="40" stroke="#FF9090" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
-          <text x="370" y="35" fill="#FF9090" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">CAUDA</text>
-          <!-- Pico -->
-          <circle cx="260" cy="84" r="4" fill="#C89EFF" opacity=".9"/>
-          <line x1="260" y1="80" x2="310" y2="48" stroke="#C89EFF" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
-          <text x="320" y="45" fill="#C89EFF" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">PICO</text>
-          <!-- Gradient def -->
-          <defs>
-            <linearGradient id="browGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#5EE89A"/>
-              <stop offset="35%" stop-color="#60C3FF"/>
-              <stop offset="65%" stop-color="#FFD460"/>
-              <stop offset="100%" stop-color="#FF9090"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <!-- Legenda -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
-          <div style="padding:7px 9px;border-radius:9px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.20);">
-            <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:2px;">Cabeça</p>
-            <p style="font-size:10px;">Início — mais próxima do nariz. Fios verticais e mais finos. Define o início do percurso.</p>
-          </div>
-          <div style="padding:7px 9px;border-radius:9px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.20);">
-            <p style="font-size:11px;font-weight:700;color:#90D8FF;margin-bottom:2px;">Corpo</p>
-            <p style="font-size:10px;">Porção central — fios mais densos e espessos. Define a espessura da sobrancelha.</p>
-          </div>
-          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.20);">
-            <p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:2px;">Arco / Pico</p>
-            <p style="font-size:10px;">Ponto mais alto — determina a expressão do olhar. Posição define o "caráter" estético.</p>
-          </div>
-          <div style="padding:7px 9px;border-radius:9px;background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.20);">
-            <p style="font-size:11px;font-weight:700;color:#FF9090;margin-bottom:2px;">Cauda</p>
-            <p style="font-size:10px;">Final — fios finos que afinam. Deve terminar no alinhamento correto para harmonizar o rosto.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <!-- DIREÇÃO DOS FIOS -->
-      <div class="cardv">
-        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:9px;">📐 Direção Natural dos Fios por Região</h3>
-        <p style="font-size:11px;margin-bottom:9px;">Trabalhar com a direção natural dos fios garante resultado mais realista e preserva a integridade do folículo durante remoções.</p>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="padding:9px 11px;border-radius:11px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.18);">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div style="padding:3px 8px;border-radius:6px;background:rgba(94,232,154,.2);font-size:10px;font-weight:800;color:#5EE89A;flex-shrink:0;">CABEÇA</div>
-              <p style="font-size:11px;">Fios crescem para <strong>cima</strong> em ângulo de 75–85°. Remoção: sempre de cima para baixo para evitar foliculite.</p>
-            </div>
-          </div>
-          <div style="padding:9px 11px;border-radius:11px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.18);">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div style="padding:3px 8px;border-radius:6px;background:rgba(96,195,255,.2);font-size:10px;font-weight:800;color:#90D8FF;flex-shrink:0;">CORPO</div>
-              <p style="font-size:11px;">Fios crescem em ângulo <strong>ascendente oblíquo</strong> de 45–60°. Corpo principal com maior densidade.</p>
-            </div>
-          </div>
-          <div style="padding:9px 11px;border-radius:11px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div style="padding:3px 8px;border-radius:6px;background:rgba(255,212,96,.2);font-size:10px;font-weight:800;color:#FFD460;flex-shrink:0;">ARCO</div>
-              <p style="font-size:11px;">Fios começam a inclinar para <strong>horizontal</strong>. Transição gradual — cuidado para não criar um "degrau" visual.</p>
-            </div>
-          </div>
-          <div style="padding:9px 11px;border-radius:11px;background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.18);">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div style="padding:3px 8px;border-radius:6px;background:rgba(255,107,107,.2);font-size:10px;font-weight:800;color:#FF9090;flex-shrink:0;">CAUDA</div>
-              <p style="font-size:11px;">Fios crescem quase <strong>horizontalmente</strong> em direção ao canto externo do olho — fios mais finos e espaçados.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CLASSIFICAÇÃO DOS FIOS -->
-      <div class="cardg">
-        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">🔬 Tipos de Fio e Comportamento</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">〰️</span><p style="font-size:11px;"><strong>Fios lisos e alinhados:</strong> mais fáceis de trabalhar — respondem bem ao design. Resultado mais previsível e preciso</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">〜</span><p style="font-size:11px;"><strong>Fios ondulados:</strong> requerem escovação prévia e fixador de fios para mapeamento preciso — podem parecer mais curtos que são</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">🔁</span><p style="font-size:11px;"><strong>Fios rebeldes:</strong> crescimento em múltiplas direções — exigem mais tempo de mapeamento e possível uso de gel fixador stronger</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">🌫️</span><p style="font-size:11px;"><strong>Fios esparsos / falhos:</strong> áreas com baixa densidade — mapeamento deve disfarçar a falha com técnica de preenchimento e henna estratégica</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">🌀</span><p style="font-size:11px;"><strong>Fios com cicatriz por superdepilação:</strong> folículo danificado — orientar a cliente sobre limitações do crescimento e alternativas como micropigmentação</p></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 6 — MAPEAMENTO: PROPORÇÃO ÁUREA E PONTOS FIXOS ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl blue au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">Mapeamento — <span class="gb">Proporção Áurea & Pontos Fixos</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">O mapeamento é a fundação científica do design de sobrancelhas. Sem ele, o resultado depende da intuição — com ele, depende de matemática e anatomia. É o que separa o profissional do artista técnico.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <!-- DIAGRAMA MAPEAMENTO -->
-      <div class="cardb" style="padding:16px;">
-        <h3 style="font-size:13px;color:#90D8FF;margin-bottom:12px;text-align:center;">Os 3 Pontos Fixos do Mapeamento</h3>
-        <svg viewBox="0 0 380 200" style="width:100%;max-width:380px;display:block;margin:0 auto 12px;" xmlns="http://www.w3.org/2000/svg">
-          <!-- Face oval outline -->
-          <ellipse cx="190" cy="105" rx="130" ry="95" fill="rgba(180,111,255,.05)" stroke="rgba(180,111,255,.25)" stroke-width="1"/>
-          <!-- Nose base line -->
-          <line x1="160" y1="145" x2="220" y2="145" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-          <!-- Nose base circles -->
-          <circle cx="165" cy="145" r="5" fill="rgba(255,212,96,.6)" stroke="#FFD460" stroke-width="1.5"/>
-          <circle cx="215" cy="145" r="5" fill="rgba(255,212,96,.6)" stroke="#FFD460" stroke-width="1.5"/>
-          <text x="190" y="158" fill="#FFD460" font-size="8" text-anchor="middle" font-family="Inter,sans-serif">BASE DO NARIZ</text>
-
-          <!-- Eye left outline -->
-          <ellipse cx="140" cy="105" rx="30" ry="12" fill="rgba(96,195,255,.08)" stroke="rgba(96,195,255,.35)" stroke-width="1.5"/>
-          <!-- Eye right outline -->
-          <ellipse cx="240" cy="105" rx="30" ry="12" fill="rgba(96,195,255,.08)" stroke="rgba(96,195,255,.35)" stroke-width="1.5"/>
-
-          <!-- LEFT BROW -->
-          <!-- Início (P1) -->
-          <circle cx="110" cy="83" r="6" fill="#5EE89A" opacity=".9"/>
-          <text x="90" y="74" fill="#5EE89A" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">P1</text>
-          <!-- Pico (P2) -->
-          <circle cx="148" cy="68" r="6" fill="#FFD460" opacity=".9"/>
-          <text x="148" y="58" fill="#FFD460" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">P2</text>
-          <!-- Cauda (P3) -->
-          <circle cx="172" cy="80" r="6" fill="#FF9090" opacity=".9"/>
-          <text x="183" y="74" fill="#FF9090" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">P3</text>
-          <!-- Brow left arc -->
-          <path d="M 110 83 Q 140 62, 172 80" stroke="url(#browL)" stroke-width="4" fill="none" stroke-linecap="round"/>
-
-          <!-- RIGHT BROW -->
-          <circle cx="208" cy="83" r="6" fill="#5EE89A" opacity=".9"/>
-          <text x="196" y="74" fill="#5EE89A" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">P1</text>
-          <circle cx="232" cy="68" r="6" fill="#FFD460" opacity=".9"/>
-          <text x="232" y="58" fill="#FFD460" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">P2</text>
-          <circle cx="270" cy="80" r="6" fill="#FF9090" opacity=".9"/>
-          <text x="282" y="74" fill="#FF9090" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">P3</text>
-          <path d="M 208 83 Q 242 62, 270 80" stroke="url(#browR)" stroke-width="4" fill="none" stroke-linecap="round"/>
-
-          <!-- Guide lines from nose -->
-          <!-- P1 line (vertical from nose) -->
-          <line x1="165" y1="145" x2="110" y2="83" stroke="#5EE89A" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-          <line x1="215" y1="145" x2="208" y2="83" stroke="#5EE89A" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-          <!-- P2 line (through iris outer 1/3) -->
-          <line x1="165" y1="145" x2="148" y2="68" stroke="#FFD460" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-          <line x1="215" y1="145" x2="232" y2="68" stroke="#FFD460" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-          <!-- P3 line (to outer eye corner) -->
-          <line x1="165" y1="145" x2="172" y2="80" stroke="#FF9090" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-          <line x1="215" y1="145" x2="270" y2="80" stroke="#FF9090" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-
-          <!-- Pupil dots -->
-          <circle cx="140" cy="105" r="5" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
-          <circle cx="240" cy="105" r="5" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
-
-          <defs>
-            <linearGradient id="browL" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#5EE89A"/><stop offset="50%" stop-color="#FFD460"/><stop offset="100%" stop-color="#FF9090"/>
-            </linearGradient>
-            <linearGradient id="browR" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#5EE89A"/><stop offset="50%" stop-color="#FFD460"/><stop offset="100%" stop-color="#FF9090"/>
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="padding:8px 11px;border-radius:10px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.22);">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-              <div style="width:14px;height:14px;border-radius:50%;background:#5EE89A;flex-shrink:0;"></div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;">P1 — Início (Cabeça)</p>
-            </div>
-            <p style="font-size:11px;margin-top:3px;">Linha vertical traçada da <strong>asa do nariz reto para cima</strong> — onde a sobrancelha deve começar. Igual nos dois lados.</p>
-          </div>
-          <div style="padding:8px 11px;border-radius:10px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.22);">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-              <div style="width:14px;height:14px;border-radius:50%;background:#FFD460;flex-shrink:0;"></div>
-              <p style="font-size:12px;font-weight:700;color:#FFD460;">P2 — Pico (Arco)</p>
-            </div>
-            <p style="font-size:11px;margin-top:3px;">Linha da asa do nariz passando pelo <strong>limbo externo da íris</strong> (ou 2/3 externos do olho) — define o ponto mais alto da curvatura.</p>
-          </div>
-          <div style="padding:8px 11px;border-radius:10px;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.22);">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-              <div style="width:14px;height:14px;border-radius:50%;background:#FF9090;flex-shrink:0;"></div>
-              <p style="font-size:12px;font-weight:700;color:#FF9090;">P3 — Cauda (Final)</p>
-            </div>
-            <p style="font-size:11px;margin-top:3px;">Linha da asa do nariz passando pelo <strong>canto externo do olho</strong> — onde a sobrancelha deve terminar. Cauda nunca abaixo da cabeça.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <div class="cardv">
-        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:9px;">📏 Regras de Proporção — Medidas Clínicas</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-
-          <div style="padding:10px 12px;border-radius:12px;background:rgba(180,111,255,.08);border:1px solid rgba(180,111,255,.22);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">📐 Espaçamento entre sobrancelhas</p>
-              <span class="tag tv">proporcional</span>
-            </div>
-            <p style="font-size:11px;">Distância entre o início das duas sobrancelhas deve ser idealmente igual à largura de um olho. Varia conforme o formato do rosto e nariz.</p>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:12px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.18);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">📐 Comprimento ideal</p>
-              <span class="tag tv">regra base</span>
-            </div>
-            <p style="font-size:11px;">Cauda deve estar alinhada horizontalmente com a cabeça ou acima dela. Cauda caindo abaixo do nível da cabeça cria expressão de tristeza.</p>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:12px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.16);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">📐 Posição do pico</p>
-              <span class="tag tv">2/3 externos</span>
-            </div>
-            <p style="font-size:11px;">O arco (P2) deve estar posicionado entre o centro e o canto externo do olho — 2/3 da extensão total da sobrancelha medidos da cabeça.</p>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:12px;background:rgba(180,111,255,.06);border:1px solid rgba(180,111,255,.14);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">📐 Espessura</p>
-              <span class="tag tw">varia por formato</span>
-            </div>
-            <p style="font-size:11px;">Espessura ideal depende do formato do rosto e das preferências. Regra geral: cabeça mais espessa, afinando progressivamente em direção à cauda.</p>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:12px;background:rgba(180,111,255,.05);border:1px solid rgba(180,111,255,.12);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">📐 Proporção áurea (φ = 1.618)</p>
-              <span class="tag tv">referência avançada</span>
-            </div>
-            <p style="font-size:11px;">A divisão do comprimento total da sobrancelha pela largura do corpo deve tender a 1.618. Usado como referência de refinamento em designs de alto nível.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cardg">
-        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">🎯 Ferramentas de Mapeamento</h3>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">📏</span><p style="font-size:11px;"><strong>Régua de mapeamento facial (compass):</strong> com marcadores para P1, P2 e P3 — ferramenta padrão ouro, elimina erros de estimativa visual</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">🖊️</span><p style="font-size:11px;"><strong>Lápis ou bastão de mapeamento:</strong> para traçar as linhas guia no rosto — usar produto sem pigmentação excessiva que interfira no design</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">🔦</span><p style="font-size:11px;"><strong>Iluminação direcional:</strong> luz frontal uniforme sem sombras — essencial para ver os fios com clareza durante o mapeamento</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">🪟</span><p style="font-size:11px;"><strong>Espelho de aumento:</strong> 5x para verificação dos detalhes do mapeamento e acabamento dos fios após remoção</p></div>
-          <div class="fi fig"><span style="font-size:13px;flex-shrink:0;">📸</span><p style="font-size:11px;"><strong>Foto pré-procedimento:</strong> documentar o estado inicial — protege a profissional e serve como referência para comparação com resultado</p></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 7 — FORMATOS DE ROSTO E ADAPTAÇÕES ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">Formatos de Rosto & <span class="gv">Adaptações do Design</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">Não existe design universal. Cada formato de rosto exige uma abordagem específica — o mesmo pico e espessura que harmonizan um rosto oval podem desproporcionan completamente um rosto quadrado. Adaptar é o que cria resultados naturais.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:7px;">
-
-      <div style="padding:12px 13px;border-radius:16px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.22);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
-          <svg viewBox="0 0 40 50" width="32" height="40" xmlns="http://www.w3.org/2000/svg"><ellipse cx="20" cy="25" rx="16" ry="22" fill="none" stroke="#5EE89A" stroke-width="2"/><path d="M 8 18 Q 13 12, 20 13 Q 27 12, 32 18" stroke="#5EE89A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          <div>
-            <p style="font-size:13px;font-weight:800;color:#5EE89A;">🥇 Rosto Oval</p>
-            <span class="tag tg">formato de referência</span>
-          </div>
-        </div>
-        <p style="font-size:11px;margin-bottom:5px;">Considerado o "rosto padrão" para design de sobrancelhas — todas as proporções já estão naturalmente equilibradas.</p>
-        <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Design recomendado:</strong> suave e levemente arqueado. Pico no ponto clássico (2/3). Espessura média.</p></div>
-        <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Objetivo:</strong> não interferir — apenas realçar os traços já harmoniosos. Qualquer formato de sobrancelha funciona bem.</p></div>
-      </div>
-
-      <div style="padding:12px 13px;border-radius:16px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.22);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
-          <svg viewBox="0 0 40 50" width="32" height="40" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="30" height="40" rx="6" fill="none" stroke="#60C3FF" stroke-width="2"/><path d="M 6 20 Q 13 14, 20 14 Q 27 14, 34 20" stroke="#60C3FF" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          <div>
-            <p style="font-size:13px;font-weight:800;color:#90D8FF;">Rosto Quadrado</p>
-            <span class="tag tb">arco alto suaviza</span>
-          </div>
-        </div>
-        <p style="font-size:11px;margin-bottom:5px;">Mandíbula forte e testa larga. Objetivo é suavizar os ângulos e criar ilusão de comprimento.</p>
-        <div class="fi fib"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Design:</strong> arco bem definido e elevado — cria verticalidade. Cauda levemente levantada. Evitar sobrancelha reta.</p></div>
-        <div class="fi fib"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Evitar:</strong> sobrancelha espessa e horizontal — reforça a percepção de mandíbula larga e rosto curto.</p></div>
-      </div>
-
-      <div style="padding:12px 13px;border-radius:16px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.22);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
-          <svg viewBox="0 0 40 50" width="32" height="40" xmlns="http://www.w3.org/2000/svg"><path d="M 20 4 L 36 45 Q 20 50, 4 45 Z" fill="none" stroke="#FFD460" stroke-width="2" stroke-linejoin="round"/><path d="M 7 22 Q 13 16, 20 16 Q 27 16, 33 22" stroke="#FFD460" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          <div>
-            <p style="font-size:13px;font-weight:800;color:#FFD460;">Rosto Triangular</p>
-            <span class="tag to">testa estreita · queixo largo</span>
-          </div>
-        </div>
-        <p style="font-size:11px;margin-bottom:5px;">Queixo mais largo que a testa. Objetivo é criar volume na parte superior do rosto para equilibrar.</p>
-        <div class="fi fio"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Design:</strong> sobrancelha mais espessa e levemente levantada — amplia visualmente a região frontal. Cabeça bem definida.</p></div>
-        <div class="fi fio"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Evitar:</strong> sobrancelha muito fina ou com cauda muito descendente — acentua ainda mais a base larga.</p></div>
-      </div>
-
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:7px;">
-
-      <div style="padding:12px 13px;border-radius:16px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.22);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
-          <svg viewBox="0 0 40 50" width="32" height="40" xmlns="http://www.w3.org/2000/svg"><path d="M 4 10 Q 20 3, 36 10 L 34 45 Q 20 50, 6 45 Z" fill="none" stroke="#FF9EC4" stroke-width="2"/><path d="M 6 17 Q 13 11, 20 11 Q 27 11, 34 17" stroke="#FF9EC4" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          <div>
-            <p style="font-size:13px;font-weight:800;color:#FF9EC4;">Rosto Triangular Invertido</p>
-            <span class="tag trose">testa larga · queixo fino</span>
-          </div>
-        </div>
-        <p style="font-size:11px;margin-bottom:5px;">Testa larga com queixo fino e pontiagudo. Objetivo é minimizar a largura frontal.</p>
-        <div class="fi firose"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Design:</strong> sobrancelha mais fina e com curvatura suave — não acrescenta volume à região frontal já larga</p></div>
-        <div class="fi firose"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Evitar:</strong> sobrancelha muito espessa e arqueada que amplia ainda mais a percepção de testa grande</p></div>
-      </div>
-
-      <div style="padding:12px 13px;border-radius:16px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.22);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
-          <svg viewBox="0 0 40 50" width="32" height="40" xmlns="http://www.w3.org/2000/svg"><ellipse cx="20" cy="25" rx="18" ry="16" fill="none" stroke="#B46FFF" stroke-width="2"/><path d="M 5 22 Q 13 15, 20 15 Q 27 15, 35 22" stroke="#B46FFF" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          <div>
-            <p style="font-size:13px;font-weight:800;color:#C89EFF;">Rosto Redondo</p>
-            <span class="tag tv">pico alto alonga</span>
-          </div>
-        </div>
-        <p style="font-size:11px;margin-bottom:5px;">Largura e altura semelhantes, bochechas cheias. Objetivo é criar ilusão de comprimento e afinar o rosto.</p>
-        <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Design:</strong> pico bem definido e alto — cria ângulo que rompe a circularidade. Cauda levemente ascendente.</p></div>
-        <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Evitar:</strong> sobrancelha completamente arredondada ou sem ângulo definido — reforça o efeito de rosto curto e largo</p></div>
-      </div>
-
-      <div style="padding:12px 13px;border-radius:16px;background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.22);">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
-          <svg viewBox="0 0 40 50" width="32" height="40" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="10" width="28" height="32" rx="14" fill="none" stroke="#FF9090" stroke-width="2"/><path d="M 7 20 Q 13 14, 20 14 Q 27 14, 33 20" stroke="#FF9090" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-          <div>
-            <p style="font-size:13px;font-weight:800;color:#FF9090;">Rosto Losango</p>
-            <span class="tag tr">maçãs proeminentes</span>
-          </div>
-        </div>
-        <p style="font-size:11px;margin-bottom:5px;">Maçãs do rosto muito proeminentes, testa e queixo mais estreitos. Objetivo é equilibrar a largura central.</p>
-        <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Design:</strong> sobrancelha mais espessa e com curvatura suave — amplia visualmente a testa para contrabalançar as maçãs</p></div>
-        <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Evitar:</strong> sobrancelha muito fina ou angulada demais — isola ainda mais as maçãs e desequilibra as proporções</p></div>
-      </div>
-
-      <div class="info iv">
-        <p style="font-size:12px;color:#C89EFF;font-weight:700;margin-bottom:4px;">💡 Princípio Fundamental de Adaptação</p>
-        <p style="font-size:11px;">Sobrancelha angulada e com pico definido alonga. Sobrancelha arredondada e suave arredonda. Sobrancelha espessa e horizontal alarga. Sobrancelha fina e longa afina. Toda adaptação parte da compreensão do que o rosto precisa de mais ou menos.</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 8 — TÉCNICAS DE DESIGN ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl gold au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">Técnicas de Design — <span class="go">Henna, Tintura & Remoção</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">O design de sobrancelhas envolve um arsenal técnico que vai da remoção precisa dos fios indesejados ao preenchimento e definição por coloração. Dominar cada técnica e saber quando aplicar é o diferencial do profissional completo.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <!-- TÉCNICAS DE REMOÇÃO -->
-      <div class="cardo">
-        <h3 style="font-size:13px;color:#FFD460;margin-bottom:9px;">✂️ Técnicas de Remoção dos Fios</h3>
-
-        <div style="display:flex;flex-direction:column;gap:6px;">
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.22);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#FFD460;">🪒 Navalha (Blade Design)</p>
-              <span class="tag to">precisão máxima</span>
-            </div>
-            <p style="font-size:11px;margin-bottom:4px;">Remoção de fios com navalha descartável. Permite precisão milimétrica, ideal para criar contornos nítidos e afiados. Técnica mais usada por profissionais de alto nível.</p>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:10px;">Resultado limpo e preciso — borda da sobrancelha mais definida que com pinça</p></div>
-              <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:10px;">Remoção rápida de áreas grandes</p></div>
-              <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:10px;">Risco de corte se sem treinamento — usar apenas com habilidade técnica desenvolvida</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#FFD460;">🔧 Pinça (Tweezing)</p>
-              <span class="tag to">controle por fio</span>
-            </div>
-            <p style="font-size:11px;margin-bottom:4px;">Remoção fio a fio com pinça esterilizada. Ideal para acabamento final e remoção de fios isolados que escapam do contorno. Complementa a navalha.</p>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:10px;">Controle absoluto — remove exatamente o fio desejado</p></div>
-              <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:10px;">Mais demorado para áreas grandes — usar como complemento, não método principal</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.14);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#FFD460;">🧵 Linha (Threading)</p>
-              <span class="tag tw">linha de algodão</span>
-            </div>
-            <p style="font-size:11px;margin-bottom:4px;">Técnica milenar de remoção com linha de algodão torcida. Remove múltiplos fios simultaneamente com grande precisão de direção.</p>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:10px;">Sem produtos químicos — ideal para peles sensíveis e contraindicação de cera</p></div>
-              <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:10px;">Excelente para remover penugem fina da região frontal</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.12);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:4px;">
-              <p style="font-size:12px;font-weight:700;color:#FFD460;">🍯 Cera (Waxing)</p>
-              <span class="tag tr">usar com cautela</span>
-            </div>
-            <p style="font-size:11px;margin-bottom:4px;">Cera quente ou morna aplicada para remoção em área. Rápida para áreas grandes mas com menor precisão. Uso mais limitado na região da sobrancelha.</p>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:10px;">Contraindicada em peles sob Accutane, tratamentos ácidos ou muito sensíveis</p></div>
-              <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:10px;">Menor precisão que navalha e pinça para acabamento fino</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <!-- HENNA E TINTURA -->
-      <div class="cardv">
-        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:9px;">🎨 Henna & Tintura — Diferenças e Aplicação</h3>
-
-        <div style="display:flex;flex-direction:column;gap:6px;">
-          <div style="padding:11px 12px;border-radius:13px;background:rgba(180,111,255,.09);border:1px solid rgba(180,111,255,.25);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:6px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">🌿 Henna Vegetal</p>
-              <span class="tag tv">natural · temporária</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Composição:</strong> Lawsonia inermis — pigmento natural. Corante temporário sem oxidação química</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Duração na pele:</strong> 3–10 dias dependendo da oleosidade da pele. No fio: até 4 semanas</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Indicação:</strong> ideal para clientes que querem preenchimento da pele — simula micropigmentação temporária</p></div>
-              <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:10px;">Henna química (com PPD) NÃO é henna vegetal — causa reações alérgicas graves. Verificar composição</p></div>
-            </div>
-          </div>
-
-          <div style="padding:11px 12px;border-radius:13px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.20);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:6px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">🧴 Tintura Oxidante</p>
-              <span class="tag tw">permanente no fio</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Composição:</strong> corante com oxidante (H₂O₂) — penetra na córtex do fio e altera a pigmentação de forma semi-permanente</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Duração no fio:</strong> 4–6 semanas. Não mancha a pele permanentemente — apenas o fio</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Volumes de oxidante:</strong> 10vol para escurecer sem levantar, 20vol para cobrir grisalhos, 30vol para aclarar</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Tempo de pausa:</strong> 10–20 minutos dependendo da marca e do resultado desejado — nunca extrapolar</p></div>
-            </div>
-          </div>
-
-          <div style="padding:11px 12px;border-radius:13px;background:rgba(180,111,255,.05);border:1px solid rgba(180,111,255,.15);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:5px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">🖌️ Técnica de Aplicação Henna/Tintura</p>
-              <span class="tag tv">passo a passo</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="sf"><div class="sfn" style="background:#7C3AED;font-size:10px;">1</div><p style="font-size:11px;">Mapear e definir o design antes de qualquer coloração</p></div>
-              <div class="sf"><div class="sfn" style="background:#7C3AED;font-size:10px;">2</div><p style="font-size:11px;">Aplicar fita de contorno (ou vaselina) para proteger a borda da sobrancelha</p></div>
-              <div class="sf"><div class="sfn" style="background:#7C3AED;font-size:10px;">3</div><p style="font-size:11px;">Aplicar produto do centro para as extremidades com pincel fino</p></div>
-              <div class="sf"><div class="sfn" style="background:#7C3AED;font-size:10px;">4</div><p style="font-size:11px;">Aguardar o tempo indicado — monitorar a cada 5 min</p></div>
-              <div class="sf"><div class="sfn" style="background:#7C3AED;font-size:10px;">5</div><p style="font-size:11px;">Remover com algodão úmido em movimentos suaves, sem esfregar</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 9 — PROTOCOLO COMPLETO DO ATENDIMENTO ══════════════════════ -->
-<section class="slide">
-<div class="inner">
-  <div class="gl green au d1"></div>
-  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:6px;">Protocolo Completo — <span class="gg">Do Início ao Fim</span></h2>
-  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">Um atendimento de alto padrão segue um protocolo claro e reproduzível — não depende do humor do dia ou da memória. Profissionalizar cada etapa é o que garante consistência de resultado e experiência de cliente memorável.</p>
-
-  <div class="g2 au d4" style="margin-bottom:11px;">
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <div class="cardg">
-        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">⚙️ Fluxo Completo do Atendimento</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;">PRÉ</div>
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Pré-Atendimento (antes da chegada)</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Confirmar anamnese e resultado do patch test (se necessário)</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Preparar todos os materiais: instrumentos esterilizados, produtos selecionados, EPI separado</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Desinfetar bancada, maca e todos os pontos de contato com álcool 70%</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#60C3FF,#2E6BFF);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex-shrink:0;">01</div>
-              <p style="font-size:12px;font-weight:700;color:#90D8FF;">Recepção & Consulta (5–10 min)</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="fi fib"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Confirmar anamnese, assinar termo de consentimento, discutir referências e expectativas</p></div>
-              <div class="fi fib"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Foto pré-procedimento — documentação obrigatória de cada atendimento</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#5EE89A,#27AE60);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex-shrink:0;">02</div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;">Higienização (3–5 min)</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Remover maquiagem da região frontal com demaquilante sem óleo e gaze estéril</p></div>
-              <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Higienizar a pele com solução antisséptica leve — preparar a superfície para o mapeamento</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#FFD460,#FF8C00);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex-shrink:0;">03</div>
-              <p style="font-size:12px;font-weight:700;color:#FFD460;">Mapeamento (5–10 min)</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="fi fio"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Mapear P1, P2 e P3 com régua ou compass. Escovar os fios. Marcar o contorno com lápis</p></div>
-              <div class="fi fio"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;"><strong>Validar o mapeamento com a cliente antes de qualquer remoção</strong> — passo inegociável</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#FF9EC4,#FF6FA3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex-shrink:0;">04</div>
-              <p style="font-size:12px;font-weight:700;color:#FF9EC4;">Remoção dos Fios (10–15 min)</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="fi firose"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Executar a remoção pela técnica escolhida (navalha + pinça). Da região superior para inferior</p></div>
-              <div class="fi firose"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Verificar simetria em tempo real — parar e comparar os dois lados antes de continuar</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex-shrink:0;">05</div>
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Coloração (15–25 min)</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Aplicar henna ou tintura conforme protocolo — tempo de pausa cronometrado e monitorado</p></div>
-              <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Remover com algodão úmido, higienizar e verificar resultado antes de finalizar</p></div>
-            </div>
-          </div>
-
-          <div style="padding:10px 12px;border-radius:13px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.20);">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-              <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#5EE89A,#27AE60);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex-shrink:0;">FIM</div>
-              <p style="font-size:12px;font-weight:700;color:#5EE89A;">Finalização & Pós-Atendimento</p>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:3px;">
-              <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Foto pós-procedimento. Orientar cuidados pós-design (evitar molhar e maquiagem por 24h)</p></div>
-              <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">→</span><p style="font-size:11px;">Agendar retorno em 3–4 semanas. Coletar feedback e documentar na ficha da cliente</p></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:9px;">
-
-      <div class="cardv">
-        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:9px;">⏱️ Gestão de Tempo por Tipo de Serviço</h3>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.08);border:1px solid rgba(180,111,255,.20);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Design Simples (navalha + pinça)</p>
-              <span class="tag tv">30–40 min</span>
-            </div>
-            <p style="font-size:11px;">Mapeamento + remoção + finalização. Sem coloração. Ticket médio básico.</p>
-          </div>
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.18);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Design + Tintura</p>
-              <span class="tag tv">50–65 min</span>
-            </div>
-            <p style="font-size:11px;">Mapeamento + remoção + coloração oxidante. Resultado durável e definido.</p>
-          </div>
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.06);border:1px solid rgba(180,111,255,.16);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Design + Henna Vegetal</p>
-              <span class="tag tv">60–80 min</span>
-            </div>
-            <p style="font-size:11px;">Mapeamento + remoção + henna (maior tempo de pausa). Efeito preenchimento de pele.</p>
-          </div>
-          <div style="padding:9px 12px;border-radius:12px;background:rgba(180,111,255,.05);border:1px solid rgba(180,111,255,.14);">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px;margin-bottom:3px;">
-              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Consultoria + Design Completo</p>
-              <span class="tag tv">90–120 min</span>
-            </div>
-            <p style="font-size:11px;">Análise facial aprofundada + design personalizado + coloração. Serviço premium de alto ticket.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cardg">
-        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">🚨 Erros Críticos no Atendimento</h3>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Iniciar a remoção sem mostrar o mapeamento:</strong> a cliente pode não gostar do design — e fio removido não volta</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Trabalhar sob pressão de tempo:</strong> pressa no mapeamento é a causa número 1 de assimetria e resultados insatisfatórios</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Ignorar a assimetria natural do rosto:</strong> a maioria das faces tem leve assimetria — forçar simetria perfeita pode criar resultado antinatural</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Não documentar:</strong> sem fotos pré e pós, a profissional fica sem defesa em caso de reclamação mesmo que o trabalho fosse correto</p></div>
-          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;"><strong>Reutilizar navalha:</strong> navalha é de uso único — corte com instrumento reutilizado cria risco biológico e legal imediato</p></div>
-        </div>
-      </div>
-
-      <div class="info iv">
-        <p style="font-size:12px;color:#C89EFF;font-weight:700;margin-bottom:4px;">📸 Fotodocumentação: Obrigação e Ferramenta</p>
-        <p style="font-size:11px;">Foto pré e pós em iluminação padronizada, mesma distância e ângulo. Armazenar na ficha digital da cliente. Usar para: portfólio, marketing, defesa em reclamações e acompanhamento da evolução ao longo dos atendimentos.</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ══════════════════════ SLIDE 10 — ENCERRAMENTO ══════════════════════ -->
-<section class="slide vcenter">
-<div class="inner" style="text-align:center;">
-
-  <div class="gl ce au d1"></div>
-
-  <h2 class="au d2" style="font-size:clamp(20px,5vw,60px);margin-bottom:12px;">
-    Técnica & <span class="gv">Responsabilidade</span><br/>
-    são inseparáveis
-  </h2>
-
-  <p class="au d3" style="font-size:clamp(12px,2.2vw,16px);max-width:720px;margin:0 auto 22px;color:#AAB3C5;line-height:1.7;">
-    A profissional de design de sobrancelhas que domina o mapeamento cria resultado. A que domina a biossegurança protege a cliente e o negócio. A que domina os dois, constrói <strong style="color:#F5F7FB;">autoridade e carreira de longo prazo.</strong>
-  </p>
-
-  <div class="g4 au d4" style="max-width:880px;margin:0 auto 20px;">
-    <div style="padding:16px 10px;border-radius:18px;background:rgba(180,111,255,.09);border:1px solid rgba(180,111,255,.25);text-align:center;">
-      <div style="font-size:22px;margin-bottom:7px;">🛡️</div>
-      <p style="font-size:11px;font-weight:700;color:#C89EFF;margin-bottom:4px;">Biossegurança</p>
-      <p style="font-size:9px;color:#7E879B;line-height:1.5;">EPI · esterilização · anamnese · patch test · ambiente controlado</p>
-    </div>
-    <div style="padding:16px 10px;border-radius:18px;background:rgba(96,195,255,.09);border:1px solid rgba(96,195,255,.25);text-align:center;">
-      <div style="font-size:22px;margin-bottom:7px;">📐</div>
-      <p style="font-size:11px;font-weight:700;color:#90D8FF;margin-bottom:4px;">Mapeamento</div>
-      <p style="font-size:9px;color:#7E879B;line-height:1.5;">P1·P2·P3 · proporção áurea · adaptação ao formato do rosto</p>
-    </div>
-    <div style="padding:16px 10px;border-radius:18px;background:rgba(94,232,154,.09);border:1px solid rgba(94,232,154,.25);text-align:center;">
-      <div style="font-size:22px;margin-bottom:7px;">✂️</div>
-      <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:4px;">Técnica</p>
-      <p style="font-size:9px;color:#7E879B;line-height:1.5;">Navalha · pinça · henna · tintura · protocolo de atendimento</p>
-    </div>
-    <div style="padding:16px 10px;border-radius:18px;background:rgba(255,212,96,.09);border:1px solid rgba(255,212,96,.25);text-align:center;">
-      <div style="font-size:22px;margin-bottom:7px;">📄</div>
-      <p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:4px;">Documentação</p>
-      <p style="font-size:9px;color:#7E879B;line-height:1.5;">Anamnese · consentimento · foto pré/pós · ficha completa</p>
-    </div>
-  </div>
-
-  <!-- 5 MANDAMENTOS -->
-  <div class="au d5" style="max-width:740px;margin:0 auto 20px;padding:17px 19px;border-radius:18px;background:linear-gradient(135deg,rgba(180,111,255,.07),rgba(96,195,255,.05));border:1px solid rgba(180,111,255,.22);text-align:left;">
-    <p style="font-size:13px;font-weight:800;color:#C89EFF;margin-bottom:11px;text-align:center;">⭐ 5 Pilares da Designer de Sobrancelhas de Alto Nível</p>
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div class="fi fiv">
-        <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">I</div>
-        <p style="font-size:12px;"><strong>Nunca iniciar um procedimento sem anamnese e consentimento</strong> — proteção da cliente e da profissional.</p>
-      </div>
-      <div class="fi fiv">
-        <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">II</div>
-        <p style="font-size:12px;"><strong>Sempre mapear antes de remover</strong> — e mostrar o mapeamento à cliente antes de qualquer ação.</p>
-      </div>
-      <div class="fi fiv">
-        <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">III</div>
-        <p style="font-size:12px;"><strong>Tratar cada cliente como única</strong> — adaptar o design ao formato do rosto, nunca replicar um padrão genérico.</p>
-      </div>
-      <div class="fi fiv">
-        <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">IV</div>
-        <p style="font-size:12px;"><strong>Documentar sempre</strong> — foto pré, pós e registro completo em ficha. Consistência constrói portfólio e defesa legal.</p>
-      </div>
-      <div class="fi fiv">
-        <div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(145deg,#B46FFF,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0;">V</div>
-        <p style="font-size:12px;"><strong>Estudar continuamente</strong> — técnica, anatomia facial, novos produtos e regulamentações. Quem para de aprender, para de crescer.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="au d6" style="padding:13px 17px;border-radius:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);max-width:580px;margin:0 auto;">
-    <p style="font-size:clamp(11px,2vw,14px);font-style:italic;color:#F5F7FB;margin-bottom:5px;">
-      "Sobrancelha bem-feita não é a mais chamativa —<br/>é a que faz o rosto parecer ser sempre assim."
+    <h1 class="au d2" style="font-size:clamp(26px,7.5vw,86px);margin-bottom:16px;">
+      <span class="gp">Técnicas</span> em Alta<br/>
+      <span style="font-size:.72em;font-weight:900;color:#F5F7FB;">& Mapeamento Profissional</span>
+    </h1>
+
+    <div class="gl ce pink au d3"></div>
+
+    <p class="au d4" style="font-size:clamp(12px,2.2vw,17px);color:#AAB3C5;max-width:660px;margin:0 auto 28px;line-height:1.65;">
+      As técnicas mais buscadas em 2026, como aplicar com precisão e o mapeamento que transforma o olhar — tudo que você precisa para dominar o mercado agora.
     </p>
-    <p style="font-size:10px;color:#7E879B;font-weight:600;">Módulo Design de Sobrancelhas · Biossegurança & Mapeamento Facial · 2026</p>
-  </div>
 
-</div>
+    <div class="g3 au d5" style="max-width:700px;margin:0 auto 24px;">
+      <div style="padding:18px 12px;border-radius:18px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.25);text-align:center;">
+        <div style="font-size:26px;margin-bottom:8px;">✨</div>
+        <p style="font-size:11px;font-weight:700;color:#C86DD7;">Técnicas 2026</p>
+        <p style="font-size:10px;color:#7E879B;margin-top:3px;">Tendências mais procuradas</p>
+      </div>
+      <div style="padding:18px 12px;border-radius:18px;background:rgba(255,111,163,.08);border:1px solid rgba(255,111,163,.25);text-align:center;">
+        <div style="font-size:26px;margin-bottom:8px;">🗺️</div>
+        <p style="font-size:11px;font-weight:700;color:#FF9EC4;">Mapeamento</p>
+        <p style="font-size:10px;color:#7E879B;margin-top:3px;">Olho a olho, fio a fio</p>
+      </div>
+      <div style="padding:18px 12px;border-radius:18px;background:rgba(96,195,255,.08);border:1px solid rgba(96,195,255,.25);text-align:center;">
+        <div style="font-size:26px;margin-bottom:8px;">💎</div>
+        <p style="font-size:11px;font-weight:700;color:#90D8FF;">Aplicação</p>
+        <p style="font-size:10px;color:#7E879B;margin-top:3px;">Passo a passo preciso</p>
+      </div>
+    </div>
+
+    <p class="au d6" style="font-size:11px;color:#7E879B;">10 slides · Deslize ou use as setas para navegar</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — PANORAMA DAS TÉCNICAS 2026
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl pink au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      O Mercado de Cílios em <span class="gp">2026</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      O setor de extensão de cílios é um dos que mais cresce na estética mundial. Entender o que o mercado está pedindo agora é essencial para posicionar sua carreira e precificar com autoridade.
+    </p>
+
+    <!-- MÉTRICAS -->
+    <div class="g4 au d4" style="margin-bottom:14px;">
+      <div style="padding:14px 12px;border-radius:16px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.22);text-align:center;">
+        <p style="font-size:clamp(22px,4vw,38px);font-weight:900;color:#C86DD7;letter-spacing:-.03em;line-height:1;margin-bottom:5px;">+34%</p>
+        <p style="font-size:10px;color:#7E879B;line-height:1.4;">crescimento global do mercado vs. 2023</p>
+      </div>
+      <div style="padding:14px 12px;border-radius:16px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.22);text-align:center;">
+        <p style="font-size:clamp(22px,4vw,38px);font-weight:900;color:#FF9EC4;letter-spacing:-.03em;line-height:1;margin-bottom:5px;">R$9,2B</p>
+        <p style="font-size:10px;color:#7E879B;line-height:1.4;">faturamento estimado no Brasil em 2026</p>
+      </div>
+      <div style="padding:14px 12px;border-radius:16px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.22);text-align:center;">
+        <p style="font-size:clamp(22px,4vw,38px);font-weight:900;color:#90D8FF;letter-spacing:-.03em;line-height:1;margin-bottom:5px;">78%</p>
+        <p style="font-size:10px;color:#7E879B;line-height:1.4;">das clientes priorizam resultado natural</p>
+      </div>
+      <div style="padding:14px 12px;border-radius:16px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.22);text-align:center;">
+        <p style="font-size:clamp(22px,4vw,38px);font-weight:900;color:#5EE89A;letter-spacing:-.03em;line-height:1;margin-bottom:5px;">3,2x</p>
+        <p style="font-size:10px;color:#7E879B;line-height:1.4;">mais buscas por "fios naturais" vs. volume dramático</p>
+      </div>
+    </div>
+
+    <!-- TENDÊNCIAS GERAIS -->
+    <div class="g2 au d5" style="margin-bottom:12px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="cardp">
+          <h3 style="font-size:13px;color:#C86DD7;margin-bottom:9px;">📈 O que está em alta em 2026</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="fi fip"><span style="font-size:14px;flex-shrink:0;">🔥</span><p style="font-size:11px;"><strong>Lash Lifting integrado à extensão:</strong> pré-tratamento que potencializa o resultado final com menos fios</p></div>
+            <div class="fi fip"><span style="font-size:14px;flex-shrink:0;">🔥</span><p style="font-size:11px;"><strong>Wet Look & Spike:</strong> estética úmida e dramática domina redes sociais — muito buscada por geração Z</p></div>
+            <div class="fi fip"><span style="font-size:14px;flex-shrink:0;">🔥</span><p style="font-size:11px;"><strong>Brown Lashes:</strong> fios em tons castanhos substituindo o preto puro para looks ultra naturais</p></div>
+            <div class="fi fip"><span style="font-size:14px;flex-shrink:0;">🔥</span><p style="font-size:11px;"><strong>Wispy / Textured:</strong> fios de comprimentos variados para efeito "cílio real imperfeito" — queridinho do lifestyle clean</p></div>
+            <div class="fi fip"><span style="font-size:14px;flex-shrink:0;">🔥</span><p style="font-size:11px;"><strong>Mega Volume Ultra Fino:</strong> 20D+ com fios 0,03 mm — leveza extrema com impacto visual máximo</p></div>
+            <div class="fi fip"><span style="font-size:14px;flex-shrink:0;">🔥</span><p style="font-size:11px;"><strong>Coloridos pontuais:</strong> fios coloridos apenas no canto externo — tendência pop sem perder elegância</p></div>
+          </div>
+        </div>
+        <div class="cardr">
+          <h3 style="font-size:13px;color:#FF9090;margin-bottom:9px;">📉 O que está saindo de moda</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fir"><span style="font-size:12px;flex-shrink:0;">↓</span><p style="font-size:11px;"><strong>Volume Russo pesado uniforme:</strong> parece artificial e sobrecarrega o olhar para o gosto atual</p></div>
+            <div class="fi fir"><span style="font-size:12px;flex-shrink:0;">↓</span><p style="font-size:11px;"><strong>Comprimentos exagerados uniformes:</strong> 14mm+ em todos os fios parece fantasioso</p></div>
+            <div class="fi fir"><span style="font-size:12px;flex-shrink:0;">↓</span><p style="font-size:11px;"><strong>Cat Eye exagerado:</strong> caída intensa no canto externo perde espaço para designs mais equilibrados</p></div>
+            <div class="fi fir"><span style="font-size:12px;flex-shrink:0;">↓</span><p style="font-size:11px;"><strong>Fios muito brilhosos:</strong> acabamento gloss intenso é substituído por matte e semi-matte</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="cardb">
+          <h3 style="font-size:13px;color:#90D8FF;margin-bottom:9px;">🌍 Influência Global nas Tendências</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.18);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:3px;">
+                <p style="font-size:12px;font-weight:700;color:#90D8FF;">🇰🇷 K-Beauty Influence</p>
+                <span class="tag tb">dominante</span>
+              </div>
+              <p style="font-size:11px;">Estética coreana define o que é "natural perfeito" — cílios sutis, fios em leque, brown lashes. Influência crescente via TikTok e K-pop idols.</p>
+            </div>
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.18);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:3px;">
+                <p style="font-size:12px;font-weight:700;color:#DDA0EE;">🇺🇸 Hollywood & Met Gala</p>
+                <span class="tag tp">tendência</span>
+              </div>
+              <p style="font-size:11px;">Red carpets definem o wet look e extensões dramáticas de alta costura. O que celebridades usam em eventos se populariza em 3–6 meses no mercado geral.</p>
+            </div>
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.18);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:3px;">
+                <p style="font-size:12px;font-weight:700;color:#FF9EC4;">🇧🇷 Brasil — Estética Própria</p>
+                <span class="tag tpk">crescente</span>
+              </div>
+              <p style="font-size:11px;">Mercado brasileiro cria tendências próprias — Wispy tropical, volume denso com curva C alta. Profissionais BR com cada vez mais impacto global no Instagram.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info ip">
+          <p style="font-size:12px;color:#C86DD7;font-weight:700;margin-bottom:5px;">💡 Posicionamento estratégico</p>
+          <p style="font-size:11px;">A profissional que domina <strong>2–3 técnicas em alta</strong> e sabe comunicá-las nas redes sociais fatura até <strong>2,8x mais</strong> do que aquela que ainda trabalha apenas com fio a fio clássico. Especialização = precificação premium.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — TÉCNICAS MAIS BUSCADAS (PARTE 1)
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl pink au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      Técnicas em Alta — <span class="gg">Parte 1</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      Descrição técnica completa das 4 técnicas mais procuradas no primeiro semestre de 2026. Para cada uma: como é, para quem serve, como aplicar e o que a diferencia.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:12px;">
+
+      <!-- WISPY -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="padding:14px 13px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,rgba(200,109,215,.10),rgba(255,111,163,.07));border:1px solid rgba(200,109,215,.28);border-bottom:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#C86DD7,#9B3DB8);display:flex;align-items:center;justify-content:center;font-size:20px;">🌿</div>
+              <div>
+                <p style="font-size:15px;font-weight:800;color:#F5F7FB;">Wispy Lashes</p>
+                <p style="font-size:10px;color:#C86DD7;font-weight:600;">"Cílio Natural Imperfeito"</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;">
+              <span class="tag tp">Top 1 · 2026</span>
+              <span class="tag tpk">muito buscado</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:9px;">A técnica Wispy combina fios de comprimentos variados posicionados de forma irregular e intencional para simular cílios naturais com volume. O resultado parece "nascido assim" — mas exige precisão técnica elevada para não parecer descuido.</p>
+        </div>
+        <div style="padding:14px 13px;border-radius:0 0 18px 18px;background:rgba(200,109,215,.04);border:1px solid rgba(200,109,215,.18);border-top:none;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:2px;">
+            <span class="tag tw">Fan: 3D–8D</span>
+            <span class="tag tw">Mix: 0,05–0,07mm</span>
+            <span class="tag tw">Curva: B / C / D alternada</span>
+          </div>
+          <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">🎯</span><p style="font-size:11px;"><strong>Como fazer:</strong> alterne fios maiores (picos) entre fans menores. Proporção: 1 fio longo a cada 3–4 fios menores. Os picos criam textura e profundidade visual.</p></div>
+          <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">👤</span><p style="font-size:11px;"><strong>Para quem:</strong> funciona para todos os formatos de olho. Especialmente impactante em olhos amendoados e caídos — eleva sem parecer artificial.</p></div>
+          <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">⚡</span><p style="font-size:11px;"><strong>Diferencial:</strong> permite personalização infinita. Cada cliente terá resultado único — argumento poderoso para fidelização e para conteúdo nas redes.</p></div>
+          <div class="info ip"><p style="font-size:10px;color:#C86DD7;">⚠️ <strong>Erro comum:</strong> posicionar os picos muito uniformemente — o resultado fica mecânico. A irregularidade proposital é o ponto central da técnica.</p></div>
+        </div>
+      </div>
+
+      <!-- WET LOOK / SPIKE -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="padding:14px 13px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,rgba(46,107,255,.10),rgba(94,59,214,.07));border:1px solid rgba(46,107,255,.28);border-bottom:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#60C3FF,#2E6BFF);display:flex;align-items:center;justify-content:center;font-size:20px;">💧</div>
+              <div>
+                <p style="font-size:15px;font-weight:800;color:#F5F7FB;">Wet Look / Spike</p>
+                <p style="font-size:10px;color:#90D8FF;font-weight:600;">"Efeito Molhado"</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;">
+              <span class="tag tb">Top 2 · 2026</span>
+              <span class="tag tw">geração Z</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:9px;">O Wet Look cria a ilusão de cílios molhados em pontas agrupadas. Muito popular no TikTok e Instagram, o look é dramático mas sem usar volume excessivo — o impacto vem do agrupamento estratégico dos fios, não da quantidade.</p>
+        </div>
+        <div style="padding:14px 13px;border-radius:0 0 18px 18px;background:rgba(46,107,255,.04);border:1px solid rgba(46,107,255,.18);border-top:none;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:2px;">
+            <span class="tag tw">Fan fechado: 3D–6D</span>
+            <span class="tag tw">0,07mm</span>
+            <span class="tag tw">Curva: C / D</span>
+          </div>
+          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">🎯</span><p style="font-size:11px;"><strong>Como fazer:</strong> criar fans mais fechados na base, com pontas levemente abertas ("spike"). Agrupar os fans em "blocos" de 3–4 juntos, seguido de pequeno espaço — repita o padrão por toda a linha.</p></div>
+          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">👤</span><p style="font-size:11px;"><strong>Para quem:</strong> ideal para olhos grandes e amendoados. Cautela com olhos pequenos ou muito redondos — pode fazer o olhar parecer mais pesado.</p></div>
+          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">⚡</span><p style="font-size:11px;"><strong>Diferencial:</strong> produz fotos e vídeos de altíssimo impacto. Clientes que querem engajamento nas redes sociais amam esse resultado.</p></div>
+          <div class="info ib"><p style="font-size:10px;color:#90D8FF;">💡 <strong>Dica:</strong> usar fio de 0,03mm nos spikes externos torna a ponta mais fina e mais próxima do efeito "molhado real". Combine com curva D para máximo impacto.</p></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM LASHES + MEGA VOLUME ULTRA FINO -->
+    <div class="g2 au d5">
+
+      <!-- BOTTOM LASH -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="padding:14px 13px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,rgba(255,212,96,.09),rgba(255,140,0,.06));border:1px solid rgba(255,212,96,.25);border-bottom:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#FFD460,#FF8C00);display:flex;align-items:center;justify-content:center;font-size:20px;">⬇️</div>
+              <div>
+                <p style="font-size:15px;font-weight:800;color:#F5F7FB;">Bottom Lash Extension</p>
+                <p style="font-size:10px;color:#FFD460;font-weight:600;">"Extensão dos Cílios Inferiores"</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;">
+              <span class="tag to">Em ascensão</span>
+              <span class="tag tw">diferencial</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:9px;">Tendência vinda da Ásia que chegou ao Brasil com força em 2025–2026. A extensão dos cílios inferiores abre completamente o olhar e cria um efeito de "olho de boneca" ou look editorial muito diferenciado.</p>
+        </div>
+        <div style="padding:14px 13px;border-radius:0 0 18px 18px;background:rgba(255,212,96,.04);border:1px solid rgba(255,212,96,.16);border-top:none;display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:2px;">
+            <span class="tag tw">Fios: 5–8mm</span>
+            <span class="tag tw">0,07–0,10mm</span>
+            <span class="tag tw">Curva: B / C</span>
+          </div>
+          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">🎯</span><p style="font-size:11px;"><strong>Como fazer:</strong> inverter o eye pad para expor os cílios inferiores. Aplicar fios menores (5–8mm) individualmente de fora para dentro, crescendo em comprimento para o centro.</p></div>
+          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">⚠️</span><p style="font-size:11px;"><strong>Atenção técnica:</strong> cílios inferiores são extremamente delicados. Use 0,07mm máximo. Menor risco de queda precoce e estresse do cílio natural.</p></div>
+          <div class="info io"><p style="font-size:10px;color:#FFD460;">💰 <strong>Precificação:</strong> serviço altamente diferenciado. Pode ser oferecido como add-on com ticket 30–50% maior. Poucas profissionais dominam — vantagem competitiva clara.</p></div>
+        </div>
+      </div>
+
+      <!-- MEGA VOLUME ULTRA FINO -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="padding:14px 13px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,rgba(94,232,154,.09),rgba(0,220,160,.06));border:1px solid rgba(94,232,154,.25);border-bottom:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#5EE89A,#27AE60);display:flex;align-items:center;justify-content:center;font-size:20px;">🌊</div>
+              <div>
+                <p style="font-size:15px;font-weight:800;color:#F5F7FB;">Mega Volume Ultra Leve</p>
+                <p style="font-size:10px;color:#5EE89A;font-weight:600;">"Volume com Leveza Máxima"</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;">
+              <span class="tag tg">Avançado</span>
+              <span class="tag tw">premium</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:9px;">A evolução do Volume Russo clássico. Usa fios de 0,03mm para criar fans de 15D a 25D com peso equivalente a um fio individual de 0,10mm. O resultado é fullness extremo com conforto surpreendente e sem comprometer o cílio natural.</p>
+        </div>
+        <div style="padding:14px 13px;border-radius:0 0 18px 18px;background:rgba(94,232,154,.04);border:1px solid rgba(94,232,154,.16);border-top:none;display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:2px;">
+            <span class="tag tw">Fan: 15D–25D</span>
+            <span class="tag tw">0,03mm</span>
+            <span class="tag tw">Curva: C / D / DD</span>
+          </div>
+          <div class="fi fig"><span style="font-size:12px;flex-shrink:0;">🎯</span><p style="font-size:11px;"><strong>Como fazer:</strong> criar fans prontos ou usar fita de volume pré-fabricado. A base do fan deve ser apertada e uniforme. Quanto mais fios, mais precisa ser a base — erro aqui cria "leque aberto".</p></div>
+          <div class="fi fig"><span style="font-size:12px;flex-shrink:0;">⚡</span><p style="font-size:11px;"><strong>Diferencial:</strong> clientes que amavam volume russo pesado migraram para essa técnica — mesmo resultado visual com metade do peso. Durabilidade superior.</p></div>
+          <div class="info ig"><p style="font-size:10px;color:#5EE89A;">🏆 <strong>Técnica avançada:</strong> exige prática extensa no fan perfeito. Invista em treino com fita de prática antes de oferecer à cliente. Ticket médio 40–70% acima do fio a fio.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — TÉCNICAS EM ALTA (PARTE 2)
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl pink au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      Técnicas em Alta — <span class="gg">Parte 2</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      Mais quatro técnicas que estão em destaque absoluto e que qualquer profissional de alto nível precisa dominar em 2026.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:12px;">
+
+      <!-- BROWN LASHES -->
+      <div class="cardpk" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(145deg,#8B5A2B,#C48A4A);display:flex;align-items:center;justify-content:center;font-size:18px;">🤎</div>
+            <div>
+              <p style="font-size:14px;font-weight:800;color:#F5F7FB;">Brown Lashes</p>
+              <span class="tag tpk">Ultra Natural 2026</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;">Fios em tons castanhos (dark brown, medium brown, chocolate) substituindo o preto puro. O resultado é incrivelmente natural — parece que a cliente "nasceu assim". Perfeito para loiras, ruivas e morenas claras.</p>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="fi fipk"><span style="font-size:12px;flex-shrink:0;">🎨</span><p style="font-size:11px;"><strong>Tons disponíveis:</strong> Black Brown, Dark Brown, Medium Brown, Chocolate. Cada tom serve uma cor de olho e cabelo diferente.</p></div>
+          <div class="fi fipk"><span style="font-size:12px;flex-shrink:0;">✨</span><p style="font-size:11px;"><strong>Combinação favorita 2026:</strong> Brown no corpo + Black nas pontas = profundidade sem exagero. Técnica chamada "Ombre Lash".</p></div>
+          <div class="fi fipk"><span style="font-size:12px;flex-shrink:0;">💡</span><p style="font-size:11px;"><strong>Aplicação:</strong> mesmas técnicas dos fios pretos. Atenção: cola preta cria contraste — preferir cola transparente para integrar melhor.</p></div>
+        </div>
+      </div>
+
+      <!-- FLAT LASH / ELIPSE -->
+      <div class="cardb" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(145deg,#60C3FF,#2E6BFF);display:flex;align-items:center;justify-content:center;font-size:18px;">🔵</div>
+            <div>
+              <p style="font-size:14px;font-weight:800;color:#F5F7FB;">Flat Lash / Ellipse</p>
+              <span class="tag tb">Ultra Adesão</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;">O Flat Lash tem secção transversal elíptica (achatada) em vez de circular. Isso cria maior área de contato com o cílio natural, resultando em adesão 30–40% superior e aparência mais escura e definida sem usar fio mais espesso.</p>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">📐</span><p style="font-size:11px;"><strong>Secção elíptica:</strong> a base plana "abraça" o cílio natural — muito mais contato = muito mais durabilidade</p></div>
+          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">🖤</span><p style="font-size:11px;"><strong>Efeito matte intenso:</strong> a superfície achatada reflete menos luz — aparência mais escura e delineada naturalmente</p></div>
+          <div class="fi fib"><span style="font-size:12px;flex-shrink:0;">⚖️</span><p style="font-size:11px;"><strong>Peso:</strong> o Flat 0,15 pesa o equivalente a um fio redondo 0,10. Ideal para cílios finos que querem mais impacto visual.</p></div>
+        </div>
+        <div class="info ib"><p style="font-size:10px;color:#90D8FF;">💡 <strong>Melhor uso:</strong> combinado com Wispy — picos em flat lash criam contraste de textura impressionante.</p></div>
+      </div>
+    </div>
+
+    <div class="g2 au d5">
+
+      <!-- COLORIDOS PONTUAIS -->
+      <div class="cardo" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(145deg,#FF6FA3,#FFD460);display:flex;align-items:center;justify-content:center;font-size:18px;">🌈</div>
+            <div>
+              <p style="font-size:14px;font-weight:800;color:#F5F7FB;">Coloridos Pontuais</p>
+              <span class="tag to">Pop & Editorial</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;">A inclusão estratégica de fios coloridos — normalmente nas extremidades, no centro ou como picos no wispy — cria um resultado sofisticado e diferenciado sem exagero. Muito pedido por clientes criativas e para eventos.</p>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">🎨</span><p style="font-size:11px;"><strong>Posicionamento favorito:</strong> últimos 20% do canto externo em cor contrastante (burgundy, azul, verde esmeralda)</p></div>
+          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">✨</span><p style="font-size:11px;"><strong>Tendência 2026:</strong> "Fairy Lash" — roxo e lilás nas pontas com base preta. Muito buscado no TikTok.</p></div>
+          <div class="fi fio"><span style="font-size:12px;flex-shrink:0;">💰</span><p style="font-size:11px;"><strong>Valor agregado:</strong> clientes pagam 20–35% a mais pelo serviço diferenciado. Estoque de 5–6 cores aumenta receita sem grande investimento.</p></div>
+        </div>
+      </div>
+
+      <!-- MANGA LASH / UNDERLINE -->
+      <div class="cardp" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(145deg,#C86DD7,#FF6FA3);display:flex;align-items:center;justify-content:center;font-size:18px;">🌸</div>
+            <div>
+              <p style="font-size:14px;font-weight:800;color:#F5F7FB;">Manga / Innocent Lash</p>
+              <span class="tag tp">K-Beauty 2026</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;">Estética vinda do K-beauty e da cultura mangá japonesa. Cílios inferiores mais longos que os superiores — efeito de "olho grande e inocente". Revolucionou o mercado de cílios em 2024–2025 e continua em alta crescente no Brasil em 2026.</p>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">👁️</span><p style="font-size:11px;"><strong>Técnica:</strong> inferior bem mais volumoso e longo que o superior — inverte a lógica tradicional da extensão</p></div>
+          <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">🎯</span><p style="font-size:11px;"><strong>Para quem:</strong> funciona especialmente para olhos amendoados e asiáticos — olho muda completamente de formato</p></div>
+          <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">⚠️</span><p style="font-size:11px;"><strong>Atenção:</strong> exige anamnese de mapeamento específica — cílios inferiores têm crescimento diferente e ciclo mais curto</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — MAPEAMENTO: TEORIA E BASE
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      Mapeamento — <span class="gp">A Arte de Ler o Olho</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      O mapeamento é a fase mais intelectual da extensão. É onde a profissional usa conhecimento de morfologia facial para projetar o resultado ideal antes de aplicar o primeiro fio. Uma extensão sem mapeamento é um tiro no escuro.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:12px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+
+        <!-- O QUE É MAPEAMENTO -->
+        <div class="cardp">
+          <h3 style="font-size:13px;color:#C86DD7;margin-bottom:9px;">🗺️ O Que É e Por Que É Fundamental</h3>
+          <p style="font-size:11px;margin-bottom:8px;">Mapear é dividir a linha dos cílios em zonas e definir, para cada zona, o comprimento, a espessura, a curva e o estilo do fio que será aplicado. O objetivo é sempre o mesmo: <strong>harmonizar o olhar com os traços do rosto.</strong></p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">📐</span><p style="font-size:11px;"><strong>Proporciona harmonia:</strong> o olhar deve equilibrar com a largura do rosto, o formato do nariz e a distância entre os olhos</p></div>
+            <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">🎭</span><p style="font-size:11px;"><strong>Corrige imperfeições visuais:</strong> olho caído, pequeno, saliente, próximos ou afastados — o mapeamento corrige visualmente tudo</p></div>
+            <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">⏱️</span><p style="font-size:11px;"><strong>Economiza tempo:</strong> profissional com mapeamento definido aplica 30–40% mais rápido sem decisões durante o serviço</p></div>
+            <div class="fi fip"><span style="font-size:12px;flex-shrink:0;">💎</span><p style="font-size:11px;"><strong>Garante simetria:</strong> dois olhos raramente são idênticos — o mapeamento lida com as diferenças de forma intencional</p></div>
+          </div>
+        </div>
+
+        <!-- PROPORÇÃO ÁUREA -->
+        <div class="cardb">
+          <h3 style="font-size:13px;color:#90D8FF;margin-bottom:9px;">📏 Proporção Áurea Aplicada ao Olho</h3>
+          <p style="font-size:11px;margin-bottom:8px;">A distribuição clássica dos comprimentos segue a regra da proporção áurea — a mesma que define beleza em arquitetura e arte. Aplicada ao olho, resulta em um arco de crescimento suave e natural.</p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="padding:9px 12px;border-radius:11px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.18);">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:4px;">
+                <p style="font-size:11px;font-weight:700;color:#90D8FF;">Canto Interno (lacrimal)</p>
+                <span class="tag tb">mais curto</span>
+              </div>
+              <p style="font-size:11px;">Fios menores (6–8mm). Cílios naturais aqui são mais fracos e finos — fios pesados causam queda rápida. A abertura gradual começa aqui.</p>
+            </div>
+            <div style="padding:9px 12px;border-radius:11px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.18);">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:4px;">
+                <p style="font-size:11px;font-weight:700;color:#DDA0EE;">Centro (íris)</p>
+                <span class="tag tp">mais longo</span>
+              </div>
+              <p style="font-size:11px;">Fios mais longos do mapeamento (10–14mm). Cria abertura vertical máxima. O pico de comprimento deve coincidir com o centro da íris para olhar mais aberto.</p>
+            </div>
+            <div style="padding:9px 12px;border-radius:11px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.18);">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:4px;">
+                <p style="font-size:11px;font-weight:700;color:#FF9EC4;">Canto Externo</p>
+                <span class="tag tpk">varia por design</span>
+              </div>
+              <p style="font-size:11px;">Define o estilo final. Cat Eye = mais longo. Natural/Doll = diminui gradualmente. Squirrel = segundo pico aqui. É a zona de customização máxima.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:9px;">
+
+        <!-- DIAGRAMA VISUAL DO OLHO -->
+        <div class="card">
+          <h3 style="font-size:13px;color:#F5F7FB;margin-bottom:12px;text-align:center;">👁️ Zonas do Olho — Diagrama de Mapeamento</h3>
+
+          <!-- SVG EYE DIAGRAM -->
+          <div style="width:100%;max-width:380px;margin:0 auto 12px;">
+            <svg viewBox="0 0 380 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+              <!-- Fundo -->
+              <rect width="380" height="180" fill="transparent"/>
+
+              <!-- Olho base -->
+              <path d="M 40 100 Q 110 30 190 28 Q 270 30 340 100 Q 270 145 190 148 Q 110 145 40 100 Z"
+                    fill="rgba(10,15,36,.8)" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+
+              <!-- Íris -->
+              <circle cx="190" cy="88" r="38" fill="rgba(200,109,215,.12)" stroke="rgba(200,109,215,.3)" stroke-width="1.5"/>
+              <circle cx="190" cy="88" r="20" fill="rgba(0,0,0,.4)" stroke="rgba(200,109,215,.2)" stroke-width="1"/>
+
+              <!-- Zonas de mapeamento - linhas verticais -->
+              <line x1="95" y1="50" x2="95" y2="148" stroke="rgba(255,107,107,.35)" stroke-width="1" stroke-dasharray="3,3"/>
+              <line x1="145" y1="38" x2="145" y2="148" stroke="rgba(255,212,96,.35)" stroke-width="1" stroke-dasharray="3,3"/>
+              <line x1="235" y1="38" x2="235" y2="148" stroke="rgba(255,212,96,.35)" stroke-width="1" stroke-dasharray="3,3"/>
+              <line x1="285" y1="50" x2="285" y2="148" stroke="rgba(96,195,255,.35)" stroke-width="1" stroke-dasharray="3,3"/>
+
+              <!-- Labels zonas -->
+              <text x="62" y="20" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FF9090" font-weight="600">INTERNO</text>
+              <text x="62" y="30" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7E879B">6–8mm</text>
+
+              <text x="120" y="14" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FFD460" font-weight="600">INT-MED</text>
+              <text x="120" y="24" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7E879B">8–10mm</text>
+
+              <text x="190" y="8" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#C86DD7" font-weight="600">CENTRO</text>
+              <text x="190" y="18" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7E879B">10–14mm</text>
+
+              <text x="260" y="14" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FFD460" font-weight="600">EXT-MED</text>
+              <text x="260" y="24" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7E879B">8–12mm</text>
+
+              <text x="318" y="20" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#90D8FF" font-weight="600">EXTERNO</text>
+              <text x="318" y="30" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7E879B">varia</text>
+
+              <!-- Cílios representados -->
+              <!-- Internos curtos -->
+              <line x1="62" y1="56" x2="56" y2="34" stroke="#FF9090" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="75" y1="47" x2="70" y2="24" stroke="#FF9090" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="88" y1="42" x2="85" y2="18" stroke="#FF9090" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Int-med -->
+              <line x1="108" y1="36" x2="104" y2="10" stroke="#FFD460" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="122" y1="32" x2="120" y2="4" stroke="#FFD460" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="136" y1="30" x2="135" y2="1" stroke="#FFD460" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Centro mais longos -->
+              <line x1="158" y1="30" x2="158" y2="-2" stroke="#C86DD7" stroke-width="2" stroke-linecap="round"/>
+              <line x1="174" y1="28" x2="175" y2="-4" stroke="#C86DD7" stroke-width="2" stroke-linecap="round"/>
+              <line x1="190" y1="28" x2="191" y2="-5" stroke="#C86DD7" stroke-width="2" stroke-linecap="round"/>
+              <line x1="206" y1="28" x2="208" y2="-4" stroke="#C86DD7" stroke-width="2" stroke-linecap="round"/>
+              <line x1="222" y1="30" x2="225" y2="-2" stroke="#C86DD7" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- Ext-med -->
+              <line x1="242" y1="32" x2="247" y2="2" stroke="#FFD460" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="256" y1="34" x2="263" y2="5" stroke="#FFD460" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="270" y1="38" x2="278" y2="10" stroke="#FFD460" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Externos -->
+              <line x1="286" y1="44" x2="296" y2="18" stroke="#90D8FF" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="300" y1="52" x2="312" y2="28" stroke="#90D8FF" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="312" y1="62" x2="326" y2="40" stroke="#90D8FF" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Ponto lacrimal -->
+              <circle cx="40" cy="100" r="5" fill="rgba(255,150,150,.3)" stroke="rgba(255,150,150,.6)" stroke-width="1"/>
+              <text x="22" y="115" font-family="Inter,sans-serif" font-size="7" fill="#FF9090">lacrimal</text>
+
+              <!-- Label olho -->
+              <text x="190" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7E879B">Vista frontal — Olho direito</text>
+            </svg>
+          </div>
+
+          <div class="g3" style="gap:6px;margin-top:4px;">
+            <div style="text-align:center;padding:7px 6px;border-radius:10px;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.18);">
+              <p style="font-size:10px;font-weight:700;color:#FF9090;">Interno</p>
+              <p style="font-size:9px;color:#7E879B;">6–8mm · fino</p>
+            </div>
+            <div style="text-align:center;padding:7px 6px;border-radius:10px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);">
+              <p style="font-size:10px;font-weight:700;color:#C86DD7;">Centro</p>
+              <p style="font-size:9px;color:#7E879B;">10–14mm · pico</p>
+            </div>
+            <div style="text-align:center;padding:7px 6px;border-radius:10px;background:rgba(96,195,255,.08);border:1px solid rgba(96,195,255,.18);">
+              <p style="font-size:10px;font-weight:700;color:#90D8FF;">Externo</p>
+              <p style="font-size:9px;color:#7E879B;">varia · define estilo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- REGRA DOS OLHOS -->
+        <div class="info ip">
+          <p style="font-size:12px;font-weight:700;color:#C86DD7;margin-bottom:6px;">📏 Regra Fundamental do Comprimento</p>
+          <p style="font-size:11px;margin-bottom:5px;">O fio de extensão <strong>nunca deve ultrapassar 2–3mm além do comprimento do cílio natural</strong> na mesma região. Fios muito longos para o cílio que os suporta criam "queda de ponta" — o fio curva para baixo e perde o formato.</p>
+          <p style="font-size:10px;color:#7E879B;">Exceção: efeitos editoriais e designs artísticos — mas a cliente deve ser informada da durabilidade reduzida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 6 — MAPEAMENTO POR FORMATO DE OLHO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl pink au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      Mapeamento por <span class="gg">Formato de Olho</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      Cada formato de olho tem características visuais que o mapeamento pode ressaltar, equilibrar ou suavizar. Reconhecer o formato antes de mapear é o que separa a profissional técnica da profissional artista.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:12px;">
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <!-- OLHO AMENDOADO -->
+        <div style="padding:13px 13px;border-radius:16px;background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.22);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;flex-wrap:wrap;">
+            <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#C86DD7,#9B3DB8);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🌿</div>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:#F5F7FB;">Olho Amendoado</p>
+              <span class="tag tp">formato ideal · versátil</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:6px;">Formato oval alongado com cantos levemente pontiagudos. Proporções equilibradas — o formato mais versátil para qualquer design.</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fip"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Estratégia:</strong> qualquer design funciona. Priorize a preferência da cliente e estilo de vida.</p></div>
+            <div class="fi fip"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Destaque:</strong> Cat Eye com curva D realça o formato naturalmente elegante</p></div>
+            <div class="fi fip"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Mapeamento:</strong> pico no centro-externo (entre centro e extremidade externa)</p></div>
+          </div>
+        </div>
+
+        <!-- OLHO PEQUENO -->
+        <div style="padding:13px 13px;border-radius:16px;background:rgba(96,195,255,.06);border:1px solid rgba(96,195,255,.22);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;flex-wrap:wrap;">
+            <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#60C3FF,#2E6BFF);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🔍</div>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:#F5F7FB;">Olho Pequeno</p>
+              <span class="tag tb">abrir e alongar</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:6px;">Objetivo: criar ilusão de olho maior. Cada decisão de mapeamento deve maximizar a abertura visual e o comprimento percebido.</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fib"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Comprimento:</strong> fios mais longos no centro → abertura vertical máxima</p></div>
+            <div class="fi fib"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Curva:</strong> D ou DD para levantar ao máximo o olhar</p></div>
+            <div class="fi fib"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Evitar:</strong> cat eye extremo — faz o olho parecer puxado, não maior</p></div>
+          </div>
+        </div>
+
+        <!-- OLHO SALIENTE -->
+        <div style="padding:13px 13px;border-radius:16px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.22);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;flex-wrap:wrap;">
+            <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#5EE89A,#27AE60);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">👁️</div>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:#F5F7FB;">Olho Saliente/Protuberante</p>
+              <span class="tag tg">suavizar · equilibrar</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:6px;">O olho parece "para fora" da órbita. Objetivo: criar profundidade visual e afastar a atenção da saliência.</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Curva:</strong> preferir B ou C — curvas muito altas (D/DD) amplificam a saliência</p></div>
+            <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Design:</strong> Natural ou Cat Eye suave — nunca Doll Eye</p></div>
+            <div class="fi fig"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Comprimento:</strong> moderado no centro — não exagerar na abertura vertical</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <!-- OLHO CAÍDO (HOODED) -->
+        <div style="padding:13px 13px;border-radius:16px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.22);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;flex-wrap:wrap;">
+            <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#FFD460,#FF8C00);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">⬇️</div>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:#F5F7FB;">Olho Caído / Hooded Eye</p>
+              <span class="tag to">elevar · definir</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:6px;">A pálpebra superior cobre parcialmente o cílio móvel quando o olho está aberto. Objetivo: criar leveza e elevar visualmente o olhar. Um dos mais desafiadores.</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fio"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Curva:</strong> L ou L+ — base reta com ponta virada, única que "escapa" da pálpebra caída</p></div>
+            <div class="fi fio"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Design:</strong> Cat Eye médio — mais comprimento no externo eleva o canto</p></div>
+            <div class="fi fio"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Evitar:</strong> fios longos no centro — ficam escondidos pela pálpebra e não são vistos</p></div>
+          </div>
+        </div>
+
+        <!-- OLHOS PRÓXIMOS -->
+        <div style="padding:13px 13px;border-radius:16px;background:rgba(255,111,163,.06);border:1px solid rgba(255,111,163,.22);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;flex-wrap:wrap;">
+            <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#FF6FA3,#C84060);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">↔️</div>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:#F5F7FB;">Olhos Próximos</p>
+              <span class="tag tpk">afastar · ampliar</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:6px;">Distância entre os olhos menor que a largura de um olho. Objetivo: criar ilusão de maior afastamento entre os olhos.</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fipk"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Técnica:</strong> Cat Eye — concentrar comprimento máximo no canto externo, canto interno com fios bem curtos</p></div>
+            <div class="fi fipk"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Canto interno:</strong> iniciar em 6mm ou até não aplicar nos 2–3 primeiros cílios</p></div>
+            <div class="fi fipk"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Evitar:</strong> Doll Eye — comprimento central amplia percepção de proximidade</p></div>
+          </div>
+        </div>
+
+        <!-- OLHOS AFASTADOS -->
+        <div style="padding:13px 13px;border-radius:16px;background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.22);">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;flex-wrap:wrap;">
+            <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#FF6B6B,#CC2020);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">↕️</div>
+            <div>
+              <p style="font-size:13px;font-weight:700;color:#F5F7FB;">Olhos Afastados</p>
+              <span class="tag tr">aproximar · centralizar</span>
+            </div>
+          </div>
+          <p style="font-size:11px;margin-bottom:6px;">Distância entre olhos maior que a largura de um olho. Objetivo: centralizar o olhar e criar percepção de maior proximidade entre os olhos.</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Técnica:</strong> Doll Eye — pico de comprimento no centro, canto externo com redução suave</p></div>
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✓</span><p style="font-size:11px;"><strong>Canto interno:</strong> fios relativamente mais longos — atrai o olhar para o centro</p></div>
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Evitar:</strong> Cat Eye — aumenta a percepção de afastamento</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info ip au d5">
+      <p style="font-size:12px;color:#C86DD7;font-weight:700;margin-bottom:5px;">📸 Dica profissional: fotografe sempre antes e depois</p>
+      <p style="font-size:11px;">Documentar o mapeamento com fotos frontais e laterais antes da aplicação permite: (1) comparar o resultado com o planejado, (2) replicar o mesmo mapeamento na manutenção, (3) criar portfólio segmentado por formato de olho nas redes sociais.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 7 — DESIGNS E ESTILOS DE MAPEAMENTO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl pink au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      Designs Clássicos & <span class="gp">Modernos</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      Cada design tem uma curva de distribuição de comprimentos específica. Saber nomear e construir cada um com precisão é o vocabulário técnico da lashista profissional.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:12px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <div class="cardpk">
+          <h3 style="font-size:13px;color:#FF9EC4;margin-bottom:10px;">💇 Designs Naturais / Clean</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.2);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:5px;">
+                <p style="font-size:12px;font-weight:700;color:#FF9EC4;">Natural / Classic</p>
+                <span class="tag tpk">curva suave</span>
+              </div>
+              <!-- Mini curva -->
+              <div style="height:28px;position:relative;margin-bottom:5px;">
+                <svg viewBox="0 0 200 28" style="width:100%;height:100%;">
+                  <polyline points="0,24 20,20 60,12 100,8 140,12 180,18 200,22" fill="none" stroke="#FF6FA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="100" cy="8" r="3" fill="#FF6FA3"/>
+                </svg>
+              </div>
+              <p style="font-size:11px;">Comprimento cresce gradualmente do interno para o centro e reduz simetricamente para o externo. Resultado harmonioso e adequado para qualquer ocasião.</p>
+            </div>
+
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.2);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:5px;">
+                <p style="font-size:12px;font-weight:700;color:#FF9EC4;">Doll Eye / Boneca</p>
+                <span class="tag tpk">centro alto</span>
+              </div>
+              <div style="height:28px;position:relative;margin-bottom:5px;">
+                <svg viewBox="0 0 200 28" style="width:100%;height:100%;">
+                  <polyline points="0,26 20,22 60,8 100,4 140,8 180,22 200,26" fill="none" stroke="#C86DD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="100" cy="4" r="3" fill="#C86DD7"/>
+                </svg>
+              </div>
+              <p style="font-size:11px;">Pico máximo no centro com queda simétrica e acentuada. Abre o olhar de forma arredondada — efeito "olhos grandes". Muito usado com curva D.</p>
+            </div>
+
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.2);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:5px;">
+                <p style="font-size:12px;font-weight:700;color:#FF9EC4;">Squirrel Eye</p>
+                <span class="tag tpk">dois picos</span>
+              </div>
+              <div style="height:28px;position:relative;margin-bottom:5px;">
+                <svg viewBox="0 0 200 28" style="width:100%;height:100%;">
+                  <polyline points="0,26 20,22 60,10 80,16 110,6 150,10 180,20 200,24" fill="none" stroke="#90D8FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="60" cy="10" r="3" fill="#90D8FF"/>
+                  <circle cx="110" cy="6" r="3" fill="#90D8FF"/>
+                </svg>
+              </div>
+              <p style="font-size:11px;">Dois picos de comprimento — um no centro-interno e um no centro-externo. Cria olhar multidimensional e muito fashionista. Tendência crescente em 2026.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="cardp">
+          <h3 style="font-size:13px;color:#C86DD7;margin-bottom:10px;">🎭 Designs Dramáticos / Editoriais</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.2);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:5px;">
+                <p style="font-size:12px;font-weight:700;color:#DDA0EE;">Cat Eye</p>
+                <span class="tag tp">externo longo</span>
+              </div>
+              <div style="height:28px;position:relative;margin-bottom:5px;">
+                <svg viewBox="0 0 200 28" style="width:100%;height:100%;">
+                  <polyline points="0,28 20,26 60,22 100,16 140,10 170,6 200,4" fill="none" stroke="#C86DD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="200" cy="4" r="3" fill="#C86DD7"/>
+                </svg>
+              </div>
+              <p style="font-size:11px;">Comprimento cresce progressivamente do interno para o externo, sem pico central. O canto externo é o mais longo. Efeito felino clássico — eleva e alonga o olhar.</p>
+            </div>
+
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.2);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:5px;">
+                <p style="font-size:12px;font-weight:700;color:#DDA0EE;">Open Eye / Revers Cat</p>
+                <span class="tag tp">interno longo</span>
+              </div>
+              <div style="height:28px;position:relative;margin-bottom:5px;">
+                <svg viewBox="0 0 200 28" style="width:100%;height:100%;">
+                  <polyline points="0,4 30,6 60,10 100,16 140,22 170,26 200,28" fill="none" stroke="#FF6FA3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="0" cy="4" r="3" fill="#FF6FA3"/>
+                </svg>
+              </div>
+              <p style="font-size:11px;">Inverso do Cat Eye — fios maiores no canto interno decrescem para o externo. Efeito inocente e delicado. Muito usado em K-beauty e em combinação com bottom lash.</p>
+            </div>
+
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.2);">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:5px;">
+                <p style="font-size:12px;font-weight:700;color:#DDA0EE;">Kim K / Flat Glamour</p>
+                <span class="tag tp">uniforme</span>
+              </div>
+              <div style="height:28px;position:relative;margin-bottom:5px;">
+                <svg viewBox="0 0 200 28" style="width:100%;height:100%;">
+                  <polyline points="0,22 40,14 100,12 160,14 200,22" fill="none" stroke="#FFD460" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="40" y1="14" x2="160" y2="14" stroke="#FFD460" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p style="font-size:11px;">Comprimento uniforme do centro ao externo — criando uma "tela" de cílios uniformes. Volume máximo, efeito glamour hollywoodiano. Muito pesquisado após aparições de celebridades.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info ip">
+          <p style="font-size:12px;color:#C86DD7;font-weight:700;margin-bottom:5px;">🎨 Mix de Designs em 2026</p>
+          <p style="font-size:11px;">A tendência atual é combinar designs — por exemplo, Cat Eye com textura Wispy, ou Doll Eye com Wet Look nos spikes centrais. Quanto mais versátil for seu portfólio de designs, mais clientes diferentes você atende.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 8 — PASSO A PASSO DA APLICAÇÃO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl blue au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      Aplicação — <span class="gb">Passo a Passo Profissional</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      O protocolo de aplicação é o coração técnico do trabalho. Cada etapa tem uma função específica e uma ordem que não pode ser alterada sem comprometer o resultado. Siga e domine.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:12px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <!-- PRÉ-APLICAÇÃO -->
+        <div class="cardb">
+          <h3 style="font-size:13px;color:#90D8FF;margin-bottom:9px;">⚙️ Fase 1 — Pré-Aplicação</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="sf-item"><div class="sf-num" style="background:#2E6BFF;">1</div><p style="font-size:11px;"><strong>Anamnese e consulta:</strong> entender o objetivo da cliente, fazer a ficha e verificar contraindicações</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#2E6BFF;">2</div><p style="font-size:11px;"><strong>Foto pré-procedimento:</strong> registro frontal e lateral. Base para comparação e portfólio</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#2E6BFF;">3</div><p style="font-size:11px;"><strong>Higienização dos cílios:</strong> primer limpador nas duas pálpebras — aguardar secar completamente</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#2E6BFF;">4</div><p style="font-size:11px;"><strong>Posicionamento:</strong> eye pad cobrindo todos os cílios inferiores. Conferir nos dois cantos.</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#2E6BFF;">5</div><p style="font-size:11px;"><strong>Mapeamento:</strong> definir o design visualmente — alguns profissionais usam marcações com caneta dermográfica nos pontos de transição</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#2E6BFF;">6</div><p style="font-size:11px;"><strong>Preparar a cola:</strong> gota nova na bandeja — aguardar 30–60 segundos para aclimatação antes de usar</p></div>
+          </div>
+        </div>
+
+        <!-- DURANTE APLICAÇÃO -->
+        <div class="cardp">
+          <h3 style="font-size:13px;color:#C86DD7;margin-bottom:9px;">🎯 Fase 2 — Aplicação</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="sf-item"><div class="sf-num" style="background:#9B3DB8;">7</div><p style="font-size:11px;"><strong>Isolamento:</strong> usar pinça de isolamento para separar um único cílio natural — jamais aplicar em dois cílios juntos</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#9B3DB8;">8</div><p style="font-size:11px;"><strong>Banhar o fio:</strong> pegar o fio com a pinça de aplicação e mergulhar a base (1–2mm) na gota de cola. Rolar levemente para distribuir uniformemente</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#9B3DB8;">9</div><p style="font-size:11px;"><strong>Tempo de espera:</strong> aguardar 1–3 segundos após retirar da cola antes de posicionar — garante que a cola atinge a viscosidade ideal</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#9B3DB8;">10</div><p style="font-size:11px;"><strong>Posicionamento:</strong> deslizar o fio sobre o cílio natural de cima para baixo, aderindo a 0,5–1mm da base (nunca na pele)</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#9B3DB8;">11</div><p style="font-size:11px;"><strong>Pressão:</strong> segurar por 2–3 segundos com leve pressão para garantir o bond. Liberar suavemente — verificar se o ângulo está correto</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#9B3DB8;">12</div><p style="font-size:11px;"><strong>Sequência:</strong> trabalhar de fora para dentro ou alternando olhos — reduz o risco de colar cílios adjacentes que ainda estão com cola ativa</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <!-- PÓS APLICAÇÃO -->
+        <div class="cardg">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">✨ Fase 3 — Finalização</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="sf-item"><div class="sf-num" style="background:#27AE60;">13</div><p style="font-size:11px;"><strong>Revisão de colagem:</strong> verificar com lupa se há cílios duplos (dois naturais colados ao mesmo fio de extensão) — separar com pinça fina antes de curar</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#27AE60;">14</div><p style="font-size:11px;"><strong>Nanomist / cura:</strong> borrifar spray de finalização suavemente a 15–20cm da pálpebra para curar a cola residual e eliminar vapores</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#27AE60;">15</div><p style="font-size:11px;"><strong>Escovar:</strong> pentear com escovinha limpa do canto externo para o interno para organizar os fios e verificar o resultado do design</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#27AE60;">16</div><p style="font-size:11px;"><strong>Remoção do eye pad:</strong> puxar da têmpora para o nariz com muita delicadeza — nunca para cima</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#27AE60;">17</div><p style="font-size:11px;"><strong>Foto pós:</strong> registro frontal e lateral com mesma iluminação. Solicitar avaliação da cliente e feedback</p></div>
+            <div class="sf-item"><div class="sf-num" style="background:#27AE60;">18</div><p style="font-size:11px;"><strong>Orientações:</strong> entregar o guia de cuidados e agendar a manutenção antes de dispensar a cliente</p></div>
+          </div>
+        </div>
+
+        <!-- ERROS COMUNS -->
+        <div class="cardr">
+          <h3 style="font-size:13px;color:#FF9090;margin-bottom:9px;">⚠️ Os 6 Erros Mais Comuns na Aplicação</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Cola na pele:</strong> posicionamento muito próximo à raiz — causa foliculite e queda em massa</p></div>
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Colagem dupla:</strong> dois cílios naturais no mesmo fio — causa torção e queda ambos</p></div>
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Excesso de cola:</strong> bola de cola na base — visível, desconfortável e cai rapidamente</p></div>
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Ângulo errado:</strong> fio torto ou para dentro — prejudica o design e o conforto</p></div>
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Cola velha:</strong> gota usada por mais de 30 min muda de viscosidade — trocar a gota regularmente</p></div>
+            <div class="fi fir"><span style="font-size:11px;flex-shrink:0;">✗</span><p style="font-size:11px;"><strong>Pular isolamento:</strong> pressa no isolamento é a principal causa de colagem dupla e queda precoce</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 9 — TEMPOS, PRODUTIVIDADE & PRECIFICAÇÃO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl gold au d1"></div>
+    <h2 class="au d2" style="font-size:clamp(18px,4.5vw,44px);margin-bottom:7px;">
+      Tempo, Produtividade <span class="go">& Precificação</span>
+    </h2>
+    <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">
+      Velocidade com qualidade é o ativo mais valioso de uma lashista profissional. Entender o tempo de cada técnica e precificar corretamente é o que transforma habilidade em negócio sustentável.
+    </p>
+
+    <div class="g2 au d4" style="margin-bottom:12px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <!-- TEMPOS POR TÉCNICA -->
+        <div class="cardo">
+          <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">⏱️ Tempos Médios por Técnica</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:11px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.18);flex-wrap:wrap;gap:5px;">
+              <div><p style="font-size:11px;font-weight:700;color:#5EE89A;">Fio a Fio Clássico</p><p style="font-size:10px;color:#7E879B;">isolamento simples · iniciante</p></div>
+              <div style="text-align:right;"><p style="font-size:13px;font-weight:800;color:#5EE89A;">90–150 min</p></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:11px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.18);flex-wrap:wrap;gap:5px;">
+              <div><p style="font-size:11px;font-weight:700;color:#90D8FF;">Volume Russo (2D–6D)</p><p style="font-size:10px;color:#7E879B;">fan manual · intermediário</p></div>
+              <div style="text-align:right;"><p style="font-size:13px;font-weight:800;color:#90D8FF;">120–180 min</p></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:11px;background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.18);flex-wrap:wrap;gap:5px;">
+              <div><p style="font-size:11px;font-weight:700;color:#DDA0EE;">Wispy / Textured</p><p style="font-size:10px;color:#7E879B;">planejamento + textura</p></div>
+              <div style="text-align:right;"><p style="font-size:13px;font-weight:800;color:#DDA0EE;">120–180 min</p></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:11px;background:rgba(255,111,163,.07);border:1px solid rgba(255,111,163,.18);flex-wrap:wrap;gap:5px;">
+              <div><p style="font-size:11px;font-weight:700;color:#FF9EC4;">Mega Volume Ultra Fino</p><p style="font-size:10px;color:#7E879B;">15D–25D · avançado</p></div>
+              <div style="text-align:right;"><p style="font-size:13px;font-weight:800;color:#FF9EC4;">180–240 min</p></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:11px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);flex-wrap:wrap;gap:5px;">
+              <div><p style="font-size:11px;font-weight:700;color:#FFD460;">Bottom Lash (add-on)</p><p style="font-size:10px;color:#7E879B;">inferior + superior</p></div>
+              <div style="text-align:right;"><p style="font-size:13px;font-weight:800;color:#FFD460;">+30–60 min</p></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:11px;background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.18);flex-wrap:wrap;gap:5px;">
+              <div><p style="font-size:11px;font-weight:700;color:#FF9090;">Manutenção (fill-in)</p><p style="font-size:10px;color:#7E879B;">reposição parcial</p></div>
+              <div style="text-align:right;"><p style="font-size:13px;font-weight:800;color:#FF9090;">60–90 min</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info io">
+          <p style="font-size:12px;color:#FFD460;font-weight:700;margin-bottom:5px;">📈 Ganho de velocidade com experiência</p>
+          <p style="font-size:11px;">A média de aplicação de um fio cai de <strong>45–60 segundos</strong> (iniciante) para <strong>15–20 segundos</strong> (avançada) conforme a prática. Com 200 fios por olho, isso representa economia de 2–3h por atendimento sem perda de qualidade.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <!-- PRECIFICAÇÃO -->
+        <div class="cardg">
+          <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">💰 Estratégia de Precificação 2026</h3>
+          <p style="font-size:11px;margin-bottom:8px;">Precificar corretamente não é apenas cobrir custos — é comunicar o valor do seu trabalho. Técnicas mais complexas e em alta devem ser precificadas com margem premium.</p>
+
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.2);">
+              <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">Fórmula Base de Precificação</p>
+              <p style="font-size:11px;">Custo dos materiais × 3 + Valor da sua hora + Custos fixos proporcionais = <strong>Preço mínimo</strong></p>
+            </div>
+            <div style="padding:10px 12px;border-radius:12px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.15);">
+              <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">Diferencial de Mercado</p>
+              <p style="font-size:11px;">Técnicas em alta (Wispy, Wet Look, Brown, Bottom Lash) permitem cobrar <strong>20–50% acima da média local</strong> por posicionamento premium.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="fi fig"><span style="font-size:12px;flex-shrink:0;">💡</span><p style="font-size:11px;"><strong>Monte pacotes:</strong> full set + manutenção mensal com desconto progressivo — fidelização automática</p></div>
+            <div class="fi fig"><span style="font-size:12px;flex-shrink:0;">💡</span><p style="font-size:11px;"><strong>Add-ons rentáveis:</strong> coloridos (+R$30–60), bottom lash (+R$80–120), primer protetor (+R$20)</p></div>
+            <div class="fi fig"><span style="font-size:12px;flex-shrink:0;">💡</span><p style="font-size:11px;"><strong>Não compita por preço:</strong> compete por portfólio, reviews e especialização em técnicas modernas</p></div>
+            <div class="fi fig"><span style="font-size:12px;flex-shrink:0;">💡</span><p style="font-size:11px;"><strong>Reajuste anual:</strong> mínimo inflação + crescimento de habilidade. Comunicar com antecedência e argumento técnico</p></div>
+          </div>
+        </div>
+
+        <div class="cardpk">
+          <h3 style="font-size:13px;color:#FF9EC4;margin-bottom:8px;">📊 Capacidade Produtiva — Exemplo Prático</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="padding:9px 12px;border-radius:11px;background:rgba(255,111,163,.08);border:1px solid rgba(255,111,163,.18);">
+              <p style="font-size:11px;font-weight:700;color:#FF9EC4;margin-bottom:3px;">6h de trabalho/dia · 5 dias/semana</p>
+              <p style="font-size:11px;">Fio a fio (2h/atendimento): 3 clientes/dia × 5 = 15/semana<br/>Volume/Wispy (2,5h): 2 clientes/dia × 5 = 10/semana</p>
+            </div>
+            <div style="padding:9px 12px;border-radius:11px;background:rgba(255,111,163,.06);border:1px solid rgba(255,111,163,.14);">
+              <p style="font-size:11px;font-weight:700;color:#FF9EC4;margin-bottom:3px;">💰 Receita estimada (Volume/Wispy)</p>
+              <p style="font-size:11px;">10 atendimentos × R$350 (média) = <strong style="color:#F5F7FB;">R$3.500/semana</strong><br/>+ manutenções = potencial <strong style="color:#F5F7FB;">R$12.000–18.000/mês</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 10 — ENCERRAMENTO
+══════════════════════════════════════ -->
+<section class="slide vcenter">
+  <div class="inner" style="text-align:center;">
+
+    <div class="gl ce pink au d1"></div>
+
+    <h2 class="au d2" style="font-size:clamp(20px,5vw,60px);margin-bottom:12px;">
+      Técnica é o que você <span class="gp">aprende</span>.<br/>
+      Arte é o que você <span class="gg">cria.</span>
+    </h2>
+
+    <p class="au d3" style="font-size:clamp(12px,2.2vw,16px);max-width:700px;margin:0 auto 24px;color:#AAB3C5;line-height:1.7;">
+      Em 2026, o mercado recompensa quem domina as técnicas em alta, mapeia com intenção e entrega resultado com consistência. A combinação de <strong style="color:#F5F7FB;">conhecimento técnico + estética + comunicação</strong> é o que constrói uma carreira de alto impacto.
+    </p>
+
+    <!-- RESUMO -->
+    <div class="g4 au d4" style="max-width:860px;margin:0 auto 20px;">
+      <div style="padding:16px 12px;border-radius:18px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.22);">
+        <div style="font-size:24px;margin-bottom:7px;">✨</div>
+        <p style="font-size:11px;font-weight:700;color:#C86DD7;margin-bottom:5px;">Técnicas 2026</p>
+        <p style="font-size:9px;color:#7E879B;">Wispy · Wet Look · Brown · Bottom · Mega Vol · Colorido</p>
+      </div>
+      <div style="padding:16px 12px;border-radius:18px;background:rgba(255,111,163,.08);border:1px solid rgba(255,111,163,.22);">
+        <div style="font-size:24px;margin-bottom:7px;">🗺️</div>
+        <p style="font-size:11px;font-weight:700;color:#FF9EC4;margin-bottom:5px;">Mapeamento</p>
+        <p style="font-size:9px;color:#7E879B;">Formato de olho · Zonas · Designs · Proporção</p>
+      </div>
+      <div style="padding:16px 12px;border-radius:18px;background:rgba(96,195,255,.08);border:1px solid rgba(96,195,255,.22);">
+        <div style="font-size:24px;margin-bottom:7px;">🎯</div>
+        <p style="font-size:11px;font-weight:700;color:#90D8FF;margin-bottom:5px;">Aplicação</p>
+        <p style="font-size:9px;color:#7E879B;">18 etapas · Isolamento · Cola · Finalização</p>
+      </div>
+      <div style="padding:16px 12px;border-radius:18px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.22);">
+        <div style="font-size:24px;margin-bottom:7px;">💰</div>
+        <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:5px;">Negócio</p>
+        <p style="font-size:9px;color:#7E879B;">Tempo · Precificação · Produtividade</p>
+      </div>
+    </div>
+
+    <!-- 5 COMPROMISSOS -->
+    <div class="au d5" style="max-width:720px;margin:0 auto 20px;padding:18px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(200,109,215,.07),rgba(255,111,163,.05));border:1px solid rgba(200,109,215,.22);text-align:left;">
+      <p style="font-size:13px;font-weight:800;color:#C86DD7;margin-bottom:12px;text-align:center;">⚡ 5 Compromissos da Lashista de Alto Nível em 2026</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="fi fip"><div class="nb na" style="flex-shrink:0;">I</div><p style="font-size:12px;"><strong>Sempre mapear antes de aplicar</strong> — resultado proposital, não acidental</p></div>
+        <div class="fi fip"><div class="nb na" style="flex-shrink:0;">II</div><p style="font-size:12px;"><strong>Dominar ao menos 3 técnicas em alta</strong> — ampliar oferta e ticket médio</p></div>
+        <div class="fi fip"><div class="nb na" style="flex-shrink:0;">III</div><p style="font-size:12px;"><strong>Atualizar-se a cada semestre</strong> — tendências mudam; profissional parada fica para trás</p></div>
+        <div class="fi fip"><div class="nb na" style="flex-shrink:0;">IV</div><p style="font-size:12px;"><strong>Documentar todos os resultados</strong> — portfólio é o maior ativo de marketing de uma lashista</p></div>
+        <div class="fi fip"><div class="nb na" style="flex-shrink:0;">V</div><p style="font-size:12px;"><strong>Precificar com confiança</strong> — valor percebido começa pela forma como você apresenta seu trabalho</p></div>
+      </div>
+    </div>
+
+    <div class="au d6" style="padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);max-width:560px;margin:0 auto;">
+      <p style="font-size:clamp(12px,2vw,14px);font-style:italic;color:#F5F7FB;margin-bottom:5px;">
+        "Cada fio aplicado com intenção é uma afirmação de <span class="gp">quem você é</span> como profissional."
+      </p>
+      <p style="font-size:10px;color:#7E879B;font-weight:600;">Módulo Técnicas & Mapeamento 2026 · Curso Prático Lash Design</p>
+    </div>
+  </div>
 </section>
 
 </div><!-- /slides -->
@@ -1310,7 +1289,11 @@ document.addEventListener('keydown',e=>{
 });
 
 let tx=0,ty=0,scrolling=false;
-document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;scrolling=false;},{passive:true});
+document.addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].clientX;
+  ty=e.changedTouches[0].clientY;
+  scrolling=false;
+},{passive:true});
 document.addEventListener('touchmove',e=>{
   const dx=Math.abs(e.changedTouches[0].clientX-tx);
   const dy=Math.abs(e.changedTouches[0].clientY-ty);
@@ -1336,4 +1319,3 @@ upd();
 </script>
 </body>
 </html>
-
