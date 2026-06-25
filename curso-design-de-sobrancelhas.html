@@ -12,11 +12,8 @@
       --border: rgba(255,255,255,.08);
       --text: #F5F7FB;
       --muted: #AAB3C5;
-
       --violet: #7C5BDB;
       --pink: #C86DD7;
-
-      --danger: #FF6B6B;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,30 +29,18 @@
       padding: 28px 16px 48px;
     }
 
-    .wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      width: 100%;
-    }
+    .wrap { max-width: 860px; margin: 0 auto; width: 100%; }
 
-    /* ── Badge ── */
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px;
       background: rgba(124,91,219,.10);
       border: 1px solid rgba(124,91,219,.28);
       color: #CDBBFF;
-      font-weight: 800;
-      font-size: clamp(11px, 2.5vw, 12px);
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      flex-wrap: wrap;
+      font-weight: 800; font-size: clamp(11px, 2.5vw, 12px);
+      letter-spacing: .04em; text-transform: uppercase;
     }
 
-    /* ── Título e subtítulo ── */
     h1 {
       margin: 16px 0 8px;
       font-size: clamp(22px, 5vw, 44px);
@@ -63,274 +48,78 @@
       line-height: 1.15;
       word-break: break-word;
       background: linear-gradient(135deg, #CDBBFF 0%, #C86DD7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .subtitle {
-      margin: 0 0 24px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: clamp(13px, 2.5vw, 15px);
-    }
+    .subtitle { margin: 0 0 24px; color: var(--muted); line-height: 1.7; font-size: clamp(13px, 2.5vw, 15px); }
 
-    /* ── Grid ── */
-    .grid {
-      display: grid;
-      gap: 12px;
-      grid-template-columns: 1fr;
-    }
+    .grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
 
-    @media (min-width: 640px) {
-      .grid { grid-template-columns: 1fr 1fr; }
+    a.card{
+      display:flex; flex-direction:column; text-decoration:none; color:inherit;
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 18px 16px; transition: .2s ease; -webkit-tap-highlight-color: transparent;
     }
-
-    /* ── Card ── */
-    a.card {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: inherit;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 16px;
-      transition: .2s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    a.card:hover,
-    a.card:active {
+    a.card:hover, a.card:active{
       transform: translateY(-2px);
       border-color: rgba(124,91,219,.40);
       background: rgba(124,91,219,.06);
     }
 
-    .card-title {
-      font-weight: 800;
-      font-size: clamp(14px, 3vw, 16px);
-      line-height: 1.4;
-      margin-bottom: 8px;
-      word-break: break-word;
-    }
-
-    .card-desc {
-      color: var(--muted);
-      font-size: clamp(12px, 2.4vw, 13px);
-      line-height: 1.6;
-      flex: 1;
-      word-break: break-word;
-    }
-
-    .pill {
-      display: inline-block;
-      align-self: flex-start;
-      margin-top: 14px;
-      font-size: clamp(11px, 2.2vw, 12px);
-      font-weight: 900;
-      padding: 7px 14px;
-      border-radius: 999px;
+    .card-title{ font-weight:800; font-size:clamp(14px,3vw,16px); line-height:1.4; margin-bottom:8px; }
+    .card-desc{ color:var(--muted); font-size:clamp(12px,2.4vw,13px); line-height:1.6; flex:1; }
+    .pill{
+      display:inline-block; align-self:flex-start; margin-top:14px;
+      font-size:clamp(11px,2.2vw,12px); font-weight:900; padding:7px 14px; border-radius:999px;
       background: linear-gradient(135deg, rgba(124,91,219,.22), rgba(200,109,215,.22));
-      border: 1px solid rgba(200,109,215,.20);
-      white-space: nowrap;
-      color: #EBD7FF;
+      border:1px solid rgba(200,109,215,.20); color:#EBD7FF; white-space:nowrap;
     }
 
-    /* ── Bloqueio (quando não logado) ── */
-    .locked a.card {
-      pointer-events: none;
-      filter: grayscale(0.15);
-      opacity: 0.75;
-    }
-    .locked a.card:hover,
-    .locked a.card:active {
-      transform: none;
-      border-color: var(--border);
-      background: var(--card);
-    }
-
-    /* ── Botões ── */
     .row-actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-      align-items:center;
-      justify-content: space-between;
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; align-items:center; justify-content: space-between;
     }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10); color:#AAB3C5; padding:12px 18px; border-radius:12px;
+      text-decoration:none; font-weight:700; font-size:clamp(12px,2.5vw,14px); transition:.25s ease;
+      -webkit-tap-highlight-color: transparent; cursor:pointer;
+    }
+    .btn:hover, .btn:active{ color:#F5F7FB; border-color: rgba(124,91,219,.35); }
+    .btn svg{ flex-shrink:0; }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color: #AAB3C5;
-      padding: 12px 18px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: clamp(12px, 2.5vw, 14px);
-      transition: .25s ease;
-      -webkit-tap-highlight-color: transparent;
-      cursor: pointer;
-    }
-
-    .btn:hover,
-    .btn:active {
-      color: #F5F7FB;
-      border-color: rgba(124,91,219,.35);
-    }
-
-    .btn svg { flex-shrink: 0; }
-
-    .btn.primary{
-      border: none;
-      color: #fff;
-      background: linear-gradient(135deg, var(--violet), var(--pink));
-      box-shadow: 0 12px 34px rgba(124,91,219,.30);
-    }
-
-    .btn.primary:hover,
-    .btn.primary:active{
-      transform: translateY(-1px);
-      box-shadow: 0 16px 44px rgba(124,91,219,.44);
-    }
-
-    /* ── Footer ── */
-    .footer {
-      margin-top: 24px;
-      color: #7E879B;
-      font-size: clamp(11px, 2.2vw, 12px);
-    }
-
-    .footer a { color: #CDBBFF; }
-
-    /* ── Modal senha ── */
-    .overlay{
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      background: rgba(0,0,0,.62);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .overlay.on{ display:flex; }
-
-    .modal{
-      width: 100%;
-      max-width: 520px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      box-shadow: 0 22px 70px rgba(0,0,0,.55);
-      padding: 22px 18px;
-    }
-    .modal-title{
-      font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 6px;
-      color: #F5F7FB;
-    }
-    .modal-sub{
-      color: #AAB3C5;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
-    .field label{
-      display:block;
-      font-size: 12px;
-      font-weight: 900;
-      margin-bottom: 6px;
-      color: #7E879B;
-    }
-    .field input{
-      width: 100%;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
-      color: #F5F7FB;
-      outline: none;
-      font-family: inherit;
-      font-size: 15px;
-    }
-    .field input:focus{
-      border-color: rgba(124,91,219,.55);
-      box-shadow: 0 0 0 4px rgba(124,91,219,.14);
-    }
-    .err{
-      min-height: 18px;
-      color: var(--danger);
-      font-size: 13px;
-      font-weight: 900;
-      margin-top: 10px;
-    }
-    .modal-actions{
-      display:flex;
-      gap: 10px;
-      justify-content:flex-end;
-      margin-top: 14px;
-      flex-wrap: wrap;
-    }
+    .footer { margin-top:24px; color:#7E879B; font-size:clamp(11px,2.2vw,12px); }
+    .footer a{ color:#CDBBFF; }
   </style>
 </head>
-
 <body>
-  <!-- Modal -->
-  <div class="overlay" id="overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="badge">🔒 Acesso ao curso</div>
-      <h2 class="modal-title" id="modalTitle">Design de Sobrancelhas</h2>
-      <p class="modal-sub">Digite a senha para liberar as aulas deste curso.</p>
-
-      <form id="formSenha" autocomplete="off">
-        <div class="field">
-          <label for="senha">Senha</label>
-          <input id="senha" type="password" placeholder="Digite a senha do curso" required />
-        </div>
-
-        <div class="err" id="err"></div>
-
-        <div class="modal-actions">
-          <button class="btn" type="button" id="btnCancelar">Cancelar</button>
-          <button class="btn primary" type="submit">Entrar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <div class="wrap">
     <div class="badge">✂️ Curso de Sobrancelhas</div>
     <h1>Design de Sobrancelhas</h1>
     <p class="subtitle">Selecione uma aula para abrir.</p>
 
-    <div class="grid locked" id="gridAulas">
-      <a class="card" href="#" data-href="aulas/design-de-sobrancelhas/aula-01.html">
+    <div class="grid">
+      <!-- Coloque os caminhos reais quando criar as aulas.
+           Deixei "#" para não dar erro/404 por enquanto. -->
+      <a class="card" href="#">
         <div class="card-title">Aula 01 — Introdução e Materiais</div>
         <p class="card-desc">Visão geral, pinças, réguas, paquímetro, linha, lâminas e organização.</p>
         <span class="pill">Abrir aula</span>
       </a>
 
-      <a class="card" href="#" data-href="aulas/design-de-sobrancelhas/aula-02.html">
+      <a class="card" href="#">
         <div class="card-title">Aula 02 — Visagismo e Mapeamento</div>
         <p class="card-desc">Formatos de rosto, simetria, medidas e desenho correto da sobrancelha.</p>
         <span class="pill">Abrir aula</span>
       </a>
 
-      <a class="card" href="#" data-href="aulas/design-de-sobrancelhas/aula-03.html">
+      <a class="card" href="#">
         <div class="card-title">Aula 03 — Técnicas (Pinça, Linha e Navalha)</div>
         <p class="card-desc">Vantagens, contraindicações e passo a passo com segurança.</p>
         <span class="pill">Abrir aula</span>
       </a>
 
-      <a class="card" href="#" data-href="aulas/design-de-sobrancelhas/aula-04.html">
+      <a class="card" href="#">
         <div class="card-title">Aula 04 — Finalização e Atendimento</div>
         <p class="card-desc">Higienização, henna (noções), pós-procedimento e fidelização.</p>
         <span class="pill">Abrir aula</span>
@@ -344,8 +133,6 @@
         </svg>
         Voltar ao Pacote Estética Facial
       </a>
-
-      <button class="btn" type="button" id="btnSenha">Digitar senha</button>
     </div>
 
     <div class="footer">
@@ -354,115 +141,11 @@
   </div>
 
   <script>
-    /********************
-     * CONFIGURAÇÃO     *
-     ********************/
-    const SENHA_CORRETA = 'semeards';
-    const ACCESS_KEY = 'semear_access_ok_design_sobrancelhas';
-
-    const overlay = document.getElementById('overlay');
-    const formSenha = document.getElementById('formSenha');
-    const inputSenha = document.getElementById('senha');
-    const err = document.getElementById('err');
-    const btnCancelar = document.getElementById('btnCancelar');
-    const btnSenha = document.getElementById('btnSenha');
-
-    const gridAulas = document.getElementById('gridAulas');
-    const cards = Array.from(gridAulas.querySelectorAll('a.card'));
-
-    function isAuthed() {
-      return localStorage.getItem(ACCESS_KEY) === '1';
+    // Garante que só entra aqui se tiver logado no pacote
+    const ACCESS_KEY = 'semear_access_ok_estetica';
+    if (localStorage.getItem(ACCESS_KEY) !== '1') {
+      window.location.replace('estetica-facial.html');
     }
-
-    function openModal() {
-      err.textContent = '';
-      inputSenha.value = '';
-      overlay.classList.add('on');
-      overlay.setAttribute('aria-hidden', 'false');
-      setTimeout(() => inputSenha.focus(), 60);
-    }
-
-    function closeModal() {
-      overlay.classList.remove('on');
-      overlay.setAttribute('aria-hidden', 'true');
-    }
-
-    function unlock() {
-      gridAulas.classList.remove('locked');
-      // ativa links reais
-      cards.forEach((a) => {
-        const real = a.getAttribute('data-href');
-        if (real) a.setAttribute('href', real);
-      });
-    }
-
-    function lock() {
-      gridAulas.classList.add('locked');
-      cards.forEach((a) => a.setAttribute('href', '#'));
-    }
-
-    // Boot
-    window.addEventListener('DOMContentLoaded', () => {
-      if (isAuthed()) {
-        unlock();
-      } else {
-        lock();
-        openModal();
-      }
-    });
-
-    // Abrir modal manualmente
-    btnSenha.addEventListener('click', () => openModal());
-
-    // Cancelar modal
-    btnCancelar.addEventListener('click', () => closeModal());
-
-    // Fechar clicando fora
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeModal();
-    });
-
-    // Fechar com ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('on')) closeModal();
-    });
-
-    // Validar senha
-    formSenha.addEventListener('submit', (e) => {
-      e.preventDefault();
-      err.textContent = '';
-
-      const typed = (inputSenha.value || '').trim();
-
-      if (!typed) {
-        err.textContent = 'Digite a senha.';
-        inputSenha.focus();
-        return;
-      }
-
-      if (typed !== SENHA_CORRETA) {
-        err.textContent = 'Senha incorreta. Tente novamente.';
-        inputSenha.value = '';
-        inputSenha.focus();
-        return;
-      }
-
-      localStorage.setItem(ACCESS_KEY, '1');
-      closeModal();
-      unlock();
-    });
-
-    // Segurança: se clicar num card bloqueado, abre modal
-    gridAulas.addEventListener('click', (e) => {
-      const a = e.target.closest('a.card');
-      if (!a) return;
-
-      if (gridAulas.classList.contains('locked')) {
-        e.preventDefault();
-        openModal();
-      }
-    });
   </script>
 </body>
 </html>
-
