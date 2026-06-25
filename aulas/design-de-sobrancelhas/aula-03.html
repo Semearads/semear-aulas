@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Henna para Sobrancelhas — Aplicação & Colorimetria</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;background:#050816;font-family:'Inter',sans-serif;overflow:hidden;}
+.presentation{width:100%;height:100%;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%;}
+
+.slide{
+  width:100vw;min-height:100vh;height:100vh;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;position:relative;
+  overflow-y:auto;overflow-x:hidden;
+  padding:50px 13px 112px;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+}
+.slide.vcenter{justify-content:center;}
+.slide::-webkit-scrollbar{width:3px;}
+.slide::-webkit-scrollbar-thumb{background:rgba(180,111,255,.25);border-radius:4px;}
+
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 900px 400px at 80% 5%, rgba(180,111,255,.13) 0%,transparent 45%),
+    radial-gradient(ellipse 700px 350px at 5% 85%, rgba(255,140,60,.10) 0%,transparent 45%),
+    radial-gradient(ellipse 500px 280px at 55% 50%, rgba(200,109,215,.06) 0%,transparent 55%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.07;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1;}
+.inner{width:100%;max-width:980px;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.3;}
+p,li{font-weight:400;line-height:1.65;color:#AAB3C5;}
+strong{color:#F5F7FB;}
+
+/* GRADIENTS */
+.gv{background:linear-gradient(135deg,#B46FFF 0%,#7C3AED 50%,#B46FFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.go{background:linear-gradient(135deg,#FFD460 0%,#FF8C30 50%,#FFD460 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gg{background:linear-gradient(135deg,#5EE89A 0%,#00DCA0 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gb{background:linear-gradient(135deg,#60C3FF 0%,#2E6BFF 50%,#60C3FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gr{background:linear-gradient(135deg,#FF6B6B 0%,#FF3D7F 50%,#FF6B6B 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gm{background:linear-gradient(135deg,#FF9EC4 0%,#C86DD7 50%,#FF9EC4 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* LINES */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#B46FFF,#C86DD7);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px;transform-origin:center;}
+.gl.gold{background:linear-gradient(90deg,#FFD460,#FF8C30);}
+.gl.green{background:linear-gradient(90deg,#5EE89A,#00DCA0);}
+.gl.blue{background:linear-gradient(90deg,#60C3FF,#2E6BFF);}
+.gl.red{background:linear-gradient(90deg,#FF6B6B,#FF3D7F);}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 22px;border-radius:999px;margin-bottom:22px;background:rgba(180,111,255,.10);border:1px solid rgba(180,111,255,.32);font-size:12px;font-weight:600;color:#C89EFF;letter-spacing:.06em;text-transform:uppercase;}
+
+/* TAGS */
+.tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.04em;white-space:nowrap;}
+.tv{background:rgba(180,111,255,.15);color:#C89EFF;border:1px solid rgba(180,111,255,.30);}
+.to{background:rgba(255,212,96,.15);color:#FFD460;border:1px solid rgba(255,212,96,.28);}
+.tg{background:rgba(94,232,154,.15);color:#5EE89A;border:1px solid rgba(94,232,154,.28);}
+.tb{background:rgba(96,195,255,.15);color:#90D8FF;border:1px solid rgba(96,195,255,.28);}
+.tr{background:rgba(255,107,107,.15);color:#FF9090;border:1px solid rgba(255,107,107,.28);}
+.tm{background:rgba(200,109,215,.15);color:#E8A8F8;border:1px solid rgba(200,109,215,.28);}
+.tw{background:rgba(255,255,255,.10);color:#F5F7FB;border:1px solid rgba(255,255,255,.18);}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:15px 14px;}
+.cardv{background:linear-gradient(145deg,rgba(180,111,255,.09),rgba(124,58,237,.05));border:1px solid rgba(180,111,255,.24);border-radius:18px;padding:15px 14px;}
+.cardo{background:linear-gradient(145deg,rgba(255,212,96,.08),rgba(255,140,0,.04));border:1px solid rgba(255,212,96,.22);border-radius:18px;padding:15px 14px;}
+.cardg{background:linear-gradient(145deg,rgba(94,232,154,.07),rgba(0,220,160,.04));border:1px solid rgba(94,232,154,.20);border-radius:18px;padding:15px 14px;}
+.cardb{background:linear-gradient(145deg,rgba(46,107,255,.07),rgba(94,59,214,.04));border:1px solid rgba(46,107,255,.22);border-radius:18px;padding:15px 14px;}
+.cardr{background:linear-gradient(145deg,rgba(255,107,107,.07),rgba(255,61,127,.04));border:1px solid rgba(255,107,107,.22);border-radius:18px;padding:15px 14px;}
+.cardm{background:linear-gradient(145deg,rgba(200,109,215,.09),rgba(255,111,163,.05));border:1px solid rgba(200,109,215,.24);border-radius:18px;padding:15px 14px;}
+
+/* ITEMS */
+.fi{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:11px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);}
+.fiv{background:rgba(180,111,255,.06);border-color:rgba(180,111,255,.18);}
+.fio{background:rgba(255,212,96,.05);border-color:rgba(255,212,96,.18);}
+.fig{background:rgba(94,232,154,.05);border-color:rgba(94,232,154,.18);}
+.fib{background:rgba(46,107,255,.05);border-color:rgba(46,107,255,.18);}
+.fir{background:rgba(255,107,107,.05);border-color:rgba(255,107,107,.18);}
+.fim{background:rgba(200,109,215,.05);border-color:rgba(200,109,215,.18);}
+
+/* INFO */
+.info{padding:12px 14px;border-radius:13px;}
+.iv{background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.25);}
+.io{background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.25);}
+.ig{background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.25);}
+.ib{background:rgba(46,107,255,.07);border:1px solid rgba(46,107,255,.25);}
+.ir{background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.25);}
+.im{background:rgba(200,109,215,.07);border:1px solid rgba(200,109,215,.25);}
+
+/* STEPS */
+.sf{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:13px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);}
+.sfn{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;}
+
+/* CHECK */
+.ck{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:10px;}
+.ckok{background:rgba(94,232,154,.05);border:1px solid rgba(94,232,154,.18);}
+.ckno{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.18);}
+.ckic{width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.ckok .ckic{background:rgba(94,232,154,.2);color:#5EE89A;}
+.ckno .ckic{background:rgba(255,80,80,.2);color:#FF6060;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+
+/* MITO/VERDADE */
+.mv-card{border-radius:18px;padding:14px 14px;margin-bottom:9px;}
+.mito{background:linear-gradient(145deg,rgba(255,80,80,.08),rgba(255,61,127,.04));border:1px solid rgba(255,80,80,.25);}
+.verdade{background:linear-gradient(145deg,rgba(94,232,154,.07),rgba(0,220,160,.03));border:1px solid rgba(94,232,154,.22);}
+
+/* COLOR SWATCH */
+.swatch{width:100%;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-bottom:6px;}
+
+/* COMPARISON TABLE */
+.ctable{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;}
+.ctable th{padding:10px 8px;font-size:11px;font-weight:700;text-align:center;background:rgba(255,255,255,.05);color:#F5F7FB;}
+.ctable td{padding:9px 8px;font-size:10px;text-align:center;border-top:1px solid rgba(255,255,255,.05);color:#AAB3C5;line-height:1.4;}
+.ctable tr:hover td{background:rgba(255,255,255,.02);}
+.ctable td:first-child{text-align:left;font-weight:600;color:#F5F7FB;font-size:11px;}
+.ctable th:first-child{text-align:left;}
+
+/* ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 16px rgba(180,111,255,.15)}50%{box-shadow:0 0 36px rgba(180,111,255,.38)}}
+.slide.active .au{animation:fadeUp .68s ease both;}
+.slide.active .as{animation:fadeScale .68s ease both;}
+.d1{animation-delay:.07s!important}.d2{animation-delay:.17s!important}
+.d3{animation-delay:.27s!important}.d4{animation-delay:.37s!important}
+.d5{animation-delay:.47s!important}.d6{animation-delay:.57s!important}
+.d7{animation-delay:.67s!important}.d8{animation-delay:.77s!important}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#B46FFF,#FFD460,#B46FFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+.fsbtn{position:fixed;top:10px;right:10px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:8px 13px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fsbtn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(180,111,255,.4);}
+.fsbtn svg{width:13px;height:13px;}
+.sc{position:fixed;bottom:16px;left:11px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.55);padding:7px 12px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#C89EFF;font-weight:900;}
+.ind{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.55);padding:7px 13px;border-radius:22px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:linear-gradient(90deg,#B46FFF,#FFD460);box-shadow:0 0 10px rgba(180,111,255,.55);width:26px;border-radius:4px;}
+.navarr{position:fixed;bottom:11px;right:11px;z-index:998;display:flex;gap:7px;}
+.navarr button{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(6px);}
+.navarr button:hover{background:rgba(180,111,255,.18);border-color:rgba(180,111,255,.4);color:#fff;}
+.navarr button svg{width:17px;height:17px;}
+
+@media(max-width:680px){
+  .slide{padding:44px 11px 108px;}
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  h2{font-size:clamp(18px,5vw,32px)!important;}
+  .ctable th,.ctable td{font-size:9px;padding:7px 5px;}
+}
+@media(max-width:390px){
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fsbtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════ SLIDE 1 — CAPA ══════════ -->
+<section class="slide vcenter active">
+<div style="width:100%;max-width:940px;text-align:center;">
+
+  <div class="badge au d1">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+    Curso Profissional · Módulo Colorimetria
+  </div>
+
+  <h1 class="au d2" style="font-size:clamp(26px,7vw,80px);margin-bottom:14px;line-height:1.04;">
+    <span class="gv">Henna</span> para<br/>Sobrancelhas
+  </h1>
+
+  <div class="gl ce au d3" style="background:linear-gradient(90deg,#B46FFF,#FFD460);"></div>
+
+  <p class="au d4" style="font-size:clamp(12px,2.2vw,17px);color:#AAB3C5;max-width:680px;margin:0 auto 28px;line-height:1.7;">
+    Tudo sobre <strong style="color:#F5F7FB;">aplicação profissional</strong>, <strong style="color:#F5F7FB;">colorimetria completa</strong>, composição química, tempo de fixação, contraindicações e os principais <strong style="color:#F5F7FB;">mitos e verdades</strong> que circulam no mercado.
+  </p>
+
+  <div class="g4 au d5" style="max-width:860px;margin:0 auto 24px;">
+    <div style="padding:16px 12px;border-radius:18px;background:linear-gradient(145deg,rgba(180,111,255,.12),rgba(124,58,237,.06));border:1px solid rgba(180,111,255,.30);text-align:center;animation:glowPulse 3s ease-in-out infinite;">
+      <div style="font-size:28px;margin-bottom:8px;">🌿</div>
+      <p style="font-size:12px;font-weight:800;color:#C89EFF;margin-bottom:4px;">Composição</p>
+      <p style="font-size:10px;color:#7E879B;line-height:1.5;">Origem botânica<br/>Lawsonia inermis</p>
+    </div>
+    <div style="padding:16px 12px;border-radius:18px;background:linear-gradient(145deg,rgba(255,212,96,.10),rgba(255,140,0,.05));border:1px solid rgba(255,212,96,.28);text-align:center;">
+      <div style="font-size:28px;margin-bottom:8px;">🎨</div>
+      <p style="font-size:12px;font-weight:800;color:#FFD460;margin-bottom:4px;">Colorimetria</p>
+      <p style="font-size:10px;color:#7E879B;line-height:1.5;">Tom base, subtom<br/>& mix de cores</p>
+    </div>
+    <div style="padding:16px 12px;border-radius:18px;background:linear-gradient(145deg,rgba(94,232,154,.08),rgba(0,220,160,.04));border:1px solid rgba(94,232,154,.25);text-align:center;">
+      <div style="font-size:28px;margin-bottom:8px;">⚗️</div>
+      <p style="font-size:12px;font-weight:800;color:#5EE89A;margin-bottom:4px;">Aplicação</p>
+      <p style="font-size:10px;color:#7E879B;line-height:1.5;">Protocolo completo<br/>passo a passo</p>
+    </div>
+    <div style="padding:16px 12px;border-radius:18px;background:linear-gradient(145deg,rgba(255,107,107,.08),rgba(255,61,127,.04));border:1px solid rgba(255,107,107,.24);text-align:center;">
+      <div style="font-size:28px;margin-bottom:8px;">❓</div>
+      <p style="font-size:12px;font-weight:800;color:#FF9090;margin-bottom:4px;">Mitos & Verdades</p>
+      <p style="font-size:10px;color:#7E879B;line-height:1.5;">12 afirmações<br/>desmistificadas</p>
+    </div>
+  </div>
+
+  <div class="g3 au d6" style="max-width:680px;margin:0 auto;">
+    <div style="padding:9px 10px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);text-align:center;">
+      <p style="font-size:10px;font-weight:600;color:#AAB3C5;">📖 10 slides</p>
+    </div>
+    <div style="padding:9px 10px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);text-align:center;">
+      <p style="font-size:10px;font-weight:600;color:#AAB3C5;">🎓 Nível profissional</p>
+    </div>
+    <div style="padding:9px 10px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);text-align:center;">
+      <p style="font-size:10px;font-weight:600;color:#AAB3C5;">📱 Mobile otimizado</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════ SLIDE 2 — O QUE É HENNA: CIÊNCIA & HISTÓRIA ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;">O que é Henna — <span class="gv">Ciência, Botânica & História</span></h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">Antes de aplicar, a profissional precisa entender o que é a henna em nível molecular — essa compreensão é o que diferencia quem <strong>apenas aplica</strong> de quem <strong>domina a técnica</strong> com autoridade técnica e científica.</p>
+
+  <div class="g2 au d4" style="margin-bottom:11px;">
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardv">
+        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:10px;">🌿 Origem Botânica</h3>
+        <!-- SVG planta henna -->
+        <svg viewBox="0 0 320 110" style="width:100%;max-width:320px;display:block;margin:0 auto 12px;" xmlns="http://www.w3.org/2000/svg">
+          <!-- Caule principal -->
+          <line x1="160" y1="100" x2="160" y2="30" stroke="rgba(94,232,154,.6)" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Galhos -->
+          <line x1="160" y1="70" x2="120" y2="50" stroke="rgba(94,232,154,.45)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="160" y1="60" x2="200" y2="44" stroke="rgba(94,232,154,.45)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="160" y1="50" x2="130" y2="30" stroke="rgba(94,232,154,.35)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="160" y1="42" x2="188" y2="26" stroke="rgba(94,232,154,.35)" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Folhas -->
+          <ellipse cx="108" cy="44" rx="14" ry="8" fill="rgba(94,232,154,.25)" stroke="rgba(94,232,154,.5)" stroke-width="1" transform="rotate(-30 108 44)"/>
+          <ellipse cx="212" cy="38" rx="14" ry="8" fill="rgba(94,232,154,.25)" stroke="rgba(94,232,154,.5)" stroke-width="1" transform="rotate(20 212 38)"/>
+          <ellipse cx="122" cy="24" rx="11" ry="7" fill="rgba(94,232,154,.2)" stroke="rgba(94,232,154,.4)" stroke-width="1" transform="rotate(-40 122 24)"/>
+          <ellipse cx="196" cy="20" rx="11" ry="7" fill="rgba(94,232,154,.2)" stroke="rgba(94,232,154,.4)" stroke-width="1" transform="rotate(25 196 20)"/>
+          <!-- Florzinha -->
+          <circle cx="160" cy="22" r="8" fill="rgba(180,111,255,.25)" stroke="rgba(180,111,255,.5)" stroke-width="1.5"/>
+          <circle cx="160" cy="22" r="4" fill="rgba(255,212,96,.4)" stroke="rgba(255,212,96,.6)" stroke-width="1"/>
+          <!-- Raiz -->
+          <path d="M 160 100 Q 145 108, 138 105" stroke="rgba(94,232,154,.35)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M 160 100 Q 172 110, 180 106" stroke="rgba(94,232,154,.35)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Labels -->
+          <text x="70" y="46" fill="#5EE89A" font-size="8" font-family="Inter,sans-serif" font-weight="700">Folhas →</text>
+          <text x="222" y="22" fill="#C89EFF" font-size="8" font-family="Inter,sans-serif">← Flor</text>
+          <text x="170" y="108" fill="#FFD460" font-size="8" font-family="Inter,sans-serif">Raiz</text>
+          <text x="30" y="100" fill="#7E879B" font-size="8" font-family="Inter,sans-serif">Lawsonia</text>
+          <text x="28" y="110" fill="#7E879B" font-size="8" font-family="Inter,sans-serif">inermis</text>
+        </svg>
+
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">🌱</span><div><p style="font-size:11px;font-weight:700;color:#C89EFF;margin-bottom:2px;">Nome científico: Lawsonia inermis</p><p style="font-size:11px;">Arbusto nativo do Norte da África, Oriente Médio e Subcontinente Indiano. Cresce em climas áridos e semiáridos. Atinge até 3 metros de altura.</p></div></div>
+          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">🍃</span><div><p style="font-size:11px;font-weight:700;color:#C89EFF;margin-bottom:2px;">A parte usada: as folhas</p><p style="font-size:11px;">Apenas as folhas contêm concentração suficiente de lawsona para fins cosméticos. São colhidas, secas e moídas em pó fino para formular a henna.</p></div></div>
+          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">🏛️</span><div><p style="font-size:11px;font-weight:700;color:#C89EFF;margin-bottom:2px;">Uso histórico documentado: 5.000 anos</p><p style="font-size:11px;">Múmias egípcias examinadas por arqueólogos apresentaram cabelos e unhas tingidos com henna. No Oriente Médio, era símbolo de prosperidade e proteção.</p></div></div>
+          <div class="fi fiv"><span style="font-size:13px;flex-shrink:0;">🎨</span><div><p style="font-size:11px;font-weight:700;color:#C89EFF;margin-bottom:2px;">Aplicação moderna em sobrancelhas</p><p style="font-size:11px;">A adaptação da henna para design de sobrancelhas profissional é recente — surgiu no Brasil como tendência por volta de 2012–2015, tornando-se serviço padrão em estúdios especializados.</p></div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardo">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">⚗️ A Molécula que Colore — Lawsona</h3>
+
+        <div style="padding:12px 13px;border-radius:13px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.22);margin-bottom:8px;">
+          <p style="font-size:12px;font-weight:700;color:#FFD460;margin-bottom:5px;">🔬 Como funciona a coloração?</p>
+          <p style="font-size:11px;margin-bottom:6px;">A <strong>lawsona (2-hidroxi-1,4-naftoquinona)</strong> é o princípio ativo da henna. É uma molécula pequena que consegue penetrar na camada córnea da epiderme e nos fios de cabelo/pelos.</p>
+          <p style="font-size:11px;">Ela se liga por <strong>ligações covalentes</strong> às proteínas de queratina — tanto na pele quanto nos fios da sobrancelha. É por isso que a coloração da henna é mais duradoura que produtos que apenas depositam cor na superfície.</p>
+        </div>
+
+        <!-- Visual molécula simplificado -->
+        <div style="padding:11px 12px;border-radius:13px;background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.18);margin-bottom:8px;">
+          <p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:6px;text-align:center;">Mecanismo de Coloração</p>
+          <svg viewBox="0 0 320 70" style="width:100%;max-width:320px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+            <!-- Lawsona -->
+            <rect x="10" y="20" width="70" height="32" rx="8" fill="rgba(255,212,96,.15)" stroke="rgba(255,212,96,.4)" stroke-width="1.5"/>
+            <text x="45" y="37" fill="#FFD460" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">Lawsona</text>
+            <text x="45" y="47" fill="#7E879B" font-size="7" text-anchor="middle" font-family="Inter,sans-serif">(molécula)</text>
+            <!-- Seta -->
+            <line x1="84" y1="36" x2="108" y2="36" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <polygon points="108,32 116,36 108,40" fill="rgba(255,255,255,.3)"/>
+            <text x="100" y="30" fill="#7E879B" font-size="7" text-anchor="middle" font-family="Inter,sans-serif">penetra</text>
+            <!-- Pele/fio -->
+            <rect x="118" y="18" width="70" height="36" rx="8" fill="rgba(180,111,255,.12)" stroke="rgba(180,111,255,.35)" stroke-width="1.5"/>
+            <text x="153" y="34" fill="#C89EFF" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">Queratina</text>
+            <text x="153" y="45" fill="#7E879B" font-size="7" text-anchor="middle" font-family="Inter,sans-serif">(pele/fio)</text>
+            <!-- Seta -->
+            <line x1="192" y1="36" x2="216" y2="36" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <polygon points="216,32 224,36 216,40" fill="rgba(255,255,255,.3)"/>
+            <text x="208" y="30" fill="#7E879B" font-size="7" text-anchor="middle" font-family="Inter,sans-serif">liga-se</text>
+            <!-- Resultado -->
+            <rect x="226" y="18" width="84" height="36" rx="8" fill="rgba(94,232,154,.10)" stroke="rgba(94,232,154,.35)" stroke-width="1.5"/>
+            <text x="268" y="34" fill="#5EE89A" font-size="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">Coloração</text>
+            <text x="268" y="45" fill="#7E879B" font-size="7" text-anchor="middle" font-family="Inter,sans-serif">permanente na fibra</text>
+          </svg>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div class="fi fio"><span style="font-size:13px;flex-shrink:0;">🔬</span><div><p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:2px;">pH ácido ativa a lawsona</p><p style="font-size:11px;">A henna funciona melhor em pH entre 5 e 5,5 (levemente ácido). É por isso que muitas fórmulas usam limão ou ácido cítrico para ativar a cor — diminuir o pH libera mais lawsona livre.</p></div></div>
+          <div class="fi fio"><span style="font-size:13px;flex-shrink:0;">🌡️</span><div><p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:2px;">Temperatura impacta a fixação</p><p style="font-size:11px;">Calor acelera a ligação da lawsona à queratina. Profissionais usam wrapping plástico ou luz de infravermelho sobre a sobrancelha para intensificar a cor e reduzir o tempo de exposição.</p></div></div>
+          <div class="fi fio"><span style="font-size:13px;flex-shrink:0;">💧</span><div><p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:2px;">Hidratação dos fios afeta resultado</p><p style="font-size:11px;">Fios secos e porosos absorvem mais lawsona — resultado mais intenso. Fios muito oleosos ou tratados com silicone criam barreira que impede a penetração da molécula.</p></div></div>
+        </div>
+      </div>
+
+      <div class="info iv">
+        <p style="font-size:12px;color:#C89EFF;font-weight:700;margin-bottom:4px;">🧴 Henna Natural vs Henna Composta</p>
+        <p style="font-size:11px;margin-bottom:4px;"><strong>Henna pura:</strong> apenas Lawsonia inermis em pó — cor natural ocre/laranja-marrom. Usada em tatuagens tradicionais.</p>
+        <p style="font-size:11px;"><strong>Henna composta (para sobrancelhas):</strong> henna natural + pigmentos adicionais (índigo, carvão vegetal, oxido de ferro) para ampliar a paleta de cores para castanhos, pretos e grisalhados. É este formato que usamos em design.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 3 — COLORIMETRIA: RODA DE CORES & TOM BASE ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl gold au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;">Colorimetria — <span class="go">Roda de Cores, Tom & Subtom</span></h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">A colorimetria é a disciplina que separa profissionais excepcionais das medianas. Escolher a cor certa de henna não é intuição — é ciência. Tom base errado cria sobrancelhas artificiais, com subtom que destoa completamente da pele e do cabelo da cliente.</p>
+
+  <div class="g2 au d4" style="margin-bottom:11px;">
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardo">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">🎨 Roda de Cores Aplicada à Henna</h3>
+
+        <!-- RODA DE CORES SVG -->
+        <svg viewBox="0 0 300 220" style="width:100%;max-width:300px;display:block;margin:0 auto 12px;" xmlns="http://www.w3.org/2000/svg">
+          <!-- Círculo base -->
+          <circle cx="150" cy="115" r="85" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <!-- Fatias de cor -->
+          <!-- Amarelo/Dourado (quente) -->
+          <path d="M150 115 L150 30 A85 85 0 0 1 223 72 Z" fill="rgba(255,212,60,.35)" stroke="rgba(0,0,0,.3)" stroke-width=".5"/>
+          <!-- Laranja (quente) -->
+          <path d="M150 115 L223 72 A85 85 0 0 1 235 158 Z" fill="rgba(255,140,30,.35)" stroke="rgba(0,0,0,.3)" stroke-width=".5"/>
+          <!-- Vermelho/Cobre (quente) -->
+          <path d="M150 115 L235 158 A85 85 0 0 1 150 200 Z" fill="rgba(220,60,40,.30)" stroke="rgba(0,0,0,.3)" stroke-width=".5"/>
+          <!-- Roxo/Frio -->
+          <path d="M150 115 L150 200 A85 85 0 0 1 65 158 Z" fill="rgba(120,40,200,.28)" stroke="rgba(0,0,0,.3)" stroke-width=".5"/>
+          <!-- Azul/Índigo (frio) -->
+          <path d="M150 115 L65 158 A85 85 0 0 1 77 72 Z" fill="rgba(40,80,200,.28)" stroke="rgba(0,0,0,.3)" stroke-width=".5"/>
+          <!-- Verde (frio) -->
+          <path d="M150 115 L77 72 A85 85 0 0 1 150 30 Z" fill="rgba(40,160,100,.28)" stroke="rgba(0,0,0,.3)" stroke-width=".5"/>
+          <!-- Centro -->
+          <circle cx="150" cy="115" r="32" fill="rgba(10,15,36,.9)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          <text x="150" y="110" fill="#F5F7FB" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">RODA DE</text>
+          <text x="150" y="122" fill="#F5F7FB" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">CORES</text>
+          <!-- Labels externos -->
+          <text x="150" y="22" fill="#FFD460" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">DOURADO</text>
+          <text x="236" y="64" fill="#FF8C30" font-size="8" font-family="Inter,sans-serif" font-weight="700">LARANJA</text>
+          <text x="242" y="165" fill="#FF6060" font-size="8" font-family="Inter,sans-serif" font-weight="700">COBRE</text>
+          <text x="95" y="210" fill="#C89EFF" font-size="9" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700">ROXO</text>
+          <text x="22" y="165" fill="#90D8FF" font-size="8" font-family="Inter,sans-serif" font-weight="700">ÍNDIGO</text>
+          <text x="30" y="64" fill="#5EE89A" font-size="8" font-family="Inter,sans-serif" font-weight="700">VERDE</text>
+          <!-- Divisão quente/frio -->
+          <line x1="150" y1="30" x2="150" y2="200" stroke="rgba(255,255,255,.15)" stroke-width="1" stroke-dasharray="5,4"/>
+          <text x="200" y="8" fill="#FF8C30" font-size="8" font-family="Inter,sans-serif">QUENTE →</text>
+          <text x="80" y="8" fill="#90D8FF" font-size="8" text-anchor="end" font-family="Inter,sans-serif">← FRIO</text>
+        </svg>
+
+        <div style="display:flex;gap:7px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;padding:9px 10px;border-radius:12px;background:rgba(255,140,30,.10);border:1px solid rgba(255,140,30,.25);">
+            <p style="font-size:11px;font-weight:700;color:#FF8C30;margin-bottom:4px;">🔥 Subtom Quente</p>
+            <p style="font-size:10px;">Dourado, laranja, cobre, caramelo → Combina com pele de subtom amarelo/dourado e cabelo castanho quente, ruivo, louro dourado</p>
+          </div>
+          <div style="flex:1;min-width:120px;padding:9px 10px;border-radius:12px;background:rgba(96,195,255,.08);border:1px solid rgba(96,195,255,.22);">
+            <p style="font-size:11px;font-weight:700;color:#90D8FF;margin-bottom:4px;">❄️ Subtom Frio</p>
+            <p style="font-size:10px;">Índigo, roxo, acinzentado → Combina com pele de subtom rosado/azulado e cabelo preto, castanho frio, grisalho</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardm">
+        <h3 style="font-size:13px;color:#E8A8F8;margin-bottom:10px;">🔎 Como Identificar o Subtom da Pele</h3>
+        <p style="font-size:11px;margin-bottom:8px;">Antes de escolher a cor da henna, identificar o subtom da pele da cliente é obrigatório — é o que garante que a sobrancelha se integre naturalmente ao rosto e não cause contraste indesejado.</p>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">💉</span><div><p style="font-size:11px;font-weight:700;color:#E8A8F8;margin-bottom:2px;">Teste das veias do pulso</p><p style="font-size:11px;"><strong>Veias azuladas/arroxeadas</strong> → subtom frio. <strong>Veias esverdeadas</strong> → subtom quente. <strong>Misto de azul e verde</strong> → subtom neutro.</p></div></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">☀️</span><div><p style="font-size:11px;font-weight:700;color:#E8A8F8;margin-bottom:2px;">Reação ao sol</p><p style="font-size:11px;"><strong>Bronzeia facilmente/dourado</strong> → subtom quente. <strong>Avermelhado/queima antes de bronzear</strong> → subtom frio.</p></div></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">💎</span><div><p style="font-size:11px;font-weight:700;color:#E8A8F8;margin-bottom:2px;">Teste das joias</p><p style="font-size:11px;"><strong>Ouro fica melhor</strong> → subtom quente. <strong>Prata fica melhor</strong> → subtom frio. <strong>Ambos ficam bem</strong> → subtom neutro.</p></div></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">👗</span><div><p style="font-size:11px;font-weight:700;color:#E8A8F8;margin-bottom:2px;">Teste das roupas</p><p style="font-size:11px;"><strong>Tons terrosos/coral valorizam</strong> → subtom quente. <strong>Azul royal/pink valorizam</strong> → subtom frio. <strong>Tudo funciona</strong> → subtom neutro.</p></div></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">🔆</span><div><p style="font-size:11px;font-weight:700;color:#E8A8F8;margin-bottom:2px;">Observação da pele com luz natural</p><p style="font-size:11px;"><strong>Subrubor dourado/pêssego</strong> → quente. <strong>Subrubor rosado/lilás</strong> → frio. <strong>Cinza/marfim neutro</strong> → neutro.</p></div></div>
+        </div>
+      </div>
+
+      <div class="cardg">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">📊 Escala de Tom (Clareza)</h3>
+        <p style="font-size:11px;margin-bottom:8px;">Além do subtom, o <strong>tom base</strong> (claridade/escuridão) da henna deve ser escolhido em relação ao tom natural do cabelo e sobrancelha da cliente:</p>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;background:rgba(255,212,96,.08);border:1px solid rgba(255,212,96,.2);">
+            <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#D4A96A,#C48B40);flex-shrink:0;border:1px solid rgba(255,255,255,.1);"></div>
+            <div><p style="font-size:11px;font-weight:700;color:#FFD460;">Tom Louro/Caramelo (3–5)</p><p style="font-size:10px;color:#7E879B;">Clientes louras e ruivas claras — henna não deve ultrapassar 2 tons mais escura que o cabelo</p></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.18);">
+            <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#7B4F2A,#5C3516);flex-shrink:0;border:1px solid rgba(255,255,255,.1);"></div>
+            <div><p style="font-size:11px;font-weight:700;color:#C89EFF;">Tom Castanho (5–7)</p><p style="font-size:10px;color:#7E879B;">Maioria das brasileiras — maior versatilidade de mix. Trabalha bem com hennas escuras quentes ou frias neutras</p></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;background:rgba(94,232,154,.06);border:1px solid rgba(94,232,154,.18);">
+            <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2C1810,#1A0E08);flex-shrink:0;border:1px solid rgba(255,255,255,.1);"></div>
+            <div><p style="font-size:11px;font-weight:700;color:#5EE89A;">Tom Preto/Muito Escuro (1–3)</p><p style="font-size:10px;color:#7E879B;">Clientes de cabelo preto — usar henna com índigo como base para evitar subtom avermelhado que destoa do cabelo escuro</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 4 — PALETA COMPLETA & MIX DE CORES ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl gold au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;">Paleta & <span class="go">Mix de Cores — Guia Prático</span></h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">A paleta profissional de henna para sobrancelhas vai muito além das 3–4 cores básicas dos kits iniciantes. Entender como misturar, neutralizar e intensificar cores é o que permite criar o tom exato para cada cliente.</p>
+
+  <div class="g2 au d4" style="margin-bottom:11px;">
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <!-- PALETA VISUAL -->
+      <div class="cardo">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:10px;">🎨 Paleta de Referência — 10 Tons Principais</h3>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#D4A96A,#C48B40);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Louro Dourado</p><p style="font-size:10px;color:#7E879B;">Henna base natural (70%) + ativador. Subtom quente intenso. Para loiras e castanhas claras.</p></div>
+            <span class="tag to">quente</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#C17540,#9B5422);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Castanho Quente / Mel</p><p style="font-size:10px;color:#7E879B;">Henna base (60%) + castanho quente (40%). O tom mais solicitado no Brasil.</p></div>
+            <span class="tag to">quente</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#A0522D,#7B3C1C);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Castanho Médio</p><p style="font-size:10px;color:#7E879B;">Base + castanho escuro (50/50). Versátil, funciona em subtom quente e neutro.</p></div>
+            <span class="tag tw">neutro</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6B3A2A,#4A2318);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Castanho Escuro</p><p style="font-size:10px;color:#7E879B;">Castanho escuro (70%) + índigo (30%) para neutralizar vermelho. Muito popular.</p></div>
+            <span class="tag tw">neutro</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#8B4513,#6B2F0C);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Ruivo / Cobre</p><p style="font-size:10px;color:#7E879B;">Henna pura (80%) + dourado (20%). Para clientes ruivas ou que desejam tendência.</p></div>
+            <span class="tag to">quente intenso</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#5C4033,#3D2820);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Castanho Acinzentado</p><p style="font-size:10px;color:#7E879B;">Castanho escuro (50%) + índigo (40%) + cinza (10%). Subtom frio elegante.</p></div>
+            <span class="tag tb">frio</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#2C1B11,#1C1008);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Preto Quente</p><p style="font-size:10px;color:#7E879B;">Preto (60%) + índigo (30%) + castanho escuro (10%). Para peles morenas/negras.</p></div>
+            <span class="tag tb">frio</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#1A1A2E,#0D0D1A);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Preto Absoluto</p><p style="font-size:10px;color:#7E879B;">Índigo (70%) + preto vegetal (30%). Máxima opacidade, resultado muito marcante.</p></div>
+            <span class="tag tb">frio intenso</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#8B7355,#6B5335);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Louro Frio / Cinza</p><p style="font-size:10px;color:#7E879B;">Base clara (50%) + cinza (30%) + índigo (20%). Ideal para grisalhas e louras frias.</p></div>
+            <span class="tag tb">frio</span>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:9px;">
+            <div style="width:44px;height:28px;border-radius:7px;background:linear-gradient(135deg,#4A2C6E,#351E54);flex-shrink:0;border:1px solid rgba(255,255,255,.08);"></div>
+            <div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#F5F7FB;">Castanho Avioletado</p><p style="font-size:10px;color:#7E879B;">Castanho (50%) + índigo (30%) + toque de roxo (20%). Tendência para jovens.</p></div>
+            <span class="tag tv">tendência</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardv">
+        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:10px;">🔀 Regras de Mix — Como Misturar com Precisão</h3>
+
+        <div style="padding:11px 12px;border-radius:13px;background:rgba(180,111,255,.08);border:1px solid rgba(180,111,255,.22);margin-bottom:7px;">
+          <p style="font-size:12px;font-weight:700;color:#C89EFF;margin-bottom:5px;">📐 Medidas por Proporção</p>
+          <p style="font-size:11px;margin-bottom:5px;">Usar medidores de volume (seringas ou colheres de medição) — nunca misturar "a olho". Uma diferença de 10% na proporção pode alterar o resultado visivelmente.</p>
+          <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">🧪</span><p style="font-size:11px;"><strong>Regra 70/30:</strong> sempre partir de uma cor base (70%) e adicionar o modificador (30%) — nunca iniciar com proporções iguais, é mais difícil de controlar</p></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.20);">
+            <p style="font-size:11px;font-weight:700;color:#FF9090;margin-bottom:4px;">🔴 Neutralizar Vermelho/Laranja excessivo</p>
+            <p style="font-size:11px;">Adicionar <strong>índigo</strong> (azul) ao mix. Azul é complementar do laranja na roda de cores — neutraliza o subtom avermelhado indesejado em castanhos.</p>
+          </div>
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(96,195,255,.07);border:1px solid rgba(96,195,255,.18);">
+            <p style="font-size:11px;font-weight:700;color:#90D8FF;margin-bottom:4px;">🔵 Neutralizar Cinza/Frio excessivo</p>
+            <p style="font-size:11px;">Adicionar <strong>dourado ou cobre</strong> ao mix. O quente contrabalança o subtom acinzentado que pode deixar a sobrancelha com aspecto apagado.</p>
+          </div>
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(94,232,154,.07);border:1px solid rgba(94,232,154,.18);">
+            <p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:4px;">🟢 Clareamento de tom</p>
+            <p style="font-size:11px;">Adicionar <strong>henna base natural sem pigmento</strong> para reduzir a saturação do mix. Nunca adicionar água em excesso — dilui também a fixação.</p>
+          </div>
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(180,111,255,.07);border:1px solid rgba(180,111,255,.18);">
+            <p style="font-size:11px;font-weight:700;color:#C89EFF;margin-bottom:4px;">🟣 Escurecimento de tom</p>
+            <p style="font-size:11px;">Adicionar <strong>índigo puro ou castanho escuro</strong> em pequenas porções. Atenção: pequenas adições têm grande impacto — testar em 5% de incremento.</p>
+          </div>
+          <div style="padding:10px 12px;border-radius:12px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.18);">
+            <p style="font-size:11px;font-weight:700;color:#FFD460;margin-bottom:4px;">🟡 Warm up (aquecer o tom)</p>
+            <p style="font-size:11px;">Adicionar <strong>dourado ou caramelo</strong> para trazer mais brilho e calor. Especialmente útil em clientes com pele morena-dourada que precisam de mais harmonia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info io">
+        <p style="font-size:12px;color:#FFD460;font-weight:700;margin-bottom:4px;">🧪 Faça sempre o teste de cor!</p>
+        <p style="font-size:11px;">Antes de aplicar na sobrancelha, testar o mix no pulso interno da cliente ou atrás da orelha — deixar por 10 minutos e observar o resultado. A cor na pele pode diferir do tom da embalagem em até 2 graus dependendo do pH e temperatura corporal da cliente.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 5 — BIOSSEGURANÇA E PATCH TEST ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl red au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;">Biossegurança & <span class="gr">Patch Test — Protocolo Obrigatório</span></h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">O patch test não é uma formalidade burocrática — é uma <strong>proteção legal e ética indispensável</strong>. Reações alérgicas à henna podem evoluir para urticária grave, angioedema e anafilaxia em casos extremos. Profissional que pula o patch test se expõe juridicamente e coloca a cliente em risco.</p>
+
+  <div class="g2 au d4" style="margin-bottom:11px;">
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardr">
+        <h3 style="font-size:13px;color:#FF9090;margin-bottom:10px;">🧪 Protocolo Completo do Patch Test</h3>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#FF6B6B,#FF3D7F);">1</div><p style="font-size:11px;"><strong>Momento:</strong> realizar 48–72 horas ANTES do atendimento — não no dia do procedimento</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#FF6B6B,#FF3D7F);">2</div><p style="font-size:11px;"><strong>Local de aplicação:</strong> atrás da orelha ou na dobra interna do cotovelo — áreas com pele sensível e fácil observação</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#FF6B6B,#FF3D7F);">3</div><p style="font-size:11px;"><strong>Produto testado:</strong> exatamente o MIX que será usado no atendimento — não a henna pura se o mix for diferente</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#FF6B6B,#FF3D7F);">4</div><p style="font-size:11px;"><strong>Quantidade:</strong> pequena área circular de ~1cm de diâmetro. Deixar secar naturalmente sem cobrir</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#FF6B6B,#FF3D7F);">5</div><p style="font-size:11px;"><strong>Instruções para a cliente:</strong> não lavar, não esfregar a área, não aplicar nada sobre o local por 48h</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#FF6B6B,#FF3D7F);">6</div><p style="font-size:11px;"><strong>Avaliação:</strong> observar no momento (reação imediata), 24h e 48h depois. Qualquer sinal = contraindicado</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#FF6B6B,#FF3D7F);">7</div><p style="font-size:11px;"><strong>Documentar:</strong> registrar resultado na ficha da cliente com data, produto testado e assinatura</p></div>
+        </div>
+      </div>
+
+      <div class="info ir">
+        <p style="font-size:12px;color:#FF9090;font-weight:700;margin-bottom:4px;">⚠️ Sinais de Reação Positiva — Contraindicar</p>
+        <div style="display:flex;flex-direction:column;gap:3px;margin-top:4px;">
+          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Vermelhidão, eritema ou inchaço na área de teste</p></div>
+          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Coceira ou ardência persistente após 30 minutos</p></div>
+          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Formação de vesículas ou pápulas na área</p></div>
+          <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Qualquer descamação ou hiperpigmentação anormal</p></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardv">
+        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:10px;">🚫 Contraindicações para Henna</h3>
+
+        <div style="margin-bottom:8px;">
+          <p style="font-size:12px;font-weight:700;color:#FF9090;margin-bottom:6px;">Contraindicações Absolutas (não realizar)</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Reação positiva no patch test — qualquer sinal de sensibilidade</p></div>
+            <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Histórico conhecido de alergia à henna ou parafenilenodiamina (PPD)</p></div>
+            <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Feridas abertas, pele lesionada ou com inflamação ativa na região</p></div>
+            <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Dermatite de contato ativa ou psoríase em fase aguda na área</p></div>
+            <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Uso de Accutane (isotretinoína) — pele extremamente sensível e ressecada</p></div>
+            <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">Pacientes em quimioterapia ou radioterapia ativa</p></div>
+            <div class="ck ckno"><div class="ckic">✗</div><p style="font-size:11px;">1º trimestre de gestação — precaução por ausência de estudos conclusivos</p></div>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size:12px;font-weight:700;color:#FFD460;margin-bottom:6px;">Contraindicações Relativas (avaliar caso a caso)</p>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div class="ck" style="background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.18);"><div class="ckic" style="background:rgba(255,212,96,.2);color:#FFD460;">!</div><p style="font-size:11px;">Pele muito oleosa — usar produto matificante antes e reduzir tempo de fixação</p></div>
+            <div class="ck" style="background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.18);"><div class="ckic" style="background:rgba(255,212,96,.2);color:#FFD460;">!</div><p style="font-size:11px;">Uso recente de peeling químico (aguardar 15 dias mínimo)</p></div>
+            <div class="ck" style="background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.18);"><div class="ckic" style="background:rgba(255,212,96,.2);color:#FFD460;">!</div><p style="font-size:11px;">Micropigmentação recente (aguardar cicatrização completa — 30 dias)</p></div>
+            <div class="ck" style="background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.18);"><div class="ckic" style="background:rgba(255,212,96,.2);color:#FFD460;">!</div><p style="font-size:11px;">Uso de corticoides tópicos na região — pele mais fina, maior absorção</p></div>
+            <div class="ck" style="background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.18);"><div class="ckic" style="background:rgba(255,212,96,.2);color:#FFD460;">!</div><p style="font-size:11px;">2º e 3º trimestre de gestação — com liberação médica e patch test rigoroso</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cardg">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">📋 Anamnese Essencial</h3>
+        <p style="font-size:11px;margin-bottom:7px;">Perguntas obrigatórias antes de qualquer aplicação de henna:</p>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="ck ckok"><div class="ckic">?</div><p style="font-size:11px;">Já fez henna antes? Teve alguma reação?</p></div>
+          <div class="ck ckok"><div class="ckic">?</div><p style="font-size:11px;">Tem alergia a algum produto cosmético ou químico?</p></div>
+          <div class="ck ckok"><div class="ckic">?</div><p style="font-size:11px;">Usa alguma medicação de uso contínuo?</p></div>
+          <div class="ck ckok"><div class="ckic">?</div><p style="font-size:11px;">Realizou algum procedimento estético recentemente?</p></div>
+          <div class="ck ckok"><div class="ckic">?</div><p style="font-size:11px;">Está gestante ou suspeitando de gravidez?</p></div>
+          <div class="ck ckok"><div class="ckic">?</div><p style="font-size:11px;">Tem alguma doença de pele diagnosticada?</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 6 — PROTOCOLO COMPLETO DE APLICAÇÃO ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl green au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;">Aplicação — <span class="gg">Protocolo Completo Passo a Passo</span></h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">O protocolo de aplicação da henna tem três fases críticas: <strong>preparo</strong> (pele e produto), <strong>aplicação</strong> (técnica e tempo) e <strong>remoção</strong> (método e pós-cuidado). Falha em qualquer uma dessas fases compromete o resultado e a durabilidade.</p>
+
+  <div class="g2 au d4" style="margin-bottom:11px;">
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardg">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:10px;">🧴 Fase 1 — Preparo (Pré-Aplicação)</h3>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#5EE89A,#00BF7D);color:#0a1a0a;">1</div><p style="font-size:11px;"><strong>Demaquilar completo:</strong> remover toda maquiagem com demaquilante bifásico ou micelar — produto oleoso cria barreira impermeável</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#5EE89A,#00BF7D);color:#0a1a0a;">2</div><p style="font-size:11px;"><strong>Higienizar com antisséptico:</strong> gaze umedecida com solução fisiológica ou antisséptico suave — remover sebo residual da pele</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#5EE89A,#00BF7D);color:#0a1a0a;">3</div><p style="font-size:11px;"><strong>Escovar os fios:</strong> spoolie seco — revelar crescimento real, identificar direção e comprimento verdadeiro dos fios</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#5EE89A,#00BF7D);color:#0a1a0a;">4</div><p style="font-size:11px;"><strong>Realizar o design:</strong> mapeamento completo, remoção dos fios indesejados — henna entra após o design estar concluído</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#5EE89A,#00BF7D);color:#0a1a0a;">5</div><p style="font-size:11px;"><strong>Secar a pele:</strong> pele deve estar completamente seca e sem oleosidade — umidade interfere na aderência da henna</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#5EE89A,#00BF7D);color:#0a1a0a;">6</div><p style="font-size:11px;"><strong>Aplicar barreira protetora:</strong> creme ou vaselina fina nas bordas da sobrancelha (FORA da área a ser colorida) — evita manchas na pele</p></div>
+        </div>
+
+        <div class="info ig" style="margin-top:8px;">
+          <p style="font-size:12px;color:#5EE89A;font-weight:700;margin-bottom:4px;">⚗️ Preparo da Henna</p>
+          <p style="font-size:11px;margin-bottom:4px;"><strong>Consistência ideal:</strong> pastosa e homogênea — nem muito fluida (escorrega e mancha) nem muito espessa (dificulta a aplicação e cobertura uniforme).</p>
+          <p style="font-size:11px;"><strong>Ativar com:</strong> água morna (35–40°C) ou conforme indicação do fabricante. Misturar por 2–3 minutos até consistência uniforme. Deixar repousar 5 minutos antes de usar.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardv">
+        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:10px;">🎨 Fase 2 — Aplicação Técnica</h3>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#B46FFF,#7C3AED);">1</div><p style="font-size:11px;"><strong>Instrumento de aplicação:</strong> pincel chanfrado fino (nº 2 ou 3) para bordas nítidas ou pico de henna para cobertura e volume</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#B46FFF,#7C3AED);">2</div><p style="font-size:11px;"><strong>Sequência de aplicação:</strong> iniciar pelo contorno inferior → superior → preencher internamente → verificar uniformidade de cobertura</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#B46FFF,#7C3AED);">3</div><p style="font-size:11px;"><strong>Espessura da camada:</strong> camada de 1–2mm acima dos fios. Camada muito fina = resultado claro; muito espessa = borrado e difícil remoção</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#B46FFF,#7C3AED);">4</div><p style="font-size:11px;"><strong>Verificar cobertura:</strong> sob iluminação adequada, confirmar que todos os fios estão cobertos e as bordas estão nítidas</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#B46FFF,#7C3AED);">5</div><p style="font-size:11px;"><strong>Tempo de exposição:</strong> varia por produto, tom desejado e tipo de pele. Tabela ao lado como referência geral.</p></div>
+          <div class="sf"><div class="sfn" style="background:linear-gradient(145deg,#B46FFF,#7C3AED);">6</div><p style="font-size:11px;"><strong>Potencializar com calor:</strong> wrapping plástico ou filme PVC sobre a henna reduz evaporação e aumenta a absorção da lawsona</p></div>
+        </div>
+      </div>
+
+      <!-- TABELA DE TEMPOS -->
+      <div class="cardo">
+        <h3 style="font-size:13px;color:#FFD460;margin-bottom:9px;">⏱️ Tabela de Tempos de Exposição</h3>
+        <div style="overflow-x:auto;border-radius:12px;border:1px solid rgba(255,255,255,.07);">
+          <table class="ctable">
+            <thead><tr>
+              <th>Situação</th>
+              <th style="color:#5EE89A;">Tempo</th>
+              <th style="color:#90D8FF;">Resultado</th>
+            </tr></thead>
+            <tbody>
+              <tr><td>Tom claro / 1ª vez</td><td style="color:#5EE89A;">8–12 min</td><td>Coloração suave, natural</td></tr>
+              <tr><td>Tom médio padrão</td><td style="color:#FFD460;">12–18 min</td><td>Coloração definida, equilibrada</td></tr>
+              <tr><td>Tom escuro / intenso</td><td style="color:#FF9090;">18–25 min</td><td>Máxima saturação de cor</td></tr>
+              <tr><td>Pele oleosa</td><td style="color:#FF9090;">+5 min extra</td><td>Compensar barreira sebácea</td></tr>
+              <tr><td>Pele seca/sensível</td><td style="color:#5EE89A;">-3 min</td><td>Evitar irritação por tempo longo</td></tr>
+              <tr><td>Com wrapping</td><td style="color:#5EE89A;">-5 min</td><td>Calor intensifica a fixação</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="cardm">
+        <h3 style="font-size:13px;color:#E8A8F8;margin-bottom:9px;">🧼 Fase 3 — Remoção</h3>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">1️⃣</span><p style="font-size:11px;"><strong>Remover com gaze seca primeiro:</strong> retirar o excesso da pasta seca antes de umedecer — evita que a cor escorra para fora da área</p></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">2️⃣</span><p style="font-size:11px;"><strong>Umedecer levemente:</strong> gaze com água morna (não quente). Passar com movimentos suaves de dentro para fora do desenho</p></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">3️⃣</span><p style="font-size:11px;"><strong>Nunca esfregar:</strong> movimentos de esfregação borram as bordas e podem irritar a pele recém-colorida</p></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">4️⃣</span><p style="font-size:11px;"><strong>Limpar manchas na pele:</strong> algodão com álcool isopropílico ou solvente cosmético nas manchas fora da área. Agir rápido — quanto mais seca a henna, mais difícil remover</p></div>
+          <div class="fi fim"><span style="font-size:13px;flex-shrink:0;">5️⃣</span><p style="font-size:11px;"><strong>Cor evolui em 24h:</strong> a cor imediatamente após a remoção é mais clara — a lawsona completa a oxidação em até 24 horas. Informar a cliente sobre isso!</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 7 — DURABILIDADE, FATORES E PÓS-CUIDADO ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl blue au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;">Durabilidade — <span class="gb">Fatores, Expectativas & Pós-Cuidado</span></h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">A durabilidade da henna é um dos temas que mais geram insatisfação de clientes — não por falha da profissional, mas por <strong>expectativas mal gerenciadas</strong>. Entender os fatores que influenciam a durabilidade permite comunicar resultados realistas e orientar a cliente corretamente.</p>
+
+  <div class="g2 au d4" style="margin-bottom:11px;">
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardb">
+        <h3 style="font-size:13px;color:#90D8FF;margin-bottom:10px;">📊 Expectativa Real de Durabilidade</h3>
+
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:9px;">
+
+          <div style="padding:10px 12px;border-radius:13px;background:rgba(94,232,154,.08);border:1px solid rgba(94,232,154,.22);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <p style="font-size:12px;font-weight:700;color:#5EE89A;">Coloração nos fios da sobrancelha</p>
+              <span class="tag tg">3–6 semanas</span>
+            </div>
+            <p style="font-size:11px;">A lawsona ligada à queratina dos fios dura mais — os fios crescem e os coloridos se perdem naturalmente com o crescimento capilar. Cada fio colorido sai com o ciclo de renovação.</p>
+          </div>
+
+          <div style="padding:10px 12px;border-radius:13px;background:rgba(180,111,255,.08);border:1px solid rgba(180,111,255,.22);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <p style="font-size:12px;font-weight:700;color:#C89EFF;">Coloração na pele (efeito preenchimento)</p>
+              <span class="tag tv">7–14 dias</span>
+            </div>
+            <p style="font-size:11px;">A pele se renova continuamente — as células epidérmicas marcadas com lawsona são esfoliadas naturalmente. Pele mais oleosa = maior esfoliação = menos duração.</p>
+          </div>
+
+          <div style="padding:10px 12px;border-radius:13px;background:rgba(255,212,96,.07);border:1px solid rgba(255,212,96,.20);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <p style="font-size:12px;font-weight:700;color:#FFD460;">Resultado geral visível</p>
+              <span class="tag to">2–4 semanas</span>
+            </div>
+            <p style="font-size:11px;">Combinando a cor nos fios + na pele, o resultado visualmente completo costuma durar 2–4 semanas antes de uma retocada ser necessária para manter o efeito pleno.</p>
+          </div>
+
+        </div>
+
+        <!-- BARRA VISUAL DURABILIDADE -->
+        <div style="padding:12px 13px;border-radius:13px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);">
+          <p style="font-size:11px;font-weight:700;color:#F5F7FB;margin-bottom:9px;text-align:center;">Linha do Tempo Pós-Aplicação</p>
+          <div style="position:relative;height:28px;border-radius:8px;background:rgba(255,255,255,.06);overflow:hidden;margin-bottom:8px;">
+            <div style="position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,rgba(94,232,154,.6) 0%,rgba(94,232,154,.4) 25%,rgba(255,212,96,.4) 50%,rgba(180,111,255,.3) 75%,rgba(255,255,255,.08) 100%);border-radius:8px;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;">
+            <div style="text-align:center;"><p style="font-size:9px;font-weight:700;color:#5EE89A;">Dia 0–1</p><p style="font-size:9px;color:#7E879B;">Oxidação</p></div>
+            <div style="text-align:center;"><p style="font-size:9px;font-weight:700;color:#5EE89A;">Semana 1</p><p style="font-size:9px;color:#7E879B;">Pico</p></div>
+            <div style="text-align:center;"><p style="font-size:9px;font-weight:700;color:#FFD460;">Semana 2</p><p style="font-size:9px;color:#7E879B;">Começa a suavizar</p></div>
+            <div style="text-align:center;"><p style="font-size:9px;font-weight:700;color:#C89EFF;">Semana 3–4</p><p style="font-size:9px;color:#7E879B;">Retoque indicado</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <div class="cardv">
+        <h3 style="font-size:13px;color:#C89EFF;margin-bottom:10px;">📉 Fatores que REDUZEM a Durabilidade</h3>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">🫧</span><p style="font-size:11px;"><strong>Esfoliação facial frequente:</strong> remove as células epidérmicas marcadas mais rapidamente — especialmente esfoliantes químicos (AHAs/BHAs)</p></div>
+          <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">☀️</span><p style="font-size:11px;"><strong>Exposição solar intensa:</strong> UV degrada a lawsona — pele exposta ao sol desbota 40–60% mais rápido que pele protegida</p></div>
+          <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">💧</span><p style="font-size:11px;"><strong>Banhos quentes prolongados:</strong> vapor e calor aceleram a renovação celular — clientes que tomam banhos muito quentes relatam menor duração</p></div>
+          <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">💦</span><p style="font-size:11px;"><strong>Produtos com álcool na região:</strong> tônicos e demaquilantes com álcool dissolvem parcialmente a lawsona da pele</p></div>
+          <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">🏃</span><p style="font-size:11px;"><strong>Suor excessivo:</strong> pele muito sudorípara cria ambiente que acelera a descamação natural da camada córnea</p></div>
+          <div class="fi fiv"><span style="font-size:11px;flex-shrink:0;">🧴</span><p style="font-size:11px;"><strong>Hidratantes oleosos na região:</strong> cremes muito gordurosos criam uma barreira que pode "arrancar" a lawsona superficial com o tempo</p></div>
+        </div>
+      </div>
+
+      <div class="cardg">
+        <h3 style="font-size:13px;color:#5EE89A;margin-bottom:9px;">✅ Instruções de Pós-Cuidado para a Cliente</h3>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;"><strong>Primeiras 24h:</strong> não molhar a sobrancelha — a cor ainda está oxidando e a lawsona ainda está se fixando nos fios</p></div>
+          <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Evitar produtos com AHA, BHA ou retinol na região por 7 dias</p></div>
+          <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Usar protetor solar na região — especialmente em peles claras com henna clara</p></div>
+          <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Limpar o rosto com produtos pH balanceado (5,0–5,5) — não produtos alcalinos</p></div>
+          <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Não fazer esfoliação facial na área por 10 dias após o procedimento</p></div>
+          <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Hidratação suave com sérum de aloe vera ou ácido hialurônico — sem óleos pesados</p></div>
+          <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Retorno em 3–4 semanas para retoque e avaliação do resultado da cor</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 8 — MITOS & VERDADES PARTE 1 ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl red au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;"><span class="gr">Mitos & Verdades</span> — Parte 1</h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">O mercado de henna é repleto de afirmações incorretas que circulam entre clientes e até entre profissionais. Conhecer a verdade técnica por trás de cada mito é parte da formação de uma designer de sobrancelhas que inspira confiança.</p>
+
+  <div style="display:flex;flex-direction:column;gap:8px;" class="au d4">
+
+    <!-- MITO 1 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 1</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Henna é 100% natural e segura para qualquer pessoa"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">A henna pura (lawsona) é natural, mas a <strong>henna composta usada em sobrancelhas contém pigmentos adicionais</strong> como índigo, óxidos de ferro e, em algumas fórmulas fraudulentas, PPD (parafenilenodiamina) — substância altamente alergênica. Mesmo a henna pura pode causar reações alérgicas. Patch test é sempre obrigatório.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 2 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 2</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Quanto mais tempo deixar, mais a cor dura"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">Há um <strong>tempo ótimo de saturação</strong> — após esse ponto, deixar mais tempo não aumenta a durabilidade, apenas aumenta o risco de irritação e pigmentação indesejada da pele ao redor. A lawsona tem capacidade limitada de penetração. Respeitar a tabela de tempos do fabricante é fundamental.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 3 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 3</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Henna não serve para sobrancelhas pretas ou muito escuras"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">Com um <strong>mix adequado usando índigo como base</strong>, é possível obter hennas pretas e castanho-escuras que complementam sobrancelhas naturalmente escuras. O índigo (extraído do Indigofera tinctoria) é exatamente o pigmento natural que neutraliza o vermelho e cria tons escuros frios e naturais.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 4 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 4</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Henna vegetal e henna de sobrancelha são a mesma coisa"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">São <strong>produtos completamente diferentes</strong>. Henna vegetal capilar é concentrada para uso em grandes volumes de cabelo. Henna de sobrancelhas é formulada em pó com pigmentos específicos, maior precisão de cor, menor concentração de lawsona e consistência controlada. Usar henna capilar em sobrancelhas pode causar irritação e resultado muito diferente do esperado.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 5 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 5</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"A cor da henna que aparece imediatamente após a remoção é a cor final"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">A henna <strong>oxida e escurece por até 24–48 horas</strong> após a remoção. A cor imediata é sempre mais clara que o resultado final. A profissional deve avisar a cliente sobre isso antes do procedimento para evitar expectativas erradas e pedidos de reaplicação desnecessários.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 6 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 6</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Henna não mancha a pele — só os fios"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">A henna <strong>colore tanto os fios quanto a pele</strong> — esse é, inclusive, um dos seus diferenciais: preencher visualmente a sobrancelha mesmo em áreas com falhas ou baixa densidade. O efeito na pele dura menos que nos fios, mas é parte do resultado. Por isso a barreira protetora nas bordas é obrigatória para evitar manchas fora do desenho.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 9 — MITOS & VERDADES PARTE 2 ══════════ -->
+<section class="slide">
+<div class="inner">
+  <div class="gl red au d1"></div>
+  <h2 class="au d2" style="font-size:clamp(18px,4.5vw,42px);margin-bottom:6px;"><span class="gr">Mitos & Verdades</span> — Parte 2</h2>
+  <p class="au d3" style="font-size:clamp(11px,2vw,14px);margin-bottom:14px;">Continuação das afirmações que circulam no mercado de henna — cada verdade revelada fortalece sua autoridade técnica perante clientes e colegas.</p>
+
+  <div style="display:flex;flex-direction:column;gap:8px;" class="au d4">
+
+    <!-- MITO 7 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 7</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Quem já fez micropigmentação não pode fazer henna"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">Após cicatrização completa da micropigmentação (mínimo 30 dias), a henna pode ser aplicada normalmente. A henna pode inclusive <strong>complementar a micropigmentação</strong>, preenchendo áreas de menor densidade e uniformizando a cor entre sessões. O cuidado é com a escolha do tom para que complemente e não destoe do pigmento já implantado.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 8 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 8</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Henna faz os fios crescerem mais"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;"><strong>Sem evidência científica</strong> que suporte essa afirmação para sobrancelhas. A lawsona não tem ação estimulante folicular comprovada. O que acontece é que a coloração torna fios finos e claros mais visíveis, criando a percepção de maior densidade e crescimento — mas não há crescimento real maior.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 9 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 9</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Pele oleosa não retém a cor da henna por mais de 3 dias"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">A durabilidade é menor em peles oleosas (5–10 dias na pele vs 10–14 dias em peles secas), mas não se limita a 3 dias. Com o protocolo correto — <strong>limpeza rigorosa pré-aplicação, matificação, tempo de exposição mais longo e pós-cuidado adequado</strong> — peles oleosas retêm a cor satisfatoriamente. A coloração nos fios tem durabilidade igual independente do tipo de pele.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 10 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 10</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Henna preta de sobrancelha é natural"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;">A cor preta natural mais escura que a lawsona pura oferece é um marrom-acastanhado. Para atingir preto real, é necessário adicionar <strong>índigo (vegetal, seguro)</strong> ao mix. Hennas que prometem "preto puro" à base apenas de lawsona frequentemente contêm <strong>PPD (parafenilenodiamina)</strong> — substância química sintética de alto potencial alergênico e proibida para uso periocular em vários países. Verificar sempre a composição.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 11 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 11</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Se a henna borrar, não tem como remover"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;"><strong>Quanto mais fresca, mais fácil remover.</strong> Álcool isopropílico 70%, removedor de maquiagem com óleo mineral ou bicarbonato de sódio em pasta úmida removem a maioria dos borrões se aplicados imediatamente. Manchas antigas (após 24h) são mais persistentes — esfoliação suave repetida ao longo de dias e exposição solar moderada ajudam na remoção gradual.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MITO 12 -->
+    <div>
+      <div class="mv-card mito">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(255,80,80,.2);border:1px solid rgba(255,80,80,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">❌</div>
+          <div><p style="font-size:13px;font-weight:800;color:#FF9090;margin-bottom:3px;">MITO 12</p><p style="font-size:12px;font-weight:600;color:#F5F7FB;">"Henna não pode ser feita no mesmo dia que a tintura"</p></div>
+        </div>
+      </div>
+      <div class="mv-card verdade" style="margin-top:-4px;border-radius:0 0 18px 18px;border-top:none;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:rgba(94,232,154,.2);border:1px solid rgba(94,232,154,.4);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✅</div>
+          <div><p style="font-size:11px;font-weight:700;color:#5EE89A;margin-bottom:3px;">VERDADE</p><p style="font-size:11px;"><strong>Não há contraindicação técnica absoluta</strong> para combinar henna e tintura no mesmo dia — desde que a pele não esteja irritada. O protocolo correto é: <strong>henna primeiro</strong> (porque a fixação da lawsona é mais exigente em pele limpa), aguardar pelo menos 2h e então aplicar a tintura oxidante se necessário. Tintura primeiro pode alterar o pH da pele e interferir na fixação da henna.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 10 — ENCERRAMENTO ══════════ -->
+<section class="slide vcenter">
+<div class="inner" style="text-align:center;">
+
+  <div class="gl ce au d1" style="background:linear-gradient(90deg,#B46FFF,#FFD460);"></div>
+
+  <h2 class="au d2" style="font-size:clamp(20px,5vw,60px);margin-bottom:12px;line-height:1.06;">
+    Da Natureza ao <span class="gv">Resultado Perfeito</span>.
+  </h2>
+
+  <p class="au d3" style="font-size:clamp(12px,2.2vw,16px);max-width:740px;margin:0 auto 24px;color:#AAB3C5;line-height:1.7;">
+    Dominar a henna para sobrancelhas é dominar uma ciência milenar com rigor moderno. <strong style="color:#F5F7FB;">Colorimetria precisa + protocolo correto + desmistificação técnica</strong> = a designer que gera resultado, confiança e fidelização.
+  </p>
+
+  <!-- 3 PILARES -->
+  <div class="g3 au d4" style="max-width:900px;margin:0 auto 22px;">
+
+    <div style="padding:18px 14px;border-radius:20px;background:linear-gradient(145deg,rgba(180,111,255,.12),rgba(124,58,237,.06));border:1px solid rgba(180,111,255,.28);text-align:center;">
+      <div style="font-size:28px;margin-bottom:10px;">🔬</div>
+      <p style="font-size:13px;font-weight:800;color:#C89EFF;margin-bottom:6px;">Ciência</p>
+      <p style="font-size:11px;color:#AAB3C5;line-height:1.6;">Entender a lawsona e o mecanismo de coloração cria autoridade técnica real perante clientes e colegas.</p>
+    </div>
+
+    <div style="padding:18px 14px;border-radius:20px;background:linear-gradient(145deg,rgba(255,212,96,.10),rgba(255,140,0,.05));border:1px solid rgba(255,212,96,.25);text-align:center;">
+      <div style="font-size:28px;margin-bottom:10px;">🎨</div>
+      <p style="font-size:13px;font-weight:800;color:#FFD460;margin-bottom:6px;">Colorimetria</p>
+      <p style="font-size:11px;color:#AAB3C5;line-height:1.6;">Escolher a cor certa transforma o resultado — é o que cria a harmonia entre sobrancelha, cabelo e subtom da pele.</p>
+    </div>
+
+    <div style="padding:18px 14px;border-radius:20px;background:linear-gradient(145deg,rgba(94,232,154,.08),rgba(0,220,160,.04));border:1px solid rgba(94,232,154,.22);text-align:center;">
+      <div style="font-size:28px;margin-bottom:10px;">🛡️</div>
+      <p style="font-size:13px;font-weight:800;color:#5EE89A;margin-bottom:6px;">Protocolo</p>
+      <p style="font-size:11px;color:#AAB3C5;line-height:1.6;">Patch test, biossegurança e pós-cuidado orientado protegem a cliente, a profissional e constroem reputação sólida.</p>
+    </div>
+
+  </div>
+
+  <!-- CHECKLIST FINAL -->
+  <div class="au d5" style="max-width:760px;margin:0 auto 18px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);text-align:left;">
+    <p style="font-size:13px;font-weight:800;color:#F5F7FB;margin-bottom:11px;text-align:center;">✅ Checklist da Especialista em Henna</p>
+    <div class="g2">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Realiza patch test 48–72h antes de todo atendimento</p></div>
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Sabe identificar subtom de pele e cabelo da cliente</p></div>
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Domina mix de cores com índigo e pigmentos naturais</p></div>
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Aplica barreira protetora antes de cada aplicação</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Orienta a cliente sobre a evolução de cor em 24h</p></div>
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Documenta atendimento com foto e ficha assinada</p></div>
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Conhece e desmistifica os 12 mitos do mercado</p></div>
+        <div class="ck ckok"><div class="ckic">✓</div><p style="font-size:11px;">Respeita contraindicações absolutas e relativas</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="au d6" style="padding:14px 18px;border-radius:14px;background:rgba(180,111,255,.06);border:1px solid rgba(180,111,255,.20);max-width:620px;margin:0 auto;">
+    <p style="font-size:clamp(12px,2vw,14px);font-style:italic;color:#F5F7FB;margin-bottom:5px;">
+      "Conhecimento transforma pigmento em arte.<br/>Protocolo transforma arte em profissão."
+    </p>
+    <p style="font-size:10px;color:#7E879B;font-weight:600;margin-top:6px;">Módulo Colorimetria · Design de Sobrancelhas · Henna: Aplicação & Colorimetria · 2026</p>
+  </div>
+
+</div>
+</section>
+
+</div>
+</div>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="navarr">
+  <button onclick="prev()" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="next()" aria-label="Próximo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    const was=s.classList.contains('active');
+    s.classList.toggle('active',i===C);
+    if(i===C&&!was)s.scrollTop=0;
+  });
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;scrolling=false;},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].clientX-tx);
+  const dy=Math.abs(e.changedTouches[0].clientY-ty);
+  if(dy>dx+10)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const dx=tx-e.changedTouches[0].clientX;
+  const dy=Math.abs(ty-e.changedTouches[0].clientY);
+  if(Math.abs(dx)>dy*1.5&&Math.abs(dx)>55){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
