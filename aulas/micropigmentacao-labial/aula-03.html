@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Micropigmentação Labial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+/* ── PRESENTATION ── */
+.presentation{width:100vw;height:100vh;overflow:hidden;position:relative}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100vh;will-change:transform}
+
+/* ── SLIDE BASE ── */
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:56px 16px 110px;
+}
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 75% 15%,rgba(255,100,160,.16) 0%,transparent 42%),
+    radial-gradient(800px 380px at 20% 80%,rgba(200,80,200,.13) 0%,transparent 42%),
+    radial-gradient(600px 300px at 55% 50%,rgba(46,107,255,.09) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1}
+
+/* ── INNER SCROLL ── */
+.si{
+  width:100%;max-width:900px;
+  display:flex;flex-direction:column;align-items:center;
+  overflow-y:auto;
+  max-height:calc(100vh - 166px);
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:2px 4px 8px;
+}
+.si::-webkit-scrollbar{display:none}
+
+/* ── TYPOGRAPHY ── */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.14;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;line-height:1.3;color:#F5F7FB}
+p,li,span{font-weight:400;line-height:1.65;color:#AAB3C5}
+strong{font-weight:700;color:#F5F7FB}
+
+/* ── GRADIENT TEXT ── */
+.gt{
+  background:linear-gradient(135deg,#FF6B9D 0%,#C86DD7 45%,#FF4FA0 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt2{
+  background:linear-gradient(135deg,#FF6B9D 0%,#C86DD7 35%,#A066FF 65%,#2E6BFF 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt3{
+  background:linear-gradient(135deg,#FFD460 0%,#FF8C50 50%,#FF6B9D 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* ── GRAD LINE ── */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#FF6B9D,#C86DD7,#A066FF);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 14px;transform-origin:center}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ── BADGE ── */
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 18px;border-radius:999px;margin-bottom:18px;
+  background:rgba(255,107,157,.09);border:1px solid rgba(255,107,157,.3);
+  font-size:11px;font-weight:600;color:#FF9DC0;letter-spacing:.07em;text-transform:uppercase;
+}
+.badge svg{width:12px;height:12px;flex-shrink:0}
+
+/* ── CARDS ── */
+.card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.04);
+  padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;
+}
+.card:hover{border-color:rgba(255,107,157,.2);transform:translateY(-2px)}
+
+.cp{
+  background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:16px;
+  box-shadow:0 16px 44px rgba(0,0,0,.42),0 0 28px rgba(200,109,215,.07);
+  padding:18px 16px;backdrop-filter:blur(10px);transition:all .4s ease;
+}
+.cp:hover{border-color:rgba(255,107,157,.22);transform:translateY(-2px)}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;width:100%}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+
+/* ── ICON BOX ── */
+.ic{width:42px;height:42px;border-radius:11px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,107,157,.1)}
+.ic svg{width:20px;height:20px;color:#FF6B9D}
+.ic.bl{background:rgba(46,107,255,.1)} .ic.bl svg{color:#2E6BFF}
+.ic.pu{background:rgba(160,102,255,.1)} .ic.pu svg{color:#A066FF}
+.ic.co{background:rgba(255,140,80,.1)}  .ic.co svg{color:#FF8C50}
+.ic.gr{background:rgba(80,220,130,.1)}  .ic.gr svg{color:#5EE89A}
+.ic.go{background:rgba(255,200,60,.1)}  .ic.go svg{color:#FFD460}
+.ic.te{background:rgba(40,210,200,.1)}  .ic.te svg{color:#28D8C8}
+.ic.ro{background:rgba(255,80,120,.1)}  .ic.ro svg{color:#FF5078}
+
+/* ── TAG SMALL ── */
+.ts{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;display:block}
+.ts.pk{color:#FF6B9D} .ts.bl{color:#2E6BFF} .ts.pu{color:#A066FF}
+.ts.co{color:#FF8C50} .ts.gr{color:#5EE89A} .ts.go{color:#FFD460}
+.ts.te{color:#28D8C8} .ts.ro{color:#FF5078} .ts.wh{color:#F5F7FB}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.pill.pk{background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.25);color:#FF9DC0}
+.pill.bl{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#8FAEFF}
+.pill.pu{background:rgba(160,102,255,.1);border:1px solid rgba(160,102,255,.25);color:#C4AAFF}
+.pill.co{background:rgba(255,140,80,.1);border:1px solid rgba(255,140,80,.25);color:#FFB890}
+.pill.gr{background:rgba(80,220,130,.1);border:1px solid rgba(80,220,130,.25);color:#5EE89A}
+.pill.go{background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.25);color:#FFD460}
+.pill.te{background:rgba(40,210,200,.1);border:1px solid rgba(40,210,200,.25);color:#28D8C8}
+
+/* ── CHECKLIST ── */
+.chk{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px}
+.chkd{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.chkd.pk{background:#FF6B9D} .chkd.bl{background:#2E6BFF} .chkd.pu{background:#A066FF}
+.chkd.co{background:#FF8C50} .chkd.gr{background:#5EE89A} .chkd.go{background:#FFD460}
+.chkd.te{background:#28D8C8} .chkd.ro{background:#FF5078} .chkd.wh{background:#F5F7FB}
+
+/* ── BORDER CARD ── */
+.bc{position:relative;overflow:hidden;padding-left:18px!important}
+.bc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.bc.bpk::before{background:#FF6B9D} .bc.bpu::before{background:#A066FF}
+.bc.bbl::before{background:#2E6BFF} .bc.bco::before{background:#FF8C50}
+.bc.bgo::before{background:#FFD460} .bc.bgr::before{background:#5EE89A}
+.bc.bte::before{background:#28D8C8} .bc.bro::before{background:#FF5078}
+
+/* ── NUMBER BADGE ── */
+.nb{width:38px;height:38px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite}
+.nb.n1{background:linear-gradient(145deg,#FF6B9D,#D9456F)}
+.nb.n2{background:linear-gradient(145deg,#A066FF,#7040D6);animation-delay:.5s}
+.nb.n3{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:1s}
+.nb.n4{background:linear-gradient(145deg,#FF8C50,#D96030);animation-delay:1.5s}
+.nb.n5{background:linear-gradient(145deg,#FFD460,#E0A820);animation-delay:2s}
+.nb.n6{background:linear-gradient(145deg,#5EE89A,#30C870);animation-delay:2.5s}
+@keyframes glowP{0%,100%{box-shadow:0 0 14px rgba(255,107,157,.1)}50%{box-shadow:0 0 28px rgba(255,107,157,.32)}}
+
+/* ── STEP ROW ── */
+.sr{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+
+/* ── ALERT ── */
+.alt{border-radius:12px;padding:12px 13px;display:flex;gap:10px;align-items:flex-start}
+.alt.pk{background:rgba(255,107,157,.05);border:1px solid rgba(255,107,157,.18)}
+.alt.pu{background:rgba(160,102,255,.05);border:1px solid rgba(160,102,255,.18)}
+.alt.go{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.18)}
+.alt.gr{background:rgba(80,220,130,.05);border:1px solid rgba(80,220,130,.18)}
+.alt.co{background:rgba(255,140,80,.05);border:1px solid rgba(255,140,80,.18)}
+.alt.te{background:rgba(40,210,200,.05);border:1px solid rgba(40,210,200,.18)}
+.alti{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.alti svg{width:15px;height:15px}
+.alti.pk{background:rgba(255,107,157,.15)} .alti.pk svg{color:#FF6B9D}
+.alti.pu{background:rgba(160,102,255,.15)} .alti.pu svg{color:#A066FF}
+.alti.go{background:rgba(255,200,60,.15)}  .alti.go svg{color:#FFD460}
+.alti.gr{background:rgba(80,220,130,.15)}  .alti.gr svg{color:#5EE89A}
+.alti.co{background:rgba(255,140,80,.15)}  .alti.co svg{color:#FF8C50}
+.alti.te{background:rgba(40,210,200,.15)}  .alti.te svg{color:#28D8C8}
+
+/* ── SWATCH ── */
+.sw-bar{width:100%;height:8px;border-radius:4px;margin-bottom:10px}
+
+/* ── COLOR DOT ── */
+.cdot{width:34px;height:34px;border-radius:50%;flex-shrink:0;border:2px solid rgba(255,255,255,.15)}
+
+/* ── METRIC ── */
+.metric{font-size:clamp(28px,6vw,46px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:6px}
+.metric.pk{color:#FF6B9D} .metric.pu{color:#A066FF} .metric.bl{color:#2E6BFF}
+.metric.gr{color:#5EE89A} .metric.go{color:#FFD460} .metric.te{color:#28D8C8}
+
+/* ── SECTION TITLE ── */
+.stitle{text-align:center;margin-bottom:18px;width:100%}
+.stitle h2{font-size:clamp(18px,3.8vw,28px);margin-bottom:8px}
+.stitle p{font-size:12px;color:#7E879B;max-width:620px;margin:0 auto;line-height:1.7}
+
+/* ── PROGRESS ── */
+.progress{
+  position:fixed;top:0;left:0;height:3px;z-index:1000;
+  background:linear-gradient(90deg,#FF6B9D,#C86DD7,#A066FF,#FF6B9D);
+  background-size:200% auto;animation:shimmer 3s linear infinite;
+  transition:width .6s ease;
+}
+
+/* ── FULLSCREEN BTN ── */
+.fs-btn{
+  position:fixed;top:14px;right:14px;z-index:999;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#7E879B;padding:9px 14px;border-radius:10px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+  display:flex;align-items:center;gap:7px;transition:all .3s ease;
+  backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;
+}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(255,107,157,.3)}
+.fs-btn svg{width:14px;height:14px}
+
+/* ── SLIDE COUNTER ── */
+.sc{
+  position:fixed;bottom:30px;left:16px;z-index:998;
+  color:#7E879B;font-size:13px;font-weight:600;letter-spacing:.05em;
+  background:rgba(0,0,0,.32);padding:8px 14px;border-radius:9px;
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);
+}
+.sc .cn{color:#FF6B9D;font-weight:800}
+
+/* ── INDICATORS ── */
+.ind{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:998;
+  display:flex;gap:6px;background:rgba(0,0,0,.32);padding:8px 14px;
+  border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);
+}
+.ind .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;
+}
+.ind .dot.active{background:#FF6B9D;box-shadow:0 0 12px rgba(255,107,157,.6);width:26px;border-radius:4px}
+
+/* ── NAV ARROWS ── */
+.nav-arr{position:fixed;bottom:26px;right:16px;z-index:998;display:flex;gap:8px}
+.nav-arr button{
+  width:46px;height:46px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s ease;backdrop-filter:blur(6px);
+}
+.nav-arr button:hover{background:rgba(255,107,157,.2);border-color:rgba(255,107,157,.4);color:#fff;transform:scale(1.05)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.slide.active .au{animation:fadeUp .7s ease both}
+.slide.active .as{animation:fadeScale .7s ease both}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}
+.d3{animation-delay:.28s!important}.d4{animation-delay:.38s!important}
+.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}.d8{animation-delay:.78s!important}
+
+/* ── SLIDE 1 SPECIFIC ── */
+.s1-wrap{text-align:center;max-width:860px;width:100%;display:flex;flex-direction:column;align-items:center;padding-top:20px}
+.s1-wrap h1{font-size:clamp(34px,7vw,68px);margin-bottom:16px}
+.s1-sub{font-size:clamp(13px,2vw,16px);color:#AAB3C5;max-width:560px;margin:0 auto 24px;line-height:1.65}
+.pills-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:4px}
+
+/* ── MOBILE RESPONSIVE ── */
+@media(max-width:600px){
+  .slide{padding:52px 12px 108px}
+  .g3{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
+  .si{max-height:calc(100vh - 160px)}
+  .stitle h2{font-size:17px}
+  .metric{font-size:28px}
+  .nb{width:34px;height:34px;font-size:12px}
+}
+@media(min-width:601px) and (max-width:768px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="presentation">
+
+<!-- PROGRESS -->
+<div class="progress" id="prog" style="width:10%"></div>
+
+<!-- FULLSCREEN -->
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<!-- COUNTER -->
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+
+<!-- INDICATORS -->
+<div class="ind" id="ind"></div>
+
+<!-- NAV -->
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<!-- ═══════════════════════════════════════ SLIDES ═══════════════════════════════════════ -->
+<div class="slides" id="sw">
+
+<!-- ══ SLIDE 1 ══ -->
+<section class="slide active">
+<div class="s1-wrap">
+  <div class="badge au d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+    Micropigmentação Labial — Guia Completo
+  </div>
+  <h1 class="au d2">Lábios que<br><span class="gt">Falam por Si</span></h1>
+  <p class="s1-sub au d3">Das técnicas de <strong>Neutralização</strong> à explosão de cor do <strong>Efeito Batom</strong> — o guia completo da micropigmentação labial de alto impacto.</p>
+  <div class="pills-row au d4">
+    <span class="pill pk">💋 Neutralização</span>
+    <span class="pill pu">✨ Revitalização</span>
+    <span class="pill co">🎨 Efeito Batom</span>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 2 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>As <span class="gt">3 Técnicas</span> em Perspectiva</h2>
+    <p>Entenda as diferenças essenciais entre cada abordagem e qual é a ideal para cada cliente</p>
+  </div>
+  <div class="g3 au d2">
+    <div class="cp">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg></div>
+      <span class="ts pk">Neutralização</span>
+      <h3 style="font-size:14px;margin-bottom:8px">Correção Cromática</h3>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Lábios escuros, arroxeados ou acastanhados</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Usa teoria das cores complementares</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Base para outras técnicas</p></div>
+      <div class="sw-bar" style="background:linear-gradient(90deg,#8B4513,#FF6B9D)"></div>
+      <p style="font-size:10px;color:#7E879B">Correção → Uniformização</p>
+    </div>
+    <div class="cp">
+      <div class="ic pu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <span class="ts pu">Revitalização</span>
+      <h3 style="font-size:14px;margin-bottom:8px">Frescor Natural</h3>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Lábios opacos, sem viço ou cor</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Pigmentos rosados e terrosos</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Resultado "natural produzida"</p></div>
+      <div class="sw-bar" style="background:linear-gradient(90deg,#C8A0A0,#FF9DC0)"></div>
+      <p style="font-size:10px;color:#7E879B">Opaco → Viçoso</p>
+    </div>
+    <div class="cp">
+      <div class="ic co"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <span class="ts co">Efeito Batom</span>
+      <h3 style="font-size:14px;margin-bottom:8px">Máximo Impacto</h3>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:11px">Cobertura total e saturação alta</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:11px">Ampla paleta de cores possíveis</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:11px">Técnica mais ousada e definitiva</p></div>
+      <div class="sw-bar" style="background:linear-gradient(90deg,#FF2D55,#FF8C50,#C86DD7)"></div>
+      <p style="font-size:10px;color:#7E879B">Natural → Alta Pigmentação</p>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-top:12px">
+    <div class="alt go">
+      <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><p style="font-size:11px"><strong style="color:#FFD460">Dica profissional:</strong> As técnicas se complementam — a neutralização frequentemente precede a revitalização e o efeito batom para garantir resultado perfeito em lábios com hiperpigmentação.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 3 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2><span class="gt">Neutralização</span> Labial</h2>
+    <p>A ciência da correção cromática aplicada aos lábios hiperpigmentados</p>
+  </div>
+  <div class="g2 au d2">
+    <div class="card">
+      <span class="ts pk">O que é?</span>
+      <h3 style="font-size:13px;margin-bottom:9px">Definição Técnica</h3>
+      <p style="font-size:11px;margin-bottom:10px">Técnica que utiliza <strong>pigmentos de tons opostos</strong> no círculo cromático para anular cores indesejadas nos lábios, criando uma base uniforme.</p>
+      <div class="alt pk" style="padding:9px 11px">
+        <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></div>
+        <p style="font-size:10px">Não é sobre adicionar cor, é sobre <strong>cancelar o indesejado</strong> para revelar o resultado perfeito.</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="ts pu">Indicações</span>
+      <h3 style="font-size:13px;margin-bottom:9px">Perfil da Cliente</h3>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Lábios muito escuros ou enegrecidos</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Tom arroxeado/violáceo predominante</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Manchas acastanhadas irregulares</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Melasma labial</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Pós-inflamação por tabagismo</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Cicatrizes com discromia</p></div>
+    </div>
+  </div>
+  <div class="g3 au d3" style="margin-top:11px">
+    <div class="card bc bpk">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <div class="cdot" style="background:#6B2D6B"></div>
+        <span class="ts pk" style="margin:0">Lábio Arroxeado</span>
+      </div>
+      <p style="font-size:11px">Neutralizar com pigmento <strong style="color:#FF8C50">laranja-salmão</strong>. Tom oposto no círculo cromático cancela o roxo/vinho.</p>
+    </div>
+    <div class="card bc bco">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <div class="cdot" style="background:#3B2A2A"></div>
+        <span class="ts co" style="margin:0">Lábio Marrom-Escuro</span>
+      </div>
+      <p style="font-size:11px">Neutralizar com pigmento <strong style="color:#FF6B9D">rosa-alaranjado</strong>. Clareia o fundo antes do pigmento definitivo.</p>
+    </div>
+    <div class="card bc bbl">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <div class="cdot" style="background:#1A1A3E"></div>
+        <span class="ts bl" style="margin:0">Lábio Muito Escuro</span>
+      </div>
+      <p style="font-size:11px">Neutralizar com pigmento <strong style="color:#FFD460">amarelo-ocre</strong>. Pode exigir 2 sessões de neutralização.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 4 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Teoria das <span class="gt3">Cores Aplicada</span></h2>
+    <p>O círculo cromático como ferramenta de precisão na neutralização labial</p>
+  </div>
+  <div class="g2 au d2">
+    <div class="cp">
+      <span class="ts pk">Princípio Fundamental</span>
+      <h3 style="font-size:13px;margin-bottom:10px">Cores Complementares</h3>
+      <div class="sr">
+        <div style="display:flex;align-items:center;gap:6px;flex:1">
+          <div class="cdot" style="background:#8B008B;width:28px;height:28px"></div>
+          <div class="cdot" style="background:#FF8C00;width:14px;height:14px;margin-left:-6px"></div>
+          <p style="font-size:11px"><strong>Roxo</strong> + Laranja</p>
+        </div>
+      </div>
+      <div class="sr">
+        <div style="display:flex;align-items:center;gap:6px;flex:1">
+          <div class="cdot" style="background:#4B0082;width:28px;height:28px"></div>
+          <div class="cdot" style="background:#FFD700;width:14px;height:14px;margin-left:-6px"></div>
+          <p style="font-size:11px"><strong>Violeta</strong> + Amarelo</p>
+        </div>
+      </div>
+      <div class="sr">
+        <div style="display:flex;align-items:center;gap:6px;flex:1">
+          <div class="cdot" style="background:#3B1F0A;width:28px;height:28px"></div>
+          <div class="cdot" style="background:#FF69B4;width:14px;height:14px;margin-left:-6px"></div>
+          <p style="font-size:11px"><strong>Castanho</strong> + Rosa-quente</p>
+        </div>
+      </div>
+      <div class="sr">
+        <div style="display:flex;align-items:center;gap:6px;flex:1">
+          <div class="cdot" style="background:#1C1C1C;width:28px;height:28px"></div>
+          <div class="cdot" style="background:#FFA07A;width:14px;height:14px;margin-left:-6px"></div>
+          <p style="font-size:11px"><strong>Preto-azulado</strong> + Salmão</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp">
+      <span class="ts co">Regras de Ouro</span>
+      <h3 style="font-size:13px;margin-bottom:10px">Proporção e Mistura</h3>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px"><strong>Nunca use laranja puro</strong> — mescle com salmão ou pêssego</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Quantidade do neutralizante: <strong>30–60%</strong> da mistura total</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Faça <strong>teste de cor</strong> antes da aplicação completa</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Tons frios → neutralizar com quentes e vice-versa</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Fotótipos mais escuros exigem <strong>mais neutralizante</strong></p></div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-top:11px">
+    <div class="card">
+      <span class="ts wh" style="margin-bottom:8px;display:block">⚠️ Erros Mais Comuns</span>
+      <div class="g3">
+        <div class="alt pk" style="padding:9px 11px">
+          <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+          <p style="font-size:10px">Usar laranja em lábio castanho sem diluição</p>
+        </div>
+        <div class="alt pk" style="padding:9px 11px">
+          <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+          <p style="font-size:10px">Aplicar pigmento final sem aguardar cicatrização da neutralização</p>
+        </div>
+        <div class="alt pk" style="padding:9px 11px">
+          <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+          <p style="font-size:10px">Ignorar o fototipo e usar mesma fórmula para todas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 5 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2><span class="gt2">Revitalização</span> Labial</h2>
+    <p>Devolver o frescor e a cor natural para lábios opacos e sem viço</p>
+  </div>
+  <div class="g2 au d2">
+    <div class="cp">
+      <div class="ic pu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <span class="ts pu">Objetivo</span>
+      <h3 style="font-size:13px;margin-bottom:8px">O Que a Técnica Entrega</h3>
+      <p style="font-size:11px;margin-bottom:10px">Resultado <strong>"sem maquiagem, mas claramente produzida"</strong>. Lábios com cor própria, viçosos e jovens, sem aparência artificial.</p>
+      <div class="sw-bar" style="background:linear-gradient(90deg,#DCBCBC,#E8909A,#FF6B9D,#D4607A)"></div>
+      <p style="font-size:10px;color:#7E879B">Paleta: nude rosado ao rosado médio</p>
+    </div>
+    <div class="cp">
+      <div class="ic co"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <span class="ts co">Perfil Ideal</span>
+      <h3 style="font-size:13px;margin-bottom:8px">Quem Procura?</h3>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Lábios apagados e sem definição</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Perda de cor por envelhecimento</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Após procedimentos estéticos (preenchimento)</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Quem deseja praticidade no dia a dia</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Perfil conservador e naturalidade</p></div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-top:11px">
+    <div class="card">
+      <span class="ts pu" style="margin-bottom:10px;display:block">Paleta de Pigmentos para Revitalização</span>
+      <div class="g3">
+        <div style="text-align:center">
+          <div class="cdot" style="background:#E8909A;width:40px;height:40px;margin:0 auto 8px;border-radius:50%"></div>
+          <p style="font-size:10px;font-weight:600;color:#F5F7FB">Rosa Claro</p>
+          <p style="font-size:9px;color:#7E879B">Fotótipos I–III</p>
+        </div>
+        <div style="text-align:center">
+          <div class="cdot" style="background:#C4607A;width:40px;height:40px;margin:0 auto 8px;border-radius:50%"></div>
+          <p style="font-size:10px;font-weight:600;color:#F5F7FB">Rosado Médio</p>
+          <p style="font-size:9px;color:#7E879B">Fotótipos III–IV</p>
+        </div>
+        <div style="text-align:center">
+          <div class="cdot" style="background:#A0485A;width:40px;height:40px;margin:0 auto 8px;border-radius:50%"></div>
+          <p style="font-size:10px;font-weight:600;color:#F5F7FB">Rose Terroso</p>
+          <p style="font-size:9px;color:#7E879B">Fotótipos IV–VI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%;margin-top:10px">
+    <div class="alt gr">
+      <div class="alti gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <p style="font-size:11px"><strong style="color:#5EE89A">Resultado esperado:</strong> Imediatamente após a sessão os lábios aparentam 40–60% mais vibrantes. Após cicatrização completa (30 dias), a cor se assenta em tom natural e duradouro.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 6 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Efeito <span class="gt3">Batom</span></h2>
+    <p>A técnica mais ousada da micropigmentação labial — cor, impacto e durabilidade</p>
+  </div>
+  <div class="g2 au d2">
+    <div class="cp">
+      <span class="ts co">A Técnica</span>
+      <h3 style="font-size:13px;margin-bottom:9px">Como é Executada</h3>
+      <div class="sr"><div class="nb n1" style="width:28px;height:28px;font-size:10px">1</div><p style="font-size:11px"><strong>Anestesia</strong> tópica e espera de 20–30 min</p></div>
+      <div class="sr"><div class="nb n2" style="width:28px;height:28px;font-size:10px">2</div><p style="font-size:11px"><strong>Contorno</strong> preciso do vermelhão labial</p></div>
+      <div class="sr"><div class="nb n3" style="width:28px;height:28px;font-size:10px">3</div><p style="font-size:11px"><strong>Preenchimento</strong> total com shading uniforme</p></div>
+      <div class="sr"><div class="nb n4" style="width:28px;height:28px;font-size:10px">4</div><p style="font-size:11px"><strong>Segunda passada</strong> para saturação máxima</p></div>
+      <div class="sr"><div class="nb n5" style="width:28px;height:28px;font-size:10px">5</div><p style="font-size:11px"><strong>Acabamento</strong> e nivelamento de bordas</p></div>
+    </div>
+    <div class="cp">
+      <span class="ts pk">Paleta Disponível</span>
+      <h3 style="font-size:13px;margin-bottom:10px">Cores Possíveis</h3>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#FF2D55;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Vermelho</p>
+        </div>
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#E8405A;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Coral</p>
+        </div>
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#C0392B;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Bordô</p>
+        </div>
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#8B0000;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Vinho</p>
+        </div>
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#FF7F7F;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Rosa</p>
+        </div>
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#FF8C50;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Pêssego</p>
+        </div>
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#C4607A;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Rosado</p>
+        </div>
+        <div style="text-align:center">
+          <div style="width:36px;height:36px;border-radius:50%;background:#B8860B;margin:0 auto 4px;border:2px solid rgba(255,255,255,.15)"></div>
+          <p style="font-size:9px;color:#AAB3C5">Nude</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-top:11px">
+    <div class="g2">
+      <div class="alt co">
+        <div class="alti co"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><p style="font-size:10px"><strong style="color:#FF8C50">Shading Degradê:</strong> Concentração maior no centro e esfumado nas bordas para efeito volumoso e tridimensional.</p></div>
+      </div>
+      <div class="alt pk">
+        <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></div>
+        <div><p style="font-size:10px"><strong style="color:#FF6B9D">Atenção:</strong> Em lábios hiperpigmentados, a neutralização é <strong>obrigatória</strong> antes do efeito batom para a cor ser fiel.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 7 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Escolha do <span class="gt">Pigmento Certo</span></h2>
+    <p>Escala de Fitzpatrick como guia de precisão na escolha cromática</p>
+  </div>
+  <div class="au d2" style="width:100%;margin-bottom:11px">
+    <div class="alt go">
+      <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <p style="font-size:11px"><strong style="color:#FFD460">Regra essencial:</strong> O pigmento perde <strong>30–40% da saturação</strong> após a cicatrização. Sempre pigmente 2–3 tons acima do resultado desejado.</p>
+    </div>
+  </div>
+  <div class="g2 au d3">
+    <div class="card bc bpk">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#FFDAB9,#F4A460);flex-shrink:0"></div>
+        <div><span class="ts pk" style="margin:0">Fitzpatrick I – II</span><p style="font-size:10px;color:#7E879B">Pele muito clara a clara</p></div>
+      </div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Neutralização: <strong>salmão suave</strong></p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Revitalização: <strong>rosa bebê / nude rosado</strong></p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Batom: cores claras e médias</p></div>
+    </div>
+    <div class="card bc bco">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#DEB887,#CD853F);flex-shrink:0"></div>
+        <div><span class="ts co" style="margin:0">Fitzpatrick III – IV</span><p style="font-size:10px;color:#7E879B">Pele morena clara a morena</p></div>
+      </div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:11px">Neutralização: <strong>laranja-pêssego médio</strong></p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:11px">Revitalização: <strong>rosado médio / terra rosada</strong></p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:11px">Batom: qualquer tom — excelente resposta</p></div>
+    </div>
+    <div class="card bc bpu">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#8B4513,#5C2A09);flex-shrink:0"></div>
+        <div><span class="ts pu" style="margin:0">Fitzpatrick V</span><p style="font-size:10px;color:#7E879B">Pele morena escura</p></div>
+      </div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Neutralização: <strong>laranja-ocre concentrado</strong></p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Revitalização: <strong>rosa escuro / mogno</strong></p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:11px">Batom: tons quentes e saturados</p></div>
+    </div>
+    <div class="card bc bbl">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3B1F0A,#1A0A02);flex-shrink:0"></div>
+        <div><span class="ts bl" style="margin:0">Fitzpatrick VI</span><p style="font-size:10px;color:#7E879B">Pele negra</p></div>
+      </div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:11px">Neutralização: <strong>amarelo-ocre + salmão</strong></p></div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:11px">Revitalização: <strong>cereja escuro / berry</strong></p></div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:11px">Batom: 2+ sessões para saturação plena</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 8 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Técnica de Aplicação <span class="gt2">Passo a Passo</span></h2>
+    <p>Protocolo técnico universal adaptável às 3 modalidades</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:9px">
+    <div class="card bc bpk au d2">
+      <div class="sr">
+        <div class="nb n1">1</div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:4px">Anamnese e Anestesia</h3>
+          <p style="font-size:11px">Avaliação da hiperpigmentação, escolha do pigmento e tom. Aplicação de anestésico tópico <strong>(30–40 min de espera)</strong>. Fotografar antes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bpu au d3">
+      <div class="sr">
+        <div class="nb n2">2</div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:4px">Definição do Contorno</h3>
+          <p style="font-size:11px">Delineamento preciso do vermelhão com agulha única ou liner. Define <strong>simetria, volume e arco do cupido</strong>. Pode ser acima do bordo para ampliar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bbl au d4">
+      <div class="sr">
+        <div class="nb n3">3</div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:4px">Primeira Passada — Pigmentação</h3>
+          <p style="font-size:11px">Preenchimento da área com movimentos circulares ou lineares. <strong>Saturação de 60–70%.</strong> Pause para anestesia adicional se necessário.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bco au d5">
+      <div class="sr">
+        <div class="nb n4">4</div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:4px">Segunda Passada — Fixação</h3>
+          <p style="font-size:11px">Reforço da pigmentação após limpeza do excesso. Foco nos pontos com menor absorção. <strong>Saturação final 90–100%.</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bgo au d6">
+      <div class="sr">
+        <div class="nb n5">5</div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:4px">Acabamento e Shading</h3>
+          <p style="font-size:11px">Esfumado das bordas para efeito natural. No efeito batom, shading central para <strong>volume tridimensional</strong>. Limpeza final.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bgr au d7">
+      <div class="sr">
+        <div class="nb n6">6</div>
+        <div>
+          <h3 style="font-size:13px;margin-bottom:4px">Pós-Procedimento Imediato</h3>
+          <p style="font-size:11px">Aplicação de pomada cicatrizante. Orientações de cuidado, restrições alimentares e <strong>agendamento do retoque (30–45 dias)</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 9 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Combinando <span class="gt">Técnicas</span></h2>
+    <p>Protocolos avançados que unem as modalidades para resultados superiores</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:11px">
+    <div class="cp au d2">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+        <span class="pill pk">Neutralização</span>
+        <span style="color:#7E879B;font-size:14px">+</span>
+        <span class="pill pu">Revitalização</span>
+        <span style="color:#7E879B;font-size:14px">=</span>
+        <span class="pill gr">Natural Perfeito</span>
+      </div>
+      <p style="font-size:11px;margin-bottom:9px">Ideal para lábios com hiperpigmentação moderada que desejam resultado discreto e natural. <strong>2 sessões espaçadas 30 dias.</strong></p>
+      <div class="g2" style="gap:8px">
+        <div class="alt pk" style="padding:8px 10px"><div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></div><p style="font-size:10px">Sessão 1: neutralizar e uniformizar o tom base do lábio</p></div>
+        <div class="alt pu" style="padding:8px 10px"><div class="alti pu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:10px">Sessão 2: revitalizar com rosa ou nude sobre base corrigida</p></div>
+      </div>
+    </div>
+    <div class="cp au d3">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+        <span class="pill pk">Neutralização</span>
+        <span style="color:#7E879B;font-size:14px">+</span>
+        <span class="pill co">Efeito Batom</span>
+        <span style="color:#7E879B;font-size:14px">=</span>
+        <span class="pill co">Cor Fiel e Vibrante</span>
+      </div>
+      <p style="font-size:11px;margin-bottom:9px">Para clientes que desejam cor intensa, mas possuem fundo escuro. <strong>Sem neutralização, o pigmento final fica distorcido.</strong></p>
+      <div class="g2" style="gap:8px">
+        <div class="alt pk" style="padding:8px 10px"><div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></div><p style="font-size:10px">Sessão 1: base laranja/salmão para cancelar o escuro</p></div>
+        <div class="alt co" style="padding:8px 10px"><div class="alti co"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><p style="font-size:10px">Sessão 2: batom coral, vermelho, bordô com cor fiel</p></div>
+      </div>
+    </div>
+    <div class="cp au d4">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+        <span class="pill pk">Neutralização</span>
+        <span style="color:#7E879B;font-size:14px">+</span>
+        <span class="pill pu">Revitalização</span>
+        <span style="color:#7E879B;font-size:14px">+</span>
+        <span class="pill co">Batom</span>
+        <span style="color:#7E879B;font-size:14px">=</span>
+        <span class="pill gr">Premium</span>
+      </div>
+      <p style="font-size:11px">Protocolo premium em <strong>3 sessões</strong> para lábios muito escuros com desejo de cor intensa. Resultado definitivo e de altíssima fidelidade cromática. Espaçamento de 30–40 dias entre sessões.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 10 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Resultados, Retoque <span class="gt2">e Manutenção</span></h2>
+    <p>Expectativas reais, cronograma e cuidados para resultado duradouro</p>
+  </div>
+  <div class="g3 au d2">
+    <div class="card" style="text-align:center">
+      <div class="metric pk">1–3</div>
+      <p style="font-size:11px;font-weight:600;color:#F5F7FB;margin-bottom:4px">Anos de Duração</p>
+      <p style="font-size:10px;color:#7E879B">Neutralização e Revitalização — resultado mais sutil, maior durabilidade</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric pu">30</div>
+      <p style="font-size:11px;font-weight:600;color:#F5F7FB;margin-bottom:4px">Dias p/ Retoque</p>
+      <p style="font-size:10px;color:#7E879B">1ª sessão de retoque obrigatória para fixar e corrigir a cor</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric gr">40%</div>
+      <p style="font-size:11px;font-weight:600;color:#F5F7FB;margin-bottom:4px">Perda de Cor</p>
+      <p style="font-size:10px;color:#7E879B">Redução natural da saturação após cicatrização completa</p>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-top:11px">
+    <div class="card">
+      <span class="ts wh" style="margin-bottom:10px;display:block">📋 Cuidados Pós-Procedimento</span>
+      <div class="g2" style="gap:9px">
+        <div>
+          <span class="ts pk" style="margin-bottom:6px">Primeiros 7 Dias</span>
+          <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Não molhar os lábios diretamente</p></div>
+          <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Evitar alimentos ácidos e condimentados</p></div>
+          <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Não esfoliar a região</p></div>
+          <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Aplicar pomada cicatrizante 4x/dia</p></div>
+        </div>
+        <div>
+          <span class="ts pu" style="margin-bottom:6px">Manutenção Contínua</span>
+          <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Protetor labial com FPS diariamente</p></div>
+          <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Evitar exposição solar excessiva</p></div>
+          <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Hidratação constante dos lábios</p></div>
+          <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Retoque anual de manutenção</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%;margin-top:10px">
+    <div style="background:linear-gradient(135deg,rgba(255,107,157,.1),rgba(160,102,255,.1));border:1px solid rgba(255,107,157,.25);border-radius:16px;padding:16px;text-align:center">
+      <p style="font-size:13px;font-weight:700;color:#F5F7FB;margin-bottom:6px">💋 Transforme a autoestima das suas clientes</p>
+      <p style="font-size:11px;color:#AAB3C5">Micropigmentação labial bem executada é a união entre <strong style="color:#FF9DC0">ciência cromática</strong>, <strong style="color:#C4AAFF">técnica refinada</strong> e <strong style="color:#FFB890">olhar artístico</strong> — resultados que duram anos e mudam vidas.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const IND=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  IND.appendChild(d);
+}
+
+function upd(){
+  IND.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  // reset scroll on each slide
+  document.querySelectorAll('.si').forEach(s=>s.scrollTop=0);
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd()}
+function next(){if(C<T-1)go(C+1)}
+function prev(){if(C>0)go(C-1)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+  if(e.key==='f'||e.key==='F')toggleFs()
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].screenX;
+  ty=e.changedTouches[0].screenY;
+  scrolling=false;
+},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].screenX-tx);
+  const dy=Math.abs(e.changedTouches[0].screenY-ty);
+  if(dy>dx)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const d=tx-e.changedTouches[0].screenX;
+  if(Math.abs(d)>50){d>0?next():prev()}
+});
+
+function toggleFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen();
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
