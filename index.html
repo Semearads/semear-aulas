@@ -461,10 +461,11 @@
     </div>
 
     <div class="pip-thumb" id="pipThumb" onclick="pipPlay()">
+      <!-- 🔧 CORREÇÃO: hqdefault.jpg como padrão (sempre disponível no YouTube) -->
       <img id="pipThumbImg"
-           src="https://img.youtube.com/vi/lF9D-wNGChs/maxresdefault.jpg"
+           src="https://img.youtube.com/vi/lF9D-wNGChs/hqdefault.jpg"
            alt="Thumbnail"
-           onerror="this.src='https://img.youtube.com/vi/lF9D-wNGChs/hqdefault.jpg'" />
+           onerror="this.onerror=null; this.src='https://img.youtube.com/vi/lF9D-wNGChs/mqdefault.jpg';" />
       <div class="pip-tgrad"></div>
       <div class="pip-play">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -894,6 +895,39 @@
       setTimeout(() => { pip.style.display = 'none'; }, 300);
       pipFrame.src = '';
     }
+
+    /* =========================================================
+       🔧 FIX: garante thumbnail válida do YouTube
+       (detecta placeholder vazio de 120px e troca por fallback)
+       ========================================================= */
+    (function fixThumb() {
+      const img = document.getElementById('pipThumbImg');
+      if (!img) return;
+
+      const videoId = 'lF9D-wNGChs';
+      const fallbacks = ['hqdefault.jpg', 'mqdefault.jpg', 'sddefault.jpg', 'default.jpg'];
+      let idx = 0;
+
+      function tryNext() {
+        idx++;
+        if (idx < fallbacks.length) {
+          img.src = 'https://img.youtube.com/vi/' + videoId + '/' + fallbacks[idx];
+        }
+      }
+
+      img.addEventListener('load', function onLoad() {
+        // YouTube retorna placeholder de 120px quando a thumb não existe
+        if (img.naturalWidth <= 120) {
+          tryNext();
+        }
+        img.removeEventListener('load', onLoad);
+      });
+
+      img.addEventListener('error', function onError() {
+        tryNext();
+        img.removeEventListener('error', onError);
+      });
+    })();
   </script>
 
 </body>
