@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Marketing & Vendas — Micropigmentação Labial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;position:relative}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100vh;will-change:transform}
+
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:56px 16px 112px;
+}
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 75% 15%,rgba(255,100,160,.15) 0%,transparent 42%),
+    radial-gradient(800px 380px at 20% 80%,rgba(200,80,200,.12) 0%,transparent 42%),
+    radial-gradient(600px 300px at 55% 50%,rgba(46,107,255,.08) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.2;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1}
+
+.si{
+  width:100%;max-width:920px;
+  display:flex;flex-direction:column;align-items:center;
+  overflow-y:auto;
+  max-height:calc(100vh - 168px);
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:2px 4px 10px;
+}
+.si::-webkit-scrollbar{display:none}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.14;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;line-height:1.3;color:#F5F7FB}
+p,li,span{font-weight:400;line-height:1.65;color:#AAB3C5}
+strong{font-weight:700;color:#F5F7FB}
+
+.gt{
+  background:linear-gradient(135deg,#FF6B9D 0%,#C86DD7 45%,#FF4FA0 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt2{
+  background:linear-gradient(135deg,#FFD460 0%,#FF8C50 50%,#FF6B9D 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt3{
+  background:linear-gradient(135deg,#2E6BFF 0%,#A066FF 50%,#C86DD7 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt4{
+  background:linear-gradient(135deg,#5EE89A 0%,#28D8C8 50%,#2E6BFF 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#FF6B9D,#C86DD7,#A066FF);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 14px;transform-origin:center}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 18px;border-radius:999px;margin-bottom:18px;
+  background:rgba(255,107,157,.09);border:1px solid rgba(255,107,157,.3);
+  font-size:11px;font-weight:600;color:#FF9DC0;letter-spacing:.07em;text-transform:uppercase;
+}
+.badge svg{width:12px;height:12px;flex-shrink:0}
+
+.card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.04);
+  padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;
+}
+.card:hover{border-color:rgba(255,107,157,.18);transform:translateY(-2px)}
+
+.cp{
+  background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:16px;
+  box-shadow:0 16px 44px rgba(0,0,0,.42),0 0 28px rgba(200,109,215,.06);
+  padding:18px 16px;backdrop-filter:blur(10px);transition:all .4s ease;
+}
+.cp:hover{border-color:rgba(255,107,157,.2);transform:translateY(-2px)}
+
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;width:100%}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%}
+
+.ic{width:42px;height:42px;border-radius:11px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,107,157,.1)}
+.ic svg{width:20px;height:20px;color:#FF6B9D}
+.ic.bl{background:rgba(46,107,255,.1)}.ic.bl svg{color:#2E6BFF}
+.ic.pu{background:rgba(160,102,255,.1)}.ic.pu svg{color:#A066FF}
+.ic.co{background:rgba(255,140,80,.1)}.ic.co svg{color:#FF8C50}
+.ic.gr{background:rgba(80,220,130,.1)}.ic.gr svg{color:#5EE89A}
+.ic.go{background:rgba(255,200,60,.1)}.ic.go svg{color:#FFD460}
+.ic.te{background:rgba(40,210,200,.1)}.ic.te svg{color:#28D8C8}
+.ic.ro{background:rgba(255,80,120,.1)}.ic.ro svg{color:#FF5078}
+
+.ts{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;display:block}
+.ts.pk{color:#FF6B9D}.ts.bl{color:#2E6BFF}.ts.pu{color:#A066FF}
+.ts.co{color:#FF8C50}.ts.gr{color:#5EE89A}.ts.go{color:#FFD460}
+.ts.te{color:#28D8C8}.ts.ro{color:#FF5078}.ts.wh{color:#F5F7FB}
+
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.pill.pk{background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.25);color:#FF9DC0}
+.pill.bl{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#8FAEFF}
+.pill.pu{background:rgba(160,102,255,.1);border:1px solid rgba(160,102,255,.25);color:#C4AAFF}
+.pill.co{background:rgba(255,140,80,.1);border:1px solid rgba(255,140,80,.25);color:#FFB890}
+.pill.gr{background:rgba(80,220,130,.1);border:1px solid rgba(80,220,130,.25);color:#5EE89A}
+.pill.go{background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.25);color:#FFD460}
+.pill.te{background:rgba(40,210,200,.1);border:1px solid rgba(40,210,200,.25);color:#28D8C8}
+
+.chk{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px}
+.chkd{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.chkd.pk{background:#FF6B9D}.chkd.bl{background:#2E6BFF}.chkd.pu{background:#A066FF}
+.chkd.co{background:#FF8C50}.chkd.gr{background:#5EE89A}.chkd.go{background:#FFD460}
+.chkd.te{background:#28D8C8}.chkd.ro{background:#FF5078}.chkd.wh{background:#F5F7FB}
+
+.bc{position:relative;overflow:hidden;padding-left:18px!important}
+.bc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.bc.bpk::before{background:#FF6B9D}.bc.bpu::before{background:#A066FF}
+.bc.bbl::before{background:#2E6BFF}.bc.bco::before{background:#FF8C50}
+.bc.bgo::before{background:#FFD460}.bc.bgr::before{background:#5EE89A}
+.bc.bte::before{background:#28D8C8}.bc.bro::before{background:#FF5078}
+
+.nb{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite}
+.nb.n1{background:linear-gradient(145deg,#FF6B9D,#D9456F)}
+.nb.n2{background:linear-gradient(145deg,#A066FF,#7040D6);animation-delay:.5s}
+.nb.n3{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:1s}
+.nb.n4{background:linear-gradient(145deg,#FF8C50,#D96030);animation-delay:1.5s}
+.nb.n5{background:linear-gradient(145deg,#FFD460,#E0A820);animation-delay:2s}
+.nb.n6{background:linear-gradient(145deg,#5EE89A,#30C870);animation-delay:2.5s}
+@keyframes glowP{0%,100%{box-shadow:0 0 14px rgba(255,107,157,.1)}50%{box-shadow:0 0 28px rgba(255,107,157,.32)}}
+
+.sr{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+
+.alt{border-radius:12px;padding:11px 13px;display:flex;gap:10px;align-items:flex-start}
+.alt.pk{background:rgba(255,107,157,.05);border:1px solid rgba(255,107,157,.18)}
+.alt.pu{background:rgba(160,102,255,.05);border:1px solid rgba(160,102,255,.18)}
+.alt.go{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.18)}
+.alt.gr{background:rgba(80,220,130,.05);border:1px solid rgba(80,220,130,.18)}
+.alt.co{background:rgba(255,140,80,.05);border:1px solid rgba(255,140,80,.18)}
+.alt.te{background:rgba(40,210,200,.05);border:1px solid rgba(40,210,200,.18)}
+.alt.bl{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.18)}
+.alti{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.alti svg{width:14px;height:14px}
+.alti.pk{background:rgba(255,107,157,.15)}.alti.pk svg{color:#FF6B9D}
+.alti.pu{background:rgba(160,102,255,.15)}.alti.pu svg{color:#A066FF}
+.alti.go{background:rgba(255,200,60,.15)}.alti.go svg{color:#FFD460}
+.alti.gr{background:rgba(80,220,130,.15)}.alti.gr svg{color:#5EE89A}
+.alti.co{background:rgba(255,140,80,.15)}.alti.co svg{color:#FF8C50}
+.alti.te{background:rgba(40,210,200,.15)}.alti.te svg{color:#28D8C8}
+.alti.bl{background:rgba(46,107,255,.15)}.alti.bl svg{color:#2E6BFF}
+
+.metric{font-size:clamp(26px,5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:5px}
+.metric.pk{color:#FF6B9D}.metric.pu{color:#A066FF}.metric.bl{color:#2E6BFF}
+.metric.gr{color:#5EE89A}.metric.go{color:#FFD460}.metric.te{color:#28D8C8}
+.metric.co{color:#FF8C50}
+
+.stitle{text-align:center;margin-bottom:16px;width:100%}
+.stitle h2{font-size:clamp(17px,3.6vw,26px);margin-bottom:7px}
+.stitle p{font-size:11px;color:#7E879B;max-width:620px;margin:0 auto;line-height:1.7}
+
+/* FUNIL */
+.funnel-step{
+  width:100%;border-radius:12px;padding:12px 14px;
+  display:flex;align-items:center;gap:12px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.02);
+  transition:all .3s ease;
+  margin-bottom:7px;
+}
+.funnel-step:hover{transform:translateX(4px)}
+.funnel-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* COMPARATIVO */
+.vs-card{border-radius:14px;padding:14px;flex:1}
+.vs-bad{background:rgba(255,80,80,.04);border:1px solid rgba(255,80,80,.14)}
+.vs-good{background:rgba(80,220,130,.04);border:1px solid rgba(80,220,130,.14)}
+
+/* CHECKLIST FINAL */
+.ck-box{border-radius:14px;padding:14px;flex:1;min-width:0}
+.ck-today{background:rgba(255,107,157,.05);border:1px solid rgba(255,107,157,.2)}
+.ck-week{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.2)}
+.ck-month{background:rgba(80,220,130,.05);border:1px solid rgba(80,220,130,.2)}
+
+/* PROGRESS BAR */
+.pbar-wrap{width:100%;margin-bottom:10px}
+.pbar-label{display:flex;justify-content:space-between;margin-bottom:4px}
+.pbar-track{width:100%;height:6px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+.pbar-fill{height:100%;border-radius:3px;animation:fillBar 1.2s ease both}
+@keyframes fillBar{from{width:0}to{width:var(--w)}}
+
+/* PROGRESS CHROME */
+.progress{
+  position:fixed;top:0;left:0;height:3px;z-index:1000;
+  background:linear-gradient(90deg,#FF6B9D,#C86DD7,#A066FF,#FF6B9D);
+  background-size:200% auto;animation:shimmer 3s linear infinite;
+  transition:width .6s ease;
+}
+.fs-btn{
+  position:fixed;top:14px;right:14px;z-index:999;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#7E879B;padding:8px 13px;border-radius:10px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+  display:flex;align-items:center;gap:7px;transition:all .3s ease;
+  backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;
+}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(255,107,157,.3)}
+.fs-btn svg{width:13px;height:13px}
+.sc{
+  position:fixed;bottom:30px;left:16px;z-index:998;
+  color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;
+  background:rgba(0,0,0,.32);padding:7px 13px;border-radius:9px;
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);
+}
+.sc .cn{color:#FF6B9D;font-weight:800}
+.ind{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:998;
+  display:flex;gap:5px;background:rgba(0,0,0,.32);padding:7px 12px;
+  border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);
+}
+.ind .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;
+}
+.ind .dot.active{background:#FF6B9D;box-shadow:0 0 10px rgba(255,107,157,.6);width:24px;border-radius:4px}
+.nav-arr{position:fixed;bottom:26px;right:16px;z-index:998;display:flex;gap:8px}
+.nav-arr button{
+  width:44px;height:44px;border-radius:11px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5;font-size:17px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s ease;backdrop-filter:blur(6px);
+}
+.nav-arr button:hover{background:rgba(255,107,157,.2);border-color:rgba(255,107,157,.4);color:#fff;transform:scale(1.05)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+
+.slide.active .au{animation:fadeUp .7s ease both}
+.slide.active .as{animation:fadeScale .7s ease both}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}
+.d3{animation-delay:.28s!important}.d4{animation-delay:.38s!important}
+.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}.d8{animation-delay:.78s!important}
+
+.s1-wrap{text-align:center;max-width:860px;width:100%;display:flex;flex-direction:column;align-items:center;padding-top:16px}
+.s1-wrap h1{font-size:clamp(28px,6vw,62px);margin-bottom:14px}
+.s1-sub{font-size:clamp(12px,1.8vw,15px);color:#AAB3C5;max-width:580px;margin:0 auto 22px;line-height:1.7}
+.pills-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+
+@media(max-width:600px){
+  .slide{padding:50px 12px 110px}
+  .g3{grid-template-columns:1fr}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .si{max-height:calc(100vh - 160px)}
+  .stitle h2{font-size:16px}
+  .metric{font-size:26px}
+  .vs-bad,.vs-good{padding:11px 10px}
+}
+@media(min-width:601px) and (max-width:768px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="presentation">
+
+<div class="progress" id="prog" style="width:10%"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="slides" id="sw">
+
+<!-- ══ SLIDE 1 ══ -->
+<section class="slide active">
+<div class="s1-wrap">
+  <div class="badge au d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    Marketing & Vendas — Micropigmentação Labial
+  </div>
+  <h1 class="au d2">Seu Trabalho é Incrível.<br><span class="gt">Sua Cliente Precisa Saber.</span></h1>
+  <p class="s1-sub au d3">O guia completo de <strong>marketing e vendas</strong> para micropigmentadoras labiais que querem lotar a agenda e cobrar o que merecem.</p>
+  <div class="pills-row au d4">
+    <span class="pill pk">💋 Posicionamento</span>
+    <span class="pill go">💰 Precificação</span>
+    <span class="pill gr">📈 Captação</span>
+    <span class="pill pu">🔁 Fidelização</span>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 2 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>O Mercado e a <span class="gt2">Oportunidade</span></h2>
+    <p>O Brasil é o 2º maior mercado de beleza do mundo — e a micropigmentação labial está em plena explosão de demanda</p>
+  </div>
+  <div class="g4 au d2" style="margin-bottom:11px">
+    <div class="card" style="text-align:center">
+      <div class="metric pk">R$60bi</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Mercado Beleza BR</p>
+      <p style="font-size:9px;color:#7E879B">2º maior do mundo em faturamento</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric go">+38%</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Crescimento</p>
+      <p style="font-size:9px;color:#7E879B">Micropigmentação nos últimos 3 anos</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric gr">R$15k</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Faturamento/mês</p>
+      <p style="font-size:9px;color:#7E879B">Potencial real com agenda cheia</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric pu">72%</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Recorrência</p>
+      <p style="font-size:9px;color:#7E879B">Clientes que voltam para retoque e novas sessões</p>
+    </div>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:11px">
+    <div class="cp">
+      <div class="ic go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <span class="ts go">Por que agora?</span>
+      <h3 style="font-size:13px;margin-bottom:8px">Momento Perfeito</h3>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Redes sociais amplificam resultados em escala</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Consumidoras mais informadas e dispostas a pagar</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Técnicas mais seguras e resultados mais naturais</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Ticket médio crescendo ano a ano</p></div>
+    </div>
+    <div class="cp">
+      <div class="ic pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <span class="ts pk">Perfil da Cliente</span>
+      <h3 style="font-size:13px;margin-bottom:8px">Quem Compra?</h3>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Mulheres de 25–55 anos, classes B e C</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Buscam praticidade e autoestima elevada</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Pesquisam no Instagram antes de decidir</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Decidem pela <strong>confiança no profissional</strong></p></div>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="alt gr">
+      <div class="alti gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <p style="font-size:11px"><strong style="color:#5EE89A">Conclusão:</strong> O mercado está aquecido, a demanda existe — o que separa quem lota a agenda de quem luta por clientes é <strong>marketing bem feito e posicionamento claro.</strong></p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 3 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2><span class="gt3">Posicionamento:</span> Quem Você É?</h2>
+    <p>A diferença entre ser "mais uma micropigmentadora" e ser a referência que as clientes buscam</p>
+  </div>
+  <div class="g2 au d2" style="margin-bottom:11px">
+    <div class="vs-card vs-bad">
+      <span class="ts" style="color:#FF6B6B;margin-bottom:8px">❌ Profissional Genérica</span>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">"Faço sobrancelha, lábio e skin"</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Bio vaga: "micropigmentadora 🌸"</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Preço baixo para competir</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Posts aleatórios sem estratégia</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Concorre com qualquer uma</p></div>
+    </div>
+    <div class="vs-card vs-good">
+      <span class="ts" style="color:#5EE89A;margin-bottom:8px">✅ Especialista Referência</span>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">"Especialista em lábios — neutralização e efeito batom"</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">Bio clara com resultado e CTA</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">Preço justo comunicado com confiança</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">Conteúdo que educa e gera desejo</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">É buscada, não precisa correr atrás</p></div>
+    </div>
+  </div>
+  <div class="g3 au d3" style="margin-bottom:11px">
+    <div class="card bc bpk">
+      <span class="ts pk">Passo 1</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Defina seu Nicho</h3>
+      <p style="font-size:10px">Lábios escuros? Efeito batom? Peles negras? Escolha uma especialidade e seja a melhor nela.</p>
+    </div>
+    <div class="card bc bpu">
+      <span class="ts pu">Passo 2</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Crie sua Proposta</h3>
+      <p style="font-size:10px">Complete: "Eu ajudo <strong>[quem]</strong> a conseguir <strong>[resultado]</strong> através de <strong>[técnica]</strong>."</p>
+    </div>
+    <div class="card bc bgo">
+      <span class="ts go">Passo 3</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Comunique Sempre</h3>
+      <p style="font-size:10px">Repita sua especialidade em todos os conteúdos. Repetição gera lembrança e confiança.</p>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="card" style="text-align:center;padding:14px">
+      <p style="font-size:12px;color:#7E879B;margin-bottom:6px">Exemplo de Bio Poderosa</p>
+      <p style="font-size:13px;font-weight:700;color:#F5F7FB;line-height:1.6">"💋 Especialista em Micropigmentação Labial<br><span style="color:#FF9DC0">Lábios escuros → naturais e viçosos</span><br>📍 São Paulo | ✅ +500 transformações<br>👇 Agende sua avaliação gratuita"</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 4 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Presença <span class="gt">Digital que Vende</span></h2>
+    <p>Instagram, TikTok e WhatsApp como máquinas de agendamento</p>
+  </div>
+  <div class="g3 au d2" style="margin-bottom:11px">
+    <div class="cp">
+      <div class="ic pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      <span class="ts pk">Instagram</span>
+      <h3 style="font-size:12px;margin-bottom:8px">Sua Vitrine Principal</h3>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px"><strong>3–5 posts/semana</strong> consistentes</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Reels de antes/depois com música</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Stories diários (bastidores + prova)</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Highlights: Técnicas / Depoimentos / FAQ</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Responder DMs em até 2 horas</p></div>
+    </div>
+    <div class="cp">
+      <div class="ic co"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+      <span class="ts co">TikTok</span>
+      <h3 style="font-size:12px;margin-bottom:8px">Alcance Orgânico Massivo</h3>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Vídeos de <strong>15–30s</strong> com transformação</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Trends + conteúdo técnico educativo</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Mostrar o processo em tempo real</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Responder comentários com vídeo</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Postar nos horários de pico (18h–21h)</p></div>
+    </div>
+    <div class="cp">
+      <div class="ic gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <span class="ts gr">WhatsApp</span>
+      <h3 style="font-size:12px;margin-bottom:8px">Onde a Venda Acontece</h3>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Catálogo de serviços ativo</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Mensagem automática de boas-vindas</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Status com depoimentos e resultados</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Lista de transmissão para promoções</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Link direto na bio do Instagram</p></div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-bottom:10px">
+    <div class="card">
+      <span class="ts wh" style="margin-bottom:9px">📸 Checklist do Perfil Profissional Perfeito</span>
+      <div class="g2">
+        <div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Foto de perfil profissional e nítida</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Nome com palavra-chave: "Lábios | Micro | SP"</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Bio com nicho, resultado e CTA claro</p></div>
+        </div>
+        <div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Link de agendamento na bio</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Feed visualmente coeso e organizado</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Localização geográfica visível</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 5 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Conteúdo que <span class="gt4">Vende Sem Vender</span></h2>
+    <p>Os 5 pilares de conteúdo que geram desejo, confiança e agendamentos — sem parecer propaganda</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:9px">
+    <div class="card bc bpk au d2">
+      <div class="sr">
+        <div class="nb n1">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Antes & Depois</h3>
+            <span class="pill pk">Alto impacto</span>
+          </div>
+          <p style="font-size:11px">O conteúdo que mais converte. Mostre a <strong>transformação real</strong> com boa iluminação, mesmo ângulo e legenda explicando a técnica usada. Use "qual o caso dela?" para gerar engajamento.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bpu au d3">
+      <div class="sr">
+        <div class="nb n2">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Bastidores do Processo</h3>
+            <span class="pill pu">Confiança</span>
+          </div>
+          <p style="font-size:11px">Mostre seu <strong>ambiente, materiais, higiene</strong> e cuidado. A cliente compra segurança antes de comprar o procedimento. Vídeos do processo geram curiosidade e eliminam objeções.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bgo au d4">
+      <div class="sr">
+        <div class="nb n3">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Depoimentos em Vídeo</h3>
+            <span class="pill go">Prova Social</span>
+          </div>
+          <p style="font-size:11px">Peça à cliente para <strong>gravar 30 segundos</strong> logo após o procedimento (euforia do momento). Reposte com autorização. Nada vende mais do que outra pessoa falando pelo você.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bte au d5">
+      <div class="sr">
+        <div class="nb n4">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Conteúdo Educativo</h3>
+            <span class="pill te">Autoridade</span>
+          </div>
+          <p style="font-size:11px">"Por que o lábio fica escuro?", "Quanto tempo dura?", "Dói?". Responda as dúvidas frequentes. <strong>Quem educa, vira referência.</strong> Referência não precisa fazer desconto.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bgr au d6">
+      <div class="sr">
+        <div class="nb n5">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Sua Rotina e Personalidade</h3>
+            <span class="pill gr">Conexão</span>
+          </div>
+          <p style="font-size:11px">Pessoas compram de <strong>pessoas</strong>. Mostre sua rotina, aprendizados, conquistas. Humanize sua marca. Quem se identifica com você, agendará com você.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 6 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>A Jornada da <span class="gt">Cliente</span></h2>
+    <p>Do primeiro contato ao agendamento confirmado — domine cada etapa do funil</p>
+  </div>
+  <div style="width:100%;margin-bottom:11px">
+    <div class="funnel-step au d2">
+      <div class="funnel-dot" style="background:#FF6B9D"></div>
+      <div class="nb n1" style="width:30px;height:30px;font-size:11px;flex-shrink:0">1</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Descoberta</h3><span class="pill pk">Topo</span>
+        </div>
+        <p style="font-size:10px">Ela vê seu Reel, TikTok ou indicação de amiga. <strong>Gatilho:</strong> transformação visual impactante. Ação: seguir o perfil.</p>
+      </div>
+    </div>
+    <div class="funnel-step au d3">
+      <div class="funnel-dot" style="background:#A066FF"></div>
+      <div class="nb n2" style="width:30px;height:30px;font-size:11px;flex-shrink:0">2</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Consideração</h3><span class="pill pu">Meio</span>
+        </div>
+        <p style="font-size:10px">Ela vasculha seu feed, vê depoimentos e lê a bio. <strong>Gatilho:</strong> prova social e credibilidade. Ação: salvar posts, mandar DM com dúvida.</p>
+      </div>
+    </div>
+    <div class="funnel-step au d4">
+      <div class="funnel-dot" style="background:#FFD460"></div>
+      <div class="nb n3" style="width:30px;height:30px;font-size:11px;flex-shrink:0">3</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Decisão</h3><span class="pill go">Fundo</span>
+        </div>
+        <p style="font-size:10px">Ela quer ir, mas hesita. <strong>Gatilho:</strong> atendimento rápido, oferta clara e facilitação do agendamento. Ação: confirmar data.</p>
+      </div>
+    </div>
+    <div class="funnel-step au d5">
+      <div class="funnel-dot" style="background:#5EE89A"></div>
+      <div class="nb n4" style="width:30px;height:30px;font-size:11px;flex-shrink:0">4</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Conversão</h3><span class="pill gr">Venda</span>
+        </div>
+        <p style="font-size:10px">Atendimento encantador, resultado incrível, pedir foto e depoimento. <strong>Ela vira uma nova promotora da sua marca.</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="au d6" style="width:100%">
+    <div class="card">
+      <span class="ts go" style="margin-bottom:9px">💬 Script de Atendimento no WhatsApp</span>
+      <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.06)">
+        <p style="font-size:11px;color:#AAB3C5;margin-bottom:8px"><strong style="color:#5EE89A">Cliente:</strong> "Oi, quanto custa o lábio?"</p>
+        <p style="font-size:11px;color:#AAB3C5"><strong style="color:#FF9DC0">Você:</strong> "Oi [nome]! 💋 Que bom que você entrou em contato! O valor vai depender do caso específico dos seus lábios. Me manda uma foto para eu avaliar e te dar o diagnóstico certinho, tudo bem? Assim consigo te dizer exatamente qual técnica é ideal pra você e o investimento."</p>
+      </div>
+      <div class="alt go" style="margin-top:9px;padding:9px 11px">
+        <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#FFD460">Dica:</strong> Nunca responda preço direto. Primeiro gere conexão, depois mostre valor, depois fale em investimento.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 7 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Precificação com <span class="gt2">Inteligência</span></h2>
+    <p>Cobrar o que você merece começa em calcular o que você custa</p>
+  </div>
+  <div class="g2 au d2" style="margin-bottom:11px">
+    <div class="cp">
+      <span class="ts go">Cálculo Base</span>
+      <h3 style="font-size:13px;margin-bottom:10px">Custo por Sessão</h3>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span style="font-size:10px;color:#AAB3C5">Materiais e insumos</span><span style="font-size:10px;color:#FF8C50">~R$80</span></div>
+        <div class="pbar-track"><div class="pbar-fill" style="--w:35%;background:linear-gradient(90deg,#FF8C50,#FFD460)"></div></div>
+      </div>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span style="font-size:10px;color:#AAB3C5">Hora trabalhada (2h)</span><span style="font-size:10px;color:#FF6B9D">~R$120</span></div>
+        <div class="pbar-track"><div class="pbar-fill" style="--w:50%;background:linear-gradient(90deg,#FF6B9D,#C86DD7)"></div></div>
+      </div>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span style="font-size:10px;color:#AAB3C5">Estrutura e marketing</span><span style="font-size:10px;color:#A066FF">~R$50</span></div>
+        <div class="pbar-track"><div class="pbar-fill" style="--w:22%;background:linear-gradient(90deg,#A066FF,#2E6BFF)"></div></div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:10px;margin-top:6px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <p style="font-size:11px;font-weight:600;color:#F5F7FB">Custo mínimo real:</p>
+          <span class="metric go" style="font-size:20px">R$250</span>
+        </div>
+        <p style="font-size:9px;color:#7E879B">Qualquer valor abaixo = prejuízo ou desvalorização</p>
+      </div>
+    </div>
+    <div class="cp">
+      <span class="ts pk">Tabela de Referência</span>
+      <h3 style="font-size:13px;margin-bottom:10px">Por Nível de Posicionamento</h3>
+      <div class="card bc bpk" style="margin-bottom:8px;padding:10px 10px 10px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><span class="ts pk" style="margin:0">Iniciante</span><p style="font-size:10px">Construindo portfólio</p></div>
+          <p style="font-size:14px;font-weight:800;color:#FF9DC0">R$300–500</p>
+        </div>
+      </div>
+      <div class="card bc bpu" style="margin-bottom:8px;padding:10px 10px 10px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><span class="ts pu" style="margin:0">Intermediário</span><p style="font-size:10px">Portfólio sólido</p></div>
+          <p style="font-size:14px;font-weight:800;color:#C4AAFF">R$500–900</p>
+        </div>
+      </div>
+      <div class="card bc bgo" style="padding:10px 10px 10px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><span class="ts go" style="margin:0">Premium / Referência</span><p style="font-size:10px">Especialista posicionada</p></div>
+          <p style="font-size:14px;font-weight:800;color:#FFD460">R$900–2.000+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="g3" style="gap:9px">
+      <div class="alt pk" style="padding:10px 12px">
+        <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#FF6B9D">Nunca</strong> justifique seu preço. Apresente-o com naturalidade e firmeza.</p>
+      </div>
+      <div class="alt go" style="padding:10px 12px">
+        <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#FFD460">Aumente</strong> o preço conforme aumenta a demanda pela sua agenda.</p>
+      </div>
+      <div class="alt gr" style="padding:10px 12px">
+        <div class="alti gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#5EE89A">Inclua</strong> o retoque no pacote — gera segurança e aumenta o valor percebido.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 8 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Captação de <span class="gt3">Novas Clientes</span></h2>
+    <p>Estratégias testadas para lotar a agenda — do orgânico ao pago</p>
+  </div>
+  <div class="g2 au d2" style="margin-bottom:11px">
+    <div class="card bc bpk">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div><span class="ts pk" style="margin:0">Indicação Remunerada</span><span style="font-size:9px;color:#7E879B;display:block">Esforço baixo • Retorno alto</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Ofereça <strong>R$50–100 de desconto</strong> para quem indicar uma nova cliente. A melhor propaganda é uma cliente satisfeita.</p>
+      <div class="pill pk" style="font-size:9px">ROI médio: 4x o custo</div>
+    </div>
+    <div class="card bc bbl">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic bl" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><span class="ts bl" style="margin:0">Google Meu Negócio</span><span style="font-size:9px;color:#7E879B;display:block">Esforço médio • Retorno constante</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Perfil completo com fotos de resultados, horário e respostas a avaliações. <strong>Clientes que pesquisam no Google já estão prontas para comprar.</strong></p>
+      <div class="pill bl" style="font-size:9px">Gratuito e poderoso</div>
+    </div>
+    <div class="card bc bpu">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic pu" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div><span class="ts pu" style="margin:0">Parcerias Estratégicas</span><span style="font-size:9px;color:#7E879B;display:block">Esforço médio • Retorno recorrente</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Clínicas de estética, salões, dermatologistas e maquiadoras. <strong>Comissão de 10–15%</strong> por indicação confirmada.</p>
+      <div class="pill pu" style="font-size:9px">Rede de indicação passiva</div>
+    </div>
+    <div class="card bc bco">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic co" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div><span class="ts co" style="margin:0">Tráfego Pago Básico</span><span style="font-size:9px;color:#7E879B;display:block">Esforço médio • Escala rápida</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Impulsione posts de antes/depois no Instagram com <strong>R$15–30/dia</strong>, segmentado por cidade, idade e interesse em beleza.</p>
+      <div class="pill co" style="font-size:9px">Começa com R$300/mês</div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="cp" style="text-align:center;padding:14px">
+      <p style="font-size:11px;color:#7E879B;margin-bottom:6px">Meta realista com estratégias combinadas</p>
+      <p style="font-size:13px;font-weight:700;color:#F5F7FB">Use <span class="gt">2 ou 3 estratégias simultâneas</span> para criar um fluxo constante de novas clientes — sem depender de uma única fonte.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 9 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Fidelização e <span class="gt4">Recorrência</span></h2>
+    <p>Transforme cada cliente em uma fã que volta, indica e defende sua marca</p>
+  </div>
+  <div style="width:100%;margin-bottom:11px">
+    <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+      <div class="card au d2" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n1" style="width:32px;height:32px;font-size:11px;flex-shrink:0">1h</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts pk" style="margin:0">1 hora após a sessão</span>
+            <p style="font-size:10px">Envie mensagem no WhatsApp: "Amei te atender! Como você está se sentindo? Não esquece das orientações de cuidado 💋" — cria vínculo imediato.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d3" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n2" style="width:32px;height:32px;font-size:11px;flex-shrink:0">7d</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts pu" style="margin:0">7 dias depois</span>
+            <p style="font-size:10px">"Oi [nome]! Como está cicatrizando? Manda uma foto pra eu ver 📸" — demonstra cuidado e gera material de depoimento espontâneo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d4" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n3" style="width:32px;height:32px;font-size:11px;flex-shrink:0">30d</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts bl" style="margin:0">30 dias — Retoque</span>
+            <p style="font-size:10px">Convide para o retoque obrigatório. Aproveite para fotografar o resultado cicatrizado e postar. <strong>Recorrência garantida.</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d5" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n4" style="width:32px;height:32px;font-size:11px;flex-shrink:0">6m</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts co" style="margin:0">6 meses</span>
+            <p style="font-size:10px">"Como estão seus lábios? 💋 Que tal passarmos um retoque de manutenção?" — retorno proativo que mantém a agenda cheia e o relacionamento vivo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d6" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n5" style="width:32px;height:32px;font-size:11px;flex-shrink:0">1a</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts go" style="margin:0">1 ano — Fidelização</span>
+            <p style="font-size:10px">Mensagem de aniversário do procedimento + oferta especial de manutenção. <strong>Cliente vitalícia com baixo custo de aquisição.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d7" style="width:100%">
+    <div class="alt pk">
+      <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <p style="font-size:11px"><strong style="color:#FF6B9D">Regra de ouro:</strong> Custa <strong>7x mais</strong> conquistar uma nova cliente do que manter uma existente. Invista no relacionamento pós-venda tanto quanto no marketing de captação.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 10 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Plano de Ação: <span class="gt2">Comece Hoje</span></h2>
+    <p>Ações concretas divididas por prazo para você começar a ver resultados imediatos</p>
+  </div>
+  <div style="width:100%;display:flex;gap:10px;margin-bottom:11px;flex-wrap:wrap">
+    <div class="ck-box ck-today" style="flex:1;min-width:200px">
+      <span class="ts pk" style="margin-bottom:10px">🔥 Hoje Mesmo</span>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Reescreva a bio com nicho + resultado + CTA</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Ative a mensagem automática no WhatsApp</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Fotografe 1 antes/depois do seu portfólio</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Defina sua proposta de valor em 1 frase</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Crie ou atualize o catálogo no WhatsApp</p></div>
+    </div>
+    <div class="ck-box ck-week" style="flex:1;min-width:200px">
+      <span class="ts go" style="margin-bottom:10px">📅 Em 7 Dias</span>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Crie e agende 5 posts para a semana</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Grave 1 Reel de antes/depois</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Cadastre seu negócio no Google</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Contate 2 parceiros locais (salão/clínica)</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Peça depoimento em vídeo para 3 clientes</p></div>
+    </div>
+    <div class="ck-box ck-month" style="flex:1;min-width:200px">
+      <span class="ts gr" style="margin-bottom:10px">🚀 Em 30 Dias</span>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Implante a régua de relacionamento pós-sessão</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Lance programa de indicação remunerada</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Faça primeiro impulsionamento pago (R$300)</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Revise e ajuste sua tabela de preços</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Analise métricas e ajuste estratégia</p></div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div style="background:linear-gradient(135deg,rgba(255,107,157,.1),rgba(160,102,255,.1),rgba(46,107,255,.08));border:1px solid rgba(255,107,157,.22);border-radius:16px;padding:18px;text-align:center">
+      <p style="font-size:14px;font-weight:800;color:#F5F7FB;margin-bottom:7px;letter-spacing:-.01em">💋 Você já tem o melhor produto: <span class="gt">seu talento.</span></p>
+      <p style="font-size:11px;color:#AAB3C5;line-height:1.7;max-width:560px;margin:0 auto">Agora é hora de fazer o mundo saber disso. <strong style="color:#F5F7FB">Marketing consistente + atendimento de excelência + precificação justa</strong> = agenda lotada e negócio lucrativo.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const IND=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  IND.appendChild(d);
+}
+
+function upd(){
+  IND.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  document.querySelectorAll('.si').forEach(s=>s.scrollTop=0);
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd()}
+function next(){if(C<T-1)go(C+1)}
+function prev(){if(C>0)go(C-1)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+  if(e.key==='f'||e.key==='F')toggleFs()
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;scrolling=false},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].screenX-tx);
+  const dy=Math.abs(e.changedTouches[0].screenY-ty);
+  if(dy>dx)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const d=tx-e.changedTouches[0].screenX;
+  if(Math.abs(d)>50){d>0?next():prev()}
+});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{})}
+  else{document.exitFullscreen()}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Marketing & Vendas — Micropigmentação Labial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;position:relative}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100vh;will-change:transform}
+
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:56px 16px 112px;
+}
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 75% 15%,rgba(255,100,160,.15) 0%,transparent 42%),
+    radial-gradient(800px 380px at 20% 80%,rgba(200,80,200,.12) 0%,transparent 42%),
+    radial-gradient(600px 300px at 55% 50%,rgba(46,107,255,.08) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.2;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1}
+
+.si{
+  width:100%;max-width:920px;
+  display:flex;flex-direction:column;align-items:center;
+  overflow-y:auto;
+  max-height:calc(100vh - 168px);
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:2px 4px 10px;
+}
+.si::-webkit-scrollbar{display:none}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.14;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;line-height:1.3;color:#F5F7FB}
+p,li,span{font-weight:400;line-height:1.65;color:#AAB3C5}
+strong{font-weight:700;color:#F5F7FB}
+
+.gt{
+  background:linear-gradient(135deg,#FF6B9D 0%,#C86DD7 45%,#FF4FA0 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt2{
+  background:linear-gradient(135deg,#FFD460 0%,#FF8C50 50%,#FF6B9D 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt3{
+  background:linear-gradient(135deg,#2E6BFF 0%,#A066FF 50%,#C86DD7 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+.gt4{
+  background:linear-gradient(135deg,#5EE89A 0%,#28D8C8 50%,#2E6BFF 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:shimmer 4s linear infinite;
+}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#FF6B9D,#C86DD7,#A066FF);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 14px;transform-origin:center}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 18px;border-radius:999px;margin-bottom:18px;
+  background:rgba(255,107,157,.09);border:1px solid rgba(255,107,157,.3);
+  font-size:11px;font-weight:600;color:#FF9DC0;letter-spacing:.07em;text-transform:uppercase;
+}
+.badge svg{width:12px;height:12px;flex-shrink:0}
+
+.card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.04);
+  padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;
+}
+.card:hover{border-color:rgba(255,107,157,.18);transform:translateY(-2px)}
+
+.cp{
+  background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:16px;
+  box-shadow:0 16px 44px rgba(0,0,0,.42),0 0 28px rgba(200,109,215,.06);
+  padding:18px 16px;backdrop-filter:blur(10px);transition:all .4s ease;
+}
+.cp:hover{border-color:rgba(255,107,157,.2);transform:translateY(-2px)}
+
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;width:100%}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%}
+
+.ic{width:42px;height:42px;border-radius:11px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,107,157,.1)}
+.ic svg{width:20px;height:20px;color:#FF6B9D}
+.ic.bl{background:rgba(46,107,255,.1)}.ic.bl svg{color:#2E6BFF}
+.ic.pu{background:rgba(160,102,255,.1)}.ic.pu svg{color:#A066FF}
+.ic.co{background:rgba(255,140,80,.1)}.ic.co svg{color:#FF8C50}
+.ic.gr{background:rgba(80,220,130,.1)}.ic.gr svg{color:#5EE89A}
+.ic.go{background:rgba(255,200,60,.1)}.ic.go svg{color:#FFD460}
+.ic.te{background:rgba(40,210,200,.1)}.ic.te svg{color:#28D8C8}
+.ic.ro{background:rgba(255,80,120,.1)}.ic.ro svg{color:#FF5078}
+
+.ts{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;display:block}
+.ts.pk{color:#FF6B9D}.ts.bl{color:#2E6BFF}.ts.pu{color:#A066FF}
+.ts.co{color:#FF8C50}.ts.gr{color:#5EE89A}.ts.go{color:#FFD460}
+.ts.te{color:#28D8C8}.ts.ro{color:#FF5078}.ts.wh{color:#F5F7FB}
+
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.pill.pk{background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.25);color:#FF9DC0}
+.pill.bl{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#8FAEFF}
+.pill.pu{background:rgba(160,102,255,.1);border:1px solid rgba(160,102,255,.25);color:#C4AAFF}
+.pill.co{background:rgba(255,140,80,.1);border:1px solid rgba(255,140,80,.25);color:#FFB890}
+.pill.gr{background:rgba(80,220,130,.1);border:1px solid rgba(80,220,130,.25);color:#5EE89A}
+.pill.go{background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.25);color:#FFD460}
+.pill.te{background:rgba(40,210,200,.1);border:1px solid rgba(40,210,200,.25);color:#28D8C8}
+
+.chk{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px}
+.chkd{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.chkd.pk{background:#FF6B9D}.chkd.bl{background:#2E6BFF}.chkd.pu{background:#A066FF}
+.chkd.co{background:#FF8C50}.chkd.gr{background:#5EE89A}.chkd.go{background:#FFD460}
+.chkd.te{background:#28D8C8}.chkd.ro{background:#FF5078}.chkd.wh{background:#F5F7FB}
+
+.bc{position:relative;overflow:hidden;padding-left:18px!important}
+.bc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.bc.bpk::before{background:#FF6B9D}.bc.bpu::before{background:#A066FF}
+.bc.bbl::before{background:#2E6BFF}.bc.bco::before{background:#FF8C50}
+.bc.bgo::before{background:#FFD460}.bc.bgr::before{background:#5EE89A}
+.bc.bte::before{background:#28D8C8}.bc.bro::before{background:#FF5078}
+
+.nb{width:36px;height:36px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite}
+.nb.n1{background:linear-gradient(145deg,#FF6B9D,#D9456F)}
+.nb.n2{background:linear-gradient(145deg,#A066FF,#7040D6);animation-delay:.5s}
+.nb.n3{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:1s}
+.nb.n4{background:linear-gradient(145deg,#FF8C50,#D96030);animation-delay:1.5s}
+.nb.n5{background:linear-gradient(145deg,#FFD460,#E0A820);animation-delay:2s}
+.nb.n6{background:linear-gradient(145deg,#5EE89A,#30C870);animation-delay:2.5s}
+@keyframes glowP{0%,100%{box-shadow:0 0 14px rgba(255,107,157,.1)}50%{box-shadow:0 0 28px rgba(255,107,157,.32)}}
+
+.sr{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px}
+
+.alt{border-radius:12px;padding:11px 13px;display:flex;gap:10px;align-items:flex-start}
+.alt.pk{background:rgba(255,107,157,.05);border:1px solid rgba(255,107,157,.18)}
+.alt.pu{background:rgba(160,102,255,.05);border:1px solid rgba(160,102,255,.18)}
+.alt.go{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.18)}
+.alt.gr{background:rgba(80,220,130,.05);border:1px solid rgba(80,220,130,.18)}
+.alt.co{background:rgba(255,140,80,.05);border:1px solid rgba(255,140,80,.18)}
+.alt.te{background:rgba(40,210,200,.05);border:1px solid rgba(40,210,200,.18)}
+.alt.bl{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.18)}
+.alti{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.alti svg{width:14px;height:14px}
+.alti.pk{background:rgba(255,107,157,.15)}.alti.pk svg{color:#FF6B9D}
+.alti.pu{background:rgba(160,102,255,.15)}.alti.pu svg{color:#A066FF}
+.alti.go{background:rgba(255,200,60,.15)}.alti.go svg{color:#FFD460}
+.alti.gr{background:rgba(80,220,130,.15)}.alti.gr svg{color:#5EE89A}
+.alti.co{background:rgba(255,140,80,.15)}.alti.co svg{color:#FF8C50}
+.alti.te{background:rgba(40,210,200,.15)}.alti.te svg{color:#28D8C8}
+.alti.bl{background:rgba(46,107,255,.15)}.alti.bl svg{color:#2E6BFF}
+
+.metric{font-size:clamp(26px,5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:5px}
+.metric.pk{color:#FF6B9D}.metric.pu{color:#A066FF}.metric.bl{color:#2E6BFF}
+.metric.gr{color:#5EE89A}.metric.go{color:#FFD460}.metric.te{color:#28D8C8}
+.metric.co{color:#FF8C50}
+
+.stitle{text-align:center;margin-bottom:16px;width:100%}
+.stitle h2{font-size:clamp(17px,3.6vw,26px);margin-bottom:7px}
+.stitle p{font-size:11px;color:#7E879B;max-width:620px;margin:0 auto;line-height:1.7}
+
+/* FUNIL */
+.funnel-step{
+  width:100%;border-radius:12px;padding:12px 14px;
+  display:flex;align-items:center;gap:12px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.02);
+  transition:all .3s ease;
+  margin-bottom:7px;
+}
+.funnel-step:hover{transform:translateX(4px)}
+.funnel-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* COMPARATIVO */
+.vs-card{border-radius:14px;padding:14px;flex:1}
+.vs-bad{background:rgba(255,80,80,.04);border:1px solid rgba(255,80,80,.14)}
+.vs-good{background:rgba(80,220,130,.04);border:1px solid rgba(80,220,130,.14)}
+
+/* CHECKLIST FINAL */
+.ck-box{border-radius:14px;padding:14px;flex:1;min-width:0}
+.ck-today{background:rgba(255,107,157,.05);border:1px solid rgba(255,107,157,.2)}
+.ck-week{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.2)}
+.ck-month{background:rgba(80,220,130,.05);border:1px solid rgba(80,220,130,.2)}
+
+/* PROGRESS BAR */
+.pbar-wrap{width:100%;margin-bottom:10px}
+.pbar-label{display:flex;justify-content:space-between;margin-bottom:4px}
+.pbar-track{width:100%;height:6px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+.pbar-fill{height:100%;border-radius:3px;animation:fillBar 1.2s ease both}
+@keyframes fillBar{from{width:0}to{width:var(--w)}}
+
+/* PROGRESS CHROME */
+.progress{
+  position:fixed;top:0;left:0;height:3px;z-index:1000;
+  background:linear-gradient(90deg,#FF6B9D,#C86DD7,#A066FF,#FF6B9D);
+  background-size:200% auto;animation:shimmer 3s linear infinite;
+  transition:width .6s ease;
+}
+.fs-btn{
+  position:fixed;top:14px;right:14px;z-index:999;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:#7E879B;padding:8px 13px;border-radius:10px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+  display:flex;align-items:center;gap:7px;transition:all .3s ease;
+  backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;
+}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(255,107,157,.3)}
+.fs-btn svg{width:13px;height:13px}
+.sc{
+  position:fixed;bottom:30px;left:16px;z-index:998;
+  color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;
+  background:rgba(0,0,0,.32);padding:7px 13px;border-radius:9px;
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);
+}
+.sc .cn{color:#FF6B9D;font-weight:800}
+.ind{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:998;
+  display:flex;gap:5px;background:rgba(0,0,0,.32);padding:7px 12px;
+  border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);
+}
+.ind .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;
+}
+.ind .dot.active{background:#FF6B9D;box-shadow:0 0 10px rgba(255,107,157,.6);width:24px;border-radius:4px}
+.nav-arr{position:fixed;bottom:26px;right:16px;z-index:998;display:flex;gap:8px}
+.nav-arr button{
+  width:44px;height:44px;border-radius:11px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  color:#AAB3C5;font-size:17px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s ease;backdrop-filter:blur(6px);
+}
+.nav-arr button:hover{background:rgba(255,107,157,.2);border-color:rgba(255,107,157,.4);color:#fff;transform:scale(1.05)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+
+.slide.active .au{animation:fadeUp .7s ease both}
+.slide.active .as{animation:fadeScale .7s ease both}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}
+.d3{animation-delay:.28s!important}.d4{animation-delay:.38s!important}
+.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}.d8{animation-delay:.78s!important}
+
+.s1-wrap{text-align:center;max-width:860px;width:100%;display:flex;flex-direction:column;align-items:center;padding-top:16px}
+.s1-wrap h1{font-size:clamp(28px,6vw,62px);margin-bottom:14px}
+.s1-sub{font-size:clamp(12px,1.8vw,15px);color:#AAB3C5;max-width:580px;margin:0 auto 22px;line-height:1.7}
+.pills-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+
+@media(max-width:600px){
+  .slide{padding:50px 12px 110px}
+  .g3{grid-template-columns:1fr}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .si{max-height:calc(100vh - 160px)}
+  .stitle h2{font-size:16px}
+  .metric{font-size:26px}
+  .vs-bad,.vs-good{padding:11px 10px}
+}
+@media(min-width:601px) and (max-width:768px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="presentation">
+
+<div class="progress" id="prog" style="width:10%"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="slides" id="sw">
+
+<!-- ══ SLIDE 1 ══ -->
+<section class="slide active">
+<div class="s1-wrap">
+  <div class="badge au d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    Marketing & Vendas — Micropigmentação Labial
+  </div>
+  <h1 class="au d2">Seu Trabalho é Incrível.<br><span class="gt">Sua Cliente Precisa Saber.</span></h1>
+  <p class="s1-sub au d3">O guia completo de <strong>marketing e vendas</strong> para micropigmentadoras labiais que querem lotar a agenda e cobrar o que merecem.</p>
+  <div class="pills-row au d4">
+    <span class="pill pk">💋 Posicionamento</span>
+    <span class="pill go">💰 Precificação</span>
+    <span class="pill gr">📈 Captação</span>
+    <span class="pill pu">🔁 Fidelização</span>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 2 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>O Mercado e a <span class="gt2">Oportunidade</span></h2>
+    <p>O Brasil é o 2º maior mercado de beleza do mundo — e a micropigmentação labial está em plena explosão de demanda</p>
+  </div>
+  <div class="g4 au d2" style="margin-bottom:11px">
+    <div class="card" style="text-align:center">
+      <div class="metric pk">R$60bi</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Mercado Beleza BR</p>
+      <p style="font-size:9px;color:#7E879B">2º maior do mundo em faturamento</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric go">+38%</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Crescimento</p>
+      <p style="font-size:9px;color:#7E879B">Micropigmentação nos últimos 3 anos</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric gr">R$15k</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Faturamento/mês</p>
+      <p style="font-size:9px;color:#7E879B">Potencial real com agenda cheia</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric pu">72%</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:3px">Recorrência</p>
+      <p style="font-size:9px;color:#7E879B">Clientes que voltam para retoque e novas sessões</p>
+    </div>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:11px">
+    <div class="cp">
+      <div class="ic go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <span class="ts go">Por que agora?</span>
+      <h3 style="font-size:13px;margin-bottom:8px">Momento Perfeito</h3>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Redes sociais amplificam resultados em escala</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Consumidoras mais informadas e dispostas a pagar</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Técnicas mais seguras e resultados mais naturais</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:11px">Ticket médio crescendo ano a ano</p></div>
+    </div>
+    <div class="cp">
+      <div class="ic pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <span class="ts pk">Perfil da Cliente</span>
+      <h3 style="font-size:13px;margin-bottom:8px">Quem Compra?</h3>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Mulheres de 25–55 anos, classes B e C</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Buscam praticidade e autoestima elevada</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Pesquisam no Instagram antes de decidir</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:11px">Decidem pela <strong>confiança no profissional</strong></p></div>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="alt gr">
+      <div class="alti gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <p style="font-size:11px"><strong style="color:#5EE89A">Conclusão:</strong> O mercado está aquecido, a demanda existe — o que separa quem lota a agenda de quem luta por clientes é <strong>marketing bem feito e posicionamento claro.</strong></p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 3 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2><span class="gt3">Posicionamento:</span> Quem Você É?</h2>
+    <p>A diferença entre ser "mais uma micropigmentadora" e ser a referência que as clientes buscam</p>
+  </div>
+  <div class="g2 au d2" style="margin-bottom:11px">
+    <div class="vs-card vs-bad">
+      <span class="ts" style="color:#FF6B6B;margin-bottom:8px">❌ Profissional Genérica</span>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">"Faço sobrancelha, lábio e skin"</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Bio vaga: "micropigmentadora 🌸"</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Preço baixo para competir</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Posts aleatórios sem estratégia</p></div>
+      <div class="chk"><div class="chkd ro"></div><p style="font-size:11px">Concorre com qualquer uma</p></div>
+    </div>
+    <div class="vs-card vs-good">
+      <span class="ts" style="color:#5EE89A;margin-bottom:8px">✅ Especialista Referência</span>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">"Especialista em lábios — neutralização e efeito batom"</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">Bio clara com resultado e CTA</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">Preço justo comunicado com confiança</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">Conteúdo que educa e gera desejo</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:11px">É buscada, não precisa correr atrás</p></div>
+    </div>
+  </div>
+  <div class="g3 au d3" style="margin-bottom:11px">
+    <div class="card bc bpk">
+      <span class="ts pk">Passo 1</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Defina seu Nicho</h3>
+      <p style="font-size:10px">Lábios escuros? Efeito batom? Peles negras? Escolha uma especialidade e seja a melhor nela.</p>
+    </div>
+    <div class="card bc bpu">
+      <span class="ts pu">Passo 2</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Crie sua Proposta</h3>
+      <p style="font-size:10px">Complete: "Eu ajudo <strong>[quem]</strong> a conseguir <strong>[resultado]</strong> através de <strong>[técnica]</strong>."</p>
+    </div>
+    <div class="card bc bgo">
+      <span class="ts go">Passo 3</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Comunique Sempre</h3>
+      <p style="font-size:10px">Repita sua especialidade em todos os conteúdos. Repetição gera lembrança e confiança.</p>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="card" style="text-align:center;padding:14px">
+      <p style="font-size:12px;color:#7E879B;margin-bottom:6px">Exemplo de Bio Poderosa</p>
+      <p style="font-size:13px;font-weight:700;color:#F5F7FB;line-height:1.6">"💋 Especialista em Micropigmentação Labial<br><span style="color:#FF9DC0">Lábios escuros → naturais e viçosos</span><br>📍 São Paulo | ✅ +500 transformações<br>👇 Agende sua avaliação gratuita"</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 4 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Presença <span class="gt">Digital que Vende</span></h2>
+    <p>Instagram, TikTok e WhatsApp como máquinas de agendamento</p>
+  </div>
+  <div class="g3 au d2" style="margin-bottom:11px">
+    <div class="cp">
+      <div class="ic pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      <span class="ts pk">Instagram</span>
+      <h3 style="font-size:12px;margin-bottom:8px">Sua Vitrine Principal</h3>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px"><strong>3–5 posts/semana</strong> consistentes</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Reels de antes/depois com música</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Stories diários (bastidores + prova)</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Highlights: Técnicas / Depoimentos / FAQ</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Responder DMs em até 2 horas</p></div>
+    </div>
+    <div class="cp">
+      <div class="ic co"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+      <span class="ts co">TikTok</span>
+      <h3 style="font-size:12px;margin-bottom:8px">Alcance Orgânico Massivo</h3>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Vídeos de <strong>15–30s</strong> com transformação</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Trends + conteúdo técnico educativo</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Mostrar o processo em tempo real</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Responder comentários com vídeo</p></div>
+      <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Postar nos horários de pico (18h–21h)</p></div>
+    </div>
+    <div class="cp">
+      <div class="ic gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <span class="ts gr">WhatsApp</span>
+      <h3 style="font-size:12px;margin-bottom:8px">Onde a Venda Acontece</h3>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Catálogo de serviços ativo</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Mensagem automática de boas-vindas</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Status com depoimentos e resultados</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Lista de transmissão para promoções</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Link direto na bio do Instagram</p></div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-bottom:10px">
+    <div class="card">
+      <span class="ts wh" style="margin-bottom:9px">📸 Checklist do Perfil Profissional Perfeito</span>
+      <div class="g2">
+        <div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Foto de perfil profissional e nítida</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Nome com palavra-chave: "Lábios | Micro | SP"</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Bio com nicho, resultado e CTA claro</p></div>
+        </div>
+        <div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Link de agendamento na bio</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Feed visualmente coeso e organizado</p></div>
+          <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Localização geográfica visível</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 5 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Conteúdo que <span class="gt4">Vende Sem Vender</span></h2>
+    <p>Os 5 pilares de conteúdo que geram desejo, confiança e agendamentos — sem parecer propaganda</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:9px">
+    <div class="card bc bpk au d2">
+      <div class="sr">
+        <div class="nb n1">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Antes & Depois</h3>
+            <span class="pill pk">Alto impacto</span>
+          </div>
+          <p style="font-size:11px">O conteúdo que mais converte. Mostre a <strong>transformação real</strong> com boa iluminação, mesmo ângulo e legenda explicando a técnica usada. Use "qual o caso dela?" para gerar engajamento.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bpu au d3">
+      <div class="sr">
+        <div class="nb n2">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Bastidores do Processo</h3>
+            <span class="pill pu">Confiança</span>
+          </div>
+          <p style="font-size:11px">Mostre seu <strong>ambiente, materiais, higiene</strong> e cuidado. A cliente compra segurança antes de comprar o procedimento. Vídeos do processo geram curiosidade e eliminam objeções.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bgo au d4">
+      <div class="sr">
+        <div class="nb n3">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Depoimentos em Vídeo</h3>
+            <span class="pill go">Prova Social</span>
+          </div>
+          <p style="font-size:11px">Peça à cliente para <strong>gravar 30 segundos</strong> logo após o procedimento (euforia do momento). Reposte com autorização. Nada vende mais do que outra pessoa falando pelo você.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bte au d5">
+      <div class="sr">
+        <div class="nb n4">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Conteúdo Educativo</h3>
+            <span class="pill te">Autoridade</span>
+          </div>
+          <p style="font-size:11px">"Por que o lábio fica escuro?", "Quanto tempo dura?", "Dói?". Responda as dúvidas frequentes. <strong>Quem educa, vira referência.</strong> Referência não precisa fazer desconto.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card bc bgr au d6">
+      <div class="sr">
+        <div class="nb n5">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Sua Rotina e Personalidade</h3>
+            <span class="pill gr">Conexão</span>
+          </div>
+          <p style="font-size:11px">Pessoas compram de <strong>pessoas</strong>. Mostre sua rotina, aprendizados, conquistas. Humanize sua marca. Quem se identifica com você, agendará com você.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 6 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>A Jornada da <span class="gt">Cliente</span></h2>
+    <p>Do primeiro contato ao agendamento confirmado — domine cada etapa do funil</p>
+  </div>
+  <div style="width:100%;margin-bottom:11px">
+    <div class="funnel-step au d2">
+      <div class="funnel-dot" style="background:#FF6B9D"></div>
+      <div class="nb n1" style="width:30px;height:30px;font-size:11px;flex-shrink:0">1</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Descoberta</h3><span class="pill pk">Topo</span>
+        </div>
+        <p style="font-size:10px">Ela vê seu Reel, TikTok ou indicação de amiga. <strong>Gatilho:</strong> transformação visual impactante. Ação: seguir o perfil.</p>
+      </div>
+    </div>
+    <div class="funnel-step au d3">
+      <div class="funnel-dot" style="background:#A066FF"></div>
+      <div class="nb n2" style="width:30px;height:30px;font-size:11px;flex-shrink:0">2</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Consideração</h3><span class="pill pu">Meio</span>
+        </div>
+        <p style="font-size:10px">Ela vasculha seu feed, vê depoimentos e lê a bio. <strong>Gatilho:</strong> prova social e credibilidade. Ação: salvar posts, mandar DM com dúvida.</p>
+      </div>
+    </div>
+    <div class="funnel-step au d4">
+      <div class="funnel-dot" style="background:#FFD460"></div>
+      <div class="nb n3" style="width:30px;height:30px;font-size:11px;flex-shrink:0">3</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Decisão</h3><span class="pill go">Fundo</span>
+        </div>
+        <p style="font-size:10px">Ela quer ir, mas hesita. <strong>Gatilho:</strong> atendimento rápido, oferta clara e facilitação do agendamento. Ação: confirmar data.</p>
+      </div>
+    </div>
+    <div class="funnel-step au d5">
+      <div class="funnel-dot" style="background:#5EE89A"></div>
+      <div class="nb n4" style="width:30px;height:30px;font-size:11px;flex-shrink:0">4</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
+          <h3 style="font-size:13px">Conversão</h3><span class="pill gr">Venda</span>
+        </div>
+        <p style="font-size:10px">Atendimento encantador, resultado incrível, pedir foto e depoimento. <strong>Ela vira uma nova promotora da sua marca.</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="au d6" style="width:100%">
+    <div class="card">
+      <span class="ts go" style="margin-bottom:9px">💬 Script de Atendimento no WhatsApp</span>
+      <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.06)">
+        <p style="font-size:11px;color:#AAB3C5;margin-bottom:8px"><strong style="color:#5EE89A">Cliente:</strong> "Oi, quanto custa o lábio?"</p>
+        <p style="font-size:11px;color:#AAB3C5"><strong style="color:#FF9DC0">Você:</strong> "Oi [nome]! 💋 Que bom que você entrou em contato! O valor vai depender do caso específico dos seus lábios. Me manda uma foto para eu avaliar e te dar o diagnóstico certinho, tudo bem? Assim consigo te dizer exatamente qual técnica é ideal pra você e o investimento."</p>
+      </div>
+      <div class="alt go" style="margin-top:9px;padding:9px 11px">
+        <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#FFD460">Dica:</strong> Nunca responda preço direto. Primeiro gere conexão, depois mostre valor, depois fale em investimento.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 7 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Precificação com <span class="gt2">Inteligência</span></h2>
+    <p>Cobrar o que você merece começa em calcular o que você custa</p>
+  </div>
+  <div class="g2 au d2" style="margin-bottom:11px">
+    <div class="cp">
+      <span class="ts go">Cálculo Base</span>
+      <h3 style="font-size:13px;margin-bottom:10px">Custo por Sessão</h3>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span style="font-size:10px;color:#AAB3C5">Materiais e insumos</span><span style="font-size:10px;color:#FF8C50">~R$80</span></div>
+        <div class="pbar-track"><div class="pbar-fill" style="--w:35%;background:linear-gradient(90deg,#FF8C50,#FFD460)"></div></div>
+      </div>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span style="font-size:10px;color:#AAB3C5">Hora trabalhada (2h)</span><span style="font-size:10px;color:#FF6B9D">~R$120</span></div>
+        <div class="pbar-track"><div class="pbar-fill" style="--w:50%;background:linear-gradient(90deg,#FF6B9D,#C86DD7)"></div></div>
+      </div>
+      <div class="pbar-wrap">
+        <div class="pbar-label"><span style="font-size:10px;color:#AAB3C5">Estrutura e marketing</span><span style="font-size:10px;color:#A066FF">~R$50</span></div>
+        <div class="pbar-track"><div class="pbar-fill" style="--w:22%;background:linear-gradient(90deg,#A066FF,#2E6BFF)"></div></div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:10px;margin-top:6px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <p style="font-size:11px;font-weight:600;color:#F5F7FB">Custo mínimo real:</p>
+          <span class="metric go" style="font-size:20px">R$250</span>
+        </div>
+        <p style="font-size:9px;color:#7E879B">Qualquer valor abaixo = prejuízo ou desvalorização</p>
+      </div>
+    </div>
+    <div class="cp">
+      <span class="ts pk">Tabela de Referência</span>
+      <h3 style="font-size:13px;margin-bottom:10px">Por Nível de Posicionamento</h3>
+      <div class="card bc bpk" style="margin-bottom:8px;padding:10px 10px 10px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><span class="ts pk" style="margin:0">Iniciante</span><p style="font-size:10px">Construindo portfólio</p></div>
+          <p style="font-size:14px;font-weight:800;color:#FF9DC0">R$300–500</p>
+        </div>
+      </div>
+      <div class="card bc bpu" style="margin-bottom:8px;padding:10px 10px 10px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><span class="ts pu" style="margin:0">Intermediário</span><p style="font-size:10px">Portfólio sólido</p></div>
+          <p style="font-size:14px;font-weight:800;color:#C4AAFF">R$500–900</p>
+        </div>
+      </div>
+      <div class="card bc bgo" style="padding:10px 10px 10px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><span class="ts go" style="margin:0">Premium / Referência</span><p style="font-size:10px">Especialista posicionada</p></div>
+          <p style="font-size:14px;font-weight:800;color:#FFD460">R$900–2.000+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="g3" style="gap:9px">
+      <div class="alt pk" style="padding:10px 12px">
+        <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#FF6B9D">Nunca</strong> justifique seu preço. Apresente-o com naturalidade e firmeza.</p>
+      </div>
+      <div class="alt go" style="padding:10px 12px">
+        <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#FFD460">Aumente</strong> o preço conforme aumenta a demanda pela sua agenda.</p>
+      </div>
+      <div class="alt gr" style="padding:10px 12px">
+        <div class="alti gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#5EE89A">Inclua</strong> o retoque no pacote — gera segurança e aumenta o valor percebido.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 8 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Captação de <span class="gt3">Novas Clientes</span></h2>
+    <p>Estratégias testadas para lotar a agenda — do orgânico ao pago</p>
+  </div>
+  <div class="g2 au d2" style="margin-bottom:11px">
+    <div class="card bc bpk">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div><span class="ts pk" style="margin:0">Indicação Remunerada</span><span style="font-size:9px;color:#7E879B;display:block">Esforço baixo • Retorno alto</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Ofereça <strong>R$50–100 de desconto</strong> para quem indicar uma nova cliente. A melhor propaganda é uma cliente satisfeita.</p>
+      <div class="pill pk" style="font-size:9px">ROI médio: 4x o custo</div>
+    </div>
+    <div class="card bc bbl">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic bl" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><span class="ts bl" style="margin:0">Google Meu Negócio</span><span style="font-size:9px;color:#7E879B;display:block">Esforço médio • Retorno constante</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Perfil completo com fotos de resultados, horário e respostas a avaliações. <strong>Clientes que pesquisam no Google já estão prontas para comprar.</strong></p>
+      <div class="pill bl" style="font-size:9px">Gratuito e poderoso</div>
+    </div>
+    <div class="card bc bpu">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic pu" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div><span class="ts pu" style="margin:0">Parcerias Estratégicas</span><span style="font-size:9px;color:#7E879B;display:block">Esforço médio • Retorno recorrente</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Clínicas de estética, salões, dermatologistas e maquiadoras. <strong>Comissão de 10–15%</strong> por indicação confirmada.</p>
+      <div class="pill pu" style="font-size:9px">Rede de indicação passiva</div>
+    </div>
+    <div class="card bc bco">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px">
+        <div class="ic co" style="margin:0;width:36px;height:36px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div><span class="ts co" style="margin:0">Tráfego Pago Básico</span><span style="font-size:9px;color:#7E879B;display:block">Esforço médio • Escala rápida</span></div>
+      </div>
+      <p style="font-size:11px;margin-bottom:7px">Impulsione posts de antes/depois no Instagram com <strong>R$15–30/dia</strong>, segmentado por cidade, idade e interesse em beleza.</p>
+      <div class="pill co" style="font-size:9px">Começa com R$300/mês</div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="cp" style="text-align:center;padding:14px">
+      <p style="font-size:11px;color:#7E879B;margin-bottom:6px">Meta realista com estratégias combinadas</p>
+      <p style="font-size:13px;font-weight:700;color:#F5F7FB">Use <span class="gt">2 ou 3 estratégias simultâneas</span> para criar um fluxo constante de novas clientes — sem depender de uma única fonte.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 9 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Fidelização e <span class="gt4">Recorrência</span></h2>
+    <p>Transforme cada cliente em uma fã que volta, indica e defende sua marca</p>
+  </div>
+  <div style="width:100%;margin-bottom:11px">
+    <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+      <div class="card au d2" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n1" style="width:32px;height:32px;font-size:11px;flex-shrink:0">1h</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts pk" style="margin:0">1 hora após a sessão</span>
+            <p style="font-size:10px">Envie mensagem no WhatsApp: "Amei te atender! Como você está se sentindo? Não esquece das orientações de cuidado 💋" — cria vínculo imediato.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d3" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n2" style="width:32px;height:32px;font-size:11px;flex-shrink:0">7d</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts pu" style="margin:0">7 dias depois</span>
+            <p style="font-size:10px">"Oi [nome]! Como está cicatrizando? Manda uma foto pra eu ver 📸" — demonstra cuidado e gera material de depoimento espontâneo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d4" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n3" style="width:32px;height:32px;font-size:11px;flex-shrink:0">30d</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts bl" style="margin:0">30 dias — Retoque</span>
+            <p style="font-size:10px">Convide para o retoque obrigatório. Aproveite para fotografar o resultado cicatrizado e postar. <strong>Recorrência garantida.</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d5" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n4" style="width:32px;height:32px;font-size:11px;flex-shrink:0">6m</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts co" style="margin:0">6 meses</span>
+            <p style="font-size:10px">"Como estão seus lábios? 💋 Que tal passarmos um retoque de manutenção?" — retorno proativo que mantém a agenda cheia e o relacionamento vivo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card au d6" style="padding:12px 14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nb n5" style="width:32px;height:32px;font-size:11px;flex-shrink:0">1a</div>
+          <div style="flex:1;min-width:180px">
+            <span class="ts go" style="margin:0">1 ano — Fidelização</span>
+            <p style="font-size:10px">Mensagem de aniversário do procedimento + oferta especial de manutenção. <strong>Cliente vitalícia com baixo custo de aquisição.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d7" style="width:100%">
+    <div class="alt pk">
+      <div class="alti pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <p style="font-size:11px"><strong style="color:#FF6B9D">Regra de ouro:</strong> Custa <strong>7x mais</strong> conquistar uma nova cliente do que manter uma existente. Invista no relacionamento pós-venda tanto quanto no marketing de captação.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 10 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Plano de Ação: <span class="gt2">Comece Hoje</span></h2>
+    <p>Ações concretas divididas por prazo para você começar a ver resultados imediatos</p>
+  </div>
+  <div style="width:100%;display:flex;gap:10px;margin-bottom:11px;flex-wrap:wrap">
+    <div class="ck-box ck-today" style="flex:1;min-width:200px">
+      <span class="ts pk" style="margin-bottom:10px">🔥 Hoje Mesmo</span>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Reescreva a bio com nicho + resultado + CTA</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Ative a mensagem automática no WhatsApp</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Fotografe 1 antes/depois do seu portfólio</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Defina sua proposta de valor em 1 frase</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:10px">Crie ou atualize o catálogo no WhatsApp</p></div>
+    </div>
+    <div class="ck-box ck-week" style="flex:1;min-width:200px">
+      <span class="ts go" style="margin-bottom:10px">📅 Em 7 Dias</span>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Crie e agende 5 posts para a semana</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Grave 1 Reel de antes/depois</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Cadastre seu negócio no Google</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Contate 2 parceiros locais (salão/clínica)</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Peça depoimento em vídeo para 3 clientes</p></div>
+    </div>
+    <div class="ck-box ck-month" style="flex:1;min-width:200px">
+      <span class="ts gr" style="margin-bottom:10px">🚀 Em 30 Dias</span>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Implante a régua de relacionamento pós-sessão</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Lance programa de indicação remunerada</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Faça primeiro impulsionamento pago (R$300)</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Revise e ajuste sua tabela de preços</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Analise métricas e ajuste estratégia</p></div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div style="background:linear-gradient(135deg,rgba(255,107,157,.1),rgba(160,102,255,.1),rgba(46,107,255,.08));border:1px solid rgba(255,107,157,.22);border-radius:16px;padding:18px;text-align:center">
+      <p style="font-size:14px;font-weight:800;color:#F5F7FB;margin-bottom:7px;letter-spacing:-.01em">💋 Você já tem o melhor produto: <span class="gt">seu talento.</span></p>
+      <p style="font-size:11px;color:#AAB3C5;line-height:1.7;max-width:560px;margin:0 auto">Agora é hora de fazer o mundo saber disso. <strong style="color:#F5F7FB">Marketing consistente + atendimento de excelência + precificação justa</strong> = agenda lotada e negócio lucrativo.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const IND=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  IND.appendChild(d);
+}
+
+function upd(){
+  IND.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  document.querySelectorAll('.si').forEach(s=>s.scrollTop=0);
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd()}
+function next(){if(C<T-1)go(C+1)}
+function prev(){if(C>0)go(C-1)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+  if(e.key==='f'||e.key==='F')toggleFs()
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;scrolling=false},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].screenX-tx);
+  const dy=Math.abs(e.changedTouches[0].screenY-ty);
+  if(dy>dx)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const d=tx-e.changedTouches[0].screenX;
+  if(Math.abs(d)>50){d>0?next():prev()}
+});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{})}
+  else{document.exitFullscreen()}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
