@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Fibra de Vidro & Gel na Tips — Curso Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;position:relative}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100vh;will-change:transform}
+
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:48px 13px 110px;
+}
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 400px at 80% 10%,rgba(100,220,180,.11) 0%,transparent 42%),
+    radial-gradient(800px 360px at 15% 85%,rgba(46,107,255,.12) 0%,transparent 42%),
+    radial-gradient(600px 300px at 50% 50%,rgba(180,76,255,.07) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.16;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1}
+
+.si{
+  width:100%;max-width:960px;
+  display:flex;flex-direction:column;align-items:center;
+  overflow-y:auto;
+  max-height:calc(100vh - 158px);
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:2px 3px 10px;
+}
+.si::-webkit-scrollbar{display:none}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.14;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;line-height:1.3;color:#F5F7FB}
+p,li,span{font-weight:400;line-height:1.65;color:#AAB3C5}
+strong{font-weight:700;color:#F5F7FB}
+
+/* GRADIENTES */
+.ga{background:linear-gradient(135deg,#2EC8FF 0%,#2E6BFF 50%,#6E2FFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.gb{background:linear-gradient(135deg,#5EE89A 0%,#2EC8FF 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.gc{background:linear-gradient(135deg,#FFD460 0%,#FF8C50 50%,#FF6B9D 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.gd{background:linear-gradient(135deg,#B44CFF 0%,#6E2FFF 45%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.ge{background:linear-gradient(135deg,#FF6B9D 0%,#B44CFF 50%,#6E2FFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+@keyframes sh{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.gl{width:70px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2EC8FF,#2E6BFF);margin-bottom:13px;animation:lg .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 13px;transform-origin:center}
+.gl.v2{background:linear-gradient(90deg,#5EE89A,#2EC8FF)}
+.gl.v3{background:linear-gradient(90deg,#FFD460,#FF8C50)}
+.gl.v4{background:linear-gradient(90deg,#B44CFF,#2E6BFF)}
+@keyframes lg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 17px;border-radius:999px;margin-bottom:16px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.badge.cy{background:rgba(46,200,255,.09);border:1px solid rgba(46,200,255,.3);color:#7DDEFF}
+.badge.gr{background:rgba(94,232,154,.09);border:1px solid rgba(94,232,154,.3);color:#5EE89A}
+.badge.pu{background:rgba(180,76,255,.09);border:1px solid rgba(180,76,255,.3);color:#D4A0FF}
+.badge.go{background:rgba(255,200,60,.09);border:1px solid rgba(255,200,60,.3);color:#FFD460}
+.badge.pk{background:rgba(255,107,157,.09);border:1px solid rgba(255,107,157,.3);color:#FF9DC0}
+.badge.bl{background:rgba(46,107,255,.09);border:1px solid rgba(46,107,255,.3);color:#8FAEFF}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:15px;box-shadow:0 10px 32px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.04);padding:13px 12px;backdrop-filter:blur(8px);transition:all .4s ease}
+.card:hover{border-color:rgba(46,200,255,.15);transform:translateY(-2px)}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:15px;box-shadow:0 14px 40px rgba(0,0,0,.4),0 0 24px rgba(46,200,255,.05);padding:14px 13px;backdrop-filter:blur(10px);transition:all .4s ease}
+.cp:hover{border-color:rgba(46,200,255,.18);transform:translateY(-2px)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;width:100%}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;width:100%}
+.g6{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%}
+
+/* ÍCONE */
+.ic{width:38px;height:38px;border-radius:10px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic svg{width:18px;height:18px}
+.ic.cy{background:rgba(46,200,255,.12)}.ic.cy svg{color:#2EC8FF}
+.ic.gr{background:rgba(94,232,154,.12)}.ic.gr svg{color:#5EE89A}
+.ic.go{background:rgba(255,200,60,.12)}.ic.go svg{color:#FFD460}
+.ic.pu{background:rgba(180,76,255,.12)}.ic.pu svg{color:#B44CFF}
+.ic.pk{background:rgba(255,107,157,.12)}.ic.pk svg{color:#FF6B9D}
+.ic.bl{background:rgba(46,107,255,.12)}.ic.bl svg{color:#2E6BFF}
+.ic.re{background:rgba(255,80,80,.12)}.ic.re svg{color:#FF5050}
+.ic.co{background:rgba(255,140,80,.12)}.ic.co svg{color:#FF8C50}
+.ic.te{background:rgba(40,210,200,.12)}.ic.te svg{color:#28D8C8}
+
+/* LABELS */
+.ts{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;display:block}
+.ts.cy{color:#2EC8FF}.ts.gr{color:#5EE89A}.ts.go{color:#FFD460}
+.ts.pu{color:#B44CFF}.ts.pk{color:#FF6B9D}.ts.bl{color:#2E6BFF}
+.ts.re{color:#FF5050}.ts.co{color:#FF8C50}.ts.te{color:#28D8C8}
+.ts.wh{color:#F5F7FB}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.pill.cy{background:rgba(46,200,255,.1);border:1px solid rgba(46,200,255,.25);color:#7DDEFF}
+.pill.gr{background:rgba(94,232,154,.1);border:1px solid rgba(94,232,154,.25);color:#5EE89A}
+.pill.go{background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.25);color:#FFD460}
+.pill.pu{background:rgba(180,76,255,.1);border:1px solid rgba(180,76,255,.25);color:#D4A0FF}
+.pill.pk{background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.25);color:#FF9DC0}
+.pill.bl{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#8FAEFF}
+.pill.re{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.25);color:#FF8080}
+.pill.co{background:rgba(255,140,80,.1);border:1px solid rgba(255,140,80,.25);color:#FFB890}
+.pill.te{background:rgba(40,210,200,.1);border:1px solid rgba(40,210,200,.25);color:#28D8C8}
+.pill.wh{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#F5F7FB}
+
+/* BORDA LATERAL */
+.bc{position:relative;overflow:hidden;padding-left:15px!important}
+.bc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.bc.bcy::before{background:#2EC8FF}.bc.bgr::before{background:#5EE89A}.bc.bgo::before{background:#FFD460}
+.bc.bpu::before{background:#B44CFF}.bc.bpk::before{background:#FF6B9D}.bc.bbl::before{background:#2E6BFF}
+.bc.bre::before{background:#FF5050}.bc.bco::before{background:#FF8C50}.bc.bte::before{background:#28D8C8}
+
+/* NÚMEROS */
+.nb{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;animation:gn 3s ease-in-out infinite}
+.nb.n1{background:linear-gradient(145deg,#2EC8FF,#1AA0D9)}
+.nb.n2{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:.35s}
+.nb.n3{background:linear-gradient(145deg,#5EE89A,#30C870);animation-delay:.7s}
+.nb.n4{background:linear-gradient(145deg,#FFD460,#E0A820);animation-delay:1.05s}
+.nb.n5{background:linear-gradient(145deg,#FF8C50,#E06030);animation-delay:1.4s}
+.nb.n6{background:linear-gradient(145deg,#B44CFF,#8030D9);animation-delay:1.75s}
+.nb.n7{background:linear-gradient(145deg,#FF6B9D,#D04070);animation-delay:2.1s}
+@keyframes gn{0%,100%{box-shadow:0 0 10px rgba(46,200,255,.08)}50%{box-shadow:0 0 22px rgba(46,200,255,.28)}}
+
+/* ALERTAS */
+.alt{border-radius:11px;padding:9px 11px;display:flex;gap:8px;align-items:flex-start}
+.alt.re{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.18)}
+.alt.go{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.18)}
+.alt.gr{background:rgba(94,232,154,.05);border:1px solid rgba(94,232,154,.18)}
+.alt.cy{background:rgba(46,200,255,.05);border:1px solid rgba(46,200,255,.18)}
+.alt.pu{background:rgba(180,76,255,.05);border:1px solid rgba(180,76,255,.18)}
+.alt.bl{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.18)}
+.alt.co{background:rgba(255,140,80,.05);border:1px solid rgba(255,140,80,.18)}
+.alti{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.alti svg{width:12px;height:12px}
+.alti.re{background:rgba(255,80,80,.15)}.alti.re svg{color:#FF5050}
+.alti.go{background:rgba(255,200,60,.15)}.alti.go svg{color:#FFD460}
+.alti.gr{background:rgba(94,232,154,.15)}.alti.gr svg{color:#5EE89A}
+.alti.cy{background:rgba(46,200,255,.15)}.alti.cy svg{color:#2EC8FF}
+.alti.pu{background:rgba(180,76,255,.15)}.alti.pu svg{color:#B44CFF}
+.alti.bl{background:rgba(46,107,255,.15)}.alti.bl svg{color:#2E6BFF}
+.alti.co{background:rgba(255,140,80,.15)}.alti.co svg{color:#FF8C50}
+
+/* CHECKLISTS */
+.chk{display:flex;align-items:flex-start;gap:6px;margin-bottom:5px}
+.chkd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:8px}
+.chkd.cy{background:#2EC8FF}.chkd.gr{background:#5EE89A}.chkd.go{background:#FFD460}
+.chkd.pu{background:#B44CFF}.chkd.pk{background:#FF6B9D}.chkd.bl{background:#2E6BFF}
+.chkd.re{background:#FF5050}.chkd.co{background:#FF8C50}.chkd.te{background:#28D8C8}
+.chkd.wh{background:#F5F7FB}
+
+/* VS CARDS */
+.vb{background:rgba(255,80,80,.04);border:1px solid rgba(255,80,80,.14);border-radius:13px;padding:11px}
+.vg{background:rgba(94,232,154,.04);border:1px solid rgba(94,232,154,.14);border-radius:13px;padding:11px}
+
+/* STEP ROW */
+.sr{display:flex;gap:8px;align-items:flex-start}
+
+/* STITLE */
+.stitle{text-align:center;margin-bottom:12px;width:100%}
+.stitle h2{font-size:clamp(15px,3.2vw,24px);margin-bottom:5px}
+.stitle p{font-size:10px;color:#7E879B;max-width:640px;margin:0 auto;line-height:1.7}
+
+/* MÉTRICA */
+.metric{font-size:clamp(20px,3.8vw,32px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:3px}
+.metric.cy{color:#2EC8FF}.metric.gr{color:#5EE89A}.metric.go{color:#FFD460}
+.metric.pu{color:#B44CFF}.metric.pk{color:#FF6B9D}.metric.bl{color:#2E6BFF}
+
+/* BARRA NÍVEL */
+.lvl-wrap{margin-bottom:6px}
+.lvl-label{display:flex;justify-content:space-between;margin-bottom:3px}
+.lvl-track{width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,.07);overflow:hidden}
+.lvl-fill{height:100%;border-radius:2px;animation:fb 1.2s ease both}
+@keyframes fb{from{width:0}to{width:var(--w)}}
+
+/* LIXA TABLE */
+.lxt{width:100%;border-collapse:separate;border-spacing:0 5px}
+.lxt th{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7E879B;padding:6px 10px;text-align:left}
+.lxt td{font-size:10px;padding:9px 10px;color:#AAB3C5;background:rgba(255,255,255,.025);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.lxt td:first-child{border-left:1px solid rgba(255,255,255,.05);border-radius:8px 0 0 8px}
+.lxt td:last-child{border-right:1px solid rgba(255,255,255,.05);border-radius:0 8px 8px 0}
+.lxt tr:hover td{background:rgba(255,255,255,.04)}
+
+/* DUPLO CURSO HEADER */
+.dh{display:flex;gap:9px;width:100%;margin-bottom:10px}
+.dh-card{flex:1;border-radius:13px;padding:10px 13px;display:flex;align-items:center;gap:10px}
+.dh-card.fv{background:linear-gradient(135deg,rgba(46,200,255,.1),rgba(94,232,154,.07));border:1px solid rgba(46,200,255,.22)}
+.dh-card.gt{background:linear-gradient(135deg,rgba(180,76,255,.1),rgba(46,107,255,.07));border:1px solid rgba(180,76,255,.22)}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2EC8FF,#2E6BFF,#5EE89A,#2EC8FF);background-size:200% auto;animation:sh 3s linear infinite;transition:width .6s ease}
+.fs-btn{position:fixed;top:11px;right:11px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:6px 11px;border-radius:9px;cursor:pointer;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:5px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,200,255,.3)}
+.fs-btn svg{width:11px;height:11px}
+.sc{position:fixed;bottom:27px;left:13px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.32);padding:5px 11px;border-radius:8px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05)}
+.sc .cn{color:#2EC8FF;font-weight:800}
+.ind{position:fixed;bottom:27px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.32);padding:5px 10px;border-radius:15px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05)}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer}
+.ind .dot.active{background:#2EC8FF;box-shadow:0 0 9px rgba(46,200,255,.6);width:21px;border-radius:4px}
+.nav-arr{position:fixed;bottom:22px;right:13px;z-index:998;display:flex;gap:6px}
+.nav-arr button{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px)}
+.nav-arr button:hover{background:rgba(46,200,255,.18);border-color:rgba(46,200,255,.4);color:#fff;transform:scale(1.05)}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .62s ease both}
+.slide.active .as{animation:fadeScale .62s ease both}
+.d1{animation-delay:.06s!important}.d2{animation-delay:.14s!important}.d3{animation-delay:.22s!important}
+.d4{animation-delay:.30s!important}.d5{animation-delay:.38s!important}.d6{animation-delay:.46s!important}
+.d7{animation-delay:.54s!important}.d8{animation-delay:.62s!important}.d9{animation-delay:.70s!important}
+
+/* SLIDE 1 */
+.s1w{text-align:center;max-width:900px;width:100%;display:flex;flex-direction:column;align-items:center;padding-top:10px}
+.s1w h1{font-size:clamp(22px,5vw,54px);margin-bottom:12px}
+.s1sub{font-size:clamp(11px,1.6vw,14px);color:#AAB3C5;max-width:580px;margin:0 auto 18px;line-height:1.8}
+.pr{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+
+/* SEPARADOR DE CURSO */
+.curso-sep{width:100%;display:flex;align-items:center;gap:10px;margin:10px 0 8px}
+.curso-sep span{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.curso-sep::before,.curso-sep::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
+
+/* RESPONSIVO */
+@media(max-width:600px){
+  .slide{padding:44px 10px 108px}
+  .g3{grid-template-columns:1fr}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g6{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .dh{flex-direction:column}
+  .si{max-height:calc(100vh - 150px)}
+  .stitle h2{font-size:14px}
+  .s1w h1{font-size:22px}
+}
+@media(min-width:601px) and (max-width:820px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g6{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="presentation">
+
+<div class="progress" id="prog" style="width:10%"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════════ SLIDE 1 ══ -->
+<section class="slide active">
+<div class="s1w">
+  <div class="badge cy au d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    Curso Profissional Completo
+  </div>
+  <h1 class="au d2"><span class="ga">Fibra de Vidro</span><br>&amp; <span class="gb">Gel na Tips</span></h1>
+  <p class="s1sub au d3">Do preparo ao acabamento impecável — aprenda as duas técnicas mais requisitadas do mercado com protocolos profissionais completos.</p>
+  <div class="pr au d4">
+    <span class="pill cy">🧵 Fibra de Vidro</span>
+    <span class="pill pu">💧 Gel na Tips</span>
+    <span class="pill gr">🛡️ Biossegurança</span>
+    <span class="pill go">📐 Formatos</span>
+    <span class="pill bl">🔧 Materiais</span>
+    <span class="pill pk">✨ Acabamento</span>
+  </div>
+  <div class="dh au d5" style="margin-top:20px">
+    <div class="dh-card fv">
+      <div class="ic cy" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg></div>
+      <div>
+        <span class="ts cy" style="margin:0 0 2px">Técnica 01</span>
+        <p style="font-size:11px;font-weight:700;color:#F5F7FB">Fibra de Vidro</p>
+        <p style="font-size:9px;color:#7E879B">Leveza • Naturalidade • Reforço</p>
+      </div>
+    </div>
+    <div class="dh-card gt">
+      <div class="ic pu" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
+      <div>
+        <span class="ts pu" style="margin:0 0 2px">Técnica 02</span>
+        <p style="font-size:11px;font-weight:700;color:#F5F7FB">Gel na Tips</p>
+        <p style="font-size:9px;color:#7E879B">Resistência • Brilho • Durabilidade</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 2 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v2"></div>
+    <h2>Anatomia &amp; Avaliação: <span class="gb">Conheça Antes de Aplicar</span></h2>
+    <p>Entender a estrutura da unha protege a cliente e garante durabilidade ao serviço</p>
+  </div>
+  <div class="g3 au d2" style="margin-bottom:9px">
+    <div class="cp bc bcy">
+      <span class="ts cy">Estrutura 01</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Lâmina Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:6px">Parte visível da unha — composta por queratina. É onde toda aplicação ocorre. A espessura deve ser respeitada para não fragilizar.</p>
+      <span class="pill cy">Área de trabalho</span>
+    </div>
+    <div class="cp bc bgr">
+      <span class="ts gr">Estrutura 02</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Leito Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:6px">Tecido rosado e vascularizado sob a lâmina. Nunca deve ser atingido por broca, lixa ou produto. Lesões causam dor e risco de infecção.</p>
+      <span class="pill re">Zona proibida</span>
+    </div>
+    <div class="cp bc bgo">
+      <span class="ts go">Estrutura 03</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Cutícula / Eponíquio</h3>
+      <p style="font-size:10px;margin-bottom:6px">Pele protetora da matriz. Nunca cortar — apenas empurrar com empurrinha esterilizada. O produto não pode tocar essa área.</p>
+      <span class="pill go">Empurrar, nunca cortar</span>
+    </div>
+    <div class="cp bc bpu">
+      <span class="ts pu">Estrutura 04</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Matriz Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:6px">Responsável pelo crescimento. Fica sob a cutícula. Qualquer trauma pode causar deformidades permanentes na lâmina futura.</p>
+      <span class="pill pu">Crescimento</span>
+    </div>
+    <div class="cp bc bpk">
+      <span class="ts pk">Estrutura 05</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Hiponíquio</h3>
+      <p style="font-size:10px;margin-bottom:6px">Vedação entre lâmina e dedo. Barreira natural contra fungos. Nunca forçar limpeza sob a borda livre — pode romper essa proteção.</p>
+      <span class="pill pk">Barreira natural</span>
+    </div>
+    <div class="cp bc bbl">
+      <span class="ts bl">Estrutura 06</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Pterígio</h3>
+      <p style="font-size:10px;margin-bottom:6px">Crescimento da pele sobre a lâmina, comum em cutículas ressecadas ou muito cortadas. Tratar com hidratação antes de aplicar qualquer técnica.</p>
+      <span class="pill go">Tratar antes</span>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-bottom:8px">
+    <div class="curso-sep"><span style="color:#FF5050">⚠️ Contraindicações — Não Atenda Quando Houver:</span></div>
+  </div>
+  <div class="g4 au d4">
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Onicomicose</strong> — fungo ativo na lâmina ou pele</p></div>
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Feridas abertas</strong> ou inflamações ao redor</p></div>
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Alergia confirmada</strong> a resina, gel ou acrílico</p></div>
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Lâmina</strong> muito fina, quebradiça ou lascada</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 3 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Biossegurança: <span class="ga">Protocolo Obrigatório</span></h2>
+    <p>Segurança da profissional e da cliente — sem biossegurança não há serviço profissional</p>
+  </div>
+  <div class="g4 au d2" style="margin-bottom:9px">
+    <div class="cp" style="text-align:center">
+      <div class="ic pu" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <span class="ts pu">EPIs Obrigatórios</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Luvas de nitrila descartáveis</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Máscara PFF2 (pó de lixa)</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Óculos de proteção</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Avental impermeável</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic cy" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <span class="ts cy">Higienização</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd cy"></div><p style="font-size:10px">Álcool 70% nas mãos — sua e da cliente</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd cy"></div><p style="font-size:10px">Toalha de papel descartável</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd cy"></div><p style="font-size:10px">Troca de luvas entre clientes</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd cy"></div><p style="font-size:10px">Higienizar superfícies entre atendimentos</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic go" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></div>
+      <span class="ts go">Descarte</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd go"></div><p style="font-size:10px">Saco branco para resíduos infectantes</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd go"></div><p style="font-size:10px">Nunca reutilizar lixas e tips</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd go"></div><p style="font-size:10px">Pó de lixa em saco vedado</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd go"></div><p style="font-size:10px">Resíduos de resina em lixo específico</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic gr" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <span class="ts gr">Ambiente</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Cabine de exaustão ligada sempre</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Ventilação ou janela aberta</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Esterilizar metálicos (autoclave/UV)</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Iluminação LED branca fria</p></div>
+    </div>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:9px">
+    <div class="alt re">
+      <div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#FF5050">Fibra de Vidro:</strong> A resina cianoacrilato libera vapores irritantes — use máscara PFF2 e cabine de exaustão sem exceção. Ventile o ambiente por 10 min antes de iniciar.</p>
+    </div>
+    <div class="alt go">
+      <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#FFD460">Gel na Tips:</strong> Gel não polimerizado é altamente alergênico. Nunca deixe tocar a pele e sempre cure completamente. Verifique a potência da lâmpada regularmente.</p>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="card" style="text-align:center;padding:10px 13px">
+      <p style="font-size:11px;font-weight:700;color:#F5F7FB">🛡️ Profissional segura = cliente fidelizada + reputação construída com <span class="gb">solidez</span></p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 4 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Kit Completo: <span class="ga">Fibra de Vidro</span></h2>
+    <p>Cada material, sua função exata e a ordem correta de uso na técnica</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="card au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Desidratante / Prep</h3>
+            <span class="pill cy">Preparo</span>
+          </div>
+          <p style="font-size:10px">Remove óleo e umidade da lâmina. Aplicar com haste de algodão ou pincel — somente sobre a lâmina. Aguardar secar por completo antes do próximo passo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Tips Plásticas</h3>
+            <span class="pill gr">Extensão</span>
+          </div>
+          <p style="font-size:10px">Escolher o tamanho correto para cada dedo (sem folga nem pressão). Aplicar cola específica de tip apenas no encaixe. Posicionar em ângulo e pressionar por 5–10s. Cortar no comprimento desejado antes de aplicar a fibra.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Fibra de Vidro / Seda</h3>
+            <span class="pill go">Estrutura</span>
+          </div>
+          <p style="font-size:10px">Cortar o tecido levemente menor que a largura da lâmina para não tocar a pele. Posicionar centralizado. Pode ser cortado em pedaços sobrepostos para mais resistência. A fibra dará a estrutura para receber a resina.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Resina Cianoacrilato</h3>
+            <span class="pill pu">Impregnação</span>
+          </div>
+          <p style="font-size:10px">Aplicar gota a gota sobre a fibra posicionada. Aguardar impregnar naturalmente — não espalhar com o bico do frasco. Aplicar 2 a 3 demãos finas, aguardando secar levemente entre cada uma. Não tocar com os dedos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Ativador de Resina</h3>
+            <span class="pill bl">Cura rápida</span>
+          </div>
+          <p style="font-size:10px">Borrifar levemente a 15–20cm de distância após a última camada de resina. Acelera a polimerização. Excesso deixa a resina quebradiça — use com moderação. Aguardar 30s antes de lixar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Lixas + Glaze / Finalizador</h3>
+            <span class="pill pk">Acabamento</span>
+          </div>
+          <p style="font-size:10px">Lixar com 150 → 180 → 240 → búfalo. Aplicar glaze finalizador em camada fina para selar e dar brilho. Pode ser utilizado top coat gel com cura em LED para acabamento extra profissional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 5 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v4"></div>
+    <h2>Kit Completo: <span class="gd">Gel na Tips</span></h2>
+    <p>Cada produto, sua função e a ordem correta para garantir aderência e durabilidade</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="card au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Desidratante + Primer Não Ácido</h3>
+            <span class="pill cy">Preparo</span>
+          </div>
+          <p style="font-size:10px">Desidratante remove umidade e oleosidade. Primer não ácido cria ponte de aderência entre a lâmina e o gel. Aplicar ambos em camada fina — somente sobre a lâmina, nunca na pele. Aguardar secar completamente.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Tips Plásticas</h3>
+            <span class="pill gr">Extensão</span>
+          </div>
+          <p style="font-size:10px">Selecionar o tamanho exato — a tip deve cobrir toda a largura da lâmina sem ultrapassar a pele lateral. Colar com gel de construção curado ou cola de tip específica. Cortar e pré-modelar antes de aplicar o gel.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Base Gel / Bond Gel</h3>
+            <span class="pill go">Aderência</span>
+          </div>
+          <p style="font-size:10px">Primeira camada de gel que une lâmina + tip ao material de construção. Camada fina e uniforme, cobrindo toda a superfície. Curar em LED por 30–60s. Não limpar a dispersão — ela garante adesão da próxima camada.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Gel de Construção (Hard Gel)</h3>
+            <span class="pill pu">Estrutura</span>
+          </div>
+          <p style="font-size:10px">Aplicar em camadas finas sobre toda a extensão, construindo o arco C (curvatura lateral). Zona de estresse deve ter maior espessura. Curar entre cada camada. Usar pincel chato de gel — mover devagar para evitar bolhas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Gel de Cor / Builder Colorido</h3>
+            <span class="pill bl">Cor + Estrutura</span><span class="pill wh">Opcional</span>
+          </div>
+          <p style="font-size:10px">Quando usado como nail art estrutural. Permite cor sem esmalte. Aplicar após a estrutura base. Curar em LED. Garantir espessura adequada para não rachar com uso.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Top Coat Gel</h3>
+            <span class="pill pk">Finalização</span>
+          </div>
+          <p style="font-size:10px">Sela, protege e dá brilho ao trabalho. Pode ser sem dispersão (não precisa limpar) ou com dispersão (limpar com cleaner após cura). Curar em LED por 60s. Aplicar óleo de cutícula para finalizar com perfeição.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 6 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Passo a Passo: <span class="ga">Fibra de Vidro</span></h2>
+    <p>Protocolo completo de aplicação — do preparo ao acabamento perfeito</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="cp au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Preparo da Lâmina</h3>
+            <span class="pill cy">~8 min</span>
+          </div>
+          <p style="font-size:10px">Vista os EPIs. Higienize as mãos da cliente com álcool 70%. Empurre a cutícula com empurrinha esterilizada. Retire o pterígio com broca de curetagem suavemente. Lime levemente a superfície com lixa 180 (2–3 passadas). Aplique desidratante e aguarde secar. Remova o pó com escova seca.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Colagem da Tip</h3>
+            <span class="pill gr">~10 min</span>
+          </div>
+          <p style="font-size:10px">Selecione o tamanho da tip por dedo — deve cobrir a lâmina sem pressionar a pele. Aplique uma gota de cola no encaixe da tip. Posicione a 45° e abaixe pressionando suavemente por 5–10s. Repita em todos os dedos. Corte as tips no comprimento final desejado com cortador específico.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Posicionamento da Fibra</h3>
+            <span class="pill go">~12 min</span>
+          </div>
+          <p style="font-size:10px">Corte a fibra levemente menor que a largura da lâmina (0,5mm de cada lado). Posicione centralizada sobre a junção tip + lâmina. Para mais resistência: 2 camadas cruzadas. Não mova após posicionar — a resina vai fixar exatamente onde a fibra estiver.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Aplicação da Resina</h3>
+            <span class="pill pu">~10 min</span>
+          </div>
+          <p style="font-size:10px">Aplique 1 gota de resina no centro da fibra. Aguarde impregnar naturalmente. Não espalhe forçado. Aplique mais 1–2 demãos cobrindo toda a fibra. Aguarde cada camada secar levemente (30–40s) antes da próxima. Na última camada, aguarde 60s e aplique ativador a 15–20cm.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Lixamento e Refinamento</h3>
+            <span class="pill bl">~15 min</span>
+          </div>
+          <p style="font-size:10px">Aguarde 2 min após ativador. Lime com lixa 150 para modelar o formato e reduzir excesso. Lixa 180 para refinar a superfície. Lixa 240 para acabamento fino. Búfalo para polimento. Remova pó a cada troca de lixa. Verifique o arco C da lateral.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Acabamento Final</h3>
+            <span class="pill pk">~8 min</span>
+          </div>
+          <p style="font-size:10px">Limpe toda a superfície com álcool ou cleaner. Aplique glaze ou top coat gel em camada fina. Cure em LED se usar top gel. Hidrate cutículas com óleo de amêndoas ou específico. Faça a orientação pós-serviço à cliente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 7 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v4"></div>
+    <h2>Passo a Passo: <span class="gd">Gel na Tips</span></h2>
+    <p>Protocolo completo — do preparo ao top coat com cura profissional em LED</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="cp au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Preparo da Lâmina</h3>
+            <span class="pill cy">~8 min</span>
+          </div>
+          <p style="font-size:10px">Vista EPIs. Higienize mãos da cliente. Empurre e remova cutícula e pterígio com broca de curetagem esterilizada. Lima fina na superfície (lixa 180, 2–3 passadas) para criar micro-rugosidades. Aplique desidratante → seque → aplique primer não ácido → seque. Remova todo pó com escova.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Colagem da Tip</h3>
+            <span class="pill gr">~10 min</span>
+          </div>
+          <p style="font-size:10px">Selecione o tamanho preciso da tip por dedo. Use gel de construção ou cola específica no encaixe. Posicione a 45° e pressione 5–10s. Pré-modele com lixa 100 a forma geral antes de aplicar o gel. Corte no comprimento final. Lime a junção tip + lâmina até nivelar completamente — sem degrau.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Base Gel / Bond</h3>
+            <span class="pill go">~5 min</span>
+          </div>
+          <p style="font-size:10px">Aplique base gel em camada fina e uniforme em todos os dedos. Não deve ultrapassar a borda nem tocar a pele. Curar em LED 30–60s. Não limpe a dispersão — ela garante a aderência da próxima camada.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Construção em Camadas</h3>
+            <span class="pill pu">~20 min</span>
+          </div>
+          <p style="font-size:10px">Aplique gel de construção em camadas finas. 1ª camada: cobertura geral — curar. 2ª camada: adicione material na zona de estresse (1/3 próximo à cutícula) para construir o arco C — curar. 3ª camada: refinamento e nivelamento — curar. Pincel lento e sem pressão para evitar bolhas de ar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Lixamento e Modelagem do Formato</h3>
+            <span class="pill bl">~15 min</span>
+          </div>
+          <p style="font-size:10px">Lixa 100: remover excesso e dar forma. Lixa 180: refinar a superfície e lateral. Lixa 240: acabamento fino. Búfalo: polimento se não usar top gel. Limpe o pó entre cada grão. Verifique o perfil lateral, a ponta e o arco C — corrija antes de finalizar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Top Coat + Finalização</h3>
+            <span class="pill pk">~8 min</span>
+          </div>
+          <p style="font-size:10px">Limpe com cleaner ou álcool. Aplique top coat gel em camada fina e uniforme. Cure em LED 60s. Se top com dispersão: limpe com cleaner. Aplique óleo de cutícula e massageie. Oriente a cliente sobre cuidados pós-serviço.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 8 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v3"></div>
+    <h2>A Arte do <span class="gc">Lixamento Profissional</span></h2>
+    <p>A sequência correta de lixas define 50% do resultado final — não pule etapas</p>
+  </div>
+  <div class="au d2" style="width:100%;margin-bottom:10px;overflow-x:auto">
+    <table class="lxt">
+      <thead>
+        <tr>
+          <th>Lixa / Grão</th>
+          <th>Função</th>
+          <th>Técnica</th>
+          <th>Atenção</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pill re">80–100</span></td>
+          <td>Remover volume de gel/resina</td>
+          <td>Movimentos longos, leves e lineares</td>
+          <td style="color:#FF8080">Nunca na lâmina natural</td>
+        </tr>
+        <tr>
+          <td><span class="pill co">150</span></td>
+          <td>Reduzir marcas da lixa anterior</td>
+          <td>Circular suave ou linear cruzado</td>
+          <td style="color:#FFB890">Manter pressão constante e baixa</td>
+        </tr>
+        <tr>
+          <td><span class="pill go">180</span></td>
+          <td>Refinar superfície e dar forma</td>
+          <td>Circular ou 8 — cobrir toda a superfície</td>
+          <td style="color:#FFD460">Etapa de precisão — sem pressa</td>
+        </tr>
+        <tr>
+          <td><span class="pill gr">240</span></td>
+          <td>Acabamento e suavização final</td>
+          <td>Movimentos suaves em toda a superfície</td>
+          <td style="color:#5EE89A">Remover pó antes de polir</td>
+        </tr>
+        <tr>
+          <td><span class="pill cy">Búfalo</span></td>
+          <td>Polimento e brilho natural</td>
+          <td>Movimentos rápidos e leves</td>
+          <td style="color:#7DDEFF">Usar apenas se não for aplicar top gel</td>
+        </tr>
+        <tr>
+          <td><span class="pill bl">Block 4 faces</span></td>
+          <td>Polimento progressivo completo</td>
+          <td>1 face por vez em ordem numérica</td>
+          <td style="color:#8FAEFF">Ideal para finalização natural</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:9px">
+    <div class="cp">
+      <span class="ts cy" style="margin-bottom:8px">✅ Técnica Correta</span>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Mover a lixa em direções variadas para não criar sulcos</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Limpar o pó com escova seca entre cada troca de lixa</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Verificar a superfície sob a luz LED — revela imperfeições</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Lixar a lateral e a ponta com canto da lixa, sem arrastar</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Verificar o perfil (vista de lado) — deve ter arco suave</p></div>
+    </div>
+    <div class="cp">
+      <span class="ts re" style="margin-bottom:8px">❌ Erros Comuns no Lixamento</span>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Passar lixa grossa (80) direto na lâmina natural</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Pular grãos — pula etapa, piora o acabamento</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Lixa suja — redistribui resíduo e risca a superfície</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Pressão excessiva — afina demais e pode quebrar</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Não verificar o arco C — unha plana quebra fácil</p></div>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="alt go">
+      <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#FFD460">Dica profissional:</strong> Use a lâmpada LED para inspecionar a superfície antes de finalizar. A luz rasante revela bolhas, ondulações e irregularidades invisíveis a olho nu na luz natural.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 9 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v2"></div>
+    <h2>Formatos: <span class="gb">Modelagem com Precisão</span></h2>
+    <p>Como executar cada formato nas duas técnicas — da lixa à ponta perfeita</p>
+  </div>
+  <div class="g6 au d2" style="margin-bottom:10px">
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">⬜</div>
+      <span class="ts cy">Quadrada</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Square</h3>
+      <p style="font-size:9px;margin-bottom:6px">Borda reta + cantos a 90°. Lixar a ponta em ângulo reto usando canto da lixa. Cantos definidos com lima fina.</p>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:9px">Dedos longos e finos</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Evitar em dedos curtos/largos</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🔵</div>
+      <span class="ts gr">Redonda</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Round</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais retas + ponta arredondada. Lixar seguindo a curva natural da ponta. Formato mais resistente a quebras.</p>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:9px">Todos os tipos de mão</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:9px">Ideal para iniciantes</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🥚</div>
+      <span class="ts go">Oval</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Oval</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais suavizadas + ponta oval. Lixar laterais em curva suave e contínua. Alonga visualmente dedos curtos.</p>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:9px">Dedos curtos</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:9px">Visual clássico e elegante</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🌰</div>
+      <span class="ts pu">Amendoada</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Almond</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais cônicas + ponta fina arredondada. Lixar laterais simétricas em diagonal para ponto central. Exige comprimento médio-longo.</p>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:9px">Dedos finos e longos</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Não em dedos muito curtos</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🩰</div>
+      <span class="ts pk">Ballerina</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Coffin</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais afiladas + ponta reta. Lixar diagonalmente nas laterais e achatar a ponta. Comprimento longo obrigatório.</p>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:9px">Comprimento longo</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:9px">Tendência máxima</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">⚡</div>
+      <span class="ts re">Stiletto</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Stiletto</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais cônicas até ponta aguda. Simétricas com precisão milimétrica. Requer gel hard para estrutura ou fibra dupla camada.</p>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Nível avançado</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Alta manutenção</p></div>
+    </div>
+  </div>
+  <div class="g2 au d3">
+    <div class="card bc bcy">
+      <span class="ts cy" style="margin-bottom:7px">🧵 Fibra — Dica de Formato</span>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Prefira redondo e oval — a fibra é mais flexível</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Stiletto exige dupla camada de fibra cruzada</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Lixar a ponta suavemente — resina é mais sensível</p></div>
+    </div>
+    <div class="card bc bpu">
+      <span class="ts pu" style="margin-bottom:7px">💧 Gel — Dica de Formato</span>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Hard gel suporta stiletto e ballerina com segurança</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Construa o arco C mesmo em formatos quadrados</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Verifique simetria dos dois lados antes de curar</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════ SLIDE 10 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v3"></div>
+    <h2>Erros Comuns, <span class="gc">Manutenção &amp; Fidelização</span></h2>
+    <p>Corrija antes de acontecer e construa uma base de clientes fiel e recorrente</p>
+  </div>
+  <div class="au d2" style="width:100%;margin-bottom:9px">
+    <div class="curso-sep"><span style="color:#7E879B">Top 5 Erros — Fibra de Vidro e Gel na Tips</span></div>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px;margin-bottom:10px">
+    <div class="g2 au d3" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Lifting (levantamento)</span>
+        <p style="font-size:10px">Produto tocou a pele ou cutícula mal preparada. Causa descolamento nas bordas comprometendo durabilidade.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Prep completo da cutícula. Produto a 0,5mm da pele. Desidratante e primer corretamente aplicados.</p>
+      </div>
+    </div>
+    <div class="g2 au d4" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Bolhas de Ar no Gel</span>
+        <p style="font-size:10px">Pincel movido rápido demais ou com pressão excessiva incorpora ar ao material durante a aplicação.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Mover o pincel lentamente. Usar o dorso do pincel para "afundar" o gel antes de curar e liberar bolhas.</p>
+      </div>
+    </div>
+    <div class="g2 au d5" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Resina Branqueando (Fibra)</span>
+        <p style="font-size:10px">Excesso de ativador ou aplicação de ativador com superfície ainda úmida causa branqueamento da resina.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Aguardar a resina secar levemente antes de ativar. Borrifar o ativador a 20cm de distância em dose mínima.</p>
+      </div>
+    </div>
+    <div class="g2 au d6" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Tip Descola ou Quebra</span>
+        <p style="font-size:10px">Tamanho errado da tip, cola mal distribuída ou junção tip/lâmina com degrau não nivelado causam quebra precoce.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Testar o tamanho antes de colar. Nivelar a junção completamente. Verificar se não há degrau antes de aplicar gel/resina.</p>
+      </div>
+    </div>
+    <div class="g2 au d7" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Cura Incompleta do Gel</span>
+        <p style="font-size:10px">Lâmpada fraca, camadas espessas ou tempo insuficiente deixam monômero residual — causa alergia e fragilidade.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Respeitar tempo de cura do fabricante. Camadas finas. Verificar potência da LED. Trocar bulbos UV a cada 6 meses.</p>
+      </div>
+    </div>
+  </div>
+  <div class="g2 au d8" style="margin-bottom:9px">
+    <div class="cp">
+      <span class="ts go" style="margin-bottom:8px">🔁 Intervalos de Manutenção</span>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px"><strong>Fibra de Vidro:</strong> 2 a 3 semanas — crescimento visível + resina mais frágil</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px"><strong>Gel na Tips:</strong> 3 a 4 semanas — maior durabilidade estrutural</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Agendar retorno antes de sair do atendimento</p></div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">Lembrete via WhatsApp no Dia 14 (fibra) / Dia 21 (gel)</p></div>
+    </div>
+    <div class="cp">
+      <span class="ts cy" style="margin-bottom:8px">📋 Orientações Pós-Serviço</span>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Evitar água nas primeiras 24h</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Usar luva ao lavar louça e usar produtos químicos</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Não usar as unhas como ferramenta</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Hidratar cutículas com óleo diariamente</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Nunca arrancar — risco de lesar a lâmina natural</p></div>
+    </div>
+  </div>
+  <div class="au d9" style="width:100%">
+    <div style="background:linear-gradient(135deg,rgba(46,200,255,.09),rgba(94,232,154,.07),rgba(46,107,255,.08));border:1px solid rgba(46,200,255,.2);border-radius:14px;padding:14px;text-align:center">
+      <p style="font-size:12px;font-weight:800;color:#F5F7FB;margin-bottom:5px">🎓 Conhecimento gera <span class="gb">confiança</span>. Confiança gera <span class="ga">resultado</span>.</p>
+      <p style="font-size:10px;color:#AAB3C5;line-height:1.8;max-width:600px;margin:0 auto">Dominar Fibra de Vidro e Gel na Tips é dominar as duas técnicas mais versáteis e demandadas do mercado. Cada protocolo aplicado corretamente é a sua assinatura de <strong style="color:#F5F7FB">profissional de excelência</strong>.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const IND=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  IND.appendChild(d);
+}
+
+function upd(){
+  IND.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  document.querySelectorAll('.si').forEach(s=>s.scrollTop=0);
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd()}
+function next(){if(C<T-1)go(C+1)}
+function prev(){if(C>0)go(C-1)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+  if(e.key==='f'||e.key==='F')toggleFs()
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].screenX;
+  ty=e.changedTouches[0].screenY;
+  scrolling=false;
+},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].screenX-tx);
+  const dy=Math.abs(e.changedTouches[0].screenY-ty);
+  if(dy>dx)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const d=tx-e.changedTouches[0].screenX;
+  if(Math.abs(d)>50){d>0?next():prev()}
+});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{})}
+  else{document.exitFullscreen()}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
