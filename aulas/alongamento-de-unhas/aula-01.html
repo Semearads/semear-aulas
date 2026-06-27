@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Alongamento de Unhas — Biossegurança, Materiais & Técnicas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;position:relative}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100vh;will-change:transform}
+
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:52px 14px 108px;
+}
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 78% 14%,rgba(180,100,255,.13) 0%,transparent 42%),
+    radial-gradient(800px 380px at 18% 82%,rgba(46,200,255,.11) 0%,transparent 42%),
+    radial-gradient(600px 300px at 55% 50%,rgba(100,46,255,.07) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.18;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1}
+
+.si{
+  width:100%;max-width:940px;
+  display:flex;flex-direction:column;align-items:center;
+  overflow-y:auto;
+  max-height:calc(100vh - 160px);
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:2px 4px 10px;
+}
+.si::-webkit-scrollbar{display:none}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.14;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;line-height:1.3;color:#F5F7FB}
+p,li,span{font-weight:400;line-height:1.65;color:#AAB3C5}
+strong{font-weight:700;color:#F5F7FB}
+
+/* GRADIENTES DE TEXTO */
+.gt{background:linear-gradient(135deg,#B44CFF 0%,#6E2FFF 45%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+.gt2{background:linear-gradient(135deg,#2EC8FF 0%,#2E6BFF 50%,#6E2FFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+.gt3{background:linear-gradient(135deg,#FF6B9D 0%,#B44CFF 50%,#6E2FFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+.gt4{background:linear-gradient(135deg,#5EE89A 0%,#2EC8FF 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+.gt5{background:linear-gradient(135deg,#FFD460 0%,#FF8C50 50%,#FF6B9D 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#B44CFF,#2E6BFF);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 14px;transform-origin:center}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:999px;margin-bottom:18px;background:rgba(180,76,255,.09);border:1px solid rgba(180,76,255,.3);font-size:11px;font-weight:600;color:#D4A0FF;letter-spacing:.07em;text-transform:uppercase}
+.badge svg{width:12px;height:12px;flex-shrink:0}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.04);padding:14px 13px;backdrop-filter:blur(8px);transition:all .4s ease}
+.card:hover{border-color:rgba(180,76,255,.18);transform:translateY(-2px)}
+
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.42),0 0 28px rgba(180,76,255,.06);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease}
+.cp:hover{border-color:rgba(180,76,255,.2);transform:translateY(-2px)}
+
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;width:100%}
+.g6{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%}
+
+/* ÍCONE CONTAINER */
+.ic{width:40px;height:40px;border-radius:11px;margin-bottom:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic svg{width:19px;height:19px}
+.ic.pu{background:rgba(180,76,255,.12)}.ic.pu svg{color:#B44CFF}
+.ic.bl{background:rgba(46,107,255,.12)}.ic.bl svg{color:#2E6BFF}
+.ic.cy{background:rgba(46,200,255,.12)}.ic.cy svg{color:#2EC8FF}
+.ic.gr{background:rgba(94,232,154,.12)}.ic.gr svg{color:#5EE89A}
+.ic.go{background:rgba(255,200,60,.12)}.ic.go svg{color:#FFD460}
+.ic.pk{background:rgba(255,107,157,.12)}.ic.pk svg{color:#FF6B9D}
+.ic.co{background:rgba(255,140,80,.12)}.ic.co svg{color:#FF8C50}
+.ic.re{background:rgba(255,80,80,.12)}.ic.re svg{color:#FF5050}
+.ic.te{background:rgba(40,210,200,.12)}.ic.te svg{color:#28D8C8}
+
+/* TIPO LABEL */
+.ts{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;display:block}
+.ts.pu{color:#B44CFF}.ts.bl{color:#2E6BFF}.ts.cy{color:#2EC8FF}
+.ts.gr{color:#5EE89A}.ts.go{color:#FFD460}.ts.pk{color:#FF6B9D}
+.ts.co{color:#FF8C50}.ts.re{color:#FF5050}.ts.te{color:#28D8C8}
+.ts.wh{color:#F5F7FB}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.pill.pu{background:rgba(180,76,255,.1);border:1px solid rgba(180,76,255,.25);color:#D4A0FF}
+.pill.bl{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#8FAEFF}
+.pill.cy{background:rgba(46,200,255,.1);border:1px solid rgba(46,200,255,.25);color:#7DDEFF}
+.pill.gr{background:rgba(94,232,154,.1);border:1px solid rgba(94,232,154,.25);color:#5EE89A}
+.pill.go{background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.25);color:#FFD460}
+.pill.pk{background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.25);color:#FF9DC0}
+.pill.co{background:rgba(255,140,80,.1);border:1px solid rgba(255,140,80,.25);color:#FFB890}
+.pill.re{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.25);color:#FF8080}
+.pill.te{background:rgba(40,210,200,.1);border:1px solid rgba(40,210,200,.25);color:#28D8C8}
+
+/* CHECKLIST */
+.chk{display:flex;align-items:flex-start;gap:7px;margin-bottom:6px}
+.chkd{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.chkd.pu{background:#B44CFF}.chkd.bl{background:#2E6BFF}.chkd.cy{background:#2EC8FF}
+.chkd.gr{background:#5EE89A}.chkd.go{background:#FFD460}.chkd.pk{background:#FF6B9D}
+.chkd.co{background:#FF8C50}.chkd.re{background:#FF5050}.chkd.te{background:#28D8C8}
+.chkd.wh{background:#F5F7FB}
+
+/* BORDA LATERAL */
+.bc{position:relative;overflow:hidden;padding-left:17px!important}
+.bc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.bc.bpu::before{background:#B44CFF}.bc.bbl::before{background:#2E6BFF}.bc.bcy::before{background:#2EC8FF}
+.bc.bgr::before{background:#5EE89A}.bc.bgo::before{background:#FFD460}.bc.bpk::before{background:#FF6B9D}
+.bc.bco::before{background:#FF8C50}.bc.bre::before{background:#FF5050}.bc.bte::before{background:#28D8C8}
+
+/* NÚMEROS */
+.nb{width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;animation:glowN 3s ease-in-out infinite}
+.nb.n1{background:linear-gradient(145deg,#B44CFF,#8030D9)}
+.nb.n2{background:linear-gradient(145deg,#6E2FFF,#5020D0);animation-delay:.4s}
+.nb.n3{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:.8s}
+.nb.n4{background:linear-gradient(145deg,#2EC8FF,#1AA0D9);animation-delay:1.2s}
+.nb.n5{background:linear-gradient(145deg,#5EE89A,#30C870);animation-delay:1.6s}
+.nb.n6{background:linear-gradient(145deg,#FFD460,#E0A820);animation-delay:2s}
+@keyframes glowN{0%,100%{box-shadow:0 0 12px rgba(180,76,255,.1)}50%{box-shadow:0 0 26px rgba(180,76,255,.3)}}
+
+/* ALERT */
+.alt{border-radius:11px;padding:10px 12px;display:flex;gap:9px;align-items:flex-start}
+.alt.re{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.18)}
+.alt.go{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.18)}
+.alt.gr{background:rgba(94,232,154,.05);border:1px solid rgba(94,232,154,.18)}
+.alt.pu{background:rgba(180,76,255,.05);border:1px solid rgba(180,76,255,.18)}
+.alt.cy{background:rgba(46,200,255,.05);border:1px solid rgba(46,200,255,.18)}
+.alt.bl{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.18)}
+.alt.co{background:rgba(255,140,80,.05);border:1px solid rgba(255,140,80,.18)}
+.alti{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.alti svg{width:13px;height:13px}
+.alti.re{background:rgba(255,80,80,.15)}.alti.re svg{color:#FF5050}
+.alti.go{background:rgba(255,200,60,.15)}.alti.go svg{color:#FFD460}
+.alti.gr{background:rgba(94,232,154,.15)}.alti.gr svg{color:#5EE89A}
+.alti.pu{background:rgba(180,76,255,.15)}.alti.pu svg{color:#B44CFF}
+.alti.cy{background:rgba(46,200,255,.15)}.alti.cy svg{color:#2EC8FF}
+.alti.bl{background:rgba(46,107,255,.15)}.alti.bl svg{color:#2E6BFF}
+.alti.co{background:rgba(255,140,80,.15)}.alti.co svg{color:#FF8C50}
+
+/* STITLE */
+.stitle{text-align:center;margin-bottom:14px;width:100%}
+.stitle h2{font-size:clamp(16px,3.4vw,25px);margin-bottom:6px}
+.stitle p{font-size:10px;color:#7E879B;max-width:640px;margin:0 auto;line-height:1.7}
+
+/* MÉTRICA */
+.metric{font-size:clamp(22px,4vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:4px}
+.metric.pu{color:#B44CFF}.metric.bl{color:#2E6BFF}.metric.cy{color:#2EC8FF}
+.metric.gr{color:#5EE89A}.metric.go{color:#FFD460}.metric.pk{color:#FF6B9D}
+
+/* BARRA DE NÍVEL */
+.lvl-wrap{margin-bottom:7px}
+.lvl-label{display:flex;justify-content:space-between;margin-bottom:3px}
+.lvl-track{width:100%;height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+.lvl-fill{height:100%;border-radius:3px;animation:fillB 1.2s ease both}
+@keyframes fillB{from{width:0}to{width:var(--w)}}
+
+/* VS CARDS */
+.vs-bad{background:rgba(255,80,80,.04);border:1px solid rgba(255,80,80,.14);border-radius:13px;padding:12px}
+.vs-good{background:rgba(94,232,154,.04);border:1px solid rgba(94,232,154,.14);border-radius:13px;padding:12px}
+
+/* STEP ROW */
+.sr{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px}
+
+/* TIMELINE DOT */
+.tdot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#B44CFF,#2E6BFF,#2EC8FF,#B44CFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease}
+.fs-btn{position:fixed;top:12px;right:12px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:7px 12px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(180,76,255,.3)}
+.fs-btn svg{width:12px;height:12px}
+.sc{position:fixed;bottom:28px;left:14px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.32);padding:6px 12px;border-radius:8px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05)}
+.sc .cn{color:#B44CFF;font-weight:800}
+.ind{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.32);padding:6px 11px;border-radius:16px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05)}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer}
+.ind .dot.active{background:#B44CFF;box-shadow:0 0 10px rgba(180,76,255,.6);width:22px;border-radius:4px}
+.nav-arr{position:fixed;bottom:24px;right:14px;z-index:998;display:flex;gap:7px}
+.nav-arr button{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px)}
+.nav-arr button:hover{background:rgba(180,76,255,.2);border-color:rgba(180,76,255,.4);color:#fff;transform:scale(1.05)}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.89)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .65s ease both}
+.slide.active .as{animation:fadeScale .65s ease both}
+.d1{animation-delay:.07s!important}.d2{animation-delay:.16s!important}.d3{animation-delay:.25s!important}
+.d4{animation-delay:.34s!important}.d5{animation-delay:.43s!important}.d6{animation-delay:.52s!important}
+.d7{animation-delay:.61s!important}.d8{animation-delay:.70s!important}
+
+/* SLIDE 1 */
+.s1w{text-align:center;max-width:880px;width:100%;display:flex;flex-direction:column;align-items:center;padding-top:12px}
+.s1w h1{font-size:clamp(26px,5.5vw,58px);margin-bottom:13px}
+.s1sub{font-size:clamp(11px,1.7vw,14px);color:#AAB3C5;max-width:560px;margin:0 auto 20px;line-height:1.75}
+.pr{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+
+/* RESPONSIVO */
+@media(max-width:600px){
+  .slide{padding:46px 11px 106px}
+  .g3{grid-template-columns:1fr}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g6{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .si{max-height:calc(100vh - 152px)}
+  .stitle h2{font-size:15px}
+  .metric{font-size:22px}
+}
+@media(min-width:601px) and (max-width:800px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g6{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="presentation">
+
+<div class="progress" id="prog" style="width:10%"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="slides" id="sw">
+
+<!-- ══ SLIDE 1 ══ -->
+<section class="slide active">
+<div class="s1w">
+  <div class="badge au d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+    Formação Profissional Completa
+  </div>
+  <h1 class="au d2">Unhas Perfeitas Começam<br>com <span class="gt">Conhecimento</span></h1>
+  <p class="s1sub au d3">Biossegurança, anatomia, materiais, equipamentos e técnicas de alongamento para elevar seu nível profissional e garantir resultados excepcionais.</p>
+  <div class="pr au d4">
+    <span class="pill pu">🛡️ Biossegurança</span>
+    <span class="pill bl">🔬 Anatomia</span>
+    <span class="pill cy">🧴 Materiais</span>
+    <span class="pill go">⚙️ Equipamentos</span>
+    <span class="pill gr">💅 Técnicas</span>
+    <span class="pill pk">✨ Formatos</span>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 2 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Biossegurança: <span class="gt">Proteger para Transformar</span></h2>
+    <p>A base de todo trabalho profissional — sem biossegurança, não há serviço seguro</p>
+  </div>
+  <div class="g4 au d2" style="margin-bottom:10px">
+    <div class="cp" style="text-align:center">
+      <div class="ic pu" style="margin:0 auto 9px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <span class="ts pu">EPIs</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Equipamentos de Proteção</h3>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Luvas de nitrila descartáveis</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Máscara PFF2 ou cirúrgica</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Óculos de proteção</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Avental impermeável</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic bl" style="margin:0 auto 9px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <span class="ts bl">Higienização</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Assepsia das Mãos</h3>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">Álcool 70% antes e após atendimento</p></div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">Lavagem com sabão antisséptico</p></div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">Higienização das mãos da cliente</p></div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">Troca de luvas entre clientes</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic cy" style="margin:0 auto 9px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></div>
+      <span class="ts cy">Descarte</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Resíduos Corretamente</h3>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Lixo infectante (saco branco)</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Perfurocortantes em coletor rígido</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Nunca reutilizar itens descartáveis</p></div>
+      <div class="chk"><div class="chkd cy"></div><p style="font-size:10px">Pó de lima em saco fechado</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic gr" style="margin:0 auto 9px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <span class="ts gr">Ambiente</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Espaço Seguro</h3>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Superfícies higienizadas entre clientes</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Ventilação ou exaustão adequada</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Toalha de papel descartável</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Esterilização de metálicos</p></div>
+    </div>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:10px">
+    <div class="alt re">
+      <div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#FF5050">Atenção:</strong> Nunca atenda clientes com micoses, inflamações, feridas abertas ou infecções ativas nas unhas ou pele ao redor.</p>
+    </div>
+    <div class="alt go">
+      <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#FFD460">Lembre-se:</strong> A esterilização e a desinfecção são diferentes. Metálicos reutilizáveis devem passar por autoclave ou esterilizador UV.</p>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="card" style="text-align:center;padding:12px">
+      <p style="font-size:12px;font-weight:700;color:#F5F7FB">🛡️ Biossegurança não é opcional — é <span class="gt">obrigação ética e legal</span> de todo profissional de beleza</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 3 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Anatomia da Unha: <span class="gt2">Conhecer é Respeitar</span></h2>
+    <p>Entender cada estrutura é fundamental para executar o serviço com segurança e precisão</p>
+  </div>
+  <div class="g3 au d2" style="margin-bottom:10px">
+    <div class="cp bc bpu">
+      <span class="ts pu">Estrutura 01</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Lâmina Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:7px">Parte visível e dura da unha. Composta por queratina. É sobre ela que o alongamento é aplicado.</p>
+      <div class="alt pu" style="padding:7px 9px">
+        <p style="font-size:9px"><strong style="color:#D4A0FF">Cuidado:</strong> Lima excessiva fragiliza a lâmina. Respeite a espessura natural.</p>
+      </div>
+    </div>
+    <div class="cp bc bbl">
+      <span class="ts bl">Estrutura 02</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Leito Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:7px">Tecido rosado abaixo da lâmina. Altamente vascularizado. Nunca deve ser atingido com brocas ou lixas.</p>
+      <div class="alt re" style="padding:7px 9px">
+        <p style="font-size:9px"><strong style="color:#FF5050">Risco:</strong> Lesar o leito pode causar infecção grave e descolamento da lâmina.</p>
+      </div>
+    </div>
+    <div class="cp bc bcy">
+      <span class="ts cy">Estrutura 03</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Cutícula / Eponíquio</h3>
+      <p style="font-size:10px;margin-bottom:7px">Pele que protege a matriz ungueal de microrganismos. Não deve ser cortada — apenas empurrada e hidratada.</p>
+      <div class="alt go" style="padding:7px 9px">
+        <p style="font-size:9px"><strong style="color:#FFD460">Dica:</strong> Use removedor de cutícula em gel para amolecer antes de empurrar.</p>
+      </div>
+    </div>
+    <div class="cp bc bgr">
+      <span class="ts gr">Estrutura 04</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Matriz Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:7px">Responsável pelo crescimento da unha. Fica sob a cutícula. Lesões aqui podem causar deformidades permanentes.</p>
+      <div class="alt re" style="padding:7px 9px">
+        <p style="font-size:9px"><strong style="color:#FF5050">Atenção máxima:</strong> Qualquer trauma na matriz pode afetar toda a estrutura futura da lâmina.</p>
+      </div>
+    </div>
+    <div class="cp bc bgo">
+      <span class="ts go">Estrutura 05</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Pterígio</h3>
+      <p style="font-size:10px;margin-bottom:7px">Crescimento anormal da cutícula sobre a lâmina. Comum em clientes que cortam muito a cutícula ou têm pele ressecada.</p>
+      <div class="alt go" style="padding:7px 9px">
+        <p style="font-size:9px"><strong style="color:#FFD460">Tratamento:</strong> Hidratação intensa e preparo correto antes do alongamento.</p>
+      </div>
+    </div>
+    <div class="cp bc bpk">
+      <span class="ts pk">Estrutura 06</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Hiponíquio</h3>
+      <p style="font-size:10px;margin-bottom:7px">Área de vedação entre a borda livre da lâmina e o dedo. Barreira natural contra fungos e bactérias.</p>
+      <div class="alt gr" style="padding:7px 9px">
+        <p style="font-size:9px"><strong style="color:#5EE89A">Proteção:</strong> Nunca force a limpeza sob a borda livre — pode romper essa barreira.</p>
+      </div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="card" style="padding:12px 14px">
+      <span class="ts wh" style="margin-bottom:8px">🔬 Regra de Ouro da Anatomia</span>
+      <p style="font-size:11px;line-height:1.7">O trabalho do nail designer começa e termina <strong>sobre a lâmina ungueal</strong>. Qualquer produto que toque a pele pode causar reações alérgicas, inflamações e levantar o material — além de riscos sérios à saúde da cliente.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 4 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Materiais: <span class="gt3">Os Certos Fazem a Diferença</span></h2>
+    <p>Função, indicação e cuidados de cada produto essencial no alongamento profissional</p>
+  </div>
+  <div class="g4 au d2" style="margin-bottom:10px">
+    <div class="card bc bpu">
+      <span class="ts pu">Base</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Primer Ácido / Não Ácido</h3>
+      <p style="font-size:10px;margin-bottom:6px">Desidrata e aumenta a aderência da lâmina ao produto. Ácido = mais adesão, mais risco. Não ácido = seguro e eficaz para gel.</p>
+      <span class="pill pu">Etapa 1</span>
+    </div>
+    <div class="card bc bbl">
+      <span class="ts bl">Prep</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Desidratante + Primer</h3>
+      <p style="font-size:10px;margin-bottom:6px">Remove oleosidade e umidade da lâmina. Aplicar com pincel fino, apenas na lâmina. Evita lifting (levantamento do material).</p>
+      <span class="pill bl">Etapa 2</span>
+    </div>
+    <div class="card bc bcy">
+      <span class="ts cy">Estrutura</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Base Gel / Bond</h3>
+      <p style="font-size:10px;margin-bottom:6px">Primeira camada de gel que une a lâmina ao material de construção. Fina, uniforme, curada por 30–60s em LED.</p>
+      <span class="pill cy">Etapa 3</span>
+    </div>
+    <div class="card bc bgr">
+      <span class="ts gr">Construção</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Gel de Construção</h3>
+      <p style="font-size:10px;margin-bottom:6px">Gel espesso para modelar o arco e a extensão. Pode ser Hard Gel (resistente) ou Soft Gel (mais flexível). Cura em LED/UV.</p>
+      <span class="pill gr">Etapa 4</span>
+    </div>
+    <div class="card bc bgo">
+      <span class="ts go">Alternativa</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Acrílico (Pó + Líquido)</h3>
+      <p style="font-size:10px;margin-bottom:6px">Sistema de dois componentes que polimeriza ao ar. Alta resistência, maior durabilidade. Exige cabine de exaustão obrigatória.</p>
+      <span class="pill go">Sem UV/LED</span>
+    </div>
+    <div class="card bc bpk">
+      <span class="ts pk">Reforço</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Fibra de Vidro / Seda</h3>
+      <p style="font-size:10px;margin-bottom:6px">Tecido fino que adiciona resistência estrutural sem peso. Ideal para unhas naturais quebradiças ou como suporte em reparos.</p>
+      <span class="pill pk">Reforço</span>
+    </div>
+    <div class="card bc bco">
+      <span class="ts co">Modelagem</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Tips / Forms</h3>
+      <p style="font-size:10px;margin-bottom:6px">Tips = pontinhas plásticas coladas para extensão. Forms = moldes descartáveis usados sob a borda livre para construção direta.</p>
+      <span class="pill co">Extensão</span>
+    </div>
+    <div class="card bc bte">
+      <span class="ts te">Acabamento</span>
+      <h3 style="font-size:12px;margin-bottom:5px">Top Coat / Finalizador</h3>
+      <p style="font-size:10px;margin-bottom:6px">Sela e protege o trabalho. Pode ser com dispersão (precisa limpar), sem dispersão ou mate. Define o brilho e durabilidade final.</p>
+      <span class="pill te">Etapa Final</span>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="g2" style="gap:9px">
+      <div class="alt gr">
+        <div class="alti gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#5EE89A">Qualidade:</strong> Invista em materiais profissionais certificados. Produtos sem registro na ANVISA podem causar alergias severas.</p>
+      </div>
+      <div class="alt go">
+        <div class="alti go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <p style="font-size:10px"><strong style="color:#FFD460">Validade:</strong> Sempre verifique o prazo de validade dos produtos. Monômeros e géis vencidos comprometem aderência e segurança.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 5 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Equipamentos <span class="gt">Profissionais</span></h2>
+    <p>Os equipamentos certos garantem segurança, precisão e resultado profissional</p>
+  </div>
+  <div class="g3 au d2" style="margin-bottom:10px">
+    <div class="cp">
+      <div class="ic pu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+      <span class="ts pu">Essencial</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Cabine de Exaustão</h3>
+      <p style="font-size:10px;margin-bottom:7px">Capta partículas e vapores tóxicos durante a lima e o uso de acrílico. <strong>Obrigatória por norma técnica.</strong> Filtro deve ser trocado regularmente.</p>
+      <div class="lvl-wrap">
+        <div class="lvl-label"><span style="font-size:9px;color:#7E879B">Necessidade</span><span style="font-size:9px;color:#B44CFF">Obrigatório</span></div>
+        <div class="lvl-track"><div class="lvl-fill" style="--w:100%;background:linear-gradient(90deg,#B44CFF,#6E2FFF)"></div></div>
+      </div>
+    </div>
+    <div class="cp">
+      <div class="ic go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+      <span class="ts go">Cura</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Lâmpada LED / UV</h3>
+      <p style="font-size:10px;margin-bottom:7px">LED: cura em 30–60s, maior vida útil, não aquece. UV: 2–3min, mais econômica. LED/UV dual: funciona com todos os géis do mercado.</p>
+      <div class="lvl-wrap">
+        <div class="lvl-label"><span style="font-size:9px;color:#7E879B">Potência ideal</span><span style="font-size:9px;color:#FFD460">36–48W</span></div>
+        <div class="lvl-track"><div class="lvl-fill" style="--w:80%;background:linear-gradient(90deg,#FFD460,#FF8C50)"></div></div>
+      </div>
+    </div>
+    <div class="cp">
+      <div class="ic bl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+      <span class="ts bl">Acabamento</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Politriz / Lixas Profissionais</h3>
+      <p style="font-size:10px;margin-bottom:7px">Politriz elétrica para agilidade. Lixas: 80–100 para reduzir material, 180 para refinar, 240 para acabamento, búfalo para polimento.</p>
+      <div class="lvl-wrap">
+        <div class="lvl-label"><span style="font-size:9px;color:#7E879B">Rotação segura</span><span style="font-size:9px;color:#2E6BFF">5.000–20.000 RPM</span></div>
+        <div class="lvl-track"><div class="lvl-fill" style="--w:70%;background:linear-gradient(90deg,#2E6BFF,#2EC8FF)"></div></div>
+      </div>
+    </div>
+    <div class="cp">
+      <div class="ic cy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></div>
+      <span class="ts cy">Brocas</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Bits e Brocas</h3>
+      <p style="font-size:10px;margin-bottom:7px">Cônica: remover material. Cilíndrica: superfície. Curetagem: cutícula. Diamantada: acabamento fino. Aço inox: esterilizável e reutilizável.</p>
+      <div class="lvl-wrap">
+        <div class="lvl-label"><span style="font-size:9px;color:#7E879B">Higiene</span><span style="font-size:9px;color:#2EC8FF">Esterilizar sempre</span></div>
+        <div class="lvl-track"><div class="lvl-fill" style="--w:100%;background:linear-gradient(90deg,#2EC8FF,#2E6BFF)"></div></div>
+      </div>
+    </div>
+    <div class="cp">
+      <div class="ic gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <span class="ts gr">Estrutura</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Mesa e Suporte</h3>
+      <p style="font-size:10px;margin-bottom:7px">Apoio de mão ergonômico. Iluminação LED focada com luz branca fria (5000–6500K). Estofado de cadeira lavável e impermeável.</p>
+      <div class="lvl-wrap">
+        <div class="lvl-label"><span style="font-size:9px;color:#7E879B">Impacto no resultado</span><span style="font-size:9px;color:#5EE89A">Alto</span></div>
+        <div class="lvl-track"><div class="lvl-fill" style="--w:85%;background:linear-gradient(90deg,#5EE89A,#2EC8FF)"></div></div>
+      </div>
+    </div>
+    <div class="cp">
+      <div class="ic pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+      <span class="ts pk">Pincelaria</span>
+      <h3 style="font-size:12px;margin-bottom:7px">Pincéis Profissionais</h3>
+      <p style="font-size:10px;margin-bottom:7px">Pincel chato: aplicação de gel. Pincel redondo: acrílico. Pincel liner: nail art. Cuida com limpador de pincel após cada uso.</p>
+      <div class="lvl-wrap">
+        <div class="lvl-label"><span style="font-size:9px;color:#7E879B">Qualidade recomendada</span><span style="font-size:9px;color:#FF6B9D">Profissional</span></div>
+        <div class="lvl-track"><div class="lvl-fill" style="--w:90%;background:linear-gradient(90deg,#FF6B9D,#B44CFF)"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="alt pu">
+      <div class="alti pu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#D4A0FF">Investimento inteligente:</strong> Equipamentos de qualidade reduzem tempo de serviço, aumentam a precisão e transmitem profissionalismo — refletindo diretamente no valor que você pode cobrar.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 6 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Tipos de <span class="gt5">Alongamento</span></h2>
+    <p>Cada técnica tem características únicas — escolha a certa para cada perfil de cliente</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+    <div class="card au d2" style="padding:12px 14px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">G</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px">
+            <h3 style="font-size:13px">Gel UV/LED</h3>
+            <span class="pill pu">Mais popular</span>
+            <span class="pill gr">Natural</span>
+          </div>
+          <div class="g3" style="gap:7px;margin-top:5px">
+            <div><span class="ts cy" style="margin:0 0 3px">Durabilidade</span><p style="font-size:10px">3–4 semanas com manutenção</p></div>
+            <div><span class="ts gr" style="margin:0 0 3px">Indicação</span><p style="font-size:10px">Todos os perfis de clientes</p></div>
+            <div><span class="ts go" style="margin:0 0 3px">Remoção</span><p style="font-size:10px">Lixar + acetona ou drilling</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card au d3" style="padding:12px 14px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">A</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px">
+            <h3 style="font-size:13px">Acrílico</h3>
+            <span class="pill go">Alta resistência</span>
+            <span class="pill co">Profissional</span>
+          </div>
+          <div class="g3" style="gap:7px;margin-top:5px">
+            <div><span class="ts cy" style="margin:0 0 3px">Durabilidade</span><p style="font-size:10px">4–6 semanas com manutenção</p></div>
+            <div><span class="ts gr" style="margin:0 0 3px">Indicação</span><p style="font-size:10px">Unhas que quebram com facilidade</p></div>
+            <div><span class="ts re" style="margin:0 0 3px">Atenção</span><p style="font-size:10px">Exige ventilação e cabine obrigatória</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card au d4" style="padding:12px 14px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">F</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px">
+            <h3 style="font-size:13px">Fibra de Vidro / Seda</h3>
+            <span class="pill bl">Leveza</span>
+            <span class="pill cy">Flexível</span>
+          </div>
+          <div class="g3" style="gap:7px;margin-top:5px">
+            <div><span class="ts cy" style="margin:0 0 3px">Durabilidade</span><p style="font-size:10px">2–3 semanas</p></div>
+            <div><span class="ts gr" style="margin:0 0 3px">Indicação</span><p style="font-size:10px">Reforço de unhas naturais frágeis</p></div>
+            <div><span class="ts go" style="margin:0 0 3px">Diferencial</span><p style="font-size:10px">Levíssimo, sensação de unha natural</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card au d5" style="padding:12px 14px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">P</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px">
+            <h3 style="font-size:13px">PolyGel</h3>
+            <span class="pill te">Inovação</span>
+            <span class="pill gr">Versátil</span>
+          </div>
+          <div class="g3" style="gap:7px;margin-top:5px">
+            <div><span class="ts cy" style="margin:0 0 3px">Durabilidade</span><p style="font-size:10px">3–5 semanas</p></div>
+            <div><span class="ts gr" style="margin:0 0 3px">Indicação</span><p style="font-size:10px">Clientes ativas, esportivas</p></div>
+            <div><span class="ts go" style="margin:0 0 3px">Diferencial</span><p style="font-size:10px">Gel + acrílico — leve e resistente</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card au d6" style="padding:12px 14px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">N</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px">
+            <h3 style="font-size:13px">Nail Wrap / Gel de Sobreposição</h3>
+            <span class="pill pk">Sem extensão</span>
+            <span class="pill pu">Overlay</span>
+          </div>
+          <div class="g3" style="gap:7px;margin-top:5px">
+            <div><span class="ts cy" style="margin:0 0 3px">Durabilidade</span><p style="font-size:10px">2–3 semanas</p></div>
+            <div><span class="ts gr" style="margin:0 0 3px">Indicação</span><p style="font-size:10px">Unhas naturais que precisam só de proteção</p></div>
+            <div><span class="ts go" style="margin:0 0 3px">Benefício</span><p style="font-size:10px">Não adiciona comprimento, só fortalece</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 7 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Formatos: <span class="gt2">O Estilo que Define Tudo</span></h2>
+    <p>O formato certo valoriza a mão, reflete a personalidade e define o estilo da cliente</p>
+  </div>
+  <div class="g6 au d2" style="margin-bottom:10px">
+    <div class="cp" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:7px">⬜</div>
+      <span class="ts pu">Formato 01</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Quadrada</h3>
+      <p style="font-size:10px;margin-bottom:7px">Borda reta e cantos a 90°. Clássica e moderna. Ideal para dedos longos e finos.</p>
+      <span class="pill pu">Dedos longos</span>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:7px">🔵</div>
+      <span class="ts bl">Formato 02</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Redonda</h3>
+      <p style="font-size:10px;margin-bottom:7px">Bordas laterais retas, ponta arredondada. Atemporal, discreta e resistente a quebras.</p>
+      <span class="pill bl">Universal</span>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:7px">🥚</div>
+      <span class="ts cy">Formato 03</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Oval</h3>
+      <p style="font-size:10px;margin-bottom:7px">Laterais suavizadas em curva até a ponta oval. Elegante, alonga visualmente os dedos curtos.</p>
+      <span class="pill cy">Dedos curtos</span>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:7px">🌰</div>
+      <span class="ts go">Formato 04</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Amendoada</h3>
+      <p style="font-size:10px;margin-bottom:7px">Laterais cônicas até a ponta fina e arredondada. Sofisticado e sensual. Exige comprimento médio.</p>
+      <span class="pill go">Sofisticado</span>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:7px">🩰</div>
+      <span class="ts pk">Formato 05</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Ballerina / Coffin</h3>
+      <p style="font-size:10px;margin-bottom:7px">Laterais afiladas com ponta reta. Tendência máxima. Requer comprimento e resistência de material.</p>
+      <span class="pill pk">Tendência</span>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:26px;margin-bottom:7px">⚡</div>
+      <span class="ts re">Formato 06</span>
+      <h3 style="font-size:12px;margin-bottom:6px">Stiletto</h3>
+      <p style="font-size:10px;margin-bottom:7px">Laterais cônicas até ponta aguda. Dramático e bold. Comprimento longo obrigatório. Alta manutenção.</p>
+      <span class="pill re">Avançado</span>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div class="g2" style="gap:9px">
+      <div class="card bc bgo">
+        <span class="ts go">Como indicar o formato ideal?</span>
+        <div class="chk" style="margin-top:7px"><div class="chkd go"></div><p style="font-size:10px">Observe o comprimento natural dos dedos</p></div>
+        <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Considere a rotina e o trabalho da cliente</p></div>
+        <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Pergunte referências de estilo e preferências</p></div>
+      </div>
+      <div class="card bc bbl">
+        <span class="ts bl">Regra de proporção</span>
+        <div class="chk" style="margin-top:7px"><div class="chkd bl"></div><p style="font-size:10px">Dedos curtos → oval, redondo, amendoado</p></div>
+        <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">Dedos largos → evitar quadrado e stiletto</p></div>
+        <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">Dedos longos → qualquer formato fica bem</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 8 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Passo a Passo: <span class="gt4">Do Preparo ao Acabamento</span></h2>
+    <p>As 6 etapas da execução profissional — sem pular nenhuma</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+    <div class="card au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Higienização e Avaliação</h3>
+            <span class="pill pu">~5 min</span>
+          </div>
+          <p style="font-size:10px">Higienize as mãos da cliente com álcool 70%. Avalie o estado das unhas (micose, lesões, fragilidade). Vista seus EPIs. Prepare o campo de trabalho com toalha descartável.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Preparo da Lâmina</h3>
+            <span class="pill bl">~10 min</span>
+          </div>
+          <p style="font-size:10px">Empurre a cutícula com empurrinha metálica esterilizada. Use broca de curetagem suavemente. Lime a superfície (lixa 180) para criar micro-rugosidades. Aplique desidratante e primer — somente na lâmina.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Aplicação da Base / Bond</h3>
+            <span class="pill cy">~5 min</span>
+          </div>
+          <p style="font-size:10px">Aplique base gel em camada fina e uniforme. Cure por 30–60s. Não limpe a dispersão — ela garante a aderência do material de construção.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Estruturação e Modelagem</h3>
+            <span class="pill go">~20 min</span>
+          </div>
+          <p style="font-size:10px">Posicione o form ou tip. Aplique gel de construção em camadas, construindo o arco C (curvatura da unha). Cure entre camadas. Garanta espessura uniforme da base à ponta.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Lima e Refinamento</h3>
+            <span class="pill pk">~15 min</span>
+          </div>
+          <p style="font-size:10px">Use lixa 100–150 para dar forma. Lixa 180 para refinar. Búfalo para polimento. Remova todo o pó com escova e álcool antes de finalizar. Defina o formato escolhido com precisão.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:13px">Acabamento e Finalização</h3>
+            <span class="pill te">~10 min</span>
+          </div>
+          <p style="font-size:10px">Aplique top coat em camada uniforme. Cure completamente. Limpe a dispersão com cleaner se necessário. Hidrate a cutícula com óleo. Faça a orientação pós-serviço à cliente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 9 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Erros que <span class="gt3">Custam Clientes</span></h2>
+    <p>Identifique, entenda e elimine os erros mais comuns na prática profissional</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+    <div class="g2 au d2" style="gap:9px">
+      <div class="vs-bad">
+        <span class="ts re" style="margin-bottom:7px">❌ Erro 1 — Produto na Pele</span>
+        <p style="font-size:10px">Gel ou acrílico tocando a cutícula ou pele lateral. Causa lifting (levantamento), reações alérgicas e inflamação.</p>
+      </div>
+      <div class="vs-good">
+        <span class="ts gr" style="margin-bottom:7px">✅ Como Evitar</span>
+        <p style="font-size:10px">Aplique o material deixando 0,5–1mm de distância da pele. Capricho no preparo de cutícula evita 80% dos problemas.</p>
+      </div>
+    </div>
+    <div class="g2 au d3" style="gap:9px">
+      <div class="vs-bad">
+        <span class="ts re" style="margin-bottom:7px">❌ Erro 2 — Bolhas de Ar</span>
+        <p style="font-size:10px">Bolhas no gel indicam aplicação rápida demais, pincel errado ou mistura inadequada. Comprometem a estética e a durabilidade.</p>
+      </div>
+      <div class="vs-good">
+        <span class="ts gr" style="margin-bottom:7px">✅ Como Evitar</span>
+        <p style="font-size:10px">Mova o pincel devagar, sem pressão excessiva. Use o dorso do pincel para "amassar" o gel e liberar bolhas antes de curar.</p>
+      </div>
+    </div>
+    <div class="g2 au d4" style="gap:9px">
+      <div class="vs-bad">
+        <span class="ts re" style="margin-bottom:7px">❌ Erro 3 — Cura Incompleta</span>
+        <p style="font-size:10px">Gel mal curado fica mole, quebra fácil e pode causar alergia ao monômero residual. Lâmpada fraca ou tempo insuficiente são as causas.</p>
+      </div>
+      <div class="vs-good">
+        <span class="ts gr" style="margin-bottom:7px">✅ Como Evitar</span>
+        <p style="font-size:10px">Sempre curar pelo tempo indicado pelo fabricante. Verificar potência da lâmpada regularmente. Trocar lâmpadas UV a cada 6 meses.</p>
+      </div>
+    </div>
+    <div class="g2 au d5" style="gap:9px">
+      <div class="vs-bad">
+        <span class="ts re" style="margin-bottom:7px">❌ Erro 4 — Lima Excessiva</span>
+        <p style="font-size:10px">Limar demais a lâmina natural fragiliza e pode atingir o leito ungueal. Causa sensibilidade, dor e risco de infecção.</p>
+      </div>
+      <div class="vs-good">
+        <span class="ts gr" style="margin-bottom:7px">✅ Como Evitar</span>
+        <p style="font-size:10px">Use lixa 180 no preparo — nunca abrasivas fortes. A função é criar micro-rugosidade, não remover espessura. Máximo 2–3 passadas suaves.</p>
+      </div>
+    </div>
+    <div class="g2 au d6" style="gap:9px">
+      <div class="vs-bad">
+        <span class="ts re" style="margin-bottom:7px">❌ Erro 5 — Arco C Ausente</span>
+        <p style="font-size:10px">Unha plana sem curvatura lateral quebra com facilidade. A curvatura C é estrutural — não apenas estética.</p>
+      </div>
+      <div class="vs-good">
+        <span class="ts gr" style="margin-bottom:7px">✅ Como Evitar</span>
+        <p style="font-size:10px">Durante a modelagem, aperte levemente as laterais antes de curar ou use pinça de arco. Garanta 30–40% de curvatura na seção transversal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══ SLIDE 10 ══ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Manutenção e <span class="gt">Fidelização</span></h2>
+    <p>Onde a recorrência acontece — e a sua agenda se mantém sempre cheia</p>
+  </div>
+  <div class="g4 au d2" style="margin-bottom:10px">
+    <div class="card" style="text-align:center">
+      <div class="metric pu">2–3</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:2px">Semanas</p>
+      <p style="font-size:9px;color:#7E879B">Manutenção de gel e fibra</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric cy">3–4</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:2px">Semanas</p>
+      <p style="font-size:9px;color:#7E879B">Manutenção de acrílico e polygel</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric go">24h</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:2px">Sem molhar</p>
+      <p style="font-size:9px;color:#7E879B">Orientação pós-serviço obrigatória</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="metric gr">100%</div>
+      <p style="font-size:10px;font-weight:600;color:#F5F7FB;margin-bottom:2px">Retorno</p>
+      <p style="font-size:9px;color:#7E879B">Meta com régua de relacionamento</p>
+    </div>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:10px">
+    <div class="cp">
+      <span class="ts pu" style="margin-bottom:9px">📋 Orientações Pós-Serviço</span>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Evitar água nas primeiras 24h</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Não usar as unhas como ferramenta</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Hidratar cutículas com óleo diariamente</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Usar luva ao lavar louça / produtos químicos</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Em caso de levantamento, avisar a profissional</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Nunca arrancar — risco de lesar a lâmina</p></div>
+    </div>
+    <div class="cp">
+      <span class="ts go" style="margin-bottom:9px">🔁 Régua de Fidelização</span>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="tdot" style="background:#B44CFF"></div>
+          <p style="font-size:10px"><strong>Dia 1:</strong> WhatsApp de boas-vindas + orientações</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="tdot" style="background:#2E6BFF"></div>
+          <p style="font-size:10px"><strong>Dia 3:</strong> "Como estão suas unhas? 💅"</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="tdot" style="background:#2EC8FF"></div>
+          <p style="font-size:10px"><strong>Dia 14:</strong> Lembrete de manutenção + agendamento</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="tdot" style="background:#FFD460"></div>
+          <p style="font-size:10px"><strong>Dia 21:</strong> Oferta especial de retorno fiel</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="tdot" style="background:#5EE89A"></div>
+          <p style="font-size:10px"><strong>Mensal:</strong> Conteúdo exclusivo + novidades</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div style="background:linear-gradient(135deg,rgba(180,76,255,.1),rgba(46,107,255,.1),rgba(46,200,255,.08));border:1px solid rgba(180,76,255,.22);border-radius:15px;padding:16px;text-align:center">
+      <p style="font-size:13px;font-weight:800;color:#F5F7FB;margin-bottom:6px">💅 Técnica forma profissionais. <span class="gt">Cuidado forma especialistas.</span></p>
+      <p style="font-size:10px;color:#AAB3C5;line-height:1.75;max-width:580px;margin:0 auto">Dominar biossegurança, materiais e técnicas é o que separa quem executa de quem <strong style="color:#F5F7FB">transforma</strong>. Cada detalhe aplicado com conhecimento é a assinatura do seu trabalho profissional.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const IND=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  IND.appendChild(d);
+}
+
+function upd(){
+  IND.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  document.querySelectorAll('.si').forEach(s=>s.scrollTop=0);
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd()}
+function next(){if(C<T-1)go(C+1)}
+function prev(){if(C>0)go(C-1)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+  if(e.key==='f'||e.key==='F')toggleFs()
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].screenX;
+  ty=e.changedTouches[0].screenY;
+  scrolling=false;
+},{passive:true});
+document.addEventListener('touchmove',e=>{
+  const dx=Math.abs(e.changedTouches[0].screenX-tx);
+  const dy=Math.abs(e.changedTouches[0].screenY-ty);
+  if(dy>dx)scrolling=true;
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(scrolling)return;
+  const d=tx-e.changedTouches[0].screenX;
+  if(Math.abs(d)>50){d>0?next():prev()}
+});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{})}
+  else{document.exitFullscreen()}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
