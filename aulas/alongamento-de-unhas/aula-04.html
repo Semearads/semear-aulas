@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Banho de Gel & Esmaltação em Gel — Curso Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;position:relative}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100vh;will-change:transform}
+
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:46px 13px 112px;
+}
+.slide::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(820px 380px at 75% 14%,rgba(80,220,180,.11) 0%,transparent 42%),
+    radial-gradient(760px 340px at 20% 78%,rgba(46,107,255,.12) 0%,transparent 42%),
+    radial-gradient(540px 280px at 50% 48%,rgba(94,232,154,.06) 0%,transparent 42%),
+    linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);
+}
+.slide::after{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14;
+  background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);
+  background-size:24px 24px;
+}
+.slide>*{position:relative;z-index:1}
+
+.si{
+  width:100%;max-width:960px;
+  display:flex;flex-direction:column;align-items:center;
+  overflow-y:auto;
+  max-height:calc(100vh - 160px);
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding:2px 3px 10px;
+}
+.si::-webkit-scrollbar{display:none}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.14;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;line-height:1.3;color:#F5F7FB}
+p,li,span{font-weight:400;line-height:1.65;color:#AAB3C5}
+strong{font-weight:700;color:#F5F7FB}
+
+/* GRADIENTES */
+.ga{background:linear-gradient(135deg,#28D8C8 0%,#2E6BFF 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.gb{background:linear-gradient(135deg,#5EE89A 0%,#28D8C8 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.gc{background:linear-gradient(135deg,#2E6BFF 0%,#28D8C8 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.gd{background:linear-gradient(135deg,#5EE89A 0%,#2E6BFF 50%,#28D8C8 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+.ge{background:linear-gradient(135deg,#28D8C8 0%,#5EE89A 45%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 4s linear infinite}
+@keyframes sh{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.gl{width:70px;height:4px;border-radius:2px;background:linear-gradient(90deg,#28D8C8,#2E6BFF);margin-bottom:13px;animation:lg .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 13px;transform-origin:center}
+.gl.v2{background:linear-gradient(90deg,#5EE89A,#28D8C8)}
+.gl.v3{background:linear-gradient(90deg,#2E6BFF,#5EE89A)}
+.gl.v4{background:linear-gradient(90deg,#28D8C8,#5EE89A)}
+@keyframes lg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 17px;border-radius:999px;margin-bottom:16px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.badge.te{background:rgba(40,216,200,.09);border:1px solid rgba(40,216,200,.3);color:#7DFFF5}
+.badge.gr{background:rgba(94,232,154,.09);border:1px solid rgba(94,232,154,.3);color:#5EE89A}
+.badge.bl{background:rgba(46,107,255,.09);border:1px solid rgba(46,107,255,.3);color:#8FAEFF}
+.badge.go{background:rgba(255,200,60,.09);border:1px solid rgba(255,200,60,.3);color:#FFD460}
+.badge.co{background:rgba(255,140,80,.09);border:1px solid rgba(255,140,80,.3);color:#FFB890}
+.badge.pk{background:rgba(255,107,157,.09);border:1px solid rgba(255,107,157,.3);color:#FF9DC0}
+.badge.re{background:rgba(255,80,80,.09);border:1px solid rgba(255,80,80,.3);color:#FF8080}
+.badge.pu{background:rgba(180,76,255,.09);border:1px solid rgba(180,76,255,.3);color:#D4A0FF}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:15px;box-shadow:0 10px 32px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.04);padding:13px 12px;backdrop-filter:blur(8px);transition:all .4s ease}
+.card:hover{border-color:rgba(40,216,200,.15);transform:translateY(-2px)}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:15px;box-shadow:0 14px 40px rgba(0,0,0,.4),0 0 24px rgba(40,216,200,.04);padding:14px 13px;backdrop-filter:blur(10px);transition:all .4s ease}
+.cp:hover{border-color:rgba(40,216,200,.18);transform:translateY(-2px)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;width:100%}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;width:100%}
+.g6{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%}
+
+/* ÍCONE */
+.ic{width:38px;height:38px;border-radius:10px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic svg{width:18px;height:18px}
+.ic.te{background:rgba(40,216,200,.12)}.ic.te svg{color:#28D8C8}
+.ic.gr{background:rgba(94,232,154,.12)}.ic.gr svg{color:#5EE89A}
+.ic.bl{background:rgba(46,107,255,.12)}.ic.bl svg{color:#2E6BFF}
+.ic.go{background:rgba(255,200,60,.12)}.ic.go svg{color:#FFD460}
+.ic.co{background:rgba(255,140,80,.12)}.ic.co svg{color:#FF8C50}
+.ic.pk{background:rgba(255,107,157,.12)}.ic.pk svg{color:#FF6B9D}
+.ic.re{background:rgba(255,80,80,.12)}.ic.re svg{color:#FF5050}
+.ic.pu{background:rgba(180,76,255,.12)}.ic.pu svg{color:#B44CFF}
+
+/* LABELS */
+.ts{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;display:block}
+.ts.te{color:#28D8C8}.ts.gr{color:#5EE89A}.ts.bl{color:#2E6BFF}.ts.go{color:#FFD460}
+.ts.co{color:#FF8C50}.ts.pk{color:#FF6B9D}.ts.re{color:#FF5050}.ts.pu{color:#B44CFF}
+.ts.wh{color:#F5F7FB}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.pill.te{background:rgba(40,216,200,.1);border:1px solid rgba(40,216,200,.25);color:#7DFFF5}
+.pill.gr{background:rgba(94,232,154,.1);border:1px solid rgba(94,232,154,.25);color:#5EE89A}
+.pill.bl{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#8FAEFF}
+.pill.go{background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.25);color:#FFD460}
+.pill.co{background:rgba(255,140,80,.1);border:1px solid rgba(255,140,80,.25);color:#FFB890}
+.pill.pk{background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.25);color:#FF9DC0}
+.pill.re{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.25);color:#FF8080}
+.pill.pu{background:rgba(180,76,255,.1);border:1px solid rgba(180,76,255,.25);color:#D4A0FF}
+.pill.wh{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#F5F7FB}
+
+/* BORDA LATERAL */
+.bc{position:relative;overflow:hidden;padding-left:15px!important}
+.bc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.bc.bte::before{background:#28D8C8}.bc.bgr::before{background:#5EE89A}.bc.bbl::before{background:#2E6BFF}
+.bc.bgo::before{background:#FFD460}.bc.bco::before{background:#FF8C50}.bc.bpk::before{background:#FF6B9D}
+.bc.bre::before{background:#FF5050}.bc.bpu::before{background:#B44CFF}
+
+/* NÚMEROS */
+.nb{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;animation:gn 3s ease-in-out infinite}
+.nb.n1{background:linear-gradient(145deg,#28D8C8,#1ABAAA)}
+.nb.n2{background:linear-gradient(145deg,#2E6BFF,#1E56D9);animation-delay:.3s}
+.nb.n3{background:linear-gradient(145deg,#5EE89A,#30C870);animation-delay:.6s}
+.nb.n4{background:linear-gradient(145deg,#FFD460,#E0A820);animation-delay:.9s}
+.nb.n5{background:linear-gradient(145deg,#B44CFF,#8030D9);animation-delay:1.2s}
+.nb.n6{background:linear-gradient(145deg,#FF6B9D,#D04070);animation-delay:1.5s}
+.nb.n7{background:linear-gradient(145deg,#FF8C50,#E06030);animation-delay:1.8s}
+@keyframes gn{0%,100%{box-shadow:0 0 10px rgba(40,216,200,.08)}50%{box-shadow:0 0 22px rgba(40,216,200,.3)}}
+
+/* ALERTAS */
+.alt{border-radius:11px;padding:9px 11px;display:flex;gap:8px;align-items:flex-start}
+.alt.re{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.18)}
+.alt.go{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.18)}
+.alt.gr{background:rgba(94,232,154,.05);border:1px solid rgba(94,232,154,.18)}
+.alt.te{background:rgba(40,216,200,.05);border:1px solid rgba(40,216,200,.18)}
+.alt.bl{background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.18)}
+.alt.co{background:rgba(255,140,80,.05);border:1px solid rgba(255,140,80,.18)}
+.alt.pu{background:rgba(180,76,255,.05);border:1px solid rgba(180,76,255,.18)}
+.alti{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.alti svg{width:12px;height:12px}
+.alti.re{background:rgba(255,80,80,.15)}.alti.re svg{color:#FF5050}
+.alti.go{background:rgba(255,200,60,.15)}.alti.go svg{color:#FFD460}
+.alti.gr{background:rgba(94,232,154,.15)}.alti.gr svg{color:#5EE89A}
+.alti.te{background:rgba(40,216,200,.15)}.alti.te svg{color:#28D8C8}
+.alti.bl{background:rgba(46,107,255,.15)}.alti.bl svg{color:#2E6BFF}
+.alti.co{background:rgba(255,140,80,.15)}.alti.co svg{color:#FF8C50}
+.alti.pu{background:rgba(180,76,255,.15)}.alti.pu svg{color:#B44CFF}
+
+/* CHECKLISTS */
+.chk{display:flex;align-items:flex-start;gap:6px;margin-bottom:5px}
+.chkd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:8px}
+.chkd.te{background:#28D8C8}.chkd.gr{background:#5EE89A}.chkd.bl{background:#2E6BFF}
+.chkd.go{background:#FFD460}.chkd.co{background:#FF8C50}.chkd.pk{background:#FF6B9D}
+.chkd.re{background:#FF5050}.chkd.pu{background:#B44CFF}.chkd.wh{background:#F5F7FB}
+
+/* VS CARDS */
+.vb{background:rgba(255,80,80,.04);border:1px solid rgba(255,80,80,.14);border-radius:13px;padding:11px}
+.vg{background:rgba(94,232,154,.04);border:1px solid rgba(94,232,154,.14);border-radius:13px;padding:11px}
+
+/* STEP ROW */
+.sr{display:flex;gap:8px;align-items:flex-start}
+
+/* STITLE */
+.stitle{text-align:center;margin-bottom:12px;width:100%}
+.stitle h2{font-size:clamp(15px,3.2vw,24px);margin-bottom:5px}
+.stitle p{font-size:10px;color:#7E879B;max-width:640px;margin:0 auto;line-height:1.7}
+
+/* SEPARADOR */
+.sep{width:100%;display:flex;align-items:center;gap:10px;margin:10px 0 8px}
+.sep span{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.sep::before,.sep::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
+
+/* DH CARDS */
+.dh{display:flex;gap:9px;width:100%;margin-bottom:10px}
+.dh-card{flex:1;border-radius:13px;padding:10px 13px;display:flex;align-items:center;gap:10px}
+.dh-card.bg{background:linear-gradient(135deg,rgba(40,216,200,.1),rgba(94,232,154,.07));border:1px solid rgba(40,216,200,.22)}
+.dh-card.eg{background:linear-gradient(135deg,rgba(46,107,255,.1),rgba(94,232,154,.07));border:1px solid rgba(46,107,255,.22)}
+
+/* LIXA TABLE */
+.lxt{width:100%;border-collapse:separate;border-spacing:0 5px}
+.lxt th{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7E879B;padding:6px 10px;text-align:left}
+.lxt td{font-size:10px;padding:9px 10px;color:#AAB3C5;background:rgba(255,255,255,.025);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.lxt td:first-child{border-left:1px solid rgba(255,255,255,.05);border-radius:8px 0 0 8px}
+.lxt td:last-child{border-right:1px solid rgba(255,255,255,.05);border-radius:0 8px 8px 0}
+.lxt tr:hover td{background:rgba(255,255,255,.04)}
+
+/* SLIDE 1 */
+.s1w{text-align:center;max-width:900px;width:100%;display:flex;flex-direction:column;align-items:center;padding-top:8px}
+.s1w h1{font-size:clamp(20px,4.8vw,52px);margin-bottom:12px}
+.s1sub{font-size:clamp(10px,1.5vw,13px);color:#AAB3C5;max-width:580px;margin:0 auto 18px;line-height:1.8}
+.pr{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+
+/* CHROME */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#28D8C8,#5EE89A,#2E6BFF,#28D8C8);background-size:200% auto;animation:sh 3s linear infinite;transition:width .6s ease}
+.fs-btn{position:fixed;top:11px;right:11px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:6px 11px;border-radius:9px;cursor:pointer;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:5px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(40,216,200,.3)}
+.fs-btn svg{width:11px;height:11px}
+.sc{position:fixed;bottom:27px;left:13px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.32);padding:5px 11px;border-radius:8px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05)}
+.sc .cn{color:#28D8C8;font-weight:800}
+.ind{position:fixed;bottom:27px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.32);padding:5px 10px;border-radius:15px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05)}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer}
+.ind .dot.active{background:#28D8C8;box-shadow:0 0 9px rgba(40,216,200,.6);width:21px;border-radius:4px}
+.nav-arr{position:fixed;bottom:22px;right:13px;z-index:998;display:flex;gap:6px}
+.nav-arr button{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px)}
+.nav-arr button:hover{background:rgba(40,216,200,.18);border-color:rgba(40,216,200,.4);color:#fff;transform:scale(1.05)}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .62s ease both}
+.slide.active .as{animation:fadeScale .62s ease both}
+.d1{animation-delay:.06s!important}.d2{animation-delay:.14s!important}.d3{animation-delay:.22s!important}
+.d4{animation-delay:.30s!important}.d5{animation-delay:.38s!important}.d6{animation-delay:.46s!important}
+.d7{animation-delay:.54s!important}.d8{animation-delay:.62s!important}.d9{animation-delay:.70s!important}
+
+/* RESPONSIVO */
+@media(max-width:600px){
+  .slide{padding:42px 10px 110px}
+  .g3{grid-template-columns:1fr}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g6{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .dh{flex-direction:column}
+  .si{max-height:calc(100vh - 152px)}
+  .stitle h2{font-size:14px}
+  .s1w h1{font-size:20px}
+  .lxt th,.lxt td{font-size:9px;padding:7px 7px}
+}
+@media(min-width:601px) and (max-width:820px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g6{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="presentation">
+
+<div class="progress" id="prog" style="width:10%"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="slides" id="sw">
+
+<!-- ══════════ SLIDE 1 ══════════ -->
+<section class="slide active">
+<div class="s1w">
+  <div class="badge te au d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    Curso Profissional Completo
+  </div>
+  <h1 class="au d2"><span class="ga">Banho de Gel</span><br>&amp; <span class="gb">Esmaltação em Gel</span></h1>
+  <p class="s1sub au d3">As duas técnicas de gel mais requisitadas do mercado — protocolos completos de preparo, aplicação, lixamento, formatos e acabamento profissional de alto padrão.</p>
+  <div class="pr au d4">
+    <span class="pill te">💧 Banho de Gel</span>
+    <span class="pill gr">✨ Esmaltação em Gel</span>
+    <span class="pill bl">🛡️ Biossegurança</span>
+    <span class="pill go">📐 Formatos</span>
+    <span class="pill pu">🔧 Materiais</span>
+    <span class="pill pk">💎 Acabamento</span>
+  </div>
+  <div class="dh au d5" style="margin-top:20px">
+    <div class="dh-card bg">
+      <div class="ic te" style="margin:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+      </div>
+      <div>
+        <span class="ts te" style="margin:0 0 2px">Técnica 01</span>
+        <p style="font-size:11px;font-weight:700;color:#F5F7FB">Banho de Gel</p>
+        <p style="font-size:9px;color:#7E879B">Proteção • Resistência • Brilho Intenso</p>
+      </div>
+    </div>
+    <div class="dh-card eg">
+      <div class="ic gr" style="margin:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <div>
+        <span class="ts gr" style="margin:0 0 2px">Técnica 02</span>
+        <p style="font-size:11px;font-weight:700;color:#F5F7FB">Esmaltação em Gel</p>
+        <p style="font-size:9px;color:#7E879B">Cor • Durabilidade • Versatilidade</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 2 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v2"></div>
+    <h2>Anatomia &amp; Avaliação: <span class="ga">Conheça Antes de Aplicar</span></h2>
+    <p>Entender a estrutura da unha protege sua cliente e garante resultados duradouros</p>
+  </div>
+  <div class="g3 au d2" style="margin-bottom:9px">
+    <div class="cp bc bte">
+      <span class="ts te">Estrutura 01</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Lâmina Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:6px">Parte visível — formada por queratina compactada. É a superfície de todo trabalho em gel. Deve ter espessura preservada. A lixa fina cria micro-rugosidades para aderência sem afinar. Evitar pressão excessiva durante o preparo.</p>
+      <span class="pill te">Área de trabalho</span>
+    </div>
+    <div class="cp bc bgr">
+      <span class="ts gr">Estrutura 02</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Leito Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:6px">Tecido rosado e vascularizado sob a lâmina. Jamais atingir com broca ou lixa abrasiva. Lesões causam dor intensa, sangramento e risco real de infecção. Sempre manter a broca de preparo na superfície da lâmina.</p>
+      <span class="pill re">Zona proibida</span>
+    </div>
+    <div class="cp bc bgo">
+      <span class="ts go">Estrutura 03</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Cutícula / Eponíquio</h3>
+      <p style="font-size:10px;margin-bottom:6px">Pele protetora da matriz. Nunca cortar — apenas empurrar com empurrinha esterilizada. O gel não pode tocar essa área — causa levantamento precoce (lifting) e reação alérgica na cliente.</p>
+      <span class="pill go">Empurrar — nunca cortar</span>
+    </div>
+    <div class="cp bc bpu">
+      <span class="ts pu">Estrutura 04</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Matriz Ungueal</h3>
+      <p style="font-size:10px;margin-bottom:6px">Responsável pelo crescimento da lâmina — fica protegida sob a cutícula. Qualquer trauma nessa região pode gerar deformidades permanentes em todas as unhas futuras da cliente.</p>
+      <span class="pill pu">Crescimento</span>
+    </div>
+    <div class="cp bc bpk">
+      <span class="ts pk">Estrutura 05</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Hiponíquio</h3>
+      <p style="font-size:10px;margin-bottom:6px">Vedação natural entre lâmina e dedo na borda livre. Barreira contra fungos e bactérias. Não forçar limpeza sob a borda — rompimento causa onicólise (descolamento da lâmina).</p>
+      <span class="pill pk">Barreira natural</span>
+    </div>
+    <div class="cp bc bbl">
+      <span class="ts bl">Estrutura 06</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Pterígio</h3>
+      <p style="font-size:10px;margin-bottom:6px">Crescimento de pele sobre a lâmina por ressecamento. Remover com broca de curetagem antes da aplicação do gel. Orientar a cliente a hidratar cutículas diariamente com óleo específico.</p>
+      <span class="pill go">Remover antes</span>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%;margin-bottom:8px">
+    <div class="sep"><span style="color:#FF5050">⚠️ Não Atenda Quando Houver:</span></div>
+  </div>
+  <div class="g4 au d4">
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Onicomicose</strong> ativa — fungo visível na lâmina</p></div>
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Feridas</strong> ou inflamações ao redor do leito</p></div>
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Alergia</strong> confirmada a gel, resinas ou acrilatos</p></div>
+    <div class="alt re"><div class="alti re"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><p style="font-size:9px"><strong style="color:#FF5050">Lâmina</strong> muito fina, lascada ou com lesão visível</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 3 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Biossegurança: <span class="ga">Protocolo Inegociável</span></h2>
+    <p>A segurança da profissional e da cliente começa antes de qualquer frasco ser aberto</p>
+  </div>
+  <div class="g4 au d2" style="margin-bottom:9px">
+    <div class="cp" style="text-align:center">
+      <div class="ic pu" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <span class="ts pu">EPIs Obrigatórios</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Luvas de nitrila descartáveis</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Máscara cirúrgica ou PFF2</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Óculos de proteção</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd pu"></div><p style="font-size:10px">Avental impermeável</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic te" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <span class="ts te">Higienização</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd te"></div><p style="font-size:10px">Álcool 70% — mãos sua e da cliente</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd te"></div><p style="font-size:10px">Toalha de papel descartável</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd te"></div><p style="font-size:10px">Troca de luvas entre clientes</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd te"></div><p style="font-size:10px">Esterilizar metálicos em autoclave/UV</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic go" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></div>
+      <span class="ts go">Descarte Correto</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd go"></div><p style="font-size:10px">Saco branco lixo infectante</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd go"></div><p style="font-size:10px">Lixas e palitos: uso único</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd go"></div><p style="font-size:10px">Frascos de gel: tampa sempre fechada</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd go"></div><p style="font-size:10px">Gel curado: descarte em lixo comum</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div class="ic gr" style="margin:0 auto 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <span class="ts gr">Ambiente</span>
+      <div class="chk" style="margin-top:7px;text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Ventilação constante no espaço</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Cabine de exaustão recomendada</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Iluminação LED branca fria</p></div>
+      <div class="chk" style="text-align:left"><div class="chkd gr"></div><p style="font-size:10px">Superfícies higienizadas entre atendimentos</p></div>
+    </div>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:9px">
+    <div class="alt te">
+      <div class="alti te"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#28D8C8">Banho de Gel:</strong> O gel não polimerizado é altamente alergênico em contato com a pele. Nunca deixar gel tocar cutícula ou pele lateral — use pincel com precisão. Lâmpada LED deve ser verificada mensalmente quanto à potência para garantir cura completa.</p>
+    </div>
+    <div class="alt bl">
+      <div class="alti bl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#2E6BFF">Esmaltação em Gel:</strong> Gel color não polimerizado é igualmente alergênico. Camadas muito espessas impedem a cura total e causam reação química na lâmina. Sempre curar camada por camada com o tempo correto na lâmpada.</p>
+    </div>
+  </div>
+  <div class="au d4" style="width:100%">
+    <div class="card" style="text-align:center;padding:10px 13px">
+      <p style="font-size:11px;font-weight:700;color:#F5F7FB">🛡️ Biossegurança é o alicerce da sua <span class="ga">credibilidade profissional</span> — nunca negocie isso</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 4 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Kit Completo: <span class="ga">Banho de Gel</span></h2>
+    <p>Cada material, sua função exata e como usá-lo corretamente na técnica</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="card au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Desidratante (Prep)</h3><span class="pill te">Preparo</span>
+          </div>
+          <p style="font-size:10px">Remove umidade, oleosidade e resíduos da lâmina criando o ambiente ideal para aderência máxima do gel. Aplicar com haste de algodão seco ou pincel dedicado. Cobrir toda a lâmina inclusive laterais. Aguardar secar completamente (superfície fica com aspecto matte esbranquiçado). Não tocar a lâmina após aplicar — recontamina com oleosidade.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Primer Não Ácido (Bond)</h3><span class="pill go">Aderência</span>
+          </div>
+          <p style="font-size:10px">Cria ponte molecular entre a lâmina natural e o gel base. Mais seguro que o primer ácido — sem risco de queimadura no leito. Camada extremamente fina e uniforme apenas sobre a lâmina. Aguardar secar (30–60 segundos). Produto pegajoso que não deve tocar pele ou cutícula. É o diferencial entre um banho que dura e um que levanta em dias.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Base Gel (Base Bond)</h3><span class="pill gr">Base</span>
+          </div>
+          <p style="font-size:10px">Primeira camada de gel que adere à lâmina. Camada fina e uniforme de cutícula à borda livre — manter 0,5mm de distância da pele. Curar em LED 30–60s. Não limpar a camada dispersa — ela garante adesão. Para banho de gel espesso, a base cria o alicerce estrutural. Usar pincel dedicado exclusivamente para base.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Gel de Cobertura (Cover / Camouflage)</h3><span class="pill te">Construção</span>
+          </div>
+          <p style="font-size:10px">Gel de alta viscosidade (thick) que cobre, protege e embeleza a lâmina natural. Disponível em tons: nude, rosa, branco leitoso, transparente e camouflage para camuflar imperfeições. Aplicar em 2–3 camadas finas, curando cada uma. Nunca em camada única grossa — impede cura total. Modelar com pincel plano para superfície nivelada.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Lâmpada LED/UV</h3><span class="pill bl">Cura</span>
+          </div>
+          <p style="font-size:10px">Equipamento essencial para polimerização do gel. LED: 30–60s por camada. UV: 2 min. Verificar potência (mínimo 36W) mensalmente com teste de cura. Lâmpada fraca = gel por dentro mole = lifting e reação alérgica. Posicionar a mão centralizada. Trocar as lâmpadas conforme o fabricante indica — geralmente a cada 6–12 meses.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Top Coat Gel de Alta Gloss</h3><span class="pill pk">Finalização</span>
+          </div>
+          <p style="font-size:10px">Sela e protege todas as camadas com brilho intenso e duradouro. Aplicar em camada fina após o lixamento final. Curar LED 60s. Limpar dispersão (camada pegajosa) com cleaner se necessário. Preferir top coat com proteção UV para retardar o amarelamento. Finalizar sempre com óleo de cutícula massageado — é o acabamento que faz a diferença na percepção do serviço.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d8" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n7" style="flex-shrink:0">7</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Brocas + Lixas de Preparo</h3><span class="pill co">Preparo</span>
+          </div>
+          <p style="font-size:10px">Broca de curetagem para remoção de pterígio. Broca cônica fina para limpeza de laterais. Lima fina 180 para criar textura na lâmina. Broca cap para remoção do banho de gel no retorno — remover 80% do gel sem atingir a lâmina. Limpar brocas com escova após cada uso e higienizar com álcool ou esterilizar em UV.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 5 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v3"></div>
+    <h2>Kit Completo: <span class="gb">Esmaltação em Gel</span></h2>
+    <p>Materiais específicos para a técnica que une cor intensa com durabilidade profissional</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="card au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Desidratante + Primer Não Ácido</h3><span class="pill te">Preparo</span>
+          </div>
+          <p style="font-size:10px">Mesmo protocolo do banho de gel — não abra mão. Desidratante remove oleosidade que impede a aderência do gel color. Primer cria a ponte molecular. Na esmaltação em gel, o preparo é ainda mais crítico pois o gel color é mais fluido que o gel de cobertura — qualquer falha no preparo gera lifting imediato nas bordas em poucos dias.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Base Gel Rubber (Borrachinha)</h3><span class="pill gr">Base</span>
+          </div>
+          <p style="font-size:10px">Base gel de textura rubber (emborrachada) é a melhor opção para esmaltação em gel — absorve impactos e reduz trincas. Camada fina. Curar 30–60s. Não limpar dispersão. Também pode ser usada como nivelador de lâmina irregular — preenche ondulações antes do gel color. Disponível em tons rosa, nude e transparente.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Gel Color (Pigmentado)</h3><span class="pill go">Cor</span>
+          </div>
+          <p style="font-size:10px">Principal diferencial — cor intensa que dura 3–4 semanas sem lascar. Aplicar em 2 camadas finas, curando entre cada uma. Camada única grossa não cura por dentro e descola com 2–3 dias. Selecionar gel color de qualidade — pigmentação uniforme e fluidez adequada. Usar pincel plano para espalhamento uniforme e cobertura da borda livre selando a ponta.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Pincéis Dedicados por Produto</h3><span class="pill bl">Aplicação</span>
+          </div>
+          <p style="font-size:10px">Pincel plano largo para base e gel color. Pincel de detalhe fino para bordas e cutícula. Pincel de gel espesso para banho de gel. Nunca misturar os pincéis — gel color contamina a base e vice-versa. Limpar com cleaner ou álcool entre usos. Guardar longe da luz e em posição horizontal. Trocar quando os pelos descolarem ou deformarem.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Top Coat Gel (Brilho ou Matte)</h3><span class="pill pk">Finalização</span>
+          </div>
+          <p style="font-size:10px">Sela a cor, protege e define o acabamento. Top brilho: intensifica a pigmentação e dá profundidade. Top matte: transforma qualquer cor em acabamento aveludado e moderno. Aplicar camada única generosa — curar 60s. Limpar dispersão com cleaner. O top coat é a proteção diária da cor — sem ele a esmaltação em gel dura metade do tempo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Acetona Pura + Papel Alumínio</h3><span class="pill co">Remoção</span>
+          </div>
+          <p style="font-size:10px">Remoção correta da esmaltação em gel: embeber algodão em acetona pura, envolver cada dedo com papel alumínio por 10–15 min. Nunca arrancar — destroça a lâmina. Após amolecer, remover com empurrinha de madeira suavemente. Se necessário, repetir o processo. Hidratar intensivamente após a remoção com óleo e creme de cutícula.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card au d8" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n7" style="flex-shrink:0">7</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Lâmpada LED + Cleaner</h3><span class="pill pu">Equipamentos</span>
+          </div>
+          <p style="font-size:10px">LED de no mínimo 36W para cura eficiente do gel color — potência baixa deixa gel mole e causa alergia por contato prolongado. Cleaner (removedor de dispersão) para limpar a camada pegajosa que fica após a cura do top coat. Também útil para limpar os pincéis entre usos. Álcool isopropílico 99% substitui o cleaner em muitas marcas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 6 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Passo a Passo: <span class="ga">Banho de Gel</span></h2>
+    <p>Protocolo completo — do preparo da lâmina ao acabamento impecável</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="cp au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Preparo Completo da Lâmina</h3><span class="pill te">~12 min</span>
+          </div>
+          <p style="font-size:10px">Vista os EPIs. Higienize as mãos da cliente com álcool 70%. Empurre a cutícula com empurrinha esterilizada. Remova pterígio com broca de curetagem em movimento suave. Aplique lima fina 180 na superfície — 3 a 4 passadas suaves para criar micro-rugosidades. Remova todo o pó com escova seca. Aplique desidratante em toda a lâmina — aguardar secar completamente. Aplique primer — aguardar ficar matte. Não toque a lâmina após esse passo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Aplicação da Base Gel</h3><span class="pill gr">~8 min</span>
+          </div>
+          <p style="font-size:10px">Aplique base gel em camada fina e uniforme, cobrindo toda a lâmina. Manter 0,5mm de distância da cutícula e da pele lateral. Selar a borda livre passando o pincel pela ponta da unha. Curar em LED 30–60 segundos. Não limpar a camada dispersa — ela é parte da estrutura de aderência. Verificar se todas as áreas foram cobertas incluindo as laterais antes de curar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">1ª Camada de Gel de Cobertura</h3><span class="pill te">~12 min</span>
+          </div>
+          <p style="font-size:10px">Aplique gel de cobertura em camada fina — pincel plano em movimentos longos da cutícula à borda livre. Não sobrecarregar o pincel. Evitar bolhas movendo o pincel devagar. Cobrir toda a superfície incluindo as laterais. Selar a borda livre. Curar LED 60s. Esta primeira camada define a cobertura uniforme e prepara a superfície para a camada de construção.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">2ª e 3ª Camadas — Construção e Nivelamento</h3><span class="pill go">~18 min</span>
+          </div>
+          <p style="font-size:10px">2ª camada: aplicar com mais volume na zona central para construir espessura e criar o arco C. Curar LED 60s. 3ª camada (se necessário): nivelamento e correção de áreas mais finas. Curar LED 60s. Cada camada adiciona proteção e durabilidade. Para camuflagem de manchas ou irregularidades usar gel camouflage nesta etapa. Verificar a uniformidade entre os dez dedos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Lixamento e Modelagem do Formato</h3><span class="pill bl">~18 min</span>
+          </div>
+          <p style="font-size:10px">Após cura total, iniciar lixamento. Lima 150 para modelar o formato e reduzir volume. Lima 180 para refinar. Lima 240 para acabamento fino. Limpar pó entre trocas de lixa. Verificar simetria entre os dedos. Modelar o formato escolhido pela cliente. Inspecionar sob luz LED rasante — revela bolhas e irregularidades invisíveis a olho nu. Corrigir antes de finalizar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Top Coat + Acabamento Final</h3><span class="pill pk">~10 min</span>
+          </div>
+          <p style="font-size:10px">Limpar toda a superfície com cleaner ou álcool. Aplicar top coat gel em camada fina e uniforme — selar a borda livre. Curar LED 60s. Limpar dispersão se necessário. O top coat dá o brilho intenso característico do banho de gel e protege contra lixívia e produtos químicos. Aplicar óleo de cutícula e massagear. Fazer a orientação completa pós-serviço.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d8" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n7" style="flex-shrink:0">7</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Retorno e Manutenção do Banho de Gel</h3><span class="pill co">3–4 sem</span>
+          </div>
+          <p style="font-size:10px">No retorno: remover o crescimento com broca cap (80% do gel antigo). Não atingir a lâmina nova. Lixa 150 para nivelar a junção crescimento + gel antigo. Aplicar desidratante + primer no crescimento. Reaplicar base + gel de cobertura sobre toda a lâmina. Curar. Lixar e finalizar. Em média 3–4 sessões antes de remoção total e nova aplicação completa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 7 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v3"></div>
+    <h2>Passo a Passo: <span class="gb">Esmaltação em Gel</span></h2>
+    <p>Protocolo completo — cor perfeita que dura semanas sem lascar</p>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px">
+    <div class="cp au d2" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n1" style="flex-shrink:0">1</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Preparo da Lâmina</h3><span class="pill te">~12 min</span>
+          </div>
+          <p style="font-size:10px">Vista os EPIs. Higienize mãos com álcool 70%. Empurre cutícula. Remova pterígio com broca de curetagem. Lixa 180 leve — 2 a 3 passadas para criar textura sem afinar a lâmina. Remova pó com escova seca. Desidratante em toda a lâmina — aguardar secar. Primer não ácido — aguardar ficar matte. O preparo é o determinante número 1 da durabilidade da esmaltação em gel.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d3" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n2" style="flex-shrink:0">2</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Base Gel Rubber</h3><span class="pill gr">~8 min</span>
+          </div>
+          <p style="font-size:10px">Aplique base rubber em camada fina. A textura emborrachada absorve micro-movimentos e evita trincas na cor. Cobrir lâmina toda — 0,5mm da cutícula. Selar borda livre. Curar LED 30–60s. Não limpar dispersão. Base rubber também nivela pequenas irregularidades da lâmina, criando uma superfície mais lisa para o gel color. Trocar o pincel ou limpar antes de usar o gel color.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d4" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n3" style="flex-shrink:0">3</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">1ª Camada de Gel Color</h3><span class="pill go">~10 min</span>
+          </div>
+          <p style="font-size:10px">Agitar o frasco suavemente antes de usar para homogeneizar o pigmento. Aplicar camada fina e uniforme. Pincel plano em movimento único da base à ponta — sem voltar. Cobrir a borda livre selando a cor. Deixar 0,5mm da cutícula. Curar LED 60s. A 1ª camada pode parecer translúcida em tons claros — isso é normal. Nunca compensar com camada grossa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d5" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n4" style="flex-shrink:0">4</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">2ª Camada de Gel Color</h3><span class="pill bl">~10 min</span>
+          </div>
+          <p style="font-size:10px">Segunda camada garante cobertura total e intensidade de cor. Mesma técnica da 1ª camada — fina e uniforme. Verificar que toda a superfície está coberta uniformemente sem áreas mais espessas. Selar a borda livre novamente. Curar LED 60s. Para cores muito claras (branco, amarelo, nude) pode ser necessária uma 3ª camada fina. Cada camada = mais cor e mais proteção.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d6" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n5" style="flex-shrink:0">5</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Artes e Detalhes (Opcional)</h3><span class="pill pk">~15 min</span>
+          </div>
+          <p style="font-size:10px">Sobre a 2ª camada curada, é possível criar nail arts: francesinha em gel, degradê (ombre), glitter, stamping, adesivos, flores. Curar cada elemento aplicado. Para francesinha: usar fita adesiva como guia ou gel branco com pincel de detalhe. Degradê: gel color sem curar + esponja de maquiagem. Cada arte adiciona valor ao serviço e diferencia seu trabalho.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d7" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n6" style="flex-shrink:0">6</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Top Coat + Finalização</h3><span class="pill te">~8 min</span>
+          </div>
+          <p style="font-size:10px">Limpar superfície com cleaner. Aplicar top coat em camada uniforme. Selar a borda livre. Curar LED 60s. Limpar dispersão. Top brilho realça a cor. Top matte transforma o resultado em acabamento diferenciado e sofisticado. Aplicar óleo de cutícula e massagear. Fotografar o resultado — portfólio é marketing. Fazer orientação completa pós-serviço à cliente.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cp au d8" style="padding:11px 13px">
+      <div class="sr">
+        <div class="nb n7" style="flex-shrink:0">7</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px">
+            <h3 style="font-size:12px">Remoção Correta</h3><span class="pill co">~20 min</span>
+          </div>
+          <p style="font-size:10px">Limpar superfície. Lixa 150 levemente para quebrar o top coat — sem afinar a lâmina. Embeber algodão em acetona pura. Envolver cada dedo com papel alumínio por 10–15 minutos. Empurrar o gel amolecido com empurrinha de madeira. Nunca arrancar. Repetir se necessário. Após remoção: hidratar intensamente com óleo e creme. Aguardar 1 semana para nova aplicação se a lâmina estiver fina.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 8 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v4"></div>
+    <h2>Lixamento: <span class="gc">Sequência que Define o Resultado</span></h2>
+    <p>A ordem correta das lixas determina a qualidade do acabamento — nunca pule etapas</p>
+  </div>
+  <div class="au d2" style="width:100%;margin-bottom:10px;overflow-x:auto">
+    <table class="lxt">
+      <thead>
+        <tr>
+          <th>Lixa / Grão</th>
+          <th>Função Principal</th>
+          <th>Técnica de Uso</th>
+          <th>Atenção Especial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pill re">100</span></td>
+          <td>Reduzir volume de gel</td>
+          <td>Movimentos longos e lineares suaves</td>
+          <td style="color:#FF8080">Nunca na lâmina natural</td>
+        </tr>
+        <tr>
+          <td><span class="pill co">150</span></td>
+          <td>Modelar formato + refinar volume</td>
+          <td>Linear cruzado ou semicircular</td>
+          <td style="color:#FFB890">Verificar simetria entre dedos</td>
+        </tr>
+        <tr>
+          <td><span class="pill go">180</span></td>
+          <td>Suavizar superfície</td>
+          <td>Movimentos em 8 cobrindo toda área</td>
+          <td style="color:#FFD460">Etapa mais importante — sem pressa</td>
+        </tr>
+        <tr>
+          <td><span class="pill gr">240</span></td>
+          <td>Acabamento fino e polimento leve</td>
+          <td>Circular suave em toda a superfície</td>
+          <td style="color:#5EE89A">Remover pó antes do top coat</td>
+        </tr>
+        <tr>
+          <td><span class="pill te">Búfalo</span></td>
+          <td>Brilho natural sem top coat</td>
+          <td>Movimentos rápidos e leves</td>
+          <td style="color:#7DFFF5">Só se não for usar top gel</td>
+        </tr>
+        <tr>
+          <td><span class="pill bl">Block 4 faces</span></td>
+          <td>Polimento progressivo completo</td>
+          <td>Uma face por vez em sequência</td>
+          <td style="color:#8FAEFF">Ideal para esmaltação sem top</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="g2 au d3" style="margin-bottom:9px">
+    <div class="cp">
+      <span class="ts te" style="margin-bottom:8px">✅ Técnica Correta de Lixamento</span>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Variar direções para não criar sulcos lineares</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Limpar pó com escova seca entre cada grão</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Inspecionar sob luz LED rasante — revela imperfeições</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Laterais e ponta: usar o canto da lixa com precisão</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Verificar simetria entre todos os dedos ao final</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Esmaltação: lixar só a borda para não perder cor</p></div>
+    </div>
+    <div class="cp">
+      <span class="ts re" style="margin-bottom:8px">❌ Erros que Arruínam o Trabalho</span>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Pular grãos — sempre piora o resultado final</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Pressão excessiva — afina o gel e causa quebra</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Lixa suja redistribuindo resíduos na superfície</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Não verificar o arco C — unha plana quebra fácil</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Lixar com gel não totalmente curado</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:10px">Não selar a borda livre após o lixamento lateral</p></div>
+    </div>
+  </div>
+  <div class="g2 au d4">
+    <div class="alt te">
+      <div class="alti te"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#28D8C8">Banho de Gel:</strong> Aguarde a cura completa de todas as camadas antes de lixar. Gel por dentro mole amolece sob a lixa. Use luz LED rasante para verificar bolhas antes de aplicar o top coat.</p>
+    </div>
+    <div class="alt gr">
+      <div class="alti gr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p style="font-size:10px"><strong style="color:#5EE89A">Esmaltação em Gel:</strong> Lixamento lateral e da borda livre é suficiente — não lixar a superfície do gel color para não perder a cobertura da cor. Reselar a borda após lixar.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 9 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce v2"></div>
+    <h2>Formatos: <span class="ga">Modelagem com Precisão</span></h2>
+    <p>Como executar cada formato no banho de gel e na esmaltação — técnica, indicação e dicas</p>
+  </div>
+  <div class="g6 au d2" style="margin-bottom:10px">
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">⬜</div>
+      <span class="ts te">Quadrada</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Square</h3>
+      <p style="font-size:9px;margin-bottom:6px">Borda reta com cantos em 90°. Lixar a ponta horizontalmente com lixa 150 e definir os cantos com lima fina. Exige comprimento mínimo médio para não parecer muito curta.</p>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:9px">Dedos longos e finos</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Evitar em mãos largas</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🔵</div>
+      <span class="ts gr">Redonda</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Round</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais retas com ponta em curva seguindo o arco natural. A mais resistente a quebras. Ideal para clientes com unhas curtas e estilo de vida ativo.</p>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:9px">Todos os tipos de mão</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:9px">Maior resistência</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🥚</div>
+      <span class="ts go">Oval</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Oval</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais em curva contínua até ponta oval. Alonga dedos curtos visualmente. Lixar em movimento contínuo suave nas laterais sem quebrar a curva natural.</p>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:9px">Dedos curtos e largos</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:9px">Clássico e elegante</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🌰</div>
+      <span class="ts pu">Amendoada</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Almond</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais cônicas convergindo para ponta fina e arredondada. Lixar ambas as laterais simétricas em diagonal. Exige comprimento médio a longo para ficar proporcional.</p>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:9px">Dedos finos e longos</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Não em dedos muito curtos</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">🩰</div>
+      <span class="ts pk">Ballerina</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Coffin</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais afiladas com ponta reta e achatada. Lixar em diagonal e achatar a ponta horizontalmente. Comprimento longo necessário. Tendência forte no mercado atual.</p>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:9px">Comprimento longo</p></div>
+      <div class="chk"><div class="chkd pk"></div><p style="font-size:9px">Alta demanda</p></div>
+    </div>
+    <div class="cp" style="text-align:center">
+      <div style="font-size:22px;margin-bottom:6px">⚡</div>
+      <span class="ts re">Stiletto</span>
+      <h3 style="font-size:11px;margin-bottom:5px">Stiletto</h3>
+      <p style="font-size:9px;margin-bottom:6px">Laterais cônicas até ponta aguda. Simetria absoluta obrigatória. Hard gel é ideal para stiletto — gel soft não sustenta a ponta afinada com segurança.</p>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Nível avançado</p></div>
+      <div class="chk"><div class="chkd re"></div><p style="font-size:9px">Alta manutenção</p></div>
+    </div>
+  </div>
+  <div class="g2 au d3">
+    <div class="card bc bte">
+      <span class="ts te" style="margin-bottom:7px">💧 Banho de Gel — Formatos</span>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Modelar o formato durante o lixamento após as camadas de gel</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Gel de cobertura thick sustenta todos os formatos incluindo stiletto</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Verificar arco C — essencial para resistência de qualquer formato</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Laterais bem definidas aumentam a percepção de qualidade do serviço</p></div>
+    </div>
+    <div class="card bc bgr">
+      <span class="ts gr" style="margin-bottom:7px">✨ Esmaltação em Gel — Formatos</span>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Modelar o formato antes de aplicar o gel color — na lâmina natural</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Formatos com laterais retas: usar cola de cutícula para proteção</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Cor escura evidencia assimetrias — atenção redobrada na modelagem</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Selar toda a borda livre após lixar para evitar desplacamento da cor</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SLIDE 10 ══════════ -->
+<section class="slide">
+<div class="si">
+  <div class="stitle au d1">
+    <div class="gl ce"></div>
+    <h2>Erros, <span class="ga">Manutenção</span> &amp; <span class="gb">Fidelização</span></h2>
+    <p>Antecipe os problemas, oriente a manutenção e construa clientes que retornam sempre</p>
+  </div>
+  <div class="au d2" style="width:100%;margin-bottom:8px">
+    <div class="sep"><span style="color:#7E879B">Top 5 Erros — Banho de Gel e Esmaltação em Gel</span></div>
+  </div>
+  <div style="width:100%;display:flex;flex-direction:column;gap:7px;margin-bottom:10px">
+    <div class="g2 au d3" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Lifting (Levantamento)</span>
+        <p style="font-size:10px">Preparo insuficiente: desidratante ou primer não aplicados ou não secos. Produto tocou a pele durante a aplicação. Cura incompleta da base gel — lâmpada fraca ou tempo insuficiente.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Sempre aplicar desidratante + primer com secagem completa. Manter 0,5mm da pele. Verificar potência da lâmpada mensalmente. Curar cada camada pelo tempo correto sem interromper.</p>
+      </div>
+    </div>
+    <div class="g2 au d4" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Bolhas na Superfície</span>
+        <p style="font-size:10px">Pincel movido rápido demais incorpora ar ao gel. Camada aplicada muito espessa não permite que o ar escape. Gel agitado violentamente antes de usar cria microbolhas no produto.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Mover o pincel devagar e com pressão constante. Aplicar sempre em camadas finas. Agitar o frasco suavemente. Inspecionar sob luz rasante antes do top coat e corrigir com ponta do pincel.</p>
+      </div>
+    </div>
+    <div class="g2 au d5" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Gel Color Opaco / Sem Brilho</span>
+        <p style="font-size:10px">Top coat não aplicado ou mal curado. Dispersão do top coat não removida. Cleaner de baixa qualidade prejudicando o brilho. Lixamento da superfície do gel color antes do top coat.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Aplicar top coat sempre após a última camada de cor. Curar pelo tempo completo. Usar cleaner ou álcool 99% para remover dispersão. Não lixar a superfície do gel color antes do top coat.</p>
+      </div>
+    </div>
+    <div class="g2 au d6" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Gel Descola nas Bordas</span>
+        <p style="font-size:10px">Borda livre não selada durante a aplicação. Cliente usando as unhas como ferramentas. Contato com produtos químicos sem luva. Gel muito fino nas laterais sem cobertura adequada.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Selar borda livre em cada camada aplicada. Orientar a cliente a usar luvas ao lavar. Cobrir bem as laterais durante a aplicação. Verificar espessura das bordas antes de curar.</p>
+      </div>
+    </div>
+    <div class="g2 au d7" style="gap:8px">
+      <div class="vb">
+        <span class="ts re" style="margin-bottom:5px">❌ Amarelamento do Gel</span>
+        <p style="font-size:10px">Gel de baixa qualidade com pigmento instável. Exposição solar intensa sem proteção UV. Top coat sem proteção UV. Contato com autobronzeador, acetona ou produtos com corante.</p>
+      </div>
+      <div class="vg">
+        <span class="ts gr" style="margin-bottom:5px">✅ Solução</span>
+        <p style="font-size:10px">Usar materiais de qualidade profissional. Aplicar top coat com filtro UV. Orientar a cliente sobre protetor solar nas mãos. Evitar contato com corantes, autobronzeadores e acetona.</p>
+      </div>
+    </div>
+  </div>
+  <div class="g2 au d8" style="margin-bottom:9px">
+    <div class="cp">
+      <span class="ts go" style="margin-bottom:8px">🔁 Intervalos de Manutenção</span>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px"><strong>Banho de Gel:</strong> 3–4 semanas — crescimento + rebalanceamento</p></div>
+      <div class="chk"><div class="chkd gr"></div><p style="font-size:10px"><strong>Esmaltação em Gel:</strong> 2–3 semanas para nova cor</p></div>
+      <div class="chk"><div class="chkd go"></div><p style="font-size:10px">Agendar retorno antes de a cliente sair</p></div>
+      <div class="chk"><div class="chkd bl"></div><p style="font-size:10px">WhatsApp no dia 18 como lembrete de retorno</p></div>
+      <div class="chk"><div class="chkd pu"></div><p style="font-size:10px">Remoção total a cada 3–4 aplicações + hidratação</p></div>
+    </div>
+    <div class="cp">
+      <span class="ts te" style="margin-bottom:8px">📋 Orientações Pós-Serviço</span>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Evitar água nas primeiras 2h após a aplicação</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Luva ao lavar louça e usar produtos de limpeza</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Não usar as unhas como ferramentas ou alavancas</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Hidratar cutículas com óleo específico diariamente</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Protetor solar nas mãos — evita amarelamento do gel</p></div>
+      <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Nunca arrancar — sempre agendar remoção profissional</p></div>
+    </div>
+  </div>
+  <div class="au d9" style="width:100%">
+    <div style="background:linear-gradient(135deg,rgba(40,216,200,.09),rgba(94,232,154,.07),rgba(46,107,255,.08));border:1px solid rgba(40,216,200,.2);border-radius:14px;padding:14px;text-align:center">
+      <p style="font-size:12px;font-weight:800;color:#F5F7FB;margin-bottom:5px">🎓 Técnica gera <span class="ga">resultado</span>. Resultado gera <span class="gb">reconhecimento</span>.</p>
+      <p style="font-size:10px;color:#AAB3C5;line-height:1.8;max-width:600px;margin:0 auto">Dominar o Banho de Gel e a Esmaltação em Gel é oferecer às suas clientes durabilidade, beleza e proteção com a mais alta qualidade. Cada etapa executada com cuidado é a sua <strong style="color:#F5F7FB">assinatura de excelência profissional</strong>.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const IND=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  IND.appendChild(d);
+}
+
+function upd(){
+  IND.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+  document.querySelectorAll('.si').forEach(s=>s.scrollTop=0);
+}
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd()}
+function next(){if(C<T-1)go(C+1)}
+function prev(){if(C>0)go(C-1)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev()}
+  if(e.key==='f'||e.key==='F')toggleFs()
+});
+
+let tx=0,ty=0,scrolling=false;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;scrolling=false},{passive:true});
+document.addEventListener('touchmove',e=>{const dx=Math.abs(e.changedTouches[0].screenX-tx);const dy=Math.abs(e.changedTouches[0].screenY-ty);if(dy>dx)scrolling=true},{passive:true});
+document.addEventListener('touchend',e=>{if(scrolling)return;const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?next():prev()}});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{})}
+  else{document.exitFullscreen()}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+upd();
+</script>
+</body>
+</html>
