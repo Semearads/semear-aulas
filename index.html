@@ -3,106 +3,265 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aula 04 – Nail Art Básica | SEMEAR</title>
+  <title>SEMEAR – Cursos Profissionalizantes</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { background: linear-gradient(180deg, #0A0F24 0%, #070B1D 45%, #050816 100%); color: #F5F7FB; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
-    body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.14) 0%, transparent 42%), radial-gradient(800px 380px at 35% 20%, rgba(35,110,255,.14) 0%, transparent 42%); }
-    .wrap { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 24px 20px 60px; }
-    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-    .back { display: inline-flex; align-items: center; gap: 8px; color: #AAB3C5; font-size: 13px; font-weight: 600; text-decoration: none; padding: 10px 14px; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); transition: all .3s ease; }
-    .back:hover { color: #F5F7FB; border-color: rgba(46,107,255,.3); background: rgba(46,107,255,.08); }
-    .back svg { width: 16px; height: 16px; }
-    .badge { padding: 6px 12px; border-radius: 999px; background: rgba(200,109,215,.08); border: 1px solid rgba(200,109,215,.2); font-size: 11px; font-weight: 600; color: #C86DD7; letter-spacing: .05em; text-transform: uppercase; }
-    .player { position: relative; width: 100%; padding-top: 56.25%; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 0 40px rgba(46,107,255,.08); margin-bottom: 28px; }
-    .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .header { margin-bottom: 24px; }
-    .header .num { font-size: 13px; font-weight: 700; color: #2E6BFF; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
-    h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 12px; }
-    .gt { background: linear-gradient(135deg, #2E6BFF 0%, #C86DD7 50%, #2E6BFF 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .desc { font-size: 15px; color: #AAB3C5; line-height: 1.6; }
-    .content { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 18px; padding: 28px 24px; margin-bottom: 28px; box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
-    .content h2 { font-size: 18px; font-weight: 700; color: #F5F7FB; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-    .content h2::before { content: ''; width: 4px; height: 20px; border-radius: 2px; background: linear-gradient(180deg, #2E6BFF, #C86DD7); }
-    .content ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .content li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #D5DAE5; line-height: 1.6; }
-    .content li::before { content: '✓'; flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px; background: rgba(46,107,255,.12); color: #2E6BFF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; margin-top: 2px; }
-    .nav-aulas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 540px) { .nav-aulas { grid-template-columns: 1fr; } }
-    .nav-btn { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); color: #F5F7FB; text-decoration: none; transition: all .3s ease; font-weight: 600; font-size: 14px; }
-    .nav-btn:hover { border-color: rgba(46,107,255,.3); background: rgba(46,107,255,.08); transform: translateY(-2px); }
-    .nav-btn svg { width: 18px; height: 18px; flex-shrink: 0; color: #2E6BFF; }
-    .nav-btn.next { justify-content: flex-end; text-align: right; }
-    .nav-btn small { display: block; font-size: 11px; color: #7E879B; font-weight: 500; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .05em; }
-    .final {
-      margin-top: 28px; padding: 24px; border-radius: 16px; text-align: center;
-      background: linear-gradient(135deg, rgba(46,107,255,.12), rgba(200,109,215,.12));
-      border: 1px solid rgba(200,109,215,.25);
+
+    :root {
+      --bg: #050816;
+      --bg-2: #0A0F24;
+      --accent: #2E6BFF;
+      --accent-2: #C86DD7;
+      --text: #F5F7FB;
+      --muted: #AAB3C5;
+      --card: rgba(255,255,255,.03);
+      --border: rgba(255,255,255,.07);
     }
-    .final h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .final p { color: #AAB3C5; font-size: 14px; margin-bottom: 16px; }
-    .final a {
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: linear-gradient(180deg, var(--bg-2) 0%, #070B1D 45%, var(--bg) 100%);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(900px 420px at 72% 18%, rgba(255,120,180,.14) 0%, transparent 42%),
+        radial-gradient(800px 380px at 35% 20%, rgba(35,110,255,.14) 0%, transparent 42%);
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(5,8,22,.75);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 22px; font-weight: 900; letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    nav { display: flex; gap: 28px; }
+    nav a {
+      color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600;
+      transition: color .3s ease;
+    }
+    nav a:hover { color: var(--text); }
+    .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 22px; border-radius: 12px; text-decoration: none;
-      background: linear-gradient(135deg, #2E6BFF, #5B3FD6); color: #fff;
-      font-weight: 700; font-size: 14px;
+      padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #5B3FD6); color: #fff;
+      text-decoration: none; border: none; cursor: pointer;
       box-shadow: 0 10px 30px rgba(46,107,255,.35);
-      transition: all .3s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .final a:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(46,107,255,.5); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(46,107,255,.5); }
+
+    /* Hero */
+    .hero { padding: 140px 0 90px; text-align: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px; border-radius: 999px; margin-bottom: 24px;
+      background: rgba(200,109,215,.08); border: 1px solid rgba(200,109,215,.2);
+      font-size: 12px; font-weight: 600; color: var(--accent-2);
+      letter-spacing: .05em; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 6vw, 64px); font-weight: 900;
+      letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 20px;
+    }
+    .gt {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 50%, var(--accent) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; animation: shimmer 5s linear infinite;
+    }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    .hero p {
+      font-size: clamp(15px, 2.2vw, 18px); color: var(--muted);
+      max-width: 620px; margin: 0 auto 34px; line-height: 1.7;
+    }
+
+    /* Cursos */
+    .section { padding: 80px 0; }
+    .section-title {
+      text-align: center; font-size: clamp(26px, 4vw, 38px); font-weight: 800;
+      letter-spacing: -0.025em; margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted); font-size: 15px;
+      max-width: 560px; margin: 0 auto 48px; line-height: 1.6;
+    }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 22px; padding: 28px; text-decoration: none; color: inherit;
+      transition: all .4s ease;
+      display: flex; flex-direction: column; gap: 16px;
+      box-shadow: 0 16px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .card:hover {
+      border-color: rgba(46,107,255,.3); transform: translateY(-6px);
+      box-shadow: 0 28px 70px rgba(0,0,0,.5), 0 0 40px rgba(46,107,255,.12);
+    }
+    .card-icon {
+      width: 58px; height: 58px; border-radius: 16px;
+      background: linear-gradient(135deg, var(--accent), #5B3FD6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; box-shadow: 0 10px 28px rgba(46,107,255,.3);
+    }
+    .card h3 { font-size: 19px; font-weight: 700; }
+    .card p { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .card-meta {
+      display: flex; align-items: center; gap: 12px; font-size: 12px; color: #7E879B;
+      font-weight: 600;
+    }
+    .card-meta span { padding: 5px 10px; border-radius: 6px; background: rgba(255,255,255,.04); }
+    .card-go {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 700; color: var(--accent); margin-top: auto;
+    }
+    .card-go svg { width: 16px; height: 16px; transition: transform .3s ease; }
+    .card:hover .card-go svg { transform: translateX(4px); }
+
+    /* Diferenciais */
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px; margin-top: 24px;
+    }
+    .feature {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 24px; text-align: center;
+    }
+    .feature strong { display: block; font-size: 28px; font-weight: 900; color: var(--accent); margin-bottom: 6px; }
+    .feature span { font-size: 14px; color: var(--muted); }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 40px 20px;
+      color: #7E879B; font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Mobile */
+    @media (max-width: 720px) {
+      nav { display: none; }
+      .hero { padding: 120px 0 60px; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <a href="../../curso-manicure.html" class="back">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-        Voltar ao curso
-      </a>
-      <span class="badge">Aula 04 de 04</span>
-    </div>
 
-    <div class="player">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_AQUI?rel=0&modestbranding=1" title="Aula 04 – Nail Art Básica" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <header>
+    <div class="header-inner">
+      <div class="logo">SEMEAR</div>
+      <nav>
+        <a href="#cursos">Cursos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a href="#cursos" class="btn">Ver cursos</a>
     </div>
+  </header>
 
-    <div class="header">
-      <div class="num">Aula 04</div>
-      <h1>Nail Art <span class="gt">Básica</span></h1>
-      <p class="desc">Aprenda decorações simples e tendências para se destacar no mercado e encantar suas clientes com trabalhos diferenciados.</p>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-badge">Área do Aluno</div>
+      <h1>Transforme sua carreira com nossos <span class="gt">cursos profissionalizantes</span></h1>
+      <p>Aprenda com conteúdo prático, didático e atualizado para o mercado de trabalho. Estude no seu ritmo, de onde estiver.</p>
+      <a href="#cursos" class="btn">Começar agora</a>
     </div>
+  </section>
 
-    <div class="content">
-      <h2>O que você vai aprender</h2>
-      <ul>
-        <li>Decorações com fitas adesivas e estênceis</li>
-        <li>Técnica de degradê (ombré) nas unhas</li>
-        <li>Uso de pedrarias, glitter e adesivos</li>
-        <li>Francesinha moderna e variações criativas</li>
-        <li>Tendências atuais e como cobrar por nail art</li>
-      </ul>
-    </div>
+  <section id="cursos" class="section">
+    <div class="wrap">
+      <h2 class="section-title">Escolha seu curso</h2>
+      <p class="section-sub">Conteúdo completo organizado em aulas para você evoluir passo a passo.</p>
 
-    <div class="nav-aulas">
-      <a href="aula-03.html" class="nav-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-        <div><small>Anterior</small>Aula 03</div>
-      </a>
-      <a class="nav-btn next" style="opacity:.35; pointer-events:none;">
-        <div><small>Próxima</small>Última aula</div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-      </a>
-    </div>
+      <div class="grid">
 
-    <div class="final">
-      <h3>🎉 Parabéns! Você concluiu o curso</h3>
-      <p>Agora é hora de praticar e transformar o conhecimento em resultados reais.</p>
-      <a href="../../curso-manicure.html">
-        Revisar aulas
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-      </a>
+        <a href="curso-manicure.html" class="card">
+          <div class="card-icon">💅</div>
+          <h3>Manicure</h3>
+          <p>Técnicas de corte, lixamento, esmaltação e nail art para você atuar com excelência.</p>
+          <div class="card-meta">
+            <span>4 aulas</span>
+            <span>Iniciante</span>
+          </div>
+          <div class="card-go">Acessar curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+        </a>
+
+        <a href="curso-alongamento-de-unhas.html" class="card">
+          <div class="card-icon">✨</div>
+          <h3>Alongamento de Unhas</h3>
+          <p>Aprenda fibra, tips, blindagem e acabamentos perfeitos para unhas longas.</p>
+          <div class="card-meta">
+            <span>Em breve</span>
+            <span>Intermediário</span>
+          </div>
+          <div class="card-go">Acessar curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+        </a>
+
+        <a href="cabeleireiro.html" class="card">
+          <div class="card-icon">💇‍♀️</div>
+          <h3>Cabeleireiro</h3>
+          <p>Cortes, colorimetria, hidratação e finalização para dominar os cabelos.</p>
+          <div class="card-meta">
+            <span>Em breve</span>
+            <span>Iniciante</span>
+          </div>
+          <div class="card-go">Acessar curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+        </a>
+
+        <a href="estetica-facial.html" class="card">
+          <div class="card-icon">🧖‍♀️</div>
+          <h3>Estética Facial</h3>
+          <p>Limpeza de pele, massagens faciais e rotinas de skincare profissional.</p>
+          <div class="card-meta">
+            <span>Em breve</span>
+            <span>Iniciante</span>
+          </div>
+          <div class="card-go">Acessar curso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+        </a>
+
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section id="sobre" class="section">
+    <div class="wrap">
+      <h2 class="section-title">Por que estudar com a SEMEAR?</h2>
+      <p class="section-sub">Metodologia pensada para quem quer aprender de verdade e conquistar resultados.</p>
+
+      <div class="features">
+        <div class="feature"><strong>100%</strong><span>Online e no seu ritmo</span></div>
+        <div class="feature"><strong>+4</strong><span>Cursos disponíveis</span></div>
+        <div class="feature"><strong>HD</strong><span>Vídeo aulas em alta qualidade</span></div>
+        <div class="feature"><strong>Certificado</strong><span>Emitido ao concluir</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    © 2026 SEMEAR — Cursos Profissionalizantes. Todos os direitos reservados.
+  </footer>
+
 </body>
 </html>
