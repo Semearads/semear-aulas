@@ -752,7 +752,7 @@
               </div>
             </div>
 
-            <!-- ✅ BOTÕES (Cabeleireiro + Estética Facial + Alongamento de Unhas + Manicure) -->
+            <!-- ✅ BOTÕES DOS CURSOS -->
             <div
               class="au d5"
               style="text-align:center; display:flex; flex-direction:column; gap:12px; align-items:center;"
@@ -784,6 +784,13 @@
                 </svg>
                 Acessar Curso de Manicure
               </a>
+
+              <a href="curso-depilacao.html" class="cta-btn" style="animation:none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                </svg>
+                Acessar Curso de Depilação
+              </a>
             </div>
 
           </div>
@@ -814,6 +821,7 @@
     // ✅ LIBERA ACESSO AOS CURSOS
     localStorage.setItem('semear_access_ok_unhas', '1');
     localStorage.setItem('semear_access_ok_manicure', '1');
+    localStorage.setItem('semear_access_ok_depilacao', '1');
 
     const W    = document.getElementById('sw');
     const CN   = document.getElementById('cn');
