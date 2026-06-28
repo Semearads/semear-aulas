@@ -1031,5 +1031,137 @@ strong{font-weight:700;color:#F5F7FB}
     </div>
   </div>
   <div class="au d5" style="width:100%">
-    <div style="background:linear-gradient(135deg,rgba(255,107,157,.09),rgba(180,76,255,.07),rgba(255,200,60,.06));border:1px solid rgba(255,107,157,.22);border-radius:14px;padding:14px;text-align:center">
+           <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+          <span style="font-size:26px">✨</span>
+          <p style="font-size:12px;font-weight:900;color:#F5F7FB;margin:0"><span class="ga">Você está pronta</span> para elevar sua carreira ao mais alto padrão profissional. Comece agora!</p>
+          <span style="font-size:26px">✨</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+</div><!-- fecha .slides -->
+</div><!-- fecha .presentation -->
+
+<script>
+(function(){
+  const container = document.querySelector('.slides');
+  const slides = container.querySelectorAll('.slide');
+  const total = slides.length;
+  const progress = document.getElementById('prog');
+  const cn = document.getElementById('cn');
+  const ind = document.getElementById('ind');
+  const fsTxt = document.getElementById('fsTxt');
+
+  let current = 0;
+  let isTransitioning = false;
+
+  // Cria bolinhas indicadoras
+  for(let i = 0; i < total; i++){
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function(){ goTo(i); });
+    ind.appendChild(dot);
+  }
+
+  function updateUI(){
+    container.style.transform = 'translateX(-' + (current * 100) + 'vw)';
+
+    // Atualiza slides ativos
+    slides.forEach(function(s, i){
+      s.classList.toggle('active', i === current);
+    });
+
+    // Atualiza bolinhas
+    const dots = ind.querySelectorAll('.dot');
+    dots.forEach(function(d, i){
+      d.classList.toggle('active', i === current);
+    });
+
+    // Atualiza contador e barra
+    cn.textContent = current + 1;
+    progress.style.width = ((current + 1) / total * 100) + '%';
+  }
+
+  function goTo(index){
+    if(isTransitioning || index === current) return;
+    if(index < 0 || index >= total) return;
+    isTransitioning = true;
+    current = index;
+    updateUI();
+    setTimeout(function(){ isTransitioning = false; }, 750);
+  }
+
+  window.next = function(){
+    goTo(current + 1);
+  };
+
+  window.prev = function(){
+    goTo(current - 1);
+  };
+
+  // Fullscreen
+  window.toggleFs = function(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(function(){});
+      fsTxt.textContent = 'Sair tela cheia';
+    } else {
+      document.exitFullscreen();
+      fsTxt.textContent = 'Tela cheia';
+    }
+  };
+
+  // Atualiza texto do botão fullscreen quando sair por ESC
+  document.addEventListener('fullscreenchange', function(){
+    fsTxt.textContent = document.fullscreenElement ? 'Sair tela cheia' : 'Tela cheia';
+  });
+
+  // Swipe no mobile
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  container.addEventListener('touchstart', function(e){
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, {passive: true});
+
+  container.addEventListener('touchend', function(e){
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+
+    // Só swipe se movimento for mais horizontal que vertical
+    if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50){
+      if(dx < 0) window.next();
+      else window.prev();
+    }
+  });
+
+  // Teclado
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' '){
+      e.preventDefault();
+      window.next();
+    } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+      e.preventDefault();
+      window.prev();
+    } else if(e.key === 'Home'){
+      e.preventDefault();
+      goTo(0);
+    } else if(e.key === 'End'){
+      e.preventDefault();
+      goTo(total - 1);
+    } else if(e.key === 'f' || e.key === 'F'){
+      e.preventDefault();
+      window.toggleFs();
+    }
+  });
+
+  updateUI();
+})();
+</script>
+</body>
+</html>
+
       
