@@ -1102,7 +1102,165 @@ strong{font-weight:700;color:#F5F7FB}
           <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Modelar o formato com lixa grão 180 em sentido único</p></div>
           <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Suavizar borda livre com lixa 240 — sem "vai e vem"</p></div>
           <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Remover pó com pincel e passar álcool 70% — aguardar evaporar</p></div>
-          <div class="chk"><div class="chkd te"></div><p style="font-size:10px">Aplicar base em camada fina cobrindo toda a lâmina e borda livre</p></div>
+                  </div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot gr">5</div>
+      <div class="tl-line"></div>
+      <div class="tl-content card" style="padding:10px 12px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <span class="ts gr" style="margin:0">Fase 05 — Esmaltação</span><span class="pill gr">8–12 min</span>
+        </div>
+        <div class="g2" style="gap:4px">
+          <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Aplicar 1ª demão fina do centro para as bordas — aguardar 2 min</p></div>
+          <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Aplicar 2ª demão cobrindo totalmente — técnica das 3 pinceladas</p></div>
+          <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Limpar excessos nas bordas com palito + algodão com acetona</p></div>
+          <div class="chk"><div class="chkd gr"></div><p style="font-size:10px">Aguardar 3 min antes de aplicar o top coat</p></div>
         </div>
       </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot co">6</div>
+      <div class="tl-content card" style="padding:10px 12px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <span class="ts co" style="margin:0">Fase 06 — Finalização</span><span class="pill co">3–5 min</span>
+        </div>
+        <div class="g2" style="gap:4px">
+          <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Aplicar top coat em camada fina — selar a borda livre</p></div>
+          <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Aplicar óleo de cutícula nas 10 unhas — massagem rápida em cada dedo</p></div>
+          <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Orientar cliente sobre cuidados nas próximas horas (evitar água quente, não forçar)</p></div>
+          <div class="chk"><div class="chkd co"></div><p style="font-size:10px">Agendar próximo retorno antes da cliente sair — fidelização ativa</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="au d3" style="width:100%">
+    <div style="background:linear-gradient(135deg,rgba(200,109,215,.09),rgba(255,107,157,.07),rgba(255,200,60,.06));border:1px solid rgba(200,109,215,.22);border-radius:14px;padding:14px;text-align:center">
+      <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+        <span style="font-size:26px">✨</span>
+        <p style="font-size:12px;font-weight:900;color:#F5F7FB;margin:0">Cutilagem impecável + Esmaltação profissional = <span class="ga">Cliente fiel para sempre</span></p>
+        <span style="font-size:26px">✨</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+</div><!-- fecha .slides -->
+</div><!-- fecha .presentation -->
+
+<script>
+(function(){
+  const container = document.querySelector('.slides');
+  const slides = container.querySelectorAll('.slide');
+  const total = slides.length;
+  const progress = document.getElementById('prog');
+  const cn = document.getElementById('cn');
+  const ind = document.getElementById('ind');
+  const fsTxt = document.getElementById('fsTxt');
+
+  let current = 0;
+  let isTransitioning = false;
+
+  // Cria bolinhas indicadoras
+  for(let i = 0; i < total; i++){
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function(){ goTo(i); });
+    ind.appendChild(dot);
+  }
+
+  function updateUI(){
+    container.style.transform = 'translateX(-' + (current * 100) + 'vw)';
+
+    slides.forEach(function(s, i){
+      s.classList.toggle('active', i === current);
+    });
+
+    const dots = ind.querySelectorAll('.dot');
+    dots.forEach(function(d, i){
+      d.classList.toggle('active', i === current);
+    });
+
+    cn.textContent = current + 1;
+    progress.style.width = ((current + 1) / total * 100) + '%';
+  }
+
+  function goTo(index){
+    if(isTransitioning || index === current) return;
+    if(index < 0 || index >= total) return;
+    isTransitioning = true;
+    current = index;
+    updateUI();
+    setTimeout(function(){ isTransitioning = false; }, 750);
+  }
+
+  window.next = function(){
+    goTo(current + 1);
+  };
+
+  window.prev = function(){
+    goTo(current - 1);
+  };
+
+  window.toggleFs = function(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(function(){});
+      fsTxt.textContent = 'Sair tela cheia';
+    } else {
+      document.exitFullscreen();
+      fsTxt.textContent = 'Tela cheia';
+    }
+  };
+
+  document.addEventListener('fullscreenchange', function(){
+    fsTxt.textContent = document.fullscreenElement ? 'Sair tela cheia' : 'Tela cheia';
+  });
+
+  // Swipe no mobile
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  container.addEventListener('touchstart', function(e){
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, {passive: true});
+
+  container.addEventListener('touchend', function(e){
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+
+    if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50){
+      if(dx < 0) window.next();
+      else window.prev();
+    }
+  });
+
+  // Teclado
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' '){
+      e.preventDefault();
+      window.next();
+    } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+      e.preventDefault();
+      window.prev();
+    } else if(e.key === 'Home'){
+      e.preventDefault();
+      goTo(0);
+    } else if(e.key === 'End'){
+      e.preventDefault();
+      goTo(total - 1);
+    } else if(e.key === 'f' || e.key === 'F'){
+      e.preventDefault();
+      window.toggleFs();
+    }
+  });
+
+  updateUI();
+})();
+</script>
+</body>
+</html>
+
     
