@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Depilação Profissional — Fundamentos Essenciais</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:16px;right:16px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:10px 14px;border-radius:12px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:8px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:15px;height:15px;}
+
+.sc{position:fixed;bottom:28px;left:20px;z-index:998;color:#7E879B;font-size:13px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.3);padding:8px 15px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+.ind{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 14px rgba(46,107,255,.6);width:28px;border-radius:5px;}
+
+.nav-arr{position:fixed;bottom:24px;right:20px;z-index:998;display:flex;gap:8px;}
+.nav-arr button{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:60px 20px 90px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+/* ANIMAÇÕES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(46,107,255,.12)}50%{box-shadow:0 0 36px rgba(46,107,255,.3)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.slide.active .au{animation:fadeUp .7s ease both;}
+.slide.active .as{animation:fadeScale .7s ease both;}
+.d1{animation-delay:.1s!important}.d2{animation-delay:.22s!important}.d3{animation-delay:.34s!important}
+.d4{animation-delay:.46s!important}.d5{animation-delay:.58s!important}.d6{animation-delay:.7s!important}.d7{animation-delay:.82s!important}
+
+/* UTILITÁRIOS */
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gl{width:80px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:18px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 18px auto;transform-origin:center;}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 22px;border-radius:999px;margin-bottom:24px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);font-size:13px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:20px;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:24px 20px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-3px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 30px rgba(46,107,255,.08);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.08);padding:24px 20px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.25);transform:translateY(-3px) scale(1.01);}
+
+.ic{width:48px;height:48px;border-radius:13px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;background:rgba(46,107,255,.08);}
+.ic svg{width:24px;height:24px;color:#2E6BFF;}
+
+.tn{width:62px;height:62px;border-radius:16px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+.tn.n4{background:linear-gradient(145deg,#2E6BFF,#5B3FD6);animation-delay:1.5s;}
+
+/* BORDA LATERAL */
+.s5c{position:relative;overflow:hidden;}
+.s5c::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.s5c.b1::before{background:#2E6BFF;}
+.s5c.b2::before{background:#FFD460;}
+.s5c.b3::before{background:#FF6B6B;}
+
+/* FLUXO */
+.fl{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;}
+.fs-step{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:100px;padding:0 6px;}
+.fs-step .fi{width:64px;height:64px;border-radius:18px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.fs-step .fi svg{width:28px;height:28px;color:#2E6BFF;}
+.fs-step span{font-size:13px;font-weight:600;color:#F5F7FB;}
+.fa{display:flex;align-items:center;padding-bottom:24px;margin:0 4px;}
+.fa svg{width:22px;height:22px;color:#7E879B;}
+.fs-step.act .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 10px 22px rgba(46,107,255,.28);}
+.fs-step.act .fi svg{color:#fff;}
+
+/* GRIDS RESPONSIVOS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;}
+.g4{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;}
+
+/* TEXTOS */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+
+/* SLIDE 1 */
+.s1-wrap{text-align:center;max-width:700px;width:100%;}
+.s1-wrap h1{font-size:clamp(36px,7vw,72px);margin-bottom:20px;}
+.s1-wrap .tag{font-size:clamp(15px,2.5vw,20px);color:#AAB3C5;max-width:520px;margin:0 auto;line-height:1.6;}
+.s1-wrap .pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px;}
+.s1-wrap .pills span{padding:7px 16px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:12px;font-weight:600;color:#7E879B;letter-spacing:.04em;}
+
+/* SLIDE INNER */
+.slide-inner{width:100%;max-width:900px;display:flex;flex-direction:column;align-items:flex-start;}
+.slide-inner.ce{align-items:center;text-align:center;}
+.slide-inner h2{font-size:clamp(24px,4.5vw,44px);margin-bottom:8px;}
+.slide-inner .sub{font-size:clamp(13px,2vw,16px);color:#7E879B;margin-bottom:22px;}
+
+/* MÉTRICAS */
+.s5n{font-size:clamp(36px,6vw,54px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:6px;}
+
+/* COMPARATIVO */
+.bwc{border-radius:18px;padding:22px 18px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.12);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.12);}
+.bwc h3{margin-bottom:12px;}
+.bwc ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.bwc ul li{font-size:13px;display:flex;align-items:flex-start;gap:8px;}
+.bwd{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+
+/* SCROLL INTERNO */
+.scroll-inner{overflow-y:auto;max-height:calc(100vh - 160px);width:100%;padding-right:4px;}
+.scroll-inner::-webkit-scrollbar{width:3px;}
+.scroll-inner::-webkit-scrollbar-track{background:transparent;}
+.scroll-inner::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:2px;}
+
+/* CHECKLIST */
+.chk{display:flex;flex-direction:column;gap:10px;width:100%;}
+.chk-item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;}
+.chk-icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chk-icon svg{width:14px;height:14px;color:#fff;}
+.chk-item p{font-size:13px;color:#AAB3C5;line-height:1.5;}
+.chk-item strong{color:#F5F7FB;font-weight:600;}
+
+/* LAST SLIDE */
+.last-card{background:linear-gradient(145deg,rgba(46,107,255,.08),rgba(200,109,215,.06));border:1px solid rgba(46,107,255,.2);border-radius:24px;padding:32px 28px;text-align:center;width:100%;max-width:700px;}
+
+@media(max-width:480px){
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .fl{gap:0;}
+  .fa{display:none;}
+  .fs-step{min-width:80px;}
+  .slide{padding:55px 14px 85px;}
+  .nav-arr button{width:40px;height:40px;}
+  .sc{font-size:11px;padding:7px 12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+
+<button class="fs-btn" id="fsBtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"></path>
+  </svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- SLIDE 1 -->
+<section class="slide active">
+  <div class="s1-wrap">
+    <div class="badge au d1">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Curso de Depilação Profissional
+    </div>
+    <h1 class="au d2"><span class="gt">Fundamentos</span> Essenciais</h1>
+    <p class="tag au d3">Biossegurança, materiais, equipamentos e perfil profissional para atuar com excelência e segurança.</p>
+    <div class="pills au d4">
+      <span>🛡️ Biossegurança</span>
+      <span>🧴 Materiais</span>
+      <span>🔧 Equipamentos</span>
+      <span>👩‍⚕️ Perfil Profissional</span>
+      <span>🏥 Cabine Segura</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Quem é a <span class="gt">Profissional</span> de Depilação?</h2>
+    <p class="sub au d3">Competências técnicas e comportamentais para uma carreira de excelência</p>
+    <div class="g4 au d4">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Domínio Técnico</h3>
+        <p style="font-size:13px;">Conhecimento das técnicas de depilação, tipos de pele e contraindicações.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(91,63,214,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="#5B3FD6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Ética Profissional</h3>
+        <p style="font-size:13px;">Sigilo, respeito ao cliente e conduta alinhada às normas da profissão.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(200,109,215,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Higiene Rigorosa</h3>
+        <p style="font-size:13px;">Biossegurança como rotina, não como exceção — antes, durante e após o atendimento.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(46,107,255,.12);"><svg viewBox="0 0 24 24" fill="none" stroke="#2E6BFF" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3 style="font-size:15px;margin-bottom:8px;">Comunicação</h3>
+        <p style="font-size:13px;">Anamnese precisa, orientações claras e relacionamento de confiança com o cliente.</p>
+      </div>
+    </div>
+    <div class="chk-item au d5" style="margin-top:14px;">
+      <div class="chk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <p><strong>Lembre-se:</strong> A profissional de depilação é uma prestadora de serviços de saúde estética — sua postura reflete diretamente na segurança do cliente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Biossegurança: <span class="gt">a base de tudo</span></h2>
+    <p class="sub au d3">O conjunto de práticas que protege profissional, cliente e ambiente</p>
+    <div class="g3 au d4" style="margin-bottom:14px;">
+      <div class="cp" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:12px;">🔬</div>
+        <h3 style="font-size:14px;margin-bottom:8px;">O que é?</h3>
+        <p style="font-size:13px;">Conjunto de ações e normas para prevenir riscos biológicos, químicos e físicos em ambientes de saúde e estética.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:12px;">🛡️</div>
+        <h3 style="font-size:14px;margin-bottom:8px;">Por que protege?</h3>
+        <p style="font-size:13px;">Evita contaminação cruzada, infecções, alergias e doenças transmissíveis entre clientes e profissionais.</p>
+      </div>
+      <div class="cp" style="text-align:center;">
+        <div style="font-size:32px;margin-bottom:12px;">⚠️</div>
+        <h3 style="font-size:14px;margin-bottom:8px;">Sem ela?</h3>
+        <p style="font-size:13px;">Risco de hepatite, HIV, infecções bacterianas, dermatites e até interdição do estabelecimento.</p>
+      </div>
+    </div>
+    <div class="card au d5" style="width:100%;border-color:rgba(46,107,255,.2);">
+      <p style="font-size:13px;text-align:center;"><span style="color:#2E6BFF;font-weight:700;">📋 Base legal:</span> A biossegurança em serviços de estética é regulamentada pela <strong style="color:#F5F7FB;">ANVISA (RDC 15/2012)</strong> e normas da <strong style="color:#F5F7FB;">ABNT</strong>. O cumprimento é obrigatório.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2"><span class="gt">EPIs</span> Obrigatórios</h2>
+    <p class="sub au d3">Equipamentos de Proteção Individual — use sempre, sem exceções</p>
+    <div class="g4 au d4">
+      <div class="s5c b1 card" style="padding-left:22px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:28px;">🧤</span>
+          <h3 style="font-size:15px;">Luvas Descartáveis</h3>
+        </div>
+        <p style="font-size:13px;">De látex ou nitrílica. Trocar a cada cliente. Nunca reutilizar. Protege contra contato com sangue e secreções.</p>
+      </div>
+      <div class="s5c b2 card" style="padding-left:22px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:28px;">😷</span>
+          <h3 style="font-size:15px;">Máscara Cirúrgica</h3>
+        </div>
+        <p style="font-size:13px;">Obrigatória em procedimentos com cera quente. Evita inalação de vapores e partículas em suspensão.</p>
+      </div>
+      <div class="s5c b3 card" style="padding-left:22px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:28px;">🥼</span>
+          <h3 style="font-size:15px;">Avental / Jaleco</h3>
+        </div>
+        <p style="font-size:13px;">Tecido de fácil higienização. Protege a roupa e a pele da profissional de respingos de cera e produtos químicos.</p>
+      </div>
+      <div class="s5c b1 card" style="padding-left:22px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span style="font-size:28px;">👒</span>
+          <h3 style="font-size:15px;">Touca / Protetor Capilar</h3>
+        </div>
+        <p style="font-size:13px;">Evita contato dos cabelos da profissional com a área de trabalho e o cliente. Uso recomendado em toda sessão.</p>
+      </div>
+    </div>
+    <div class="card au d5" style="width:100%;margin-top:12px;border-color:rgba(200,109,215,.2);">
+      <p style="font-size:13px;text-align:center;"><span style="color:#C86DD7;font-weight:700;">⚡ Regra de ouro:</span> Higienize as mãos <strong style="color:#F5F7FB;">antes de colocar e após retirar</strong> as luvas. O EPI não substitui a lavagem das mãos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Limpar ≠ <span class="gt">Esterilizar</span></h2>
+    <p class="sub au d3">Entenda os 3 níveis de processamento de materiais</p>
+    <div class="fl au d4" style="margin-bottom:16px;width:100%;">
+      <div class="fs-step">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg></div>
+        <span>1. Limpeza</span>
+        <p style="font-size:11px;color:#7E879B;margin-top:4px;">Remove sujidade visível com água e sabão</p>
+      </div>
+      <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="fs-step act">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <span>2. Desinfecção</span>
+        <p style="font-size:11px;color:#7E879B;margin-top:4px;">Elimina microrganismos com álcool 70% ou hipoclorito</p>
+      </div>
+      <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="fs-step">
+        <div class="fi" style="background:rgba(200,109,215,.1);border-color:rgba(200,109,215,.3);"><svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <span>3. Esterilização</span>
+        <p style="font-size:11px;color:#7E879B;margin-top:4px;">Elimina TODOS os microrganismos (autoclave)</p>
+      </div>
+    </div>
+    <div class="g3 au d5" style="width:100%;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:22px;margin-bottom:8px;">🧼</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Álcool 70%</h3>
+        <p style="font-size:12px;">Superfícies, pinças, espátulas metálicas reutilizáveis</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:22px;margin-bottom:8px;">💧</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Hipoclorito</h3>
+        <p style="font-size:12px;">Bancadas, macas e pisos após cada atendimento</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:22px;margin-bottom:8px;">♨️</div>
+        <h3 style="font-size:13px;margin-bottom:6px;">Estufa/Autoclave</h3>
+        <p style="font-size:12px;">Materiais metálicos que entram em contato com a pele</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Descarte <span class="gt">Correto</span></h2>
+    <p class="sub au d3">Responsabilidade que protege sua equipe, clientes e o meio ambiente</p>
+    <div class="scroll-inner">
+      <div style="display:flex;flex-direction:column;gap:12px;width:100%;" class="au d4">
+        <div class="s5c b1 card" style="padding-left:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span style="font-size:22px;">🔴</span>
+            <h3 style="font-size:14px;">Resíduos Infectantes (Grupo A)</h3>
+          </div>
+          <p style="font-size:13px;">Luvas, algodões com sangue, tiras de cera com folículo. Descartar em <strong style="color:#F5F7FB;">saco branco leitoso</strong> identificado com símbolo de risco biológico.</p>
+        </div>
+        <div class="s5c b2 card" style="padding-left:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span style="font-size:22px;">🟡</span>
+            <h3 style="font-size:14px;">Materiais Perfurocortantes (Grupo E)</h3>
+          </div>
+          <p style="font-size:13px;">Agulhas, lâminas descartáveis e espátulas cortantes. Descartar em <strong style="color:#F5F7FB;">caixa coletora rígida (Descarpack)</strong> até ¾ da capacidade.</p>
+        </div>
+        <div class="s5c b3 card" style="padding-left:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span style="font-size:22px;">🟢</span>
+            <h3 style="font-size:14px;">Resíduos Comuns (Grupo D)</h3>
+          </div>
+          <p style="font-size:13px;">Embalagens, papéis e materiais não contaminados. Lixo comum em <strong style="color:#F5F7FB;">saco preto</strong>, seguindo normas municipais de coleta.</p>
+        </div>
+        <div class="card au d5" style="border-color:rgba(46,107,255,.2);">
+          <p style="font-size:13px;text-align:center;">⚠️ <strong style="color:#F5F7FB;">Nunca misture</strong> resíduos infectantes com lixo comum. A responsabilidade pelo descarte correto é do gerador — a profissional e o estabelecimento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Materiais do <span class="gt">Dia a Dia</span></h2>
+    <p class="sub au d3">Conheça cada insumo, sua função e cuidados de uso</p>
+    <div class="scroll-inner">
+      <div class="g3 au d4" style="margin-bottom:12px;">
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:28px;margin-bottom:10px;">🍯</div>
+          <h3 style="font-size:13px;margin-bottom:6px;">Cera Quente</h3>
+          <p style="font-size:12px;">Para pelos grossos. Aquecida a 40–45°C. Máxima aderência. Requer atenção à temperatura.</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:28px;margin-bottom:10px;">🟡</div>
+          <h3 style="font-size:13px;margin-bottom:6px;">Cera Morna</h3>
+          <p style="font-size:12px;">Indicada para peles sensíveis. Menor risco de queimaduras. Usada com tiras de tecido.</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:28px;margin-bottom:10px;">🎯</div>
+          <h3 style="font-size:13px;margin-bottom:6px;">Cera Roll-on</h3>
+          <p style="font-size:12px;">Praticidade e higiene. Aplicador não toca a pele diretamente. Ideal para áreas menores.</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:28px;margin-bottom:10px;">🪵</div>
+          <h3 style="font-size:13px;margin-bottom:6px;">Espátulas</h3>
+          <p style="font-size:12px;">Descartáveis (madeira/plástico). <strong style="color:#FF6B6B;">Nunca reintroduzir</strong> no recipiente após uso. Risco de contaminação.</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:28px;margin-bottom:10px;">🩹</div>
+          <h3 style="font-size:13px;margin-bottom:6px;">Tiras de Remoção</h3>
+          <p style="font-size:12px;">Tecido ou papel. De uso único por área. Dimensionar corretamente para evitar desperdício.</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:28px;margin-bottom:10px;">🧴</div>
+          <h3 style="font-size:13px;margin-bottom:6px;">Talco + Óleo</h3>
+          <p style="font-size:12px;">Talco: prepara a pele antes. Óleo removedor: retira resíduos de cera após o procedimento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">A Cabine <span class="gt">Bem Equipada</span></h2>
+    <p class="sub au d3">Equipamentos essenciais para um atendimento profissional e seguro</p>
+    <div class="g4 au d4">
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="tn n1" style="flex-shrink:0;width:48px;height:48px;border-radius:12px;font-size:18px;margin:0;">1</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:6px;">🛏️ Maca Estética</h3>
+          <p style="font-size:12px;">Revestimento lavável (vinil). Higienizar com álcool 70% entre clientes. Cobertura descartável ou toalha limpa a cada atendimento.</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="tn n2" style="flex-shrink:0;width:48px;height:48px;border-radius:12px;font-size:18px;margin:0;">2</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:6px;">🔥 Aquecedor de Cera</h3>
+          <p style="font-size:12px;">Termostato regulável. Manter temperatura constante. Limpar o exterior diariamente. Jamais reaquecer cera contaminada.</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="tn n3" style="flex-shrink:0;width:48px;height:48px;border-radius:12px;font-size:18px;margin:0;">3</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:6px;">♨️ Estufa Esterilizadora</h3>
+          <p style="font-size:12px;">Para materiais metálicos reutilizáveis. Temperatura mínima de 160°C por 2h. Registrar ciclos de esterilização.</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="tn n4" style="flex-shrink:0;width:48px;height:48px;border-radius:12px;font-size:18px;margin:0;">4</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:6px;">🗑️ Lixeira com Tampa</h3>
+          <p style="font-size:12px;">Acionamento por pedal (sem contato manual). Saco separado para resíduos infectantes. Esvaziar após cada turno.</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start;grid-column:span 2;">
+        <div class="tn n1" style="flex-shrink:0;width:48px;height:48px;border-radius:12px;font-size:18px;margin:0;">5</div>
+        <div>
+          <h3 style="font-size:14px;margin-bottom:6px;">🛒 Carrinho Auxiliar</h3>
+          <p style="font-size:12px;">Superfície de trabalho móvel. Organizar materiais de uso imediato. Higienizar antes de montar para o próximo cliente. Manter somente o necessário sobre ele.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Montagem e <span class="gt">Organização</span> da Cabine</h2>
+    <p class="sub au d3">Sequência correta para um atendimento impecável</p>
+    <div class="fl au d4" style="margin-bottom:16px;width:100%;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <div class="fs-step act" style="min-width:90px;">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+        <span style="font-size:12px;">1. Higienizar Cabine</span>
+      </div>
+      <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="fs-step" style="min-width:90px;">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <span style="font-size:12px;">2. Cobrir Maca</span>
+      </div>
+      <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="fs-step" style="min-width:90px;">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <span style="font-size:12px;">3. Preparar Materiais</span>
+      </div>
+      <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="fs-step" style="min-width:90px;">
+        <div class="fi" style="background:rgba(200,109,215,.1);border-color:rgba(200,109,215,.3);"><svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <span style="font-size:12px;">4. Checklist Final</span>
+      </div>
+    </div>
+    <div class="chk au d5" style="width:100%;">
+      <div class="chk-item">
+        <div class="chk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>EPIs disponíveis:</strong> luvas, máscara e avental acessíveis antes de receber o cliente.</p>
+      </div>
+      <div class="chk-item">
+        <div class="chk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Temperatura da cera:</strong> verificar antes do início. Teste interno no pulso da profissional.</p>
+      </div>
+      <div class="chk-item">
+        <div class="chk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Materiais suficientes:</strong> espátulas, tiras e insumos calculados para o procedimento.</p>
+      </div>
+      <div class="chk-item">
+        <div class="chk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Lixeiras posicionadas:</strong> ao alcance fácil, com sacos trocados desde o último atendimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide">
+  <div class="slide-inner ce">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="text-align:center;">Profissionalismo começa<br><span class="gt">antes da cera aquecer</span></h2>
+    <p class="sub au d3" style="text-align:center;max-width:560px;">Sua preparação, sua postura e seus protocolos são o maior diferencial competitivo da sua carreira.</p>
+    <div class="last-card au d4">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:20px;">
+        <span style="padding:7px 16px;border-radius:999px;background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.2);font-size:12px;font-weight:600;color:#8FAEFF;">🛡️ Biossegurança</span>
+        <span style="padding:7px 16px;border-radius:999px;background:rgba(91,63,214,.1);border:1px solid rgba(91,63,214,.2);font-size:12px;font-weight:600;color:#9B8FFF;">🧤 EPIs</span>
+        <span style="padding:7px 16px;border-radius:999px;background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.2);font-size:12px;font-weight:600;color:#D89FE8;">🧴 Materiais</span>
+        <span style="padding:7px 16px;border-radius:999px;background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.2);font-size:12px;font-weight:600;color:#8FAEFF;">🔧 Equipamentos</span>
+        <span style="padding:7px 16px;border-radius:999px;background:rgba(91,63,214,.1);border:1px solid rgba(91,63,214,.2);font-size:12px;font-weight:600;color:#9B8FFF;">🗑️ Descarte</span>
+        <span style="padding:7px 16px;border-radius:999px;background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.2);font-size:12px;font-weight:600;color:#D89FE8;">✅ Organização</span>
+      </div>
+      <p style="font-size:15px;line-height:1.7;color:#AAB3C5;"><strong style="color:#F5F7FB;">A cliente que se sente segura, volta.</strong> A profissional que domina biossegurança e organização não apenas cumpre normas — ela constrói reputação, fideliza clientes e se destaca no mercado.</p>
+    </div>
+    <p class="au d5" style="font-size:13px;color:#7E879B;margin-top:16px;text-align:center;">Use as setas ou swipe para navegar entre os slides 👆</p>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.changedTouches[0].screenX,{passive:true});
+document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?next():prev();}},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
