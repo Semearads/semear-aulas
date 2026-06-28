@@ -2,198 +2,262 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Curso de Alongamento de Unhas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alongamento de Cílios — SEMEAR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #050816;
-      --card: rgba(255,255,255,.04);
-      --border: rgba(255,255,255,.08);
-      --text: #F5F7FB;
-      --muted: #AAB3C5;
-      --violet: #7C5BDB;
-      --pink: #C86DD7;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(900px 420px at 72% 18%, rgba(124,91,219,.18) 0%, transparent 42%),
-        radial-gradient(800px 380px at 35% 20%, rgba(200,109,215,.12) 0%, transparent 42%),
-        linear-gradient(180deg, #140A18 0%, #0F0810 45%, #050816 100%);
-      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0614;
+      color: #F5F7FB;
       min-height: 100vh;
-      padding: 28px 16px 48px;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(800px 400px at 80% 10%, rgba(180, 100, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(600px 350px at 20% 80%, rgba(100, 80, 255, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .wrap { max-width: 860px; margin: 0 auto; width: 100%; }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
 
+    /* Badge do topo */
     .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 14px; border-radius: 999px;
-      background: rgba(124,91,219,.10);
-      border: 1px solid rgba(124,91,219,.28);
-      color: #CDBBFF;
-      font-weight: 800; font-size: clamp(11px, 2.5vw, 12px);
-      letter-spacing: .04em; text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 16px 0 8px;
-      font-size: clamp(22px, 5vw, 44px);
-      letter-spacing: -.02em;
-      line-height: 1.15;
-      word-break: break-word;
-      background: linear-gradient(135deg, #CDBBFF 0%, #C86DD7 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-
-    .subtitle {
-      margin: 0 0 24px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: clamp(13px, 2.5vw, 15px);
-    }
-
-    .grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
-
-    a.card {
-      display: flex; flex-direction: column; text-decoration: none; color: inherit;
-      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-      padding: 18px 16px; transition: .2s ease; -webkit-tap-highlight-color: transparent;
-    }
-    a.card:hover, a.card:active {
-      transform: translateY(-2px);
-      border-color: rgba(124,91,219,.40);
-      background: rgba(124,91,219,.06);
-    }
-
-    .card-title {
-      font-weight: 800;
-      font-size: clamp(14px, 3vw, 16px);
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-
-    .card-desc {
-      color: var(--muted);
-      font-size: clamp(12px, 2.4vw, 13px);
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .pill {
-      display: inline-block;
-      align-self: flex-start;
-      margin-top: 14px;
-      font-size: clamp(11px, 2.2vw, 12px);
-      font-weight: 900;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(124,91,219,.22), rgba(200,109,215,.22));
-      border: 1px solid rgba(200,109,215,.20);
-      color: #EBD7FF;
-      white-space: nowrap;
-    }
-
-    .row-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color: #AAB3C5;
-      padding: 12px 18px;
-      border-radius: 12px;
-      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(180, 100, 255, 0.08);
+      border: 1px solid rgba(180, 100, 255, 0.25);
+      font-size: 11px;
       font-weight: 700;
-      font-size: clamp(12px, 2.5vw, 14px);
-      transition: .25s ease;
-      -webkit-tap-highlight-color: transparent;
-      cursor: pointer;
+      color: #C86DD7;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
-    .btn:hover, .btn:active {
+    .badge::before {
+      content: '✨';
+      font-size: 13px;
+    }
+
+    /* Título */
+    h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #C86DD7 0%, #E0A0FF 50%, #C86DD7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: clamp(14px, 2vw, 17px);
+      color: #AAB3C5;
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    /* Grid de aulas */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      padding: 24px 22px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #C86DD7, #7B5FD6);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .card:hover {
+      border-color: rgba(180, 100, 255, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(180, 100, 255, 0.08);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card h3 {
+      font-size: clamp(16px, 2.2vw, 19px);
+      font-weight: 800;
       color: #F5F7FB;
-      border-color: rgba(124,91,219,.35);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
     }
 
-    .btn svg { flex-shrink: 0; }
+    .card p {
+      font-size: clamp(12px, 1.6vw, 14px);
+      color: #AAB3C5;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
 
+    .btn-aula {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7B5FD6, #C86DD7);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(180, 100, 255, 0.25);
+    }
+    .btn-aula:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 28px rgba(180, 100, 255, 0.4);
+    }
+    .btn-aula svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Botão voltar */
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-voltar:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #F5F7FB;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+    .btn-voltar svg { width: 16px; height: 16px; }
+
+    /* Footer */
     .footer {
-      margin-top: 24px;
-      color: #7E879B;
-      font-size: clamp(11px, 2.2vw, 12px);
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 12px;
+      color: #5a6278;
     }
-    .footer a { color: #CDBBFF; }
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="badge">💅 Curso de Alongamento de Unhas</div>
-    <h1>Alongamento de Unhas</h1>
+
+  <div class="container">
+
+    <div class="badge">Curso de Alongamento de Cílios</div>
+
+    <h1>Alongamento de Cílios</h1>
     <p class="subtitle">Selecione uma aula para abrir.</p>
 
     <div class="grid">
-      <a class="card" href="#">
-        <div class="card-title">Aula 01 — Biossegurança e Preparação</div>
-        <p class="card-desc">Esterilização, organização da bancada e preparo da unha natural</p>
-        <span class="pill">Abrir aula</span>
-      </a>
 
-      <a class="card" href="#">
-        <div class="card-title">Aula 02 — Técnicas de Alongamento</div>
-        <p class="card-desc">Fibra de vidro, molde F1, tips e aplicação de gel</p>
-        <span class="pill">Abrir aula</span>
-      </a>
+      <!-- Aula 01 -->
+      <div class="card">
+        <h3>Aula 01 — Biossegurança e Anatomia do Olho</h3>
+        <p>Higiene, esterilização de materiais, anatomia dos cílios naturais e cuidados com a saúde ocular da cliente.</p>
+        <a href="cilios-aula-01.html" class="btn-aula">
+          Abrir aula
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </a>
+      </div>
 
-      <a class="card" href="#">
-        <div class="card-title">Aula 03 — Lixamento e Acabamento</div>
-        <p class="card-desc">Cutilagem, modelagem, lixamento técnico e finalização</p>
-        <span class="pill">Abrir aula</span>
-      </a>
+      <!-- Aula 02 -->
+      <div class="card">
+        <h3>Aula 02 — Tipos de Fios e Curvaturas</h3>
+        <p>Conheça as espessuras (0.03 a 0.25), curvaturas J, B, C, D, L e como escolher o fio ideal para cada tipo de olho.</p>
+        <a href="cilios-aula-02.html" class="btn-aula">
+          Abrir aula
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </a>
+      </div>
 
-      <a class="card" href="#">
-        <div class="card-title">Aula 04 — Manutenção e Remoção</div>
-        <p class="card-desc">Revisão, preenchimento, cuidados pós-procedimento e remoção segura</p>
-        <span class="pill">Abrir aula</span>
-      </a>
+      <!-- Aula 03 -->
+      <div class="card">
+        <h3>Aula 03 — Técnica Fio a Fio</h3>
+        <p>Isolamento dos cílios naturais, dip na cola, aplicação correta e acabamento profissional.</p>
+        <a href="cilios-aula-03.html" class="btn-aula">
+          Abrir aula
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Aula 04 -->
+      <div class="card">
+        <h3>Aula 04 — Volume Russo e Manutenção</h3>
+        <p>Leques pré-fabricados, técnica de volume, remoção segura e protocolo de retoque a cada 21 dias.</p>
+        <a href="cilios-aula-04.html" class="btn-aula">
+          Abrir aula
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </a>
+      </div>
+
     </div>
 
-    <div class="row-actions">
-      <a href="categoria-unhas.html" class="btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-        Voltar à Categoria
-      </a>
-    </div>
+    <a href="estetica-facial.html" class="btn-voltar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+      Voltar à Categoria
+    </a>
 
     <div class="footer">
-      Instituto Semear &mdash; Todos os direitos reservados.
+      Instituto Semear — Todos os direitos reservados.
     </div>
+
   </div>
 
-  <script>
-    const ACCESS_KEY = 'semear_access_ok_unhas';
-    if (localStorage.getItem(ACCESS_KEY) !== '1') {
-      window.location.replace('categoria-unhas.html');
-    }
-  </script>
 </body>
 </html>
