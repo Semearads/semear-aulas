@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Depilação Roll-on & Egípcia — Curso Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 13px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);width:26px;border-radius:4px;}
+
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:54px 18px 78px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 16px rgba(46,107,255,.12)}50%{box-shadow:0 0 32px rgba(46,107,255,.3)}}
+@keyframes glowG{0%,100%{box-shadow:0 0 16px rgba(212,175,55,.1)}50%{box-shadow:0 0 32px rgba(212,175,55,.28)}}
+
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}.d7{animation-delay:.68s!important}
+
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gg{background:linear-gradient(135deg,#D4AF37 0%,#F9E077 50%,#D4AF37 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 14px;transform-origin:center;}
+.gl.go{background:linear-gradient(90deg,#D4AF37,#F9E077);}
+
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border-radius:999px;margin-bottom:20px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+.badge.go{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.25);color:#D4AF37;}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(46,107,255,.07);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.22);transform:translateY(-2px) scale(1.01);}
+.cp.go{box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(212,175,55,.07);}
+.cp.go:hover{border-color:rgba(212,175,55,.22);}
+
+.sb{position:relative;padding-left:16px!important;}
+.sb::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.sb.b1::before{background:#2E6BFF;}
+.sb.b2::before{background:#5B3FD6;}
+.sb.b3::before{background:#D4AF37;}
+.sb.b4::before{background:linear-gradient(180deg,#D4AF37,#F9E077);}
+
+.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;width:100%;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:68px;padding:0 3px;}
+.fstep .fi{width:48px;height:48px;border-radius:13px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:21px;height:21px;color:#2E6BFF;}
+.fstep span{font-size:10px;font-weight:600;color:#F5F7FB;line-height:1.3;}
+.fstep p{font-size:9px;color:#7E879B;margin-top:2px;line-height:1.3;}
+.farr{display:flex;align-items:center;padding-bottom:22px;margin:0 1px;}
+.farr svg{width:14px;height:14px;color:#7E879B;}
+.fstep.actr .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 8px 18px rgba(46,107,255,.28);}
+.fstep.actr .fi svg{color:#fff;}
+.fstep.actg .fi{background:linear-gradient(180deg,#D4AF37,#B8941E);border-color:transparent;box-shadow:0 8px 18px rgba(212,175,55,.28);animation:glowG 3s ease-in-out infinite;}
+.fstep.actg .fi svg{color:#fff;}
+
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.2;}
+p,span,li{font-weight:400;line-height:1.55;color:#AAB3C5;}
+
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:flex-start;}
+.inner.ce{align-items:center;text-align:center;}
+.inner h2{font-size:clamp(19px,3.6vw,34px);margin-bottom:4px;}
+.inner .sub{font-size:clamp(11px,1.6vw,13px);color:#7E879B;margin-bottom:14px;}
+
+.sc-area{overflow-y:auto;max-height:calc(100vh - 155px);width:100%;padding-right:3px;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.sc-area::-webkit-scrollbar{width:3px;}
+.sc-area::-webkit-scrollbar-track{background:transparent;}
+.sc-area::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:2px;}
+
+.ci{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
+.ci-icon{width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.ci-icon svg{width:12px;height:12px;color:#fff;}
+.ci-icon.go{background:linear-gradient(145deg,#D4AF37,#B8941E);}
+.ci p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.ci strong{color:#F5F7FB;font-weight:600;}
+
+.bignum{font-size:clamp(32px,5vw,50px);font-weight:900;letter-spacing:-.03em;line-height:1;}
+
+.bwc{border-radius:16px;padding:14px 13px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.15);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.15);}
+.bwc ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.bwc ul li{font-size:11px;display:flex;align-items:flex-start;gap:7px;color:#AAB3C5;line-height:1.4;}
+.bwd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+.mbr{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);font-size:11px;font-weight:700;color:#8FAEFF;letter-spacing:.04em;}
+.mbe{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.25);font-size:11px;font-weight:700;color:#D4AF37;letter-spacing:.04em;}
+
+.snum{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+.snum.sr{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.snum.se{background:linear-gradient(145deg,#D4AF37,#B8941E);}
+
+.tbl{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;}
+.tbl th{padding:9px 10px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+.tbl th:first-child{color:#7E879B;background:rgba(255,255,255,.03);text-align:left;}
+.tbl th.thr{color:#8FAEFF;background:rgba(46,107,255,.08);}
+.tbl th.the{color:#D4AF37;background:rgba(212,175,55,.08);}
+.tbl td{padding:8px 10px;font-size:11px;border-top:1px solid rgba(255,255,255,.05);}
+.tbl td:first-child{color:#7E879B;font-weight:600;background:rgba(255,255,255,.02);}
+.tbl td.tdr{color:#AAB3C5;background:rgba(46,107,255,.04);}
+.tbl td.tde{color:#AAB3C5;background:rgba(212,175,55,.04);}
+
+.lc{background:linear-gradient(145deg,rgba(46,107,255,.08),rgba(212,175,55,.06));border:1px solid rgba(46,107,255,.2);border-radius:20px;padding:22px 18px;text-align:center;width:100%;max-width:640px;}
+
+.s1w{text-align:center;max-width:660px;width:100%;}
+.s1w h1{font-size:clamp(26px,5.2vw,60px);margin-bottom:16px;}
+.s1w .tag{font-size:clamp(12px,1.8vw,16px);color:#AAB3C5;max-width:480px;margin:0 auto;line-height:1.6;}
+.s1w .pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+.s1w .pills span{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:11px;font-weight:600;color:#7E879B;letter-spacing:.03em;}
+
+@media(max-width:520px){
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .farr{display:none;}
+  .slide{padding:48px 13px 76px;}
+  .nav-arr button{width:38px;height:38px;font-size:15px;}
+  .sc-area{max-height:calc(100vh - 148px);}
+}
+@media(max-width:380px){
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr;}
+  .tbl th,.tbl td{padding:6px 7px;font-size:10px;}
+  .s1w h1{font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — TÍTULO
+══════════════════════════════════════ -->
+<section class="slide active">
+  <div class="s1w">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      Curso Profissional
+    </div>
+    <h1 class="au d2">
+      <span class="gt">Roll-on</span> &amp; <span class="gg">Egípcia</span><br/>Depilação Profissional
+    </h1>
+    <p class="tag au d3">Domine os dois métodos mais modernos e diferenciados do mercado — do protocolo completo à fidelização de clientes de alto valor.</p>
+    <div class="pills au d4">
+      <span>🎯 Cera Roll-on</span>
+      <span>✨ Cera Egípcia</span>
+      <span>📋 Protocolos Completos</span>
+      <span>🗺️ Mapa Corporal</span>
+      <span>⚠️ Intercorrências</span>
+      <span>💎 Fidelização Premium</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — ROLL-ON
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbr">🎯 Roll-on</span>
+      <h2 style="margin-bottom:0;">A Revolução da Agilidade</h2>
+    </div>
+    <p class="sub au d3">Sistema de cartucho aquecido — precisão, higiene e velocidade no atendimento</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">🧪</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Composição</h3>
+            <p style="font-size:12px;">Cera à base de resinas sintéticas ou naturais encapsulada em cartucho plástico descartável. Fórmulas com ativos calmantes como camomila, aloe vera e vitamina E.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">🌡️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Temperatura de Uso</h3>
+            <p style="font-size:12px;">Aquecedor específico de cartucho entre <strong style="color:#2E6BFF;">38°C e 43°C</strong>. O rolo distribui a cera uniformemente e na temperatura ideal direto na pele — sem espátula.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">🎗️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Sistema de Remoção</h3>
+            <p style="font-size:12px;">Remoção com fita não tecida (TNT). O rolo aplica faixa homogênea e controlada — a fita adere perfeitamente e permite tração rápida e precisa.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">⚡</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Agilidade Máxima</h3>
+            <p style="font-size:12px;">Até <strong style="color:#2E6BFF;">40% mais rápido</strong> que ceras convencionais. Ideal para grande volume de atendimentos. Sem contato manual com a cera — mais higiene e praticidade.</p>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(46,107,255,.18);">
+          <h3 style="font-size:13px;margin-bottom:8px;color:#2E6BFF;">✅ Indicações Principais</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Pernas</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Braços</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Costas</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Barriga</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Axilas</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Virilha simples</span>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Por que é tendência:</strong> O sistema roll-on elimina o desperdício de cera, garante aplicação uniforme sem bolhas ou falhas e reduz o risco de contaminação cruzada — ideal para clínicas de alto padrão.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — EGÍPCIA
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl go au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbe">✨ Egípcia</span>
+      <h2 style="margin-bottom:0;">O Método Ancestral <span class="gg">Premium</span></h2>
+    </div>
+    <p class="sub au d3">Técnica milenar à base de açúcar — 100% natural, sustentável e de alto valor</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div class="cp go">
+            <div style="font-size:22px;margin-bottom:8px;">🌿</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Composição 100% Natural</h3>
+            <p style="font-size:12px;">Pasta de <strong style="color:#D4AF37;">açúcar, suco de limão e água</strong>. Sem resinas, sem químicos, sem conservantes. Biodegradável e hipoalergênica — segura para peles ultra sensíveis.</p>
+          </div>
+          <div class="cp go">
+            <div style="font-size:22px;margin-bottom:8px;">🌡️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Temperatura de Aplicação</h3>
+            <p style="font-size:12px;">Aplicada em temperatura <strong style="color:#D4AF37;">ambiente ou levemente morna (30–37°C)</strong>. Elimina risco de queimadura térmica — grande diferencial de segurança para a profissional.</p>
+          </div>
+          <div class="cp go">
+            <div style="font-size:22px;margin-bottom:8px;">🖐️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Técnica Manual Sem Fita</h3>
+            <p style="font-size:12px;">A pasta é moldada em bola entre os dedos e aplicada e removida pelo mesmo movimento manual. Contra o sentido do pelo — reduz quebra e encravamento.</p>
+          </div>
+          <div class="cp go">
+            <div style="font-size:22px;margin-bottom:8px;">💛</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Diferencial de Mercado</h3>
+            <p style="font-size:12px;">Posicionamento premium e natural — clientes alérgicos a resinas, veganos e eco-conscientes. Justifica preços até <strong style="color:#D4AF37;">3–4x acima</strong> da depilação convencional.</p>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(212,175,55,.2);">
+          <h3 style="font-size:13px;margin-bottom:8px;color:#D4AF37;">✅ Indicações Principais</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);font-size:11px;font-weight:600;color:#D4AF37;">Peles sensíveis</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);font-size:11px;font-weight:600;color:#D4AF37;">Virilha completa</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);font-size:11px;font-weight:600;color:#D4AF37;">Buço</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);font-size:11px;font-weight:600;color:#D4AF37;">Sobrancelha</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);font-size:11px;font-weight:600;color:#D4AF37;">Axilas</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);font-size:11px;font-weight:600;color:#D4AF37;">Região íntima</span>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ci-icon go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p><strong>Origem histórica:</strong> A técnica remonta ao Egito Antigo — usada por Cleópatra. Conhecida também como <em>sugaring</em> ou <em>halawa</em> no mundo árabe. Renasceu como o método mais sustentável e natural da estética moderna.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — COMPARATIVO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Roll-on vs. Egípcia — <span class="gt">Qual Usar?</span></h2>
+    <p class="sub au d3">Comparativo técnico completo para escolher o método ideal em cada situação</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="card au d4" style="padding:0;overflow:hidden;">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th class="thr">🎯 Roll-on</th>
+                <th class="the">✨ Egípcia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Composição</td>
+                <td class="tdr">Resina sintética/natural</td>
+                <td class="tde">Açúcar, limão, água</td>
+              </tr>
+              <tr>
+                <td>Temperatura</td>
+                <td class="tdr">38°C – 43°C</td>
+                <td class="tde">Ambiente – 37°C</td>
+              </tr>
+              <tr>
+                <td>Aplicação</td>
+                <td class="tdr">Rolo (cartucho)</td>
+                <td class="tde">Manual (bola/pasta)</td>
+              </tr>
+              <tr>
+                <td>Remoção</td>
+                <td class="tdr">Com fita TNT</td>
+                <td class="tde">Sem fita — manual</td>
+              </tr>
+              <tr>
+                <td>Risco de queimadura</td>
+                <td class="tdr">Baixo (controlado)</td>
+                <td class="tde">Praticamente zero</td>
+              </tr>
+              <tr>
+                <td>Custo do insumo</td>
+                <td class="tdr">⭐⭐ Médio</td>
+                <td class="tde">⭐ Muito baixo</td>
+              </tr>
+              <tr>
+                <td>Ticket do serviço</td>
+                <td class="tdr">Médio-alto</td>
+                <td class="tde">Premium (3–4x)</td>
+              </tr>
+              <tr>
+                <td>Limpeza residual</td>
+                <td class="tdr">Óleo/água morna</td>
+                <td class="tde">Apenas água morna</td>
+              </tr>
+              <tr>
+                <td>Pele indicada</td>
+                <td class="tdr">Normal a oleosa</td>
+                <td class="tde">Qualquer tipo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="card" style="border-color:rgba(46,107,255,.18);text-align:center;">
+            <p style="font-size:11px;margin-bottom:6px;color:#7E879B;">Melhor para</p>
+            <h3 style="font-size:13px;color:#2E6BFF;">Volume e Velocidade</h3>
+            <p style="font-size:11px;margin-top:5px;">Grandes áreas em menos tempo. Ideal para agenda cheia e atendimentos sequenciais.</p>
+          </div>
+          <div class="card" style="border-color:rgba(212,175,55,.18);text-align:center;">
+            <p style="font-size:11px;margin-bottom:6px;color:#7E879B;">Melhor para</p>
+            <h3 style="font-size:13px;color:#D4AF37;">Ticket Alto e Naturalidade</h3>
+            <p style="font-size:11px;margin-top:5px;">Clientes premium, peles sensíveis e quem valoriza ingredientes naturais e orgânicos.</p>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Estratégia ideal:</strong> Use roll-on para pernas, braços e costas — agilidade e uniformidade. Use egípcia para virilha, rosto e regiões delicadas — precisão, segurança e valor agregado máximo.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — KIT PROFISSIONAL
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">O Kit Profissional <span class="gt">Completo</span></h2>
+    <p class="sub au d3">Todos os materiais e equipamentos para operar os dois métodos com excelência</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="mbr" style="margin-bottom:2px;">🎯 Kit Roll-on</div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Aquecedor de Cartucho</h3>
+              <p style="font-size:11px;">Equipamento específico para cartuchos de cera. Com controle de temperatura preciso entre 38–43°C. Modelos para 1 ou 2 cartuchos simultâneos.</p>
+            </div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Cartuchos de Cera</h3>
+              <p style="font-size:11px;">Descartáveis — nunca reutilizar entre clientes. Variedades: roll-on azulene, mel, aloe vera, chocolate. Tamanhos P (corpo), M (virilha) e G (pernas).</p>
+            </div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Fitas TNT</h3>
+              <p style="font-size:11px;">Não tecida, 50–60g/m². Cortar em tiras adequadas para cada região. Resistência à tração sem rasgar — essencial para remoção eficiente.</p>
+            </div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Pré e Pós-depilação</h3>
+              <p style="font-size:11px;">Loção higienizante pré-procedimento, talco secativo e loção pós-calmante com aloe vera ou calêndula. Removedor de resíduo de cera.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="mbe" style="margin-bottom:2px;">✨ Kit Egípcia</div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Ingredientes da Pasta</h3>
+              <p style="font-size:11px;">Açúcar refinado ou cristal, suco de limão fresco e água. Proporção base: <strong style="color:#D4AF37;">2 xícaras açúcar : 1/4 limão : 1/4 água</strong>. Pode ser adquirida pronta.</p>
+            </div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Recipiente e Aquecedor</h3>
+              <p style="font-size:11px;">Pote de vidro ou cerâmica para micro-ondas/banho-maria. Manter consistência de mel grosso. Testar na parte interna do pulso antes de usar.</p>
+            </div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Luvas e Higiene</h3>
+              <p style="font-size:11px;">Luvas nitrílicas descartáveis. A pasta é reaplicada com os mesmos dedos na mesma área — técnica exige destreza manual. Higienização rigorosa entre clientes.</p>
+            </div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Pós-Egípcia</h3>
+              <p style="font-size:11px;">Limpeza apenas com água morna — a pasta dissolve completamente. Aplicar hidratante natural (rosa mosqueta, babosa) ou pó de arroz para finalizar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ci au d5">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Biossegurança obrigatória:</strong> Cartuchos roll-on são de uso único. A pasta egípcia não deve ser reaproveitada entre clientes. Maca com lençol descartável, ambiente higienizado e registro de anamnese são indispensáveis.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 6 — PROTOCOLO ROLL-ON
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbr">🎯 Protocolo</span>
+      <h2 style="margin-bottom:0;">Passo a Passo Roll-on</h2>
+    </div>
+    <p class="sub au d3">6 etapas para um procedimento seguro, rápido e de alto padrão</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="fl au d4">
+          <div class="fstep actr">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+            <span>1. Anamnese</span><p>Ficha de saúde</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actr">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg></div>
+            <span>2. Higienização</span><p>Loção pré-depil.</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actr">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83"/></svg></div>
+            <span>3. Talco</span><p>Secar a pele</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+            <span>4. Aplicação</span><p>Rolo no sentido</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>5. Remoção</span><p>Fita + tração</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>6. Pós-depil.</span><p>Calmar e hidratar</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;" class="au d5">
+          <div class="ci">
+            <div class="snum sr">1</div>
+            <p><strong>Anamnese:</strong> verificar uso de isotretinoína (contraindicado), rosácea ativa, queimaduras recentes, uso de ácidos na região nas últimas 72h e histórico de queloides.</p>
+          </div>
+          <div class="ci">
+            <div class="snum sr">4</div>
+            <p><strong>Aplicação com rolo:</strong> mover o cartucho no sentido do crescimento do pelo, com pressão leve e uniforme. Faixa de 8–10cm por passagem. Testar temperatura no pulso antes de iniciar.</p>
+          </div>
+          <div class="ci">
+            <div class="snum sr">5</div>
+            <p><strong>Remoção com fita:</strong> pressionar a fita firmemente sobre a cera, dobrar a ponta, manter paralelo à pele e tracionar de forma rápida, firme e contra o sentido do pelo. Pressionar imediatamente após.</p>
+          </div>
+        </div>
+
+        <div class="card au d6" style="border-color:rgba(255,107,107,.18);">
+          <p style="font-size:12px;"><span style="color:#FF6B6B;font-weight:700;">⚠️ Nunca faça:</span> passar o rolo mais de uma vez na mesma área na mesma sessão — provoca hiperemia severa e risco de queimadura química. Cartucho nunca deve ser reintroduzido no aquecedor após uso.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 7 — PROTOCOLO EGÍPCIA
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl go au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbe">✨ Protocolo</span>
+      <h2 style="margin-bottom:0;">Passo a Passo Egípcia</h2>
+    </div>
+    <p class="sub au d3">Técnica manual ancestral — domínio da consistência e do movimento é o segredo</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="fl au d4">
+          <div class="fstep actg">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+            <span>1. Anamnese</span><p>Alergias + ficha</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actg">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+            <span>2. Higienização</span><p>Limpar a área</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actg">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 015 5c0 5-5 13-5 13S7 12 7 7a5 5 0 015-5z"/></svg></div>
+            <span>3. Preparo</span><p>Pasta na temp.</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 12H6M12 6l-6 6 6 6"/></svg></div>
+            <span>4. Aplicação</span><p>Bola contra o pelo</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 12h12M12 18l6-6-6-6"/></svg></div>
+            <span>5. Remoção</span><p>Flick manual</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>6. Pós-depil.</span><p>Água + hidratante</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;" class="au d5">
+          <div class="ci">
+            <div class="snum se">3</div>
+            <p><strong>Consistência da pasta:</strong> ideal entre mel grosso e caramelo mole. Muito líquida = não adere. Muito dura = não molda. Testar entre os dedos — deve esticar sem quebrar e não grudar na luva.</p>
+          </div>
+          <div class="ci">
+            <div class="snum se">4</div>
+            <p><strong>Técnica da bola:</strong> pegar porção da pasta, modelar em bola com os dedos. Aplicar espalhando <em>contra</em> o sentido do pelo (diferente de outras ceras!), pressionando levemente para penetrar no folículo.</p>
+          </div>
+          <div class="ci">
+            <div class="snum se">5</div>
+            <p><strong>Remoção (flick):</strong> com a pasta aderida à pele, tracionar em movimento rápido e paralelo à pele, no <em>sentido do pelo</em>. O polegar estica a pele com a outra mão. Técnica exige prática — utilize manequim de treino.</p>
+          </div>
+        </div>
+
+        <div class="card au d6" style="border-color:rgba(212,175,55,.2);">
+          <p style="font-size:12px;"><span style="color:#D4AF37;font-weight:700;">💡 Segredo da egípcia:</span> Ao contrário de todas as outras ceras, a pasta egípcia é <strong style="color:#F5F7FB;">aplicada contra</strong> o sentido do pelo e <strong style="color:#F5F7FB;">removida a favor</strong> — isso minimiza quebra de pelo, reduz encravamento e garante remoção pela raiz com menos trauma.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 8 — REGIÕES DO CORPO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Cada Região, <span class="gt">Uma Abordagem</span></h2>
+    <p class="sub au d3">Mapa corporal completo — método ideal para cada área</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+        <div class="g2 au d4">
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🦵</span>
+              <h3 style="font-size:13px;">Pernas</h3>
+            </div>
+            <span class="mbr" style="font-size:10px;padding:3px 9px;margin-bottom:7px;display:inline-flex;">🎯 Roll-on</span>
+            <p style="font-size:11px;margin-top:6px;">Grande área plana — rolo ideal para faixas amplas e uniformes. Agilidade máxima. Atenção ao joelho e tornozelo onde a pele é mais fina e irregular.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">💪</span>
+              <h3 style="font-size:13px;">Braços e Costas</h3>
+            </div>
+            <span class="mbr" style="font-size:10px;padding:3px 9px;margin-bottom:7px;display:inline-flex;">🎯 Roll-on</span>
+            <p style="font-size:11px;margin-top:6px;">Superfícies extensas e relativamente planas. Roll-on garante cobertura uniforme. Costas exigem posicionamento adequado do cliente para tensionar a pele.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🌸</span>
+              <h3 style="font-size:13px;">Virilha Simples</h3>
+            </div>
+            <span class="mbr" style="font-size:10px;padding:3px 9px;margin-bottom:7px;display:inline-flex;">🎯 Roll-on</span>
+            <p style="font-size:11px;margin-top:6px;">Delineamento externo. Cartucho de tamanho médio. Pele sensível — temperatura mínima recomendada. Tensionar bem a região com a mão livre.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">💎</span>
+              <h3 style="font-size:13px;">Virilha Completa / Íntima</h3>
+            </div>
+            <span class="mbe" style="font-size:10px;padding:3px 9px;margin-bottom:7px;display:inline-flex;">✨ Egípcia</span>
+            <p style="font-size:11px;margin-top:6px;">Região extremamente sensível com dobras. Egípcia se adapta ao contorno corporal sem risco de queimadura. Pasta fria — máxima segurança e conforto.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🙌</span>
+              <h3 style="font-size:13px;">Axilas</h3>
+            </div>
+            <div style="display:flex;gap:5px;margin-bottom:7px;flex-wrap:wrap;">
+              <span class="mbr" style="font-size:10px;padding:3px 9px;display:inline-flex;">🎯 Roll-on</span>
+              <span class="mbe" style="font-size:10px;padding:3px 9px;display:inline-flex;">✨ Egípcia</span>
+            </div>
+            <p style="font-size:11px;margin-top:4px;">Ambos funcionam bem. Roll-on para velocidade, egípcia para pele reativa. Braço sempre elevado e pele bem tensionada. Aplicar em seções pequenas.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">👄</span>
+              <h3 style="font-size:13px;">Buço e Sobrancelha</h3>
+            </div>
+            <span class="mbe" style="font-size:10px;padding:3px 9px;margin-bottom:7px;display:inline-flex;">✨ Egípcia</span>
+            <p style="font-size:11px;margin-top:6px;">Egípcia exclusivamente — pasta fria elimina risco de queimadura próximo a mucosas e olhos. Porções pequenas, movimentos precisos. Alta concentração da profissional.</p>
+          </div>
+
+        </div>
+
+        <div class="ci au d5">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Regra de ouro:</strong> roll-on para superfícies planas e extensas, egípcia para regiões com dobras, curvas e alta sensibilidade. Combinar os dois no mesmo atendimento eleva a qualidade e reduz o tempo de procedimento.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 9 — ERROS E INTERCORRÊNCIAS
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">O Que <span class="gt">Nunca Pode Acontecer</span></h2>
+    <p class="sub au d3">Erros críticos, erros de técnica e conduta profissional em intercorrências</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div class="bwc cr">
+            <h3 style="font-size:13px;color:#FF6B6B;margin-bottom:3px;">🔴 Erros Críticos</h3>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">Causam lesão imediata na pele</p>
+            <ul>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Roll-on acima de 45°C — queimadura térmica</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Dupla passagem com rolo na mesma área</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Egípcia sobre pele com ferida ou infecção</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Depilar com isotretinoína ativa (roll-on)</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Reutilizar cartucho roll-on entre clientes</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Pasta egípcia muito quente em região íntima</li>
+            </ul>
+          </div>
+          <div class="bwc cy">
+            <h3 style="font-size:13px;color:#FFD460;margin-bottom:3px;">🟡 Erros de Técnica</h3>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">Comprometem o resultado final</p>
+            <ul>
+              <li><span class="bwd" style="background:#FFD460;"></span>Pasta egípcia com consistência errada</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Aplicar egípcia no sentido do pelo (erro clássico)</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Remoção lenta da fita roll-on</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Não tensionar a pele na remoção</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Pele úmida antes de qualquer método</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Fita mal pressionada sobre a cera roll-on</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;" class="au d5">
+          <h3 style="font-size:13px;color:#F5F7FB;margin-bottom:2px;">📋 Conduta em Intercorrências</h3>
+          <div class="ci">
+            <div class="ci-icon" style="background:linear-gradient(145deg,#FF6B6B,#D94F4F);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <p><strong>Hiperemia severa / queimadura leve:</strong> interromper imediatamente, aplicar compressa de água fria por 5 minutos, gel de aloe vera ou calmante específico. Não continuar o procedimento. Registrar ocorrência e orientar o cliente.</p>
+          </div>
+          <div class="ci">
+            <div class="ci-icon" style="background:linear-gradient(145deg,#FFD460,#C9A200);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>Reação alérgica (egípcia — limão/açúcar):</strong> lavar bem com água fria, aplicar anti-histamínico tópico se disponível. Se houver inchaço ou urticária generalizada, encaminhar ao pronto-socorro imediatamente.</p>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Foliculite e pelos encravados:</strong> orientar esfoliação suave 48–72h após a sessão. Usar produto com AHA/BHA para prevenir reincidência. Não depilar sobre área encravada ativa — aguardar resolução completa.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 10 — FIDELIZAÇÃO
+══════════════════════════════════════ -->
+<section class="slide">
+  <div class="inner ce">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="text-align:center;">Fidelização e <span class="gt">Posicionamento Premium</span></h2>
+    <p class="sub au d3" style="text-align:center;max-width:520px;">O atendimento não termina na remoção — a experiência completa fideliza e valoriza seu trabalho</p>
+
+    <div class="sc-area" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;align-items:center;">
+
+        <div class="g2 au d4" style="width:100%;">
+          <div class="cp" style="text-align:left;">
+            <div style="font-size:22px;margin-bottom:8px;">🧴</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">Cuidados Imediatos</h3>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Aplicar loção calmante pós-procedimento</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Egípcia: lavar com água morna apenas</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Evitar sol direto por 24–48h</p>
+            <p style="font-size:11px;">✅ Roupas folgadas após virilha e axilas</p>
+          </div>
+          <div class="cp" style="text-align:left;">
+            <div style="font-size:22px;margin-bottom:8px;">📅</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">Orientações para Casa</h3>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Esfoliação suave após 48–72h</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Hidratação diária com emoliente</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Protetor solar nas áreas expostas</p>
+            <p style="font-size:11px;">✅ Evitar piscina, mar e sauna por 24h</p>
+          </div>
+        </div>
+
+        <div class="g3 au d5" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.18);">
+            <div class="bignum" style="color:#2E6BFF;margin-bottom:6px;">21–28</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">dias de retorno</h3>
+            <p style="font-size:11px;">Intervalo ideal para nova sessão — pelo em fase anágena.</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(212,175,55,.18);">
+            <div class="bignum" style="color:#D4AF37;margin-bottom:6px;">4–6x</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">sessões regulares</h3>
+            <p style="font-size:11px;">Para redução progressiva e enfraquecimento do bulbo capilar.</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(200,109,215,.18);">
+            <div class="bignum" style="color:#C86DD7;margin-bottom:6px;">3–4x</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">ticket egípcia</h3>
+            <p style="font-size:11px;">Maior retorno financeiro com menor custo de insumo.</p>
+          </div>
+        </div>
+
+        <div class="lc au d6">
+          <div style="font-size:26px;margin-bottom:10px;">👑</div>
+          <p style="font-size:13px;line-height:1.7;color:#AAB3C5;margin-bottom:12px;"><strong style="color:#F5F7FB;">"Quem domina roll-on e egípcia atende qualquer cliente, em qualquer região, com segurança e excelência."</strong> Agende a próxima sessão antes do cliente sair, explique os benefícios de cada método e construa uma relação de confiança duradoura.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;">
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.2);font-size:10px;font-weight:600;color:#8FAEFF;">🎯 Roll-on</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);font-size:10px;font-weight:600;color:#D4AF37;">✨ Egípcia</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:10px;font-weight:600;color:#7E879B;">📋 Protocolos</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:10px;font-weight:600;color:#7E879B;">💎 Premium</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
