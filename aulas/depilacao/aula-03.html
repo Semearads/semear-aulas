@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Depilação Hidrossolúvel e Espanhola — Curso Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;}
+
+/* PROGRESS */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+/* FULLSCREEN */
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 13px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+/* COUNTER */
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+/* DOTS */
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);width:26px;border-radius:4px;}
+
+/* NAV */
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05);}
+
+/* PRESENTATION */
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+/* SLIDE BASE */
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:54px 18px 78px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 16px rgba(46,107,255,.12)}50%{box-shadow:0 0 32px rgba(46,107,255,.3)}}
+
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}.d7{animation-delay:.68s!important}
+
+/* TOKENS */
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 14px;transform-origin:center;}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border-radius:999px;margin-bottom:20px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(46,107,255,.07);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.22);transform:translateY(-2px) scale(1.01);}
+
+/* NUMBER */
+.tn{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;flex-shrink:0;}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+
+/* SIDE BORDER */
+.sb{position:relative;padding-left:16px!important;}
+.sb::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.sb.b1::before{background:#2E6BFF;}
+.sb.b2::before{background:#5B3FD6;}
+.sb.b3::before{background:#C86DD7;}
+.sb.b4::before{background:linear-gradient(180deg,#2E6BFF,#C86DD7);}
+
+/* FLOW */
+.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;width:100%;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:72px;padding:0 4px;}
+.fstep .fi{width:50px;height:50px;border-radius:13px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:22px;height:22px;color:#2E6BFF;}
+.fstep span{font-size:11px;font-weight:600;color:#F5F7FB;line-height:1.3;}
+.fstep p{font-size:10px;color:#7E879B;margin-top:2px;line-height:1.3;}
+.farr{display:flex;align-items:center;padding-bottom:24px;margin:0 2px;}
+.farr svg{width:16px;height:16px;color:#7E879B;}
+.fstep.act .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 8px 18px rgba(46,107,255,.28);}
+.fstep.act .fi svg{color:#fff;}
+.fstep.act2 .fi{background:linear-gradient(180deg,#C86DD7,#A854BF);border-color:transparent;box-shadow:0 8px 18px rgba(200,109,215,.28);}
+.fstep.act2 .fi svg{color:#fff;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+
+/* TYPOGRAPHY */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.2;}
+p,span,li{font-weight:400;line-height:1.55;color:#AAB3C5;}
+
+/* LAYOUT */
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:flex-start;}
+.inner.ce{align-items:center;text-align:center;}
+.inner h2{font-size:clamp(19px,3.6vw,34px);margin-bottom:4px;}
+.inner .sub{font-size:clamp(11px,1.6vw,13px);color:#7E879B;margin-bottom:14px;}
+
+/* SCROLL */
+.sc-area{overflow-y:auto;max-height:calc(100vh - 155px);width:100%;padding-right:3px;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.sc-area::-webkit-scrollbar{width:3px;}
+.sc-area::-webkit-scrollbar-track{background:transparent;}
+.sc-area::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:2px;}
+
+/* CHECKLIST */
+.ci{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
+.ci-icon{width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.ci-icon svg{width:12px;height:12px;color:#fff;}
+.ci p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.ci strong{color:#F5F7FB;font-weight:600;}
+
+/* BIG NUMBER */
+.bignum{font-size:clamp(34px,5.5vw,52px);font-weight:900;letter-spacing:-.03em;line-height:1;}
+
+/* CONTRAST CARDS */
+.bwc{border-radius:16px;padding:14px 13px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.15);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.15);}
+.bwc ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.bwc ul li{font-size:11px;display:flex;align-items:flex-start;gap:7px;color:#AAB3C5;line-height:1.4;}
+.bwd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+/* SLIDE 1 */
+.s1w{text-align:center;max-width:660px;width:100%;}
+.s1w h1{font-size:clamp(28px,5.5vw,62px);margin-bottom:16px;}
+.s1w .tag{font-size:clamp(12px,1.8vw,16px);color:#AAB3C5;max-width:480px;margin:0 auto;line-height:1.6;}
+.s1w .pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+.s1w .pills span{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:11px;font-weight:600;color:#7E879B;letter-spacing:.03em;}
+
+/* METHOD BADGE */
+.mbh{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);font-size:11px;font-weight:700;color:#8FAEFF;letter-spacing:.04em;}
+.mbe{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.25);font-size:11px;font-weight:700;color:#D89FE8;letter-spacing:.04em;}
+
+/* TABLE COMPARE */
+.tbl{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;}
+.tbl th{padding:9px 10px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+.tbl th:first-child{color:#7E879B;background:rgba(255,255,255,.03);text-align:left;}
+.tbl th.thh{color:#8FAEFF;background:rgba(46,107,255,.08);}
+.tbl th.the{color:#D89FE8;background:rgba(200,109,215,.08);}
+.tbl td{padding:8px 10px;font-size:11px;border-top:1px solid rgba(255,255,255,.05);}
+.tbl td:first-child{color:#7E879B;font-weight:600;background:rgba(255,255,255,.02);}
+.tbl td.tdh{color:#AAB3C5;background:rgba(46,107,255,.04);}
+.tbl td.tde{color:#AAB3C5;background:rgba(200,109,215,.04);}
+
+/* LAST CARD */
+.lc{background:linear-gradient(145deg,rgba(46,107,255,.08),rgba(200,109,215,.06));border:1px solid rgba(46,107,255,.2);border-radius:20px;padding:22px 18px;text-align:center;width:100%;max-width:640px;}
+
+/* STEP NUMBER CIRCLE */
+.snum{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+.snum.sh{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.snum.se{background:linear-gradient(145deg,#C86DD7,#A854BF);}
+
+/* RESPONSIVE */
+@media(max-width:520px){
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .farr{display:none;}
+  .slide{padding:48px 13px 76px;}
+  .nav-arr button{width:38px;height:38px;font-size:15px;}
+  .sc-area{max-height:calc(100vh - 145px);}
+}
+@media(max-width:380px){
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr;}
+  .tbl th,.tbl td{padding:6px 7px;font-size:10px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══ SLIDE 1 ═══ -->
+<section class="slide active">
+  <div class="s1w">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      Curso Profissional
+    </div>
+    <h1 class="au d2"><span class="gt">Depilação</span><br/>Hidrossolúvel &amp; Espanhola</h1>
+    <p class="tag au d3">Do básico à excelência — domine os dois métodos mais procurados do mercado e eleve sua carreira na depilação profissional.</p>
+    <div class="pills au d4">
+      <span>💧 Cera Hidrossolúvel</span>
+      <span>🌹 Cera Espanhola</span>
+      <span>🧴 Protocolos Completos</span>
+      <span>📋 Regiões do Corpo</span>
+      <span>⚠️ Erros e Intercorrências</span>
+      <span>💎 Fidelização</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 2 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbh">💧 Hidrossolúvel</span>
+      <h2 style="margin-bottom:0;">A Base da Profissão</h2>
+    </div>
+    <p class="sub au d3">A cera mais utilizada no Brasil — versátil, eficiente e acessível</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">🧪</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Composição</h3>
+            <p style="font-size:12px;">Base aquosa com resinas sintéticas, fragrâncias e conservantes. Solúvel em água — facilita a limpeza de resíduos na pele e nos utensílios.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">🌡️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Temperatura de Uso</h3>
+            <p style="font-size:12px;">Aquecida entre <strong style="color:#2E6BFF;">37°C e 42°C</strong>. Temperatura morna ao toque — nunca deve causar desconforto térmico ao cliente.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">🎗️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Remoção com Fita</h3>
+            <p style="font-size:12px;">Aplicada com espátula e removida com fita não tecida (TNT). A fita adere à cera e não à pele — permite tração rápida e precisa.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">💰</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Custo-Benefício</h3>
+            <p style="font-size:12px;">Insumo de menor custo e alta durabilidade. Ideal para grande volume de atendimentos. Facilmente encontrada em distribuidores estéticos.</p>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(46,107,255,.18);">
+          <h3 style="font-size:13px;margin-bottom:8px;color:#2E6BFF;">✅ Indicações Principais</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Pernas</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Braços</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Barriga</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Costas</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.15);font-size:11px;font-weight:600;color:#8FAEFF;">Virilha simples</span>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Por que é a mais utilizada:</strong> Fácil aplicação, remoção precisa com fita, limpeza simples com água e excelente custo-benefício tornam a hidrossolúvel a escolha número 1 dos estúdios brasileiros.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 3 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbe">🌹 Espanhola</span>
+      <h2 style="margin-bottom:0;">O Método Premium</h2>
+    </div>
+    <p class="sub au d3">Técnica de alto valor agregado — diferencial competitivo para sua carreira</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">🌿</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Composição</h3>
+            <p style="font-size:12px;">Resinas naturais, ceras vegetais (candelilla, carnaúba) e óleos essenciais. Fórmula rica que nutre enquanto remove — muito mais gentil à pele sensível.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">🌡️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Temperatura de Uso</h3>
+            <p style="font-size:12px;">Aquecida entre <strong style="color:#C86DD7;">45°C e 55°C</strong>. Mais quente que a hidrossolúvel — dilata o folículo e permite remoção mais suave e completa.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">🖐️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Sem Fita</h3>
+            <p style="font-size:12px;">A própria cera solidifica formando uma película flexível que é removida diretamente — sem TNT. Técnica de maior precisão e menor trauma.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:24px;margin-bottom:8px;">💎</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Valor Agregado</h3>
+            <p style="font-size:12px;">Procedimento premium, indicado para peles sensíveis, regiões delicadas e clientes exigentes. Justifica preços até <strong style="color:#C86DD7;">3x maiores</strong> que a hidrossolúvel.</p>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(200,109,215,.18);">
+          <h3 style="font-size:13px;margin-bottom:8px;color:#C86DD7;">✅ Indicações Principais</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:11px;font-weight:600;color:#D89FE8;">Virilha completa</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:11px;font-weight:600;color:#D89FE8;">Axilas</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:11px;font-weight:600;color:#D89FE8;">Buço</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:11px;font-weight:600;color:#D89FE8;">Sobrancelha</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);font-size:11px;font-weight:600;color:#D89FE8;">Peles sensíveis</span>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ci-icon" style="background:linear-gradient(145deg,#C86DD7,#A854BF);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p><strong>Diferencial competitivo:</strong> A espanhola se consolida como o padrão premium do mercado. Profissionais que dominam ambos os métodos se tornam referência e aumentam significativamente seu ticket médio.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 4 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Qual Método <span class="gt">Escolher?</span></h2>
+    <p class="sub au d3">Comparativo completo para tomar a decisão certa em cada atendimento</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="card au d4" style="padding:0;overflow:hidden;">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th class="">Critério</th>
+                <th class="thh">💧 Hidrossolúvel</th>
+                <th class="the">🌹 Espanhola</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Temperatura</td>
+                <td class="tdh">37°C – 42°C</td>
+                <td class="tde">45°C – 55°C</td>
+              </tr>
+              <tr>
+                <td>Remoção</td>
+                <td class="tdh">Com fita (TNT)</td>
+                <td class="tde">Sem fita — película</td>
+              </tr>
+              <tr>
+                <td>Tipo de Pele</td>
+                <td class="tdh">Normal a oleosa</td>
+                <td class="tde">Sensível e qualquer tipo</td>
+              </tr>
+              <tr>
+                <td>Regiões</td>
+                <td class="tdh">Grandes áreas</td>
+                <td class="tde">Delicadas e grandes</td>
+              </tr>
+              <tr>
+                <td>Custo do Insumo</td>
+                <td class="tdh">⭐ Baixo</td>
+                <td class="tde">⭐⭐⭐ Médio-alto</td>
+              </tr>
+              <tr>
+                <td>Valor do Serviço</td>
+                <td class="tdh">Padrão</td>
+                <td class="tde">Premium (+60–200%)</td>
+              </tr>
+              <tr>
+                <td>Dor percebida</td>
+                <td class="tdh">Moderada</td>
+                <td class="tde">Menor (dilata folículo)</td>
+              </tr>
+              <tr>
+                <td>Limpeza residual</td>
+                <td class="tdh">Água</td>
+                <td class="tde">Óleo removedor</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="card" style="border-color:rgba(46,107,255,.18);text-align:center;">
+            <p style="font-size:11px;margin-bottom:6px;color:#7E879B;">Melhor para</p>
+            <h3 style="font-size:13px;color:#2E6BFF;">Volume de Atendimentos</h3>
+            <p style="font-size:11px;margin-top:5px;">Pernas, braços, costas — grandes áreas com agilidade e custo reduzido.</p>
+          </div>
+          <div class="card" style="border-color:rgba(200,109,215,.18);text-align:center;">
+            <p style="font-size:11px;margin-bottom:6px;color:#7E879B;">Melhor para</p>
+            <h3 style="font-size:13px;color:#C86DD7;">Ticket Alto e Precisão</h3>
+            <p style="font-size:11px;margin-top:5px;">Virilha, axila, rosto — precisão máxima com menor trauma e maior satisfação.</p>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Estratégia inteligente:</strong> Use hidrossolúvel para grandes áreas e espanhola para regiões delicadas no mesmo atendimento. Otimiza tempo, custo e eleva a experiência do cliente.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 5 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">O Kit Profissional <span class="gt">Completo</span></h2>
+    <p class="sub au d3">Materiais e equipamentos essenciais para cada método</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="mbh" style="margin-bottom:2px;">💧 Kit Hidrossolúvel</div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Aquecedor de Cera</h3>
+              <p style="font-size:11px;">Termostat com controle de temperatura. Capacidade 400–800g. Manter entre 37–42°C.</p>
+            </div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Espátulas</h3>
+              <p style="font-size:11px;">Descartáveis de madeira (grande e pequena). Nunca reutilizar — biossegurança obrigatória.</p>
+            </div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Fita Não Tecida (TNT)</h3>
+              <p style="font-size:11px;">Rolos ou tiras cortadas. Gramatura ideal: 50–60g/m². Resistente à tração sem rasgar.</p>
+            </div>
+            <div class="card sb b1">
+              <h3 style="font-size:12px;margin-bottom:4px;">Pré e Pós-depilação</h3>
+              <p style="font-size:11px;">Loção pré (remove oleosidade), talco higienizante, loção pós-calmante e removedor de resíduo aquoso.</p>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="mbe" style="margin-bottom:2px;">🌹 Kit Espanhola</div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Aquecedor Premium</h3>
+              <p style="font-size:11px;">Termostat de precisão. Controle fino entre 45–55°C. Ideal: aquecedor com visor digital.</p>
+            </div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Espátulas Especiais</h3>
+              <p style="font-size:11px;">Metálicas ou de madeira grossa para áreas grandes. Espátula mini para buço e sobrancelha.</p>
+            </div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Óleo Pré-depilação</h3>
+              <p style="font-size:11px;">Cria barreira protetora na pele. Essencial para reduzir aderência e trauma — exclusivo da técnica espanhola.</p>
+            </div>
+            <div class="card sb b3">
+              <h3 style="font-size:12px;margin-bottom:4px;">Óleo Removedor de Resíduo</h3>
+              <p style="font-size:11px;">Remove resíduos de cera sem friccionar. Ceras vegetais não são hidrossolúveis — água não remove.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ci au d5">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Biossegurança:</strong> Espátulas descartáveis, maca com lençol descartável, luvas de procedimento e higienização do aquecedor entre clientes são obrigatórios nos dois métodos.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 6 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbh">💧 Protocolo</span>
+      <h2 style="margin-bottom:0;">Passo a Passo Hidrossolúvel</h2>
+    </div>
+    <p class="sub au d3">6 etapas para um procedimento seguro e de excelência</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="fl au d4">
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+            <span>1. Anamnese</span>
+            <p>Ficha de saúde</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2"/></svg></div>
+            <span>2. Higienização</span>
+            <p>Loção pré-depil.</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+            <span>3. Talco</span>
+            <p>Secar a pele</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M8 12h8M12 8v8"/></svg></div>
+            <span>4. Aplicação</span>
+            <p>Sentido do pelo</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>5. Remoção</span>
+            <p>Fita + tração</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>6. Pós-depil.</span>
+            <p>Calmar e hidratar</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;" class="au d5">
+          <div class="ci">
+            <div class="snum sh">4</div>
+            <p><strong>Aplicação:</strong> espátula a 45° no sentido do crescimento do pelo, camada fina e uniforme. Cera não deve ser muito espessa — dificulta aderência da fita.</p>
+          </div>
+          <div class="ci">
+            <div class="snum sh">5</div>
+            <p><strong>Remoção com fita:</strong> pressionar bem a fita, dobrar a ponta, traccionar paralelo à pele (nunca perpendicular) em movimento rápido e firme. Contra o sentido do pelo.</p>
+          </div>
+        </div>
+
+        <div class="card au d6" style="border-color:rgba(255,107,107,.18);">
+          <p style="font-size:12px;"><span style="color:#FF6B6B;font-weight:700;">⚠️ Nunca faça:</span> dupla passagem na mesma área na mesma sessão. Remove a camada epidérmica e provoca queimadura química. Aguarde o próximo atendimento para repasse.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 7 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+      <span class="mbe">🌹 Protocolo</span>
+      <h2 style="margin-bottom:0;">Passo a Passo Espanhola</h2>
+    </div>
+    <p class="sub au d3">Técnica sem fita — precisão máxima com menor trauma</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="fl au d4">
+          <div class="fstep act2">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+            <span>1. Anamnese</span>
+            <p>Ficha + alergias</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act2">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+            <span>2. Higienização</span>
+            <p>Limpar a região</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act2">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 015 5v3a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M5 15a7 7 0 0014 0"/></svg></div>
+            <span>3. Óleo Pré</span>
+            <p>Barreira protetora</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+            <span>4. Aplicação</span>
+            <p>Espessa + borda</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></div>
+            <span>5. Remoção</span>
+            <p>Sem fita — direto</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>6. Pós-depil.</span>
+            <p>Óleo + calmante</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;" class="au d5">
+          <div class="ci">
+            <div class="snum se">3</div>
+            <p><strong>Óleo pré-depilação:</strong> aplicar camada fina na região antes da cera. Cria barreira que impede aderência excessiva à pele — reduz dor e previne arrancamento de epiderme.</p>
+          </div>
+          <div class="ci">
+            <div class="snum se">4</div>
+            <p><strong>Aplicação espessa:</strong> camada mais generosa que na hidrossolúvel. Criar borda de ponta dobrada (lingueta) para facilitar a remoção manual. Aguardar 10–15 segundos para solidificar.</p>
+          </div>
+          <div class="ci">
+            <div class="snum se">5</div>
+            <p><strong>Técnica de remoção sem fita:</strong> segurar a pele com uma mão, pegar a lingueta com os dedos e traccionar rente à pele, paralelo e rápido, contra o sentido do pelo. Pressionar logo após.</p>
+          </div>
+        </div>
+
+        <div class="card au d6" style="border-color:rgba(200,109,215,.18);">
+          <p style="font-size:12px;"><span style="color:#C86DD7;font-weight:700;">💡 Segredo da técnica espanhola:</span> A temperatura mais alta dilata o óstio folicular, facilitando a saída do pelo pela raiz com menor resistência. Resultado: menos dor, menos quebra de pelo e mais eficácia.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 8 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Cada Região, <span class="gt">Uma Abordagem</span></h2>
+    <p class="sub au d3">Método correto para cada área do corpo — domine as escolhas técnicas</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+        <div class="g2 au d4">
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🦵</span>
+              <h3 style="font-size:13px;">Pernas</h3>
+            </div>
+            <span class="mbh" style="font-size:10px;padding:3px 9px;margin-bottom:7px;">💧 Hidrossolúvel</span>
+            <p style="font-size:11px;margin-top:6px;">Grande área — agilidade é essencial. Espátula grande, faixas amplas. Atenção ao joelho e tornozelo (pele mais fina). Evitar dupla passagem.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🌸</span>
+              <h3 style="font-size:13px;">Virilha Simples</h3>
+            </div>
+            <span class="mbh" style="font-size:10px;padding:3px 9px;margin-bottom:7px;">💧 Hidrossolúvel</span>
+            <p style="font-size:11px;margin-top:6px;">Delineamento externo da virilha. Pele mais sensível — temperatura mais baixa. Tensionar a pele com a mão livre antes de remover.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">💎</span>
+              <h3 style="font-size:13px;">Virilha Completa / Íntima</h3>
+            </div>
+            <span class="mbe" style="font-size:10px;padding:3px 9px;margin-bottom:7px;">🌹 Espanhola</span>
+            <p style="font-size:11px;margin-top:6px;">Região extremamente sensível. Espanhola reduz trauma e dor. Óleo pré obrigatório. Pele sempre tensionada. Faixas pequenas e precisas.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🙌</span>
+              <h3 style="font-size:13px;">Axilas</h3>
+            </div>
+            <span class="mbe" style="font-size:10px;padding:3px 9px;margin-bottom:7px;">🌹 Espanhola</span>
+            <p style="font-size:11px;margin-top:6px;">Pele fina com dobras — espanhola se adapta melhor ao contorno. Aplicar em seções (não toda a axila de uma vez). Braço elevado e tensionado.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">👄</span>
+              <h3 style="font-size:13px;">Buço</h3>
+            </div>
+            <span class="mbe" style="font-size:10px;padding:3px 9px;margin-bottom:7px;">🌹 Espanhola</span>
+            <p style="font-size:11px;margin-top:6px;">Pele delicada, próxima a mucosa. Espanhola exclusivamente. Espátula mini. Faixas pequenas separadas (lado direito e esquerdo). Tensionar o lábio.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🤲</span>
+              <h3 style="font-size:13px;">Braços e Barriga</h3>
+            </div>
+            <span class="mbh" style="font-size:10px;padding:3px 9px;margin-bottom:7px;">💧 Hidrossolúvel</span>
+            <p style="font-size:11px;margin-top:6px;">Áreas extensas de pelo velo — hidrossolúvel atende perfeitamente. Atenção à região interna do braço (pele mais sensível). Talco bem distribuído.</p>
+          </div>
+
+        </div>
+
+        <div class="ci au d5">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Regra geral:</strong> quanto mais sensível e com mais dobras a região, mais indicada é a cera espanhola. Regiões planas e extensas respondem muito bem à hidrossolúvel com excelente custo-benefício.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 9 ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">O Que <span class="gt">Nunca Pode Acontecer</span></h2>
+    <p class="sub au d3">Erros comuns, prevenção e conduta em intercorrências</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;">
+
+        <div class="g2 au d4">
+          <div class="bwc cr">
+            <h3 style="font-size:13px;color:#FF6B6B;margin-bottom:3px;">🔴 Erros Críticos</h3>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">Causam lesão imediata na pele</p>
+            <ul>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Cera acima de 55°C — queimadura térmica</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Dupla passagem na mesma área</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Remover fita perpendicular à pele</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Depilar pele com lesão ou infecção ativa</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Não testar temperatura no punho antes</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Espanhola sem óleo pré-depilação</li>
+            </ul>
+          </div>
+          <div class="bwc cy">
+            <h3 style="font-size:13px;color:#FFD460;margin-bottom:3px;">🟡 Erros de Técnica</h3>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">Comprometem o resultado final</p>
+            <ul>
+              <li><span class="bwd" style="background:#FFD460;"></span>Camada de cera muito grossa ou fina</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Aplicar no sentido errado do pelo</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Pele úmida ou com oleosidade excessiva</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Remover lentamente (arranca e não remove)</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Não tensionar a pele na remoção</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Espátula usada de volta no aquecedor</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;" class="au d5">
+          <h3 style="font-size:13px;color:#F5F7FB;margin-bottom:2px;">📋 Conduta em Intercorrências</h3>
+          <div class="ci">
+            <div class="ci-icon" style="background:linear-gradient(145deg,#FF6B6B,#D94F4F);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <p><strong>Queimadura leve (hiperemia intensa):</strong> interromper o procedimento, aplicar compressa de água fria, gel de aloe vera ou calmante específico. Não continuar. Orientar o cliente e registrar ocorrência.</p>
+          </div>
+          <div class="ci">
+            <div class="ci-icon" style="background:linear-gradient(145deg,#FFD460,#C9A200);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>Foliculite pós-procedimento:</strong> não manipular. Orientar o cliente a usar antibacteriano suave, evitar roupa apertada e calor. Se persistir após 72h, encaminhar ao dermatologista.</p>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Pelo encravado:</strong> esfoliação preventiva 48h após a sessão. Nunca depilar em cima de área encravada. Usar produto específico com ácidos suaves (AHA/BHA) para evitar reincidência.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 10 ═══ -->
+<section class="slide">
+  <div class="inner ce">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="text-align:center;">O Procedimento Não Termina <span class="gt">na Remoção</span></h2>
+    <p class="sub au d3" style="text-align:center;max-width:520px;">O pós-depilação define a experiência final do cliente — e é o segredo da fidelização</p>
+
+    <div class="sc-area" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;align-items:center;">
+
+        <div class="g2 au d4" style="width:100%;">
+          <div class="cp" style="text-align:left;">
+            <div style="font-size:22px;margin-bottom:8px;">🧴</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">Cuidados Imediatos</h3>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Aplicar loção pós-depilação calmante</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Remover resíduos completamente</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Evitar exposição solar por 24h</p>
+            <p style="font-size:11px;">✅ Não usar desodorante em pó (axilas) por 12h</p>
+          </div>
+          <div class="cp" style="text-align:left;">
+            <div style="font-size:22px;margin-bottom:8px;">📅</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">Orientações para Casa</h3>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Esfoliação suave após 48–72h</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Hidratação diária da região</p>
+            <p style="font-size:11px;margin-bottom:4px;">✅ Protetor solar nas áreas expostas</p>
+            <p style="font-size:11px;">✅ Evitar piscina/mar nas primeiras 24h</p>
+          </div>
+        </div>
+
+        <div class="g2 au d5" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.18);">
+            <div class="bignum" style="color:#2E6BFF;margin-bottom:6px;">21–28</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">dias de retorno</h3>
+            <p style="font-size:11px;">Intervalo ideal para próxima sessão — pelos em nova fase anágena.</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(200,109,215,.18);">
+            <div class="bignum" style="color:#C86DD7;margin-bottom:6px;">4–6x</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">sessões regulares</h3>
+            <p style="font-size:11px;">Para redução progressiva visível e enfraquecimento do bulbo.</p>
+          </div>
+        </div>
+
+        <div class="lc au d6">
+          <div style="font-size:28px;margin-bottom:12px;">💎</div>
+          <p style="font-size:14px;line-height:1.7;color:#AAB3C5;margin-bottom:12px;"><strong style="color:#F5F7FB;">"A profissional que educa o cliente cria o cliente fiel."</strong> Oriente cada passo pós-procedimento, explique o ciclo do pelo e agende a próxima sessão antes de o cliente sair.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;">
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.2);font-size:10px;font-weight:600;color:#8FAEFF;">💧 Hidrossolúvel</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.2);font-size:10px;font-weight:600;color:#D89FE8;">🌹 Espanhola</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:10px;font-weight:600;color:#7E879B;">📋 Protocolos</span>
+            <span style="padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:10px;font-weight:600;color:#7E879B;">🤝 Fidelização</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
