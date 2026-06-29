@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Estética Avançada — Biossegurança & Higienização</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#00D4FF,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 13px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);width:26px;border-radius:4px;}
+
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:54px 18px 78px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+background:
+  radial-gradient(800px 400px at 78% 15%,rgba(46,107,255,.15) 0%,transparent 45%),
+  radial-gradient(700px 350px at 22% 20%,rgba(0,212,255,.1) 0%,transparent 45%),
+  linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.25;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowB{0%,100%{box-shadow:0 0 16px rgba(46,107,255,.12)}50%{box-shadow:0 0 32px rgba(46,107,255,.35)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}.d7{animation-delay:.68s!important}
+
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#00D4FF 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gv{background:linear-gradient(135deg,#00D4FF 0%,#2E6BFF 50%,#00D4FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+.gg{background:linear-gradient(135deg,#5EE89A 0%,#2E6BFF 50%,#5EE89A 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#00D4FF);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 14px;transform-origin:center;}
+.gl.gn{background:linear-gradient(90deg,#5EE89A,#2E6BFF);}
+
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border-radius:999px;margin-bottom:20px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.25);font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(46,107,255,.22);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(10,18,50,.95) 0%,rgba(7,11,29,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(46,107,255,.06);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.22);transform:translateY(-2px) scale(1.01);}
+
+.sb{position:relative;padding-left:16px!important;}
+.sb::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.sb.bb::before{background:#2E6BFF;}
+.sb.bc::before{background:#00D4FF;}
+.sb.bg::before{background:#5EE89A;}
+.sb.br::before{background:#FF6B6B;}
+.sb.by::before{background:#FFD460;}
+
+.pill{display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.03em;}
+.pb{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.22);color:#8FAEFF;}
+.pc{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.22);color:#6EEEFF;}
+.pg{background:rgba(80,220,120,.1);border:1px solid rgba(80,220,120,.22);color:#5EE89A;}
+.pr{background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.22);color:#FF9B9B;}
+.py{background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.22);color:#FFD460;}
+.pv{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.22);color:#B89FFF;}
+
+.ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.icb{background:rgba(46,107,255,.12);}
+.icb svg{width:20px;height:20px;color:#2E6BFF;}
+.icc{background:rgba(0,212,255,.12);}
+.icc svg{width:20px;height:20px;color:#00D4FF;}
+.icg{background:rgba(80,220,120,.12);}
+.icg svg{width:20px;height:20px;color:#5EE89A;}
+.icr{background:rgba(255,107,107,.12);}
+.icr svg{width:20px;height:20px;color:#FF6B6B;}
+
+.ci{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
+.ci p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.ci strong{color:#F5F7FB;font-weight:600;}
+
+.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;width:100%;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:58px;padding:0 3px;}
+.fstep .fi{width:44px;height:44px;border-radius:13px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:19px;height:19px;color:#2E6BFF;}
+.fstep span{font-size:10px;font-weight:600;color:#F5F7FB;line-height:1.3;}
+.fstep p{font-size:9px;color:#7E879B;margin-top:2px;line-height:1.3;}
+.farr{display:flex;align-items:center;padding-bottom:22px;margin:0 1px;}
+.farr svg{width:12px;height:12px;color:#7E879B;}
+.fstep.actp .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 8px 18px rgba(46,107,255,.3);animation:glowB 3s ease-in-out infinite;}
+.fstep.actp .fi svg{color:#fff;}
+
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+.g4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.2;}
+p,span,li{font-weight:400;line-height:1.55;color:#AAB3C5;}
+
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:flex-start;}
+.inner.ce{align-items:center;text-align:center;}
+.inner h2{font-size:clamp(17px,3.2vw,30px);margin-bottom:4px;}
+.inner .sub{font-size:clamp(11px,1.5vw,13px);color:#7E879B;margin-bottom:14px;}
+
+.sc-area{overflow-y:auto;max-height:calc(100vh - 150px);width:100%;padding-right:3px;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.sc-area::-webkit-scrollbar{width:3px;}
+.sc-area::-webkit-scrollbar-track{background:transparent;}
+.sc-area::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:2px;}
+
+.bwc{border-radius:16px;padding:14px 13px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.15);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.15);}
+.bwc ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.bwc ul li{font-size:11px;display:flex;align-items:flex-start;gap:7px;color:#AAB3C5;line-height:1.4;}
+.bwd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+.bignum{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.03em;line-height:1;}
+
+.snum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+
+.tag-proc{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.tag-critico{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.25);color:#FF9B9B;}
+.tag-obrig{background:rgba(46,107,255,.12);border:1px solid rgba(46,107,255,.25);color:#8FAEFF;}
+.tag-desc{background:rgba(255,212,96,.12);border:1px solid rgba(255,212,96,.25);color:#FFD460;}
+
+.alert-box{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.alert-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.info-box{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.info-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+
+.lc{background:linear-gradient(145deg,rgba(46,107,255,.1),rgba(0,212,255,.08));border:1px solid rgba(46,107,255,.25);border-radius:20px;padding:20px 16px;text-align:center;width:100%;}
+.equip-icon{font-size:26px;margin-bottom:8px;display:block;}
+
+/* TABELA */
+.vtable{width:100%;border-collapse:collapse;font-size:11px;}
+.vtable th{padding:8px 10px;text-align:left;font-weight:700;font-size:10px;color:#7E879B;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.06);}
+.vtable td{padding:8px 10px;color:#AAB3C5;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle;}
+.vtable tr:hover td{background:rgba(46,107,255,.04);}
+.vtable strong{color:#F5F7FB;}
+
+.s1w{text-align:center;max-width:680px;width:100%;}
+.s1w h1{font-size:clamp(20px,4.2vw,52px);margin-bottom:16px;}
+.s1w .tag{font-size:clamp(12px,1.6vw,15px);color:#AAB3C5;max-width:520px;margin:0 auto;line-height:1.6;}
+.s1w .pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:18px;}
+
+@media(max-width:520px){
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .farr{display:none;}
+  .slide{padding:48px 13px 76px;}
+  .nav-arr button{width:38px;height:38px;font-size:15px;}
+  .sc-area{max-height:calc(100vh - 142px);}
+  .vtable th,.vtable td{padding:6px 8px;}
+}
+@media(max-width:380px){
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr;}
+  .s1w h1{font-size:20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════ SLIDE 1 — TÍTULO ══════════ -->
+<section class="slide active">
+  <div class="s1w">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Curso Profissional — Estética Avançada
+    </div>
+    <h1 class="au d2"><span class="gt">Biossegurança</span> &amp; <span class="gv">Higienização</span> de Equipamentos</h1>
+    <p class="tag au d3">Domine os protocolos que protegem você, sua cliente e seu negócio — da teoria à prática segura em cada procedimento estético avançado.</p>
+    <div class="pills au d4">
+      <span class="pill pb">🔬 Dermapen</span>
+      <span class="pill pc">🖊️ Dermógrafo</span>
+      <span class="pill pv">✨ BB Glow</span>
+      <span class="pill pg">💧 Hidragloss</span>
+      <span class="pill py">🌿 Nanoblading</span>
+      <span class="pill pr">🎨 Camuflagem</span>
+      <span class="pill pb">🧖 Limpeza de Pele</span>
+      <span class="pill pg">🛡️ ANVISA & EPIs</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 2 — PILAR BIOSSEGURANÇA ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pb">🛡️ Fundamentos</span>
+      <h2 style="margin-bottom:0;">Segurança que Protege <span class="gt">Você e sua Cliente</span></h2>
+    </div>
+    <p class="sub au d3">Biossegurança não é burocracia — é o que separa a profissional de excelência da amadora</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="cp">
+            <span class="equip-icon">⚠️</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Riscos de Contaminação Cruzada</h3>
+            <p style="font-size:12px;">Procedimentos que rompem a barreira cutânea (Dermapen, Dermógrafo, Nanoblading) expõem profissional e cliente a vírus (HIV, Hepatite B e C), bactérias e fungos. <strong style="color:#FF6B6B;">Um único erro de higienização pode causar infecção grave e processo judicial.</strong></p>
+          </div>
+          <div class="cp">
+            <span class="equip-icon">📋</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Legislação ANVISA</h3>
+            <p style="font-size:12px;">RDC nº 306/04 e RDC nº 222/18 regulam o descarte de resíduos. RDC nº 15/12 normatiza esterilização. A <strong style="color:#2E6BFF;">Lei nº 7.498/86</strong> define responsabilidade profissional em saúde. Desconhecimento não isenta de penalidades.</p>
+          </div>
+          <div class="cp">
+            <span class="equip-icon">🦺</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Cadeia Epidemiológica</h3>
+            <p style="font-size:12px;">Para uma infecção ocorrer, são necessários: <strong style="color:#00D4FF;">agente infeccioso → reservatório → porta de saída → modo de transmissão → porta de entrada → hospedeiro suscetível.</strong> Biossegurança quebra essa cadeia em qualquer elo.</p>
+          </div>
+          <div class="cp">
+            <span class="equip-icon">⚖️</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Responsabilidade Profissional</h3>
+            <p style="font-size:12px;">Infecção pós-procedimento pode gerar <strong style="color:#FF6B6B;">ação civil (indenização), criminal (lesão corporal) e cassação de alvará.</strong> O Termo de Consentimento Informado não elimina a responsabilidade — ele documenta o risco, mas não o transfere.</p>
+          </div>
+        </div>
+
+        <div class="g3 au d5">
+          <div class="card" style="text-align:center;border-color:rgba(255,107,107,.15);">
+            <div class="bignum" style="color:#FF6B6B;margin-bottom:5px;">72h</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">janela de risco</h3>
+            <p style="font-size:11px;">Período crítico pós-procedimento invasivo para surgimento de infecções</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.15);">
+            <div class="bignum" style="color:#2E6BFF;margin-bottom:5px;">100%</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">prevenível</h3>
+            <p style="font-size:11px;">Das infecções cruzadas em estética são evitáveis com protocolo correto</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.15);">
+            <div class="bignum" style="color:#5EE89A;margin-bottom:5px;">3 níveis</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">de precaução</h3>
+            <p style="font-size:11px;">Limpeza → Desinfecção → Esterilização. Cada procedimento exige o nível adequado</p>
+          </div>
+        </div>
+
+        <div class="alert-box au d6">
+          <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <p><strong>Princípio Universal:</strong> Trate TODOS os clientes como potencialmente infectados, independentemente de aparência, histórico relatado ou vínculo de amizade. Essa postura não é desrespeitosa — é <em>ética profissional obrigatória.</em></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 3 — EPIs ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pc">🦺 EPIs</span>
+      <h2 style="margin-bottom:0;">Vestindo a <span class="gt">Armadura Certa</span></h2>
+    </div>
+    <p class="sub au d3">Paramentação, desparamentação e descarte — na ordem correta, sem exceções</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="fl au d4">
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23z"/></svg></div>
+            <span>1. Higiene</span><p>Lavar mãos</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+            <span>2. Touca</span><p>Cabelo preso</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>3. Máscara</span><p>PFF2 ou cirúrgica</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M3 20a9 9 0 0118 0"/></svg></div>
+            <span>4. Avental</span><p>Manga longa</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <span>5. Óculos</span><p>Proteção ocular</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>6. Luvas</span><p>Por último</p>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(46,107,255,.15);">
+          <h3 style="font-size:12px;margin-bottom:10px;color:#2E6BFF;">📋 EPIs Obrigatórios por Procedimento</h3>
+          <table class="vtable">
+            <thead>
+              <tr>
+                <th>Procedimento</th>
+                <th>Luva</th>
+                <th>Máscara</th>
+                <th>Óculos</th>
+                <th>Avental</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Dermapen</strong></td><td><span class="tag-critico">Estéril</span></td><td><span class="tag-critico">PFF2</span></td><td>✅ Sim</td><td>✅ Sim</td></tr>
+              <tr><td><strong>Dermógrafo</strong></td><td><span class="tag-critico">Estéril</span></td><td><span class="tag-critico">PFF2</span></td><td>✅ Sim</td><td>✅ Sim</td></tr>
+              <tr><td><strong>Nanoblading</strong></td><td><span class="tag-critico">Estéril</span></td><td><span class="tag-critico">PFF2</span></td><td>✅ Sim</td><td>✅ Sim</td></tr>
+              <tr><td><strong>BB Glow</strong></td><td><span class="tag-obrig">Procedimento</span></td><td><span class="tag-obrig">Cirúrgica</span></td><td>⚠️ Recomendado</td><td>✅ Sim</td></tr>
+              <tr><td><strong>Hidragloss</strong></td><td><span class="tag-obrig">Procedimento</span></td><td><span class="tag-obrig">Cirúrgica</span></td><td>⚠️ Recomendado</td><td>✅ Sim</td></tr>
+              <tr><td><strong>Limpeza de Pele</strong></td><td><span class="tag-obrig">Procedimento</span></td><td><span class="tag-obrig">Cirúrgica</span></td><td>✅ Sim</td><td>✅ Sim</td></tr>
+              <tr><td><strong>Camuflagem</strong></td><td><span class="tag-obrig">Procedimento</span></td><td><span class="tag-obrig">Cirúrgica</span></td><td>⚠️ Recomendado</td><td>✅ Sim</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2 au d6">
+          <div class="ci">
+            <div class="icb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Desparamentação:</strong> remover luvas primeiro → higienizar mãos → retirar avental → retirar óculos → retirar máscara. A ordem inversa à paramentação evita autocontaminação.</p>
+          </div>
+          <div class="ci">
+            <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>Descarte:</strong> luvas, máscaras e materiais contaminados — lixo branco (resíduo infectante Grupo A). NUNCA misturar com lixo comum domiciliar.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 4 — DERMAPEN ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pb">🔬 Dermapen</span>
+      <h2 style="margin-bottom:0;">Limpeza que <span class="gt">Salva Procedimentos</span></h2>
+    </div>
+    <p class="sub au d3">Protocolo completo de higienização — 7 etapas inegociáveis antes e após cada uso</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="fl au d4">
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>1. Pré-uso</span><p>Inspeção</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+            <span>2. Proteção</span><p>Encapar motor</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+            <span>3. Ponteira</span><p>Descartável estéril</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+            <span>4. Procedimento</span><p>Uso único</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></div>
+            <span>5. Descarte</span><p>Perfurocortante</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>6. Limpeza</span><p>Corpo do aparelho</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+            <span>7. Armazenamento</span><p>Caixa fechada</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:7px;" class="au d5">
+          <div class="ci">
+            <div class="snum">1</div>
+            <p><strong>Inspeção pré-uso:</strong> verificar integridade da embalagem da ponteira, validade da esterilização, funcionamento do motor. Jamais usar ponteira com embalagem violada ou vencida.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">2</div>
+            <p><strong>Proteção do motor:</strong> encapar o corpo do aparelho com plástico filme PVC ou manga descartável. O motor é elétrico e <strong style="color:#FF6B6B;">não pode ser imerso em solução</strong> — apenas a ponteira entra em contato com a pele.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">3</div>
+            <p><strong>Ponteira descartável estéril:</strong> cada ponteira é de uso único e individual. Abrir somente no momento do procedimento. Jamais reaproveitar ou esterilizar ponteiras de Dermapen — as microagulhas se deformam e perdem eficácia e segurança.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">5</div>
+            <p><strong>Descarte correto da ponteira:</strong> inserir imediatamente na caixa de perfurocortante (caixa amarela) sem reencapar. A caixa deve estar ao alcance imediato durante o procedimento. <span class="tag-desc">Descarte Especial</span></p>
+          </div>
+          <div class="ci">
+            <div class="snum">6</div>
+            <p><strong>Limpeza do corpo do aparelho:</strong> remover plástico protetor com luvas, higienizar superfície externa com pano umedecido em álcool 70% isopropílico ou quaternário de amônio. Aguardar 30 segundos de contato antes de enxugar.</p>
+          </div>
+        </div>
+
+        <div class="g3 au d6">
+          <div class="card" style="border-color:rgba(46,107,255,.15);text-align:center;">
+            <div style="font-size:20px;margin-bottom:6px;">🧪</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Álcool 70%</h3>
+            <p style="font-size:11px;">Desinfecção de superfícies externas. Isopropílico para eletrônicos.</p>
+          </div>
+          <div class="card" style="border-color:rgba(0,212,255,.15);text-align:center;">
+            <div style="font-size:20px;margin-bottom:6px;">🟡</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Caixa Perfurocortante</h3>
+            <p style="font-size:11px;">Ponteiras usadas. Trocar ao atingir 2/3 da capacidade. NUNCA pressionar.</p>
+          </div>
+          <div class="card" style="border-color:rgba(80,220,120,.15);text-align:center;">
+            <div style="font-size:20px;margin-bottom:6px;">📦</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Armazenamento</h3>
+            <p style="font-size:11px;">Aparelho em caixa fechada. Ponteiras em local seco, longe de luz solar direta.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 5 — DERMÓGRAFO ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pc">🖊️ Dermógrafo</span>
+      <h2 style="margin-bottom:0;">Zero Tolerância à <span class="gv">Contaminação</span></h2>
+    </div>
+    <p class="sub au d3">Protocolo antes, durante e após o procedimento — rastreabilidade e descarte seguro</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="cp">
+            <h3 style="font-size:13px;color:#2E6BFF;margin-bottom:8px;">⚙️ Antes do Procedimento</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">1</div>
+                <p style="font-size:11px;">Verificar embalagem do cartucho/agulha — lacre intacto e data de validade</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">2</div>
+                <p style="font-size:11px;">Limpar a peça de mão com álcool 70% e deixar agir 30 segundos</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">3</div>
+                <p style="font-size:11px;">Encapar cabo de alimentação com manga plástica descartável</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">4</div>
+                <p style="font-size:11px;">Preparar campo estéril com todos os insumos antes de iniciar</p>
+              </div>
+            </div>
+          </div>
+          <div class="cp">
+            <h3 style="font-size:13px;color:#00D4FF;margin-bottom:8px;">▶️ Durante o Procedimento</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">1</div>
+                <p style="font-size:11px;">Nunca pousar o dermógrafo com agulha exposta — usar suporte ou descanso</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">2</div>
+                <p style="font-size:11px;">Pigmentos: usar cápsulas individuais descartáveis — nunca reaproveitar sobras</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">3</div>
+                <p style="font-size:11px;">Trocar gazes com sangue imediatamente — não acumular sobre o campo</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;">4</div>
+                <p style="font-size:11px;">Nunca tocar em outras superfícies com a luva usada no procedimento</p>
+              </div>
+            </div>
+          </div>
+          <div class="cp">
+            <h3 style="font-size:13px;color:#5EE89A;margin-bottom:8px;">✅ Após o Procedimento</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;background:linear-gradient(145deg,#5EE89A,#2E6BFF);">1</div>
+                <p style="font-size:11px;">Remover cartucho/agulha imediatamente — descartar na caixa perfurocortante</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;background:linear-gradient(145deg,#5EE89A,#2E6BFF);">2</div>
+                <p style="font-size:11px;">Desinfetar peça de mão: imersão em solução enzimática por 10 min se autoclavável</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;background:linear-gradient(145deg,#5EE89A,#2E6BFF);">3</div>
+                <p style="font-size:11px;">Descartar cápsulas de pigmento, gazes e campo estéril em lixo infectante</p>
+              </div>
+              <div class="ci" style="padding:7px 9px;">
+                <div class="snum" style="width:20px;height:20px;font-size:9px;background:linear-gradient(145deg,#5EE89A,#2E6BFF);">4</div>
+                <p style="font-size:11px;">Registrar lote do cartucho e pigmento usados — rastreabilidade obrigatória</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(255,212,96,.2);">
+          <h3 style="font-size:12px;color:#FFD460;margin-bottom:8px;">🔑 Itens Críticos de Atenção</h3>
+          <div class="g2">
+            <div style="display:flex;align-items:flex-start;gap:8px;">
+              <span class="tag-critico">CRÍTICO</span>
+              <p style="font-size:11px;margin-top:1px;">Cartuchos e agulhas são de <strong style="color:#FF9B9B;">uso único e individual.</strong> Reutilizar agulhas de dermógrafo é crime de lesão corporal — agulhas embotadas causam cicatrizes e transmitem infecções.</p>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px;">
+              <span class="tag-desc">RASTR.</span>
+              <p style="font-size:11px;margin-top:1px;">Registrar lote, fabricante, data de validade e cliente atendida em ficha individual. Em caso de recall do fabricante, localizar todas as clientes atendidas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box au d6">
+          <div class="icb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p><strong>Peça de mão autoclavável vs. não-autoclavável:</strong> modelos de aço inox podem ser autoclavados a 134°C por 4 minutos. Modelos com componentes plásticos devem ser higienizados com glutaraldeído 2% ou OPA (ortoftalaldeído). Consultar o fabricante.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 6 — BB GLOW / HIDRAGLOSS / NANOBLADING ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pv">✨ Premium</span>
+      <h2 style="margin-bottom:0;">Equipamentos Premium: <span class="gt">Protocolo de Alto Nível</span></h2>
+    </div>
+    <p class="sub au d3">BB Glow, Hidragloss e Nanoblading — especificidades, partes críticas e higienização adaptada</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="cp" style="border-color:rgba(139,92,246,.2);">
+            <span class="equip-icon">✨</span>
+            <h3 style="font-size:13px;margin-bottom:5px;color:#B89FFF;">BB Glow</h3>
+            <span class="pill pv" style="font-size:10px;margin-bottom:10px;display:inline-flex;">Microagulhamento + Pigmento</span>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Partes críticas:</strong> ponteira descartável de microagulhas, recipiente do pigmento/sérum e cabeçote do aparelho.</p>
+              <p style="font-size:11px;margin-top:5px;"><strong style="color:#F5F7FB;">Higienização:</strong> ponteira de uso único. Cabeçote: álcool 70% + manga protetora. Pigmentos em dosadores descartáveis individuais — nunca reaproveitar.</p>
+              <p style="font-size:11px;margin-top:5px;"><strong style="color:#F5F7FB;">Atenção:</strong> os pigmentos BB Glow ficam em contato com mucosa ocular — usar apenas produtos registrados na ANVISA.</p>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(0,212,255,.2);">
+            <span class="equip-icon">💧</span>
+            <h3 style="font-size:13px;margin-bottom:5px;color:#6EEEFF;">Hidragloss</h3>
+            <span class="pill pc" style="font-size:10px;margin-bottom:10px;display:inline-flex;">Ultrassom + Infusão</span>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Partes críticas:</strong> espátula/ponteira emissora, cabo de borracha e visor/display.</p>
+              <p style="font-size:11px;margin-top:5px;"><strong style="color:#F5F7FB;">Higienização:</strong> espátula metálica — imersão em álcool 70% por 10 min ou esterilização em autoclave se for peça autoclavável. Cabo: álcool em tecido. Display: pano levemente umedecido.</p>
+              <p style="font-size:11px;margin-top:5px;"><strong style="color:#F5F7FB;">Atenção:</strong> nunca usar o aparelho sem o gel condutor — o metal seco pode irritar e lesar a pele.</p>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(80,220,120,.2);">
+            <span class="equip-icon">🌿</span>
+            <h3 style="font-size:13px;margin-bottom:5px;color:#5EE89A;">Nanoblading</h3>
+            <span class="pill pg" style="font-size:10px;margin-bottom:10px;display:inline-flex;">Lâmina Nano + Pigmento</span>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Partes críticas:</strong> lâmina nano (uso único), caneta aplicadora, porta-lâmina e cápsulas de pigmento.</p>
+              <p style="font-size:11px;margin-top:5px;"><strong style="color:#F5F7FB;">Higienização:</strong> lâmina é 100% descartável. Caneta aplicadora: desmontar + álcool 70% + solução enzimática. Cápsulas: individuais e descartáveis por cliente.</p>
+              <p style="font-size:11px;margin-top:5px;"><strong style="color:#F5F7FB;">Atenção:</strong> lâminas nano são extremamente afiadas — manuseio com luvas e descarte imediato na caixa perfurocortante.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(46,107,255,.15);">
+          <h3 style="font-size:12px;margin-bottom:8px;color:#2E6BFF;">📊 Comparativo de Nível de Risco e Higienização</h3>
+          <table class="vtable">
+            <thead>
+              <tr><th>Técnica</th><th>Rompe Pele</th><th>Nível de Risco</th><th>Nível de Higienização</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>BB Glow</strong></td><td>Sim (micro)</td><td><span style="color:#FFD460;">⚠️ Médio-Alto</span></td><td>Desinfecção + EPI completo</td></tr>
+              <tr><td><strong>Hidragloss</strong></td><td>Não</td><td><span style="color:#5EE89A;">✅ Baixo-Médio</span></td><td>Limpeza + Desinfecção</td></tr>
+              <tr><td><strong>Nanoblading</strong></td><td>Sim (nano)</td><td><span style="color:#FF6B6B;">🔴 Alto</span></td><td>Esterilização + EPI estéril</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-box au d6">
+          <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <p><strong>Pigmentos e séruns:</strong> verificar sempre o registro ANVISA antes de aplicar qualquer produto que penetre na pele. Produtos sem registro em procedimentos invasivos configuram exercício ilegal da medicina e expõem ao risco de multa e interdição do espaço.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 7 — LIMPEZA DE PELE & CAMUFLAGEM ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pg">🧖 Alta Rotatividade</span>
+      <h2 style="margin-bottom:0;">Equipamentos de <span class="gg">Alta Rotatividade</span></h2>
+    </div>
+    <p class="sub au d3">Limpeza de Pele e Camuflagem de Estrias — atenção redobrada aos pontos de acúmulo biológico</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="cp">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:22px;">🌀</span>
+              <h3 style="font-size:13px;">Alta Vacuome (Sucção)</h3>
+            </div>
+            <span class="tag-critico" style="margin-bottom:8px;display:inline-flex;">Alto Risco Biológico</span>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-top:8px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Pontos críticos:</strong> ponteira de sucção, mangueira interna, reservatório de resíduos e filtro.</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Protocolo:</strong> ponteira — imersão em solução enzimática 10 min + autoclave ou descartável por cliente. Reservatório: esvaziar, lavar com detergente enzimático, desinfetar com hipoclorito 1%. Filtro: trocar conforme fabricante.</p>
+              <p style="font-size:11px;"><strong style="color:#FF9B9B;">Nunca reutilizar ponteira sem esterilização</strong> — a sucção aspira sangue, sebo e células mortas.</p>
+            </div>
+          </div>
+          <div class="cp">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:22px;">📡</span>
+              <h3 style="font-size:13px;">Espátula Ultrassônica</h3>
+            </div>
+            <span class="tag-obrig" style="margin-bottom:8px;display:inline-flex;">Risco Médio</span>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-top:8px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Pontos críticos:</strong> lâmina metálica emissora e alça plástica.</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Protocolo:</strong> lâmina — álcool 70% imersão 10 min ou autoclave se metálica. Alça: álcool 70% em compressa. Secar completamente antes de guardar.</p>
+              <p style="font-size:11px;">A lâmina entra em contato direto com resíduos de comedões e sebo — desinfetar <strong style="color:#00D4FF;">entre cada cliente sem exceção.</strong></p>
+            </div>
+          </div>
+          <div class="cp">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:22px;">⚡</span>
+              <h3 style="font-size:13px;">Alta Frequência</h3>
+            </div>
+            <span class="tag-obrig" style="margin-bottom:8px;display:inline-flex;">Risco Médio</span>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-top:8px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Pontos críticos:</strong> eletrodo de vidro e alça plástica condutora.</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Protocolo:</strong> eletrodo de vidro — imersão em álcool isopropílico 70% por 15 min. Nunca autoclave — o vidro quebra. Secar ao ar livre antes de guardar em estojo protetor.</p>
+              <p style="font-size:11px;">Verificar integridade do vidro antes de cada uso. Eletrodo trincado deve ser descartado imediatamente.</p>
+            </div>
+          </div>
+          <div class="cp">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:22px;">🎨</span>
+              <h3 style="font-size:13px;">Aerógrafo (Camuflagem Estrias)</h3>
+            </div>
+            <span class="tag-obrig" style="margin-bottom:8px;display:inline-flex;">Risco Médio-Alto</span>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-top:8px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Pontos críticos:</strong> agulha interna, bico aspersor, reservatório de pigmento e mangueira de ar.</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Protocolo:</strong> desmontagem completa após cada cliente. Agulha: álcool 70% + detergente enzimático. Reservatório: lavar com acetona ou álcool, secar, desinfetar. Bico: imersão em solução enzimática.</p>
+              <p style="font-size:11px;"><strong style="color:#FFD460;">Resíduos de pigmento ressecado</strong> no bico do aerógrafo causam obstruções e contaminação cruzada de cor entre clientes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ci au d5">
+          <div class="icg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Frequência de limpeza profunda:</strong> além da higienização entre clientes, realizar limpeza profunda <strong style="color:#5EE89A;">semanalmente</strong> com desmontagem total, imersão em enzimático e verificação de filtros, mangueiras e vedações. Registrar em ficha de manutenção.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 8 — AMBIENTE ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pb">🏥 Ambiente</span>
+      <h2 style="margin-bottom:0;">O Ambiente Também Precisa de <span class="gt">Protocolo</span></h2>
+    </div>
+    <p class="sub au d3">Maca, bancadas, luminárias e pisos — frequência, produtos e diluições aprovados pela ANVISA</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="card" style="border-color:rgba(255,107,107,.15);">
+            <h3 style="font-size:12px;color:#FF6B6B;margin-bottom:7px;">🔄 Entre Clientes</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FF6B6B;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Trocar lençol descartável da maca</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FF6B6B;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Desinfetar travesseiro e apoios com álcool 70%</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FF6B6B;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Limpar bandeja/carrinho com álcool 70%</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FF6B6B;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Repor campo estéril e insumos descartáveis</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FF6B6B;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Higienizar as mãos com água, sabão + álcool gel</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FF6B6B;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Descartar resíduos em lixeiras apropriadas</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-color:rgba(255,212,96,.15);">
+            <h3 style="font-size:12px;color:#FFD460;margin-bottom:7px;">📅 Limpeza Diária</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Piso: varrer + solução de hipoclorito 0,5%</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Bancadas: detergente + álcool 70% após secar</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Maçanetas e interruptores: álcool 70%</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Luminária e braço articulado: álcool 70%</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Lavatório: desinfetante clorado + escova</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Esvaziamento das lixeiras com EPI</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-color:rgba(80,220,120,.15);">
+            <h3 style="font-size:12px;color:#5EE89A;margin-bottom:7px;">📆 Limpeza Semanal</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#5EE89A;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Maca: higienizar estrutura completa incluindo pés e suportes</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#5EE89A;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Autoclave: limpeza interna com produto específico</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#5EE89A;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Armários e gavetas: remover insumos + desinfetar</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#5EE89A;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Ar-condicionado: limpar filtros com água e sabão</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#5EE89A;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Verificar validades de todos os produtos abertos</p>
+              </div>
+              <div style="display:flex;gap:7px;align-items:flex-start;">
+                <span class="bwd" style="background:#5EE89A;margin-top:5px;flex-shrink:0;"></span>
+                <p style="font-size:11px;">Registrar limpeza em checklist com data e assinatura</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(46,107,255,.15);">
+          <h3 style="font-size:12px;margin-bottom:8px;color:#2E6BFF;">🧪 Soluções Aprovadas e Diluições Corretas</h3>
+          <table class="vtable">
+            <thead>
+              <tr><th>Produto</th><th>Concentração</th><th>Superfície</th><th>Tempo de Ação</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Álcool Etílico</strong></td><td>70%</td><td>Bancadas, equipamentos</td><td>30 segundos</td></tr>
+              <tr><td><strong>Hipoclorito de Sódio</strong></td><td>0,5–1%</td><td>Pisos, banheiros</td><td>10 minutos</td></tr>
+              <tr><td><strong>Quaternário de Amônio</strong></td><td>Conf. fabricante</td><td>Mobiliário, maca</td><td>5–10 minutos</td></tr>
+              <tr><td><strong>Enzimático Detergente</strong></td><td>Conf. fabricante</td><td>Instrumentais metálicos</td><td>10–15 minutos</td></tr>
+              <tr><td><strong>Glutaraldeído 2%</strong></td><td>2%</td><td>Materiais termo-sensíveis</td><td>20–30 minutos</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 9 — RESÍDUOS ══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill py">♻️ Resíduos</span>
+      <h2 style="margin-bottom:0;">Descarte Correto: <span class="gt">Obrigação Legal e Ética</span></h2>
+    </div>
+    <p class="sub au d3">RDC 222/18 — classificação, embalagens, coleta especializada e documentação</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="bwc cr">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <span style="font-size:18px;">🔴</span>
+              <h3 style="font-size:13px;color:#FF6B6B;">Grupo A — Infectantes</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:7px;">Risco biológico — contato com sangue e fluidos</p>
+            <ul>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Gazes e compressas com sangue</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Luvas, máscaras e aventais usados</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Campos estéreis contaminados</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Resíduos de procedimentos invasivos</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Lençóis descartáveis com fluidos</li>
+            </ul>
+            <div style="margin-top:9px;padding:7px 9px;background:rgba(255,107,107,.08);border-radius:8px;border:1px solid rgba(255,107,107,.15);">
+              <p style="font-size:10px;"><strong style="color:#FF9B9B;">Embalagem:</strong> saco branco leitoso com símbolo de risco biológico. Coleta por empresa especializada.</p>
+            </div>
+          </div>
+          <div class="bwc" style="background:rgba(255,212,96,.05);border:1px solid rgba(255,212,96,.15);">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <span style="font-size:18px;">🟡</span>
+              <h3 style="font-size:13px;color:#FFD460;">Grupo E — Perfurocortantes</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:7px;">Risco de acidente por punctura</p>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Agulhas de dermógrafo e tatoo</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Ponteiras de Dermapen usadas</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Lâminas de Nanoblading</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Lancetas de extração</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Qualquer objeto que perfura ou corta</li>
+            </ul>
+            <div style="margin-top:9px;padding:7px 9px;background:rgba(255,212,96,.08);border-radius:8px;border:1px solid rgba(255,212,96,.15);">
+              <p style="font-size:10px;"><strong style="color:#FFD460;">Embalagem:</strong> caixa rígida amarela (Descarpack ou similar). Trocar ao atingir 2/3. NUNCA pressionar ou abrir.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="bwc" style="background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.15);">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <span style="font-size:18px;">🔵</span>
+              <h3 style="font-size:13px;color:#8FAEFF;">Grupo B — Químicos</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:7px;">Resíduos de produtos químicos</p>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:5px;">
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#2E6BFF;margin-top:5px;flex-shrink:0;"></span>Frascos de glutaraldeído</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#2E6BFF;margin-top:5px;flex-shrink:0;"></span>Embalagens de ácidos cosméticos</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#2E6BFF;margin-top:5px;flex-shrink:0;"></span>Frascos de produtos vencidos</li>
+            </ul>
+          </div>
+          <div class="bwc cg">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <span style="font-size:18px;">🟢</span>
+              <h3 style="font-size:13px;color:#5EE89A;">Resíduo Comum (D)</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:7px;">Sem contato com material biológico</p>
+            <ul>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Embalagens secas e limpas</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Papéis de uso administrativo</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Restos de alimentos</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Embalagens de produtos não contaminados</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="alert-box au d6">
+          <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p><strong>Coleta especializada obrigatória:</strong> contratar empresa de Gerenciamento de Resíduos de Serviços de Saúde (GRSS) credenciada. Manter o Manifesto de Transporte de Resíduos (MTR) por no mínimo <strong style="color:#FF9B9B;">5 anos</strong>. Fiscalização pode solicitar a qualquer momento.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SLIDE 10 — AUTORIDADE ══════════ -->
+<section class="slide">
+  <div class="inner ce">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="text-align:center;">Biossegurança como <span class="gt">Diferencial Competitivo</span></h2>
+    <p class="sub au d3" style="text-align:center;max-width:520px;">Quem domina os protocolos não apenas protege — comunica autoridade, constrói confiança e cobra mais</p>
+    <div class="sc-area" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;">
+
+        <div class="g3 au d4" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.18);">
+            <div class="bignum" style="color:#2E6BFF;margin-bottom:5px;">3x</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">mais confiança</h3>
+            <p style="font-size:11px;">Clientes pagam mais por profissionais que demonstram segurança e organização</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(0,212,255,.18);">
+            <div class="bignum" style="color:#00D4FF;margin-bottom:5px;">100%</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">auditável</h3>
+            <p style="font-size:11px;">Ambiente com checklist e registros passa em qualquer fiscalização da vigilância sanitária</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.18);">
+            <div class="bignum" style="color:#5EE89A;margin-bottom:5px;">0</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">processos</h3>
+            <p style="font-size:11px;">Protocolos corretos eliminam risco de ações judiciais por infecção ou reação adversa</p>
+          </div>
+        </div>
+
+        <div class="g2 au d5" style="width:100%;">
+          <div class="cp">
+            <h3 style="font-size:13px;margin-bottom:8px;color:#2E6BFF;">📱 Como Comunicar nas Redes</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">1</div>
+                <p style="font-size:11px;">Mostrar a montagem do campo estéril nos Stories — cliente vê cuidado antes de chegar</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">2</div>
+                <p style="font-size:11px;">Postar o unboxing de insumos estéreis — embalagens lacradas geram credibilidade visual</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">3</div>
+                <p style="font-size:11px;">Compartilhar certificados de cursos de biossegurança — autoridade técnica converte seguidores em clientes</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">4</div>
+                <p style="font-size:11px;">Educar a audiência: "por que usamos luvas estéreis" — conteúdo que diferencia e fideliza</p>
+              </div>
+            </div>
+          </div>
+          <div class="cp">
+            <h3 style="font-size:13px;margin-bottom:8px;color:#00D4FF;">🏆 Construindo Autoridade</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="background:linear-gradient(145deg,#00D4FF,#2E6BFF);">1</div>
+                <p style="font-size:11px;">Checklist plastificado visível no espaço — cliente percebe organização imediatamente ao entrar</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="background:linear-gradient(145deg,#00D4FF,#2E6BFF);">2</div>
+                <p style="font-size:11px;">Apresentar Termo de Consentimento Informado — profissionalismo que protege os dois lados</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="background:linear-gradient(145deg,#00D4FF,#2E6BFF);">3</div>
+                <p style="font-size:11px;">Alvará sanitário e certificados emoldurados e visíveis — sinaliza comprometimento com a legalidade</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="background:linear-gradient(145deg,#00D4FF,#2E6BFF);">4</div>
+                <p style="font-size:11px;">Registro fotográfico do ambiente antes de receber clientes — prova de conformidade e marketing orgânico</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lc au d6" style="width:100%;max-width:700px;">
+          <div style="font-size:36px;margin-bottom:10px;animation:float 3s ease-in-out infinite;display:inline-block;">🛡️</div>
+          <p style="font-size:13px;line-height:1.75;color:#AAB3C5;margin-bottom:14px;">
+            <strong style="color:#F5F7FB;">"A biossegurança não é o que você faz quando tem fiscalização — é o que você faz quando não tem ninguém olhando. Essa é a diferença entre a profissional de excelência e as demais."</strong>
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;">
+            <span class="pill pb">🔬 Dermapen</span>
+            <span class="pill pc">🖊️ Dermógrafo</span>
+            <span class="pill pv">✨ BB Glow</span>
+            <span class="pill pg">💧 Hidragloss</span>
+            <span class="pill py">🌿 Nanoblading</span>
+            <span class="pill pr">🎨 Camuflagem</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
