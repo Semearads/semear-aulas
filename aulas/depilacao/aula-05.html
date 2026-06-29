@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Clareamento & Banho de Lua — Curso Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 13px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0;}
+.ind .dot.active{background:#C86DD7;box-shadow:0 0 12px rgba(200,109,215,.6);width:26px;border-radius:4px;}
+
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(200,109,215,.2);border-color:rgba(200,109,215,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:54px 18px 78px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+background:
+  radial-gradient(800px 400px at 75% 15%,rgba(200,109,215,.16) 0%,transparent 45%),
+  radial-gradient(700px 350px at 25% 22%,rgba(91,63,214,.13) 0%,transparent 45%),
+  linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.28;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowM{0%,100%{box-shadow:0 0 16px rgba(200,109,215,.12)}50%{box-shadow:0 0 32px rgba(200,109,215,.35)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}.d7{animation-delay:.68s!important}
+
+/* GRADIENTES DE TEXTO */
+.gt{background:linear-gradient(135deg,#C86DD7 0%,#8B5CF6 50%,#C86DD7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gb{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gm{background:linear-gradient(135deg,#F9E4FF 0%,#C86DD7 40%,#8B5CF6 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+
+/* LINHAS DECORATIVAS */
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#C86DD7,#8B5CF6);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 14px;transform-origin:center;}
+.gl.bl{background:linear-gradient(90deg,#2E6BFF,#C86DD7);}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border-radius:999px;margin-bottom:20px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.25);font-size:12px;font-weight:600;color:#D49EE0;letter-spacing:.05em;text-transform:uppercase;}
+.badge.bl{background:rgba(46,107,255,.08);border-color:rgba(46,107,255,.2);color:#8FAEFF;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(200,109,215,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(200,109,215,.06);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(200,109,215,.22);transform:translateY(-2px) scale(1.01);}
+
+/* BORDA LATERAL */
+.sb{position:relative;padding-left:16px!important;}
+.sb::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.sb.bm::before{background:#C86DD7;}
+.sb.bb::before{background:#2E6BFF;}
+.sb.bv::before{background:#8B5CF6;}
+.sb.br::before{background:#FF6B6B;}
+
+/* PILLS / TAGS */
+.pill{display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.03em;}
+.pm{background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.22);color:#D49EE0;}
+.pb{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.22);color:#8FAEFF;}
+.pv{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.22);color:#B89FFF;}
+.pg{background:rgba(80,220,120,.1);border:1px solid rgba(80,220,120,.22);color:#5EE89A;}
+.pr{background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.22);color:#FF9B9B;}
+.py{background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.22);color:#FFD460;}
+
+/* ÍCONE CONTAINER */
+.ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.icm{background:rgba(200,109,215,.1);}
+.icm svg{width:20px;height:20px;color:#C86DD7;}
+.icb{background:rgba(46,107,255,.1);}
+.icb svg{width:20px;height:20px;color:#2E6BFF;}
+.icv{background:rgba(139,92,246,.1);}
+.icv svg{width:20px;height:20px;color:#8B5CF6;}
+
+/* INFO CARD */
+.ci{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
+.ci p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.ci strong{color:#F5F7FB;font-weight:600;}
+
+/* FLUXO */
+.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;width:100%;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:62px;padding:0 3px;}
+.fstep .fi{width:46px;height:46px;border-radius:13px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:20px;height:20px;color:#C86DD7;}
+.fstep span{font-size:10px;font-weight:600;color:#F5F7FB;line-height:1.3;}
+.fstep p{font-size:9px;color:#7E879B;margin-top:2px;line-height:1.3;}
+.farr{display:flex;align-items:center;padding-bottom:22px;margin:0 1px;}
+.farr svg{width:13px;height:13px;color:#7E879B;}
+.fstep.actp .fi{background:linear-gradient(180deg,#C86DD7,#8B5CF6);border-color:transparent;box-shadow:0 8px 18px rgba(200,109,215,.3);animation:glowM 3s ease-in-out infinite;}
+.fstep.actp .fi svg{color:#fff;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+
+/* TIPOGRAFIA */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.2;}
+p,span,li{font-weight:400;line-height:1.55;color:#AAB3C5;}
+
+/* LAYOUT INNER */
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:flex-start;}
+.inner.ce{align-items:center;text-align:center;}
+.inner h2{font-size:clamp(18px,3.4vw,32px);margin-bottom:4px;}
+.inner .sub{font-size:clamp(11px,1.5vw,13px);color:#7E879B;margin-bottom:14px;}
+
+/* SCROLL AREA */
+.sc-area{overflow-y:auto;max-height:calc(100vh - 152px);width:100%;padding-right:3px;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.sc-area::-webkit-scrollbar{width:3px;}
+.sc-area::-webkit-scrollbar-track{background:transparent;}
+.sc-area::-webkit-scrollbar-thumb{background:rgba(200,109,215,.3);border-radius:2px;}
+
+/* GRID COMPARATIVO */
+.bwc{border-radius:16px;padding:14px 13px;}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.15);}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.15);}
+.bwc ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.bwc ul li{font-size:11px;display:flex;align-items:flex-start;gap:7px;color:#AAB3C5;line-height:1.4;}
+.bwd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+/* BIG NUM */
+.bignum{font-size:clamp(30px,4.5vw,46px);font-weight:900;letter-spacing:-.03em;line-height:1;}
+
+/* SLIDE 1 */
+.s1w{text-align:center;max-width:660px;width:100%;}
+.s1w h1{font-size:clamp(24px,4.8vw,58px);margin-bottom:16px;}
+.s1w .tag{font-size:clamp(12px,1.7vw,15px);color:#AAB3C5;max-width:500px;margin:0 auto;line-height:1.6;}
+.s1w .pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:18px;}
+
+/* NÚMERO PASSO */
+.snum{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;background:linear-gradient(145deg,#C86DD7,#8B5CF6);}
+.snumb{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+
+/* CARD FECHAMENTO */
+.lc{background:linear-gradient(145deg,rgba(200,109,215,.1),rgba(139,92,246,.08));border:1px solid rgba(200,109,215,.25);border-radius:20px;padding:20px 16px;text-align:center;width:100%;}
+
+/* LUA DECORATIVA */
+.moon{font-size:38px;animation:float 3s ease-in-out infinite;display:inline-block;margin-bottom:8px;}
+
+@media(max-width:520px){
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .farr{display:none;}
+  .slide{padding:48px 13px 76px;}
+  .nav-arr button{width:38px;height:38px;font-size:15px;}
+  .sc-area{max-height:calc(100vh - 145px);}
+}
+@media(max-width:380px){
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr;}
+  .s1w h1{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════════════════
+     SLIDE 1 — TÍTULO
+══════════════════════════ -->
+<section class="slide active">
+  <div class="s1w">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      Curso Profissional
+    </div>
+    <h1 class="au d2">
+      <span class="gt">Clareamento</span> &amp; <span class="gm">Banho de Lua</span>
+    </h1>
+    <p class="tag au d3">Domine os protocolos mais sofisticados da estética íntima moderna — do diagnóstico de pele à experiência sensorial premium que fideliza clientes para sempre.</p>
+    <div class="pills au d4">
+      <span class="pill pm">🌙 Banho de Lua</span>
+      <span class="pill pv">✨ Clareamento Íntimo</span>
+      <span class="pill pb">🧪 Ativos Profissionais</span>
+      <span class="pill pg">📋 Protocolos Completos</span>
+      <span class="pill py">💎 Posicionamento Premium</span>
+      <span class="pill pr">🛡️ Segurança & Conduta</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 2 — BANHO DE LUA
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pm">🌙 Banho de Lua</span>
+      <h2 style="margin-bottom:0;">Rituais que <span class="gt">Transformam</span></h2>
+    </div>
+    <p class="sub au d3">Muito além da estética — uma experiência terapêutica que conecta beleza, autoestima e bem-estar</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">🌙</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">O Que É?</h3>
+            <p style="font-size:12px;">Protocolo corporal de <strong style="color:#C86DD7;">hidratação profunda, luminosidade e bem-estar</strong> focado nas regiões de pele mais delicadas. Une esfoliação, nutrição intensa e aromaterapia num único ritual.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">🌿</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Origem e Filosofia</h3>
+            <p style="font-size:12px;">Inspirado em rituais lunares ancestrais de cuidado feminino. Trabalha com a ideia de <strong style="color:#C86DD7;">renovação, limpeza energética e acolhimento</strong> — criando uma experiência única e memorável para a cliente.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">💎</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Proposta Estética</h3>
+            <p style="font-size:12px;">Pele <strong style="color:#C86DD7;">macia, iluminada e nutrida</strong> com aspecto "pele de bebê". Atua em regiões com ressecamento, aspereza e opacidade — virilha, axilas, joelhos, cotovelos e região íntima.</p>
+          </div>
+          <div class="cp">
+            <div style="font-size:22px;margin-bottom:8px;">🕯️</div>
+            <h3 style="font-size:13px;margin-bottom:5px;">Diferencial Sensorial</h3>
+            <p style="font-size:12px;">A experiência vai além do resultado visual: aromas terapêuticos, texturas sensoriais, temperatura, ritmo de aplicação e ambiente criam um <strong style="color:#C86DD7;">serviço de alto valor percebido</strong> e difícil de comparar com concorrentes.</p>
+          </div>
+        </div>
+
+        <div class="g3 au d5">
+          <div class="card" style="text-align:center;border-color:rgba(200,109,215,.15);">
+            <div class="bignum" style="color:#C86DD7;margin-bottom:5px;">60–90</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">minutos</h3>
+            <p style="font-size:11px;">Duração média do protocolo completo</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(139,92,246,.15);">
+            <div class="bignum" style="color:#8B5CF6;margin-bottom:5px;">1x</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">por semana</h3>
+            <p style="font-size:11px;">Frequência ideal para resultados progressivos</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.15);">
+            <div class="bignum" style="color:#2E6BFF;margin-bottom:5px;">4–6x</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">sessões</h3>
+            <p style="font-size:11px;">Ciclo completo para transformação visível</p>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ic icm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Por que é tendência:</strong> O Banho de Lua combina resultado estético com experiência emocional. Clientes que vivenciam o ritual relatam sensação de <em>autoamor e leveza</em> — o que gera fidelização espontânea e indicações orgânicas constantes.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 3 — CLAREAMENTO
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl bl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pv">✨ Clareamento</span>
+      <h2 style="margin-bottom:0;">Ciência e <span class="gb">Autoestima</span></h2>
+    </div>
+    <p class="sub au d3">Entenda a hiperpigmentação, os mecanismos de ação e o papel transformador da profissional</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="card sb bv">
+            <h3 style="font-size:13px;margin-bottom:5px;">🔬 O Que É?</h3>
+            <p style="font-size:12px;">Protocolo estético que utiliza <strong style="color:#8B5CF6;">ativos despigmentantes</strong> para reduzir o excesso de melanina em regiões com hiperpigmentação. Resultado: pele mais uniforme, clara e luminosa.</p>
+          </div>
+          <div class="card sb bv">
+            <h3 style="font-size:13px;margin-bottom:5px;">🧬 Por Que a Pele Escurece?</h3>
+            <p style="font-size:12px;">A hiperpigmentação ocorre por <strong style="color:#8B5CF6;">atrito contínuo, fricção com roupas, depilação recorrente, sudorese, alterações hormonais e inflamações</strong>. A melanina é produzida em excesso como mecanismo de defesa da pele.</p>
+          </div>
+          <div class="card sb bm">
+            <h3 style="font-size:13px;margin-bottom:5px;">🎯 Regiões Mais Tratadas</h3>
+            <p style="font-size:12px;">Virilha, axila, região perianal, joelhos, cotovelos, pescoço e linha do biquíni. São áreas com <strong style="color:#C86DD7;">alto índice de atrito e sudorese</strong> — mais propensas ao escurecimento progressivo.</p>
+          </div>
+          <div class="card sb bm">
+            <h3 style="font-size:13px;margin-bottom:5px;">👩‍⚕️ Papel da Profissional</h3>
+            <p style="font-size:12px;">Realizar diagnóstico do <strong style="color:#C86DD7;">grau de hiperpigmentação</strong>, selecionar o ativo correto para o tipo de pele, definir frequência, orientar home care e monitorar evolução a cada sessão com registro fotográfico.</p>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(139,92,246,.18);">
+          <h3 style="font-size:13px;margin-bottom:8px;color:#8B5CF6;">📊 Graus de Hiperpigmentação</h3>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="width:32px;height:18px;border-radius:4px;background:rgba(255,212,96,.25);border:1px solid rgba(255,212,96,.3);flex-shrink:0;"></span>
+              <p style="font-size:11px;"><strong style="color:#FFD460;">Grau 1 — Leve:</strong> leve diferença de tom, sem bordas definidas. Responde rapidamente ao tratamento. 3–4 sessões.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="width:32px;height:18px;border-radius:4px;background:rgba(200,109,215,.25);border:1px solid rgba(200,109,215,.3);flex-shrink:0;"></span>
+              <p style="font-size:11px;"><strong style="color:#C86DD7;">Grau 2 — Moderado:</strong> escurecimento visível com área delimitada. 6–8 sessões com ativos mais concentrados.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="width:32px;height:18px;border-radius:4px;background:rgba(91,63,214,.35);border:1px solid rgba(91,63,214,.4);flex-shrink:0;"></span>
+              <p style="font-size:11px;"><strong style="color:#8B5CF6;">Grau 3 — Intenso:</strong> hiperpigmentação profunda, crônica. Protocolo combinado, 10+ sessões. Pode exigir encaminhamento médico.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ic icv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p><strong>Importante:</strong> O clareamento estético trabalha com a camada superficial da pele. Nunca prometa resultados como "clarear completamente" — use sempre <em>"uniformizar o tom"</em> e <em>"reduzir a hiperpigmentação"</em>. Transparência gera confiança.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 4 — ATIVOS
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Os Ativos que <span class="gt">Fazem a Diferença</span></h2>
+    <p class="sub au d3">Ingredientes-chave dos dois protocolos — função, benefício e modo de uso</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div style="margin-bottom:2px;" class="au d3">
+          <span class="pill pv">✨ Ativos de Clareamento</span>
+        </div>
+        <div class="g3 au d4">
+          <div class="cp">
+            <div style="font-size:20px;margin-bottom:6px;">🍄</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">Ácido Kójico</h3>
+            <p style="font-size:11px;">Inibe a tirosinase — enzima responsável pela síntese de melanina. Ação despigmentante progressiva e segura. Concentração: 1–4%.</p>
+            <span class="pill pv" style="font-size:10px;margin-top:7px;padding:3px 9px;">Despigmentante</span>
+          </div>
+          <div class="cp">
+            <div style="font-size:20px;margin-bottom:6px;">🌾</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">Niacinamida</h3>
+            <p style="font-size:11px;">Bloqueia a transferência de melanossomas para os queratinócitos. Anti-inflamatória e hidratante. Alta tolerabilidade — segura para peles sensíveis. 4–10%.</p>
+            <span class="pill pb" style="font-size:10px;margin-top:7px;padding:3px 9px;">Anti-manchas</span>
+          </div>
+          <div class="cp">
+            <div style="font-size:20px;margin-bottom:6px;">🍋</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">Vitamina C</h3>
+            <p style="font-size:11px;">Antioxidante potente que inibe a oxidação da melanina. Promove luminosidade e uniformidade. Versão estável: vitamina C encapsulada ou ascorbil glucosídeo.</p>
+            <span class="pill py" style="font-size:10px;margin-top:7px;padding:3px 9px;">Luminosidade</span>
+          </div>
+          <div class="cp">
+            <div style="font-size:20px;margin-bottom:6px;">🌿</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">Ácido Azelaico</h3>
+            <p style="font-size:11px;">Normaliza a produção de melanina sem riscos de manchas rebote. Anti-inflamatório e keratolítico leve. Ideal para peles mistas e sensíveis. 10–20%.</p>
+            <span class="pill pg" style="font-size:10px;margin-top:7px;padding:3px 9px;">Seguro</span>
+          </div>
+          <div class="cp">
+            <div style="font-size:20px;margin-bottom:6px;">🫐</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">Resveratrol + Arbutin</h3>
+            <p style="font-size:11px;">Arbutin: inibidor natural da tirosinase — alternativa à hidroquinona. Resveratrol: antioxidante que potencializa os demais ativos despigmentantes.</p>
+            <span class="pill pm" style="font-size:10px;margin-top:7px;padding:3px 9px;">Combinação</span>
+          </div>
+          <div class="cp">
+            <div style="font-size:20px;margin-bottom:6px;">🍑</div>
+            <h3 style="font-size:12px;margin-bottom:4px;">AHA (Glicólico/Lático)</h3>
+            <p style="font-size:11px;">Esfoliam a camada córnea, removendo células pigmentadas. Potencializam a absorção dos demais ativos. Usar após diagnóstico de tipo de pele — evitar em peles muito reativas.</p>
+            <span class="pill pr" style="font-size:10px;margin-top:7px;padding:3px 9px;">Esfoliante</span>
+          </div>
+        </div>
+
+        <div style="margin-top:4px;margin-bottom:2px;" class="au d5">
+          <span class="pill pm">🌙 Ativos do Banho de Lua</span>
+        </div>
+        <div class="g3 au d6">
+          <div class="card" style="border-color:rgba(200,109,215,.15);">
+            <div style="font-size:18px;margin-bottom:5px;">🌺</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Calêndula</h3>
+            <p style="font-size:11px;">Calmante, anti-inflamatória e cicatrizante. Base dos produtos pós-depilação e hidratação íntima.</p>
+          </div>
+          <div class="card" style="border-color:rgba(200,109,215,.15);">
+            <div style="font-size:18px;margin-bottom:5px;">🌹</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Rosa Mosqueta</h3>
+            <p style="font-size:11px;">Rico em ômega 3, 6 e vitamina A. Regenera, hidrata profundamente e uniformiza o tom da pele.</p>
+          </div>
+          <div class="card" style="border-color:rgba(200,109,215,.15);">
+            <div style="font-size:18px;margin-bottom:5px;">🥥</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Manteiga de Karité</h3>
+            <p style="font-size:11px;">Hidratação profunda, barreira cutânea fortalecida. Textura sensorial elevada — efeito pele de seda.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 5 — PROTOCOLO CLAREAMENTO
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl bl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pv">✨ Protocolo</span>
+      <h2 style="margin-bottom:0;">Clareamento — <span class="gb">Passo a Passo</span></h2>
+    </div>
+    <p class="sub au d3">Do diagnóstico ao pós-cuidado — 7 etapas para resultado seguro e progressivo</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="fl au d4">
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23z"/></svg></div>
+            <span>1. Anamnese</span><p>Diagnóstico</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+            <span>2. Limpeza</span><p>Higienização</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83"/></svg></div>
+            <span>3. Esfoliação</span><p>Preparo da pele</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+            <span>4. Ativo</span><p>Aplicação</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+            <span>5. Oclusão</span><p>Potencializar</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>6. Neutralização</span><p>Remover ativo</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>7. Pós-cuidado</span><p>Finalização</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:7px;" class="au d5">
+          <div class="ci">
+            <div class="snum">1</div>
+            <p><strong>Anamnese e diagnóstico:</strong> avaliar grau de hiperpigmentação (1, 2 ou 3), histórico de uso de ácidos, alergias, uso de medicamentos fotossensibilizantes, gestação/amamentação e tempo desde a última depilação (mínimo 48–72h).</p>
+          </div>
+          <div class="ci">
+            <div class="snum">3</div>
+            <p><strong>Esfoliação mecânica ou química:</strong> remover células mortas e abrir a via de penetração dos ativos. Usar esfoliante físico suave (scrub) ou enzimático para peles mais sensíveis. Fundamental para maximizar resultado.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">4</div>
+            <p><strong>Aplicação do ativo:</strong> aplicar o despigmentante em camada uniforme com espátula ou pincel. Tempo de exposição conforme indicação do produto (geralmente 20–40 min). Monitorar reação durante toda a sessão.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">5</div>
+            <p><strong>Oclusão:</strong> cobrir a área com filme plástico para aumentar temperatura local e absorção transdérmica. Potencializa em até <strong style="color:#8B5CF6;">40%</strong> a penetração dos ativos despigmentantes.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">7</div>
+            <p><strong>Pós-cuidado obrigatório:</strong> aplicar hidratante calmante (calêndula ou aloe vera), protetor solar FPS 30+ nas áreas expostas ao sol e orientar home care. Fotografar para controle evolutivo.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 6 — PROTOCOLO BANHO DE LUA
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pm">🌙 Protocolo</span>
+      <h2 style="margin-bottom:0;">Banho de Lua — <span class="gt">Experiência Completa</span></h2>
+    </div>
+    <p class="sub au d3">6 etapas para uma experiência sensorial transformadora — do ambiente à finalização</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="fl au d4">
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div>
+            <span>1. Ambientação</span><p>Ritual sensorial</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+            <span>2. Higienização</span><p>Limpeza ritual</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg></div>
+            <span>3. Esfoliação</span><p>Scrub sensorial</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23z"/></svg></div>
+            <span>4. Máscara</span><p>Nutrição intensa</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg></div>
+            <span>5. Hidratação</span><p>Selagem</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>6. Finalização</span><p>Home care</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:7px;" class="au d5">
+          <div class="ci">
+            <div class="snum">1</div>
+            <p><strong>Ambientação ritual:</strong> luz suave ou velas (LED), música relaxante, aroma de lavanda, jasmim ou rosa. Oferecer chá quente. Criar um <em>universo sensorial</em> antes mesmo de tocar na pele — a experiência começa no ambiente.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">3</div>
+            <p><strong>Esfoliação sensorial:</strong> scrub artesanal com açúcar mascavo, mel e óleo essencial de laranja ou lavanda. Movimentos circulares suaves. Temperatura morna. Duração: 10–15 minutos. Remover com toalha úmida aquecida.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">4</div>
+            <p><strong>Máscara nutritiva:</strong> argila branca ou rosada com karité, aloe vera e ativos calmantes. Aplicar em camada generosa, cobrir com filme plástico e manter por 20 minutos. A argila absorve impurezas e regula a produção de sebo.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">5</div>
+            <p><strong>Hidratação e selagem:</strong> após remover a máscara, aplicar sérum com hialurônico + niacinamida, seguido de hidratante rico em karité ou manteiga de cacau. Massagem com movimentos lentos e intencionais — potencializa absorção e sensação de bem-estar.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">6</div>
+            <p><strong>Finalização e home care:</strong> orientar sobre produtos para casa, frequência de retorno e cuidados nas primeiras 24h (evitar atrito, sol direto, esfoliantes). Entregar um card de instruções e agendar a próxima sessão antes de sair.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 7 — REGIÕES
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Onde Aplicar — <span class="gt">Mapa Corporal</span></h2>
+    <p class="sub au d3">Indicações, sensibilidade e abordagem ideal por região do corpo</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="g2 au d4">
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🌸</span>
+              <h3 style="font-size:13px;">Virilha e Região Íntima</h3>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;">
+              <span class="pill pv" style="font-size:10px;padding:3px 8px;">✨ Clareamento</span>
+              <span class="pill pm" style="font-size:10px;padding:3px 8px;">🌙 Banho de Lua</span>
+            </div>
+            <p style="font-size:11px;"><strong style="color:#F5F7FB;">Sensibilidade: alta.</strong> Região de maior atrito e sudorese. Clareamento com ativos suaves (niacinamida + arbutin). Banho de lua com esfoliação enzimática leve. Evitar AHAs acima de 5% sem avaliação prévia.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🙌</span>
+              <h3 style="font-size:13px;">Axilas</h3>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;">
+              <span class="pill pv" style="font-size:10px;padding:3px 8px;">✨ Clareamento</span>
+              <span class="pill pm" style="font-size:10px;padding:3px 8px;">🌙 Banho de Lua</span>
+            </div>
+            <p style="font-size:11px;"><strong style="color:#F5F7FB;">Sensibilidade: alta.</strong> Escurecimento por desodorante, depilação e atrito. Clareamento com ácido kójico + niacinamida. Banho de lua com máscara de argila branca. Evitar desodorante por 24h após a sessão.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🦵</span>
+              <h3 style="font-size:13px;">Joelhos e Cotovelos</h3>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;">
+              <span class="pill pv" style="font-size:10px;padding:3px 8px;">✨ Clareamento</span>
+              <span class="pill pm" style="font-size:10px;padding:3px 8px;">🌙 Banho de Lua</span>
+            </div>
+            <p style="font-size:11px;"><strong style="color:#F5F7FB;">Sensibilidade: baixa-média.</strong> Pele espessada por pressão constante. Suporta ativos mais concentrados e esfoliações físicas. Esfoliação mecânica potente + clareamento com AHA + karité.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🌀</span>
+              <h3 style="font-size:13px;">Região Perianal</h3>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;">
+              <span class="pill pv" style="font-size:10px;padding:3px 8px;">✨ Clareamento</span>
+              <span class="pill pm" style="font-size:10px;padding:3px 8px;">🌙 Banho de Lua</span>
+            </div>
+            <p style="font-size:11px;"><strong style="color:#F5F7FB;">Sensibilidade: muito alta.</strong> Região delicada — usar exclusivamente ativos suaves e certificados para mucosas. Nunca usar AHAs sem aprovação prévia. Anamnese rigorosa e consentimento informado obrigatórios.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🧣</span>
+              <h3 style="font-size:13px;">Pescoço e Colo</h3>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;">
+              <span class="pill pv" style="font-size:10px;padding:3px 8px;">✨ Clareamento</span>
+              <span class="pill pm" style="font-size:10px;padding:3px 8px;">🌙 Banho de Lua</span>
+            </div>
+            <p style="font-size:11px;"><strong style="color:#F5F7FB;">Sensibilidade: média.</strong> Frequente em peles pardas e negras. Usar vitamina C + niacinamida. Protetor solar FPS 50+ obrigatório após sessão — área muito exposta ao sol e propensa a manchas rebote.</p>
+          </div>
+
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span style="font-size:20px;">🌿</span>
+              <h3 style="font-size:13px;">Linhas do Corpo (bikini)</h3>
+            </div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;">
+              <span class="pill pv" style="font-size:10px;padding:3px 8px;">✨ Clareamento</span>
+              <span class="pill pm" style="font-size:10px;padding:3px 8px;">🌙 Banho de Lua</span>
+            </div>
+            <p style="font-size:11px;"><strong style="color:#F5F7FB;">Sensibilidade: alta.</strong> Linha da calcinha e lateral dos glúteos — marcas frequentes em clientes com pele mais escura. Clareamento suave combinado com banho de lua para nutrição intensa pós-depilação.</p>
+          </div>
+
+        </div>
+
+        <div class="ci au d5">
+          <div class="ic icm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Regra de sensibilidade:</strong> quanto mais próxima de mucosas e dobras, mais suave deve ser o protocolo. Sempre realizar teste de sensibilidade na parte interna do braço ou atrás da orelha 24–48h antes da primeira sessão em regiões íntimas.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 8 — CONTRAINDICAÇÕES
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">Segurança em <span class="gt">Primeiro Lugar</span></h2>
+    <p class="sub au d3">Contraindicações absolutas, relativas e condutas profissionais em intercorrências</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="bwc cr">
+            <h3 style="font-size:12px;color:#FF6B6B;margin-bottom:3px;">🔴 Contraindicações Absolutas</h3>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:7px;">Não realizar o protocolo</p>
+            <ul>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Gestação (qualquer trimestre)</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Amamentação (clareamento)</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Feridas ou lesões abertas</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Infecção ativa na região</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Queimaduras solares</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Uso de isotretinoína</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Patologias de pele ativas (psoríase, eczema)</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Alergia confirmada a algum ativo</li>
+            </ul>
+          </div>
+          <div class="bwc cy">
+            <h3 style="font-size:12px;color:#FFD460;margin-bottom:3px;">🟡 Contraindicações Relativas</h3>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:7px;">Avaliar caso a caso</p>
+            <ul>
+              <li><span class="bwd" style="background:#FFD460;"></span>Uso recente de ácidos (aguardar 72h)</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Diabetes — cicatrização lenta</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Pele fotossensibilizada</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Período menstrual (dor aumentada)</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Queloides — evitar AHAs</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Uso de anticoagulantes</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Pele muito reativa/sensível</li>
+              <li><span class="bwd" style="background:#FFD460;"></span>Hipersensibilidade a cítricos</li>
+            </ul>
+          </div>
+          <div class="bwc cg">
+            <h3 style="font-size:12px;color:#5EE89A;margin-bottom:3px;">🟢 Liberadas com Cuidado</h3>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:7px;">Protocolo adaptado</p>
+            <ul>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Peles negras — evitar AHAs altos</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pós-depilação (aguardar 48h)</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele oleosa — adaptar máscara</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Foliculite leve inativa</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Hiperpigmentação grau 1</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Menopausa — aumentar hidratação</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pós-parto (após 6 meses)</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele com ressecamento crônico</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:7px;" class="au d5">
+          <h3 style="font-size:13px;color:#F5F7FB;margin-bottom:2px;">📋 Conduta em Intercorrências</h3>
+          <div class="ci">
+            <div class="ic icm" style="width:28px;height:28px;border-radius:8px;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>Ardência / queimação intensa:</strong> remover o ativo imediatamente com água corrente e compressa fria. Aplicar gel de aloe vera. Interromper a sessão. Registrar e orientar o cliente.</p>
+          </div>
+          <div class="ci">
+            <div class="ic icm" style="width:28px;height:28px;border-radius:8px;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <p><strong>Reação alérgica (urticária, inchaço):</strong> lavar com água fria abundante, anti-histamínico tópico se disponível. Sintomas generalizados — encaminhar ao pronto-socorro imediatamente. Nunca ignorar.</p>
+          </div>
+          <div class="ci">
+            <div class="ic icm" style="width:28px;height:28px;border-radius:8px;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Manchas rebote pós-clareamento:</strong> aumentar proteção solar (FPS 50+), suspender AHAs temporariamente, reforçar home care e reduzir concentração dos ativos na próxima sessão. Registrar e acompanhar evolução.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 9 — HOME CARE
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <h2 class="au d2">A Continuidade em <span class="gt">Casa</span></h2>
+    <p class="sub au d3">O resultado é construído entre sessões — oriente a cliente com precisão e autoridade</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="cp">
+            <h3 style="font-size:13px;margin-bottom:8px;color:#C86DD7;">🌅 Rotina Manhã</h3>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:22px;height:22px;font-size:10px;">1</div>
+                <p style="font-size:11px;">Limpeza suave com sabonete íntimo de pH neutro ou calêndula</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:22px;height:22px;font-size:10px;">2</div>
+                <p style="font-size:11px;">Sérum com niacinamida ou vitamina C (clareamento) ou hidratante leve (banho de lua)</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:22px;height:22px;font-size:10px;">3</div>
+                <p style="font-size:11px;"><strong style="color:#FFD460;">Protetor solar FPS 50+</strong> — obrigatório no clareamento. Manchas regridem com sol protegido.</p>
+              </div>
+            </div>
+          </div>
+          <div class="cp">
+            <h3 style="font-size:13px;margin-bottom:8px;color:#8B5CF6;">🌙 Rotina Noite</h3>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:22px;height:22px;font-size:10px;">1</div>
+                <p style="font-size:11px;">Limpeza da pele com produto neutro — remover suor e resíduos do dia</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:22px;height:22px;font-size:10px;">2</div>
+                <p style="font-size:11px;">Hidratante nutritivo — rosa mosqueta, karité ou óleo de jojoba. Massagear por 2–3 minutos</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:22px;height:22px;font-size:10px;">3</div>
+                <p style="font-size:11px;">Ativo despigmentante (clareamento) — aplicar somente à noite para evitar fotossensibilização</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="bwc cg">
+            <h3 style="font-size:12px;color:#5EE89A;margin-bottom:7px;">✅ O Que Fazer</h3>
+            <ul>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Esfoliação suave 2x por semana (após 72h da sessão)</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Hidratação diária sem interrupção</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Protetor solar mesmo em dias nublados</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Roupas íntimas de algodão — reduzem atrito</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Registrar evolução com fotos semanais</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Tirar dúvidas com a profissional pelo WhatsApp</li>
+            </ul>
+          </div>
+          <div class="bwc cr">
+            <h3 style="font-size:12px;color:#FF6B6B;margin-bottom:7px;">🚫 O Que Evitar</h3>
+            <ul>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Sol direto sem proteção nas primeiras 72h</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Esfoliação física intensa no dia seguinte</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Desodorantes com álcool nas axilas</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Roupas sintéticas e apertadas</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Piscina, mar e sauna por 24–48h</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Misturar ativos sem orientação profissional</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ci au d6">
+          <div class="ic icm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Dica de fidelização:</strong> crie um card físico ou digital com a rotina personalizada de cada cliente. Esse nível de cuidado e personalização gera percepção de valor altíssima e aumenta significativamente a taxa de retorno.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SLIDE 10 — PRECIFICAÇÃO
+══════════════════════════ -->
+<section class="slide">
+  <div class="inner ce">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="text-align:center;">Transforme Conhecimento em <span class="gt">Receita Premium</span></h2>
+    <p class="sub au d3" style="text-align:center;max-width:520px;">Como precificar, posicionar e fidelizar clientes de alto valor com Clareamento e Banho de Lua</p>
+
+    <div class="sc-area" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;">
+
+        <div class="g3 au d4" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(200,109,215,.18);">
+            <div class="bignum" style="color:#C86DD7;margin-bottom:5px;">R$150–250</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Banho de Lua</h3>
+            <p style="font-size:11px;">Sessão avulsa — ticket médio de mercado</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(139,92,246,.18);">
+            <div class="bignum" style="color:#8B5CF6;margin-bottom:5px;">R$180–350</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Clareamento</h3>
+            <p style="font-size:11px;">Sessão avulsa — varia por região e protocolo</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.18);">
+            <div class="bignum" style="color:#2E6BFF;margin-bottom:5px;">+40%</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Pacote Combinado</h3>
+            <p style="font-size:11px;">Aumento de receita ao unir os dois protocolos</p>
+          </div>
+        </div>
+
+        <div class="g2 au d5" style="width:100%;">
+          <div class="cp">
+            <h3 style="font-size:13px;margin-bottom:8px;color:#C86DD7;">📦 Monte Pacotes Inteligentes</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <span class="pill pm" style="font-size:10px;padding:3px 8px;flex-shrink:0;">Iniciante</span>
+                <p style="font-size:11px;">4 sessões de Banho de Lua — resultado base de maciez e luminosidade</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <span class="pill pv" style="font-size:10px;padding:3px 8px;flex-shrink:0;">Premium</span>
+                <p style="font-size:11px;">6 sessões de Clareamento + 6 Banho de Lua alternados — transformação completa</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <span class="pill py" style="font-size:10px;padding:3px 8px;flex-shrink:0;">VIP</span>
+                <p style="font-size:11px;">Protocolo completo com manutenção mensal + kit home care personalizado</p>
+              </div>
+            </div>
+          </div>
+          <div class="cp">
+            <h3 style="font-size:13px;margin-bottom:8px;color:#8B5CF6;">🎯 Estratégias de Fidelização</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:20px;height:20px;font-size:10px;flex-shrink:0;">1</div>
+                <p style="font-size:11px;">Registro fotográfico evolução — cliente vê resultado concreto = fidelização</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:20px;height:22px;font-size:10px;flex-shrink:0;">2</div>
+                <p style="font-size:11px;">Card de home care personalizado — gera valor percebido e cuidado diferenciado</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:20px;height:20px;font-size:10px;flex-shrink:0;">3</div>
+                <p style="font-size:11px;">Agendamento da próxima sessão antes de sair — nunca deixe a cliente sem retorno marcado</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum" style="width:20px;height:20px;font-size:10px;flex-shrink:0;">4</div>
+                <p style="font-size:11px;">Comunicação pós-sessão (WhatsApp 24h depois) — exclusividade e atenção que encanta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lc au d6" style="width:100%;max-width:700px;">
+          <div class="moon">🌙</div>
+          <p style="font-size:13px;line-height:1.75;color:#AAB3C5;margin-bottom:14px;">
+            <strong style="color:#F5F7FB;">"Quem oferece Clareamento e Banho de Lua não vende um serviço — vende autoestima, transformação e uma experiência que a cliente vai contar para todas as amigas."</strong>
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;">
+            <span class="pill pm">🌙 Banho de Lua</span>
+            <span class="pill pv">✨ Clareamento</span>
+            <span class="pill pg">📋 Protocolos</span>
+            <span class="pill pb">🧪 Ativos</span>
+            <span class="pill py">💎 Premium</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
