@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>BB Glow — Curso Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#E84393,#FF6EC7,#E84393);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 13px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(232,67,147,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#E84393;font-weight:800;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0;}
+.ind .dot.active{background:#E84393;box-shadow:0 0 12px rgba(232,67,147,.6);width:26px;border-radius:4px;}
+
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(232,67,147,.2);border-color:rgba(232,67,147,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:54px 18px 78px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+background:
+  radial-gradient(800px 400px at 78% 12%,rgba(232,67,147,.18) 0%,transparent 45%),
+  radial-gradient(700px 350px at 18% 22%,rgba(180,40,120,.12) 0%,transparent 45%),
+  linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 16px rgba(232,67,147,.12)}50%{box-shadow:0 0 32px rgba(232,67,147,.4)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}.d7{animation-delay:.68s!important}
+
+.gp{background:linear-gradient(135deg,#E84393 0%,#FF6EC7 50%,#E84393 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gg{background:linear-gradient(135deg,#FF6EC7 0%,#FFB3D9 50%,#FF6EC7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+.gw{background:linear-gradient(135deg,#E84393 0%,#B5179E 50%,#E84393 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#E84393,#FF6EC7);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 14px;transform-origin:center;}
+
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border-radius:999px;margin-bottom:20px;background:rgba(232,67,147,.08);border:1px solid rgba(232,67,147,.28);font-size:12px;font-weight:600;color:#FF8EC7;letter-spacing:.05em;text-transform:uppercase;}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(232,67,147,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(12,8,22,.95) 0%,rgba(8,6,18,.98) 55%,rgba(5,4,14,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(232,67,147,.05);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(232,67,147,.2);transform:translateY(-2px) scale(1.01);}
+
+.pill{display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.03em;}
+.pp{background:rgba(232,67,147,.1);border:1px solid rgba(232,67,147,.25);color:#FF8EC7;}
+.pb{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.22);color:#8FAEFF;}
+.pg{background:rgba(80,220,120,.1);border:1px solid rgba(80,220,120,.22);color:#5EE89A;}
+.pr{background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.22);color:#FF9B9B;}
+.py{background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.22);color:#FFD460;}
+.pc{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.22);color:#6EEEFF;}
+
+.ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.icp{background:rgba(232,67,147,.12);}
+.icp svg{width:20px;height:20px;color:#E84393;}
+.icg{background:rgba(80,220,120,.12);}
+.icg svg{width:20px;height:20px;color:#5EE89A;}
+.icr{background:rgba(255,107,107,.12);}
+.icr svg{width:20px;height:20px;color:#FF6B6B;}
+.icb{background:rgba(46,107,255,.12);}
+.icb svg{width:20px;height:20px;color:#2E6BFF;}
+.icy{background:rgba(255,212,96,.12);}
+.icy svg{width:20px;height:20px;color:#FFD460;}
+
+.ci{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
+.ci p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.ci strong{color:#F5F7FB;font-weight:600;}
+
+.snum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;background:linear-gradient(145deg,#E84393,#B5179E);}
+
+.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;width:100%;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:56px;padding:0 3px;}
+.fstep .fi{width:44px;height:44px;border-radius:13px;background:rgba(232,67,147,.08);border:1px solid rgba(232,67,147,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:19px;height:19px;color:#E84393;}
+.fstep span{font-size:10px;font-weight:600;color:#F5F7FB;line-height:1.3;}
+.fstep p{font-size:9px;color:#7E879B;margin-top:2px;line-height:1.3;}
+.farr{display:flex;align-items:center;padding-bottom:22px;margin:0 1px;}
+.farr svg{width:12px;height:12px;color:#7E879B;}
+.fstep.actp .fi{background:linear-gradient(180deg,#E84393,#B5179E);border-color:transparent;box-shadow:0 8px 18px rgba(232,67,147,.35);animation:glowP 3s ease-in-out infinite;}
+.fstep.actp .fi svg{color:#fff;}
+
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+.g4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.2;}
+p,span,li{font-weight:400;line-height:1.55;color:#AAB3C5;}
+
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:flex-start;}
+.inner.ce{align-items:center;text-align:center;}
+.inner h2{font-size:clamp(17px,3.2vw,30px);margin-bottom:4px;}
+.inner .sub{font-size:clamp(11px,1.5vw,13px);color:#7E879B;margin-bottom:14px;}
+
+.sc-area{overflow-y:auto;max-height:calc(100vh - 152px);width:100%;padding-right:3px;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.sc-area::-webkit-scrollbar{width:3px;}
+.sc-area::-webkit-scrollbar-track{background:transparent;}
+.sc-area::-webkit-scrollbar-thumb{background:rgba(232,67,147,.3);border-radius:2px;}
+
+.bwc{border-radius:16px;padding:14px 13px;}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.15);}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.15);}
+.bwc ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.bwc ul li{font-size:11px;display:flex;align-items:flex-start;gap:7px;color:#AAB3C5;line-height:1.4;}
+.bwd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+.bignum{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.03em;line-height:1;}
+
+.alert-box{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.alert-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.info-box{background:rgba(232,67,147,.06);border:1px solid rgba(232,67,147,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.info-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.tip-box{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.tip-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+
+.vtable{width:100%;border-collapse:collapse;font-size:11px;}
+.vtable th{padding:8px 10px;text-align:left;font-weight:700;font-size:10px;color:#7E879B;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.06);}
+.vtable td{padding:8px 10px;color:#AAB3C5;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle;}
+.vtable tr:hover td{background:rgba(232,67,147,.03);}
+.vtable strong{color:#F5F7FB;}
+
+.tag-ok{background:rgba(80,220,120,.12);border:1px solid rgba(80,220,120,.25);color:#5EE89A;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+.tag-no{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.25);color:#FF9B9B;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+.tag-warn{background:rgba(255,212,96,.12);border:1px solid rgba(255,212,96,.25);color:#FFD460;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+.tag-pink{background:rgba(232,67,147,.12);border:1px solid rgba(232,67,147,.25);color:#FF8EC7;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+
+.s1w{text-align:center;max-width:700px;width:100%;}
+.s1w h1{font-size:clamp(22px,4.5vw,58px);margin-bottom:16px;}
+.s1w .tag{font-size:clamp(12px,1.6vw,15px);color:#AAB3C5;max-width:540px;margin:0 auto;line-height:1.6;}
+.s1w .pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:18px;}
+
+.lc{background:linear-gradient(145deg,rgba(232,67,147,.1),rgba(181,23,158,.08));border:1px solid rgba(232,67,147,.25);border-radius:20px;padding:20px 16px;text-align:center;width:100%;}
+.equip-icon{font-size:26px;margin-bottom:8px;display:block;}
+
+.tday{display:flex;flex-direction:column;gap:8px;width:100%;}
+.tday-item{display:flex;gap:10px;align-items:flex-start;}
+.tday-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:3px;border:2px solid rgba(232,67,147,.4);}
+.tday-dot.active{background:#E84393;border-color:#E84393;box-shadow:0 0 10px rgba(232,67,147,.5);}
+.tday-line{width:2px;background:rgba(232,67,147,.2);flex-shrink:0;margin:0 6px;min-height:100%;}
+
+.check-item{display:flex;align-items:flex-start;gap:9px;padding:8px 11px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:10px;}
+.check-ok{color:#5EE89A;font-size:14px;flex-shrink:0;margin-top:1px;}
+.check-no{color:#FF6B6B;font-size:14px;flex-shrink:0;margin-top:1px;}
+.check-warn{color:#FFD460;font-size:14px;flex-shrink:0;margin-top:1px;}
+
+@media(max-width:520px){
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .farr{display:none;}
+  .slide{padding:48px 13px 76px;}
+  .nav-arr button{width:38px;height:38px;font-size:15px;}
+  .sc-area{max-height:calc(100vh - 142px);}
+  .vtable th,.vtable td{padding:6px 7px;font-size:10px;}
+}
+@media(max-width:380px){
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr;}
+  .s1w h1{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══════════ SLIDE 1 — TÍTULO ═══════════ -->
+<section class="slide active">
+  <div class="s1w">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      Curso Completo Profissional
+    </div>
+    <h1 class="au d2"><span class="gp">BB Glow</span> — Da Teoria à Prática Lucrativa</h1>
+    <p class="tag au d3">Domine a técnica coreana que transforma peles, elimina imperfeições visíveis e posiciona você como referência premium no mercado de estética avançada.</p>
+    <div class="pills au d4">
+      <span class="pill pp">✨ Conceito & Origem</span>
+      <span class="pill pb">🧪 Produtos & Insumos</span>
+      <span class="pill pg">📋 Indicações</span>
+      <span class="pill py">⚙️ Equipamentos</span>
+      <span class="pill pp">🔬 Protocolo Completo</span>
+      <span class="pill pr">🛡️ Biossegurança</span>
+      <span class="pill pc">💆 Pós-Procedimento</span>
+      <span class="pill pg">💰 Precificação</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 2 — O QUE É BB GLOW ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pp">✨ Fundamentos</span>
+      <h2 style="margin-bottom:0;">O Que é BB Glow e Por Que o <span class="gp">Mercado Explodiu</span></h2>
+    </div>
+    <p class="sub au d3">Da Coreia para o mundo — a técnica que uniu skincare, cobertura e rejuvenescimento em um único procedimento</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="cp" style="border-color:rgba(232,67,147,.15);">
+            <span class="equip-icon">🇰🇷</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Origem Coreana</h3>
+            <p style="font-size:12px;">Desenvolvido na Coreia do Sul, berço do skincare avançado, o BB Glow surgiu como evolução dos tratamentos de microagulhamento. Combina a tecnologia do <strong style="color:#FF8EC7;">Dermapen</strong> com séruns tintados de alta concentração de ativos, criando um efeito de pele uniformizada de dentro para fora.</p>
+          </div>
+          <div class="cp" style="border-color:rgba(232,67,147,.15);">
+            <span class="equip-icon">🔬</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Como Funciona</h3>
+            <p style="font-size:12px;">O microagulhamento cria microcanais na epiderme que permitem a <strong style="color:#FF8EC7;">infusão profunda do sérum BB Glow</strong>. O pigmento tintado se deposita nas camadas superficiais enquanto os ativos (vitamina C, ácido hialurônico, niacinamida) tratam a pele. O resultado é cobertura + tratamento simultâneos.</p>
+          </div>
+          <div class="cp" style="border-color:rgba(232,67,147,.15);">
+            <span class="equip-icon">🎯</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Público-Alvo Ideal</h3>
+            <p style="font-size:12px;">Clientes com <strong style="color:#FF8EC7;">manchas solares, melasma leve, poros dilatados, oleosidade excessiva, tom de pele irregular e sinais iniciais de envelhecimento.</strong> Faixa etária principal: 25–50 anos. Perfil: mulheres que buscam pele de porcelana sem maquiagem pesada no dia a dia.</p>
+          </div>
+          <div class="cp" style="border-color:rgba(232,67,147,.15);">
+            <span class="equip-icon">📈</span>
+            <h3 style="font-size:13px;margin-bottom:6px;">Por Que o Mercado Explodiu</h3>
+            <p style="font-size:12px;">O Brasil é o <strong style="color:#FF8EC7;">4º maior mercado de beleza do mundo.</strong> O BB Glow cresceu 340% nas buscas do Google Brasil entre 2021 e 2024. Ticket médio alto, fidelização natural por pacotes e forte apelo visual nas redes sociais tornam o procedimento um dos mais rentáveis da estética avançada.</p>
+          </div>
+        </div>
+
+        <div class="g3 au d5">
+          <div class="card" style="text-align:center;border-color:rgba(232,67,147,.18);">
+            <div class="bignum" style="color:#E84393;margin-bottom:5px;">3–5</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">sessões ideais</h3>
+            <p style="font-size:11px;">Protocolo completo para resultado duradouro e uniforme</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.18);">
+            <div class="bignum" style="color:#FFD460;margin-bottom:5px;">45–90</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">minutos por sessão</h3>
+            <p style="font-size:11px;">Procedimento rápido com alto retorno por hora trabalhada</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.18);">
+            <div class="bignum" style="color:#5EE89A;margin-bottom:5px;">15–30</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">dias de duração</h3>
+            <p style="font-size:11px;">Efeito visível por sessão, multiplicando o retorno ao longo do protocolo</p>
+          </div>
+        </div>
+
+        <div class="info-box au d6">
+          <div class="icp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+          <p><strong>Diferencial competitivo:</strong> ao contrário de outros procedimentos estéticos, o BB Glow entrega resultado <em>imediatamente visível após a sessão</em> — a cliente sai do procedimento com a pele visivelmente mais uniforme e luminosa, o que gera indicações orgânicas poderosas.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 3 — INDICAÇÕES E CONTRAINDICAÇÕES ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pg">📋 Triagem</span>
+      <h2 style="margin-bottom:0;">Para Quem Serve — e Para Quem <span class="gp">NÃO Serve</span></h2>
+    </div>
+    <p class="sub au d3">A triagem correta protege a cliente, protege você e garante resultados impecáveis</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="bwc cg">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+              <span style="font-size:18px;">✅</span>
+              <h3 style="font-size:13px;color:#5EE89A;">Indicações</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">Perfis que se beneficiam do BB Glow</p>
+            <ul>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Tom de pele irregular e sem uniformidade</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Manchas solares e hiperpigmentação leve</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Poros dilatados e oleosidade excessiva</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Opacidade e falta de luminosidade</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Linhas finas e rugas superficiais</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele seca com textura irregular</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Cicatrizes superficiais de acne (não ativas)</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele sem brilho e cansada</li>
+            </ul>
+          </div>
+          <div class="bwc cr">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+              <span style="font-size:18px;">🚫</span>
+              <h3 style="font-size:13px;color:#FF6B6B;">Contraindicações Absolutas</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">NUNCA realizar o procedimento</p>
+            <ul>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Gestação e amamentação</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Acne ativa inflamada na área</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Herpes labial em fase ativa</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Rosácea em crise</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Uso de isotretinoína (Roacutan) — aguardar 6 meses após término</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Coagulopatias e uso de anticoagulantes</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Alergia conhecida a ingredientes do sérum</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Pele com lesões abertas ou infecções ativas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bwc cy au d5">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+            <span style="font-size:18px;">⚠️</span>
+            <h3 style="font-size:13px;color:#FFD460;">Contraindicações Relativas — Avaliar Caso a Caso</h3>
+          </div>
+          <div class="g2" style="margin-top:8px;">
+            <ul>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Melasma profundo — risco de reativação pós-inflamação</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Pele muito sensível ou dermatite seborreica</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Histórico de queloides — avaliar área e profundidade</li>
+            </ul>
+            <ul>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Uso de ácidos e retinóis — suspender 7 dias antes</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Exposição solar intensa recente — aguardar 15 dias</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Botox/preenchimento recente — aguardar 15 dias</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card au d6" style="border-color:rgba(232,67,147,.15);">
+          <h3 style="font-size:12px;margin-bottom:8px;color:#E84393;">📝 Ficha de Triagem — Perguntas Essenciais</h3>
+          <div class="g2">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Está grávida ou amamentando?</p></div>
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Usa ou usou Roacutan nos últimos 6 meses?</p></div>
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Tem alergia a cosméticos ou metais?</p></div>
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Fez procedimento estético nos últimos 30 dias?</p></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Tem histórico de herpes, rosácea ou queloides?</p></div>
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Usa anticoagulantes ou corticoides?</p></div>
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Usou ácidos ou retinol nos últimos 7 dias?</p></div>
+              <div class="check-item"><span class="check-ok">?</span><p style="font-size:11px;">Tem doença autoimune ou diabetes descontrolado?</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 4 — PRODUTOS E INSUMOS ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pb">🧪 Produtos</span>
+      <h2 style="margin-bottom:0;">Sérum, Pigmento e Insumos: <span class="gp">Escolha Certa, Resultado Certo</span></h2>
+    </div>
+    <p class="sub au d3">O sérum é a alma do BB Glow — conheça os tipos, ativos, tons e como selecionar para cada cliente</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="cp" style="border-color:rgba(232,67,147,.18);">
+            <span class="equip-icon">🌟</span>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#FF8EC7;">Sérum Clareador</h3>
+            <p style="font-size:11px;margin-bottom:6px;">Indicado para manchas, melasma leve e hiperpigmentação.</p>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Ativos:</strong> vitamina C estabilizada, niacinamida, ácido kójico, arbutina</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Tons:</strong> bege claro, porcelana, marfim</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Resultado:</strong> uniformização + clareamento progressivo</p>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(255,212,96,.18);">
+            <span class="equip-icon">💛</span>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#FFD460;">Sérum Matificante</h3>
+            <p style="font-size:11px;margin-bottom:6px;">Para peles oleosas, com poros dilatados e brilho excessivo.</p>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Ativos:</strong> extrato de chá verde, zinco, ácido salicílico, kaolin</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Tons:</strong> nude médio, bege natural, areia</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Resultado:</strong> poro minimizado + efeito matte duradouro</p>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(80,220,120,.18);">
+            <span class="equip-icon">💚</span>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#5EE89A;">Sérum Antienvelhecimento</h3>
+            <p style="font-size:11px;margin-bottom:6px;">Para rugas finas, flacidez inicial e perda de luminosidade.</p>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Ativos:</strong> ácido hialurônico, peptídeos, colagênio, retinol microencapsulado</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Tons:</strong> dourado, peach, rose</p>
+              <p style="font-size:11px;"><strong style="color:#F5F7FB;">Resultado:</strong> preenchimento + efeito glow luminoso</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(232,67,147,.15);">
+          <h3 style="font-size:12px;margin-bottom:9px;color:#E84393;">🎨 Como Escolher o Tom Correto</h3>
+          <table class="vtable">
+            <thead>
+              <tr><th>Tom de Pele (Fitzpatrick)</th><th>Tom do Sérum</th><th>Observação</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Tipo I–II</strong> (muito clara)</td><td><span class="tag-pink">Porcelana / Marfim</span></td><td>Misturar com base transparente para suavizar</td></tr>
+              <tr><td><strong>Tipo III</strong> (clara-média)</td><td><span class="tag-pink">Bege claro / Natural</span></td><td>Tom mais versátil — adapta bem à maioria</td></tr>
+              <tr><td><strong>Tipo IV</strong> (média)</td><td><span class="tag-pink">Bege médio / Nude</span></td><td>Testar na linha mandibular antes de aplicar</td></tr>
+              <tr><td><strong>Tipo V–VI</strong> (morena-escura)</td><td><span class="tag-pink">Caramelo / Terra</span></td><td>Alguns séruns não cobrem — avaliar expectativa</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2 au d6">
+          <div class="card" style="border-color:rgba(46,107,255,.15);">
+            <h3 style="font-size:12px;margin-bottom:8px;color:#8FAEFF;">📦 Insumos Descartáveis Obrigatórios</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Ponteira de microagulhamento — uso único individual</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Cápsulas ou dosadores individuais de sérum</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Gazes estéreis e algodão</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Luvas de procedimento e máscara</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Espátulas descartáveis para manipulação</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Lençol descartável para maca</p></div>
+            </div>
+          </div>
+          <div class="card" style="border-color:rgba(255,107,107,.15);">
+            <h3 style="font-size:12px;margin-bottom:8px;color:#FF9B9B;">⚠️ Registro ANVISA — Obrigatório</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <p style="font-size:11px;">Todo sérum aplicado via microagulhamento é classificado como <strong style="color:#FF9B9B;">cosmético de uso profissional.</strong> Exigir número de registro ANVISA do fornecedor antes de comprar.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="icy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                <p style="font-size:11px;">Produtos importados sem registro no Brasil são <strong style="color:#FFD460;">ilegais para uso profissional.</strong> Em caso de intercorrência, a responsabilidade é inteiramente da profissional.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 5 — EQUIPAMENTOS ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill py">⚙️ Equipamentos</span>
+      <h2 style="margin-bottom:0;">Dermapen e Acessórios: <span class="gp">Configuração para BB Glow</span></h2>
+    </div>
+    <p class="sub au d3">Parâmetros corretos fazem toda a diferença — velocidade, profundidade e ponteira são decisivos para o resultado</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="cp" style="border-color:rgba(232,67,147,.18);">
+            <h3 style="font-size:13px;color:#FF8EC7;margin-bottom:8px;">✅ Dermapen Profissional</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Motor de alta rotação (≥ 9.000 RPM) para penetração uniforme</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Controle digital de velocidade com pelo menos 6 níveis</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Profundidade ajustável de 0,25 mm a 2,5 mm</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Compatível com ponteiras de 16 ou 36 agulhas</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Certificação ANVISA ou CE (europeu) no aparelho</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Garantia do fabricante e suporte técnico disponível</p></div>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(255,107,107,.18);">
+            <h3 style="font-size:13px;color:#FF9B9B;margin-bottom:8px;">🚫 Dermapen Amador — Nunca Use</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">Motor fraco com RPM irregular — penetração desuniforme</p></div>
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">Sem controle real de profundidade — risco de lesão</p></div>
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">Ponteiras reutilizáveis vendidas junto — contaminação</p></div>
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">Sem certificação — material plástico de baixa qualidade</p></div>
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">Agulhas que dobram durante o procedimento</p></div>
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">Sem garantia — falha técnica durante o atendimento</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(232,67,147,.15);">
+          <h3 style="font-size:12px;margin-bottom:9px;color:#E84393;">⚙️ Parâmetros de Configuração por Zona — BB Glow</h3>
+          <table class="vtable">
+            <thead>
+              <tr><th>Zona do Rosto</th><th>Profundidade</th><th>Velocidade</th><th>Ponteira</th><th>Passes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Testa</strong></td><td>0,25–0,5 mm</td><td>Nível 4–5</td><td>36 agulhas</td><td>3–4 passes</td></tr>
+              <tr><td><strong>Bochechas</strong></td><td>0,3–0,5 mm</td><td>Nível 4–5</td><td>36 agulhas</td><td>3–4 passes</td></tr>
+              <tr><td><strong>Nariz</strong></td><td>0,25 mm</td><td>Nível 3–4</td><td>16 agulhas</td><td>2–3 passes</td></tr>
+              <tr><td><strong>Periorbital</strong></td><td>0,2–0,25 mm</td><td>Nível 2–3</td><td>16 agulhas</td><td>2 passes</td></tr>
+              <tr><td><strong>Lábio superior</strong></td><td>0,25 mm</td><td>Nível 3</td><td>16 agulhas</td><td>2 passes</td></tr>
+              <tr><td><strong>Queixo/mandíbula</strong></td><td>0,3–0,5 mm</td><td>Nível 4</td><td>36 agulhas</td><td>3 passes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2 au d6">
+          <div class="info-box">
+            <div class="icp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>Ponteira 36 agulhas:</strong> ideal para grandes áreas. Distribui o sérum uniformemente e reduz o tempo de procedimento. <strong>Ponteira 16 agulhas:</strong> maior precisão em áreas pequenas e sensíveis.</p>
+          </div>
+          <div class="tip-box">
+            <div class="icg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Dica de ouro:</strong> sempre realizar um passe de teste na área menos sensível (bochecha) antes de ajustar os parâmetros definitivos. Pele hidratada e limpa responde melhor ao microagulhamento.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 6 — PROTOCOLO ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pp">🔬 Protocolo</span>
+      <h2 style="margin-bottom:0;">Protocolo Completo: <span class="gp">Do Preparo ao Acabamento</span></h2>
+    </div>
+    <p class="sub au d3">8 etapas detalhadas — cada uma com propósito clínico e impacto direto no resultado final</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="fl au d4">
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg></div>
+            <span>1. Limpeza</span><p>Dupla higienização</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+            <span>2. Esfoliação</span><p>Enzimática suave</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>3. Anestesia</span><p>Tópica 30–40min</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></div>
+            <span>4. Remoção</span><p>Anestésico</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+            <span>5. Sérum</span><p>Aplicação inicial</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg></div>
+            <span>6. Dermapen</span><p>Microagulhamento</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78z"/></svg></div>
+            <span>7. Máscara</span><p>LED + hidratante</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <span>8. Finalização</span><p>FPS + orientações</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:7px;" class="au d5">
+          <div class="ci">
+            <div class="snum">1</div>
+            <p><strong>Dupla higienização:</strong> 1º passe com demaquilante oleoso para remover resíduos de maquiagem e protetor solar. 2º passe com gel de limpeza facial específico para o tipo de pele. Enxaguar bem e secar com gaze estéril — nunca toalha de tecido.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">2</div>
+            <p><strong>Esfoliação enzimática:</strong> aplicar esfoliante enzimático suave por 3–5 minutos. Remove células mortas e potencializa a absorção do sérum em até 40%. NÃO usar esfoliantes físicos com grânulos — microlesões que comprometem o resultado.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">3</div>
+            <p><strong>Anestesia tópica:</strong> aplicar creme anestésico (lidocaína 4–5%) com filme oclusivo (papel filme) por 30–40 minutos. Conforto da cliente + melhor resposta ao microagulhamento. Verificar histórico de alergia antes de aplicar.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">5-6</div>
+            <p><strong>Aplicação do sérum + microagulhamento:</strong> depositar o sérum na pele e imediatamente passar o Dermapen em movimentos horizontais, verticais e diagonais. O microagulhamento force a infusão do sérum pelos microcanais criados. Reaplicar sérum ao longo do procedimento para manter a pele umedecida.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">7</div>
+            <p><strong>Máscara LED + hidratação:</strong> aplicar máscara de led vermelha (630–670nm) por 15 minutos para estimular colágeno e reduzir vermelhidão. Finalizar com sérum hidratante calmante (aloe vera, centella asiática). A pele ficará levemente rosada — orientar a cliente que é normal.</p>
+          </div>
+        </div>
+
+        <div class="tip-box au d6">
+          <div class="icg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+          <p><strong>Técnica dos passes:</strong> realizar 3–4 passes cruzados na mesma área antes de seguir para a próxima zona. Movimento lento e uniforme com pressão constante. Velocidade alta do Dermapen + movimento lento da mão = penetração ideal do sérum.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 7 — BIOSSEGURANÇA ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pr">🛡️ Biossegurança</span>
+      <h2 style="margin-bottom:0;">Segurança Não É Opcional: <span class="gp">Protocolo Completo</span></h2>
+    </div>
+    <p class="sub au d3">BB Glow rompe a barreira cutânea — todo o rigor da biossegurança de procedimentos invasivos se aplica</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="card" style="border-color:rgba(232,67,147,.15);">
+            <h3 style="font-size:12px;color:#E84393;margin-bottom:8px;">🦺 EPIs Obrigatórios — BB Glow</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Luvas de procedimento estéreis</strong> — colocar por último, remover primeiro</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Máscara cirúrgica</strong> — proteger de aerossóis durante o microagulhamento</p></div>
+              <div class="check-item"><span class="check-warn">!</span><p style="font-size:11px;"><strong>Óculos de proteção</strong> — recomendado, especialmente perto da região ocular</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Avental de manga longa</strong> — descartável ou lavável com hipoclorito</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Touca</strong> — cabelos totalmente presos e cobertos</p></div>
+            </div>
+          </div>
+          <div class="card" style="border-color:rgba(255,107,107,.15);">
+            <h3 style="font-size:12px;color:#FF9B9B;margin-bottom:8px;">🔬 Dermapen — Checklist de Higienização</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Encapar motor com manga plástica descartável antes de cada cliente</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Ponteira de 16 ou 36 agulhas — uso único, descartável, embalagem lacrada</p></div>
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">NUNCA reaproveitar ponteira — agulhas dobram e perdem esterilização</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Descarte imediato da ponteira na caixa perfurocortante amarela</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Corpo do aparelho: álcool 70% após retirar a manga protetora</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Armazenar em caixa fechada — nunca exposto sobre bancada</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(255,212,96,.18);">
+          <h3 style="font-size:12px;color:#FFD460;margin-bottom:9px;">⚠️ Atenção Especial: Pigmentos Próximos à Área Ocular</h3>
+          <div class="g2">
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="icy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                <p style="font-size:11px;">Manter distância mínima de <strong style="color:#FFD460;">5mm da linha ciliar</strong>. O pigmento BB Glow em contato com a córnea pode causar lesão ocular permanente.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="icy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                <p style="font-size:11px;">Usar protetor ocular (óculos ou placa) durante o procedimento. Em caso de contato: lavar com soro fisiológico imediatamente e encaminhar para oftalmologista.</p>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></div>
+                <p style="font-size:11px;">Séruns com <strong style="color:#FF9B9B;">pigmentos permanentes ou semipermanentes</strong> exigem maior cuidado — verificar composição antes de usar na área periorbital.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <p style="font-size:11px;">Nunca realizar BB Glow próximo aos olhos em clientes com histórico de conjuntivite frequente, glaucoma ou uso de lentes de contato durante o procedimento.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g3 au d6">
+          <div class="card" style="text-align:center;border-color:rgba(255,107,107,.15);">
+            <div style="font-size:20px;margin-bottom:6px;">🟡</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Caixa Perfurocortante</h3>
+            <p style="font-size:11px;">Ponteiras usadas. Trocar ao atingir 2/3. Nunca pressionar.</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(232,67,147,.15);">
+            <div style="font-size:20px;margin-bottom:6px;">🗑️</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Lixo Infectante</h3>
+            <p style="font-size:11px;">Luvas, gazes, cápsulas usadas. Saco branco leitoso.</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.15);">
+            <div style="font-size:20px;margin-bottom:6px;">🔵</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Lixo Comum</h3>
+            <p style="font-size:11px;">Embalagens limpas e secas sem contato biológico.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 8 — PÓS-PROCEDIMENTO ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pc">💆 Pós-Procedimento</span>
+      <h2 style="margin-bottom:0;">Pós-BB Glow: O Que <span class="gp">Garante (ou Destrói)</span> o Resultado</h2>
+    </div>
+    <p class="sub au d3">A orientação pós é tão importante quanto o procedimento — cliente bem instruída = resultado impecável = indicação garantida</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="tday au d4">
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot active"></div>
+              <div style="width:2px;flex:1;background:rgba(232,67,147,.2);min-height:40px;margin:3px 0;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(232,67,147,.2);margin-bottom:0;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+                <span class="tag-pink">Dia 1 — Imediato</span>
+              </div>
+              <p style="font-size:12px;">Pele levemente rosada e sensível — <strong style="color:#FF8EC7;">completamente normal.</strong> Não tocar no rosto com as mãos. Não aplicar maquiagem por pelo menos 24h. Usar apenas sérum calmante prescrito + FPS 50 sem perfume. Evitar calor: sauna, academia, banho quente.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot active"></div>
+              <div style="width:2px;flex:1;background:rgba(232,67,147,.2);min-height:40px;margin:3px 0;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(232,67,147,.15);margin-bottom:0;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+                <span class="tag-pink">Dias 2–3 — Fase Crítica</span>
+              </div>
+              <p style="font-size:12px;">Pode ocorrer <strong style="color:#FF8EC7;">leve descamação ou ressecamento</strong> — é o processo natural de renovação. Manter hidratação intensa. Usar apenas limpador suave sem espuma agressiva. Aplicar FPS de manhã e a cada 3h de exposição. <strong style="color:#FF9B9B;">Não esfregar o rosto.</strong></p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot active"></div>
+              <div style="width:2px;flex:1;background:rgba(232,67,147,.2);min-height:40px;margin:3px 0;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(255,212,96,.15);margin-bottom:0;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+                <span class="tag-warn">Dias 4–7 — Recuperação</span>
+              </div>
+              <p style="font-size:12px;">Pele em processo de consolidação do resultado. Permitido uso de <strong style="color:#FFD460;">base e BB cream leves.</strong> Continuar hidratação. Evitar ácidos (AHA, BHA, vitamina C pura) e retinol. Sem esfoliação mecânica. Manter FPS rigoroso.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot" style="background:rgba(80,220,120,.3);border-color:#5EE89A;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(80,220,120,.15);margin-bottom:0;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+                <span class="tag-ok">Dia 7+ — Resultado Consolidado</span>
+              </div>
+              <p style="font-size:12px;">Pele uniforme, iluminada e com textura melhorada. Resultado <strong style="color:#5EE89A;">totalmente visível.</strong> Retomar rotina skincare normal gradualmente. Agendar próxima sessão (intervalo recomendado: 15–30 dias). Tirar foto de comparação para documentar evolução.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="tip-box">
+            <div class="icg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Produtos PERMITIDOS:</strong> sérum de ácido hialurônico, centella asiática, aloe vera gel, niacinamida em concentração baixa (2–5%), ceramidas, protetor solar mineral FPS 50+. Esses produtos potencializam o resultado.</p>
+          </div>
+          <div class="alert-box">
+            <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>Produtos PROIBIDOS (primeiros 7 dias):</strong> ácidos (glicólico, mandélico, salicílico), vitamina C pura, retinol, peróxido de benzoíla, esfoliantes físicos, sabonetes com sulfato. Podem causar irritação severa e comprometer o resultado.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 9 — PRECIFICAÇÃO ═══════════ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pg">💰 Negócio</span>
+      <h2 style="margin-bottom:0;">Quanto Cobrar e Como <span class="gp">Posicionar no Mercado</span></h2>
+    </div>
+    <p class="sub au d3">BB Glow é um dos procedimentos com melhor margem da estética — aprenda a precificar com estratégia e comunicar valor</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="card" style="text-align:center;border-color:rgba(232,67,147,.2);">
+            <div class="bignum" style="color:#E84393;margin-bottom:5px;">R$35–80</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">custo de insumos</h3>
+            <p style="font-size:11px;">Por sessão (ponteira + sérum + descartáveis)</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.2);">
+            <div class="bignum" style="color:#FFD460;margin-bottom:5px;">R$250–600</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">ticket médio Brasil</h3>
+            <p style="font-size:11px;">Sessão única — varia por região e posicionamento</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.2);">
+            <div class="bignum" style="color:#5EE89A;margin-bottom:5px;">85–90%</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">margem de lucro</h3>
+            <p style="font-size:11px;">Uma das maiores margens da estética avançada</p>
+          </div>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="cp" style="border-color:rgba(232,67,147,.18);">
+            <h3 style="font-size:13px;color:#FF8EC7;margin-bottom:8px;">💎 Estratégia de Pacotes</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="background:rgba(232,67,147,.06);border:1px solid rgba(232,67,147,.15);border-radius:12px;padding:10px 12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                  <h3 style="font-size:12px;">Sessão Única</h3>
+                  <span class="tag-pink">R$250–600</span>
+                </div>
+                <p style="font-size:11px;">Ideal para clientes que querem testar. Menor fidelização. Usar como porta de entrada — sempre apresentar o pacote após.</p>
+              </div>
+              <div style="background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.2);border-radius:12px;padding:10px 12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                  <h3 style="font-size:12px;">Pacote 3 Sessões</h3>
+                  <span class="tag-warn">R$650–1.500</span>
+                </div>
+                <p style="font-size:11px;">Desconto de 10–15% sobre sessão avulsa. Resultado clínico superior. Garante 3 visitas e fideliza. Ticket médio mais atrativo.</p>
+              </div>
+              <div style="background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.2);border-radius:12px;padding:10px 12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                  <h3 style="font-size:12px;">Pacote 5 Sessões Premium</h3>
+                  <span class="tag-ok">R$1.000–2.500</span>
+                </div>
+                <p style="font-size:11px;">Resultado máximo e duradouro. Pode incluir máscara LED bônus. Desconto de 15–20%. Posiciona como serviço premium de alto valor.</p>
+              </div>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(46,107,255,.18);">
+            <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:8px;">📱 Como Comunicar nas Redes</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">1</div>
+                <p style="font-size:11px;"><strong>Antes e depois:</strong> foto com mesma iluminação, mesmo ângulo, sem filtro. Resultado real converte mais que qualquer copy.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">2</div>
+                <p style="font-size:11px;"><strong>Stories do processo:</strong> montagem do campo estéril, abertura da ponteira, aplicação do sérum. Transparência gera confiança.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">3</div>
+                <p style="font-size:11px;"><strong>Depoimentos em vídeo:</strong> cliente falando do resultado logo após o procedimento — autenticidade máxima e poder de conversão.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">4</div>
+                <p style="font-size:11px;"><strong>Educar antes de vender:</strong> posts explicando o que é BB Glow, para quem serve e como funciona criam audiência qualificada que compra sem objeções.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">5</div>
+                <p style="font-size:11px;"><strong>Urgência e escassez reais:</strong> agenda limitada, pacote com vagas para o mês. Nunca mentir — gerar urgência com fatos reais do seu negócio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box au d6">
+          <div class="icp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+          <p><strong>Calcule seu preço mínimo:</strong> some (custo de insumos + rateio do aluguel por hora + custo do equipamento dividido por número de sessões + seu pró-labore por hora). Nunca precifique abaixo do custo real — precificação errada é a principal causa de falência na estética.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SLIDE 10 — CERTIFICAÇÃO ═══════════ -->
+<section class="slide">
+  <div class="inner ce">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="text-align:center;font-size:clamp(18px,3.5vw,34px);">Você Está Pronta Para <span class="gp">Transformar Peles e Resultados</span></h2>
+    <p class="sub au d3" style="text-align:center;max-width:540px;">Cada sessão de BB Glow é uma oportunidade de transformar a autoestima de uma mulher — e de crescer o seu negócio com técnica, segurança e autoridade</p>
+    <div class="sc-area" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;">
+
+        <div class="g3 au d4" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(232,67,147,.2);">
+            <div style="font-size:24px;margin-bottom:6px;animation:float 3s ease-in-out infinite;display:inline-block;">✨</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 1</h3>
+            <p style="font-size:11px;">Fundamentos, origem, fisiologia da pele e mecanismo de ação</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.2);">
+            <div style="font-size:24px;margin-bottom:6px;animation:float 3s ease-in-out infinite .3s;display:inline-block;">🧪</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 2</h3>
+            <p style="font-size:11px;">Produtos, insumos, tons, ANVISA e como escolher o sérum certo</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.2);">
+            <div style="font-size:24px;margin-bottom:6px;animation:float 3s ease-in-out infinite .6s;display:inline-block;">📋</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 3</h3>
+            <p style="font-size:11px;">Indicações, contraindicações e triagem segura do cliente</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(46,107,255,.2);">
+            <div style="font-size:24px;margin-bottom:6px;animation:float 3s ease-in-out infinite .9s;display:inline-block;">⚙️</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 4</h3>
+            <p style="font-size:11px;">Dermapen: configuração, parâmetros e manutenção profissional</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(232,67,147,.2);">
+            <div style="font-size:24px;margin-bottom:6px;animation:float 3s ease-in-out infinite 1.2s;display:inline-block;">🔬</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 5</h3>
+            <p style="font-size:11px;">Protocolo completo passo a passo com prática supervisionada</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.2);">
+            <div style="font-size:24px;margin-bottom:6px;animation:float 3s ease-in-out infinite 1.5s;display:inline-block;">💰</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 6</h3>
+            <p style="font-size:11px;">Biossegurança, pós-procedimento, precificação e marketing</p>
+          </div>
+        </div>
+
+        <div class="g3 au d5" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(232,67,147,.18);">
+            <div class="bignum" style="color:#E84393;margin-bottom:5px;">📜</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Certificado</h3>
+            <p style="font-size:11px;">Certificação profissional reconhecida ao concluir o curso</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.18);">
+            <div class="bignum" style="color:#FFD460;margin-bottom:5px;">👥</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Comunidade</h3>
+            <p style="font-size:11px;">Grupo exclusivo de alunas para dúvidas e troca de experiências</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.18);">
+            <div class="bignum" style="color:#5EE89A;margin-bottom:5px;">🎁</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Material Bônus</h3>
+            <p style="font-size:11px;">Fichas de triagem, protocolo impresso e guia de precificação</p>
+          </div>
+        </div>
+
+        <div class="lc au d6" style="max-width:680px;">
+          <div style="font-size:40px;margin-bottom:10px;animation:float 3s ease-in-out infinite;display:inline-block;">💫</div>
+          <h3 style="font-size:clamp(14px,2.2vw,20px);margin-bottom:10px;color:#F5F7FB;">"Técnica sem segurança é risco. Segurança sem técnica é limitação.<br/>Quem domina os dois — <span class="gp">transforma o mercado.</span>"</h3>
+          <p style="font-size:12px;color:#AAB3C5;max-width:480px;margin:0 auto 16px;">Você agora possui o conhecimento completo para realizar BB Glow com excelência, segurança e lucratividade. O próximo passo é a prática.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;">
+            <span class="pill pp">✅ Teoria Completa</span>
+            <span class="pill pg">✅ Protocolo Detalhado</span>
+            <span class="pill pb">✅ Biossegurança</span>
+            <span class="pill py">✅ Negócio & Marketing</span>
+            <span class="pill pp">✅ Certificação</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
