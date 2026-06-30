@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Alongamento de Cílios 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif}
+
+/* PROGRESS */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#FF6BA8,#C86DD7,#FF6BA8);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease}
+
+/* FULLSCREEN */
+.fs-btn{position:fixed;top:16px;right:16px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:10px 14px;border-radius:12px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(200,109,215,.3)}
+.fs-btn svg{width:14px;height:14px}
+
+/* COUNTER */
+.sc{position:fixed;bottom:28px;left:20px;z-index:998;color:#7E879B;font-size:13px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05)}
+.sc .cn{color:#FF6BA8;font-weight:800}
+
+/* INDICATORS */
+.ind{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05)}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0}
+.ind .dot.active{background:#FF6BA8;box-shadow:0 0 14px rgba(255,107,168,.6);width:28px;border-radius:5px}
+
+/* NAV */
+.nav-arr{position:fixed;bottom:24px;right:20px;z-index:998;display:flex;gap:8px}
+.nav-arr button{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px)}
+.nav-arr button:hover{background:rgba(200,109,215,.2);border-color:rgba(200,109,215,.4);color:#fff;transform:scale(1.05)}
+.nav-arr button svg{width:18px;height:18px}
+
+/* PRESENTATION */
+.presentation{width:100vw;height:100vh;overflow:hidden}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%}
+
+/* SLIDE BASE */
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:60px 20px 90px}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(900px 420px at 72% 18%,rgba(255,107,168,.16) 0%,transparent 42%),
+  radial-gradient(800px 380px at 30% 22%,rgba(200,109,215,.13) 0%,transparent 42%),
+  linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%)}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.25;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px}
+.slide>*{position:relative;z-index:1}
+
+/* INNER */
+.inner{width:100%;max-width:1100px;margin:0 auto}
+
+/* TYPE */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5}
+
+/* GRADIENT TEXT — rosa/violeta temático */
+.gt{background:linear-gradient(135deg,#FF6BA8 0%,#C86DD7 50%,#FF6BA8 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* LINE */
+.gl{width:70px;height:4px;border-radius:2px;background:linear-gradient(90deg,#FF6BA8,#C86DD7);margin-bottom:18px;animation:lineG .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 18px;transform-origin:center}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;margin-bottom:24px;background:rgba(255,107,168,.08);border:1px solid rgba(255,107,168,.22);font-size:13px;font-weight:600;color:#FFB3D1;letter-spacing:.05em;text-transform:uppercase}
+.badge svg{width:14px;height:14px;flex-shrink:0}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:22px 18px;backdrop-filter:blur(8px);transition:all .4s ease}
+.card:hover{border-color:rgba(255,107,168,.2);transform:translateY(-3px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 30px rgba(255,107,168,.08)}
+.cp{background:linear-gradient(145deg,rgba(25,8,35,.95) 0%,rgba(12,8,28,.98) 55%,rgba(5,5,18,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(200,109,215,.08);padding:22px 18px;backdrop-filter:blur(10px);transition:all .4s ease}
+.cp:hover{border-color:rgba(200,109,215,.25);transform:translateY(-3px) scale(1.01)}
+
+/* NUMBERED */
+.tn{width:58px;height:58px;border-radius:16px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;flex-shrink:0}
+.tn.n1{background:linear-gradient(145deg,#FF6BA8,#E0547A)}
+.tn.n2{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:.5s}
+.tn.n3{background:linear-gradient(145deg,#9B5DE5,#7B3FC8);animation-delay:1s}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(255,107,168,.12)}50%{box-shadow:0 0 36px rgba(255,107,168,.35)}}
+
+/* ICON */
+.ic{width:46px;height:46px;border-radius:12px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,107,168,.08);flex-shrink:0}
+.ic svg{width:22px;height:22px;color:#FF6BA8}
+
+/* METRIC */
+.s5n{font-size:clamp(34px,5.5vw,50px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+
+/* SIDE BORDER */
+.sbc{position:relative;overflow:hidden}
+.sbc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.sbc.sb1::before{background:#FF6BA8}
+.sbc.sb2::before{background:#C86DD7}
+.sbc.sb3::before{background:#9B5DE5}
+.sbc.sb4::before{background:linear-gradient(180deg,#FF6BA8,#9B5DE5)}
+
+/* COMPARE */
+.bwc{border-radius:16px;padding:20px 16px}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12)}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.12)}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.12)}
+
+/* FLOW */
+.fl{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;row-gap:14px}
+.fs-step{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:100px;padding:0 5px}
+.fs-step .fi{width:60px;height:60px;border-radius:14px;background:rgba(255,107,168,.08);border:1px solid rgba(255,107,168,.18);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.fs-step .fi svg{width:26px;height:26px;color:#FF6BA8}
+.fs-step span{font-size:12px;font-weight:600;color:#F5F7FB}
+.fa{display:flex;align-items:center;padding-bottom:26px;margin:0 3px}
+.fa svg{width:18px;height:18px;color:#7E879B}
+.fs-step.act .fi{background:linear-gradient(180deg,#FF6BA8,#E0547A);border-color:transparent;box-shadow:0 10px 22px rgba(255,107,168,.3)}
+.fs-step.act .fi svg{color:#fff}
+
+/* ALERTS */
+.alert{border-radius:14px;padding:14px 18px;display:flex;align-items:flex-start;gap:10px}
+.alert.ar{background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.15)}
+.alert.ay{background:rgba(255,200,60,.06);border:1px solid rgba(255,200,60,.15)}
+.alert.ab{background:rgba(255,107,168,.06);border:1px solid rgba(255,107,168,.15)}
+.alert.av{background:rgba(200,109,215,.06);border:1px solid rgba(200,109,215,.15)}
+.alert svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+/* BULLET LIST */
+.blist{list-style:none;display:flex;flex-direction:column;gap:7px}
+.blist li{display:flex;align-items:flex-start;gap:9px;font-size:clamp(12px,1.8vw,13.5px)}
+.blist li::before{content:'';width:6px;height:6px;border-radius:50%;background:#FF6BA8;flex-shrink:0;margin-top:7px}
+.blist.bv li::before{background:#C86DD7}
+.blist.bp li::before{background:#9B5DE5}
+.blist.br li::before{background:#FF6B6B}
+.blist.by li::before{background:#FFD460}
+.blist.bg li::before{background:#5EE89A}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:32px}
+.pill{padding:7px 16px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.pill.p1{background:rgba(255,107,168,.1);border:1px solid rgba(255,107,168,.25);color:#FFB3D1}
+.pill.p2{background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.25);color:#E5AAEF}
+.pill.p3{background:rgba(155,93,229,.1);border:1px solid rgba(155,93,229,.25);color:#C9AAFF}
+.pill.p4{background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.25);color:#FFE08A}
+
+/* SLIDE 1 */
+.s1-wrap{text-align:center;max-width:880px;margin:0 auto}
+.s1-wrap h1{font-size:clamp(32px,6.5vw,68px);margin-bottom:18px}
+.s1-wrap .tag{font-size:clamp(14px,2.2vw,19px);color:#AAB3C5;max-width:620px;margin:0 auto 28px;line-height:1.6}
+.s1-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.s1-stat{text-align:center}
+.s1-stat .val{font-size:clamp(26px,4vw,38px);font-weight:900;line-height:1}
+.s1-stat .lbl{font-size:11px;color:#7E879B;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+
+/* SLIDE TITLE */
+.stitle{margin-bottom:22px}
+.stitle h2{font-size:clamp(20px,3.8vw,34px)}
+.stitle p{font-size:clamp(13px,1.9vw,15px);margin-top:6px}
+
+/* UTILS */
+.sm{font-size:13px!important}.xs{font-size:12px!important}
+.fw7{font-weight:700!important}.fw8{font-weight:800!important}
+.c1{color:#F5F7FB!important}.c2{color:#AAB3C5!important}.c3{color:#7E879B!important}
+.cpink{color:#FF6BA8!important}.cviolet{color:#C86DD7!important}.cpurple{color:#9B5DE5!important}
+.cr2{color:#FF6B6B!important}.cy2{color:#FFD460!important}.cg2{color:#5EE89A!important}
+
+/* TECHNIQUE TAG */
+.tech-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:rgba(255,107,168,.1);border:1px solid rgba(255,107,168,.2);color:#FFB3D1;margin-bottom:10px}
+
+/* CTA */
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;border-radius:14px;background:linear-gradient(135deg,#FF6BA8,#C86DD7);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all .3s ease;box-shadow:0 10px 30px rgba(255,107,168,.35)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,107,168,.5)}
+
+/* SCROLL */
+.scroll-inner{overflow-y:auto;max-height:calc(100vh - 155px);padding-right:4px;scrollbar-width:thin;scrollbar-color:rgba(255,107,168,.3) transparent}
+.scroll-inner::-webkit-scrollbar{width:4px}
+.scroll-inner::-webkit-scrollbar-track{background:transparent}
+.scroll-inner::-webkit-scrollbar-thumb{background:rgba(255,107,168,.3);border-radius:4px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.slide.active .au{animation:fadeUp .7s ease both}
+.slide.active .as{animation:fadeScale .7s ease both}
+.d1{animation-delay:.1s!important}.d2{animation-delay:.22s!important}.d3{animation-delay:.34s!important}
+.d4{animation-delay:.46s!important}.d5{animation-delay:.58s!important}.d6{animation-delay:.7s!important}.d7{animation-delay:.82s!important}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .s1-stats{gap:18px}
+  .fa{display:none}
+  .ind{display:none}
+  .slide{padding:54px 14px 78px}
+}
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%"></div>
+
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button onclick="next()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- SLIDE 1 — CAPA -->
+<section class="slide active">
+  <div class="s1-wrap">
+    <div class="badge au d1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+      Formação Completa · Atualizada 2026
+    </div>
+    <h1 class="au d2">Alongamento de <span class="gt">Cílios</span> Profissional</h1>
+    <p class="tag au d3">2D · 3D · Efeito Fox · Wispy · Wet Look e todas as tendências que dominam o mercado em 2026 — do zero ao avançado.</p>
+    <div class="pills au d4">
+      <span class="pill p1">12 Módulos</span>
+      <span class="pill p2">Certificado Incluso</span>
+      <span class="pill p3">Prática Supervisionada</span>
+      <span class="pill p4">Tendências 2026</span>
+    </div>
+    <div class="s1-stats au d5">
+      <div class="s1-stat"><div class="val gt">+4k</div><div class="lbl">Alunas Formadas</div></div>
+      <div class="s1-stat"><div class="val" style="color:#C86DD7">100%</div><div class="lbl">Online + Presencial</div></div>
+      <div class="s1-stat"><div class="val" style="color:#5EE89A">R$6k+</div><div class="lbl">Faturamento Mensal</div></div>
+      <div class="s1-stat"><div class="val" style="color:#FFD460">Vitalício</div><div class="lbl">Acesso ao Conteúdo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 — MERCADO -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>O Mercado de Lash que <span class="gt">Explode no Brasil</span></h2>
+      <p>A beleza ocular é o segmento de maior crescimento no setor estético nacional</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="card" style="text-align:center">
+        <div class="s5n cpink">R$350</div>
+        <p class="sm fw7 c1">Ticket Médio — Fio a Fio</p>
+        <p class="xs c3">90 a 120 minutos de atendimento</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n cviolet">+55%</div>
+        <p class="sm fw7 c1">Crescimento do Segmento</p>
+        <p class="xs c3">lash design no Brasil 2023–2026</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n" style="color:#5EE89A">21 dias</div>
+        <p class="sm fw7 c1">Ciclo de Retorno</p>
+        <p class="xs c3">manutenção garantida a cada 3 semanas</p>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="cp sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">💼 Onde Atuar</p>
+        <ul class="blist">
+          <li>Studio próprio ou home studio</li>
+          <li>Clínicas de estética e dermato</li>
+          <li>Salões premium e day spas</li>
+          <li>Atendimento a domicílio VIP</li>
+          <li>Eventos e noivas (pacote especial)</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb2">
+        <p class="sm fw7 c1" style="margin-bottom:10px">📈 Por que entrar agora?</p>
+        <ul class="blist bv">
+          <li>Alta margem de lucro (75–85%)</li>
+          <li>Clientela fidelizada naturalmente</li>
+          <li>Baixo investimento inicial</li>
+          <li>Tendências internacionais em alta</li>
+          <li>Escalável com mentorias e cursos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — BIOSSEGURANÇA -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Biossegurança: Protocolo que <span class="gt">Protege Você e sua Cliente</span></h2>
+      <p>Segurança não é opcional — é a base da sua reputação profissional</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="bwc cr">
+        <p class="sm fw7 cr2" style="margin-bottom:10px">🚫 Proibido</p>
+        <ul class="blist br">
+          <li>Reutilizar microswabs e pincéis</li>
+          <li>Trabalhar sem máscara e luvas</li>
+          <li>Aplicar em olhos irritados ou inflamados</li>
+          <li>Usar adesivos vencidos</li>
+          <li>Ignorar ficha de anamnese</li>
+        </ul>
+      </div>
+      <div class="bwc cy">
+        <p class="sm fw7 cy2" style="margin-bottom:10px">⚠️ Atenção Redobrada</p>
+        <ul class="blist by">
+          <li>Validade e armazenamento do adesivo</li>
+          <li>Umidade e temperatura do ambiente</li>
+          <li>Teste de alergia em novas clientes</li>
+          <li>Limpeza do cílio antes da aplicação</li>
+          <li>Ventilação adequada do espaço</li>
+        </ul>
+      </div>
+      <div class="bwc cg">
+        <p class="sm fw7 cg2" style="margin-bottom:10px">✅ Obrigatório</p>
+        <ul class="blist bg">
+          <li>EPI completo (máscara PFF2, luvas, óculos)</li>
+          <li>Ficha de anamnese assinada</li>
+          <li>Registro fotográfico antes/depois</li>
+          <li>Descarte em lixo perfurocortante</li>
+          <li>TCLE para procedimentos estéticos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="alert ar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><p class="sm fw7 cr2">Reação ao Cianoacrilato</p><p class="xs">Adesivos de extensão contêm cianoacrilato. Sintomas de reação: lacrimejamento, vermelhidão e inchaço. Remova imediatamente e encaminhe ao médico.</p></div>
+      </div>
+      <div class="alert ab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6BA8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div><p class="sm fw7 cpink">Documentação Legal</p><p class="xs">Guarde fichas, fotos e TCLEs por no mínimo 5 anos. São sua proteção jurídica em caso de contestação ou reação adversa.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — ANATOMIA -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Conheça o Canvas: <span class="gt">Olho, Cílio e Estrutura Periocular</span></h2>
+      <p>Entender a anatomia é o primeiro passo para resultados seguros e duradouros</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="cp" style="text-align:center">
+        <div class="tn n1">🔬</div>
+        <h3 style="font-size:14px;margin-bottom:8px">Estrutura do Cílio</h3>
+        <p class="xs">Composto por haste, raiz e folículo. A extensão é colada na haste a 1–2mm da pele, nunca na pele ou na margem palpebral.</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n2">🔄</div>
+        <h3 style="font-size:14px;margin-bottom:8px">Ciclo de Crescimento</h3>
+        <p class="xs"><span class="c1 fw7">Anágena:</span> crescimento (30–45 dias) · <span class="c1 fw7">Catágena:</span> transição (2–3 sem) · <span class="c1 fw7">Telógena:</span> queda natural (até 90 dias).</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n3">👁️</div>
+        <h3 style="font-size:14px;margin-bottom:8px">Tipos de Cílio Natural</h3>
+        <p class="xs">Fino, médio ou grosso. Escasso ou abundante. A espessura e a saúde do cílio natural ditam a extensão máxima suportada.</p>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="card sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">👁️ Formatos de Olho e Abordagem</p>
+        <ul class="blist">
+          <li><span class="c1 fw7">Amendoado:</span> qualquer técnica favorece</li>
+          <li><span class="c1 fw7">Pequeno:</span> extensões abertas no centro</li>
+          <li><span class="c1 fw7">Caído (ptose):</span> cat eye ou fox eye levanta</li>
+          <li><span class="c1 fw7">Saltado:</span> extensões curtas e curvatura natural</li>
+          <li><span class="c1 fw7">Encantado:</span> extensões longas na ponta</li>
+        </ul>
+      </div>
+      <div class="card sbc sb2">
+        <p class="sm fw7 c1" style="margin-bottom:10px">⚡ Fatores que Afetam a Retenção</p>
+        <ul class="blist bv">
+          <li>Oleosidade natural da pele palpebral</li>
+          <li>Higiene diária (limpeza correta)</li>
+          <li>Uso de produtos oleosos na área</li>
+          <li>Fase do ciclo capilar no momento da aplicação</li>
+          <li>Temperatura e umidade do ambiente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — MATERIAIS -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Materiais Certos para <span class="gt">Resultados Duradouros</span></h2>
+      <p>Conheça cada insumo, sua função e como escolher para cada cliente</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="tech-tag">Seda / Silk</div>
+        <p class="xs">Mais leves e brilhantes. Aparência glamourosa. Ideais para volume. Menor durabilidade comparadas à fibra premium.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(200,109,215,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <div class="tech-tag" style="background:rgba(200,109,215,.1);border-color:rgba(200,109,215,.2);color:#E5AAEF">Vison / Mink</div>
+        <p class="xs">Textura mais macia e natural. Excelente para fio a fio. Alta durabilidade e acabamento premium com menor peso.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(155,93,229,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#9B5DE5" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="tech-tag" style="background:rgba(155,93,229,.1);border-color:rgba(155,93,229,.2);color:#C9AAFF">Fibra Premium 2026</div>
+        <p class="xs">Ultra leve, fosco ou acetinado. Perfeita para volumes extremos (mega volume) sem sobrecarregar o cílio natural.</p>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="cp sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🔧 Ferramentas Essenciais</p>
+        <ul class="blist">
+          <li><span class="c1 fw7">Pinça reta:</span> isolamento do cílio natural</li>
+          <li><span class="c1 fw7">Pinça curva/angulada:</span> aplicação precisa</li>
+          <li><span class="c1 fw7">Anelzinho de adesivo:</span> controle da quantidade</li>
+          <li><span class="c1 fw7">Under eye gel:</span> proteger e afastar cílio inferior</li>
+          <li><span class="c1 fw7">Escovinha limpa:</span> separação e finalização</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb2">
+        <p class="sm fw7 c1" style="margin-bottom:10px">💧 Adesivos: Como Escolher</p>
+        <ul class="blist bv">
+          <li><span class="c1 fw7">Secagem rápida (1–2s):</span> para profissionais avançadas</li>
+          <li><span class="c1 fw7">Secagem lenta (3–5s):</span> ideal para iniciantes</li>
+          <li><span class="c1 fw7">Sensível:</span> para clientes com olhos sensíveis</li>
+          <li><span class="c1 fw7">Clear/transparente:</span> efeito natural sem linha escura</li>
+          <li>Trocar após 4 semanas aberto</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — 2D E 3D -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>2D e 3D: A Base que Todo <span class="gt">Lash Artist Precisa Dominar</span></h2>
+      <p>Técnicas clássicas com resultados modernos e clientela fiel</p>
+    </div>
+    <div class="au d2" style="margin-bottom:16px">
+      <div class="fl">
+        <div class="fs-step act">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <span>Avaliação & Anamnese</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs-step">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+          <span>Preparação & Higienização</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs-step">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+          <span>Isolamento do Cílio</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs-step">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z"/></svg></div>
+          <span>Aplicação das Extensões</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs-step">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <span>Checagem & Finalização</span>
+        </div>
+      </div>
+    </div>
+    <div class="g3 au d3">
+      <div class="card sbc sb1">
+        <div class="tech-tag">Técnica 2D</div>
+        <p class="xs" style="margin-bottom:8px">2 extensões por cílio natural. Resultado natural com volume sutil. Ideal para iniciantes e clientes que buscam leveza.</p>
+        <p class="xs"><span class="cpink fw7">Tempo:</span> 90–120 min · <span class="cpink fw7">Retoque:</span> 21 dias</p>
+      </div>
+      <div class="card sbc sb2">
+        <div class="tech-tag" style="background:rgba(200,109,215,.1);border-color:rgba(200,109,215,.2);color:#E5AAEF">Técnica 3D</div>
+        <p class="xs" style="margin-bottom:8px">3 extensões por fio — buquê manual com abertura uniforme. Volume médio com aparência natural. Alta demanda no mercado.</p>
+        <p class="xs"><span class="cviolet fw7">Tempo:</span> 120–150 min · <span class="cviolet fw7">Retoque:</span> 21 dias</p>
+      </div>
+      <div class="card sbc sb3">
+        <div class="tech-tag" style="background:rgba(155,93,229,.1);border-color:rgba(155,93,229,.2);color:#C9AAFF">Fio a Fio</div>
+        <p class="xs" style="margin-bottom:8px">1 extensão por cílio. Efeito ultra natural e discreto. Técnica base, obrigatória antes do volume. Manutenção mais simples.</p>
+        <p class="xs"><span class="cpurple fw7">Tempo:</span> 90–120 min · <span class="cpurple fw7">Retoque:</span> 21 dias</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — FOX + TENDÊNCIAS 2026 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Efeito Fox e as <span class="gt">Tendências que Ditam 2026</span></h2>
+      <p>Os estilos que as clientes mais pedem e que mais valorizam seu portfólio</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="cp" style="text-align:center">
+        <div class="tn n1">🦊</div>
+        <h3 style="font-size:14px;margin-bottom:8px">Efeito Fox Eye</h3>
+        <p class="xs">Extensões longas concentradas na ponta externa. Cria elevação visual do olho. Inspira o olhar de raposa, sensual e alongado. Tendência global.</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n2">🌾</div>
+        <h3 style="font-size:14px;margin-bottom:8px">Wispy / Fluffy</h3>
+        <p class="xs">Mix de comprimentos com pontas soltas e irregulares. Efeito de movimento e volume texturizado. O estilo mais pedido em 2025–2026.</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n3">💧</div>
+        <h3 style="font-size:14px;margin-bottom:8px">Wet Look</h3>
+        <p class="xs">Extensões agrupadas formando pontinhas molhadas. Efeito editorial e fashion. Ideal para clientes que querem destaque sem precisar de maquiagem.</p>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="card sbc sb4">
+        <p class="sm fw7 c1" style="margin-bottom:10px">✨ Mais Tendências 2026</p>
+        <ul class="blist">
+          <li><span class="c1 fw7">Mega Volume Brown:</span> extensões marrons em alta</li>
+          <li><span class="c1 fw7">Cat Eye Premium:</span> alongamento felino redefinido</li>
+          <li><span class="c1 fw7">Lash Lifting integrado:</span> combo com extensão</li>
+          <li><span class="c1 fw7">Extensão colorida:</span> pontas coloridas discretas</li>
+          <li><span class="c1 fw7">Curl J e M:</span> novas curvaturas ultra naturais</li>
+        </ul>
+      </div>
+      <div class="card sbc sb2">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🎯 Mapeamento do Efeito Fox</p>
+        <ul class="blist bv">
+          <li>Cílios do canto interno: curtos (8–10mm)</li>
+          <li>Cílios centrais: médios (11–12mm)</li>
+          <li>Últimos 30% da ponta: longos (13–16mm)</li>
+          <li>Curvatura: L ou L+ para máxima elevação</li>
+          <li>Espessura: 0.07 para volumes leves</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — DESIGN E MAPEAMENTO -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Design de Olhar: Mapeamento para Cada <span class="gt">Formato de Olho</span></h2>
+      <p>Personalização é o que transforma uma boa lash artist em referência</p>
+    </div>
+    <div class="g2 au d2" style="margin-bottom:14px">
+      <div class="cp sbc sb1">
+        <p class="sm fw7 cpink" style="margin-bottom:10px">Olho Amendoado</p>
+        <p class="xs" style="margin-bottom:8px">Formato equilibrado — referência de harmonia.</p>
+        <ul class="blist">
+          <li>Qualquer técnica valoriza</li>
+          <li>Wispy e Fox Eye são destaque</li>
+          <li>Varie comprimento para personalidade</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb2">
+        <p class="sm fw7 cviolet" style="margin-bottom:10px">Olho Pequeno / Encantado</p>
+        <p class="xs" style="margin-bottom:8px">Pálpebra com dobra mais coberta.</p>
+        <ul class="blist bv">
+          <li>Extensões mais longas no centro</li>
+          <li>Efeito "olho de boneca" abre o olhar</li>
+          <li>Evitar extensões longas nas pontas</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb3">
+        <p class="sm fw7 cpurple" style="margin-bottom:10px">Olho Caído (Ptose)</p>
+        <p class="xs" style="margin-bottom:8px">Canto externo abaixo do canto interno.</p>
+        <ul class="blist bp">
+          <li>Cat Eye ou Fox Eye para elevar visualmente</li>
+          <li>Evitar extensões curtas nas pontas</li>
+          <li>Curvatura L ou L+ obrigatória</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb4">
+        <p class="sm fw7" style="color:#FFB3D1;margin-bottom:10px">Olho Saltado / Proeminente</p>
+        <p class="xs" style="margin-bottom:8px">Globo ocular mais à frente da órbita.</p>
+        <ul class="blist">
+          <li>Extensões curtas a médias (8–12mm)</li>
+          <li>Curvatura natural B ou C</li>
+          <li>Evitar mega volume — sobrecarrega</li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert av au d3">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div><p class="sm fw7 cviolet">Regra de Ouro do Mapeamento</p><p class="xs">Sempre fotografe antes, discuta o design com a cliente, obtenha aprovação verbal e por escrito. Nunca inicie a aplicação sem alinhamento completo das expectativas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — CONTRAINDICAÇÕES E MANUTENÇÃO -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Quando Não Aplicar e Como <span class="gt">Garantir a Durabilidade</span></h2>
+      <p>Contraindicações, retenção, manutenção e remoção segura</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="bwc cr">
+        <p class="sm fw7 cr2" style="margin-bottom:10px">🚫 Contraindicações Absolutas</p>
+        <ul class="blist br">
+          <li>Conjuntivite ou blefarite ativa</li>
+          <li>Alergia ao cianoacrilato</li>
+          <li>Tricotilomania (arrancar cílios)</li>
+          <li>Quimioterapia em curso</li>
+          <li>Cílios extremamente fracos ou escassos</li>
+        </ul>
+      </div>
+      <div class="bwc cy">
+        <p class="sm fw7 cy2" style="margin-bottom:10px">⚠️ Contraindicações Relativas</p>
+        <ul class="blist by">
+          <li>Olhos muito sensíveis ou lacrimejantes</li>
+          <li>Uso recente de lash lifting</li>
+          <li>Hiperidrose ocular</li>
+          <li>Gestantes (1º trimestre)</li>
+          <li>Uso de colírios com óleos</li>
+        </ul>
+      </div>
+      <div class="bwc cg">
+        <p class="sm fw7 cg2" style="margin-bottom:10px">✅ Cuidados Pós-Aplicação</p>
+        <ul class="blist bg">
+          <li>Não molhar por 24–48 horas</li>
+          <li>Não usar produtos oleosos na área</li>
+          <li>Limpar com espuminha para lash</li>
+          <li>Não coçar ou esfregar os olhos</li>
+          <li>Retornar para manutenção em 21 dias</li>
+        </ul>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="card sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🔁 Protocolo de Manutenção</p>
+        <ul class="blist">
+          <li>Avaliar retenção e cílios que caíram</li>
+          <li>Remover extensões tortas ou crescidas</li>
+          <li>Completar os espaços com novas extensões</li>
+          <li>Limpar e escovar antes de iniciar</li>
+          <li>Reaplicar se retorno > 4 semanas (full)</li>
+        </ul>
+      </div>
+      <div class="card sbc sb3">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🧴 Remoção Segura</p>
+        <ul class="blist bp">
+          <li>Usar removedor específico para lash (gel ou creme)</li>
+          <li>Nunca puxar — risco de perda do cílio natural</li>
+          <li>Aplicar com microswab e aguardar 5 minutos</li>
+          <li>Deslizar suavemente com pinça de remoção</li>
+          <li>Limpar resíduos com solução micelar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — NEGÓCIO E CTA -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1" style="text-align:center">
+      <div class="gl ce"></div>
+      <h2>Transforme Técnica em <span class="gt">Carreira de Alto Padrão</span></h2>
+      <p>O curso que te entrega habilidade, confiança e faturamento real</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="card" style="text-align:center">
+        <div class="s5n cpink">R$6k</div>
+        <p class="sm fw7 c1">Faturamento Mensal</p>
+        <p class="xs c3">com apenas 17 a 18 atendimentos/mês</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n cviolet">R$350</div>
+        <p class="sm fw7 c1">Ticket por Procedimento</p>
+        <p class="xs c3">média capitais brasileiras 2026</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n" style="color:#5EE89A">+80%</div>
+        <p class="sm fw7 c1">Margem de Lucro</p>
+        <p class="xs c3">baixíssimo custo por atendimento</p>
+      </div>
+    </div>
+    <div class="g2 au d3" style="margin-bottom:14px">
+      <div class="cp sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">📦 O que está incluso no curso</p>
+        <ul class="blist">
+          <li>12 módulos completos online + prática presencial</li>
+          <li>Material didático exclusivo em PDF</li>
+          <li>Acesso a grupo de suporte com mentoras</li>
+          <li>Certificado reconhecido pelo mercado</li>
+          <li>Acesso vitalício com atualizações 2026</li>
+          <li>Bônus: precificação e gestão do studio</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb2">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🚀 Estratégias para Crescer Rápido</p>
+        <ul class="blist bv">
+          <li>Monte portfólio profissional no Instagram</li>
+          <li>Crie pacotes mensais de fidelização</li>
+          <li>Ofereça combos (lash + sobrancelha)</li>
+          <li>Parcerias com noivados e eventos</li>
+          <li>Escale com mentorias e cursos próprios</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center" class="au d4">
+      <button class="cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Quero me Inscrever Agora
+      </button>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const d=tx-e.changedTouches[0].screenX;
+  if(Math.abs(d)>50){d>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
