@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Curso Completo de Camuflagem de Estrias</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:#050816;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 4s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:8px 13px;border-radius:11px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px;cursor:pointer;backdrop-filter:blur(6px);text-transform:uppercase;letter-spacing:.04em;transition:all .3s ease;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:13px;height:13px;}
+
+.sc{position:fixed;bottom:20px;left:14px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;background:rgba(0,0,0,.35);padding:7px 12px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+.ind{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);width:26px;border-radius:4px;}
+
+.nav-arr{position:fixed;bottom:16px;right:14px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:52px 16px 72px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gl{width:70px;height:3px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px auto;transform-origin:center;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;margin-bottom:22px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:18px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45);padding:18px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.25);transform:translateY(-2px) scale(1.01);}
+
+.tn{width:52px;height:52px;border-radius:14px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+
+.pill{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.03em;}
+.pv{background:rgba(91,63,214,.1);border:1px solid rgba(91,63,214,.25);color:#A78BFA;}
+.pb{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#60A5FA;}
+.pg{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#34D399;}
+.pr{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#F87171;}
+.py{background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.25);color:#FACC15;}
+.pp{background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.25);color:#F0ABFC;}
+
+.bhl{position:relative;overflow:hidden;border-radius:14px;padding:14px 14px 14px 20px;}
+.bhl::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.bhl.blue::before{background:#2E6BFF;}
+.bhl.purple::before{background:#5B3FD6;}
+.bhl.pink::before{background:#C86DD7;}
+.bhl.green::before{background:#10B981;}
+.bhl.red::before{background:#EF4444;}
+.bhl.yellow::before{background:#FACC15;}
+.bhl.orange::before{background:#F97316;}
+
+.bwc{border-radius:16px;padding:14px;}
+.bwc.cg{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15);}
+.bwc.cr{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);}
+.bwc.cy{background:rgba(234,179,8,.05);border:1px solid rgba(234,179,8,.15);}
+
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:72px;max-width:84px;padding:0 3px;}
+.fstep .fi{width:48px;height:48px;border-radius:13px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:22px;height:22px;color:#2E6BFF;}
+.fstep span{font-size:9px;font-weight:700;color:#F5F7FB;line-height:1.3;}
+.fstep.act .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 8px 20px rgba(46,107,255,.3);}
+.fstep.act .fi svg{color:#fff;}
+.farr{display:flex;align-items:center;padding-bottom:26px;margin:0 1px;}
+.farr svg{width:14px;height:14px;color:#7E879B;}
+
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.s1-title{font-size:clamp(30px,7vw,70px);margin-bottom:16px;}
+.s1-sub{font-size:clamp(12px,2vw,17px);color:#AAB3C5;max-width:540px;margin:0 auto 20px;line-height:1.5;}
+.stitle{font-size:clamp(17px,3.5vw,28px);margin-bottom:6px;}
+.ssub{font-size:clamp(10px,1.5vw,13px);color:#7E879B;margin-bottom:14px;max-width:600px;}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%;}
+
+.sc-area{width:100%;max-width:860px;overflow-y:auto;max-height:calc(100vh - 150px);padding-bottom:8px;scrollbar-width:none;}
+.sc-area::-webkit-scrollbar{display:none;}
+
+.li-row{display:flex;align-items:flex-start;gap:7px;margin-bottom:5px;}
+.li-row svg{width:13px;height:13px;flex-shrink:0;margin-top:3px;}
+.li-row p{font-size:10px;line-height:1.5;text-align:left;}
+
+/* SWATCH DE CORES */
+.swatch{width:28px;height:28px;border-radius:8px;flex-shrink:0;border:1px solid rgba(255,255,255,.1);}
+
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 16px rgba(46,107,255,.12)}50%{box-shadow:0 0 34px rgba(46,107,255,.35)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:.7}50%{opacity:1}}
+
+.slide.active .au{animation:fadeUp .7s ease both;}
+.slide.active .as{animation:fadeScale .7s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}.d8{animation-delay:.78s!important}
+
+@media(max-width:600px){
+  .g3{grid-template-columns:1fr 1fr;}
+  .g2{grid-template-columns:1fr;}
+  .slide{padding:46px 12px 68px;}
+  .sc-area{max-height:calc(100vh - 130px);}
+  .fstep{min-width:58px;max-width:68px;}
+  .fstep .fi{width:40px;height:40px;}
+  .fstep .fi svg{width:18px;height:18px;}
+  .fstep span{font-size:8px;}
+  .tn{width:44px;height:44px;font-size:17px;}
+  .cp,.card{padding:13px 11px;}
+  .bhl{padding:11px 11px 11px 17px;}
+}
+@media(max-width:380px){
+  .g3{grid-template-columns:1fr;}
+  .fstep{min-width:50px;max-width:58px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ══════════════ SLIDE 1 ══════════════ -->
+<section class="slide active">
+  <div class="inner">
+    <div class="badge au d1">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Curso Profissional Completo
+    </div>
+    <h1 class="s1-title au d2">Camuflagem de<br/><span class="gt">Estrias</span></h1>
+    <p class="s1-sub au d3">A técnica paramédica que restaura a autoestima e abre um mercado premium de alta demanda para esteticistas e dermógrafos.</p>
+    <div class="au d4" style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:20px;">
+      <span class="pill pv">🎨 Teoria das Cores</span>
+      <span class="pill pb">🔬 Técnica Paramédica</span>
+      <span class="pill pg">📋 Protocolos Clínicos</span>
+      <span class="pill py">⚙️ Dermógrafo</span>
+      <span class="pill pr">🛡️ Biossegurança</span>
+      <span class="pill pp">💰 Precificação Premium</span>
+    </div>
+    <div class="au d5" style="display:flex;width:100%;max-width:460px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;">
+      <div style="flex:1;padding:14px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.06);">
+        <div style="font-size:clamp(20px,5vw,36px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;">10</div>
+        <p style="font-size:9px;color:#7E879B;margin-top:2px;">Módulos</p>
+      </div>
+      <div style="flex:1;padding:14px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.06);">
+        <div style="font-size:clamp(20px,5vw,36px);font-weight:900;color:#F0ABFC;letter-spacing:-.03em;">100%</div>
+        <p style="font-size:9px;color:#7E879B;margin-top:2px;">Prático + Teórico</p>
+      </div>
+      <div style="flex:1;padding:14px 8px;text-align:center;">
+        <div style="font-size:clamp(20px,5vw,36px);font-weight:900;color:#34D399;letter-spacing:-.03em;">∞</div>
+        <p style="font-size:9px;color:#7E879B;margin-top:2px;">Acesso Vitalício</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 2 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pr">📊 Módulo 1</span>
+        <h2 class="stitle">O <span class="gt">Problema Real</span></h2>
+      </div>
+      <p class="ssub au d3">Entender a fundo o que são estrias é o primeiro passo para oferecer uma solução transformadora.</p>
+
+      <div class="au d3" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:9px;">
+        <div class="cp" style="text-align:center;padding:16px 12px;">
+          <div style="font-size:clamp(30px,6vw,52px);font-weight:900;color:#F87171;letter-spacing:-.03em;margin-bottom:4px;">80%</div>
+          <p style="font-size:10px;">das mulheres têm estrias — condição entre as mais prevalentes da dermatologia mundial</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:16px 12px;">
+          <div style="font-size:clamp(30px,6vw,52px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;margin-bottom:4px;">40%</div>
+          <p style="font-size:10px;">dos homens também são afetados — especialmente por musculação intensa e crescimento rápido</p>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:9px;">
+        <div class="bhl red" style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:18px;">🔴</span>
+            <h3 style="font-size:12px;color:#FCA5A5;">Estria Rubra</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:4px;"><strong style="color:#F5F7FB;">Fase:</strong> Ativa / Recente</p>
+          <p style="font-size:10px;margin-bottom:4px;"><strong style="color:#F5F7FB;">Cor:</strong> Vermelha, arroxeada ou rosada</p>
+          <p style="font-size:10px;margin-bottom:4px;"><strong style="color:#F5F7FB;">Textura:</strong> Levemente elevada, pele inflamada</p>
+          <p style="font-size:10px;color:#FACC15;">⚠️ Maior resposta a tratamentos ativos</p>
+        </div>
+        <div class="bhl blue" style="background:rgba(46,107,255,.04);border:1px solid rgba(46,107,255,.1);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:18px;">⚪</span>
+            <h3 style="font-size:12px;color:#93C5FD;">Estria Alba</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:4px;"><strong style="color:#F5F7FB;">Fase:</strong> Madura / Antiga</p>
+          <p style="font-size:10px;margin-bottom:4px;"><strong style="color:#F5F7FB;">Cor:</strong> Branca nacarada ou acinzentada</p>
+          <p style="font-size:10px;margin-bottom:4px;"><strong style="color:#F5F7FB;">Textura:</strong> Deprimida, sem vascularização</p>
+          <p style="font-size:10px;color:#34D399;">✓ Principal indicação para camuflagem paramédica</p>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;">
+        <div class="bwc cy" style="text-align:left;">
+          <h3 style="font-size:11px;color:#FACC15;margin-bottom:8px;">📍 Causas Mais Comuns</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="font-size:10px;color:#AAB3C5;background:rgba(234,179,8,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(234,179,8,.1);">🤰 Gestação</span>
+            <span style="font-size:10px;color:#AAB3C5;background:rgba(234,179,8,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(234,179,8,.1);">⚖️ Variação brusca de peso</span>
+            <span style="font-size:10px;color:#AAB3C5;background:rgba(234,179,8,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(234,179,8,.1);">💪 Musculação intensa</span>
+            <span style="font-size:10px;color:#AAB3C5;background:rgba(234,179,8,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(234,179,8,.1);">📈 Crescimento acelerado</span>
+            <span style="font-size:10px;color:#AAB3C5;background:rgba(234,179,8,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(234,179,8,.1);">💊 Uso de corticoides</span>
+            <span style="font-size:10px;color:#AAB3C5;background:rgba(234,179,8,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(234,179,8,.1);">🧬 Predisposição genética</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 3 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pv">🔬 Módulo 2</span>
+        <h2 class="stitle">O que é <span class="gt">Camuflagem Paramédica?</span></h2>
+      </div>
+      <p class="ssub au d3">Uma técnica profissional de micropigmentação que imita a coloração da pele saudável sobre a estria, devolvendo uniformidade visual permanente.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:center;">
+          <div class="tn n1">1</div>
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:5px;">Técnica Paramédica</h3>
+          <p style="font-size:10px;">Micropigmentação dérmico-epidérmica com dermógrafo profissional de alta precisão</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="tn n2">2</div>
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:5px;">Correspondência Cromática</h3>
+          <p style="font-size:10px;">Pigmento formulado no tom exato da pele do cliente usando teoria das cores e Fitzpatrick</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="tn n3">3</div>
+          <h3 style="font-size:11px;color:#F0ABFC;margin-bottom:5px;">Resultado Duradouro</h3>
+          <p style="font-size:10px;">Integração visual da estria com a pele ao redor — efeito naturalizado e permanente</p>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:9px;">
+        <div class="bhl green" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.1);text-align:left;">
+          <h3 style="font-size:11px;color:#6EE7B7;margin-bottom:8px;">✅ Vantagens vs. outros tratamentos</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Resultado visível após 1ª sessão</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Sem tempo de downtime prolongado</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Funciona em estrias antigas (alba)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Indicado para todos os fototipos</p></div>
+        </div>
+        <div class="bhl purple" style="background:rgba(91,63,214,.04);border:1px solid rgba(91,63,214,.1);text-align:left;">
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:8px;">🔁 Diferença de outros procedimentos</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Laser: reduz, mas não camufla o tom</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Microagulhamento: melhora textura, não cor</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Camuflagem: corrige visualmente cor e textura</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pode ser combinada com outros protocolos</p></div>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.12);border-radius:14px;padding:12px 16px;">
+        <p style="font-size:10px;color:#93C5FD;"><strong style="color:#F5F7FB;">🧬 Mecanismo:</strong> O pigmento é depositado na junção dermo-epidérmica, preenchendo cromaticamente a área despigmentada da estria. Com o tempo, o corpo absorve parte do pigmento, necessitando retoques anuais para manutenção do resultado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 4 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">✅ Módulo 3</span>
+        <h2 class="stitle">Indicações & <span class="gt">Contraindicações</span></h2>
+      </div>
+      <p class="ssub au d3">Saber selecionar o cliente correto é o que garante resultados impecáveis e evita complicações.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="bwc cg">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">✅ Indicado para</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Estrias albas (brancas/maduras)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Estrias em abdome, coxas, glúteos, seios e braços</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Todos os fototipos (I a VI)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pós-parto (após 6 meses)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pós-cirurgia bariátrica estabilizada</p></div>
+        </div>
+        <div class="bwc cr">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:8px;">❌ Contraindicado</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Estrias rubras (fase ativa)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Gestação e amamentação</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Tendência a queloides</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Diabetes não controlada</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Infecção ativa na área</p></div>
+        </div>
+        <div class="bwc cy">
+          <h3 style="font-size:11px;color:#FACC15;margin-bottom:8px;">⚠️ Avaliar caso a caso</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pele muito fotodanificada</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Uso de anticoagulantes</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pele muito flácida na área</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Imunossuprimidos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pós-bariátrica recente (&lt;12m)</p></div>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;">
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:7px;">📋 Teste Obrigatório</h3>
+          <p style="font-size:10px;margin-bottom:4px;">• Teste de manchinha (patch test) 7 dias antes</p>
+          <p style="font-size:10px;margin-bottom:4px;">• Avaliar reação alérgica ao pigmento</p>
+          <p style="font-size:10px;">• Confirmar compatibilidade cromática na área</p>
+        </div>
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#6EE7B7;margin-bottom:7px;">🎯 Resultado Esperado</h3>
+          <p style="font-size:10px;margin-bottom:4px;">• Redução visual de 70–90% das estrias</p>
+          <p style="font-size:10px;margin-bottom:4px;">• Melhora progressiva a cada sessão</p>
+          <p style="font-size:10px;">• Resultado definitivo após 2–3 sessões</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 5 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill py">⚙️ Módulo 4</span>
+        <h2 class="stitle">Equipamentos & <span class="gt">Materiais</span></h2>
+      </div>
+      <p class="ssub au d3">Conhecer cada equipamento é fundamental para controle de qualidade e segurança do procedimento.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:left;">
+          <div style="font-size:22px;margin-bottom:8px;">🖊️</div>
+          <h3 style="font-size:11px;color:#FACC15;margin-bottom:6px;">Dermógrafo</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Digital com controle de velocidade e profundidade</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Rotativo ou bobina — preferência pelo rotativo</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Velocidade: 90–110 Hz para camuflagem</p></div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <div style="font-size:22px;margin-bottom:8px;">🎨</div>
+          <h3 style="font-size:11px;color:#F0ABFC;margin-bottom:6px;">Pigmentos</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F0ABFC" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Base flesh — variações quentes e frias</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F0ABFC" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pigmentos corretores (laranja, amarelo, cinza)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F0ABFC" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Certificação ANVISA obrigatória</p></div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <div style="font-size:22px;margin-bottom:8px;">🩺</div>
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:6px;">Agulhas</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Round Shader 3, 5 ou 7 pontas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Magnum para áreas extensas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Sempre descartáveis — uso único</p></div>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%;margin-bottom:9px;">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">🔢</div>
+          <h3 style="font-size:10px;color:#6EE7B7;margin-bottom:4px;">Tabela Fitzpatrick</h3>
+          <p style="font-size:10px;">Guia base para seleção inicial do tom do pigmento</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">💡</div>
+          <h3 style="font-size:10px;color:#FCD34D;margin-bottom:4px;">Luz Fria de LED</h3>
+          <p style="font-size:10px;">Essencial para leitura cromática precisa da pele</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">🧴</div>
+          <h3 style="font-size:10px;color:#A78BFA;margin-bottom:4px;">Insumos de Apoio</h3>
+          <p style="font-size:10px;">Anestésico tópico, soro, clorhexidine, vaselina</p>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:14px;padding:12px 16px;text-align:left;">
+        <h3 style="font-size:11px;color:#FED7AA;margin-bottom:6px;">🛒 Kit Mínimo para Início</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="font-size:9px;color:#AAB3C5;background:rgba(249,115,22,.05);padding:3px 9px;border-radius:999px;border:1px solid rgba(249,115,22,.1);">Dermógrafo profissional</span>
+          <span style="font-size:9px;color:#AAB3C5;background:rgba(249,115,22,.05);padding:3px 9px;border-radius:999px;border:1px solid rgba(249,115,22,.1);">Cartela de pigmentos flesh</span>
+          <span style="font-size:9px;color:#AAB3C5;background:rgba(249,115,22,.05);padding:3px 9px;border-radius:999px;border:1px solid rgba(249,115,22,.1);">Kit de agulhas RS e Magnum</span>
+          <span style="font-size:9px;color:#AAB3C5;background:rgba(249,115,22,.05);padding:3px 9px;border-radius:999px;border:1px solid rgba(249,115,22,.1);">Anestésico tópico</span>
+          <span style="font-size:9px;color:#AAB3C5;background:rgba(249,115,22,.05);padding:3px 9px;border-radius:999px;border:1px solid rgba(249,115,22,.1);">Mesa dermográfica</span>
+          <span style="font-size:9px;color:#AAB3C5;background:rgba(249,115,22,.05);padding:3px 9px;border-radius:999px;border:1px solid rgba(249,115,22,.1);">Luz LED fria</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 6 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pp">🎨 Módulo 5</span>
+        <h2 class="stitle">Análise de Pele & <span class="gt">Correspondência de Cor</span></h2>
+      </div>
+      <p class="ssub au d3">A missão cromática é o coração da camuflagem — acertar o tom define o sucesso do resultado.</p>
+
+      <div class="au d3" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:9px;">
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#F0ABFC;margin-bottom:10px;">📊 Escala de Fitzpatrick</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="swatch" style="background:#FDEBD0;"></div>
+              <p style="font-size:10px;"><strong style="color:#F5F7FB;">Tipo I–II:</strong> Pele muito clara, sempre queima</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="swatch" style="background:#F5CBA7;"></div>
+              <p style="font-size:10px;"><strong style="color:#F5F7FB;">Tipo III:</strong> Pele clara/média, queima às vezes</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="swatch" style="background:#CA8A56;"></div>
+              <p style="font-size:10px;"><strong style="color:#F5F7FB;">Tipo IV:</strong> Pele média/morena, raramente queima</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="swatch" style="background:#8B5E3C;"></div>
+              <p style="font-size:10px;"><strong style="color:#F5F7FB;">Tipo V:</strong> Pele morena escura, quase nunca queima</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="swatch" style="background:#4A2C17;"></div>
+              <p style="font-size:10px;"><strong style="color:#F5F7FB;">Tipo VI:</strong> Pele negra, nunca queima</p>
+            </div>
+          </div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:10px;">🎯 Regra das Cores na Prática</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Estria acinzentada → adicionar laranja/amarelo ao flesh</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Estria amarelada → adicionar lilás/cinza para neutralizar</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Tom final: sempre mais claro que a pele (o pigmento oxida)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Testar sempre no antebraço ou atrás da orelha</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Jamais aplicar tom escuro demais — irrecuperável</p></div>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%;margin-bottom:9px;">
+        <div class="bhl orange" style="background:rgba(249,115,22,.04);border:1px solid rgba(249,115,22,.1);text-align:left;">
+          <h3 style="font-size:10px;color:#FED7AA;margin-bottom:5px;">🟠 Correto para:</h3>
+          <p style="font-size:9px;">Tons grisalhos e acinzentados — usa-se laranja como base corretora antes do flesh</p>
+        </div>
+        <div class="bhl yellow" style="background:rgba(234,179,8,.04);border:1px solid rgba(234,179,8,.1);text-align:left;">
+          <h3 style="font-size:10px;color:#FCD34D;margin-bottom:5px;">🟡 Correto para:</h3>
+          <p style="font-size:9px;">Estrias em pele muito clara — amarelo suaviza o excesso de vermelho ou rosado</p>
+        </div>
+        <div class="bhl purple" style="background:rgba(91,63,214,.04);border:1px solid rgba(91,63,214,.1);text-align:left;">
+          <h3 style="font-size:10px;color:#C4B5FD;margin-bottom:5px;">🔵 Correto para:</h3>
+          <p style="font-size:9px;">Tons amarelados na pele escura — cinza/azul equilibra sem agregar calor desnecessário</p>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15);border-radius:14px;padding:12px 16px;">
+        <h3 style="font-size:11px;color:#34D399;margin-bottom:5px;">💡 Dica de Ouro</h3>
+        <p style="font-size:10px;">Sempre fotografe o mix final do pigmento e anote a proporção usada. Isso garante replicar o mesmo tom exato no retoque — essencial para consistência profissional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 7 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pv">🔬 Módulo 6</span>
+        <h2 class="stitle">Protocolo <span class="gt">Passo a Passo</span></h2>
+      </div>
+      <p class="ssub au d3">Sequência clínica precisa para resultado seguro, homogêneo e naturalizado.</p>
+
+      <div class="au d3" style="width:100%;margin-bottom:9px;">
+        <div class="flow">
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+            <span>Anamnese</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+            <span>Mix de Cor</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>Anestesia</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+            <span>Higienização</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <span>Aplicação</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <span>Finalização</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-bottom:9px;">
+        <div class="cp" style="text-align:center;padding:13px 10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;margin:0 auto 7px;font-size:13px;font-weight:900;color:#fff;">1</div>
+          <h3 style="font-size:10px;color:#93C5FD;margin-bottom:4px;">Anamnese + Patch Test</h3>
+          <p style="font-size:9px;">Ficha, fotodoc., análise da estria e teste do pigmento 7 dias antes</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:13px 10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(145deg,#5B3FD6,#4530B3);display:flex;align-items:center;justify-content:center;margin:0 auto 7px;font-size:13px;font-weight:900;color:#fff;">2</div>
+          <h3 style="font-size:10px;color:#C4B5FD;margin-bottom:4px;">Mix de Pigmento</h3>
+          <p style="font-size:9px;">Mistura sob luz fria. Testar no local antes de iniciar a sessão</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:13px 10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(145deg,#C86DD7,#A854BF);display:flex;align-items:center;justify-content:center;margin:0 auto 7px;font-size:13px;font-weight:900;color:#fff;">3</div>
+          <h3 style="font-size:10px;color:#F0ABFC;margin-bottom:4px;">Anestesia Tópica</h3>
+          <p style="font-size:9px;">EMLA sob oclusão por 40–60 min antes do procedimento</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:13px 10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(145deg,#0891B2,#0E7490);display:flex;align-items:center;justify-content:center;margin:0 auto 7px;font-size:13px;font-weight:900;color:#fff;">4</div>
+          <h3 style="font-size:10px;color:#67E8F9;margin-bottom:4px;">Higienização da Área</h3>
+          <p style="font-size:9px;">Remoção do anestésico + antissepsia com clorhexidine degermante</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:13px 10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(145deg,#059669,#047857);display:flex;align-items:center;justify-content:center;margin:0 auto 7px;font-size:13px;font-weight:900;color:#fff;">5</div>
+          <h3 style="font-size:10px;color:#6EE7B7;margin-bottom:4px;">Aplicação do Pigmento</h3>
+          <p style="font-size:9px;">Movimento circular e linear sobre a estria. Pressão suave e constante</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:13px 10px;">
+          <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(145deg,#D97706,#B45309);display:flex;align-items:center;justify-content:center;margin:0 auto 7px;font-size:13px;font-weight:900;color:#fff;">6</div>
+          <h3 style="font-size:10px;color:#FCD34D;margin-bottom:4px;">Finalização</h3>
+          <p style="font-size:9px;">Soro fisiológico + pomada cicatrizante + orientações de pós-procedimento</p>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.12);border-radius:14px;padding:12px 16px;text-align:left;">
+        <h3 style="font-size:11px;color:#93C5FD;margin-bottom:5px;">🎯 Técnica de Aplicação</h3>
+        <p style="font-size:10px;">Mova o dermógrafo em pequenos círculos sobre a estria, cobrindo toda a extensão. Use movimentos lineares para estrias estreitas. Profundidade: 1,0–1,5mm. O pigmento deve preencher visualmente sem extravasamento para a pele sadia adjacente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 8 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">💆 Módulo 7</span>
+        <h2 class="stitle">Pós-Procedimento & <span class="gt">Resultados</span></h2>
+      </div>
+      <p class="ssub au d3">O cuidado no pós define a qualidade e durabilidade do resultado — oriente cada cliente com precisão.</p>
+
+      <div class="au d3" style="width:100%;margin-bottom:9px;overflow-x:auto;">
+        <div style="display:flex;align-items:flex-start;gap:0;min-width:360px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;padding:0 4px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;">0h</div>
+            <div style="width:2px;height:36px;background:linear-gradient(#2E6BFF,#5B3FD6);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Pomada cicatrizante + curativo leve</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;padding:0 4px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#5B3FD6,#4530B3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;">48h</div>
+            <div style="width:2px;height:36px;background:linear-gradient(#5B3FD6,#C86DD7);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Vermelhidão normal. Manter área limpa e seca</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;padding:0 4px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#C86DD7,#A854BF);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;">7d</div>
+            <div style="width:2px;height:36px;background:linear-gradient(#C86DD7,#059669);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Descamação fina — NÃO arrancar. Pigmento ainda escuro</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;padding:0 4px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#059669,#047857);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;">30d</div>
+            <div style="width:2px;height:36px;background:linear-gradient(#059669,#D97706);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Cor real se estabiliza — avaliação de retoque</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;padding:0 4px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#D97706,#B45309);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;">2–3m</div>
+            <div style="width:2px;height:36px;background:linear-gradient(#D97706,transparent);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Retoque se necessário. Resultado consolidado</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:9px;">
+        <div class="bwc cg">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">✅ Pode fazer</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Aplicar pomada cicatrizante 3x ao dia</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Banho morno (não quente)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>FPS 50+ após 7 dias (se área exposta)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Roupas folgadas sobre a área</p></div>
+        </div>
+        <div class="bwc cr">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:8px;">❌ Proibido 30 dias</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Piscina, mar e sauna</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Exposição solar direta na área</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Arrancar ou esfregar a descama</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Maquiagem ou cremes na área</p></div>
+        </div>
+      </div>
+
+      <div class="au d5" style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%;">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:clamp(22px,4vw,32px);font-weight:900;color:#34D399;letter-spacing:-.03em;margin-bottom:4px;">2–3</div>
+          <p style="font-size:9px;">Sessões para estrias albas superficiais</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:clamp(22px,4vw,32px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;margin-bottom:4px;">3–5</div>
+          <p style="font-size:9px;">Sessões para estrias albas profundas</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:clamp(22px,4vw,32px);font-weight:900;color:#A78BFA;letter-spacing:-.03em;margin-bottom:4px;">90%</div>
+          <p style="font-size:9px;">De redução visual média reportada</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 9 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pr">🛡️ Módulo 8</span>
+        <h2 class="stitle">Biossegurança & <span class="gt">Legislação</span></h2>
+      </div>
+      <p class="ssub au d3">Trabalhar com segurança é obrigação legal e diferencial competitivo no mercado premium.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="bwc cr">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:8px;">🔴 EPIs Obrigatórios</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Luvas nitrílicas duplas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Máscara PFF2 ou cirúrgica</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Óculos de proteção</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Avental descartável</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Touca e sapato fechado</p></div>
+        </div>
+        <div class="bwc cy">
+          <h3 style="font-size:11px;color:#FACC15;margin-bottom:8px;">🟡 Higienização</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Superfícies: álcool 70%</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Lençol e papel descartável</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Dermógrafo: capa plástica estéril</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Campo estéril para materiais</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Higienização de mãos (6 passos)</p></div>
+        </div>
+        <div class="bwc cg">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">🟢 Descarte RSS</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Agulhas: coletor rígido amarelo</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Materiais contaminados: saco infectante</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Contrato com empresa coletora</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Registro para auditoria sanitária</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Nunca em lixo comum</p></div>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:9px;">
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:7px;">📜 Legislação</h3>
+          <p style="font-size:10px;margin-bottom:3px;">• RDC 15/2012 — Esterilização de materiais</p>
+          <p style="font-size:10px;margin-bottom:3px;">• RDC 222/2018 — Gerenciamento de RSS</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Pigmentos devem ter registro ANVISA</p>
+          <p style="font-size:10px;">• Habilitação profissional exigida por CREFITO/CRM</p>
+        </div>
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:7px;">📄 Documentação Obrigatória</h3>
+          <p style="font-size:10px;margin-bottom:3px;">• Termo de consentimento assinado</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Ficha de anamnese completa</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Registro fotográfico antes/depois</p>
+          <p style="font-size:10px;">• Prontuário arquivado mínimo 5 anos</p>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:rgba(234,179,8,.05);border:1px solid rgba(234,179,8,.15);border-radius:14px;padding:12px 16px;">
+        <h3 style="font-size:11px;color:#FACC15;margin-bottom:5px;">⚠️ Responsabilidade Civil</h3>
+        <p style="font-size:10px;">Tenha sempre seguro profissional ativo, documente cada etapa e mantenha comunicação transparente com o cliente sobre expectativas e riscos do procedimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SLIDE 10 ══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">💰 Módulo 9</span>
+        <h2 class="stitle">Mercado, Precificação & <span class="gt">Certificação</span></h2>
+      </div>
+      <p class="ssub au d3">Camuflagem de estrias é um serviço premium de alto ticket — posicione-se para lucrar de forma consistente.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:clamp(22px,4vw,36px);font-weight:900;color:#34D399;letter-spacing:-.03em;margin-bottom:4px;">R$300</div>
+          <h3 style="font-size:10px;color:#6EE7B7;margin-bottom:4px;">Entrada de Mercado</h3>
+          <p style="font-size:9px;">Área pequena — até 10cm² em cidades médias</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:clamp(22px,4vw,36px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;margin-bottom:4px;">R$700</div>
+          <h3 style="font-size:10px;color:#93C5FD;margin-bottom:4px;">Ticket Médio</h3>
+          <p style="font-size:9px;">Abdome completo ou área extensa em SP/RJ</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:clamp(22px,4vw,36px);font-weight:900;color:#F0ABFC;letter-spacing:-.03em;margin-bottom:4px;">R$1.800</div>
+          <h3 style="font-size:10px;color:#F0ABFC;margin-bottom:4px;">Posição Premium</h3>
+          <p style="font-size:9px;">Pacote completo multi-área com atendimento VIP</p>
+        </div>
+      </div>
+
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-bottom:9px;">
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#FACC15;margin-bottom:7px;">📈 Estratégias de Crescimento</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Fotos antes/depois com consentimento</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pacotes combo: camuflagem + microagulhamento</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Programa de indicação entre clientes</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Parcerias com ginásios e clínicas de bariátrica</p></div>
+        </div>
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:7px;">🎓 O Que Você Recebe</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Certificado profissional reconhecido</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Fichas, termos e protocolos prontos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Guia de precificação + scripts de venda</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Grupo exclusivo de suporte entre alunas</p></div>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:linear-gradient(135deg,rgba(46,107,255,.08) 0%,rgba(200,109,215,.08) 100%);border:1px solid rgba(46,107,255,.2);border-radius:16px;padding:16px;text-align:center;">
+        <p style="font-size:clamp(12px,2.5vw,16px);font-weight:700;color:#F5F7FB;margin-bottom:5px;">Pronta para dominar um dos procedimentos mais lucrativos da estética paramédica?</p>
+        <p style="font-size:10px;color:#7E879B;margin-bottom:12px;">Transforme vidas, restaure autoestimas e construa um negócio sólido de alto ticket.</p>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2E6BFF,#C86DD7);padding:10px 24px;border-radius:999px;cursor:pointer;">
+          <span style="font-size:11px;font-weight:700;color:#fff;letter-spacing:.03em;">🚀 QUERO ME INSCREVER AGORA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const t=document.getElementById('fsTxt');
+  if(t)t.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
