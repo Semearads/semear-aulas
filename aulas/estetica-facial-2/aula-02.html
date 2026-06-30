@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Lash Lifting Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:#050816;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#C86DD7,#8B5CF6,#C86DD7);background-size:200% auto;animation:shimmer 4s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:8px 13px;border-radius:11px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px;cursor:pointer;backdrop-filter:blur(6px);text-transform:uppercase;letter-spacing:.04em;transition:all .3s ease;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(200,109,215,.3);}
+.fs-btn svg{width:13px;height:13px;}
+
+.sc{position:fixed;bottom:20px;left:14px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;background:rgba(0,0,0,.35);padding:7px 12px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#C86DD7;font-weight:800;}
+
+.ind{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:#C86DD7;box-shadow:0 0 12px rgba(200,109,215,.6);width:26px;border-radius:4px;}
+
+.nav-arr{position:fixed;bottom:16px;right:14px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(200,109,215,.2);border-color:rgba(200,109,215,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:52px 16px 72px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+background:radial-gradient(900px 420px at 70% 15%,rgba(200,109,215,.13) 0%,transparent 42%),
+radial-gradient(700px 360px at 25% 25%,rgba(91,63,214,.11) 0%,transparent 42%),
+linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.2;background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+
+.gt{background:linear-gradient(135deg,#C86DD7 0%,#8B5CF6 40%,#E879F9 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gt2{background:linear-gradient(135deg,#A855F7 0%,#EC4899 50%,#A855F7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gl{width:70px;height:3px;border-radius:2px;background:linear-gradient(90deg,#C86DD7,#8B5CF6);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px auto;transform-origin:center;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;margin-bottom:22px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.28);font-size:12px;font-weight:600;color:#E9B8F0;letter-spacing:.05em;text-transform:uppercase;}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(200,109,215,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(16,8,28,.95) 0%,rgba(10,8,22,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(200,109,215,.1);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(200,109,215,.28);transform:translateY(-2px) scale(1.01);}
+
+.tn{width:50px;height:50px;border-radius:14px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;}
+.tn.n1{background:linear-gradient(145deg,#C86DD7,#A855F7);}
+.tn.n2{background:linear-gradient(145deg,#8B5CF6,#6D28D9);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#EC4899,#BE185D);animation-delay:1s;}
+
+.pill{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.03em;}
+.pg{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#34D399;}
+.pr{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#F87171;}
+.py{background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);color:#F5D878;}
+.pb{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#60A5FA;}
+.pp{background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.28);color:#E879F9;}
+.po{background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);color:#FED7AA;}
+.pv{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.28);color:#C4B5FD;}
+.pk{background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.25);color:#F9A8D4;}
+.prs{background:rgba(251,113,133,.1);border:1px solid rgba(251,113,133,.25);color:#FDA4AF;}
+
+.bhl{position:relative;overflow:hidden;border-radius:14px;padding:13px 13px 13px 18px;}
+.bhl::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.bhl.purple::before{background:#C86DD7;}
+.bhl.violet::before{background:#8B5CF6;}
+.bhl.pink::before{background:#EC4899;}
+.bhl.green::before{background:#10B981;}
+.bhl.red::before{background:#EF4444;}
+.bhl.blue::before{background:#2E6BFF;}
+.bhl.amber::before{background:#F59E0B;}
+.bhl.rose::before{background:#FB7185;}
+.bhl.fuchsia::before{background:#D946EF;}
+
+.bwc{border-radius:16px;padding:13px;}
+.bwc.cg{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15);}
+.bwc.cr{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);}
+.bwc.cy{background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.18);}
+
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:2px;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:62px;max-width:78px;padding:0 2px;}
+.fstep .fi{width:44px;height:44px;border-radius:13px;background:rgba(200,109,215,.08);border:1px solid rgba(200,109,215,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:20px;height:20px;color:#C86DD7;}
+.fstep span{font-size:8px;font-weight:700;color:#F5F7FB;line-height:1.3;}
+.fstep.act .fi{background:linear-gradient(180deg,#C86DD7,#8B5CF6);border-color:transparent;box-shadow:0 8px 20px rgba(200,109,215,.35);}
+.fstep.act .fi svg{color:#fff;}
+.farr{display:flex;align-items:center;padding-bottom:26px;margin:0 1px;}
+.farr svg{width:12px;height:12px;color:#7E879B;}
+
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.stitle{font-size:clamp(17px,3.5vw,28px);margin-bottom:6px;}
+.ssub{font-size:clamp(10px,1.5vw,13px);color:#7E879B;margin-bottom:14px;max-width:640px;}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;width:100%;}
+
+.sc-area{width:100%;max-width:860px;overflow-y:auto;max-height:calc(100vh - 140px);padding-bottom:6px;scrollbar-width:none;}
+.sc-area::-webkit-scrollbar{display:none;}
+
+.li-row{display:flex;align-items:flex-start;gap:7px;margin-bottom:5px;}
+.li-row svg{width:12px;height:12px;flex-shrink:0;margin-top:3px;}
+.li-row p{font-size:10px;line-height:1.5;text-align:left;}
+
+.anchor-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.anchor-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+
+.num-big{font-size:clamp(24px,5vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:5px;}
+
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:9px;font-weight:900;flex-shrink:0;margin-top:1px;}
+
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 16px rgba(200,109,215,.12)}50%{box-shadow:0 0 34px rgba(200,109,215,.45)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+.slide.active .au{animation:fadeUp .7s ease both;}
+.slide.active .as{animation:fadeScale .7s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}.d8{animation-delay:.78s!important}
+
+@media(max-width:600px){
+  .g4{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:1fr 1fr;}
+  .g2{grid-template-columns:1fr;}
+  .slide{padding:46px 12px 68px;}
+  .sc-area{max-height:calc(100vh - 118px);}
+  .fstep{min-width:52px;max-width:62px;}
+  .fstep .fi{width:38px;height:38px;}
+  .fstep .fi svg{width:16px;height:16px;}
+  .fstep span{font-size:7px;}
+  .cp,.card{padding:12px 11px;}
+  .bhl{padding:10px 10px 10px 15px;}
+  .stitle{font-size:clamp(15px,4vw,22px);}
+}
+@media(max-width:380px){
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══════════════ SLIDE 1 — CAPA ═══════════════ -->
+<section class="slide active">
+  <div class="inner">
+    <div class="badge au d1">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Curso Profissional Completo
+    </div>
+
+    <h1 class="au d2" style="font-size:clamp(26px,6.5vw,70px);margin-bottom:14px;">
+      <span class="gt">Lash Lifting</span><br/>
+      <span style="font-size:clamp(15px,3.2vw,36px);color:#AAB3C5;font-weight:700;">Profissional do Zero ao Avançado</span>
+    </h1>
+
+    <p class="au d3" style="font-size:clamp(11px,1.8vw,15px);color:#AAB3C5;max-width:580px;margin:0 auto 18px;line-height:1.6;">
+      Biossegurança · Anatomia dos Cílios · Lifting · Coloração · Botox Capilar · Lash Brow — tudo em um único curso certificado.
+    </p>
+
+    <div class="au d4" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:20px;">
+      <span class="pill pp">🛡️ Biossegurança</span>
+      <span class="pill pv">🔬 Anatomia</span>
+      <span class="pill pk">✨ Lifting Clássico</span>
+      <span class="pill pb">🎨 Coloração</span>
+      <span class="pill pg">💎 Botox Capilar</span>
+      <span class="pill po">👁️ Lash Brow</span>
+    </div>
+
+    <div class="au d5" style="display:flex;width:100%;max-width:460px;background:rgba(255,255,255,.02);border:1px solid rgba(200,109,215,.12);border-radius:16px;overflow:hidden;">
+      <div style="flex:1;padding:14px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.06);">
+        <div style="font-size:clamp(22px,5vw,36px);font-weight:900;color:#E879F9;letter-spacing:-.03em;">10</div>
+        <p style="font-size:9px;color:#7E879B;margin-top:2px;">Módulos</p>
+      </div>
+      <div style="flex:1;padding:14px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.06);">
+        <div style="font-size:clamp(22px,5vw,36px);font-weight:900;color:#34D399;letter-spacing:-.03em;">6+</div>
+        <p style="font-size:9px;color:#7E879B;margin-top:2px;">Técnicas</p>
+      </div>
+      <div style="flex:1;padding:14px 8px;text-align:center;">
+        <div style="font-size:clamp(22px,5vw,36px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;">∞</div>
+        <p style="font-size:9px;color:#7E879B;margin-top:2px;">Acesso Vitalício</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 2 — MERCADO ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill py">💰 Mercado</span>
+        <h2 class="stitle">Por Que <span class="gt2">Lash Lifting</span> É o Serviço do Momento?</h2>
+      </div>
+      <p class="ssub au d3">Olhar marcado sem extensão, sem cola, sem manutenção semanal — o cliente ama e volta todo mês. Mercado em explosão no Brasil e no mundo.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:center;">
+          <div class="num-big" style="color:#E879F9;">R$150</div>
+          <h3 style="font-size:10px;color:#C86DD7;margin-bottom:4px;">Ticket Médio</h3>
+          <p style="font-size:9px;">Por sessão completa de lifting + coloração — duração 60–90 min</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="num-big" style="color:#34D399;">+12%</div>
+          <h3 style="font-size:10px;color:#6EE7B7;margin-bottom:4px;">Crescimento aa</h3>
+          <p style="font-size:9px;">Segmento de lash no Brasil — maior alta do setor de beleza</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="num-big" style="color:#60A5FA;">45 dias</div>
+          <h3 style="font-size:10px;color:#93C5FD;margin-bottom:4px;">Recorrência</h3>
+          <p style="font-size:9px;">Cliente retorna a cada 30–45 dias — serviço de alta fidelização</p>
+        </div>
+      </div>
+
+      <div class="g2 au d4" style="margin-bottom:9px;">
+        <div class="bhl purple" style="background:rgba(200,109,215,.04);border:1px solid rgba(200,109,215,.12);text-align:left;">
+          <h3 style="font-size:11px;color:#E879F9;margin-bottom:8px;">✦ Por Que a Demanda Explodiu?</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Tendência global de "olhar natural elevado" — sem extensão</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Duração de até 6–8 semanas — cliente vê custo-benefício</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Resultado de antes/depois impactante — viral no Instagram</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Não exige manutenção semanal como extensão de cílios</p></div>
+        </div>
+        <div class="bhl green" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);text-align:left;">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">🚀 Oportunidade Real</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Baixo custo de insumos — alta margem de lucro por sessão</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Fácil de montar em home studio com investimento mínimo</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Profissional certificada fatura 3× mais que sem certificação</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pode combinar com extensão de cílios e design de sobrancelhas</p></div>
+        </div>
+      </div>
+
+      <div class="g3 au d5">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:5px;">💼</div>
+          <p style="font-size:9px;">Atue em salão, clínica, spa, home studio ou de forma itinerante</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:5px;">📲</div>
+          <p style="font-size:9px;">Antes/depois no Instagram geram novos clientes todos os dias organicamente</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:20px;margin-bottom:5px;">🎓</div>
+          <p style="font-size:9px;">Certificação abre portas em clínicas de estética e centros premium</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 3 — BIOSSEGURANÇA ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pr">🛡️ Módulo 1</span>
+        <h2 class="stitle">Biossegurança: <span class="gt2">Proteção Total</span></h2>
+      </div>
+      <p class="ssub au d3">Trabalhar próximo aos olhos exige rigor máximo. Biossegurança no lash lifting não é protocolo burocrático — é responsabilidade ética e proteção da sua carreira.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="bwc cr">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:8px;">🔴 EPIs Obrigatórios</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Luvas nitrílicas — troca entre clientes</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Máscara cirúrgica ou PFF2</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Avental descartável ou lavável</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Óculos de proteção — trabalho em cílios</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Touca protetora obrigatória</p></div>
+        </div>
+        <div class="bwc cy">
+          <h3 style="font-size:11px;color:#E879F9;margin-bottom:8px;">🟣 Higienização</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Superfícies: álcool 70% antes e após</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pinças e espátulas: autoclave ou estufa</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Campo e lençol: uso único descartável</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Higienização das mãos em 6 etapas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Ventilação adequada — produtos químicos</p></div>
+        </div>
+        <div class="bwc cg">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">🟢 Materiais de Uso Único</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Rolinhos / hastes: 1 par por cliente</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Escovinhas descartáveis — jamais reutilizar</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Patches de silicone: higienizar a cada uso</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Micro ponteiras: uso único obrigatório</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Descarte em saco branco RSS</p></div>
+        </div>
+      </div>
+
+      <div class="g2 au d4" style="margin-bottom:9px;">
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#E879F9;margin-bottom:7px;">📜 Base Legal e Regulatória</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>RDC 15/2012 — esterilização de produtos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>RDC 222/2018 — gestão de resíduos RSS</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Produtos com registro ANVISA obrigatório</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Alvará sanitário para espaço físico</p></div>
+        </div>
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:7px;">📄 Documentação Obrigatória</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Ficha de anamnese detalhada assinada</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Termo de consentimento informado</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Registro fotográfico antes/depois</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Prontuário arquivado mínimo 5 anos</p></div>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.18);border-radius:14px;padding:12px 16px;">
+        <h3 style="font-size:11px;color:#E879F9;margin-bottom:5px;">⚠️ Atenção Crítica — Área Ocular</h3>
+        <p style="font-size:10px;">Trabalhar sobre os olhos exige produto testado e aprovado pela ANVISA. Nunca use produtos sem registro ou de origem duvidosa. Em caso de contato acidental com os olhos, lave com água corrente por 15 minutos e encaminhe para atendimento médico imediatamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 4 — ANATOMIA ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pv">🔬 Módulo 2</span>
+        <h2 class="stitle">Anatomia dos Cílios: <span class="gt2">Entenda Antes de Agir</span></h2>
+      </div>
+      <p class="ssub au d3">Conhecer a estrutura do cílio é o que diferencia a profissional que entrega resultado consistente da que erra o tempo de processamento e danifica o cliente.</p>
+
+      <div class="g2 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:10px;">🔬 Estrutura do Cílio</h3>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#E879F9;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Haste (Shaft)</p><p style="font-size:9px;">Parte visível — composta por cutícula, córtex e medula</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#C4B5FD;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Folículo</p><p style="font-size:9px;">Raiz do cílio — não pode ser afetado pelos químicos</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#34D399;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Bulbo Capilar</p><p style="font-size:9px;">Região de crescimento — responsável pela regeneração</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#60A5FA;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Glândulas Sebáceas</p><p style="font-size:9px;">Produzem sebo — hidratam naturalmente o fio</p></div>
+          </div>
+          <div style="margin-top:9px;padding:9px;background:rgba(200,109,215,.06);border-radius:10px;border:1px solid rgba(200,109,215,.15);">
+            <p style="font-size:9px;color:#E879F9;">💡 O lifting atua na cutícula — abre, molda e fecha. Entender isso define o tempo certo de cada solução.</p>
+          </div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#F5D878;margin-bottom:10px;">🔄 Ciclo de Crescimento</h3>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#34D399;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Anágena (Crescimento)</p><p style="font-size:9px;">Dura 30–45 dias — cílio ativo em crescimento</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#F5D878;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Catágena (Transição)</p><p style="font-size:9px;">Dura 2–3 semanas — crescimento desacelera</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#F87171;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Telógena (Queda)</p><p style="font-size:9px;">Dura 90–100 dias — cílio cai naturalmente</p></div>
+          </div>
+          <div style="margin-top:9px;padding:9px;background:rgba(245,158,11,.06);border-radius:10px;border:1px solid rgba(245,158,11,.15);">
+            <p style="font-size:9px;color:#FCD34D;">⚡ Retorno ideal em 6–8 semanas — respeita o ciclo completo e não compromete o bulbo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="g3 au d4" style="margin-bottom:9px;">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">📏</div>
+          <h3 style="font-size:10px;color:#C4B5FD;margin-bottom:3px;">Comprimento</h3>
+          <p style="font-size:9px;">Cílios naturais: 7–12mm — variação define o rolinho ideal</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">🌈</div>
+          <h3 style="font-size:10px;color:#F9A8D4;margin-bottom:3px;">Espessura</h3>
+          <p style="font-size:9px;">Finos, médios, grossos — define o tempo de solução 1 e 2</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">🔄</div>
+          <h3 style="font-size:10px;color:#34D399;margin-bottom:3px;">Curvatura Natural</h3>
+          <p style="font-size:9px;">Reto, levemente curvado, muito curvado — escolhe a moldura</p>
+        </div>
+      </div>
+
+      <div class="g2 au d5">
+        <div class="bhl violet" style="background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);text-align:left;">
+          <h3 style="font-size:10px;color:#C4B5FD;margin-bottom:6px;">🧪 O Que Fazem as Soluções</h3>
+          <p style="font-size:9px;margin-bottom:3px;"><span style="color:#F5F7FB;font-weight:600;">Solução 1 (Lifting):</span> abre a cutícula e amolece a queratina — permite modelar o fio no rolinho</p>
+          <p style="font-size:9px;"><span style="color:#F5F7FB;font-weight:600;">Solução 2 (Fixação):</span> fecha a cutícula e fixa a nova curvatura — sela o resultado</p>
+        </div>
+        <div class="bhl red" style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);text-align:left;">
+          <h3 style="font-size:10px;color:#F87171;margin-bottom:6px;">⚠️ Cílios em Risco — Identificar</h3>
+          <p style="font-size:9px;margin-bottom:3px;">• Cílios muito finos ou quebradiços — reduzir tempo</p>
+          <p style="font-size:9px;margin-bottom:3px;">• Cílios com tratamento químico recente (extensão, etc.)</p>
+          <p style="font-size:9px;">• Cílios com sinais de queda ou alopecia — contraindicação</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 5 — TÉCNICA DE LIFTING ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pk">✨ Módulo 3–4</span>
+        <h2 class="stitle">Técnica de <span class="gt2">Lifting Clássico</span>: Passo a Passo</h2>
+      </div>
+      <p class="ssub au d3">O lifting é o coração do procedimento — cada etapa tem propósito definido. Dominar o protocolo correto garante resultado duradouro e cliente satisfeita.</p>
+
+      <div class="au d3" style="width:100%;margin-bottom:9px;">
+        <h3 style="font-size:11px;color:#F5F7FB;margin-bottom:9px;">📋 Fluxo Completo do Procedimento</h3>
+        <div class="flow">
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+            <span>Anamnese + Patch</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <span>Limpeza Cílios</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg></div>
+            <span>Rolinho Ideal</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <span>Solução 1</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+            <span>Solução 2</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
+            <span>Nutrição + Foto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="g2 au d4" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:left;padding:14px;">
+          <h3 style="font-size:11px;color:#E879F9;margin-bottom:9px;">🎯 Escolha do Rolinho</h3>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#F87171;width:16px;height:10px;border-radius:4px;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">XS / S — Curvatura Máxima</p><p style="font-size:9px;">Cílios até 9mm · Olho pequeno ou amendoado</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#F5D878;width:20px;height:10px;border-radius:4px;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">M — Curvatura Natural</p><p style="font-size:9px;">Cílios 9–11mm · Olho médio · Mais usado</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#34D399;width:24px;height:10px;border-radius:4px;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">L / XL — Curvatura Suave</p><p style="font-size:9px;">Cílios 11mm+ · Olho grande · Efeito aberto</p></div>
+          </div>
+          <div style="margin-top:9px;padding:9px;background:rgba(200,109,215,.06);border-radius:10px;border:1px solid rgba(200,109,215,.15);">
+            <p style="font-size:9px;color:#E879F9;">⚡ Regra: olho caído ou pálpebra pesada → rolinho menor para compensar a queda.</p>
+          </div>
+        </div>
+        <div class="cp" style="text-align:left;padding:14px;">
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:9px;">⏱️ Tabela de Tempos</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:8px;">
+            <div style="text-align:center;padding:8px 4px;background:rgba(200,109,215,.05);border-radius:10px;border:1px solid rgba(200,109,215,.12);">
+              <p style="font-size:9px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Fino</p>
+              <p style="font-size:11px;font-weight:900;color:#E879F9;">6–8 min</p>
+              <p style="font-size:8px;color:#7E879B;">Sol. 1</p>
+            </div>
+            <div style="text-align:center;padding:8px 4px;background:rgba(200,109,215,.05);border-radius:10px;border:1px solid rgba(200,109,215,.12);">
+              <p style="font-size:9px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Médio</p>
+              <p style="font-size:11px;font-weight:900;color:#C4B5FD;">10–12 min</p>
+              <p style="font-size:8px;color:#7E879B;">Sol. 1</p>
+            </div>
+            <div style="text-align:center;padding:8px 4px;background:rgba(200,109,215,.05);border-radius:10px;border:1px solid rgba(200,109,215,.12);">
+              <p style="font-size:9px;font-weight:700;color:#F5F7FB;margin-bottom:2px;">Grosso</p>
+              <p style="font-size:11px;font-weight:900;color:#34D399;">12–15 min</p>
+              <p style="font-size:8px;color:#7E879B;">Sol. 1</p>
+            </div>
+          </div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Solução 2 (fixação): sempre 8–10 min — independente da espessura</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Nutrição (keratin/bonder): 5–8 min — hidrata e sela a cutícula</p></div>
+        </div>
+      </div>
+
+      <div class="g3 au d5">
+        <div class="bhl purple" style="background:rgba(200,109,215,.04);border:1px solid rgba(200,109,215,.12);text-align:left;">
+          <h3 style="font-size:10px;color:#E879F9;margin-bottom:5px;">✅ Aplicação da Sol. 1</h3>
+          <p style="font-size:9px;margin-bottom:2px;">• Micro ponteira — da base ao meio do fio</p>
+          <p style="font-size:9px;margin-bottom:2px;">• Não tocar nas pontas — quebra o fio</p>
+          <p style="font-size:9px;">• Cobrir com filme plástico — potencializa</p>
+        </div>
+        <div class="bhl violet" style="background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);text-align:left;">
+          <h3 style="font-size:10px;color:#C4B5FD;margin-bottom:5px;">🔄 Remoção da Sol. 1</h3>
+          <p style="font-size:9px;margin-bottom:2px;">• Algodão seco — limpar sem mover cílios</p>
+          <p style="font-size:9px;margin-bottom:2px;">• Verificar se os cílios estão moldados</p>
+          <p style="font-size:9px;">• Aplicar Sol. 2 imediatamente após</p>
+        </div>
+        <div class="bhl green" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);text-align:left;">
+          <h3 style="font-size:10px;color:#34D399;margin-bottom:5px;">✨ Finalização</h3>
+          <p style="font-size:9px;margin-bottom:2px;">• Remover rolinho com cuidado</p>
+          <p style="font-size:9px;margin-bottom:2px;">• Aplicar nutrição / bonder</p>
+          <p style="font-size:9px;">• Penteado final com escovinha</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 6 — COLORAÇÃO ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pb">🎨 Módulo 5</span>
+        <h2 class="stitle">Coloração de Cílios: <span class="gt2">Cor que Transforma</span></h2>
+      </div>
+      <p class="ssub au d3">A coloração potencializa o lifting — cílios mais escuros parecem mais longos, densos e marcados. O resultado completo que a cliente realmente quer.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:left;">
+          <div style="font-size:18px;margin-bottom:7px;">🎨</div>
+          <h3 style="font-size:11px;color:#60A5FA;margin-bottom:6px;">Tipos de Pigmento</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Tintura oxidante vegetal — uso profissional</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Henna de cílios — fórmula não oxidante</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Color brow adaptado — somente profissional</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Todos com registro ANVISA — obrigatório</p></div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <div style="font-size:18px;margin-bottom:7px;">🌈</div>
+          <h3 style="font-size:11px;color:#F9A8D4;margin-bottom:6px;">Paleta de Cores Indicadas</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><p>Preto intenso — peles escuras e loiras</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><p>Preto suave — peles claras e cílios finos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><p>Marrom escuro — efeito natural em loiras</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><p>Grafite / cinza — tendência europeia</p></div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <div style="font-size:18px;margin-bottom:7px;">⏱️</div>
+          <h3 style="font-size:11px;color:#FCD34D;margin-bottom:6px;">Tempo de Processamento</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Tintura oxidante: 10–15 min</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Henna de cílios: 15–20 min</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Tom mais intenso = mais tempo</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Retirar com algodão úmido delicado</p></div>
+        </div>
+      </div>
+
+      <div class="g2 au d4" style="margin-bottom:9px;">
+        <div class="bhl pink" style="background:rgba(236,72,153,.04);border:1px solid rgba(236,72,153,.12);text-align:left;">
+          <h3 style="font-size:11px;color:#F9A8D4;margin-bottom:7px;">✅ Passo a Passo da Coloração</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>1. Aplicar patches protetores (canto a canto)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>2. Misturar pigmento + oxidante na proporção</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>3. Aplicar da raiz às pontas com escovinha</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>4. Aguardar o tempo determinado</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>5. Remover com algodão úmido delicado</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>6. Verificar uniformidade e fotografar</p></div>
+        </div>
+        <div class="bhl red" style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);text-align:left;">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:7px;">❌ Contraindicações</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Alergia a PPD (patch test negativo 48h antes)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Conjuntivite ou infecção ocular ativa</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Cílios com queda intensa ou muito fracos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Gestação — avaliar com médico</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Lentes de contato — remover antes</p></div>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;background:rgba(200,109,215,.05);border:1px solid rgba(200,109,215,.18);border-radius:14px;padding:12px 16px;">
+        <h3 style="font-size:11px;color:#E879F9;margin-bottom:5px;">💡 Combinação Perfeita — Lifting + Coloração</h3>
+        <p style="font-size:10px;">Realize sempre o lifting <strong style="color:#F5F7FB;">antes</strong> da coloração. A solução 1 abre a cutícula e potencializa a absorção do pigmento — resultado até 40% mais intenso e duradouro. Sequência errada compromete ambos os serviços.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 7 — BOTOX CAPILAR ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">💎 Módulo 6</span>
+        <h2 class="stitle">Botox Capilar nos Cílios: <span class="gt2">Nutrição Profunda</span></h2>
+      </div>
+      <p class="ssub au d3">O botox capilar para cílios é o upgrade premium do protocolo — hidrata, reconstrói e prolonga o resultado do lifting. Agrega valor e diferencia a profissional.</p>
+
+      <div class="g2 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:10px;">💎 O Que é o Botox Capilar</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>NÃO é toxina botulínica — é tratamento cosmético</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Composto de queratina, aminoácidos e proteínas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Preenche as porosidades da cutícula aberta</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Restaura brilho, maciez e resistência do fio</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Prolonga duração do lifting em até 2 semanas a mais</p></div>
+          <div style="margin-top:9px;padding:9px;background:rgba(16,185,129,.06);border-radius:10px;border:1px solid rgba(16,185,129,.15);">
+            <p style="font-size:9px;color:#34D399;">💡 Aplicado após a solução 2 — enquanto a cutícula ainda está receptiva ao tratamento.</p>
+          </div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:10px;">✨ Benefícios Comprovados</h3>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#34D399;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Hidratação Profunda</p><p style="font-size:9px;">Aminoácidos penetram na cortex — nutrição de dentro para fora</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#E879F9;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Redução da Quebra</p><p style="font-size:9px;">Queratina recompõe a estrutura danificada do fio</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#60A5FA;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Brilho Intenso</p><p style="font-size:9px;">Cutícula selada reflete mais luz — cílios vitrificados</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#F5D878;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Maior Durabilidade</p><p style="font-size:9px;">Curvatura do lifting sustentada por mais tempo</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g3 au d4" style="margin-bottom:9px;">
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:10px;color:#E879F9;margin-bottom:6px;">📋 Protocolo de Aplicação</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Aplicar após solução 2 ser removida</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Micro ponteira — distribuir uniformemente</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Tempo: 5–10 min com filme plástico</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Remover com algodão seco suavemente</p></div>
+        </div>
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:10px;color:#34D399;margin-bottom:6px;">💡 Principais Ativos</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Queratina hidrolisada — reestruturação</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Arginina — fortalecimento do folículo</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pantenol (Pro-Vit B5) — hidratação</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Biotina — estimula crescimento</p></div>
+        </div>
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:10px;color:#F5D878;margin-bottom:6px;">💰 Valor Agregado</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F5D878" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Adicionar R$40–80 ao ticket do lifting</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F5D878" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Custo do produto: R$3–8 por aplicação</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F5D878" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Margem de lucro superior a 900%</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F5D878" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Diferencial competitivo imediato</p></div>
+        </div>
+      </div>
+
+      <div class="g2 au d5">
+        <div class="bhl green" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);text-align:left;">
+          <h3 style="font-size:10px;color:#34D399;margin-bottom:5px;">✅ Indicado Para</h3>
+          <p style="font-size:9px;margin-bottom:2px;">• Cílios finos, fracos ou quebradiços</p>
+          <p style="font-size:9px;margin-bottom:2px;">• Clientes que fazem lifting com frequência</p>
+          <p style="font-size:9px;margin-bottom:2px;">• Cílios pós-extensão em regressão</p>
+          <p style="font-size:9px;">• Qualquer tipo de cílio — só benefícios</p>
+        </div>
+        <div class="bhl fuchsia" style="background:rgba(217,70,239,.04);border:1px solid rgba(217,70,239,.12);text-align:left;">
+          <h3 style="font-size:10px;color:#F0ABFC;margin-bottom:5px;">📣 Como Vender o Add-on</h3>
+          <p style="font-size:9px;margin-bottom:2px;">• "Posso adicionar a nutrição profunda? Custa R$50 a mais e dobra a duração."</p>
+          <p style="font-size:9px;">• Mostrar diferença visual em fotos — conversão imediata de mais de 70%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 8 — LASH BROW ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill po">👁️ Módulo 7</span>
+        <h2 class="stitle">Lash Brow: <span class="gt2">Olhar Completo</span> em Uma Sessão</h2>
+      </div>
+      <p class="ssub au d3">Lifting de cílios + lifting de sobrancelhas no mesmo atendimento — resultado transformador, maior ticket e cliente ainda mais satisfeita.</p>
+
+      <div class="g2 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#FED7AA;margin-bottom:9px;">🔍 O Que é o Lash Brow?</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FED7AA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Técnica que aplica o lifting também nas sobrancelhas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FED7AA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Alinha, direciona e fixa os fios da sobrancelha</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FED7AA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Efeito "soap brow" — sobrancelhas penteadas e definidas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FED7AA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Duração de 4–6 semanas nos fios da sobrancelha</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FED7AA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Combina com henna ou coloração para resultado premium</p></div>
+          <div style="margin-top:9px;padding:9px;background:rgba(249,115,22,.06);border-radius:10px;border:1px solid rgba(249,115,22,.15);">
+            <p style="font-size:9px;color:#FED7AA;">🎯 Tendência global — sobrancelha "fluffy" que domina o Instagram desde 2022.</p>
+          </div>
+        </div>
+        <div class="cp" style="text-align:left;">
+          <h3 style="font-size:11px;color:#E879F9;margin-bottom:9px;">🛠️ Diferenças do Lifting de Cílios</h3>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#E879F9;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Rolo Diferente</p><p style="font-size:9px;">Rolo plano especial para sobrancelha — aplica fios para cima</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#F5D878;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Tempo Reduzido</p><p style="font-size:9px;">Fios mais espessos — solução 1 apenas 6–8 min</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#34D399;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Mesma Solução</p><p style="font-size:9px;">Pode usar o mesmo kit do lash lifting profissional</p></div>
+          </div>
+          <div class="anchor-row">
+            <div class="anchor-dot" style="background:#60A5FA;"></div>
+            <div><p style="font-size:10px;font-weight:700;color:#F5F7FB;">Posicionamento</p><p style="font-size:9px;">Fios são puxados para cima — direção vertical ou oblíqua</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g3 au d4" style="margin-bottom:9px;">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">⏱️</div>
+          <h3 style="font-size:10px;color:#C4B5FD;margin-bottom:3px;">+20 a 25 min</h3>
+          <p style="font-size:9px;">Acréscimo ao tempo de atendimento para o lash brow completo</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">💰</div>
+          <h3 style="font-size:10px;color:#34D399;margin-bottom:3px;">+R$80–120</h3>
+          <p style="font-size:9px;">Ticket adicional por incluir o lifting de sobrancelha na sessão</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">🌟</div>
+          <h3 style="font-size:10px;color:#FED7AA;margin-bottom:3px;">Kit Completo</h3>
+          <p style="font-size:9px;">Lifting cílios + brow + botox + coloração = sessão premium R$250–350</p>
+        </div>
+      </div>
+
+      <div class="au d5" style="width:100%;margin-bottom:9px;">
+        <h3 style="font-size:11px;color:#F5F7FB;margin-bottom:9px;">🔄 Sequência Lash + Brow na Mesma Sessão</h3>
+        <div class="flow">
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg></div>
+            <span>Anamnese Completa</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <span>Lifting Cílios</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <span>Coloração Cílios</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg></div>
+            <span>Brow Lifting</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+            <span>Botox Capilar</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
+            <span>Registro + Cuidados</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="au d6" style="width:100%;background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.18);border-radius:14px;padding:12px 16px;">
+        <h3 style="font-size:11px;color:#FED7AA;margin-bottom:5px;">💡 Script de Vendas para o Lash Brow</h3>
+        <p style="font-size:10px;">"Enquanto os cílios estão processando, posso fazer o lifting das sobrancelhas também — o resultado fica harmonioso e o olhar completo. Adiciona R$80 e você sai com tudo feito." — Taxa de conversão acima de 65%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 9 — CORREÇÃO DE PROBLEMAS ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill prs">⚠️ Módulo 8–9</span>
+        <h2 class="stitle">Problemas, <span class="gt2">Correções</span> e Situações de Risco</h2>
+      </div>
+      <p class="ssub au d3">A profissional que sabe resolver problemas tem agenda cheia e nunca perde cliente. Identificar o erro e corrigir com segurança é parte do treinamento avançado.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="bwc cr">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:8px;">🔴 Cílio Superprocessado</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong style="color:#F5F7FB;">Sinais:</strong> cílios dobrados, frizz intenso, quebra</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Causa:</strong> tempo excessivo de solução 1</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Correção:</strong> aplicar nutrição intensiva imediatamente — 3x por semana em casa</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 ausvg" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Prevenção:</strong> respeitar tabela de tempos por espessura</p></div>
+        </div>
+        <div class="bwc cy">
+          <h3 style="font-size:11px;color:#E879F9;margin-bottom:8px;">🟣 Resultado Fraco / Sem Curvatura</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong style="color:#F5F7FB;">Sinais:</strong> cílios voltaram retos em menos de 2 sem.</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Causa:</strong> rolinho grande demais ou tempo curto</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Correção:</strong> reprocessar após 72h — rolinho menor e tempo maior</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#E879F9" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Prevenção:</strong> avaliar cílio e escolher rolinho correto na anamnese</p></div>
+        </div>
+        <div class="bwc cg">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">🟢 Cílios Colados no Rolinho</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong style="color:#F5F7FB;">Sinais:</strong> dificuldade ao remover o rolinho</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Causa:</strong> excesso de adesivo + solução ressequida</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Correção:</strong> hidratar abundantemente com soro fisiológico e remover devagar</p></div>
+        </div>
+      </div>
+
+      <div class="g2 au d4" style="margin-bottom:9px;">
+        <div class="bhl red" style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);text-align:left;">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:7px;">🚨 Emergências — Protocolo Imediato</h3>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Contato nos olhos:</strong> lavar 15 min água corrente → médico</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Reação alérgica:</strong> retirar produto → compressa fria → UPA</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Queimadura:</strong> não aplicar mais nada → compressa fria → dermatologista</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p><strong style="color:#F5F7FB;">Edema palpebral:</strong> interromper → antialérgico tópico → médico</p></div>
+        </div>
+        <div class="bhl amber" style="background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.12);text-align:left;">
+          <h3 style="font-size:11px;color:#FCD34D;margin-bottom:7px;">⚠️ Cuidados Pós-Procedimento</h3>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Não molhar os cílios nas primeiras 24h</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Evitar sauna, piscina e mar por 48h</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Dormir de barriga para cima — não amassar</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Não usar rímel ou desmaquiliante oleoso</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#FCD34D" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Usar sérum de cílios para nutrição diária</p></div>
+        </div>
+      </div>
+
+      <div class="g3 au d5">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">🔍</div>
+          <h3 style="font-size:10px;color:#E879F9;margin-bottom:3px;">Diagnóstico Correto</h3>
+          <p style="font-size:9px;">Avaliar saúde do cílio antes de cada sessão — evita 90% dos problemas</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">📸</div>
+          <h3 style="font-size:10px;color:#34D399;margin-bottom:3px;">Registro Fotográfico</h3>
+          <p style="font-size:9px;">Foto antes protege juridicamente e comprova o estado inicial dos cílios</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:18px;margin-bottom:5px;">📋</div>
+          <h3 style="font-size:10px;color:#60A5FA;margin-bottom:3px;">Ficha Detalhada</h3>
+          <p style="font-size:9px;">Registrar tempo, produto e rolinho usado — facilita retoque e seguimento</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SLIDE 10 — NEGÓCIO E CTA ═══════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">💰 Módulo 10</span>
+        <h2 class="stitle">Transforme Técnica em <span class="gt2">Renda Premium</span></h2>
+      </div>
+      <p class="ssub au d3">Com a certificação completa, você está pronta para construir uma carreira sólida, escalar o faturamento e ser referência em lash lifting na sua cidade.</p>
+
+      <div class="g3 au d3" style="margin-bottom:9px;">
+        <div class="cp" style="text-align:center;">
+          <div class="num-big" style="color:#34D399;">R$120</div>
+          <h3 style="font-size:10px;color:#6EE7B7;margin-bottom:4px;">Entrada de Mercado</h3>
+          <p style="font-size:9px;">Lifting clássico — cidades menores e início de carreira</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="num-big" style="color:#E879F9;">R$200</div>
+          <h3 style="font-size:10px;color:#C86DD7;margin-bottom:4px;">Ticket Médio</h3>
+          <p style="font-size:9px;">Lifting + coloração + botox — capitais e cidades médias</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="num-big" style="color:#60A5FA;">R$350</div>
+          <h3 style="font-size:10px;color:#93C5FD;margin-bottom:4px;">Sessão Premium</h3>
+          <p style="font-size:9px;">Lash + brow + coloração + botox — posição premium</p>
+        </div>
+      </div>
+
+      <div class="au d4" style="width:100%;background:rgba(200,109,215,.04);border:1px solid rgba(200,109,215,.12);border-radius:16px;padding:13px;margin-bottom:9px;">
+        <h3 style="font-size:11px;color:#E879F9;margin-bottom:9px;">📈 Simulação de Faturamento Mensal</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+          <div style="text-align:center;padding:10px 6px;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(255,255,255,.06);">
+            <p style="font-size:9px;color:#7E879B;margin-bottom:3px;">4 clientes/dia × 22 dias</p>
+            <div style="font-size:clamp(16px,3vw,22px);font-weight:900;color:#34D399;">R$10.560</div>
+            <p style="font-size:8px;color:#7E879B;">ticket R$120</p>
+          </div>
+          <div style="text-align:center;padding:10px 6px;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(200,109,215,.1);">
+            <p style="font-size:9px;color:#7E879B;margin-bottom:3px;">5 clientes/dia × 22 dias</p>
+            <div style="font-size:clamp(16px,3vw,22px);font-weight:900;color:#E879F9;">R$22.000</div>
+            <p style="font-size:8px;color:#7E879B;">ticket médio R$200</p>
+          </div>
+          <div style="text-align:center;padding:10px 6px;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(96,165,250,.1);">
+            <p style="font-size:9px;color:#7E879B;margin-bottom:3px;">4 VIP/dia × 22 dias</p>
+            <div style="font-size:clamp(16px,3vw,22px);font-weight:900;color:#60A5FA;">R$30.800</div>
+            <p style="font-size:8px;color:#7E879B;">ticket premium R$350</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="g2 au d5" style="margin-bottom:9px;">
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#60A5FA;margin-bottom:7px;">📈 Estratégias de Crescimento</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Reels antes/depois — conteúdo que viraliza naturalmente</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pacote mensal com desconto — garante recorrência certa</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Upsell automático: botox + brow em toda consulta</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Parcerias com salões, SPAs e clínicas de estética</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Programa de indicação — desconto para quem trouxer amiga</p></div>
+        </div>
+        <div class="card" style="text-align:left;padding:13px;">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:7px;">🎓 O Que Você Recebe no Curso</h3>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Certificado profissional reconhecido</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Fichas, termos e protocolos editáveis prontos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Guia de precificação e lista de insumos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Acesso vitalício + atualizações gratuitas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 024" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Grupo exclusivo de suporte entre alunas</p></div>
+        </div>
+      </div>
+
+      <div class="au d6" style="width:100%;background:linear-gradient(135deg,rgba(200,109,215,.1) 0%,rgba(139,92,246,.08) 100%);border:1px solid rgba(200,109,215,.28);border-radius:16px;padding:16px;text-align:center;">
+        <p style="font-size:clamp(11px,2.5vw,15px);font-weight:800;color:#F5F7FB;margin-bottom:5px;">Pronta para transformar olhares e construir uma carreira de sucesso?</p>
+        <p style="font-size:10px;color:#7E879B;margin-bottom:13px;">Domine o Lash Lifting Profissional, tenha agenda cheia e seja referência em beleza ocular na sua cidade.</p>
+        <div style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#C86DD7,#8B5CF6,#C86DD7);padding:11px 28px;border-radius:999px;cursor:pointer;box-shadow:0 8px 24px rgba(200,109,215,.4);">
+          <span style="font-size:11px;font-weight:900;color:#fff;letter-spacing:.04em;">✨ QUERO ME INSCREVER AGORA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const t=document.getElementById('fsTxt');
+  if(t)t.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
