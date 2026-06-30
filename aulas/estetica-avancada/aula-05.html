@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Curso Completo de Microagulhamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:#050816;}
+
+/* PROGRESS */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 4s linear infinite;transition:width .6s ease;}
+
+/* FULLSCREEN BTN */
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:8px 13px;border-radius:11px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;display:flex;align-items:center;gap:6px;cursor:pointer;backdrop-filter:blur(6px);text-transform:uppercase;letter-spacing:.04em;transition:all .3s ease;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3);}
+.fs-btn svg{width:13px;height:13px;}
+
+/* COUNTER */
+.sc{position:fixed;bottom:20px;left:14px;z-index:998;color:#7E879B;font-size:11px;font-weight:600;background:rgba(0,0,0,.35);padding:7px 12px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#2E6BFF;font-weight:800;}
+
+/* INDICATORS */
+.ind{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 12px rgba(46,107,255,.6);width:26px;border-radius:4px;}
+
+/* NAV ARROWS */
+.nav-arr{position:fixed;bottom:16px;right:14px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05);}
+
+/* PRESENTATION */
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+/* SLIDE BASE */
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:52px 16px 72px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+/* TYPOGRAPHY */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5;}
+
+/* GRADIENT TEXT */
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+
+/* GRADIENT LINE */
+.gl{width:70px;height:3px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:16px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 16px auto;transform-origin:center;}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;margin-bottom:22px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);font-size:12px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:20px 16px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 24px rgba(46,107,255,.08);}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(46,107,255,.08);padding:20px 16px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(46,107,255,.25);transform:translateY(-2px) scale(1.01);box-shadow:0 26px 58px rgba(0,0,0,.55),0 0 44px rgba(46,107,255,.12);}
+
+/* NUMBER ICONS */
+.tn{width:56px;height:56px;border-radius:14px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9);}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s;}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s;}
+
+/* METRIC NUMBERS */
+.s5n{font-size:clamp(32px,6vw,52px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:6px;}
+
+/* PILL */
+.pill{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.03em;}
+.pv{background:rgba(91,63,214,.1);border:1px solid rgba(91,63,214,.25);color:#A78BFA;}
+.pb{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#60A5FA;}
+.pg{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#34D399;}
+.pr{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#F87171;}
+.py{background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.25);color:#FACC15;}
+
+/* BORDER HIGHLIGHT CARDS */
+.bhl{position:relative;overflow:hidden;border-radius:14px;padding:16px 16px 16px 22px;}
+.bhl::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.bhl.blue::before{background:#2E6BFF;}
+.bhl.purple::before{background:#5B3FD6;}
+.bhl.pink::before{background:#C86DD7;}
+.bhl.green::before{background:#10B981;}
+.bhl.red::before{background:#EF4444;}
+.bhl.yellow::before{background:#FACC15;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:80px;max-width:90px;}
+.fstep .fi{width:52px;height:52px;border-radius:14px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.fstep .fi svg{width:24px;height:24px;color:#2E6BFF;}
+.fstep span{font-size:10px;font-weight:700;color:#F5F7FB;line-height:1.3;}
+.fstep.act .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 8px 20px rgba(46,107,255,.3);}
+.fstep.act .fi svg{color:#fff;}
+.farr{display:flex;align-items:center;padding-bottom:28px;margin:0 2px;}
+.farr svg{width:16px;height:16px;color:#7E879B;}
+
+/* COMPARE GRID */
+.bwc{border-radius:16px;padding:16px;}
+.bwc.cg{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15);}
+.bwc.cr{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);}
+.bwc.cy{background:rgba(234,179,8,.05);border:1px solid rgba(234,179,8,.15);}
+.bwd{display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+
+/* INNER WRAPPERS */
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.s1-title{font-size:clamp(32px,7vw,72px);margin-bottom:18px;}
+.s1-sub{font-size:clamp(13px,2vw,18px);color:#AAB3C5;max-width:560px;margin:0 auto 20px;line-height:1.5;}
+.stitle{font-size:clamp(18px,3.5vw,30px);margin-bottom:8px;}
+.ssub{font-size:clamp(11px,1.5vw,13px);color:#7E879B;margin-bottom:16px;max-width:600px;}
+
+/* GRID HELPERS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+.g23{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+
+/* SCROLLABLE CONTENT AREA */
+.sc-area{width:100%;max-width:860px;overflow-y:auto;max-height:calc(100vh - 160px);padding-bottom:10px;scrollbar-width:none;}
+.sc-area::-webkit-scrollbar{display:none;}
+
+/* LIST ITEMS */
+.li-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.li-row svg{width:14px;height:14px;flex-shrink:0;margin-top:3px;}
+.li-row p{font-size:11px;line-height:1.5;text-align:left;}
+
+/* ANIMATIONS */
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowP{0%,100%{box-shadow:0 0 16px rgba(46,107,255,.12)}50%{box-shadow:0 0 34px rgba(46,107,255,.35)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
+.slide.active .au{animation:fadeUp .7s ease both;}
+.slide.active .as{animation:fadeScale .7s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}
+.d7{animation-delay:.68s!important}.d8{animation-delay:.78s!important}
+
+/* RESPONSIVE MOBILE */
+@media(max-width:600px){
+  .g3{grid-template-columns:1fr 1fr;}
+  .g2{grid-template-columns:1fr;}
+  .g23{grid-template-columns:1fr;}
+  .flow{gap:2px;}
+  .fstep{min-width:60px;max-width:70px;}
+  .fstep .fi{width:42px;height:42px;border-radius:11px;}
+  .fstep .fi svg{width:20px;height:20px;}
+  .fstep span{font-size:9px;}
+  .farr svg{width:12px;height:12px;}
+  .sc-area{max-height:calc(100vh - 140px);}
+  .slide{padding:46px 12px 68px;}
+  .tn{width:46px;height:46px;font-size:17px;border-radius:12px;}
+  .cp,.card{padding:14px 12px;}
+  .bhl{padding:12px 12px 12px 18px;}
+}
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr;}
+  .fstep{min-width:52px;max-width:62px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══════════════════════════════════════ SLIDE 1 ═══════════════════════════════════════ -->
+<section class="slide active">
+  <div class="inner">
+    <div class="badge au d1">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Curso Profissional Completo
+    </div>
+    <h1 class="s1-title au d2"><span class="gt">Microagulhamento</span></h1>
+    <p class="s1-sub au d3">Da teoria científica à prática clínica avançada — domine o procedimento mais requisitado da estética moderna.</p>
+    <div class="au d4" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px;">
+      <span class="pill pv">🔬 Ciência & Fisiologia</span>
+      <span class="pill pb">📋 Anamnese Completa</span>
+      <span class="pill pg">⚗️ Ativos Potencializadores</span>
+      <span class="pill py">⚙️ Equipamentos</span>
+      <span class="pill pr">🛡️ Biossegurança</span>
+      <span class="pill pv">💰 Precificação Premium</span>
+    </div>
+    <div class="au d5" style="display:flex;gap:0;justify-content:center;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:18px;overflow:hidden;width:100%;max-width:480px;">
+      <div style="flex:1;padding:16px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.06);">
+        <div style="font-size:clamp(22px,5vw,38px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;">10</div>
+        <p style="font-size:10px;color:#7E879B;margin-top:2px;">Módulos</p>
+      </div>
+      <div style="flex:1;padding:16px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.06);">
+        <div style="font-size:clamp(22px,5vw,38px);font-weight:900;color:#A78BFA;letter-spacing:-.03em;">100%</div>
+        <p style="font-size:10px;color:#7E879B;margin-top:2px;">Teoria + Prática</p>
+      </div>
+      <div style="flex:1;padding:16px 8px;text-align:center;">
+        <div style="font-size:clamp(22px,5vw,38px);font-weight:900;color:#34D399;letter-spacing:-.03em;">∞</div>
+        <p style="font-size:10px;color:#7E879B;margin-top:2px;">Acesso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 2 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pv">🔬 Módulo 1</span>
+        <h2 class="stitle">O que é <span class="gt">Microagulhamento?</span></h2>
+      </div>
+      <p class="ssub au d3">Mecanismo de Indução Percutânea de Colágeno (IPC) — entenda a ciência por trás da transformação.</p>
+      <div class="g3 au d4">
+        <div class="cp" style="text-align:center;">
+          <div class="tn n1">1</div>
+          <h3 style="font-size:12px;margin-bottom:6px;color:#93C5FD;">Lesão Controlada</h3>
+          <p style="font-size:11px;">Microcanais criam microtraumatismos superficiais que ativam a cascata de cicatrização natural da pele.</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="tn n2">2</div>
+          <h3 style="font-size:12px;margin-bottom:6px;color:#C4B5FD;">Proliferação</h3>
+          <p style="font-size:11px;">Fibroblastos são ativados produzindo colágeno tipo I, III e elastina nas primeiras 24–72h.</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div class="tn n3">3</div>
+          <h3 style="font-size:12px;margin-bottom:6px;color:#F0ABFC;">Remodelação</h3>
+          <p style="font-size:11px;">Remodelação da matriz dérmica por 3 a 6 meses — firmeza, textura e luminosidade visíveis.</p>
+        </div>
+      </div>
+      <div class="au d5" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;margin-top:10px;">
+        <div class="bhl blue" style="background:rgba(46,107,255,.04);border:1px solid rgba(46,107,255,.12);text-align:left;">
+          <h3 style="font-size:11px;margin-bottom:4px;color:#93C5FD;">Profundidades das Agulhas</h3>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">0,25–0,5mm</strong> → Permeação de ativos</p>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">0,5–1,0mm</strong> → Melasma, poros, oleosidade</p>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">1,0–1,5mm</strong> → Cicatrizes, envelhecimento</p>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">1,5–2,5mm</strong> → Estrias profundas (uso restrito)</p>
+        </div>
+        <div class="bhl purple" style="background:rgba(91,63,214,.04);border:1px solid rgba(91,63,214,.12);text-align:left;">
+          <h3 style="font-size:11px;margin-bottom:4px;color:#C4B5FD;">Resposta Biológica</h3>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">Imediata:</strong> eritema e edema leve</p>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">24–72h:</strong> produção de TGF-β e fatores de crescimento</p>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">7–14 dias:</strong> neocolagênese ativa</p>
+          <p style="font-size:10px;"><strong style="color:#F5F7FB;">3–6 meses:</strong> resultado final consolidado</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 3 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">✅ Módulo 2</span>
+        <h2 class="stitle">Indicações & <span class="gt">Contraindicações</span></h2>
+      </div>
+      <p class="ssub au d3">Saber quando aplicar — e quando não aplicar — é o que diferencia uma profissional segura.</p>
+      <div class="g2 au d4">
+        <div class="bwc cg">
+          <h3 style="font-size:12px;color:#34D399;margin-bottom:10px;">✅ Indicações</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><p>Cicatrizes de acne e pós-cirúrgicas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><p>Melasma e hiperpigmentações</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><p>Envelhecimento cutâneo e flacidez leve</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><p>Poros dilatados e oleosidade excessiva</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><p>Estrias superficiais e alopecia</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><p>Permeação de ativos e biostimuladores</p></div>
+        </div>
+        <div class="bwc cr">
+          <h3 style="font-size:12px;color:#F87171;margin-bottom:10px;">❌ Contraindicações</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Herpes ativo ou infecção cutânea</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Gestação e amamentação</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Tendência a queloides</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Uso de anticoagulantes</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Dermatite ou psoríase ativa</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Acne inflamada (Grau III e IV)</p></div>
+        </div>
+      </div>
+      <div class="bwc cy au d5" style="width:100%;margin-top:10px;">
+        <h3 style="font-size:11px;color:#FACC15;margin-bottom:6px;">⚠️ Atenção Especial</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="font-size:10px;color:#AAB3C5;">• Isotretinoína: aguardar 6 meses após suspensão</span>
+          <span style="font-size:10px;color:#AAB3C5;">• Diabetes não controlada: avaliar caso a caso</span>
+          <span style="font-size:10px;color:#AAB3C5;">• Imunossupressão: contraindicado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 4 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill py">⚙️ Módulo 3</span>
+        <h2 class="stitle">Equipamentos & <span class="gt">Dispositivos</span></h2>
+      </div>
+      <p class="ssub au d3">Escolher o dispositivo certo é decisivo para eficácia, segurança e experiência do cliente.</p>
+      <div class="g2 au d4">
+        <div class="cp" style="text-align:left;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(46,107,255,.12);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🔵</div>
+            <h3 style="font-size:14px;color:#93C5FD;">Dermaroller</h3>
+          </div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Baixo custo de aquisição</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Ideal para uso domiciliar (0,25mm)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Angulação fixa (45°–90°), menor precisão</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><p>Difícil alcançar áreas de contorno</p></div>
+          <div style="margin-top:10px;padding:8px;background:rgba(46,107,255,.06);border-radius:10px;">
+            <p style="font-size:10px;color:#93C5FD;"><strong>Uso recomendado:</strong> Domiciliar ou área ampla (couro cabeludo)</p>
+          </div>
+        </div>
+        <div class="cp" style="text-align:left;border-color:rgba(91,63,214,.25);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:40px;height:40px;border-radius:12px;background:rgba(91,63,214,.12);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🟣</div>
+            <h3 style="font-size:14px;color:#C4B5FD;">Dermapen</h3>
+          </div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Profundidade ajustável 0,25–2,5mm</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Movimento vertical — menos trauma lateral</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Alcança contorno nasal, periorbital e lábios</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Velocidade e densidade de passadas ajustáveis</p></div>
+          <div style="margin-top:10px;padding:8px;background:rgba(91,63,214,.06);border-radius:10px;">
+            <p style="font-size:10px;color:#C4B5FD;"><strong>Uso recomendado:</strong> Clínico profissional — padrão ouro atual</p>
+          </div>
+        </div>
+      </div>
+      <div class="au d5" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-top:10px;">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <p style="font-size:18px;margin-bottom:4px;">🧹</p>
+          <h3 style="font-size:10px;margin-bottom:4px;color:#FACC15;">Manutenção</h3>
+          <p style="font-size:10px;">Cartuchos descartáveis por sessão. Nunca reutilizar.</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <p style="font-size:18px;margin-bottom:4px;">⚡</p>
+          <h3 style="font-size:10px;margin-bottom:4px;color:#60A5FA;">Velocidade</h3>
+          <p style="font-size:10px;">Regulada conforme indicação: 700–1.800 rpm.</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <p style="font-size:18px;margin-bottom:4px;">🗑️</p>
+          <h3 style="font-size:10px;margin-bottom:4px;color:#F87171;">Descarte</h3>
+          <p style="font-size:10px;">Perfurocortante em coletor rígido (caixinha amarela).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 5 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pb">📋 Módulo 4</span>
+        <h2 class="stitle">Anamnese & <span class="gt">Preparo do Paciente</span></h2>
+      </div>
+      <p class="ssub au d3">Uma anamnese completa previne complicações e potencializa os resultados do procedimento.</p>
+      <div class="au d3" style="width:100%;margin-bottom:10px;">
+        <div class="flow">
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+            <span>Ficha Completa</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <span>Fotodoc.</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep act">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <span>Preparo 30d</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <span>Suspensão</span>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <span>Consentimento</span>
+          </div>
+        </div>
+      </div>
+      <div class="g2 au d4">
+        <div class="bhl blue" style="background:rgba(46,107,255,.04);border:1px solid rgba(46,107,255,.1);text-align:left;">
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:8px;">📋 Ficha de Anamnese Inclui</h3>
+          <p style="font-size:10px;margin-bottom:4px;">• Histórico médico, alergias e medicamentos</p>
+          <p style="font-size:10px;margin-bottom:4px;">• Tipo de pele e Fitzpatrick (I–VI)</p>
+          <p style="font-size:10px;margin-bottom:4px;">• Procedimentos anteriores e reações</p>
+          <p style="font-size:10px;">• Expectativas e objetivos do cliente</p>
+        </div>
+        <div class="bhl purple" style="background:rgba(91,63,214,.04);border:1px solid rgba(91,63,214,.1);text-align:left;">
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:8px;">🚫 Suspender 7–10 dias antes</h3>
+          <p style="font-size:10px;margin-bottom:4px;">• Retinol e ácidos (AHA/BHA/TXA)</p>
+          <p style="font-size:10px;margin-bottom:4px;">• Vitamina C concentrada</p>
+          <p style="font-size:10px;margin-bottom:4px;">• Esfoliantes físicos e químicos</p>
+          <p style="font-size:10px;">• Anti-inflamatórios (AINEs)</p>
+        </div>
+      </div>
+      <div class="au d5" style="width:100%;margin-top:10px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.15);border-radius:14px;padding:14px;">
+        <h3 style="font-size:11px;color:#34D399;margin-bottom:6px;">✨ Preparo Potencializador (30 dias antes)</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="font-size:10px;color:#AAB3C5;background:rgba(52,211,153,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(52,211,153,.1);">☀️ FPS 50+ diário</span>
+          <span style="font-size:10px;color:#AAB3C5;background:rgba(52,211,153,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(52,211,153,.1);">💧 Hidratação intensa</span>
+          <span style="font-size:10px;color:#AAB3C5;background:rgba(52,211,153,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(52,211,153,.1);">🍊 Vitamina C (rotina)</span>
+          <span style="font-size:10px;color:#AAB3C5;background:rgba(52,211,153,.05);padding:4px 10px;border-radius:999px;border:1px solid rgba(52,211,153,.1);">💊 Despigmentantes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 6 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pv">🔬 Módulo 5</span>
+        <h2 class="stitle">Protocolo <span class="gt">Passo a Passo</span></h2>
+      </div>
+      <p class="ssub au d3">Sequência clínica precisa para máxima segurança e resultado.</p>
+      <div class="au d3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;">
+        <div class="cp" style="text-align:center;padding:14px 10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:14px;font-weight:900;color:#fff;">1</div>
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:4px;">Higienização</h3>
+          <p style="font-size:10px;">Limpeza dupla com demaquilante + gel espumante sem SLS</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:14px 10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,#5B3FD6,#4530B3);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:14px;font-weight:900;color:#fff;">2</div>
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:4px;">Anestesia Tópica</h3>
+          <p style="font-size:10px;">EMLA ou lidocaína 4% por 30–45 min sob oclusão plástica</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:14px 10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,#C86DD7,#A854BF);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:14px;font-weight:900;color:#fff;">3</div>
+          <h3 style="font-size:11px;color:#F0ABFC;margin-bottom:4px;">Antissepsia</h3>
+          <p style="font-size:10px;">Remoção do anestésico + clorexidine 0,5% ou soro fisiológico</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:14px 10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,#0891B2,#0E7490);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:14px;font-weight:900;color:#fff;">4</div>
+          <h3 style="font-size:11px;color:#67E8F9;margin-bottom:4px;">Aplicação do Ativo</h3>
+          <p style="font-size:10px;">Sérum potencializador aplicado antes e durante as passadas</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:14px 10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,#059669,#047857);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:14px;font-weight:900;color:#fff;">5</div>
+          <h3 style="font-size:11px;color:#6EE7B7;margin-bottom:4px;">Passadas Técnicas</h3>
+          <p style="font-size:10px;">4 direções: H → V → Diagonal D → Diagonal E. 3–4 passadas por área</p>
+        </div>
+        <div class="cp" style="text-align:center;padding:14px 10px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,#D97706,#B45309);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:14px;font-weight:900;color:#fff;">6</div>
+          <h3 style="font-size:11px;color:#FCD34D;margin-bottom:4px;">Finalização</h3>
+          <p style="font-size:10px;">Máscara calmante + LED vermelho + hidratação oclusiva + FPS</p>
+        </div>
+      </div>
+      <div class="au d4" style="width:100%;margin-top:10px;padding:12px 16px;background:rgba(46,107,255,.05);border:1px solid rgba(46,107,255,.12);border-radius:14px;text-align:left;">
+        <h3 style="font-size:11px;color:#93C5FD;margin-bottom:6px;">💡 Técnica de Passadas — Ponto-Chave</h3>
+        <p style="font-size:10px;">Pressão constante e leve. Ponto de sangramento mínimo (pinpoint bleeding) é parâmetro de profundidade adequada em cicatrizes. Eritema homogêneo = passadas uniformes. Nunca concentrar em um único ponto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 7 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">⚗️ Módulo 6</span>
+        <h2 class="stitle">Ativos <span class="gt">Potencializadores</span></h2>
+      </div>
+      <p class="ssub au d3">O ativo certo, na concentração certa, na hora certa — triplica o resultado do procedimento.</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;" class="au d3">
+        <div class="bhl blue" style="background:rgba(46,107,255,.04);border:1px solid rgba(46,107,255,.12);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:16px;">🟡</span>
+            <h3 style="font-size:12px;color:#93C5FD;">Vitamina C Estabilizada</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Indicação:</strong> Manchas, luminosidade, antioxidante</p>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Concentração:</strong> 10–20% (ascorbato de sódio ou MAP)</p>
+          <p style="font-size:10px;color:#FACC15;">⚠️ Evitar em pele muito sensível</p>
+        </div>
+        <div class="bhl purple" style="background:rgba(91,63,214,.04);border:1px solid rgba(91,63,214,.12);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:16px;">💧</span>
+            <h3 style="font-size:12px;color:#C4B5FD;">Ácido Hialurônico</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Indicação:</strong> Hidratação, volume, preenchimento dérmico</p>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Peso molecular:</strong> Baixo (penetração) + Alto (superficial)</p>
+          <p style="font-size:10px;color:#34D399;">✓ Universal — funciona em todos os tipos de pele</p>
+        </div>
+        <div class="bhl pink" style="background:rgba(200,109,215,.04);border:1px solid rgba(200,109,215,.12);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:16px;">🧬</span>
+            <h3 style="font-size:12px;color:#F0ABFC;">PDRN & Fatores de Crescimento</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Indicação:</strong> Cicatrizes, envelhecimento, regeneração intensa</p>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Mecanismo:</strong> Estimula receptores A2A, aumenta síntese de colágeno</p>
+          <p style="font-size:10px;color:#60A5FA;">⭐ Ativo premium — maior custo-benefício em cicatrizes</p>
+        </div>
+        <div class="bhl green" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:16px;">🌿</span>
+            <h3 style="font-size:12px;color:#6EE7B7;">Bioestimuladores</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Indicação:</strong> Flacidez, envelhecimento, perda de volume</p>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Tipos:</strong> Poli-L-Lático, Hidroxiapatita, PLLA</p>
+          <p style="font-size:10px;color:#FACC15;">⚠️ Uso exclusivo por profissional habilitado</p>
+        </div>
+        <div class="bhl yellow" style="background:rgba(234,179,8,.04);border:1px solid rgba(234,179,8,.12);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:16px;">✨</span>
+            <h3 style="font-size:12px;color:#FCD34D;">Niacinamida</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Indicação:</strong> Poros, oleosidade, uniformização do tom</p>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Concentração ideal:</strong> 5–10%</p>
+          <p style="font-size:10px;color:#34D399;">✓ Alta tolerabilidade — indicado para peles sensíveis</p>
+        </div>
+        <div class="bhl red" style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);text-align:left;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:16px;">🍊</span>
+            <h3 style="font-size:12px;color:#FCA5A5;">Complexo Despigmentante</h3>
+          </div>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Indicação:</strong> Melasma, hipercromias pós-inflamatórias</p>
+          <p style="font-size:10px;margin-bottom:3px;"><strong style="color:#F5F7FB;">Ativos:</strong> TXA + Ácido Kójico + Arbutina + Resveratrol</p>
+          <p style="font-size:10px;color:#FACC15;">⚠️ Associar sempre ao FPS 50+ no pós</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 8 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pr">🛡️ Módulo 7</span>
+        <h2 class="stitle">Biossegurança & <span class="gt">Legislação</span></h2>
+      </div>
+      <p class="ssub au d3">Procedimento seguro começa antes da primeira agulhada — e vai além do consultório.</p>
+      <div class="au d3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;">
+        <div class="bwc cr">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:8px;">🔴 EPIs Obrigatórios</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Luvas nitrílicas duplas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Máscara cirúrgica ou PFF2</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Óculos de proteção</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Avental descartável</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Touca e cabelos presos</p></div>
+        </div>
+        <div class="bwc cy">
+          <h3 style="font-size:11px;color:#FACC15;margin-bottom:8px;">🟡 Higienização</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Álcool 70% em superfícies e equipamentos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Lençol e cobertores descartáveis</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Lavagem das mãos (6 passos OMS)</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Campo estéril para procedimento</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Separação de materiais por cliente</p></div>
+        </div>
+        <div class="bwc cg">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">🟢 Descarte Correto</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Coletor rígido (caixa amarela) para agulhas</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Saco infectante para materiais contaminados</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Contrato com empresa de coleta de RSS</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Registro de descarte para auditoria</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Nunca descartar em lixo comum</p></div>
+        </div>
+      </div>
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:10px;">
+        <div class="card" style="text-align:left;padding:14px;">
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:6px;">📜 Legislação ANVISA/CFM</h3>
+          <p style="font-size:10px;margin-bottom:3px;">• RDC 15/2012 — Esterilização de materiais</p>
+          <p style="font-size:10px;margin-bottom:3px;">• RDC 222/2018 — Gerenciamento de RSS</p>
+          <p style="font-size:10px;">• Microagulhamento: ato privativo de médico ou <br/>biomédico (Res. CFM 2.138/2016)</p>
+        </div>
+        <div class="card" style="text-align:left;padding:14px;">
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:6px;">📄 Documentação Legal</h3>
+          <p style="font-size:10px;margin-bottom:3px;">• Termo de consentimento livre e esclarecido</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Ficha de anamnese assinada</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Registro fotográfico (antes/depois)</p>
+          <p style="font-size:10px;">• Prontuário arquivado por mínimo 5 anos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 9 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">💆 Módulo 8</span>
+        <h2 class="stitle">Pós-Procedimento & <span class="gt">Resultados</span></h2>
+      </div>
+      <p class="ssub au d3">O cuidado pós-sessão determina até 40% do resultado final — oriente com precisão.</p>
+      <div class="au d3" style="width:100%;margin-bottom:10px;">
+        <div style="display:flex;align-items:flex-start;gap:0;position:relative;overflow-x:auto;padding-bottom:4px;">
+          <div style="display:flex;flex-direction:column;align-items:center;min-width:80px;padding:0 4px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#2E6BFF,#1E56D9);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;z-index:1;">0h</div>
+            <div style="width:2px;height:40px;background:linear-gradient(#2E6BFF,#5B3FD6);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Finalização + Máscara calmante + LED</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;min-width:80px;padding:0 4px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#5B3FD6,#4530B3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;z-index:1;">24h</div>
+            <div style="width:2px;height:40px;background:linear-gradient(#5B3FD6,#C86DD7);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Eritema normal. Só água fria e hidratante leve</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;min-width:80px;padding:0 4px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#C86DD7,#A854BF);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;z-index:1;">72h</div>
+            <div style="width:2px;height:40px;background:linear-gradient(#C86DD7,#0891B2);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Liberar FPS 50+. Evitar sol e sauna</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;min-width:80px;padding:0 4px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#0891B2,#0E7490);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;z-index:1;">7d</div>
+            <div style="width:2px;height:40px;background:linear-gradient(#0891B2,#059669);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Retomar rotina de skincare suave</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;min-width:80px;padding:0 4px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#059669,#047857);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;z-index:1;">21d</div>
+            <div style="width:2px;height:40px;background:linear-gradient(#059669,#D97706);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Intervalo mínimo para nova sessão</p>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;min-width:80px;padding:0 4px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#D97706,#B45309);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;z-index:1;">6m</div>
+            <div style="width:2px;height:40px;background:linear-gradient(#D97706,transparent);margin:4px 0;"></div>
+            <p style="font-size:9px;text-align:center;line-height:1.4;">Resultado final consolidado</p>
+          </div>
+        </div>
+      </div>
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;">
+        <div class="bwc cg">
+          <h3 style="font-size:11px;color:#34D399;margin-bottom:8px;">✅ Liberar após 72h</h3>
+          <p style="font-size:10px;margin-bottom:3px;">• Vitamina C e niacinamida</p>
+          <p style="font-size:10px;margin-bottom:3px;">• FPS 50+ obrigatório</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Hidratação com AH e ceramidas</p>
+          <p style="font-size:10px;">• Maquiagem mineral leve</p>
+        </div>
+        <div class="bwc cr">
+          <h3 style="font-size:11px;color:#F87171;margin-bottom:8px;">❌ Evitar 7 dias</h3>
+          <p style="font-size:10px;margin-bottom:3px;">• Retinol, AHA, BHA, TXA</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Sol direto sem proteção</p>
+          <p style="font-size:10px;margin-bottom:3px;">• Sauna, piscina, mar</p>
+          <p style="font-size:10px;">• Esfoliações físicas ou químicas</p>
+        </div>
+      </div>
+      <div class="au d5" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-top:10px;">
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:clamp(22px,4vw,32px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;">3–6</div>
+          <p style="font-size:10px;">Sessões para cicatrizes</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:clamp(22px,4vw,32px);font-weight:900;color:#A78BFA;letter-spacing:-.03em;">4–8</div>
+          <p style="font-size:10px;">Sessões para melasma</p>
+        </div>
+        <div class="card" style="text-align:center;padding:12px 8px;">
+          <div style="font-size:clamp(22px,4vw,32px);font-weight:900;color:#34D399;letter-spacing:-.03em;">2–4</div>
+          <p style="font-size:10px;">Sessões anti-aging</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SLIDE 10 ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="sc-area">
+    <div class="inner">
+      <div class="gl ce au d1"></div>
+      <div class="au d2" style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;">
+        <span class="pill pg">💰 Módulo 9</span>
+        <h2 class="stitle">Precificação, Mercado & <span class="gt">Certificação</span></h2>
+      </div>
+      <p class="ssub au d3">Transforme conhecimento em faturamento sustentável e posicionamento premium.</p>
+      <div class="au d3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;">
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:clamp(24px,5vw,38px);font-weight:900;color:#34D399;letter-spacing:-.03em;margin-bottom:4px;">R$250</div>
+          <h3 style="font-size:11px;color:#6EE7B7;margin-bottom:4px;">Ticket Médio</h3>
+          <p style="font-size:10px;">Sessão face completa em clínicas intermediárias de SP/RJ</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:clamp(24px,5vw,38px);font-weight:900;color:#60A5FA;letter-spacing:-.03em;margin-bottom:4px;">R$600</div>
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:4px;">Posição Premium</h3>
+          <p style="font-size:10px;">Com ativos premium (PDRN, bioestimuladores) + experiência diferenciada</p>
+        </div>
+        <div class="cp" style="text-align:center;">
+          <div style="font-size:clamp(24px,5vw,38px);font-weight:900;color:#A78BFA;letter-spacing:-.03em;margin-bottom:4px;">6×</div>
+          <h3 style="font-size:11px;color:#C4B5FD;margin-bottom:4px;">ROI Pacote</h3>
+          <p style="font-size:10px;">Pacote de 6 sessões fecha com desconto e garante fidelização do cliente</p>
+        </div>
+      </div>
+      <div class="au d4" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:10px;">
+        <div class="card" style="text-align:left;padding:14px;">
+          <h3 style="font-size:11px;color:#FACC15;margin-bottom:8px;">📊 Estratégias de Venda</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Fotos antes/depois com consentimento</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Depoimentos em vídeo no Reels/Stories</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Pacotes combo com limpeza de pele</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#FACC15" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Programa de indicação (member get member)</p></div>
+        </div>
+        <div class="card" style="text-align:left;padding:14px;">
+          <h3 style="font-size:11px;color:#93C5FD;margin-bottom:8px;">🎓 O Que Você Recebe</h3>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Certificado profissional reconhecido</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Protocolos e fichas prontos para usar</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Acesso ao grupo exclusivo de alunos</p></div>
+          <div class="li-row"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><p>Guia de precificação + scripts de venda</p></div>
+        </div>
+      </div>
+      <div class="au d5" style="width:100%;margin-top:12px;background:linear-gradient(135deg,rgba(46,107,255,.08) 0%,rgba(200,109,215,.08) 100%);border:1px solid rgba(46,107,255,.2);border-radius:16px;padding:16px;text-align:center;">
+        <p style="font-size:clamp(13px,2.5vw,17px);font-weight:700;color:#F5F7FB;margin-bottom:6px;">Pronta para transformar vidas e construir um negócio de alto padrão?</p>
+        <p style="font-size:11px;color:#7E879B;">Domine o microagulhamento com ciência, técnica e confiança — comece hoje.</p>
+        <div style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2E6BFF,#C86DD7);padding:10px 24px;border-radius:999px;cursor:pointer;">
+          <span style="font-size:12px;font-weight:700;color:#fff;letter-spacing:.03em;">🚀 QUERO ME INSCREVER</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen();
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const t=document.getElementById('fsTxt');
+  if(t)t.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
