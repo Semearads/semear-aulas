@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Curso de Estética Facial 2</title>
+  <title>Portal de Cursos | Instituto Semear</title>
   <link rel="icon" type="image/png" href="img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #050816;
@@ -20,22 +19,29 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
+      background: 
         radial-gradient(900px 420px at 72% 18%, rgba(124,91,219,.18) 0%, transparent 42%),
         radial-gradient(800px 380px at 35% 20%, rgba(200,109,215,.12) 0%, transparent 42%),
-        linear-gradient(180deg, #140A18 0%, #0F0810 45%, #050816 100%);
+        linear-gradient(180deg, #140A18, #0F0810, #050816);
       color: var(--text);
       min-height: 100vh;
       padding: 28px 16px 48px;
     }
 
-    .wrap { max-width: 860px; margin: 0 auto; width: 100%; }
+    .wrap { max-width: 860px; margin: 0 auto; }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
 
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -47,36 +53,64 @@
       letter-spacing: .04em; text-transform: uppercase;
     }
 
+    .logout {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 10px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      color: #AAB3C5;
+      transition: .25s ease;
+      cursor: pointer;
+    }
+
+    .logout:hover, .logout:active {
+      border-color: rgba(124,91,219,.35);
+      color: #F5F7FB;
+    }
+
     h1 {
       margin: 16px 0 8px;
       font-size: clamp(22px, 5vw, 44px);
-      letter-spacing: -.02em;
       line-height: 1.15;
-      word-break: break-word;
-      background: linear-gradient(135deg, #CDBBFF 0%, #C86DD7 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      background: linear-gradient(135deg, #CDBBFF, #C86DD7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
     .subtitle {
-      margin: 0 0 24px;
+      margin-bottom: 24px;
       color: var(--muted);
-      line-height: 1.7;
       font-size: clamp(13px, 2.5vw, 15px);
+      line-height: 1.7;
     }
 
-    .grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+
     @media (min-width: 640px) {
       .grid { grid-template-columns: 1fr 1fr; }
     }
+
     @media (min-width: 900px) {
       .grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     a.card {
-      display: flex; flex-direction: column; text-decoration: none; color: inherit;
-      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-      padding: 18px 16px; transition: .2s ease; -webkit-tap-highlight-color: transparent;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 16px;
+      transition: .2s ease;
     }
+
     a.card:hover, a.card:active {
       transform: translateY(-2px);
       border-color: rgba(124,91,219,.40);
@@ -86,24 +120,22 @@
     .card-title {
       font-weight: 800;
       font-size: clamp(14px, 3vw, 16px);
-      line-height: 1.4;
       margin-bottom: 8px;
     }
 
     .card-desc {
-      color: var(--muted);
       font-size: clamp(12px, 2.4vw, 13px);
       line-height: 1.6;
+      color: var(--muted);
       flex: 1;
     }
 
     .pill {
       display: inline-block;
-      align-self: flex-start;
       margin-top: 14px;
+      padding: 7px 14px;
       font-size: clamp(11px, 2.2vw, 12px);
       font-weight: 900;
-      padding: 7px 14px;
       border-radius: 999px;
       background: linear-gradient(135deg, rgba(124,91,219,.22), rgba(200,109,215,.22));
       border: 1px solid rgba(200,109,215,.20);
@@ -111,104 +143,76 @@
       white-space: nowrap;
     }
 
-    .row-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color: #AAB3C5;
-      padding: 12px 18px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: clamp(12px, 2.5vw, 14px);
-      transition: .25s ease;
-      -webkit-tap-highlight-color: transparent;
-      cursor: pointer;
-    }
-
-    .btn:hover, .btn:active {
-      color: #F5F7FB;
-      border-color: rgba(124,91,219,.35);
-    }
-
-    .btn svg { flex-shrink: 0; }
-
     .footer {
-      margin-top: 24px;
-      color: #7E879B;
+      margin-top: 28px;
       font-size: clamp(11px, 2.2vw, 12px);
+      color: #7E879B;
+      text-align: center;
     }
+
     .footer a { color: #CDBBFF; }
+
+    .empty {
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+    }
   </style>
 </head>
-
 <body>
   <div class="wrap">
-    <div class="badge">✨ Curso de Estética Facial 2</div>
-    <h1>Estética Facial 2</h1>
-    <p class="subtitle">Selecione uma aula para abrir.</p>
-
-    <div class="grid">
-      <a class="card" href="aulas/estetica-facial-2/aula-01.html">
-        <div class="card-title">Aula 01 — Biossegurança Facial</div>
-        <p class="card-desc">Esterilização de instrumentais, higiene das mãos, preparo da bancada e uso correto de EPIs nos procedimentos faciais</p>
-        <span class="pill">Abrir aula</span>
-      </a>
-
-      <a class="card" href="aulas/estetica-facial-2/aula-02.html">
-        <div class="card-title">Aula 02 — Anatomia da Face</div>
-        <p class="card-desc">Músculos, camadas da pele, vascularização e inervação facial</p>
-        <span class="pill">Abrir aula</span>
-      </a>
-
-      <a class="card" href="aulas/estetica-facial-2/aula-03.html">
-        <div class="card-title">Aula 03 — Limpeza de Pele Profunda</div>
-        <p class="card-desc">Protocolo completo: higienização, esfoliação, extração e máscaras calmantes</p>
-        <span class="pill">Abrir aula</span>
-      </a>
-
-      <a class="card" href="aulas/estetica-facial-2/aula-04.html">
-        <div class="card-title">Aula 04 — Peeling Químico</div>
-        <p class="card-desc">Tipos de ácidos, indicações por fototipo, aplicação segura e pós-procedimento</p>
-        <span class="pill">Abrir aula</span>
-      </a>
-
-      <a class="card" href="aulas/estetica-facial-2/aula-05.html">
-        <div class="card-title">Aula 05 — Radiofrequência Facial</div>
-        <p class="card-desc">Fundamentos da RF, colágeno e elastina, protocolos para flacidez e rejuvenescimento</p>
-        <span class="pill">Abrir aula</span>
-      </a>
-
-      <a class="card" href="aulas/estetica-facial-2/aula-06.html">
-        <div class="card-title">Aula 06 — Microcorrente Facial</div>
-        <p class="card-desc">Eletroestimulação muscular, drenagem linfática facial e lifting imediato</p>
-        <span class="pill">Abrir aula</span>
-      </a>
-
-      <a class="card" href="aulas/estetica-facial-2/aula-07.html">
-        <div class="card-title">Aula 07 — Dermaplaning</div>
-        <p class="card-desc">Remoção de células mortas e pelos, lâmina cirúrgica, indicações e contraindicações</p>
-        <span class="pill">Abrir aula</span>
+    <div class="header">
+      <div class="badge">🎓 Portal de Cursos</div>
+      <a href="#" class="logout" onclick="sair()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Sair
       </a>
     </div>
 
-    <div class="row-actions">
-      <a href="index.html" class="btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-        Voltar ao Portal
+    <h1>Instituto Semear</h1>
+    <p class="subtitle">Escolha um curso abaixo para acessar as aulas disponíveis. Cada curso possui conteúdo exclusivo e certificado de conclusão.</p>
+
+    <div class="grid">
+      <a class="card" href="curso-estetica-facial-1.html">
+        <div class="card-title">Estética Facial 1</div>
+        <p class="card-desc">Fundamentos da estética facial, cuidados básicos, preparação de pele e higienização.</p>
+        <span class="pill">Acessar curso</span>
+      </a>
+
+      <a class="card" href="curso-estetica-facial-2.html">
+        <div class="card-title">Estética Facial 2</div>
+        <p class="card-desc">Protocolos avançados como peeling, radiofrequência, microcorrente e dermaplaning.</p>
+        <span class="pill">Acessar curso</span>
+      </a>
+
+      <a class="card" href="curso-estetica-corporal.html">
+        <div class="card-title">Estética Corporal</div>
+        <p class="card-desc">Tratamentos de massagem modeladora, drenagem linfática, lipocavitação e radiofrequência.</p>
+        <span class="pill">Acessar curso</span>
+      </a>
+
+      <a class="card" href="curso-manicure-pedicure.html">
+        <div class="card-title">Manicure e Pedicure</div>
+        <p class="card-desc">Corte, lixamento, esmaltação, cuidados com cutículas e técnicas de spa dos pés.</p>
+        <span class="pill">Acessar curso</span>
+      </a>
+
+      <a class="card" href="curso-design-sobrancelhas.html">
+        <div class="card-title">Design de Sobrancelhas</div>
+        <p class="card-desc">Mapeamento facial, design com linha, henna, micropigmentação e colorimetria.</p>
+        <span class="pill">Acessar curso</span>
+      </a>
+
+      <a class="card" href="curso-depilacao.html">
+        <div class="card-title">Depilação</div>
+        <p class="card-desc">Técnicas de depilação com cera, depilação com linha, cuidados pré e pós-procedimento.</p>
+        <span class="pill">Acessar curso</span>
       </a>
     </div>
 
@@ -218,9 +222,17 @@
   </div>
 
   <script>
-    const ACCESS_KEY = 'semear_access_ok_estetica_facial_2';
-    if (localStorage.getItem(ACCESS_KEY) !== '1') {
-      window.location.replace('index.html');
+    // Libera acesso para todos os cursos vinculados ao portal
+    localStorage.setItem('semear_access_ok_estetica_facial_2', '1');
+    localStorage.setItem('semear_access_ok_estetica_facial_1', '1');
+    localStorage.setItem('semear_access_ok_estetica_corporal', '1');
+    localStorage.setItem('semear_access_ok_manicure_pedicure', '1');
+    localStorage.setItem('semear_access_ok_design_sobrancelhas', '1');
+    localStorage.setItem('semear_access_ok_depilacao', '1');
+
+    function sair() {
+      localStorage.clear();
+      window.location.replace('login.html');
     }
   </script>
 </body>
