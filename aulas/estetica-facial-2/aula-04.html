@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Microblading Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif}
+
+/* PROGRESS */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#2E6BFF,#C86DD7,#2E6BFF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease}
+
+/* FULLSCREEN BTN */
+.fs-btn{position:fixed;top:16px;right:16px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:10px 14px;border-radius:12px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(46,107,255,.3)}
+.fs-btn svg{width:14px;height:14px}
+
+/* SLIDE COUNTER */
+.sc{position:fixed;bottom:28px;left:20px;z-index:998;color:#7E879B;font-size:13px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:10px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05)}
+.sc .cn{color:#2E6BFF;font-weight:800}
+
+/* INDICATORS */
+.ind{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:6px;background:rgba(0,0,0,.3);padding:8px 14px;border-radius:20px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05)}
+.ind .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0}
+.ind .dot.active{background:#2E6BFF;box-shadow:0 0 14px rgba(46,107,255,.6);width:28px;border-radius:5px}
+
+/* NAV ARROWS */
+.nav-arr{position:fixed;bottom:24px;right:20px;z-index:998;display:flex;gap:8px}
+.nav-arr button{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px)}
+.nav-arr button:hover{background:rgba(46,107,255,.2);border-color:rgba(46,107,255,.4);color:#fff;transform:scale(1.05)}
+.nav-arr button svg{width:18px;height:18px}
+
+/* PRESENTATION */
+.presentation{width:100vw;height:100vh;overflow:hidden}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);height:100%}
+
+/* SLIDE BASE */
+.slide{
+  width:100vw;height:100vh;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;padding:60px 20px 90px;
+}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(900px 420px at 72% 18%,rgba(255,120,180,.14) 0%,transparent 42%),
+  radial-gradient(800px 380px at 35% 20%,rgba(35,110,255,.14) 0%,transparent 42%),
+  linear-gradient(180deg,#0A0F24 0%,#070B1D 45%,#050816 100%)}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:radial-gradient(rgba(255,255,255,.06) .8px,transparent .8px);background-size:24px 24px}
+.slide>*{position:relative;z-index:1}
+
+/* INNER WRAPPER */
+.inner{width:100%;max-width:1100px;margin:0 auto}
+
+/* TYPOGRAPHY */
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.12;color:#F5F7FB}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB}
+p,span,li{font-weight:400;line-height:1.6;color:#AAB3C5}
+
+/* GRADIENT TEXT */
+.gt{background:linear-gradient(135deg,#2E6BFF 0%,#C86DD7 50%,#2E6BFF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+/* GRADIENT LINE */
+.gl{width:70px;height:4px;border-radius:2px;background:linear-gradient(90deg,#2E6BFF,#C86DD7);margin-bottom:18px;animation:lineG .8s ease both;transform-origin:left}
+.gl.ce{margin:0 auto 18px auto;transform-origin:center}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;margin-bottom:24px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.2);font-size:13px;font-weight:600;color:#8FAEFF;letter-spacing:.05em;text-transform:uppercase}
+.badge svg{width:14px;height:14px;flex-shrink:0}
+
+/* CARDS */
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 16px 48px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:24px 20px;backdrop-filter:blur(8px);transition:all .4s ease}
+.card:hover{border-color:rgba(46,107,255,.2);transform:translateY(-3px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 30px rgba(46,107,255,.08)}
+.cp{background:linear-gradient(145deg,rgba(18,11,43,.95) 0%,rgba(10,15,36,.98) 55%,rgba(5,8,22,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 40px rgba(46,107,255,.08);padding:24px 20px;backdrop-filter:blur(10px);transition:all .4s ease}
+.cp:hover{border-color:rgba(46,107,255,.25);transform:translateY(-3px) scale(1.01);box-shadow:0 28px 64px rgba(0,0,0,.55),0 0 50px rgba(46,107,255,.12)}
+
+/* NUMBERED */
+.tn{width:60px;height:60px;border-radius:16px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;animation:glowP 3s ease-in-out infinite;flex-shrink:0}
+.tn.n1{background:linear-gradient(145deg,#2E6BFF,#1E56D9)}
+.tn.n2{background:linear-gradient(145deg,#5B3FD6,#4530B3);animation-delay:.5s}
+.tn.n3{background:linear-gradient(145deg,#C86DD7,#A854BF);animation-delay:1s}
+@keyframes glowP{0%,100%{box-shadow:0 0 18px rgba(46,107,255,.12)}50%{box-shadow:0 0 36px rgba(46,107,255,.3)}}
+
+/* ICON CONTAINER */
+.ic{width:48px;height:48px;border-radius:12px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;background:rgba(46,107,255,.08);flex-shrink:0}
+.ic svg{width:22px;height:22px;color:#2E6BFF}
+
+/* METRIC */
+.s5n{font-size:clamp(36px,6vw,52px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+
+/* SIDE BORDER */
+.sbc{position:relative;overflow:hidden}
+.sbc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px}
+.sbc.sb1::before{background:#2E6BFF}
+.sbc.sb2::before{background:#5B3FD6}
+.sbc.sb3::before{background:#C86DD7}
+.sbc.sb4::before{background:linear-gradient(180deg,#2E6BFF,#C86DD7)}
+
+/* COMPARE CARDS */
+.bwc{border-radius:16px;padding:22px 18px}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.12)}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.12)}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.12)}
+
+/* FLOW */
+.fl{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;row-gap:16px}
+.fs{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:110px;padding:0 6px}
+.fs .fi{width:64px;height:64px;border-radius:16px;background:rgba(46,107,255,.08);border:1px solid rgba(46,107,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.fs .fi svg{width:28px;height:28px;color:#2E6BFF}
+.fs span{font-size:13px;font-weight:600;color:#F5F7FB}
+.fa{display:flex;align-items:center;padding-bottom:28px;margin:0 4px}
+.fa svg{width:20px;height:20px;color:#7E879B}
+.fs.act .fi{background:linear-gradient(180deg,#2E6BFF,#1E56D9);border-color:transparent;box-shadow:0 10px 22px rgba(46,107,255,.28)}
+.fs.act .fi svg{color:#fff}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.slide.active .au{animation:fadeUp .7s ease both}
+.slide.active .as{animation:fadeScale .7s ease both}
+.d1{animation-delay:.1s!important}.d2{animation-delay:.22s!important}.d3{animation-delay:.34s!important}
+.d4{animation-delay:.46s!important}.d5{animation-delay:.58s!important}.d6{animation-delay:.7s!important}.d7{animation-delay:.82s!important}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.g2x2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+
+/* SLIDE 1 */
+.s1-wrap{text-align:center;max-width:860px;margin:0 auto}
+.s1-wrap h1{font-size:clamp(36px,7vw,72px);margin-bottom:20px}
+.s1-wrap .tag{font-size:clamp(15px,2.5vw,20px);color:#AAB3C5;max-width:600px;margin:0 auto 32px;line-height:1.6}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:36px}
+.pill{padding:8px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.pill.p1{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.25);color:#8FAEFF}
+.pill.p2{background:rgba(91,63,214,.1);border:1px solid rgba(91,63,214,.25);color:#A993FF}
+.pill.p3{background:rgba(200,109,215,.1);border:1px solid rgba(200,109,215,.25);color:#E5AAEF}
+.s1-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.s1-stat{text-align:center}
+.s1-stat .val{font-size:clamp(28px,4vw,40px);font-weight:900;line-height:1}
+.s1-stat .lbl{font-size:12px;color:#7E879B;margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+
+/* SLIDE TITLE AREA */
+.stitle{margin-bottom:28px}
+.stitle h2{font-size:clamp(22px,4vw,36px)}
+.stitle p{font-size:clamp(13px,2vw,16px);margin-top:6px}
+
+/* SMALL TEXT */
+.sm{font-size:13px!important}
+.xs{font-size:12px!important}
+.fw7{font-weight:700!important}
+.fw8{font-weight:800!important}
+.c1{color:#F5F7FB!important}
+.c2{color:#AAB3C5!important}
+.c3{color:#7E879B!important}
+.cb{color:#2E6BFF!important}
+.cv{color:#5B3FD6!important}
+.cp2{color:#C86DD7!important}
+.cr{color:#FF6B6B!important}
+.cy{color:#FFD460!important}
+.cg{color:#5EE89A!important}
+
+/* ALERT BOX */
+.alert{border-radius:14px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.alert.ar{background:rgba(255,80,80,.06);border:1px solid rgba(255,80,80,.15)}
+.alert.ay{background:rgba(255,200,60,.06);border:1px solid rgba(255,200,60,.15)}
+.alert.ab{background:rgba(46,107,255,.06);border:1px solid rgba(46,107,255,.15)}
+.alert svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+
+/* BULLET LIST */
+.blist{list-style:none;display:flex;flex-direction:column;gap:8px}
+.blist li{display:flex;align-items:flex-start;gap:10px;font-size:clamp(12px,1.8vw,14px)}
+.blist li::before{content:'';width:6px;height:6px;border-radius:50%;background:#2E6BFF;flex-shrink:0;margin-top:7px}
+.blist.bv li::before{background:#5B3FD6}
+.blist.bp li::before{background:#C86DD7}
+.blist.br li::before{background:#FF6B6B}
+.blist.by li::before{background:#FFD460}
+.blist.bg li::before{background:#5EE89A}
+
+/* CTA BUTTON */
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:14px;background:linear-gradient(135deg,#2E6BFF,#5B3FD6);color:#fff;font-size:16px;font-weight:800;letter-spacing:-.01em;border:none;cursor:pointer;transition:all .3s ease;text-decoration:none;box-shadow:0 10px 30px rgba(46,107,255,.35)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(46,107,255,.5)}
+
+/* SCROLL INSIDE SLIDE */
+.scroll-inner{overflow-y:auto;max-height:calc(100vh - 160px);padding-right:4px;scrollbar-width:thin;scrollbar-color:rgba(46,107,255,.3) transparent}
+.scroll-inner::-webkit-scrollbar{width:4px}
+.scroll-inner::-webkit-scrollbar-track{background:transparent}
+.scroll-inner::-webkit-scrollbar-thumb{background:rgba(46,107,255,.3);border-radius:4px}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .g2{grid-template-columns:1fr}
+  .s1-stats{gap:20px}
+  .fl{gap:0}
+  .fa{display:none}
+  .ind{display:none}
+  .slide{padding:56px 14px 80px}
+}
+@media(max-width:400px){
+  .g3{grid-template-columns:1fr}
+  .g2x2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%"></div>
+
+<button class="fs-btn" id="fsBtn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button onclick="next()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- SLIDE 1 -->
+<section class="slide active">
+  <div class="s1-wrap">
+    <div class="badge au d1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 8v4l3 3"/></svg>
+      Curso Completo Profissional
+    </div>
+    <h1 class="au d2"><span class="gt">Microblading</span> Profissional</h1>
+    <p class="tag au d3">Do zero ao avançado — técnica, design, biossegurança e negócio em um único programa completo de formação.</p>
+    <div class="pills au d4">
+      <span class="pill p1">10 Módulos</span>
+      <span class="pill p2">Certificado Incluso</span>
+      <span class="pill p3">Prática Supervisionada</span>
+      <span class="pill p1">Material Didático</span>
+    </div>
+    <div class="s1-stats au d5">
+      <div class="s1-stat"><div class="val gt">+3k</div><div class="lbl">Alunas Formadas</div></div>
+      <div class="s1-stat"><div class="val" style="color:#C86DD7">100%</div><div class="lbl">Online + Presencial</div></div>
+      <div class="s1-stat"><div class="val" style="color:#5EE89A">R$5k+</div><div class="lbl">Ticket Médio Alcançável</div></div>
+      <div class="s1-stat"><div class="val" style="color:#FFD460">Vitalício</div><div class="lbl">Acesso ao Conteúdo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>O Mercado que Mais Cresce no <span class="gt">Brasil</span></h2>
+      <p>Micropigmentação movimenta bilhões e a demanda só aumenta</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:16px">
+      <div class="card" style="text-align:center">
+        <div class="s5n cb">R$800</div>
+        <p class="sm fw7 c1">Ticket Médio por Procedimento</p>
+        <p class="xs c3">sessão única, 90 minutos</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n" style="color:#C86DD7">+42%</div>
+        <p class="sm fw7 c1">Crescimento Anual do Setor</p>
+        <p class="xs c3">mercado estético brasileiro</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n" style="color:#5EE89A">3x</div>
+        <p class="sm fw7 c1">Retorno do Cliente</p>
+        <p class="xs c3">retoque + indicações orgânicas</p>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="cp sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">💼 Onde Atuar</p>
+        <ul class="blist">
+          <li>Studio próprio ou home studio</li>
+          <li>Clínicas de estética e dermatologia</li>
+          <li>Salões de beleza premium</li>
+          <li>Atendimento móvel VIP</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb3">
+        <p class="sm fw7 c1" style="margin-bottom:10px">📈 Diferenciais Competitivos</p>
+        <ul class="blist bv">
+          <li>Alta margem de lucro (70–80%)</li>
+          <li>Baixo investimento inicial</li>
+          <li>Fidelização natural da cliente</li>
+          <li>Escalável com cursos e mentorias</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Biossegurança: A Base <span class="gt">Inegociável</span></h2>
+      <p>Proteja sua cliente e sua carreira com protocolos corretos</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="bwc cr">
+        <p class="sm fw7" style="color:#FF6B6B;margin-bottom:10px">🔴 Proibido</p>
+        <ul class="blist br">
+          <li>Reutilizar agulhas</li>
+          <li>Trabalhar sem luvas</li>
+          <li>Ignorar fichas de anamnese</li>
+          <li>Usar pigmento não regulamentado</li>
+        </ul>
+      </div>
+      <div class="bwc cy">
+        <p class="sm fw7" style="color:#FFD460;margin-bottom:10px">🟡 Atenção</p>
+        <ul class="blist by">
+          <li>Esterilizar instrumentos reutilizáveis</li>
+          <li>Validade dos insumos</li>
+          <li>Armazenamento de pigmentos</li>
+          <li>Limpeza do ambiente</li>
+        </ul>
+      </div>
+      <div class="bwc cg">
+        <p class="sm fw7" style="color:#5EE89A;margin-bottom:10px">🟢 Obrigatório</p>
+        <ul class="blist bg">
+          <li>EPI completo (máscara, óculos, avental)</li>
+          <li>Ficha de consentimento assinada</li>
+          <li>Registro fotográfico antes/depois</li>
+          <li>Descarte correto de perfurocortantes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="alert ar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><p class="sm fw7 cr">ANVISA / RDC 56</p><p class="xs">Todos os pigmentos devem ter registro na ANVISA. Exija nota fiscal e laudos do fornecedor.</p></div>
+      </div>
+      <div class="alert ab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2E6BFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div><p class="sm fw7 cb">Documentação Legal</p><p class="xs">Ficha de anamnese, TCLE e fotos são sua proteção jurídica. Guarde por no mínimo 5 anos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Anatomia da Pele: Conheça o Seu <span class="gt">Canvas</span></h2>
+      <p>Entender a estrutura cutânea é fundamental para resultados duradouros</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="cp" style="text-align:center">
+        <div class="tn n1">1</div>
+        <h3 style="font-size:15px;margin-bottom:8px">Epiderme</h3>
+        <p class="xs">Camada superficial. O traço do microblading deve atingir a camada basal — profundidade de 0,08 a 0,15mm para fixação ideal.</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n2">2</div>
+        <h3 style="font-size:15px;margin-bottom:8px">Derme Papilar</h3>
+        <p class="xs">Camada alvo do procedimento. Rica em colágeno. Pigmento se fixa aqui. Profundidade excessiva causa manchas e migração.</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n3">3</div>
+        <h3 style="font-size:15px;margin-bottom:8px">Hipoderme</h3>
+        <p class="xs">Camada profunda de gordura. Jamais deve ser atingida. Risco de queloide, granuloma e resultados irreversíveis.</p>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="card sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🔬 Tipos de Pele e Impacto</p>
+        <ul class="blist">
+          <li><span class="c1 fw7">Pele oleosa:</span> maior rejeição, retoque mais cedo</li>
+          <li><span class="c1 fw7">Pele seca:</span> absorção ideal, resultado mais nítido</li>
+          <li><span class="c1 fw7">Pele mista:</span> análise por zona antes do traço</li>
+          <li><span class="c1 fw7">Pele madura:</span> elasticidade reduzida, técnica adaptada</li>
+        </ul>
+      </div>
+      <div class="card sbc sb3">
+        <p class="sm fw7 c1" style="margin-bottom:10px">⚡ Fatores que Afetam o Resultado</p>
+        <ul class="blist bv">
+          <li>Hidratação do tecido</li>
+          <li>Histórico de procedimentos anteriores</li>
+          <li>Cicatrização individual (fototipos)</li>
+          <li>Uso de isotretinoína e ácidos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Pigmentos, Agulhas e <span class="gt">Equipamentos</span></h2>
+      <p>Escolha o material certo para cada cliente e cada técnica</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3 style="font-size:14px;margin-bottom:8px">Pigmentos Orgânicos</h3>
+        <p class="xs">Base vegetal. Cores vibrantes e naturais. Melhor aceitação. Tendência a clarear com tons quentes.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(91,63,214,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#5B3FD6" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <h3 style="font-size:14px;margin-bottom:8px">Pigmentos Inorgânicos</h3>
+        <p class="xs">Base mineral. Maior durabilidade e fixação. Risco de virar avermelhado/azulado. Indicado para peles escuras.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:rgba(200,109,215,.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#C86DD7" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <h3 style="font-size:14px;margin-bottom:8px">Pigmentos Premium</h3>
+        <p class="xs">Fórmulas híbridas certificadas. Paleta ampla, fade controlado, resultados previsíveis por fototipo.</p>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="cp sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🪡 Tipos de Agulha</p>
+        <ul class="blist">
+          <li><span class="c1 fw7">U-blade 14pt:</span> fios finos e definidos</li>
+          <li><span class="c1 fw7">U-blade 18pt:</span> traços com volume</li>
+          <li><span class="c1 fw7">Microshading:</span> agulha redonda para sombreado</li>
+          <li><span class="c1 fw7">Combo needle:</span> técnica mista hairstrokes</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb2">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🔧 Dermógrafo: Manual vs Máquina</p>
+        <ul class="blist bv">
+          <li><span class="c1 fw7">Manual (caneta):</span> maior controle do traço, ideal para iniciantes</li>
+          <li><span class="c1 fw7">Rotativa:</span> velocidade, shading e nano</li>
+          <li><span class="c1 fw7">Pen digital:</span> alta precisão e menor trauma</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Design e Mapeamento: A Arte da <span class="gt">Sobrancelha Perfeita</span></h2>
+      <p>Proporção, simetria e personalização para cada rosto</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="cp" style="text-align:center">
+        <div class="tn n1">📍</div>
+        <h3 style="font-size:14px;margin-bottom:6px">Ponto de Início</h3>
+        <p class="xs">Asa do nariz → canto interno do olho. Define onde a sobrancelha começa alinhada com a face.</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n2">📐</div>
+        <h3 style="font-size:14px;margin-bottom:6px">Ponto do Arco</h3>
+        <p class="xs">Asa do nariz → pupila dilatada. Localiza o pico ideal da sobrancelha com proporção áurea.</p>
+      </div>
+      <div class="cp" style="text-align:center">
+        <div class="tn n3">🎯</div>
+        <h3 style="font-size:14px;margin-bottom:6px">Ponto Final</h3>
+        <p class="xs">Asa do nariz → canto externo do olho. A cauda nunca deve cair abaixo do início.</p>
+      </div>
+    </div>
+    <div class="g2 au d3" style="margin-bottom:14px">
+      <div class="card sbc sb4">
+        <p class="sm fw7 c1" style="margin-bottom:10px">💡 Tipos de Rosto × Desenho Ideal</p>
+        <ul class="blist">
+          <li><span class="c1 fw7">Oval:</span> qualquer formato equilibra</li>
+          <li><span class="c1 fw7">Redondo:</span> arco alto para alongar</li>
+          <li><span class="c1 fw7">Quadrado:</span> sobrancelha suave, sem ângulo reto</li>
+          <li><span class="c1 fw7">Coração:</span> arco médio com cauda fina</li>
+          <li><span class="c1 fw7">Longo:</span> sobrancelha reta para horizontalizar</li>
+        </ul>
+      </div>
+      <div class="alert ay" style="align-items:flex-start;flex-direction:column;gap:10px">
+        <p class="sm fw7 cy">⚠️ Regras de Ouro do Mapeamento</p>
+        <ul class="blist by">
+          <li>Sempre mapear com a cliente sentada e olhando para frente</li>
+          <li>Fotografar antes e obter aprovação por escrito</li>
+          <li>Nunca iniciar o traço sem simetria confirmada</li>
+          <li>Respeitar o crescimento natural dos fios existentes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Técnica Microblading: O Traço que <span class="gt">Transforma</span></h2>
+      <p>Passo a passo completo do procedimento profissional</p>
+    </div>
+    <div class="au d2" style="margin-bottom:16px">
+      <div class="fl">
+        <div class="fs act">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <span>Anamnese</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+          <span>Design</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <span>Antissepsia</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <span>Execução</span>
+        </div>
+        <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="fs">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+          <span>Finalização</span>
+        </div>
+      </div>
+    </div>
+    <div class="g3 au d3">
+      <div class="card sbc sb1">
+        <p class="sm fw7 cb" style="margin-bottom:8px">📐 Ângulo de Inserção</p>
+        <p class="xs">45° a 60° em relação à pele. Agulha rasa demais = fio superficial que some. Funda demais = trauma e cicatriz.</p>
+      </div>
+      <div class="card sbc sb2">
+        <p class="sm fw7 cv" style="margin-bottom:8px">🖊️ Hairstrokes Perfeitos</p>
+        <p class="xs">Movimentos únicos, contínuos e sem pressão excessiva. Variar direção e espessura para naturalidade máxima.</p>
+      </div>
+      <div class="card sbc sb3">
+        <p class="sm fw7 cp2" style="margin-bottom:8px">⏱️ Tempo de Procedimento</p>
+        <p class="xs">Anamnese: 15min | Design: 20min | Execução: 45–60min | Finalização: 10min. Total: ~90 minutos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Pigmentação, Correção e <span class="gt">Retoque Profissional</span></h2>
+      <p>Seleção de cores, protocolo de retoque e cobertura de trabalhos anteriores</p>
+    </div>
+    <div class="g2 au d2" style="margin-bottom:14px">
+      <div class="cp">
+        <p class="sm fw7 c1" style="margin-bottom:12px">🎨 Seleção de Cor por Subtom</p>
+        <ul class="blist" style="gap:10px">
+          <li><span class="c1 fw7">Pele clara / subtom frio:</span> castanho acinzentado, louro cinza</li>
+          <li><span class="c1 fw7">Pele clara / subtom quente:</span> castanho dourado, marrom mel</li>
+          <li><span class="c1 fw7">Pele morena / subtom neutro:</span> castanho médio, café com leite</li>
+          <li><span class="c1 fw7">Pele negra / subtom quente:</span> marrom escuro, chocolate</li>
+        </ul>
+      </div>
+      <div class="cp">
+        <p class="sm fw7 c1" style="margin-bottom:12px">🔁 Protocolo de Retoque (30–45 dias)</p>
+        <ul class="blist bv">
+          <li>Avaliar cicatrização e absorção</li>
+          <li>Corrigir falhas e clarões</li>
+          <li>Reforçar traços com baixa fixação</li>
+          <li>Ajustar tonalidade se necessário</li>
+          <li>Definir necessidade de 2º retoque</li>
+        </ul>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="card sbc sb3">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🛠️ Correção de Trabalhos Anteriores</p>
+        <ul class="blist bp">
+          <li>Analisar tom residual antes de pigmentar</li>
+          <li>Usar corretores de pigmento para neutralizar</li>
+          <li>Aguardar cicatrização mínima de 6 semanas</li>
+          <li>Indicar laser para casos de saturação extrema</li>
+        </ul>
+      </div>
+      <div class="alert ab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2E6BFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div><p class="sm fw7 cb">Cobertura de Cicatrizes</p><p class="xs">Técnica avançada para disfarçar cicatrizes na região da sobrancelha. Requer laudo médico e avaliação dermatológica prévia.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1">
+      <div class="gl"></div>
+      <h2>Contraindicações, Riscos e <span class="gt">Protocolo de Emergência</span></h2>
+      <p>Proteja sua cliente e sua reputação profissional</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:14px">
+      <div class="bwc cr">
+        <p class="sm fw7" style="color:#FF6B6B;margin-bottom:10px">🚫 Contraindicações Absolutas</p>
+        <ul class="blist br">
+          <li>Gestantes e lactantes</li>
+          <li>Uso de isotretinoína (Roacutan)</li>
+          <li>Quimioterapia ou radioterapia ativa</li>
+          <li>Diabéticas descompensadas</li>
+          <li>Herpes ativo na região</li>
+        </ul>
+      </div>
+      <div class="bwc cy">
+        <p class="sm fw7" style="color:#FFD460;margin-bottom:10px">⚠️ Contraindicações Relativas</p>
+        <ul class="blist by">
+          <li>Uso de anticoagulantes</li>
+          <li>Psoríase ou vitiligo na área</li>
+          <li>Procedimentos estéticos recentes</li>
+          <li>Alergias a metais pesados</li>
+          <li>Hipersensibilidade cutânea</li>
+        </ul>
+      </div>
+      <div class="bwc cg">
+        <p class="sm fw7" style="color:#5EE89A;margin-bottom:10px">✅ Protocolo de Emergência</p>
+        <ul class="blist bg">
+          <li>Anti-histamínico disponível</li>
+          <li>Interromper e lavar a área</li>
+          <li>Acionar SAMU se necessário</li>
+          <li>Registrar ocorrência em ficha</li>
+          <li>Notificar ANVISA em reações graves</li>
+        </ul>
+      </div>
+    </div>
+    <div class="g2 au d3">
+      <div class="alert ar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><p class="sm fw7 cr">Reação Alérgica ao Pigmento</p><p class="xs">Sintomas: inchaço, eritema intenso, bolhas. Remova pigmento residual, aplique frio e encaminhe para avaliação médica imediata.</p></div>
+      </div>
+      <div class="alert ay">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFD460" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div><p class="sm fw7 cy">Cuidados Pós-Procedimento</p><p class="xs">Evitar sol, piscina e maquiagem por 10 dias. Aplicar pomada cicatrizante indicada. Não coçar ou esfoliar a área.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide">
+  <div class="inner scroll-inner">
+    <div class="stitle au d1" style="text-align:center">
+      <div class="gl ce"></div>
+      <h2>Transforme Técnica em <span class="gt">Renda Premium</span></h2>
+      <p>O curso completo que te leva do aprendizado ao faturamento real</p>
+    </div>
+    <div class="g3 au d2" style="margin-bottom:16px">
+      <div class="card" style="text-align:center">
+        <div class="s5n cb">R$5k</div>
+        <p class="sm fw7 c1">Faturamento Mensal</p>
+        <p class="xs">com apenas 6 a 7 atendimentos/mês</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n" style="color:#C86DD7">R$800</div>
+        <p class="sm fw7 c1">Ticket por Procedimento</p>
+        <p class="xs">média mercado capitais brasileiras</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="s5n" style="color:#5EE89A">+75%</div>
+        <p class="sm fw7 c1">Margem de Lucro</p>
+        <p class="xs">baixo custo por atendimento</p>
+      </div>
+    </div>
+    <div class="g2 au d3" style="margin-bottom:16px">
+      <div class="cp sbc sb1">
+        <p class="sm fw7 c1" style="margin-bottom:10px">📦 O que está incluso no curso</p>
+        <ul class="blist">
+          <li>10 módulos completos online + prática</li>
+          <li>Material didático exclusivo em PDF</li>
+          <li>Kit de insumos para as primeiras práticas</li>
+          <li>Certificado reconhecido pelo mercado</li>
+          <li>Acesso vitalício com atualizações</li>
+        </ul>
+      </div>
+      <div class="cp sbc sb3">
+        <p class="sm fw7 c1" style="margin-bottom:10px">🚀 Estratégias para Crescer</p>
+        <ul class="blist bv">
+          <li>Montar portfólio digital no Instagram</li>
+          <li>Parcerias com clínicas e salões</li>
+          <li>Oferecer pacotes de fidelização</li>
+          <li>Escalar com mentorias e cursos próprios</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center" class="au d4">
+      <button class="cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Quero me Inscrever Agora
+      </button>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /presentation -->
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.changedTouches[0].screenX,{passive:true});
+document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?next():prev();}},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('fsTxt');
+  if(btn)btn.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
