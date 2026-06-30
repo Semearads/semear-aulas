@@ -140,10 +140,111 @@
       font-size: clamp(11px, 2.2vw, 12px);
     }
     .footer a { color: #CDBBFF; }
+
+    /* ===== Modal login ===== */
+    .login-lock{
+      position: fixed; inset: 0; z-index: 9999;
+      display: none; align-items: center; justify-content: center;
+      padding: 16px;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .login-lock.on{ display:flex; }
+    .login-card{
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      padding: 22px 18px;
+    }
+    .login-badge{
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(124,91,219,.10);
+      border: 1px solid rgba(124,91,219,.28);
+      color: #CDBBFF;
+      font-weight: 800; font-size: 12px;
+      letter-spacing: .04em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .gl{
+      width: 70px; height: 4px; border-radius: 2px;
+      background: linear-gradient(90deg, #7C5BDB, #C86DD7); margin-bottom: 14px;
+    }
+    .login-title{ font-size: 20px; font-weight: 900; margin-bottom: 6px; color: #F5F7FB; }
+    .login-sub{ color: #AAB3C5; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+    .login-row{ display:flex; flex-direction:column; gap: 10px; margin: 12px 0 14px; }
+    .login-field label{
+      display:block; font-size: 12px; font-weight: 800; margin-bottom: 6px; color: #7E879B;
+    }
+    .login-field input{
+      width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25); color: #F5F7FB; outline: none; font-family: inherit; font-size: 15px;
+    }
+    .login-field input:focus{
+      border-color: rgba(124,91,219,.55); box-shadow: 0 0 0 4px rgba(124,91,219,.14);
+    }
+    .login-actions{ display:flex; gap: 10px; align-items:center; justify-content:flex-end; margin-top: 10px; }
+    .login-btn{
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06); color: #F5F7FB; font-weight: 900; font-family: inherit;
+      cursor: pointer; transition: .2s ease;
+    }
+    .login-btn:hover{
+      border-color: rgba(124,91,219,.45); background: rgba(124,91,219,.10);
+    }
+    .login-btn.primary{
+      border: none; background: linear-gradient(135deg, #7C5BDB, #C86DD7);
+      box-shadow: 0 12px 36px rgba(124,91,219,.28);
+    }
+    .login-btn.primary:hover{
+      transform: translateY(-1px); box-shadow: 0 16px 42px rgba(124,91,219,.38);
+    }
+    .login-err{ min-height: 18px; color: #FF6B6B; font-size: 13px; font-weight: 800; margin-top: 8px; }
+
+    .top-logout{ position: fixed; top: 14px; left: 14px; z-index: 50; }
   </style>
 </head>
 
 <body>
+  <!-- Botão Sair -->
+  <div class="top-logout" id="logoutWrap" style="display:none;">
+    <button class="btn" type="button" id="btnLogout">Sair</button>
+  </div>
+
+  <!-- Modal login -->
+  <div class="login-lock on" id="loginLock" aria-hidden="false">
+    <div class="login-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <div class="login-badge">🔒 Acesso ao Curso</div>
+      <div class="gl"></div>
+      <div class="login-title" id="loginTitle">Faça login para acessar</div>
+      <div class="login-sub">Digite seu nome e a senha do curso para continuar.</div>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="login-row">
+          <div class="login-field">
+            <label for="alunaNome">Nome</label>
+            <input id="alunaNome" name="alunaNome" type="text" placeholder="Ex.: Maria" required />
+          </div>
+          <div class="login-field">
+            <label for="alunaSenha">Senha</label>
+            <input id="alunaSenha" name="alunaSenha" type="password" placeholder="Digite a senha" required />
+          </div>
+        </div>
+
+        <div class="login-actions">
+          <button class="login-btn primary" type="submit">Entrar</button>
+        </div>
+        <div class="login-err" id="loginErr"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Conteúdo -->
   <div class="wrap">
     <div class="badge">💅 Curso de Alongamento de Unhas</div>
     <h1>Alongamento de Unhas</h1>
@@ -190,10 +291,65 @@
   </div>
 
   <script>
+    /**********************
+     * Login Alongamento de Unhas
+     **********************/
     const ACCESS_KEY = 'semear_access_ok_unhas';
-    if (localStorage.getItem(ACCESS_KEY) !== '1') {
-      window.location.replace('index.html');
+    const NAME_KEY = 'semear_access_name_unhas';
+    const PASSWORD = 'semearau'; // ✅ senha do curso
+
+    const loginLock = document.getElementById('loginLock');
+    const loginForm = document.getElementById('loginForm');
+    const loginErr = document.getElementById('loginErr');
+    const nomeInp = document.getElementById('alunaNome');
+    const senhaInp = document.getElementById('alunaSenha');
+    const logoutWrap = document.getElementById('logoutWrap');
+    const btnLogout = document.getElementById('btnLogout');
+
+    function isAuthed() {
+      return localStorage.getItem(ACCESS_KEY) === '1';
     }
+    function openLogin() {
+      loginErr.textContent = '';
+      loginLock.classList.add('on');
+      loginLock.setAttribute('aria-hidden', 'false');
+      logoutWrap.style.display = 'none';
+      setTimeout(() => { if (nomeInp) nomeInp.focus(); }, 60);
+    }
+    function closeLogin() {
+      loginLock.classList.remove('on');
+      loginLock.setAttribute('aria-hidden', 'true');
+      logoutWrap.style.display = 'block';
+    }
+    function logout() {
+      localStorage.removeItem(ACCESS_KEY);
+      localStorage.removeItem(NAME_KEY);
+      openLogin();
+    }
+
+    // Boot
+    window.addEventListener('DOMContentLoaded', () => {
+      if (isAuthed()) closeLogin();
+      else openLogin();
+    });
+
+    // Login
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginErr.textContent = '';
+
+      const nome = (nomeInp.value || '').trim();
+      const senha = (senhaInp.value || '').trim();
+
+      if (!nome) { loginErr.textContent = 'Digite seu nome.'; nomeInp.focus(); return; }
+      if (senha !== PASSWORD) { loginErr.textContent = 'Senha incorreta.'; senhaInp.focus(); return; }
+
+      localStorage.setItem(ACCESS_KEY, '1');
+      localStorage.setItem(NAME_KEY, nome);
+      closeLogin();
+    });
+
+    btnLogout.addEventListener('click', logout);
   </script>
 </body>
 </html>
