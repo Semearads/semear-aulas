@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Hidra Gloss — Curso Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#050816;font-family:'Inter',sans-serif;}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:1000;background:linear-gradient(90deg,#00C9FF,#92EFFD,#00C9FF);background-size:200% auto;animation:shimmer 3s linear infinite;transition:width .6s ease;}
+
+.fs-btn{position:fixed;top:14px;right:14px;z-index:999;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#7E879B;padding:9px 13px;border-radius:11px;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;transition:all .3s ease;backdrop-filter:blur(6px);letter-spacing:.04em;text-transform:uppercase;}
+.fs-btn:hover{background:rgba(255,255,255,.08);color:#F5F7FB;border-color:rgba(0,201,255,.3);}
+.fs-btn svg{width:14px;height:14px;}
+
+.sc{position:fixed;bottom:22px;left:16px;z-index:998;color:#7E879B;font-size:12px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:9px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.05);}
+.sc .cn{color:#00C9FF;font-weight:800;}
+
+.ind{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:998;display:flex;gap:5px;background:rgba(0,0,0,.35);padding:7px 13px;border-radius:18px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.05);}
+.ind .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s ease;cursor:pointer;flex-shrink:0;}
+.ind .dot.active{background:#00C9FF;box-shadow:0 0 12px rgba(0,201,255,.6);width:26px;border-radius:4px;}
+
+.nav-arr{position:fixed;bottom:18px;right:16px;z-index:998;display:flex;gap:7px;}
+.nav-arr button{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#AAB3C5;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s ease;backdrop-filter:blur(6px);}
+.nav-arr button:hover{background:rgba(0,201,255,.2);border-color:rgba(0,201,255,.4);color:#fff;transform:scale(1.05);}
+
+.presentation{width:100vw;height:100vh;overflow:hidden;}
+.slides{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+
+.slide{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;padding:54px 18px 78px;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+background:
+  radial-gradient(800px 400px at 75% 10%,rgba(0,201,255,.13) 0%,transparent 45%),
+  radial-gradient(700px 350px at 20% 25%,rgba(0,120,200,.10) 0%,transparent 45%),
+  linear-gradient(180deg,#060D1F 0%,#040A18 45%,#020610 100%);}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.18;background-image:radial-gradient(rgba(255,255,255,.07) .8px,transparent .8px);background-size:24px 24px;}
+.slide>*{position:relative;z-index:1;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes lineG{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes glowC{0%,100%{box-shadow:0 0 16px rgba(0,201,255,.12)}50%{box-shadow:0 0 36px rgba(0,201,255,.45)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes droplet{0%{transform:scale(1);opacity:1}50%{transform:scale(1.15);opacity:.7}100%{transform:scale(1);opacity:1}}
+
+.slide.active .au{animation:fadeUp .65s ease both;}
+.slide.active .as{animation:fadeScale .65s ease both;}
+.d1{animation-delay:.08s!important}.d2{animation-delay:.18s!important}.d3{animation-delay:.28s!important}
+.d4{animation-delay:.38s!important}.d5{animation-delay:.48s!important}.d6{animation-delay:.58s!important}.d7{animation-delay:.68s!important}
+
+.gc{background:linear-gradient(135deg,#00C9FF 0%,#92EFFD 50%,#00C9FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite;}
+.gb{background:linear-gradient(135deg,#4FC3F7 0%,#B3E5FC 50%,#4FC3F7 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+.gt2{background:linear-gradient(135deg,#00C9FF 0%,#0077B6 50%,#00C9FF 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+
+.gl{width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,#00C9FF,#92EFFD);margin-bottom:14px;animation:lineG .8s ease both;transform-origin:left;}
+.gl.ce{margin:0 auto 14px;transform-origin:center;}
+
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border-radius:999px;margin-bottom:20px;background:rgba(0,201,255,.08);border:1px solid rgba(0,201,255,.28);font-size:12px;font-weight:600;color:#6EE7FF;letter-spacing:.05em;text-transform:uppercase;}
+
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04);padding:16px 14px;backdrop-filter:blur(8px);transition:all .4s ease;}
+.card:hover{border-color:rgba(0,201,255,.2);transform:translateY(-2px);}
+.cp{background:linear-gradient(145deg,rgba(4,14,30,.95) 0%,rgba(3,10,22,.98) 55%,rgba(2,6,14,1) 100%);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.45),0 0 36px rgba(0,201,255,.04);padding:16px 14px;backdrop-filter:blur(10px);transition:all .4s ease;}
+.cp:hover{border-color:rgba(0,201,255,.2);transform:translateY(-2px) scale(1.01);}
+
+.pill{display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.03em;}
+.pc{background:rgba(0,201,255,.1);border:1px solid rgba(0,201,255,.25);color:#6EE7FF;}
+.pb{background:rgba(46,107,255,.1);border:1px solid rgba(46,107,255,.22);color:#8FAEFF;}
+.pg{background:rgba(80,220,120,.1);border:1px solid rgba(80,220,120,.22);color:#5EE89A;}
+.pr{background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.22);color:#FF9B9B;}
+.py{background:rgba(255,212,96,.1);border:1px solid rgba(255,212,96,.22);color:#FFD460;}
+.pm{background:rgba(146,239,253,.1);border:1px solid rgba(146,239,253,.22);color:#B3F0FF;}
+
+.ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.icc{background:rgba(0,201,255,.12);}
+.icc svg{width:20px;height:20px;color:#00C9FF;}
+.icg{background:rgba(80,220,120,.12);}
+.icg svg{width:20px;height:20px;color:#5EE89A;}
+.icr{background:rgba(255,107,107,.12);}
+.icr svg{width:20px;height:20px;color:#FF6B6B;}
+.icb{background:rgba(46,107,255,.12);}
+.icb svg{width:20px;height:20px;color:#2E6BFF;}
+.icy{background:rgba(255,212,96,.12);}
+.icy svg{width:20px;height:20px;color:#FFD460;}
+
+.ci{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;}
+.ci p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.ci strong{color:#F5F7FB;font-weight:600;}
+
+.snum{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;background:linear-gradient(145deg,#00C9FF,#0077B6);}
+
+.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;width:100%;}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:56px;padding:0 3px;}
+.fstep .fi{width:44px;height:44px;border-radius:13px;background:rgba(0,201,255,.08);border:1px solid rgba(0,201,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.fstep .fi svg{width:19px;height:19px;color:#00C9FF;}
+.fstep span{font-size:10px;font-weight:600;color:#F5F7FB;line-height:1.3;}
+.fstep p{font-size:9px;color:#7E879B;margin-top:2px;line-height:1.3;}
+.farr{display:flex;align-items:center;padding-bottom:22px;margin:0 1px;}
+.farr svg{width:12px;height:12px;color:#7E879B;}
+.fstep.actp .fi{background:linear-gradient(180deg,#00C9FF,#0077B6);border-color:transparent;box-shadow:0 8px 18px rgba(0,201,255,.35);animation:glowC 3s ease-in-out infinite;}
+.fstep.actp .fi svg{color:#fff;}
+
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+
+h1{font-weight:900;letter-spacing:-.03em;line-height:1.08;color:#F5F7FB;}
+h2{font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#F5F7FB;}
+h3{font-weight:700;letter-spacing:-.015em;color:#F5F7FB;line-height:1.2;}
+p,span,li{font-weight:400;line-height:1.55;color:#AAB3C5;}
+
+.inner{width:100%;max-width:860px;display:flex;flex-direction:column;align-items:flex-start;}
+.inner.ce{align-items:center;text-align:center;}
+.inner h2{font-size:clamp(17px,3.2vw,30px);margin-bottom:4px;}
+.inner .sub{font-size:clamp(11px,1.5vw,13px);color:#7E879B;margin-bottom:14px;}
+
+.sc-area{overflow-y:auto;max-height:calc(100vh - 152px);width:100%;padding-right:3px;padding-bottom:6px;-webkit-overflow-scrolling:touch;}
+.sc-area::-webkit-scrollbar{width:3px;}
+.sc-area::-webkit-scrollbar-track{background:transparent;}
+.sc-area::-webkit-scrollbar-thumb{background:rgba(0,201,255,.3);border-radius:2px;}
+
+.bwc{border-radius:16px;padding:14px 13px;}
+.bwc.cg{background:rgba(80,220,120,.05);border:1px solid rgba(80,220,120,.15);}
+.bwc.cr{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.15);}
+.bwc.cy{background:rgba(255,200,60,.05);border:1px solid rgba(255,200,60,.15);}
+.bwc.cc{background:rgba(0,201,255,.05);border:1px solid rgba(0,201,255,.15);}
+.bwc ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.bwc ul li{font-size:11px;display:flex;align-items:flex-start;gap:7px;color:#AAB3C5;line-height:1.4;}
+.bwd{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+.bignum{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.03em;line-height:1;}
+
+.alert-box{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.alert-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.info-box{background:rgba(0,201,255,.06);border:1px solid rgba(0,201,255,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.info-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.tip-box{background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.tip-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+.warn-box{background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.2);border-radius:14px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;}
+.warn-box p{font-size:12px;color:#AAB3C5;line-height:1.5;}
+
+.vtable{width:100%;border-collapse:collapse;font-size:11px;}
+.vtable th{padding:8px 10px;text-align:left;font-weight:700;font-size:10px;color:#7E879B;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.06);}
+.vtable td{padding:8px 10px;color:#AAB3C5;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle;}
+.vtable tr:hover td{background:rgba(0,201,255,.03);}
+.vtable strong{color:#F5F7FB;}
+
+.tag-ok{background:rgba(80,220,120,.12);border:1px solid rgba(80,220,120,.25);color:#5EE89A;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+.tag-no{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.25);color:#FF9B9B;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+.tag-warn{background:rgba(255,212,96,.12);border:1px solid rgba(255,212,96,.25);color:#FFD460;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+.tag-cyan{background:rgba(0,201,255,.12);border:1px solid rgba(0,201,255,.25);color:#6EE7FF;display:inline-flex;align-items:center;padding:3px 9px;border-radius:8px;font-size:10px;font-weight:700;}
+
+.check-item{display:flex;align-items:flex-start;gap:9px;padding:8px 11px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:10px;}
+.check-ok{color:#5EE89A;font-size:14px;flex-shrink:0;margin-top:1px;}
+.check-no{color:#FF6B6B;font-size:14px;flex-shrink:0;margin-top:1px;}
+.check-warn{color:#FFD460;font-size:14px;flex-shrink:0;margin-top:1px;}
+.check-cyan{color:#00C9FF;font-size:14px;flex-shrink:0;margin-top:1px;}
+
+.s1w{text-align:center;max-width:700px;width:100%;}
+.s1w h1{font-size:clamp(22px,4.5vw,58px);margin-bottom:16px;}
+.s1w .tag{font-size:clamp(12px,1.6vw,15px);color:#AAB3C5;max-width:540px;margin:0 auto;line-height:1.6;}
+.s1w .pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:18px;}
+
+.lc{background:linear-gradient(145deg,rgba(0,201,255,.08),rgba(0,119,182,.06));border:1px solid rgba(0,201,255,.2);border-radius:20px;padding:20px 16px;text-align:center;width:100%;}
+
+.tday-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:3px;border:2px solid rgba(0,201,255,.4);}
+.tday-dot.active{background:#00C9FF;border-color:#00C9FF;box-shadow:0 0 10px rgba(0,201,255,.5);}
+
+.water-drop{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,rgba(0,201,255,.15),rgba(0,119,182,.1));border:1px solid rgba(0,201,255,.25);font-size:22px;margin-bottom:8px;animation:droplet 3s ease-in-out infinite;}
+
+.glow-line{height:1px;background:linear-gradient(90deg,transparent,rgba(0,201,255,.4),transparent);margin:8px 0;}
+
+@media(max-width:520px){
+  .g3{grid-template-columns:repeat(2,1fr);}
+  .farr{display:none;}
+  .slide{padding:48px 13px 76px;}
+  .nav-arr button{width:38px;height:38px;font-size:15px;}
+  .sc-area{max-height:calc(100vh - 142px);}
+  .vtable th,.vtable td{padding:6px 7px;font-size:10px;}
+}
+@media(max-width:380px){
+  .g2{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr;}
+  .s1w h1{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog" style="width:10%;"></div>
+<button class="fs-btn" onclick="toggleFs()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  <span id="fsTxt">Tela cheia</span>
+</button>
+<div class="sc"><span class="cn" id="cn">1</span> / 10</div>
+<div class="ind" id="ind"></div>
+<div class="nav-arr">
+  <button onclick="prev()">&#8592;</button>
+  <button onclick="next()">&#8594;</button>
+</div>
+
+<div class="presentation">
+<div class="slides" id="sw">
+
+<!-- ═══ SLIDE 1 — TÍTULO ═══ -->
+<section class="slide active">
+  <div class="s1w">
+    <div class="badge au d1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 00-5 5c0 5 5 11 5 11s5-6 5-11a5 5 0 00-5-5z"/></svg>
+      Curso Completo Profissional
+    </div>
+    <h1 class="au d2"><span class="gc">HIDRA GLOSS</span> — O Procedimento que Vicia e Fideliza</h1>
+    <p class="tag au d3">Domine a técnica de hidratação profunda com efeito gloss que transforma peles opacas em peles radiantes, cria vínculo imediato com a cliente e multiplica o seu faturamento.</p>
+    <div class="pills au d4">
+      <span class="pill pc">💧 Conceito & Origem</span>
+      <span class="pill pb">🧴 Produtos & Ativos</span>
+      <span class="pill pg">📋 Indicações</span>
+      <span class="pill py">⚙️ Equipamentos</span>
+      <span class="pill pc">🔬 Protocolo Completo</span>
+      <span class="pill pr">🛡️ Biossegurança</span>
+      <span class="pill pm">💆 Pós-Procedimento</span>
+      <span class="pill pg">💰 Precificação</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 2 — O QUE É HIDRA GLOSS ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pc">💧 Fundamentos</span>
+      <h2 style="margin-bottom:0;">O Que é Hidra Gloss e Por Que Toda Cliente Vai <span class="gc">Querer Repetir</span></h2>
+    </div>
+    <p class="sub au d3">Uma revolução em hidratação profunda — resultado imediato, efeito luminoso e fidelização natural garantida</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="cp" style="border-color:rgba(0,201,255,.15);">
+            <div class="water-drop" style="animation-delay:0s;">💧</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">O Que é o Hidra Gloss</h3>
+            <p style="font-size:12px;">O Hidra Gloss é um procedimento estético de <strong style="color:#6EE7FF;">hidratação profunda intensiva</strong> que combina ativos umectantes, emolientes e oclusivos em um protocolo de múltiplas camadas. O resultado é uma pele visivelmente hidratada, com brilho natural (<em>glass skin</em>) e textura aveludada imediatamente após o procedimento.</p>
+          </div>
+          <div class="cp" style="border-color:rgba(0,201,255,.15);">
+            <div class="water-drop" style="animation-delay:.4s;">🌊</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">Como Funciona na Pele</h3>
+            <p style="font-size:12px;">O protocolo age em <strong style="color:#6EE7FF;">três camadas estratégicas:</strong> ativos umectantes atraem água para as células (ácido hialurônico, glicerina), emolientes suavizam e preenchem espaços entre células (ceramidas, esqualano) e oclusivos selam toda a hidratação (manteigas vegetais, ceras naturais). O efeito gloss é resultado direto dessa barreira restaurada.</p>
+          </div>
+          <div class="cp" style="border-color:rgba(0,201,255,.15);">
+            <div class="water-drop" style="animation-delay:.8s;">✨</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">Diferenciais do Procedimento</h3>
+            <p style="font-size:12px;"><strong style="color:#6EE7FF;">Resultado imediato visível</strong> — a cliente já sai com pele transformada. Pode ser combinado com outros procedimentos (limpeza de pele, microagulhamento, peeling). Adaptável a todos os tipos de pele. Sem tempo de recuperação. Alta aceitação por clientes que têm resistência a procedimentos mais invasivos.</p>
+          </div>
+          <div class="cp" style="border-color:rgba(0,201,255,.15);">
+            <div class="water-drop" style="animation-delay:1.2s;">📈</div>
+            <h3 style="font-size:13px;margin-bottom:6px;">Por Que Vicia e Fideliza</h3>
+            <p style="font-size:12px;">O Hidra Gloss cria uma <strong style="color:#6EE7FF;">"dependência positiva"</strong> — a pele responde tão bem que a cliente quer repetir. O efeito gloss dura de 7 a 15 dias dependendo do tipo de pele, criando uma janela natural de retorno. Clientes satisfeitas indicam, fotografam e postam nas redes, gerando marketing orgânico poderoso.</p>
+          </div>
+        </div>
+
+        <div class="g3 au d5">
+          <div class="card" style="text-align:center;border-color:rgba(0,201,255,.2);">
+            <div class="bignum" style="color:#00C9FF;margin-bottom:5px;">30–60</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">minutos por sessão</h3>
+            <p style="font-size:11px;">Procedimento express com alto retorno por hora</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.2);">
+            <div class="bignum" style="color:#FFD460;margin-bottom:5px;">7–15</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">dias de efeito gloss</h3>
+            <p style="font-size:11px;">Janela natural de retorno e fidelização da cliente</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.2);">
+            <div class="bignum" style="color:#5EE89A;margin-bottom:5px;">100%</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">resultado imediato</h3>
+            <p style="font-size:11px;">A cliente vê a transformação ao final do procedimento</p>
+          </div>
+        </div>
+
+        <div class="info-box au d6">
+          <div class="icc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 00-5 5c0 5 5 11 5 11s5-6 5-11a5 5 0 00-5-5z"/></svg></div>
+          <p><strong>Glass Skin Effect:</strong> o termo "glass skin" vem da tendência coreana de pele tão hidratada e luminosa que parece vidro. O Hidra Gloss é o procedimento que entrega exatamente esse resultado — pele com reflexo de luz natural, translúcida e sem imperfeições aparentes. Um dos procedimentos mais fotografáveis e compartilháveis das redes sociais.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 3 — INDICAÇÕES E CONTRAINDICAÇÕES ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pg">📋 Triagem</span>
+      <h2 style="margin-bottom:0;">Para Quem Serve — e Para Quem <span class="gc">NÃO Serve</span></h2>
+    </div>
+    <p class="sub au d3">Triagem precisa = resultado garantido + cliente segura + sua reputação protegida</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="bwc cg">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+              <span style="font-size:18px;">✅</span>
+              <h3 style="font-size:13px;color:#5EE89A;">Indicações Principais</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">Perfis que mais se beneficiam</p>
+            <ul>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele desidratada (falta de água na pele)</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele seca (falta de lipídios — oleosidade)</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele opaca, sem brilho e cansada</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Textura irregular e aspereza superficial</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Linhas finas de expressão por desidratação</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele sensibilizada por uso de ácidos</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pós-peeling ou pós-laser (fase de recuperação)</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Preparo pré-evento ou pré-casamento</li>
+              <li><span class="bwd" style="background:#5EE89A;"></span>Pele mista com zona T oleosa e bochechas secas</li>
+            </ul>
+          </div>
+          <div class="bwc cr">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;">
+              <span style="font-size:18px;">🚫</span>
+              <h3 style="font-size:13px;color:#FF6B6B;">Contraindicações Absolutas</h3>
+            </div>
+            <p style="font-size:10px;color:#7E879B;margin-bottom:8px;">NUNCA realizar o procedimento</p>
+            <ul>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Acne ativa inflamada na área a ser tratada</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Herpes labial em fase ativa</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Feridas abertas, cortes ou lesões na pele</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Alergia comprovada a algum componente do protocolo</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Dermatite de contato em fase aguda</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Queimaduras solares recentes (menos de 72h)</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Eczema ativo ou psoríase em surto na área</li>
+              <li><span class="bwd" style="background:#FF6B6B;"></span>Procedimento invasivo realizado há menos de 48h</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bwc cy au d5">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:18px;">⚠️</span>
+            <h3 style="font-size:13px;color:#FFD460;">Contraindicações Relativas — Avaliar com Cautela</h3>
+          </div>
+          <div class="g2">
+            <ul>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Gestação — preferir ativos sem fragrância e sem conservantes potencialmente irritantes</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Rosácea controlada — evitar calor e ativos vasodilatadores no protocolo</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Pele muito oleosa — ajustar formulação evitando oclusivos pesados</li>
+            </ul>
+            <ul>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Uso de ácidos fortes recentes — aguardar 48h após esfoliantes químicos intensos</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;margin-bottom:5px;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Botox ou preenchimento há menos de 7 dias — risco de migração</li>
+              <li style="display:flex;gap:7px;align-items:flex-start;font-size:11px;color:#AAB3C5;line-height:1.4;"><span class="bwd" style="background:#FFD460;margin-top:5px;flex-shrink:0;"></span>Diabetes descompensado — cicatrização comprometida se houver microlesões</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card au d6" style="border-color:rgba(0,201,255,.15);">
+          <h3 style="font-size:12px;margin-bottom:8px;color:#00C9FF;">📝 Ficha de Triagem — Perguntas Obrigatórias</h3>
+          <div class="g2">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Tem alergia a cosméticos, fragrâncias ou ingredientes específicos?</p></div>
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Realizou algum procedimento estético nos últimos 7 dias?</p></div>
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Está gestante ou amamentando?</p></div>
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Tem rosácea, eczema ou dermatite diagnosticada?</p></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Usa ácidos ou retinol na rotina? Com que frequência?</p></div>
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Teve queimadura solar recente ou exposição excessiva?</p></div>
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Fez botox, preenchimento ou fio de sustentação recentemente?</p></div>
+              <div class="check-item"><span class="check-cyan">?</span><p style="font-size:11px;">Tem herpes labial? Com que frequência aparece?</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bwc cc au d7">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:16px;">💡</span>
+            <h3 style="font-size:12px;color:#6EE7FF;">Dica: Hidra Gloss é um dos procedimentos mais inclusivos da estética</h3>
+          </div>
+          <p style="font-size:11px;">Diferente de procedimentos que têm longas listas de restrições, o Hidra Gloss pode ser adaptado para praticamente qualquer perfil de cliente — basta ajustar os ativos e a formulação ao tipo e condição da pele. É ideal como procedimento de entrada para clientes novas que ainda têm receio de tratamentos mais invasivos.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 4 — PRODUTOS E INSUMOS ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pb">🧴 Produtos</span>
+      <h2 style="margin-bottom:0;">Ativos Certos, <span class="gc">Resultado Garantido</span> — Produtos e Insumos</h2>
+    </div>
+    <p class="sub au d3">Entenda a ciência por trás de cada ativo e como combiná-los para criar o efeito gloss perfeito para cada tipo de pele</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="cp" style="border-color:rgba(0,201,255,.18);">
+            <div style="font-size:22px;margin-bottom:7px;text-align:center;">💧</div>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#6EE7FF;text-align:center;">Umectantes</h3>
+            <p style="font-size:11px;margin-bottom:7px;text-align:center;">Atraem e retêm água nas células</p>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:rgba(0,201,255,.05);border:1px solid rgba(0,201,255,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#6EE7FF;">Ácido Hialurônico</strong> — retém até 1.000x seu peso em água. Usar em múltiplos pesos moleculares para ação em diferentes camadas.</p></div>
+              <div style="background:rgba(0,201,255,.05);border:1px solid rgba(0,201,255,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#6EE7FF;">Glicerina vegetal</strong> — umectante clássico, seguro, suavidade imediata e alto poder de fixação de água.</p></div>
+              <div style="background:rgba(0,201,255,.05);border:1px solid rgba(0,201,255,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#6EE7FF;">Pantenol (Pró-Vit B5)</strong> — hidrata, acalma e promove regeneração da barreira cutânea.</p></div>
+              <div style="background:rgba(0,201,255,.05);border:1px solid rgba(0,201,255,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#6EE7FF;">Betaína</strong> — umectante suave, ideal para peles sensíveis e reativas.</p></div>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(146,239,253,.15);">
+            <div style="font-size:22px;margin-bottom:7px;text-align:center;">🧴</div>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#B3F0FF;text-align:center;">Emolientes</h3>
+            <p style="font-size:11px;margin-bottom:7px;text-align:center;">Suavizam e restauram a barreira lipídica</p>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:rgba(146,239,253,.04);border:1px solid rgba(146,239,253,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#B3F0FF;">Ceramidas</strong> — reconstroem a barreira cutânea, fundamentais para peles sensibilizadas e desidratadas.</p></div>
+              <div style="background:rgba(146,239,253,.04);border:1px solid rgba(146,239,253,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#B3F0FF;">Esqualano vegetal</strong> — derivado da oliva, levíssimo, não comedogênico. Ideal para peles mistas e sensíveis.</p></div>
+              <div style="background:rgba(146,239,253,.04);border:1px solid rgba(146,239,253,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#B3F0FF;">Jojoba</strong> — estrutura semelhante ao sebo humano, equilibra oleosidade e hidrata simultaneamente.</p></div>
+              <div style="background:rgba(146,239,253,.04);border:1px solid rgba(146,239,253,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#B3F0FF;">Niacinamida</strong> — regula sebo, minimiza poros, ilumina e fortalece a barreira. Ativo multifuncional.</p></div>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(255,212,96,.15);">
+            <div style="font-size:22px;margin-bottom:7px;text-align:center;">✨</div>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#FFD460;text-align:center;">Oclusivos (Efeito Gloss)</h3>
+            <p style="font-size:11px;margin-bottom:7px;text-align:center;">Selam a hidratação e criam o brilho</p>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:rgba(255,212,96,.04);border:1px solid rgba(255,212,96,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#FFD460;">Manteiga de karité</strong> — oclusivo rico, profunda nutrição e efeito gloss intenso. Para peles muito secas.</p></div>
+              <div style="background:rgba(255,212,96,.04);border:1px solid rgba(255,212,96,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#FFD460;">Cera de abelha / vegetal</strong> — sela a hidratação sem obstruir os poros. Duração prolongada do efeito.</p></div>
+              <div style="background:rgba(255,212,96,.04);border:1px solid rgba(255,212,96,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#FFD460;">Vaselina cosmética</strong> — oclusivo máximo, clínico, ideal para finalização e selagem do protocolo completo.</p></div>
+              <div style="background:rgba(255,212,96,.04);border:1px solid rgba(255,212,96,.1);border-radius:8px;padding:6px 8px;"><p style="font-size:10px;"><strong style="color:#FFD460;">Óleo de rosa mosqueta</strong> — oclusivo leve + regenerador + antioxidante. Para peles maduras e com manchas.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(0,201,255,.15);">
+          <h3 style="font-size:12px;margin-bottom:9px;color:#00C9FF;">🎯 Formulação Recomendada por Tipo de Pele</h3>
+          <table class="vtable">
+            <thead>
+              <tr><th>Tipo de Pele</th><th>Umectante Principal</th><th>Emoliente</th><th>Oclusivo</th><th>Evitar</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Seca / muito seca</strong></td><td>Ácido hialurônico + pantenol</td><td>Ceramidas + manteiga de karité</td><td>Vaselina cosmética</td><td>Álcool em excesso</td></tr>
+              <tr><td><strong>Desidratada</strong></td><td>AH multi-molecular + glicerina</td><td>Esqualano + niacinamida</td><td>Cera vegetal leve</td><td>Fragâncias fortes</td></tr>
+              <tr><td><strong>Mista</strong></td><td>Betaína + glicerina</td><td>Jojoba + niacinamida</td><td>Esqualano (leve)</td><td>Manteigas pesadas na zona T</td></tr>
+              <tr><td><strong>Sensível / reativa</strong></td><td>Pantenol + betaína</td><td>Ceramidas + centella</td><td>Óleo de rosa mosqueta</td><td>Ácidos, fragrâncias, álcool</td></tr>
+              <tr><td><strong>Madura</strong></td><td>AH + peptídeos</td><td>Ceramidas + esqualano</td><td>Rosa mosqueta + karité</td><td>Ingredientes oclusivos muito pesados</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2 au d6">
+          <div class="card" style="border-color:rgba(46,107,255,.15);">
+            <h3 style="font-size:12px;margin-bottom:8px;color:#8FAEFF;">📦 Insumos Necessários por Sessão</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-cyan">✓</span><p style="font-size:11px;">Sérum umectante com AH (ampola individual)</p></div>
+              <div class="check-item"><span class="check-cyan">✓</span><p style="font-size:11px;">Máscara tecido hidratante (uso único)</p></div>
+              <div class="check-item"><span class="check-cyan">✓</span><p style="font-size:11px;">Gel de limpeza suave sem sulfato</p></div>
+              <div class="check-item"><span class="check-cyan">✓</span><p style="font-size:11px;">Esfoliante enzimático (dose individual)</p></div>
+              <div class="check-item"><span class="check-cyan">✓</span><p style="font-size:11px;">Finalizador gloss (creme oclusivo ou balm)</p></div>
+              <div class="check-item"><span class="check-cyan">✓</span><p style="font-size:11px;">Protetor solar FPS 50 para finalização</p></div>
+            </div>
+          </div>
+          <div class="warn-box" style="align-items:flex-start;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="icy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <h3 style="font-size:12px;color:#FFD460;">Registro ANVISA — Fique Atenta</h3>
+            </div>
+            <p style="font-size:11px;">Todos os cosméticos utilizados em procedimentos estéticos profissionais devem ter <strong style="color:#FFD460;">registro ou notificação ANVISA.</strong> Verifique o número de registro na embalagem ou no site da ANVISA antes de adquirir qualquer produto. Em caso de reação adversa, a responsabilidade é da profissional se o produto for irregular.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 5 — EQUIPAMENTOS ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill py">⚙️ Equipamentos</span>
+      <h2 style="margin-bottom:0;">Equipamentos e Acessórios: <span class="gc">Configuração Profissional</span></h2>
+    </div>
+    <p class="sub au d3">A tecnologia certa potencializa os ativos e transforma um bom protocolo em resultado extraordinário</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="cp" style="border-color:rgba(0,201,255,.18);text-align:center;">
+            <div style="font-size:28px;margin-bottom:7px;animation:float 3s ease-in-out infinite;display:inline-block;">🔬</div>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#6EE7FF;">Ultrassom Facial</h3>
+            <p style="font-size:11px;margin-bottom:7px;">Penetração profunda de ativos</p>
+            <div style="display:flex;flex-direction:column;gap:4px;text-align:left;">
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Ondas sonoras 1–3 MHz abrem microcanais temporários na pele</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Aumenta absorção dos ativos em até 300%</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Estimula colágeno e melhora circulação local</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Modo pulsado: hidratação. Modo contínuo: firmeza</p></div>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(0,201,255,.18);text-align:center;">
+            <div style="font-size:28px;margin-bottom:7px;animation:float 3s ease-in-out infinite .4s;display:inline-block;">❄️</div>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#6EE7FF;">Espátula Fria (Cryo)</h3>
+            <p style="font-size:11px;margin-bottom:7px;">Selagem e efeito calmante</p>
+            <div style="display:flex;flex-direction:column;gap:4px;text-align:left;">
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Temperatura entre -5°C e 10°C sela os poros pós-protocolo</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Reduz vermelhidão, calma a pele e intensifica o gloss</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Vasoconstricção momentânea que melhora a aparência da pele</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Usado na etapa final para "fechar" e potencializar o resultado</p></div>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(255,212,96,.15);text-align:center;">
+            <div style="font-size:28px;margin-bottom:7px;animation:float 3s ease-in-out infinite .8s;display:inline-block;">💡</div>
+            <h3 style="font-size:12px;margin-bottom:6px;color:#FFD460;">LED Facial</h3>
+            <p style="font-size:11px;margin-bottom:7px;">Fotoestimulação e potencialização</p>
+            <div style="display:flex;flex-direction:column;gap:4px;text-align:left;">
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Vermelho (630–670nm): colágeno, firmeza, anti-inflamatório</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Âmbar/amarelo (580nm): iluminação, manchas, uniformidade</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Sessão de 10–15 min potencializa qualquer ativo aplicado antes</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Pode ser usado durante máscara de tecido — máxima absorção</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card au d5" style="border-color:rgba(0,201,255,.15);">
+          <h3 style="font-size:12px;margin-bottom:9px;color:#00C9FF;">⚙️ Parâmetros de Uso — Ultrassom Facial</h3>
+          <table class="vtable">
+            <thead>
+              <tr><th>Zona do Rosto</th><th>Frequência</th><th>Modo</th><th>Tempo</th><th>Indicação</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Testa</strong></td><td>3 MHz</td><td>Pulsado</td><td>2–3 min</td><td>Hidratação profunda</td></tr>
+              <tr><td><strong>Bochechas</strong></td><td>1 MHz</td><td>Pulsado</td><td>3–4 min</td><td>Penetração de AH e ceramidas</td></tr>
+              <tr><td><strong>Contorno olhos</strong></td><td>3 MHz</td><td>Pulsado suave</td><td>1–2 min</td><td>Delicado — pressão zero</td></tr>
+              <tr><td><strong>Nasolabial</strong></td><td>1 MHz</td><td>Contínuo leve</td><td>2 min</td><td>Linhas de expressão</td></tr>
+              <tr><td><strong>Pescoço</strong></td><td>1 MHz</td><td>Pulsado</td><td>2–3 min</td><td>Estender o tratamento</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="g2 au d6">
+          <div class="info-box">
+            <div class="icc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>Higienização do ultrassom:</strong> limpar o cabeçote com álcool 70% antes e após cada cliente. Usar sempre gel condutor específico (nunca sérum puro sem condutor) para evitar superaquecimento do cabeçote e potencializar a condução das ondas.</p>
+          </div>
+          <div class="tip-box">
+            <div class="icg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Protocolo sem equipamento:</strong> o Hidra Gloss pode ser realizado apenas com os produtos e a técnica de aplicação manual (oclusão ativa, massagem linfática e compressas). Os equipamentos potencializam — mas não são impeditivos para começar.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 6 — PROTOCOLO ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pc">🔬 Protocolo</span>
+      <h2 style="margin-bottom:0;">Protocolo Passo a Passo: <span class="gc">Do Preparo ao Acabamento Glossy</span></h2>
+    </div>
+    <p class="sub au d3">Cada etapa tem propósito clínico definido — seguir a sequência correta é o que garante o efeito gloss máximo</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="fl au d4">
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/></svg></div>
+            <span>1. Limpeza</span><p>Dupla higienização</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+            <span>2. Esfoliação</span><p>Enzimática suave</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep actp">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 00-5 5c0 5 5 11 5 11s5-6 5-11a5 5 0 00-5-5z"/></svg></div>
+            <span>3. Sérum AH</span><p>1ª camada umectante</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg></div>
+            <span>4. Ultrassom</span><p>Infusão de ativos</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+            <span>5. Máscara</span><p>Tecido + LED 15min</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78z"/></svg></div>
+            <span>6. Emoliente</span><p>Ceramidas + sérum</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 8.5A5 5 0 0112 3.5a5 5 0 019.5 5c0 3.5-3 7-9.5 12C5.5 15.5 2.5 12 2.5 8.5z"/></svg></div>
+            <span>7. Oclusivo</span><p>Efeito gloss final</p>
+          </div>
+          <div class="farr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="fstep">
+            <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+            <span>8. FPS + Cryo</span><p>Proteção + selagem</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:7px;" class="au d5">
+          <div class="ci">
+            <div class="snum">1</div>
+            <p><strong>Dupla higienização:</strong> 1º passe com óleo de limpeza ou micellar water para remover maquiagem, protetor solar e resíduos externos. 2º passe com gel de limpeza suave (pH balanceado, sem sulfato SLS) para limpar a pele sem agredir a barreira. Secar com gaze ou tecido suave sem esfregar.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">2</div>
+            <p><strong>Esfoliação enzimática:</strong> bromelina (abacaxi) ou papaína (mamão) por 3–5 minutos. Dissolve células mortas sem abrasão mecânica, prepara a pele para absorção máxima. NÃO usar em peles com lesões ou muito sensibilizadas — substituir por tônico de centella asiática.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">3</div>
+            <p><strong>Sérum de ácido hialurônico multicamadas:</strong> aplicar em pele levemente úmida para potencializar a absorção. Usar sérum com múltiplos pesos moleculares: alto PM = superfície, baixo PM = profundidade. Massagear em movimentos ascendentes por 2–3 minutos para estimular circulação.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">4</div>
+            <p><strong>Ultrassom com gel condutor:</strong> aplicar gel condutor específico sobre o sérum. Passar o cabeçote em movimentos lentos e circulares por 8–12 minutos. O ultrassom força a penetração dos ativos para as camadas mais profundas da epiderme, multiplicando a eficácia do sérum aplicado.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">5</div>
+            <p><strong>Máscara de tecido com LED:</strong> posicionar a máscara de tecido hidratante pré-embebida em sérum. Acionar o LED vermelho (colágeno) ou âmbar (luminosidade) por 15 minutos. A máscara cria um ambiente oclusivo úmido que potencializa a absorção enquanto o LED trabalha em profundidade.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">6-7</div>
+            <p><strong>Emoliente + Oclusivo (Efeito Gloss):</strong> após remover a máscara, aplicar sérum de ceramidas ou emoliente leve em massagem. Finalizar com o oclusivo — balm, creme gloss ou manteiga vegetal leve — em fina camada uniforme. É essa camada final que cria o efeito "glass skin" visível.</p>
+          </div>
+          <div class="ci">
+            <div class="snum">8</div>
+            <p><strong>Espátula fria + FPS:</strong> passar a espátula cryo em movimentos ascendentes por 2–3 minutos para selar os poros, reduzir qualquer vermelhidão e intensificar o gloss. Finalizar com protetor solar FPS 50 de textura leve (não remova o efeito gloss com texturas pesadas).</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 7 — BIOSSEGURANÇA ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pr">🛡️ Biossegurança</span>
+      <h2 style="margin-bottom:0;">Segurança Total: <span class="gc">Protocolo de Biossegurança</span> do Hidra Gloss</h2>
+    </div>
+    <p class="sub au d3">Mesmo sendo não invasivo, o Hidra Gloss exige rigor total de biossegurança — pele limpa, ambiente seguro, profissional protegida</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g2 au d4">
+          <div class="card" style="border-color:rgba(0,201,255,.15);">
+            <h3 style="font-size:12px;color:#00C9FF;margin-bottom:8px;">🦺 EPIs Obrigatórios</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Luvas de procedimento</strong> — trocar entre clientes, sempre</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Máscara cirúrgica</strong> — proteger a cliente de micropartículas</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Avental de manga</strong> — descartável ou lavável com hipoclorito</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Touca</strong> — cabelos totalmente presos e cobertos</p></div>
+              <div class="check-item"><span class="check-warn">!</span><p style="font-size:11px;"><strong>Óculos de proteção</strong> — recomendado ao manusear ácidos</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;"><strong>Unhas curtas e limpas</strong> — ou luvas de procedimento durante todo o atendimento</p></div>
+            </div>
+          </div>
+          <div class="card" style="border-color:rgba(0,201,255,.15);">
+            <h3 style="font-size:12px;color:#00C9FF;margin-bottom:8px;">🔬 Higienização de Equipamentos</h3>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Cabeçote do ultrassom: álcool 70% antes e após cada cliente</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Espátula cryo: álcool 70% + secar antes de usar no rosto</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Máscara LED: desinfetar com álcool 70% na parte que toca a pele</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Espátulas, colheres e acessórios: autoclave ou descartáveis</p></div>
+              <div class="check-item"><span class="check-no">✗</span><p style="font-size:11px;">NUNCA mergulhar equipamentos eletrônicos em líquidos</p></div>
+              <div class="check-item"><span class="check-ok">✓</span><p style="font-size:11px;">Superfície da maca: lençol descartável para cada cliente</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g3 au d5">
+          <div class="card" style="border-color:rgba(0,201,255,.15);">
+            <h3 style="font-size:12px;color:#6EE7FF;margin-bottom:7px;">📦 Organização do Campo</h3>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Montar campo estéril antes de cada atendimento</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Produtos em doses individuais — nunca mergulhar espátulas em potes grandes</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Gazes e algodões em embalagens fechadas</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-ok">✓</span><p style="font-size:10px;">Lixo infectante (saco branco) próximo ao campo de trabalho</p></div>
+            </div>
+          </div>
+          <div class="card" style="border-color:rgba(255,212,96,.15);">
+            <h3 style="font-size:12px;color:#FFD460;margin-bottom:7px;">⚠️ Área Ocular e Labial</h3>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div class="check-item" style="padding:6px 9px;"><span class="check-warn">!</span><p style="font-size:10px;">Proteger olhos com óculos escuros durante o LED</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-warn">!</span><p style="font-size:10px;">Cuidado com oclusivos pesados próximos aos olhos — risco de oleosidade na córnea</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-warn">!</span><p style="font-size:10px;">Não aplicar esfoliante enzimático nos lábios se houver feridas ou herpes</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-warn">!</span><p style="font-size:10px;">Ultrassom: pressão zero na área periorbital — movimento suave</p></div>
+            </div>
+          </div>
+          <div class="card" style="border-color:rgba(255,107,107,.15);">
+            <h3 style="font-size:12px;color:#FF9B9B;margin-bottom:7px;">🚑 Reações Adversas</h3>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div class="check-item" style="padding:6px 9px;"><span class="check-no">!</span><p style="font-size:10px;">Hiperemia intensa: interromper, aplicar compressa fria e calmante</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-no">!</span><p style="font-size:10px;">Urticária ou coceira: identificar o ativo suspeito, remover com água</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-no">!</span><p style="font-size:10px;">Edema localizado: encaminhar para dermatologista se persistir</p></div>
+              <div class="check-item" style="padding:6px 9px;"><span class="check-no">!</span><p style="font-size:10px;">Registrar todo e qualquer incidente na ficha da cliente</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2 au d6">
+          <div class="tip-box">
+            <div class="icg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <p><strong>Boas práticas do ambiente:</strong> ar-condicionado limpo (filtro higienizado mensalmente), bancadas de inox ou fácil desinfecção, iluminação adequada para avaliação da pele, e dispensers de álcool gel acessíveis. Ambiente seguro transmite profissionalismo e gera confiança imediata.</p>
+          </div>
+          <div class="info-box">
+            <div class="icc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+            <p><strong>Documentação obrigatória:</strong> ficha de anamnese assinada antes de cada sessão, termo de consentimento informado com descrição do procedimento e possíveis reações. Guarde por no mínimo 5 anos. Em caso de questionamento, a documentação é sua proteção legal.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 8 — PÓS-PROCEDIMENTO ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pm">💆 Pós-Procedimento</span>
+      <h2 style="margin-bottom:0;">Pós-Hidra Gloss: O Que <span class="gc">Garante o Efeito Duradouro</span></h2>
+    </div>
+    <p class="sub au d3">A orientação pós é o que separa um resultado de 3 dias de um resultado de 15 dias — educar a cliente é parte do protocolo</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div style="display:flex;flex-direction:column;gap:8px;" class="au d4">
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot active"></div>
+              <div style="width:2px;flex:1;background:rgba(0,201,255,.2);min-height:40px;margin:3px 0;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(0,201,255,.2);">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span class="tag-cyan">Imediato — 1ª hora</span></div>
+              <p style="font-size:12px;">A pele está no seu pico de hidratação e brilho. <strong style="color:#6EE7FF;">Não tocar no rosto</strong> por pelo menos 2 horas. Fotografar agora — antes e depois — para documentar o resultado. Não aplicar maquiagem por 12h mínimas para não comprometer a barreira recém-restaurada.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot active"></div>
+              <div style="width:2px;flex:1;background:rgba(0,201,255,.2);min-height:40px;margin:3px 0;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(0,201,255,.15);">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span class="tag-cyan">Dias 1–3</span></div>
+              <p style="font-size:12px;">Fase de consolidação. Usar apenas <strong style="color:#6EE7FF;">limpador suave + hidratante + FPS 50.</strong> Manter a pele hidratada em casa com produtos leves. Evitar atividade física intensa (suor pode comprometer o efeito). Evitar banho quente direto no rosto.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot active"></div>
+              <div style="width:2px;flex:1;background:rgba(0,201,255,.2);min-height:40px;margin:3px 0;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(255,212,96,.15);">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span class="tag-warn">Dias 4–7</span></div>
+              <p style="font-size:12px;">Efeito gloss ativo. Retomar rotina skincare normal com cuidado. <strong style="color:#FFD460;">Retinol e ácidos podem retornar com concentrações mais baixas</strong> se a pele estiver tranquila. Continuar FPS rigoroso. Evitar esfoliação mecânica — a pele ainda está em equilíbrio.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+              <div class="tday-dot" style="background:rgba(80,220,120,.3);border-color:#5EE89A;"></div>
+            </div>
+            <div class="cp" style="flex:1;border-color:rgba(80,220,120,.15);">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span class="tag-ok">Dias 7–15 — Janela de Retorno</span></div>
+              <p style="font-size:12px;">O efeito gloss diminui gradualmente — esse é o momento ideal para agendar a próxima sessão. <strong style="color:#5EE89A;">A cliente percebe a diferença e quer repetir.</strong> Intervalo recomendado: 15–30 dias. Protocolo de manutenção mensal garante pele constantemente hidratada.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="tip-box">
+            <div class="icg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Produtos RECOMENDADOS em casa:</strong> sérum de ácido hialurônico, niacinamida (2–5%), centella asiática, aloe vera gel, ceramidas, FPS 50+ mineral. Esses produtos prolongam e potencializam o efeito da sessão.</p>
+          </div>
+          <div class="alert-box">
+            <div class="icr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <p><strong>EVITAR nas primeiras 72h:</strong> sabonetes com sulfato (SLS), álcool na pele, ácidos em alta concentração, esfoliantes, sauna, piscina com cloro, exposição solar sem proteção. Esses fatores destroem a barreira recém-construída e eliminam o efeito gloss prematuramente.</p>
+          </div>
+        </div>
+
+        <div class="card au d6" style="border-color:rgba(0,201,255,.15);">
+          <h3 style="font-size:12px;color:#00C9FF;margin-bottom:8px;">💆 Orientações Específicas por Tipo de Pele</h3>
+          <table class="vtable">
+            <thead><tr><th>Tipo de Pele</th><th>Cuidado Principal Pós</th><th>Frequência Recomendada</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Seca / muito seca</strong></td><td>Reaplicar oclusivo leve à noite por 3 dias</td><td>A cada 15 dias</td></tr>
+              <tr><td><strong>Desidratada</strong></td><td>AH sérum 2x ao dia + hidratante leve</td><td>A cada 21 dias</td></tr>
+              <tr><td><strong>Mista</strong></td><td>Hidratante leve só nas bochechas, gel oil-free</td><td>A cada 30 dias</td></tr>
+              <tr><td><strong>Sensível</strong></td><td>Apenas água termal + calmante + FPS mineral</td><td>A cada 21 dias</td></tr>
+              <tr><td><strong>Madura</strong></td><td>Oclusivo rico à noite + peptídeos de manhã</td><td>A cada 15 dias</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 9 — PRECIFICAÇÃO ═══ -->
+<section class="slide">
+  <div class="inner">
+    <div class="gl au d1"></div>
+    <div class="au d2" style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
+      <span class="pill pg">💰 Negócio</span>
+      <h2 style="margin-bottom:0;">Quanto Cobrar e Como <span class="gc">Vender no Mercado Premium</span></h2>
+    </div>
+    <p class="sub au d3">Hidra Gloss tem uma das melhores relações custo-benefício da estética facial — aprenda a precificar e posicionar com estratégia</p>
+    <div class="sc-area">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="g3 au d4">
+          <div class="card" style="text-align:center;border-color:rgba(0,201,255,.2);">
+            <div class="bignum" style="color:#00C9FF;margin-bottom:5px;">R$20–45</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">custo de insumos</h3>
+            <p style="font-size:11px;">Por sessão completa — um dos mais baixos da estética</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.2);">
+            <div class="bignum" style="color:#FFD460;margin-bottom:5px;">R$150–450</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">ticket médio Brasil</h3>
+            <p style="font-size:11px;">Varia por região, posicionamento e tecnologia usada</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.2);">
+            <div class="bignum" style="color:#5EE89A;margin-bottom:5px;">88–92%</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">margem de lucro</h3>
+            <p style="font-size:11px;">Uma das maiores margens em procedimentos não invasivos</p>
+          </div>
+        </div>
+
+        <div class="g2 au d5">
+          <div class="cp" style="border-color:rgba(0,201,255,.18);">
+            <h3 style="font-size:13px;color:#6EE7FF;margin-bottom:8px;">💎 Estratégia de Pacotes e Combos</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="background:rgba(0,201,255,.06);border:1px solid rgba(0,201,255,.15);border-radius:12px;padding:10px 12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                  <h3 style="font-size:12px;">Sessão Avulsa</h3>
+                  <span class="tag-cyan">R$150–300</span>
+                </div>
+                <p style="font-size:11px;">Porta de entrada. Ótimo para clientes novas. Sempre apresentar o pacote ao final da sessão — o resultado imediato é o melhor argumento de venda.</p>
+              </div>
+              <div style="background:rgba(255,212,96,.06);border:1px solid rgba(255,212,96,.2);border-radius:12px;padding:10px 12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                  <h3 style="font-size:12px;">Pacote 4 Sessões</h3>
+                  <span class="tag-warn">R$480–1.000</span>
+                </div>
+                <p style="font-size:11px;">Desconto de 10–15% — mais rentável por fidelizar. Intervalo de 15–21 dias. Resultado progressivo e acumulativo. Garantia de 4 visitas ao seu espaço.</p>
+              </div>
+              <div style="background:rgba(80,220,120,.06);border:1px solid rgba(80,220,120,.2);border-radius:12px;padding:10px 12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                  <h3 style="font-size:12px;">Combo Hidra Gloss + Limpeza</h3>
+                  <span class="tag-ok">R$200–450</span>
+                </div>
+                <p style="font-size:11px;">Um dos combos mais vendidos — limpeza prepara a pele e o Hidra Gloss finaliza com brilho. Aumenta o ticket médio sem aumentar muito o custo.</p>
+              </div>
+              <div style="background:rgba(146,239,253,.05);border:1px solid rgba(146,239,253,.15);border-radius:12px;padding:10px 12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                  <h3 style="font-size:12px;">Experiência Pré-Evento</h3>
+                  <span class="tag-cyan">R$280–500</span>
+                </div>
+                <p style="font-size:11px;">Casamentos, formaturas e eventos especiais. Cobrar premium pela urgência e resultado garantido. Excelente para divulgação — a noiva vai fotografada e iluminada.</p>
+              </div>
+            </div>
+          </div>
+          <div class="cp" style="border-color:rgba(46,107,255,.18);">
+            <h3 style="font-size:13px;color:#8FAEFF;margin-bottom:8px;">📱 Como Vender Hidra Gloss nas Redes</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">1</div>
+                <p style="font-size:11px;"><strong>Explore o visual:</strong> o resultado do Hidra Gloss é extremamente fotogênico. Grave a pele logo após o procedimento com boa iluminação natural. O brilho aparece incrível nas fotos — use isso a seu favor.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">2</div>
+                <p style="font-size:11px;"><strong>Reels do processo:</strong> mostre as camadas sendo aplicadas, a máscara LED, a espátula fria. O "behind the scenes" do protocolo gera muito engajamento e curiosidade.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">3</div>
+                <p style="font-size:11px;"><strong>Depoimentos em tempo real:</strong> grave a cliente tocando no próprio rosto e comentando a sensação logo após o procedimento. Autenticidade máxima — converte melhor que qualquer anúncio.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">4</div>
+                <p style="font-size:11px;"><strong>Eduque o público:</strong> posts explicando a diferença entre pele seca e desidratada, o que é glass skin, por que a barreira cutânea importa. Quem educa, vende sem precisar empurrar.</p>
+              </div>
+              <div class="ci" style="padding:8px 10px;">
+                <div class="snum">5</div>
+                <p style="font-size:11px;"><strong>Crie desejo pela urgência:</strong> "vagas para a semana" ou "combo pré-evento com desconto". Urgência real (não inventada) acelera decisão de compra significativamente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box au d6">
+          <div class="icc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+          <p><strong>Fórmula do preço mínimo:</strong> (custo dos insumos) + (aluguel proporcional por hora) + (amortização dos equipamentos) + (seu valor/hora profissional) = preço mínimo. Nunca precifique abaixo desse número. O preço baixo demais desvaloriza o procedimento e atrai clientes que não retornam.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 10 — CERTIFICAÇÃO ═══ -->
+<section class="slide">
+  <div class="inner ce">
+    <div class="gl ce au d1"></div>
+    <h2 class="au d2" style="text-align:center;font-size:clamp(18px,3.5vw,34px);">Você Está Pronta Para <span class="gc">Brilhar — Literalmente</span></h2>
+    <p class="sub au d3" style="text-align:center;max-width:540px;">Cada sessão de Hidra Gloss é uma oportunidade de transformar a autoestima de uma mulher, fidelizar uma cliente e fortalecer o seu negócio com técnica, ciência e resultado</p>
+    <div class="sc-area" style="width:100%;">
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;">
+
+        <div class="g3 au d4" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(0,201,255,.2);">
+            <div style="font-size:22px;margin-bottom:6px;animation:float 3s ease-in-out infinite;display:inline-block;">💧</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 1</h3>
+            <p style="font-size:11px;">Fundamentos, fisiologia da pele e mecanismo de hidratação profunda</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(146,239,253,.2);">
+            <div style="font-size:22px;margin-bottom:6px;animation:float 3s ease-in-out infinite .3s;display:inline-block;">🧴</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 2</h3>
+            <p style="font-size:11px;">Ativos umectantes, emolientes e oclusivos — como combinar para cada pele</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.2);">
+            <div style="font-size:22px;margin-bottom:6px;animation:float 3s ease-in-out infinite .6s;display:inline-block;">📋</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 3</h3>
+            <p style="font-size:11px;">Indicações, contraindicações, triagem e ficha de anamnese completa</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.2);">
+            <div style="font-size:22px;margin-bottom:6px;animation:float 3s ease-in-out infinite .9s;display:inline-block;">⚙️</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 4</h3>
+            <p style="font-size:11px;">Equipamentos: ultrassom, LED, espátula fria — configuração e higienização</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(0,201,255,.2);">
+            <div style="font-size:22px;margin-bottom:6px;animation:float 3s ease-in-out infinite 1.2s;display:inline-block;">🔬</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 5</h3>
+            <p style="font-size:11px;">Protocolo completo passo a passo com prática supervisionada</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.2);">
+            <div style="font-size:22px;margin-bottom:6px;animation:float 3s ease-in-out infinite 1.5s;display:inline-block;">💰</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Módulo 6</h3>
+            <p style="font-size:11px;">Biossegurança, pós-procedimento, precificação e estratégia de marketing</p>
+          </div>
+        </div>
+
+        <div class="g3 au d5" style="width:100%;">
+          <div class="card" style="text-align:center;border-color:rgba(0,201,255,.18);">
+            <div style="font-size:26px;margin-bottom:5px;">📜</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Certificado</h3>
+            <p style="font-size:11px;">Certificação profissional reconhecida ao concluir todos os módulos</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(255,212,96,.18);">
+            <div style="font-size:26px;margin-bottom:5px;">👥</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Comunidade</h3>
+            <p style="font-size:11px;">Grupo exclusivo de alunas para dúvidas, cases e networking</p>
+          </div>
+          <div class="card" style="text-align:center;border-color:rgba(80,220,120,.18);">
+            <div style="font-size:26px;margin-bottom:5px;">🎁</div>
+            <h3 style="font-size:12px;margin-bottom:3px;">Bônus</h3>
+            <p style="font-size:11px;">Fichas, protocolos impressos, guia de precificação e script de vendas</p>
+          </div>
+        </div>
+
+        <div class="lc au d6" style="max-width:680px;">
+          <div style="font-size:38px;margin-bottom:10px;animation:droplet 3s ease-in-out infinite;display:inline-block;">💧</div>
+          <h3 style="font-size:clamp(13px,2vw,18px);margin-bottom:10px;color:#F5F7FB;line-height:1.4;">"Pele hidratada não é luxo — é saúde.<br/>Profissional que domina a hidratação domina a <span class="gc">fidelização."</span></h3>
+          <p style="font-size:12px;color:#AAB3C5;max-width:480px;margin:0 auto 16px;">Você agora tem o conhecimento completo para realizar o Hidra Gloss com excelência clínica, segurança e rentabilidade. O próximo passo é colocar as mãos na pele.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center;">
+            <span class="pill pc">✅ Teoria & Ciência</span>
+            <span class="pill pg">✅ Protocolo Completo</span>
+            <span class="pill pb">✅ Equipamentos</span>
+            <span class="pill py">✅ Negócio & Marketing</span>
+            <span class="pill pc">✅ Certificação</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+const T=10;let C=0;
+const W=document.getElementById('sw');
+const CN=document.getElementById('cn');
+const P=document.getElementById('prog');
+const I=document.getElementById('ind');
+
+for(let i=0;i<T;i++){
+  const d=document.createElement('div');
+  d.classList.add('dot');
+  if(i===0)d.classList.add('active');
+  d.onclick=()=>go(i);
+  I.appendChild(d);
+}
+
+function upd(){
+  I.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===C));
+  CN.textContent=C+1;
+  P.style.width=((C+1)/T*100)+'%';
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===C));
+}
+
+function go(i){if(i<0||i>=T)return;C=i;W.style.transform=`translateX(-${C*100}vw)`;upd();}
+function next(){if(C<T-1)go(C+1);}
+function prev(){if(C>0)go(C-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f'||e.key==='F')toggleFs();
+});
+
+let tx=0,ty=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=Math.abs(ty-e.changedTouches[0].screenY);
+  if(Math.abs(dx)>50&&dy<60){dx>0?next():prev();}
+},{passive:true});
+
+function toggleFs(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const b=document.getElementById('fsTxt');
+  if(b)b.textContent=document.fullscreenElement?'Sair':'Tela cheia';
+});
+
+upd();
+</script>
+</body>
+</html>
