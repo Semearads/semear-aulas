@@ -639,6 +639,11 @@
     .lead-submit-btn:active {
       transform: translateY(0);
     }
+    .lead-submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     /* Lista de E-books */
     .ebook-success-msg {
@@ -1136,7 +1141,7 @@
             <div class="form-group">
               <input type="tel" id="leadPhone" placeholder="WhatsApp (com DDD)" required>
             </div>
-            <button type="submit" class="lead-submit-btn">
+            <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
@@ -1704,6 +1709,33 @@
       if (e.target === videoModal) closeVideoModal();
     }
 
+    /* ═══════════════════════════════════════ */
+    /* 🔧 MÁSCARA DE TELEFONE (NOVO)          */
+    /* ═══════════════════════════════════════ */
+    const phoneInput = document.getElementById('leadPhone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function(e) {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.slice(0, 11);
+        if (v.length > 6) {
+          v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+        } else if (v.length > 2) {
+          v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+        } else if (v.length > 0) {
+          v = `(${v}`;
+        }
+        e.target.value = v;
+      });
+    }
+
+    /* ═══════════════════════════════════════ */
+    /* 🔧 VALIDAÇÃO DE EMAIL (NOVO)           */
+    /* ═══════════════════════════════════════ */
+    function validateEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
     /* ═════════════════════════════════════ */
     /* MODAL DE E-BOOKS COM CAPTAÇÃO DE LEAD */
     /* ═════════════════════════════════════ */
@@ -1731,63 +1763,88 @@
       if (e.target === ebookModal) closeEbookModal();
     }
 
+    /* ═══════════════════════════════════════ */
+    /* 🔧 CAPTURA DE LEAD (ATUALIZADO)        */
+    /* ═══════════════════════════════════════ */
     function handleLeadCapture(event) {
       event.preventDefault();
 
-      const name = document.getElementById('leadName').value.trim();
+      const submitBtn = document.getElementById('leadSubmitBtn');
+
+      // Proteção contra envio duplo
+      if (submitBtn.disabled) return;
+
+      const name  = document.getElementById('leadName').value.trim();
       const email = document.getElementById('leadEmail').value.trim();
       const phone = document.getElementById('leadPhone').value.trim();
 
       if (!name || !email || !phone) {
-        alert('Por favor, preencha todos os campos obrigatórios.');
+        alert('⚠️ Por favor, preencha todos os campos!');
         return;
       }
 
-      console.log('✅ Lead capturado:', { name, email, phone });
+      if (!validateEmail(email)) {
+        alert('⚠️ Por favor, insira um e-mail válido!');
+        return;
+      }
 
-      /*
-      // 🔧 Configure aqui seu endpoint de email marketing:
-      fetch('SEU_ENDPOINT_AQUI', {
+      // ⏳ Loading state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '⏳ Enviando...';
+
+      // ── 1. Envia para o email via FormSubmit ──
+      const formData = new FormData();
+      formData.append('nome', name);
+      formData.append('email', email);
+      formData.append('telefone', phone);
+      formData.append('_subject', '🎁 Novo lead - E-books SEMEAR');
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
+      formData.append('_autoresponse', 'Obrigado por se cadastrar!');
+
+      fetch('https://formsubmit.co/ajax/semearensinointensivo@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, source: 'ebook-modal' })
-      })
-      .then(response => response.json())
-      .then(data => console.log('Sucesso:', data))
-      .catch(error => console.error('Erro:', error));
-      */
+        body: formData
+      }).then(r => r.json()).then(d => {
+        console.log('✅ Email enviado via FormSubmit', d);
+      }).catch(e => {
+        console.error('Erro no envio do email', e);
+      });
 
-      // Mostrar lista de e-books
-      document.getElementById('leadForm').style.display = 'none';
-      document.getElementById('ebookList').style.display = 'block';
+      // ── 2. Abre WhatsApp com os dados ──
+      const msg = encodeURIComponent(
+        `🎁 Novo lead\n\nNome: ${name}\nE-mail: ${email}\nWhatsApp: ${phone}\n\nObrigado!`
+      );
+      window.open(`https://wa.me/5511910832222?text=${msg}`, '_blank');
 
-      // Salvar na sessão
+      // ── 3. Backup local ──
       try {
-        localStorage.setItem('ebookLeadCaptured', JSON.stringify({
-          name, email, phone, date: new Date().toISOString()
-        }));
+        let leads = JSON.parse(localStorage.getItem('leads_semear') || '[]');
+        leads.push({ name, email, phone, date: new Date().toISOString() });
+        localStorage.setItem('leads_semear', JSON.stringify(leads));
+        console.log('📦 Lead salvo no localStorage');
       } catch (e) {
         console.warn('Não foi possível salvar no localStorage');
       }
+
+      // ── 4. Exibe a lista de e-books ──
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('ebookList').style.display = 'block';
+
+      // ── 5. Restaura o botão ──
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Liberar E-books Agora
+      `;
     }
 
     function trackDownload(ebookId) {
       console.log('📥 Download iniciado:', ebookId);
-
-      /*
-      // 🔧 Exemplo de integração com Google Analytics:
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'download', {
-          'event_category': 'ebook',
-          'event_label': ebookId
-        });
-      }
-
-      // 🔧 Exemplo de integração com Facebook Pixel:
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead', { content_name: ebookId });
-      }
-      */
     }
 
     // Verificar lead salvo na sessão
