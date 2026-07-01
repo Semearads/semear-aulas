@@ -145,51 +145,6 @@
     }
     .card:hover { border-color: rgba(46,107,255,.2); transform: translateY(-2px); box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08); }
 
-    /* 🆕 Card clicável de Videoaulas */
-    .card.clickable {
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .card.clickable::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(46,107,255,0) 0%, rgba(46,107,255,.08) 100%);
-      opacity: 0;
-      transition: opacity .4s ease;
-      pointer-events: none;
-    }
-    .card.clickable:hover::after { opacity: 1; }
-    .card.clickable:hover {
-      border-color: rgba(46,107,255,.5);
-      box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px rgba(46,107,255,.25);
-    }
-    .play-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 12px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(46,107,255,.15), rgba(200,109,215,.15));
-      border: 1px solid rgba(46,107,255,.3);
-      font-size: 11px;
-      font-weight: 700;
-      color: #8FAEFF;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      transition: all .3s ease;
-    }
-    .card.clickable:hover .play-hint {
-      background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
-      color: #fff;
-      border-color: transparent;
-      transform: translateX(3px);
-    }
-    .play-hint svg { width: 12px; height: 12px; }
-
     .ic { width: 46px; height: 46px; border-radius: 12px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; background: rgba(46,107,255,.08); }
     .ic svg { width: 22px; height: 22px; color: #2E6BFF; }
 
@@ -228,8 +183,6 @@
     @keyframes pipEntrance { from { opacity:0; transform:translateY(18px) scale(.94) } to { opacity:1; transform:translateY(0) scale(1) } }
     @keyframes pipLeave    { from { opacity:1; transform:translateY(0) scale(1) }      to { opacity:0; transform:translateY(18px) scale(.94) } }
     @keyframes livePulse   { 0%,100% { box-shadow:0 0 0 0 rgba(46,107,255,.5) }       60% { box-shadow:0 0 0 5px rgba(46,107,255,0) } }
-    @keyframes modalFadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @keyframes modalScaleIn { from { opacity: 0; transform: translate(-50%,-50%) scale(.92) } to { opacity: 1; transform: translate(-50%,-50%) scale(1) } }
 
     .slide.active .au { animation: fadeUp .7s ease both; }
     .slide.active .as { animation: fadeScale .7s ease both; }
@@ -309,151 +262,6 @@
     }
     .pip-yt:hover { color: #F5F7FB; border-color: rgba(46,107,255,.3); background: rgba(46,107,255,.08); }
     .pip-yt svg { width: 9px; height: 9px; }
-
-    /* 🆕 MODAL DE VÍDEO */
-    .video-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      animation: modalFadeIn .3s ease both;
-    }
-    .video-modal.open {
-      display: flex;
-    }
-    .video-modal-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      width: 90%;
-      max-width: 900px;
-      background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
-      border: 1px solid rgba(46, 107, 255, 0.25);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(46, 107, 255, 0.2);
-      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
-    }
-    .video-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .video-modal-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #F5F7FB;
-      letter-spacing: .02em;
-    }
-    .video-modal-title .vm-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, #2E6BFF, #C86DD7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-modal-title .vm-icon svg {
-      width: 14px;
-      height: 14px;
-      color: #fff;
-      margin-left: 1px;
-    }
-    .video-modal-close {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #AAB3C5;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s ease;
-    }
-    .video-modal-close:hover {
-      background: rgba(255, 60, 60, 0.15);
-      border-color: rgba(255, 60, 60, 0.4);
-      color: #FF6B6B;
-    }
-    .video-modal-close svg { width: 14px; height: 14px; }
-    .video-modal-player {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      background: #000;
-    }
-    .video-modal-player iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .video-modal-footer {
-      padding: 12px 18px;
-      background: rgba(255, 255, 255, 0.02);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .video-modal-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
-    .video-modal-info strong {
-      font-size: 13px;
-      font-weight: 700;
-      color: #F5F7FB;
-    }
-    .video-modal-info span {
-      font-size: 11px;
-      color: #7E879B;
-    }
-    .video-modal-yt {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
-      border-radius: 9px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #AAB3C5;
-      font-size: 11px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: .2s ease;
-    }
-    .video-modal-yt:hover {
-      color: #F5F7FB;
-      border-color: rgba(46, 107, 255, 0.4);
-      background: rgba(46, 107, 255, 0.1);
-    }
-    .video-modal-yt svg { width: 12px; height: 12px; }
-    @media (max-width: 600px) {
-      .video-modal-content { width: 95%; border-radius: 16px; }
-      .video-modal-header { padding: 12px 14px; }
-      .video-modal-title { font-size: 12px; }
-      .video-modal-footer { padding: 10px 14px; }
-    }
 
     /* Slides 1-4 e 6 */
     .s1-wrap { text-align: center; max-width: 880px; width: 100%; }
@@ -722,44 +530,6 @@
     </div>
   </div>
 
-  <!-- 🆕 MODAL DE VIDEOAULAS -->
-  <div class="video-modal" id="videoModal" onclick="closeVideoModalOnBackdrop(event)">
-    <div class="video-modal-content">
-      <div class="video-modal-header">
-        <div class="video-modal-title">
-          <div class="vm-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </div>
-          <span>Videoaulas Gravadas · SEMEAR</span>
-        </div>
-        <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Fechar vídeo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
-      </div>
-      <div class="video-modal-player">
-        <iframe id="videoModalFrame" src=""
-                title="Videoaula SEMEAR"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                allowfullscreen></iframe>
-      </div>
-      <div class="video-modal-footer">
-        <div class="video-modal-info">
-          <strong>Assista no seu ritmo</strong>
-          <span>Videoaulas disponíveis 24h por dia</span>
-        </div>
-        <a class="video-modal-yt" href="https://www.youtube.com/watch?v=cht8JoK46b8" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-            <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-          Abrir no YouTube
-        </a>
-      </div>
-    </div>
-  </div>
-
   <!-- SLIDES -->
   <div class="presentation">
     <div class="slides" id="sw">
@@ -797,8 +567,7 @@
             <h2 class="au d2">Tudo o que você precisa,<br><span class="gt">em um só lugar</span></h2>
             <p class="sub au d3">Uma plataforma simples, organizada e feita para você aprender de verdade.</p>
             <div class="s2-grid">
-              <!-- 🆕 CARD CLICÁVEL -->
-              <div class="card au d4 clickable" onclick="openVideoModal()">
+              <div class="card au d4">
                 <div class="ic">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="10"/>
@@ -807,10 +576,6 @@
                 </div>
                 <h3>📹 Videoaulas Gravadas</h3>
                 <p>Assista às aulas no seu ritmo, quando e onde quiser, quantas vezes precisar.</p>
-                <div class="play-hint">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  <span>Clique para assistir</span>
-                </div>
               </div>
               <div class="card au d5">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
@@ -1094,15 +859,8 @@
     function prev() { if (C > 0)     go(C - 1); }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeVideoModal();
-      if (e.key === 'ArrowRight' || e.key === ' ') {
-        if (document.getElementById('videoModal').classList.contains('open')) return;
-        e.preventDefault(); next();
-      }
-      if (e.key === 'ArrowLeft') {
-        if (document.getElementById('videoModal').classList.contains('open')) return;
-        e.preventDefault(); prev();
-      }
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); prev(); }
       if (e.key === 'f' || e.key === 'F') toggleFs();
     });
 
@@ -1179,25 +937,6 @@
         img.removeEventListener('error', onError);
       });
     })();
-
-    /* 🆕 MODAL DE VIDEOAULAS */
-    const VIDEO_MODAL_SRC = 'https://www.youtube.com/embed/cht8JoK46b8?autoplay=1&rel=0&modestbranding=1';
-    const videoModal      = document.getElementById('videoModal');
-    const videoModalFrame = document.getElementById('videoModalFrame');
-
-    function openVideoModal() {
-      videoModalFrame.src = VIDEO_MODAL_SRC;
-      videoModal.classList.add('open');
-    }
-    function closeVideoModal() {
-      videoModal.classList.remove('open');
-      // Para o vídeo ao fechar
-      setTimeout(() => { videoModalFrame.src = ''; }, 300);
-    }
-    function closeVideoModalOnBackdrop(e) {
-      // Fecha só se clicar fora do conteúdo (no backdrop)
-      if (e.target === videoModal) closeVideoModal();
-    }
   </script>
 
 </body>
