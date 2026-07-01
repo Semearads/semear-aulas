@@ -145,7 +145,7 @@
     }
     .card:hover { border-color: rgba(46,107,255,.2); transform: translateY(-2px); box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08); }
 
-    /* Card clicável de Videoaulas */
+    /* Cards clicáveis */
     .card.clickable {
       cursor: pointer;
       position: relative;
@@ -166,29 +166,51 @@
       border-color: rgba(46,107,255,.5);
       box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px rgba(46,107,255,.25);
     }
-    .play-hint {
+    /* Card Materiais – tom roxo */
+    .card.clickable.material-card:hover {
+      border-color: rgba(200,109,215,.5);
+      box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px rgba(200,109,215,.25);
+    }
+    .card.clickable.material-card::after {
+      background: linear-gradient(135deg, rgba(200,109,215,0) 0%, rgba(200,109,215,.08) 100%);
+    }
+
+    .card-hint {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       margin-top: 12px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(46,107,255,.15), rgba(200,109,215,.15));
-      border: 1px solid rgba(46,107,255,.3);
       font-size: 11px;
       font-weight: 700;
-      color: #8FAEFF;
       letter-spacing: .04em;
       text-transform: uppercase;
       transition: all .3s ease;
     }
-    .card.clickable:hover .play-hint {
+    .card-hint.play {
+      background: linear-gradient(135deg, rgba(46,107,255,.15), rgba(200,109,215,.15));
+      border: 1px solid rgba(46,107,255,.3);
+      color: #8FAEFF;
+    }
+    .card-hint.download {
+      background: linear-gradient(135deg, rgba(200,109,215,.12), rgba(200,109,215,.2));
+      border: 1px solid rgba(200,109,215,.3);
+      color: #D08FE0;
+    }
+    .card.clickable:hover .card-hint.play {
       background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
       color: #fff;
       border-color: transparent;
       transform: translateX(3px);
     }
-    .play-hint svg { width: 12px; height: 12px; }
+    .card.clickable.material-card:hover .card-hint.download {
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
+      color: #fff;
+      border-color: transparent;
+      transform: translateX(3px);
+    }
+    .card-hint svg { width: 12px; height: 12px; }
 
     .ic { width: 46px; height: 46px; border-radius: 12px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; background: rgba(46,107,255,.08); }
     .ic svg { width: 22px; height: 22px; color: #2E6BFF; }
@@ -396,7 +418,6 @@
       padding-top: 56.25%;
       background: #000;
     }
-    /* Proporção vertical para Shorts (9:16) */
     .video-modal-player.shorts {
       padding-top: 177.78%;
       max-height: 80vh;
@@ -458,6 +479,218 @@
       .video-modal-header { padding: 12px 14px; }
       .video-modal-title { font-size: 12px; }
       .video-modal-footer { padding: 10px 14px; }
+    }
+
+    /* ──────────────────────────────────── */
+    /* MODAL DE MATERIAIS DE APOIO          */
+    /* ──────────────────────────────────── */
+    .material-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2001;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      animation: modalFadeIn .3s ease both;
+    }
+    .material-modal.open {
+      display: flex;
+    }
+    .material-modal-content {
+      width: 90%;
+      max-width: 600px;
+      max-height: 85vh;
+      background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
+      border: 1px solid rgba(200, 109, 215, 0.25);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
+      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
+      display: flex;
+      flex-direction: column;
+    }
+    .material-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
+    .material-modal-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #F5F7FB;
+      letter-spacing: .02em;
+    }
+    .material-modal-title .mm-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .material-modal-title .mm-icon svg {
+      width: 14px;
+      height: 14px;
+      color: #fff;
+    }
+    .material-modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s ease;
+    }
+    .material-modal-close:hover {
+      background: rgba(255, 60, 60, 0.15);
+      border-color: rgba(255, 60, 60, 0.4);
+      color: #FF6B6B;
+    }
+    .material-modal-close svg { width: 14px; height: 14px; }
+
+    .material-modal-body {
+      padding: 16px 18px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .material-modal-body::-webkit-scrollbar { width: 3px; }
+    .material-modal-body::-webkit-scrollbar-track { background: transparent; }
+    .material-modal-body::-webkit-scrollbar-thumb { background: rgba(200,109,215,.3); border-radius: 2px; }
+
+    .material-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      transition: all .3s ease;
+    }
+    .material-item:hover {
+      border-color: rgba(200,109,215,.25);
+      background: rgba(200,109,215,.04);
+      transform: translateX(3px);
+    }
+    .material-item-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 10px;
+      background: rgba(200,109,215,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .material-item-icon svg {
+      width: 20px;
+      height: 20px;
+      color: #C86DD7;
+    }
+    .material-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .material-item-info strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: #F5F7FB;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .material-item-info span {
+      font-size: 11px;
+      color: #7E879B;
+      line-height: 1.4;
+    }
+    .material-item-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(200,109,215,.15), rgba(200,109,215,.08));
+      border: 1px solid rgba(200,109,215,.3);
+      color: #D08FE0;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      transition: all .3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .material-item-dl:hover {
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
+      color: #fff;
+      border-color: transparent;
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(200,109,215,.35);
+    }
+    .material-item-dl svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+    .material-item-dl.disabled {
+      opacity: .5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    .material-modal-footer {
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    .material-modal-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .material-modal-info strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: #F5F7FB;
+    }
+    .material-modal-info span {
+      font-size: 11px;
+      color: #7E879B;
+    }
+
+    @media (max-width: 600px) {
+      .material-modal-content { width: 95%; border-radius: 16px; max-height: 90vh; }
+      .material-modal-header { padding: 12px 14px; }
+      .material-modal-title { font-size: 12px; }
+      .material-modal-body { padding: 12px 14px; gap: 8px; }
+      .material-modal-footer { padding: 10px 14px; }
+      .material-item { padding: 12px 14px; gap: 10px; }
+      .material-item-dl { padding: 6px 10px; font-size: 10px; }
     }
 
     /* Slides 1-4 e 6 */
@@ -758,6 +991,130 @@
     </div>
   </div>
 
+  <!-- ──────────────────────────────────── -->
+  <!-- MODAL DE MATERIAIS DE APOIO          -->
+  <!-- ──────────────────────────────────── -->
+  <div class="material-modal" id="materialModal" onclick="closeMaterialModalOnBackdrop(event)">
+    <div class="material-modal-content">
+      <div class="material-modal-header">
+        <div class="material-modal-title">
+          <div class="mm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <span>Materiais de Apoio · Cabeleireiro</span>
+        </div>
+        <button class="material-modal-close" onclick="closeMaterialModal()" aria-label="Fechar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="material-modal-body">
+        <!-- Item 1 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="material-item-info">
+            <strong>Módulo 1 – Fundamentos do Cabelo</strong>
+            <span>Estrutura capilar, tipos de fio e diagnóstico · PDF</span>
+          </div>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+        <!-- Item 2 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="material-item-info">
+            <strong>Módulo 2 – Técnicas de Corte</strong>
+            <span>Ângulos, tesouras e cortes clássicos · PDF</span>
+          </div>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+        <!-- Item 3 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="material-item-info">
+            <strong>Módulo 3 – Coloração e Química</strong>
+            <span>Coloração, descoloração e tonalizantes · PDF</span>
+          </div>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+        <!-- Item 4 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="material-item-info">
+            <strong>Guia de Produtos e Equipamentos</strong>
+            <span>Ficha técnica de ferramentas e cosméticos · PDF</span>
+          </div>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+      </div>
+      <div class="material-modal-footer">
+        <div class="material-modal-info">
+          <strong>Baixe e estude offline</strong>
+          <span>Materiais disponíveis para download</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SLIDES -->
   <div class="presentation">
     <div class="slides" id="sw">
@@ -795,6 +1152,7 @@
             <h2 class="au d2">Tudo o que você precisa,<br><span class="gt">em um só lugar</span></h2>
             <p class="sub au d3">Uma plataforma simples, organizada e feita para você aprender de verdade.</p>
             <div class="s2-grid">
+              <!-- Card Videoaulas -->
               <div class="card au d4 clickable" onclick="openVideoModal()">
                 <div class="ic">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -804,12 +1162,13 @@
                 </div>
                 <h3>📹 Videoaulas Gravadas</h3>
                 <p>Assista às aulas no seu ritmo, quando e onde quiser, quantas vezes precisar.</p>
-                <div class="play-hint">
+                <div class="card-hint play">
                   <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                   <span>Clique para assistir</span>
                 </div>
               </div>
-              <div class="card au d5">
+              <!-- Card Materiais de Apoio – AGORA CLICÁVEL -->
+              <div class="card au d5 clickable material-card" onclick="openMaterialModal()">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7">
                     <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
@@ -820,6 +1179,14 @@
                 </div>
                 <h3>📄 Materiais de Apoio</h3>
                 <p>Apostilas e materiais complementares para reforçar o que você aprendeu nas aulas.</p>
+                <div class="card-hint download">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  <span>Acessar materiais</span>
+                </div>
                 <div class="curso-tag">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
                     <path d="M12 2L2 7l10 5 10-5-10-5z"/>
@@ -1087,13 +1454,15 @@
     function prev() { if (C > 0)     go(C - 1); }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeVideoModal();
+      if (e.key === 'Escape') { closeVideoModal(); closeMaterialModal(); }
       if (e.key === 'ArrowRight' || e.key === ' ') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
+        if (document.getElementById('materialModal').classList.contains('open')) return;
         e.preventDefault(); next();
       }
       if (e.key === 'ArrowLeft') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
+        if (document.getElementById('materialModal').classList.contains('open')) return;
         e.preventDefault(); prev();
       }
       if (e.key === 'f' || e.key === 'F') toggleFs();
@@ -1182,7 +1551,6 @@
     function openVideoModal() {
       videoModalFrame.src = VIDEO_MODAL_SRC;
       videoModal.classList.add('open');
-      // Detecta Shorts e aplica proporção vertical
       if (VIDEO_MODAL_SRC.includes('jWXgbQKV3h4')) {
         videoModalPlayer.classList.add('shorts');
       } else {
@@ -1195,6 +1563,21 @@
     }
     function closeVideoModalOnBackdrop(e) {
       if (e.target === videoModal) closeVideoModal();
+    }
+
+    /* ──────────────────────────────────── */
+    /* MODAL DE MATERIAIS DE APOIO          */
+    /* ──────────────────────────────────── */
+    const materialModal = document.getElementById('materialModal');
+
+    function openMaterialModal() {
+      materialModal.classList.add('open');
+    }
+    function closeMaterialModal() {
+      materialModal.classList.remove('open');
+    }
+    function closeMaterialModalOnBackdrop(e) {
+      if (e.target === materialModal) closeMaterialModal();
     }
   </script>
 
