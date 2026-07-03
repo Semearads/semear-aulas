@@ -482,6 +482,170 @@
     }
 
     /* ──────────────────────────────────── */
+    /* MODAL DE CAPTURA DE LEADS (E-BOOKS) */
+    /* ──────────────────────────────────── */
+    .lead-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2002;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      animation: modalFadeIn .3s ease both;
+    }
+    .lead-modal.open {
+      display: flex;
+    }
+    .lead-modal-content {
+      width: 90%;
+      max-width: 480px;
+      max-height: 90vh;
+      background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
+      border: 1px solid rgba(200, 109, 215, 0.25);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
+      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
+      display: flex;
+      flex-direction: column;
+    }
+    .lead-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
+    .lead-modal-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #F5F7FB;
+      letter-spacing: .02em;
+    }
+    .lead-modal-title .lm-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lead-modal-title .lm-icon svg {
+      width: 14px;
+      height: 14px;
+      color: #fff;
+    }
+    .lead-modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s ease;
+    }
+    .lead-modal-close:hover {
+      background: rgba(255, 60, 60, 0.15);
+      border-color: rgba(255, 60, 60, 0.4);
+      color: #FF6B6B;
+    }
+    .lead-modal-close svg { width: 14px; height: 14px; }
+    .lead-modal-body {
+      padding: 20px 18px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .lead-modal-body::-webkit-scrollbar { width: 3px; }
+    .lead-modal-body::-webkit-scrollbar-track { background: transparent; }
+    .lead-modal-body::-webkit-scrollbar-thumb { background: rgba(200,109,215,.3); border-radius: 2px; }
+    .lead-form-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #F5F7FB;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .lead-form-subtitle {
+      font-size: 12px;
+      color: #AAB3C5;
+      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .lead-form-group {
+      margin-bottom: 12px;
+    }
+    .lead-form-group input {
+      width: 100%;
+      padding: 13px 15px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 11px;
+      font-size: 14px;
+      color: #fff;
+      outline: none;
+      transition: .3s ease;
+    }
+    .lead-form-group input:focus {
+      border-color: rgba(200, 109, 215, 0.5);
+      box-shadow: 0 0 0 3px rgba(200, 109, 215, 0.1);
+    }
+    .lead-form-group input::placeholder {
+      color: #5A6070;
+    }
+    .lead-submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      transition: all .3s ease;
+      box-shadow: 0 10px 30px rgba(200, 109, 215, .35);
+    }
+    .lead-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(200, 109, 215, .5);
+    }
+    .lead-submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .lead-submit-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    @media (max-width: 600px) {
+      .lead-modal-content { width: 95%; border-radius: 16px; max-height: 92vh; }
+      .lead-modal-header { padding: 12px 14px; }
+      .lead-modal-title { font-size: 12px; }
+      .lead-modal-body { padding: 16px 14px; }
+      .lead-form-title { font-size: 16px; }
+    }
+
+    /* ──────────────────────────────────── */
     /* MODAL DE MATERIAIS DE APOIO          */
     /* ──────────────────────────────────── */
     .material-modal {
@@ -953,6 +1117,52 @@
     </div>
   </div>
 
+  <!-- ──────────────────────────────────── -->
+  <!-- MODAL DE CAPTURA DE LEADS            -->
+  <!-- ──────────────────────────────────── -->
+  <div class="lead-modal" id="leadModal" onclick="closeLeadModalOnBackdrop(event)">
+    <div class="lead-modal-content">
+      <div class="lead-modal-header">
+        <div class="lead-modal-title">
+          <div class="lm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+            </svg>
+          </div>
+          <span>Materiais de Apoio · SEMEAR</span>
+        </div>
+        <button class="lead-modal-close" onclick="closeLeadModal()" aria-label="Fechar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="lead-modal-body">
+        <div class="lead-form-title">📄 Receba seus materiais</div>
+        <p class="lead-form-subtitle">Preencha seus dados para acessar as apostilas e materiais de apoio do curso.</p>
+        <form id="leadFormEl" onsubmit="handleLeadCapture(event)">
+          <div class="lead-form-group">
+            <input type="text" id="leadName" placeholder="Seu nome completo" required />
+          </div>
+          <div class="lead-form-group">
+            <input type="email" id="leadEmail" placeholder="Seu melhor e-mail" required />
+          </div>
+          <div class="lead-form-group">
+            <input type="tel" id="leadPhone" placeholder="WhatsApp (com DDD)" required />
+          </div>
+          <button type="submit" id="leadSubBtn" class="lead-submit-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+            Acessar Materiais
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL DE VIDEOAULAS -->
   <div class="video-modal" id="videoModal" onclick="closeVideoModalOnBackdrop(event)">
     <div class="video-modal-content">
@@ -1167,8 +1377,8 @@
                   <span>Clique para assistir</span>
                 </div>
               </div>
-              <!-- Card Materiais de Apoio – AGORA CLICÁVEL -->
-              <div class="card au d5 clickable material-card" onclick="openMaterialModal()">
+              <!-- Card Materiais de Apoio – agora abre captura de lead primeiro -->
+              <div class="card au d5 clickable material-card" onclick="openLeadModal()">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7">
                     <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
@@ -1454,15 +1664,17 @@
     function prev() { if (C > 0)     go(C - 1); }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeVideoModal(); closeMaterialModal(); }
+      if (e.key === 'Escape') { closeVideoModal(); closeMaterialModal(); closeLeadModal(); }
       if (e.key === 'ArrowRight' || e.key === ' ') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
         if (document.getElementById('materialModal').classList.contains('open')) return;
+        if (document.getElementById('leadModal').classList.contains('open')) return;
         e.preventDefault(); next();
       }
       if (e.key === 'ArrowLeft') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
         if (document.getElementById('materialModal').classList.contains('open')) return;
+        if (document.getElementById('leadModal').classList.contains('open')) return;
         e.preventDefault(); prev();
       }
       if (e.key === 'f' || e.key === 'F') toggleFs();
@@ -1563,6 +1775,111 @@
     }
     function closeVideoModalOnBackdrop(e) {
       if (e.target === videoModal) closeVideoModal();
+    }
+
+    /* ──────────────────────────────────── */
+    /* MODAL DE CAPTURA DE LEADS            */
+    /* ──────────────────────────────────── */
+    const leadModal = document.getElementById('leadModal');
+
+    function openLeadModal() {
+      leadModal.classList.add('open');
+    }
+    function closeLeadModal() {
+      leadModal.classList.remove('open');
+    }
+    function closeLeadModalOnBackdrop(e) {
+      if (e.target === leadModal) closeLeadModal();
+    }
+
+    // Máscara de telefone
+    (function(){
+      const tel = document.getElementById('leadPhone');
+      if (tel) {
+        tel.addEventListener('input', function(e) {
+          let v = e.target.value.replace(/\D/g, '');
+          if (v.length > 11) v = v.slice(0, 11);
+          if (v.length > 6) {
+            v = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+          } else if (v.length > 2) {
+            v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+          } else if (v.length > 0) {
+            v = '(' + v;
+          }
+          e.target.value = v;
+        });
+      }
+    })();
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    async function handleLeadCapture(e) {
+      e.preventDefault();
+      const btn = document.getElementById('leadSubBtn');
+      if (btn.disabled) return;
+
+      const nome  = document.getElementById('leadName').value.trim();
+      const email = document.getElementById('leadEmail').value.trim();
+      const tel   = document.getElementById('leadPhone').value.trim();
+
+      if (!nome || !email || !tel) {
+        alert('Preencha todos os campos!');
+        return;
+      }
+      if (!validateEmail(email)) {
+        alert('E-mail inválido!');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '⏳ Enviando...';
+
+      // Enviar para formsubmit
+      const data = new FormData();
+      data.append('nome', nome);
+      data.append('email', email);
+      data.append('telefone', tel);
+      data.append('_subject', '📄 Novo lead - Materiais de Apoio SEMEAR');
+      data.append('_captcha', 'false');
+      data.append('_template', 'table');
+
+      try {
+        await fetch('https://formsubmit.co/ajax/semearensinointensivo@gmail.com', {
+          method: 'POST',
+          body: data
+        });
+      } catch (err) {
+        console.error('Erro no envio:', err);
+      }
+
+      // WhatsApp
+      const msg = encodeURIComponent(
+        '📄 Novo lead - Materiais de Apoio\n\n' +
+        'Nome: ' + nome + '\n' +
+        'E-mail: ' + email + '\n' +
+        'WhatsApp: ' + tel + '\n\n' +
+        'Obrigado!'
+      );
+      window.open('https://wa.me/5511910832222?text=' + msg, '_blank');
+
+      // Backup localStorage
+      try {
+        const leads = JSON.parse(localStorage.getItem('leads_semear') || '[]');
+        leads.push({ nome, email, tel, date: new Date().toISOString() });
+        localStorage.setItem('leads_semear', JSON.stringify(leads));
+      } catch (e) {}
+
+      // Reset botão
+      btn.disabled = false;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Acessar Materiais';
+
+      // Fecha modal de captura e abre o de materiais
+      closeLeadModal();
+      setTimeout(() => {
+        openMaterialModal();
+      }, 200);
     }
 
     /* ──────────────────────────────────── */
