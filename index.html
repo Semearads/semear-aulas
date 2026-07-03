@@ -252,8 +252,6 @@
     @keyframes livePulse   { 0%,100% { box-shadow:0 0 0 0 rgba(46,107,255,.5) }       60% { box-shadow:0 0 0 5px rgba(46,107,255,0) } }
     @keyframes modalFadeIn { from { opacity: 0 } to { opacity: 1 } }
     @keyframes modalScaleIn { from { opacity: 0; transform: translate(-50%,-50%) scale(.92) } to { opacity: 1; transform: translate(-50%,-50%) scale(1) } }
-    @keyframes ebookFadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes ebookSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
     .slide.active .au { animation: fadeUp .7s ease both; }
     .slide.active .as { animation: fadeScale .7s ease both; }
@@ -484,324 +482,215 @@
     }
 
     /* ──────────────────────────────────── */
-    /* MODAL DE E-BOOKS COM CAPTAÇÃO DE LEAD */
+    /* MODAL DE MATERIAIS DE APOIO          */
     /* ──────────────────────────────────── */
-    .ebook-modal {
+    .material-modal {
       position: fixed;
       inset: 0;
       z-index: 2001;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 15px;
-      animation: ebookFadeIn .3s ease both;
+      animation: modalFadeIn .3s ease both;
     }
-    .ebook-modal.open {
+    .material-modal.open {
       display: flex;
     }
-    .ebook-modal-content {
-      width: 100%;
-      max-width: 580px;
-      max-height: 92vh;
+    .material-modal-content {
+      width: 90%;
+      max-width: 600px;
+      max-height: 85vh;
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
       border: 1px solid rgba(200, 109, 215, 0.25);
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
-      animation: ebookSlideUp .4s cubic-bezier(.22,1,.36,1) both;
+      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
       display: flex;
       flex-direction: column;
     }
-    .ebook-modal-header {
+    .material-modal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       flex-shrink: 0;
     }
-    .ebook-modal-title {
+    .material-modal-title {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: white;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 700;
+      color: #F5F7FB;
       letter-spacing: .02em;
     }
-    .ebook-icon-circle {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.2);
+    .material-modal-title .mm-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
     }
-    .ebook-modal-close {
+    .material-modal-title .mm-icon svg {
+      width: 14px;
+      height: 14px;
+      color: #fff;
+    }
+    .material-modal-close {
       width: 32px;
       height: 32px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.15);
-      border: none;
-      color: white;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all .25s ease;
-      flex-shrink: 0;
+      transition: all .2s ease;
     }
-    .ebook-modal-close:hover {
-      background: rgba(255, 60, 60, 0.3);
+    .material-modal-close:hover {
+      background: rgba(255, 60, 60, 0.15);
+      border-color: rgba(255, 60, 60, 0.4);
       color: #FF6B6B;
-      transform: rotate(90deg);
     }
-    .ebook-modal-close svg { width: 16px; height: 16px; }
+    .material-modal-close svg { width: 14px; height: 14px; }
 
-    .ebook-modal-body {
-      padding: 22px 20px;
+    .material-modal-body {
+      padding: 16px 18px;
       overflow-y: auto;
       flex: 1;
       display: flex;
       flex-direction: column;
+      gap: 10px;
     }
-    .ebook-modal-body::-webkit-scrollbar { width: 3px; }
-    .ebook-modal-body::-webkit-scrollbar-track { background: transparent; }
-    .ebook-modal-body::-webkit-scrollbar-thumb { background: rgba(200,109,215,.3); border-radius: 2px; }
+    .material-modal-body::-webkit-scrollbar { width: 3px; }
+    .material-modal-body::-webkit-scrollbar-track { background: transparent; }
+    .material-modal-body::-webkit-scrollbar-thumb { background: rgba(200,109,215,.3); border-radius: 2px; }
 
-    /* Formulário de Lead */
-    .lead-form {
-      text-align: center;
-    }
-    .lead-form-title {
-      color: white;
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-    .lead-form-text {
-      color: #b8b8d1;
-      font-size: 13px;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-    .form-group {
-      margin-bottom: 12px;
-      text-align: left;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 13px 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      color: white;
-      font-size: 14px;
+    .material-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
       transition: all .3s ease;
-      box-sizing: border-box;
     }
-    .form-group input:focus {
-      outline: none;
-      border-color: #667eea;
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+    .material-item:hover {
+      border-color: rgba(200,109,215,.25);
+      background: rgba(200,109,215,.04);
+      transform: translateX(3px);
     }
-    .form-group input::placeholder {
-      color: rgba(255, 255, 255, 0.35);
-    }
-    .lead-submit-btn {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
+    .material-item-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
       border-radius: 10px;
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
+      background: rgba(200,109,215,.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      transition: all .3s ease;
-      margin-top: 8px;
     }
-    .lead-submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    .material-item-icon svg {
+      width: 20px;
+      height: 20px;
+      color: #C86DD7;
     }
-    .lead-submit-btn:active {
-      transform: translateY(0);
-    }
-    .lead-submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* Lista de E-books */
-    .ebook-success-msg {
-      color: #4ade80;
-      font-size: 14px;
-      margin-bottom: 18px;
-      text-align: center;
-      font-weight: 600;
-      padding: 12px;
-      background: rgba(74, 222, 128, 0.08);
-      border-radius: 10px;
-      border: 1px solid rgba(74, 222, 128, 0.2);
-    }
-    .ebook-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .ebook-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 14px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      transition: all .3s ease;
-    }
-    .ebook-item:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(200, 109, 215, 0.3);
-      transform: translateX(4px);
-    }
-    .ebook-item-info {
+    .material-item-info {
       flex: 1;
       min-width: 0;
     }
-    .ebook-item-title {
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 3px;
-      line-height: 1.3;
-    }
-    .ebook-item-desc {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 12px;
-      line-height: 1.3;
-    }
-    .ebook-download-btn {
-      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
-      color: white;
-      padding: 8px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 12px;
+    .material-item-info strong {
+      font-size: 13px;
       font-weight: 700;
-      display: flex;
+      color: #F5F7FB;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .material-item-info span {
+      font-size: 11px;
+      color: #7E879B;
+      line-height: 1.4;
+    }
+    .material-item-dl {
+      display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(200,109,215,.15), rgba(200,109,215,.08));
+      border: 1px solid rgba(200,109,215,.3);
+      color: #D08FE0;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .03em;
+      text-transform: uppercase;
       transition: all .3s ease;
       white-space: nowrap;
       flex-shrink: 0;
-      letter-spacing: .03em;
-      text-transform: uppercase;
     }
-    .ebook-download-btn:hover {
+    .material-item-dl:hover {
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
+      color: #fff;
+      border-color: transparent;
       transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(200, 109, 215, 0.4);
-      background: linear-gradient(135deg, #D08FE0, #9B4FBF);
+      box-shadow: 0 8px 24px rgba(200,109,215,.35);
+    }
+    .material-item-dl svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+    .material-item-dl.disabled {
+      opacity: .5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    .material-modal-footer {
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    .material-modal-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .material-modal-info strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: #F5F7FB;
+    }
+    .material-modal-info span {
+      font-size: 11px;
+      color: #7E879B;
     }
 
-    /* Responsivo Mobile */
     @media (max-width: 600px) {
-      .ebook-modal {
-        padding: 10px;
-        align-items: flex-start;
-        padding-top: 24px;
-      }
-      .ebook-modal-content {
-        max-height: 94vh;
-        border-radius: 16px;
-      }
-      .ebook-modal-header {
-        padding: 14px 16px;
-      }
-      .ebook-modal-title {
-        font-size: 14px;
-        gap: 8px;
-      }
-      .ebook-icon-circle {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-      }
-      .ebook-icon-circle svg {
-        width: 18px;
-        height: 18px;
-      }
-      .ebook-modal-body {
-        padding: 16px 14px;
-      }
-      .lead-form-title {
-        font-size: 16px;
-      }
-      .lead-form-text {
-        font-size: 12px;
-        margin-bottom: 16px;
-      }
-      .form-group input {
-        padding: 12px 14px;
-        font-size: 13px;
-      }
-      .lead-submit-btn {
-        padding: 13px;
-        font-size: 14px;
-      }
-      .ebook-item {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 12px;
-        gap: 10px;
-      }
-      .ebook-item-info {
-        text-align: center;
-      }
-      .ebook-item-title {
-        font-size: 13px;
-      }
-      .ebook-item-desc {
-        font-size: 11px;
-      }
-      .ebook-download-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 10px;
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .ebook-modal-header {
-        padding: 12px 14px;
-      }
-      .ebook-modal-title {
-        font-size: 13px;
-      }
-      .ebook-modal-body {
-        padding: 14px 12px;
-      }
-      .ebook-item {
-        padding: 10px;
-      }
-      .lead-submit-btn {
-        font-size: 13px;
-        padding: 12px;
-      }
+      .material-modal-content { width: 95%; border-radius: 16px; max-height: 90vh; }
+      .material-modal-header { padding: 12px 14px; }
+      .material-modal-title { font-size: 12px; }
+      .material-modal-body { padding: 12px 14px; gap: 8px; }
+      .material-modal-footer { padding: 10px 14px; }
+      .material-item { padding: 12px 14px; gap: 10px; }
+      .material-item-dl { padding: 6px 10px; font-size: 10px; }
     }
 
     /* Slides 1-4 e 6 */
@@ -1102,157 +991,125 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- MODAL DE E-BOOKS COM CAPTAÇÃO DE LEAD -->
-  <!-- ══════════════════════════════════════ -->
-  <div class="ebook-modal" id="ebookModal" onclick="closeEbookModalOnBackdrop(event)">
-    <div class="ebook-modal-content">
-      <div class="ebook-modal-header">
-        <div class="ebook-modal-title">
-          <div class="ebook-icon-circle">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+  <!-- ──────────────────────────────────── -->
+  <!-- MODAL DE MATERIAIS DE APOIO          -->
+  <!-- ──────────────────────────────────── -->
+  <div class="material-modal" id="materialModal" onclick="closeMaterialModalOnBackdrop(event)">
+    <div class="material-modal-content">
+      <div class="material-modal-header">
+        <div class="material-modal-title">
+          <div class="mm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
             </svg>
           </div>
-          <span>E-books Gratuitos · Cursos SEMEAR</span>
+          <span>Materiais de Apoio · Cabeleireiro</span>
         </div>
-        <button class="ebook-modal-close" onclick="closeEbookModal()" aria-label="Fechar">
+        <button class="material-modal-close" onclick="closeMaterialModal()" aria-label="Fechar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </button>
       </div>
-
-      <div class="ebook-modal-body">
-        <!-- Formulário de Captura de Leads -->
-        <div class="lead-form" id="leadForm">
-          <div class="lead-form-title">🎁 Libere seus E-books Gratuitos</div>
-          <p class="lead-form-text">
-            Preencha seus dados e receba agora 7 e-books exclusivos dos nossos cursos!
-          </p>
-          <form onsubmit="handleLeadCapture(event)">
-            <div class="form-group">
-              <input type="text" id="leadName" placeholder="Seu nome completo" required>
-            </div>
-            <div class="form-group">
-              <input type="email" id="leadEmail" placeholder="Seu melhor e-mail" required>
-            </div>
-            <div class="form-group">
-              <input type="tel" id="leadPhone" placeholder="WhatsApp (com DDD)" required>
-            </div>
-            <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-              Liberar E-books Agora
-            </button>
-          </form>
+      <div class="material-modal-body">
+        <!-- Item 1 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="material-item-info">
+            <strong>Módulo 1 – Fundamentos do Cabelo</strong>
+            <span>Estrutura capilar, tipos de fio e diagnóstico · PDF</span>
+          </div>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
         </div>
-
-        <!-- Lista de 7 E-books (aparece após preenchimento) -->
-        <div class="ebook-list" id="ebookList" style="display: none;">
-          <p class="ebook-success-msg">✅ Pronto! Escolha o e-book que deseja baixar:</p>
-
-          <div class="ebook-item">
-            <div class="ebook-item-info">
-              <div class="ebook-item-title">📖 E-book de Estética Facial</div>
-              <div class="ebook-item-desc">Técnicas profissionais de cuidados faciais</div>
-            </div>
-            <a href="ebooks/estetica-facial.pdf" target="_blank" class="ebook-download-btn" onclick="trackDownload('estetica-facial')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Baixar
-            </a>
+        <!-- Item 2 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
           </div>
-
-          <div class="ebook-item">
-            <div class="ebook-item-info">
-              <div class="ebook-item-title">📖 E-book de Estética Facial II</div>
-              <div class="ebook-item-desc">Procedimentos avançados e tendências</div>
-            </div>
-            <a href="ebooks/estetica-facial-2.pdf" target="_blank" class="ebook-download-btn" onclick="trackDownload('estetica-facial-2')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Baixar
-            </a>
+          <div class="material-item-info">
+            <strong>Módulo 2 – Técnicas de Corte</strong>
+            <span>Ângulos, tesouras e cortes clássicos · PDF</span>
           </div>
-
-          <div class="ebook-item">
-            <div class="ebook-item-info">
-              <div class="ebook-item-title">📖 E-book de Cabeleireiro</div>
-              <div class="ebook-item-desc">Cortes, coloração e técnicas modernas</div>
-            </div>
-            <a href="ebooks/cabeleireiro.pdf" target="_blank" class="ebook-download-btn" onclick="trackDownload('cabeleireiro')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Baixar
-            </a>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+        <!-- Item 3 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
           </div>
-
-          <div class="ebook-item">
-            <div class="ebook-item-info">
-              <div class="ebook-item-title">📖 E-book de Alongamento de Unhas</div>
-              <div class="ebook-item-desc">Passo a passo completo para iniciantes</div>
-            </div>
-            <a href="ebooks/alongamento-unhas.pdf" target="_blank" class="ebook-download-btn" onclick="trackDownload('alongamento-unhas')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Baixar
-            </a>
+          <div class="material-item-info">
+            <strong>Módulo 3 – Coloração e Química</strong>
+            <span>Coloração, descoloração e tonalizantes · PDF</span>
           </div>
-
-          <div class="ebook-item">
-            <div class="ebook-item-info">
-              <div class="ebook-item-title">📖 E-book de Manicure e Pedicure</div>
-              <div class="ebook-item-desc">Técnicas profissionais e nail art</div>
-            </div>
-            <a href="ebooks/manicure.pdf" target="_blank" class="ebook-download-btn" onclick="trackDownload('manicure')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Baixar
-            </a>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+        <!-- Item 4 -->
+        <div class="material-item">
+          <div class="material-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
           </div>
-
-          <div class="ebook-item">
-            <div class="ebook-item-info">
-              <div class="ebook-item-title">📖 E-book de Estética Avançada</div>
-              <div class="ebook-item-desc">Procedimentos estéticos de alta performance</div>
-            </div>
-            <a href="ebooks/estetica-avancada.pdf" target="_blank" class="ebook-download-btn" onclick="trackDownload('estetica-avancada')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Baixar
-            </a>
+          <div class="material-item-info">
+            <strong>Guia de Produtos e Equipamentos</strong>
+            <span>Ficha técnica de ferramentas e cosméticos · PDF</span>
           </div>
-
-          <div class="ebook-item">
-            <div class="ebook-item-info">
-              <div class="ebook-item-title">📖 E-book de Depilação</div>
-              <div class="ebook-item-desc">Métodos, técnicas e cuidados essenciais</div>
-            </div>
-            <a href="ebooks/depilacao.pdf" target="_blank" class="ebook-download-btn" onclick="trackDownload('depilacao')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Baixar
-            </a>
-          </div>
+          <a href="#" class="material-item-dl" onclick="event.preventDefault(); alert('Arquivo em breve!')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </a>
+        </div>
+      </div>
+      <div class="material-modal-footer">
+        <div class="material-modal-info">
+          <strong>Baixe e estude offline</strong>
+          <span>Materiais disponíveis para download</span>
         </div>
       </div>
     </div>
@@ -1310,8 +1167,8 @@
                   <span>Clique para assistir</span>
                 </div>
               </div>
-              <!-- Card Materiais de Apoio → agora abre o modal de E-books -->
-              <div class="card au d5 clickable material-card" onclick="openEbookModal()">
+              <!-- Card Materiais de Apoio – AGORA CLICÁVEL -->
+              <div class="card au d5 clickable material-card" onclick="openMaterialModal()">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7">
                     <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
@@ -1320,21 +1177,21 @@
                     <line x1="16" y1="17" x2="8" y2="17"/>
                   </svg>
                 </div>
-                <h3>📄 E-books Gratuitos</h3>
-                <p>Baixe e-books exclusivos de cada curso e estude no seu ritmo.</p>
+                <h3>📄 Materiais de Apoio</h3>
+                <p>Apostilas e materiais complementares para reforçar o que você aprendeu nas aulas.</p>
                 <div class="card-hint download">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
                     <polyline points="7 10 12 15 17 10"/>
                     <line x1="12" y1="15" x2="12" y2="3"/>
                   </svg>
-                  <span>Acessar e-books</span>
+                  <span>Acessar materiais</span>
                 </div>
                 <div class="curso-tag">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
                     <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                   </svg>
-                  7 cursos disponíveis
+                  Curso: Cabeleireiro
                 </div>
               </div>
             </div>
@@ -1395,8 +1252,8 @@
         <div class="slide-scroll">
           <div class="s4-wrap">
             <div class="gl au d1"></div>
-            <h2 class="au d2">E-books de Apoio:<br><span class="gt">seu material sempre à mão</span></h2>
-            <p class="sub au d3">Baixe e-books gratuitos para reforçar cada etapa da sua formação.</p>
+            <h2 class="au d2">Materiais de Apoio:<br><span class="gt">sua apostila sempre à mão</span></h2>
+            <p class="sub au d3">Acesse conteúdos complementares para reforçar cada etapa da sua formação.</p>
             <div class="s4-grid">
               <div class="s4-item au d4">
                 <div class="sicon">
@@ -1406,8 +1263,8 @@
                   </svg>
                 </div>
                 <div>
-                  <strong>E-books em PDF</strong>
-                  <span>Materiais organizados por curso para facilitar seus estudos.</span>
+                  <strong>Apostilas em PDF</strong>
+                  <span>Materiais organizados por módulo para facilitar seus estudos.</span>
                 </div>
               </div>
               <div class="s4-item au d5">
@@ -1419,7 +1276,7 @@
                 </div>
                 <div>
                   <strong>Exercícios práticos</strong>
-                  <span>Atividades para fixar o conteúdo de cada módulo.</span>
+                  <span>Atividades para fixar o conteúdo de cada aula.</span>
                 </div>
               </div>
               <div class="s4-item au d6">
@@ -1431,7 +1288,7 @@
                 </div>
                 <div>
                   <strong>Conteúdo complementar</strong>
-                  <span>Referências e leituras extras para se aprofundar.</span>
+                  <span>Referências e leituras extras para aprofundar seu conhecimento.</span>
                 </div>
               </div>
               <div class="s4-item au d7">
@@ -1444,7 +1301,7 @@
                 </div>
                 <div>
                   <strong>Download liberado</strong>
-                  <span>Salve os e-books e estude mesmo sem internet.</span>
+                  <span>Salve os materiais e estude mesmo sem internet.</span>
                 </div>
               </div>
             </div>
@@ -1504,50 +1361,49 @@
               </div>
             </div>
 
-            <!-- 7 Botões → todos abrem o modal de e-books -->
             <div class="s5-btns au d5">
-              <button onclick="openEbookModal()" class="cta-btn" style="animation:none;">
+              <a href="estetica-facial.html" class="cta-btn" style="animation:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 </svg>
                 Estética Facial
-              </button>
-              <button onclick="openEbookModal()" class="cta-btn" style="animation:none;">
+              </a>
+              <a href="curso-estetica-facial-2.html" class="cta-btn" style="animation:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 </svg>
                 Estética Facial 2
-              </button>
-              <button onclick="openEbookModal()" class="cta-btn" style="animation:none;">
+              </a>
+              <a href="cabeleireiro.html" class="cta-btn" style="animation:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 </svg>
                 Cabeleireiro
-              </button>
-              <button onclick="openEbookModal()" class="cta-btn" style="animation:none;">
+              </a>
+              <a href="curso-alongamento-de-unhas.html" class="cta-btn" style="animation:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 </svg>
                 Alongamento de Unhas
-              </button>
-              <button onclick="openEbookModal()" class="cta-btn" style="animation:none;">
+              </a>
+              <a href="curso-manicure.html" class="cta-btn" style="animation:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 </svg>
                 Manicure
-              </button>
-              <button onclick="openEbookModal()" class="cta-btn" style="animation:none;">
+              </a>
+              <a href="curso-estetica-avancada.html" class="cta-btn" style="animation:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 </svg>
                 Estética Avançada
-              </button>
-              <button onclick="openEbookModal()" class="cta-btn" style="animation:none;">
+              </a>
+              <a href="curso-depilacao.html" class="cta-btn" style="animation:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 </svg>
                 Depilação
-              </button>
+              </a>
             </div>
 
           </div>
@@ -1598,15 +1454,15 @@
     function prev() { if (C > 0)     go(C - 1); }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeVideoModal(); closeEbookModal(); }
+      if (e.key === 'Escape') { closeVideoModal(); closeMaterialModal(); }
       if (e.key === 'ArrowRight' || e.key === ' ') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
-        if (document.getElementById('ebookModal').classList.contains('open')) return;
+        if (document.getElementById('materialModal').classList.contains('open')) return;
         e.preventDefault(); next();
       }
       if (e.key === 'ArrowLeft') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
-        if (document.getElementById('ebookModal').classList.contains('open')) return;
+        if (document.getElementById('materialModal').classList.contains('open')) return;
         e.preventDefault(); prev();
       }
       if (e.key === 'f' || e.key === 'F') toggleFs();
@@ -1709,155 +1565,20 @@
       if (e.target === videoModal) closeVideoModal();
     }
 
-    /* ═══════════════════════════════════════ */
-    /* 🔧 MÁSCARA DE TELEFONE (NOVO)          */
-    /* ═══════════════════════════════════════ */
-    const phoneInput = document.getElementById('leadPhone');
-    if (phoneInput) {
-      phoneInput.addEventListener('input', function(e) {
-        let v = e.target.value.replace(/\D/g, '');
-        if (v.length > 11) v = v.slice(0, 11);
-        if (v.length > 6) {
-          v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-        } else if (v.length > 2) {
-          v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-        } else if (v.length > 0) {
-          v = `(${v}`;
-        }
-        e.target.value = v;
-      });
+    /* ──────────────────────────────────── */
+    /* MODAL DE MATERIAIS DE APOIO          */
+    /* ──────────────────────────────────── */
+    const materialModal = document.getElementById('materialModal');
+
+    function openMaterialModal() {
+      materialModal.classList.add('open');
     }
-
-    /* ═══════════════════════════════════════ */
-    /* 🔧 VALIDAÇÃO DE EMAIL (NOVO)           */
-    /* ═══════════════════════════════════════ */
-    function validateEmail(email) {
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return regex.test(email);
+    function closeMaterialModal() {
+      materialModal.classList.remove('open');
     }
-
-    /* ═════════════════════════════════════ */
-    /* MODAL DE E-BOOKS COM CAPTAÇÃO DE LEAD */
-    /* ═════════════════════════════════════ */
-    const ebookModal = document.getElementById('ebookModal');
-
-    function openEbookModal() {
-      ebookModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
+    function closeMaterialModalOnBackdrop(e) {
+      if (e.target === materialModal) closeMaterialModal();
     }
-
-    function closeEbookModal() {
-      ebookModal.classList.remove('open');
-      document.body.style.overflow = '';
-
-      // Reset após animação
-      setTimeout(() => {
-        document.getElementById('leadForm').style.display = 'block';
-        document.getElementById('ebookList').style.display = 'none';
-        const form = document.querySelector('#leadForm form');
-        if (form) form.reset();
-      }, 300);
-    }
-
-    function closeEbookModalOnBackdrop(e) {
-      if (e.target === ebookModal) closeEbookModal();
-    }
-
-    /* ═══════════════════════════════════════ */
-    /* 🔧 CAPTURA DE LEAD (ATUALIZADO)        */
-    /* ═══════════════════════════════════════ */
-    function handleLeadCapture(event) {
-      event.preventDefault();
-
-      const submitBtn = document.getElementById('leadSubmitBtn');
-
-      // Proteção contra envio duplo
-      if (submitBtn.disabled) return;
-
-      const name  = document.getElementById('leadName').value.trim();
-      const email = document.getElementById('leadEmail').value.trim();
-      const phone = document.getElementById('leadPhone').value.trim();
-
-      if (!name || !email || !phone) {
-        alert('⚠️ Por favor, preencha todos os campos!');
-        return;
-      }
-
-      if (!validateEmail(email)) {
-        alert('⚠️ Por favor, insira um e-mail válido!');
-        return;
-      }
-
-      // ⏳ Loading state
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '⏳ Enviando...';
-
-      // ── 1. Envia para o email via FormSubmit ──
-      const formData = new FormData();
-      formData.append('nome', name);
-      formData.append('email', email);
-      formData.append('telefone', phone);
-      formData.append('_subject', '🎁 Novo lead - E-books SEMEAR');
-      formData.append('_captcha', 'false');
-      formData.append('_template', 'table');
-      formData.append('_autoresponse', 'Obrigado por se cadastrar!');
-
-      fetch('https://formsubmit.co/ajax/semearensinointensivo@gmail.com', {
-        method: 'POST',
-        body: formData
-      }).then(r => r.json()).then(d => {
-        console.log('✅ Email enviado via FormSubmit', d);
-      }).catch(e => {
-        console.error('Erro no envio do email', e);
-      });
-
-      // ── 2. Abre WhatsApp com os dados ──
-      const msg = encodeURIComponent(
-        `🎁 Novo lead\n\nNome: ${name}\nE-mail: ${email}\nWhatsApp: ${phone}\n\nObrigado!`
-      );
-      window.open(`https://wa.me/5511910832222?text=${msg}`, '_blank');
-
-      // ── 3. Backup local ──
-      try {
-        let leads = JSON.parse(localStorage.getItem('leads_semear') || '[]');
-        leads.push({ name, email, phone, date: new Date().toISOString() });
-        localStorage.setItem('leads_semear', JSON.stringify(leads));
-        console.log('📦 Lead salvo no localStorage');
-      } catch (e) {
-        console.warn('Não foi possível salvar no localStorage');
-      }
-
-      // ── 4. Exibe a lista de e-books ──
-      document.getElementById('leadForm').style.display = 'none';
-      document.getElementById('ebookList').style.display = 'block';
-
-      // ── 5. Restaura o botão ──
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        Liberar E-books Agora
-      `;
-    }
-
-    function trackDownload(ebookId) {
-      console.log('📥 Download iniciado:', ebookId);
-    }
-
-    // Verificar lead salvo na sessão
-    document.addEventListener('DOMContentLoaded', function() {
-      try {
-        const savedLead = localStorage.getItem('ebookLeadCaptured');
-        if (savedLead) {
-          console.log('Lead já capturado:', JSON.parse(savedLead));
-        }
-      } catch (e) {
-        console.warn('Não foi possível ler o localStorage');
-      }
-    });
   </script>
 
 </body>
