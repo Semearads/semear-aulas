@@ -100,7 +100,7 @@
       width: 100%; height: 100%;
       overflow-y: auto; overflow-x: hidden;
       display: flex; align-items: flex-start; justify-content: center;
-      padding: 72px 20px 90px;
+      padding: 72px 20px 100px;
       position: relative; z-index: 1;
       -webkit-overflow-scrolling: touch;
     }
@@ -111,7 +111,7 @@
     .slide-center {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
-      padding: 72px 20px 90px;
+      padding: 72px 20px 100px;
       position: relative; z-index: 1;
     }
 
@@ -365,12 +365,6 @@
     }
     .video-modal-yt:hover { color: #F5F7FB; border-color: rgba(46, 107, 255, 0.4); background: rgba(46, 107, 255, 0.1); }
     .video-modal-yt svg { width: 12px; height: 12px; }
-    @media (max-width: 600px) {
-      .video-modal-content { width: 95%; border-radius: 16px; }
-      .video-modal-header { padding: 12px 14px; }
-      .video-modal-title { font-size: 12px; }
-      .video-modal-footer { padding: 10px 14px; }
-    }
 
     /* MODAL DE CAPTURA DE LEADS */
     .lead-modal {
@@ -437,13 +431,6 @@
     .lead-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(200, 109, 215, .5); }
     .lead-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
     .lead-submit-btn svg { width: 18px; height: 18px; }
-    @media (max-width: 600px) {
-      .lead-modal-content { width: 95%; border-radius: 16px; max-height: 92vh; }
-      .lead-modal-header { padding: 12px 14px; }
-      .lead-modal-title { font-size: 12px; }
-      .lead-modal-body { padding: 16px 14px; }
-      .lead-form-title { font-size: 16px; }
-    }
 
     /* MODAL DE LISTA DE E-BOOKS */
     .ebook-list-modal {
@@ -537,17 +524,6 @@
       display: flex; align-items: center; gap: 5px;
     }
     .ebook-list-modal-footer svg { width: 12px; height: 12px; color: #C86DD7; }
-    @media (max-width: 600px) {
-      .ebook-list-modal-content { width: 95%; border-radius: 16px; max-height: 90vh; }
-      .ebook-list-modal-header { padding: 12px 14px; }
-      .ebook-list-modal-title { font-size: 12px; }
-      .ebook-list-modal-body { padding: 12px 14px; gap: 8px; }
-      .ebook-list-modal-footer { padding: 10px 14px; }
-      .ebook-item { padding: 12px 14px; gap: 10px; }
-      .ebook-item-icon { width: 40px; height: 40px; min-width: 40px; }
-      .ebook-item-icon svg { width: 18px; height: 18px; }
-      .ebook-item-badge { padding: 4px 8px; font-size: 9px; }
-    }
 
     /* Slides 1-4 e 6 */
     .s1-wrap { text-align: center; max-width: 880px; width: 100%; }
@@ -555,22 +531,11 @@
     .s1-title { margin: 0 0 12px; text-align: center; color: #F5F7FB; font-size: clamp(18px, 2.4vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
     .s1-sub { margin: 0 auto; max-width: 560px; color: #AAB3C5; font-size: clamp(13px, 1.8vw, 16px); line-height: 1.55; }
     .s1-stack { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-    @media (max-width: 768px) {
-      .slide-center.s1-top { justify-content: flex-start !important; padding-top: 18px !important; padding-bottom: 90px !important; }
-      .s1-stack { justify-content: flex-start; gap: 10px; }
-      .logo-img { max-width: 200px; }
-      .badge { margin-bottom: 14px; }
-    }
-    @media (max-width: 360px) {
-      .logo-img { max-width: 180px; }
-      .s1-title { font-size: 18px; }
-    }
 
     .s2-wrap { max-width:1000px; width:100%; }
     .s2-wrap h2 { font-size:clamp(24px,4vw,48px); font-weight:800; letter-spacing:-.025em; line-height:1.12; color:#F5F7FB; margin-bottom:10px; }
     .s2-wrap .sub { font-size:clamp(13px,2vw,17px); color:#AAB3C5; margin-bottom:28px; }
     .s2-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    @media (max-width: 600px) { .s2-grid { grid-template-columns:1fr; } }
     .s2-grid .card h3 { font-size:clamp(16px,2.2vw,20px); font-weight:700; color:#F5F7FB; margin-bottom:10px; }
     .s2-grid .card p  { font-size:clamp(12px,1.6vw,14px); color:#AAB3C5; line-height:1.6; }
     .curso-tag { display:inline-flex; align-items:center; gap:7px; background:rgba(200,109,215,.08); border:1px solid rgba(200,109,215,.2); border-radius:999px; padding:5px 12px; font-size:11px; font-weight:600; color:#C86DD7; margin-top:14px; letter-spacing:.04em; }
@@ -590,7 +555,6 @@
     .s4-wrap h2 { font-size:clamp(22px,4vw,44px); font-weight:800; letter-spacing:-.025em; color:#F5F7FB; margin-bottom:10px; }
     .s4-wrap .sub { font-size:clamp(13px,1.8vw,16px); color:#AAB3C5; margin-bottom:28px; }
     .s4-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    @media (max-width: 540px) { .s4-grid { grid-template-columns:1fr; } }
     .s4-item { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:18px 16px; display:flex; align-items:flex-start; gap:14px; transition:all .3s ease; }
     .s4-item:hover { border-color:rgba(200,109,215,.2); transform:translateY(-2px); }
     .s4-item .sicon { width:40px; height:40px; min-width:40px; border-radius:10px; background:rgba(200,109,215,.08); display:flex; align-items:center; justify-content:center; }
@@ -607,24 +571,162 @@
     .s6-wrap h2 { font-size:clamp(28px,5.5vw,60px); font-weight:900; letter-spacing:-.03em; line-height:1.1; color:#F5F7FB; margin-bottom:16px; }
     .s6-wrap .sub { font-size:clamp(13px,2vw,17px); color:#AAB3C5; line-height:1.6; margin-bottom:36px; max-width:540px; margin-left:auto; margin-right:auto; }
 
-    @media (max-width: 640px) {
-      .fl { display: grid !important; grid-template-columns: 1fr 1fr; gap: 14px; justify-items: center; margin-bottom: 28px !important; }
-      .fa { display: none !important; }
-      .fs-step { min-width: unset; width: 100%; max-width: 150px; padding: 0; }
-      .fs-step .fi { width: 50px; height: 50px; border-radius: 14px; margin-bottom: 8px; }
-      .fs-step .fi svg { width: 22px; height: 22px; }
-      .fs-step span { font-size: 10px; line-height: 1.3; }
-      .s5-btns { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px; align-items: stretch; }
-      .s5-btns .cta-btn { font-size: 11px; font-weight: 700; padding: 12px 8px; border-radius: 11px; white-space: normal; text-align: center; justify-content: center; gap: 6px; letter-spacing: 0; }
-      .s5-btns .cta-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    /* ═══════════════════════════════════════════════════════ */
+    /* RESPONSIVIDADE MOBILE — AJUSTES COMPLETOS              */
+    /* ═══════════════════════════════════════════════════════ */
+
+    /* Tablet e mobile grande */
+    @media (max-width: 768px) {
+      .s2-grid { grid-template-columns: 1fr; gap: 14px; }
+      .s4-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      .slide-scroll { padding: 80px 16px 110px; }
+      .slide-center { padding: 80px 16px 110px; }
+
+      .sc { bottom: 16px; left: 10px; font-size: 11px; padding: 6px 10px; }
+      .ind { bottom: 16px; padding: 6px 10px; gap: 5px; }
+      .ind .dot { width: 7px; height: 7px; }
+      .ind .dot.active { width: 22px; }
+      .nav-arr { bottom: 12px; right: 10px; gap: 6px; }
+      .nav-arr button { width: 38px; height: 38px; border-radius: 10px; }
+      .nav-arr button svg { width: 16px; height: 16px; }
     }
+
+    /* Mobile padrão */
+    @media (max-width: 640px) {
+      .slide-scroll { padding: 80px 14px 120px; }
+      .slide-center { padding: 80px 14px 120px; }
+
+      /* Slide 1 */
+      .s1-wrap { padding: 0 4px; }
+      .logo-img { max-width: 180px; }
+      .s1-title { font-size: 20px; margin-bottom: 10px; }
+      .s1-sub { font-size: 13px; line-height: 1.5; }
+      .s1-stack { gap: 10px; }
+      .badge { font-size: 10px; padding: 7px 12px; margin-bottom: 16px; }
+
+      /* Slide 2 */
+      .s2-wrap h2 { font-size: 22px; margin-bottom: 8px; }
+      .s2-wrap .sub { font-size: 13px; margin-bottom: 20px; }
+      .s2-grid .card { padding: 20px 16px; }
+      .s2-grid .card h3 { font-size: 17px; }
+      .s2-grid .card p { font-size: 13px; }
+
+      /* Slide 3 */
+      .s3-wrap h2 { font-size: 22px; }
+      .s3-wrap .sub { font-size: 13px; margin-bottom: 20px; }
+      .s3-bullet { padding: 14px; gap: 12px; }
+      .s3-bullet .bicon { width: 36px; height: 36px; min-width: 36px; }
+      .s3-bullet .bicon svg { width: 18px; height: 18px; }
+      .s3-bullet .btxt strong { font-size: 13px; }
+      .s3-bullet .btxt span { font-size: 12px; }
+
+      /* Slide 4 */
+      .s4-wrap h2 { font-size: 22px; }
+      .s4-wrap .sub { font-size: 13px; margin-bottom: 20px; }
+      .s4-item { padding: 14px; gap: 12px; }
+      .s4-item .sicon { width: 36px; height: 36px; min-width: 36px; }
+      .s4-item .sicon svg { width: 18px; height: 18px; }
+      .s4-item strong { font-size: 13px; }
+      .s4-item span { font-size: 12px; }
+
+      /* Slide 5 - passos */
+      .fl {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        justify-items: center;
+        margin-bottom: 24px !important;
+      }
+      .fa { display: none !important; }
+      .fs-step { min-width: unset; width: 100%; max-width: 140px; padding: 0; }
+      .fs-step .fi { width: 48px; height: 48px; border-radius: 14px; margin-bottom: 8px; }
+      .fs-step .fi svg { width: 22px; height: 22px; }
+      .fs-step span { font-size: 11px; line-height: 1.3; }
+
+      /* Slide 5 - botões */
+      .s5-btns {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        align-items: stretch;
+      }
+      .s5-btns .cta-btn {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 12px 8px;
+        border-radius: 11px;
+        white-space: normal;
+        text-align: center;
+        justify-content: center;
+        gap: 6px;
+        letter-spacing: 0;
+      }
+      .s5-btns .cta-btn svg { width: 14px; height: 14px; }
+
+      /* Slide 6 */
+      .s6-wrap h2 { font-size: 28px; }
+      .s6-wrap .sub { font-size: 14px; margin-bottom: 24px; }
+
+      /* Modais */
+      .video-modal-content { width: 95%; border-radius: 16px; }
+      .video-modal-header { padding: 12px 14px; }
+      .video-modal-title { font-size: 12px; }
+      .video-modal-footer { padding: 10px 14px; }
+
+      .lead-modal-content { width: 95%; border-radius: 16px; max-height: 92vh; }
+      .lead-modal-header { padding: 12px 14px; }
+      .lead-modal-title { font-size: 12px; }
+      .lead-modal-body { padding: 16px 14px; }
+      .lead-form-title { font-size: 16px; }
+
+      .ebook-list-modal-content { width: 95%; border-radius: 16px; max-height: 90vh; }
+      .ebook-list-modal-header { padding: 12px 14px; }
+      .ebook-list-modal-title { font-size: 12px; }
+      .ebook-list-modal-body { padding: 12px 14px; gap: 8px; }
+      .ebook-list-modal-footer { padding: 10px 14px; }
+      .ebook-item { padding: 12px 14px; gap: 10px; }
+      .ebook-item-icon { width: 40px; height: 40px; min-width: 40px; }
+      .ebook-item-icon svg { width: 18px; height: 18px; }
+      .ebook-item-info strong { font-size: 12px; }
+      .ebook-item-info span { font-size: 10px; }
+      .ebook-item-badge { padding: 4px 8px; font-size: 9px; }
+    }
+
+    /* Mobile pequeno */
     @media (max-width: 380px) {
+      .slide-scroll { padding: 76px 12px 115px; }
+      .slide-center { padding: 76px 12px 115px; }
+
+      .logo-img { max-width: 160px; }
+      .s1-title { font-size: 18px; }
+      .s1-sub { font-size: 12px; }
+
+      .s2-wrap h2, .s3-wrap h2, .s4-wrap h2, .s5-wrap h2 { font-size: 20px; }
+
       .s5-btns { gap: 8px; }
       .s5-btns .cta-btn { font-size: 10px; padding: 10px 6px; border-radius: 9px; gap: 4px; }
       .s5-btns .cta-btn svg { width: 12px; height: 12px; }
+
       .fl { gap: 10px; }
       .fs-step .fi { width: 42px; height: 42px; }
       .fs-step .fi svg { width: 18px; height: 18px; }
+      .fs-step span { font-size: 10px; }
+
+      .s6-wrap h2 { font-size: 24px; }
+    }
+
+    /* Mobile muito pequeno (iPhone SE, etc) */
+    @media (max-width: 340px) {
+      .slide-scroll { padding: 72px 10px 110px; }
+      .slide-center { padding: 72px 10px 110px; }
+
+      .logo-img { max-width: 140px; }
+      .s1-title { font-size: 17px; }
+      .s1-sub { font-size: 11px; }
+
+      .s5-btns { grid-template-columns: 1fr !important; }
+      .s5-btns .cta-btn { font-size: 12px; padding: 13px 12px; }
     }
   </style>
 </head>
@@ -730,7 +832,7 @@
       </div>
       <div class="lead-modal-body">
         <div class="lead-form-title">📚 Receba seu e-book grátis</div>
-        <p class="lead-form-subtitle">Preencha seus dados para baixar o <strong>E-book Semear Lash Code</strong>. É 100% gratuito!</p>
+        <p class="lead-form-subtitle">Preencha seus dados para baixar o <strong>Semear Lash Code</strong>. É 100% gratuito!</p>
         <form id="leadFormEl" onsubmit="handleLeadCapture(event)">
           <div class="lead-form-group">
             <input type="text" id="leadName" placeholder="Seu nome completo" required />
@@ -812,8 +914,6 @@
         </button>
       </div>
       <div class="ebook-list-modal-body">
-
-        <!-- Único E-book -->
         <div class="ebook-item" onclick="selectEbook(0)">
           <div class="ebook-item-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -834,7 +934,6 @@
             Grátis
           </div>
         </div>
-
       </div>
       <div class="ebook-list-modal-footer">
         <span>
@@ -854,7 +953,7 @@
 
       <!-- SLIDE 1 -->
       <section class="slide active">
-        <div class="slide-center s1-top">
+        <div class="slide-center">
           <div class="s1-wrap">
             <div class="s1-stack">
               <div class="au d1">
@@ -885,7 +984,6 @@
             <h2 class="au d2">Tudo o que você precisa,<br><span class="gt">em um só lugar</span></h2>
             <p class="sub au d3">Uma plataforma simples, organizada e feita para você aprender de verdade.</p>
             <div class="s2-grid">
-              <!-- Card Videoaulas -->
               <div class="card au d4 clickable" onclick="openVideoModal()">
                 <div class="ic">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -900,7 +998,6 @@
                   <span>Clique para assistir</span>
                 </div>
               </div>
-              <!-- Card E-book Gratuito -->
               <div class="card au d5 clickable ebook-card" onclick="openEbookListModal()">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7">
@@ -1298,9 +1395,7 @@
       if (e.target === videoModal) closeVideoModal();
     }
 
-    /* ──────────────────────────────────── */
-    /* E-BOOK SEMEAR LASH CODE              */
-    /* ──────────────────────────────────── */
+    /* E-BOOK SEMEAR LASH CODE */
     const EBOOK_LINK = 'https://drive.google.com/uc?export=download&id=1nbbsUOWQcjt6ccscpz4m5tUe6yP3qYqI';
     const EBOOK_NAME = 'Semear Lash Code – O guia definitivo do Alongamento de Cílios';
 
@@ -1321,9 +1416,7 @@
       setTimeout(() => { openLeadModal(); }, 200);
     }
 
-    /* ──────────────────────────────────── */
-    /* MODAL DE CAPTURA DE LEADS            */
-    /* ──────────────────────────────────── */
+    /* MODAL DE CAPTURA DE LEADS */
     const leadModal = document.getElementById('leadModal');
 
     function openLeadModal() {
@@ -1336,7 +1429,6 @@
       if (e.target === leadModal) closeLeadModal();
     }
 
-    // Máscara de telefone
     (function(){
       const tel = document.getElementById('leadPhone');
       if (tel) {
@@ -1374,7 +1466,6 @@
       btn.disabled = true;
       btn.innerHTML = '⏳ Enviando...';
 
-      // Enviar para formsubmit
       const data = new FormData();
       data.append('nome', nome);
       data.append('email', email);
@@ -1393,7 +1484,6 @@
         console.error('Erro no envio:', err);
       }
 
-      // WhatsApp
       const msg = encodeURIComponent(
         '📚 Novo lead - E-book Semear Lash Code\n\n' +
         'Nome: ' + nome + '\n' +
@@ -1404,18 +1494,15 @@
       );
       window.open('https://wa.me/5511910832222?text=' + msg, '_blank');
 
-      // Backup localStorage
       try {
         const leads = JSON.parse(localStorage.getItem('leads_semear') || '[]');
         leads.push({ nome, email, tel, ebook: EBOOK_NAME, date: new Date().toISOString() });
         localStorage.setItem('leads_semear', JSON.stringify(leads));
       } catch (e) {}
 
-      // Reset botão
       btn.disabled = false;
       btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar E-book Grátis';
 
-      // Fecha modal de captura e abre o download
       closeLeadModal();
 
       setTimeout(() => {
