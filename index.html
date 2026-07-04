@@ -600,35 +600,38 @@
       /* Slide 1 */
       .s1-wrap { padding: 0 4px; }
       .logo-img { max-width: 180px; }
-      .s1-title { font-size: 20px; margin-bottom: 10px; }
-      .s1-sub { font-size: 13px; line-height: 1.5; }
+      .s1-title { font-size: 20px; margin-bottom: 10px; line-height: 1.25; }
+      .s1-sub { font-size: 13px; line-height: 1.55; margin-bottom: 4px; }
       .s1-stack { gap: 10px; }
       .badge { font-size: 10px; padding: 7px 12px; margin-bottom: 16px; }
 
       /* Slide 2 */
-      .s2-wrap h2 { font-size: 22px; margin-bottom: 8px; }
-      .s2-wrap .sub { font-size: 13px; margin-bottom: 20px; }
-      .s2-grid .card { padding: 20px 16px; }
-      .s2-grid .card h3 { font-size: 17px; }
-      .s2-grid .card p { font-size: 13px; }
+      .s2-wrap h2 { font-size: 22px; margin-bottom: 8px; line-height: 1.2; }
+      .s2-wrap .sub { font-size: 13px; margin-bottom: 20px; line-height: 1.5; }
+      .s2-grid .card { padding: 18px 16px; }
+      .s2-grid .card h3 { font-size: 16px; margin-bottom: 8px; }
+      .s2-grid .card p { font-size: 12.5px; }
 
       /* Slide 3 */
-      .s3-wrap h2 { font-size: 22px; }
+      .s3-wrap h2 { font-size: 20px; }
       .s3-wrap .sub { font-size: 13px; margin-bottom: 20px; }
       .s3-bullet { padding: 14px; gap: 12px; }
       .s3-bullet .bicon { width: 36px; height: 36px; min-width: 36px; }
       .s3-bullet .bicon svg { width: 18px; height: 18px; }
       .s3-bullet .btxt strong { font-size: 13px; }
-      .s3-bullet .btxt span { font-size: 12px; }
+      .s3-bullet .btxt span { font-size: 11px; }
 
       /* Slide 4 */
-      .s4-wrap h2 { font-size: 22px; }
+      .s4-wrap h2 { font-size: 20px; }
       .s4-wrap .sub { font-size: 13px; margin-bottom: 20px; }
       .s4-item { padding: 14px; gap: 12px; }
       .s4-item .sicon { width: 36px; height: 36px; min-width: 36px; }
       .s4-item .sicon svg { width: 18px; height: 18px; }
       .s4-item strong { font-size: 13px; }
-      .s4-item span { font-size: 12px; }
+      .s4-item span { font-size: 11px; }
+
+      /* Slide 5 - título */
+      .s5-wrap h2 { font-size: 20px; }
 
       /* Slide 5 - passos */
       .fl {
@@ -644,18 +647,18 @@
       .fs-step .fi svg { width: 22px; height: 22px; }
       .fs-step span { font-size: 11px; line-height: 1.3; }
 
-      /* Slide 5 - botões */
+      /* Slide 5 - botões em coluna única */
       .s5-btns {
         display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        grid-template-columns: 1fr !important;
+        gap: 8px;
         align-items: stretch;
       }
       .s5-btns .cta-btn {
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 700;
-        padding: 12px 8px;
-        border-radius: 11px;
+        padding: 10px;
+        border-radius: 9px;
         white-space: normal;
         text-align: center;
         justify-content: center;
@@ -665,7 +668,7 @@
       .s5-btns .cta-btn svg { width: 14px; height: 14px; }
 
       /* Slide 6 */
-      .s6-wrap h2 { font-size: 28px; }
+      .s6-wrap h2 { font-size: 24px; }
       .s6-wrap .sub { font-size: 14px; margin-bottom: 24px; }
 
       /* Modais */
@@ -695,17 +698,22 @@
 
     /* Mobile pequeno */
     @media (max-width: 380px) {
-      .slide-scroll { padding: 76px 12px 115px; }
-      .slide-center { padding: 76px 12px 115px; }
+      .slide-scroll { padding: 90px 12px 130px; }
+      .slide-center { padding: 90px 12px 130px; }
 
       .logo-img { max-width: 160px; }
       .s1-title { font-size: 18px; }
       .s1-sub { font-size: 12px; }
 
       .s2-wrap h2, .s3-wrap h2, .s4-wrap h2, .s5-wrap h2 { font-size: 20px; }
+      .s2-wrap .sub, .s3-wrap .sub, .s4-wrap .sub, .s5-wrap .sub { font-size: 12px; }
 
-      .s5-btns { gap: 8px; }
-      .s5-btns .cta-btn { font-size: 10px; padding: 10px 6px; border-radius: 9px; gap: 4px; }
+      .s2-grid .card { padding: 16px; }
+      .s2-grid .card h3 { font-size: 15px; }
+      .s2-grid .card p { font-size: 11.5px; }
+
+      .s5-btns { gap: 6px; }
+      .s5-btns .cta-btn { font-size: 10px; padding: 12px; }
       .s5-btns .cta-btn svg { width: 12px; height: 12px; }
 
       .fl { gap: 10px; }
