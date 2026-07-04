@@ -145,28 +145,17 @@
     }
     .card:hover { border-color: rgba(46,107,255,.2); transform: translateY(-2px); box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(46,107,255,.08); }
 
-    /* Cards clicáveis */
-    .card.clickable {
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
+    .card.clickable { cursor: pointer; position: relative; overflow: hidden; }
     .card.clickable::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 18px;
+      content: ''; position: absolute; inset: 0; border-radius: 18px;
       background: linear-gradient(135deg, rgba(46,107,255,0) 0%, rgba(46,107,255,.08) 100%);
-      opacity: 0;
-      transition: opacity .4s ease;
-      pointer-events: none;
+      opacity: 0; transition: opacity .4s ease; pointer-events: none;
     }
     .card.clickable:hover::after { opacity: 1; }
     .card.clickable:hover {
       border-color: rgba(46,107,255,.5);
       box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px rgba(46,107,255,.25);
     }
-    /* Card E-books – tom roxo */
     .card.clickable.ebook-card:hover {
       border-color: rgba(200,109,215,.5);
       box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px rgba(200,109,215,.25);
@@ -176,46 +165,32 @@
     }
 
     .card-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 12px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      transition: all .3s ease;
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px; padding: 6px 12px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase; transition: all .3s ease;
     }
     .card-hint.play {
       background: linear-gradient(135deg, rgba(46,107,255,.15), rgba(200,109,215,.15));
-      border: 1px solid rgba(46,107,255,.3);
-      color: #8FAEFF;
+      border: 1px solid rgba(46,107,255,.3); color: #8FAEFF;
     }
     .card-hint.download {
       background: linear-gradient(135deg, rgba(200,109,215,.12), rgba(200,109,215,.2));
-      border: 1px solid rgba(200,109,215,.3);
-      color: #D08FE0;
+      border: 1px solid rgba(200,109,215,.3); color: #D08FE0;
     }
     .card.clickable:hover .card-hint.play {
       background: linear-gradient(135deg, #2E6BFF, #5B3FD6);
-      color: #fff;
-      border-color: transparent;
-      transform: translateX(3px);
+      color: #fff; border-color: transparent; transform: translateX(3px);
     }
     .card.clickable.ebook-card:hover .card-hint.download {
       background: linear-gradient(135deg, #C86DD7, #8B3FAF);
-      color: #fff;
-      border-color: transparent;
-      transform: translateX(3px);
+      color: #fff; border-color: transparent; transform: translateX(3px);
     }
     .card-hint svg { width: 12px; height: 12px; }
 
     .ic { width: 46px; height: 46px; border-radius: 12px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; background: rgba(46,107,255,.08); }
     .ic svg { width: 22px; height: 22px; color: #2E6BFF; }
 
-    /* Passos */
     .fl { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; row-gap: 16px; }
     .fs-step { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 80px; padding: 0 6px; }
     .fs-step .fi {
@@ -237,8 +212,7 @@
       padding: 16px 28px; border-radius: 14px; border: none; cursor: pointer;
       text-decoration: none; letter-spacing: .01em;
       box-shadow: 0 12px 36px rgba(46,107,255,.35);
-      transition: all .3s ease;
-      white-space: nowrap;
+      transition: all .3s ease; white-space: nowrap;
     }
     .cta-btn:hover { transform: scale(1.04) translateY(-2px); box-shadow: 0 20px 48px rgba(46,107,255,.5); }
     .cta-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
@@ -334,145 +308,62 @@
 
     /* MODAL DE VÍDEO */
     .video-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center;
       animation: modalFadeIn .3s ease both;
     }
-    .video-modal.open {
-      display: flex;
-    }
+    .video-modal.open { display: flex; }
     .video-modal-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      width: 90%;
-      max-width: 900px;
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1);
+      width: 90%; max-width: 900px;
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
-      border: 1px solid rgba(46, 107, 255, 0.25);
-      border-radius: 20px;
+      border: 1px solid rgba(46, 107, 255, 0.25); border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(46, 107, 255, 0.2);
       animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
     }
     .video-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.03);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; background: rgba(255, 255, 255, 0.03);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .video-modal-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #F5F7FB;
-      letter-spacing: .02em;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 700; color: #F5F7FB; letter-spacing: .02em;
     }
     .video-modal-title .vm-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 28px; height: 28px; border-radius: 8px;
       background: linear-gradient(135deg, #2E6BFF, #C86DD7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .video-modal-title .vm-icon svg {
-      width: 14px;
-      height: 14px;
-      color: #fff;
-      margin-left: 1px;
-    }
+    .video-modal-title .vm-icon svg { width: 14px; height: 14px; color: #fff; margin-left: 1px; }
     .video-modal-close {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #AAB3C5;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s ease;
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all .2s ease;
     }
-    .video-modal-close:hover {
-      background: rgba(255, 60, 60, 0.15);
-      border-color: rgba(255, 60, 60, 0.4);
-      color: #FF6B6B;
-    }
+    .video-modal-close:hover { background: rgba(255, 60, 60, 0.15); border-color: rgba(255, 60, 60, 0.4); color: #FF6B6B; }
     .video-modal-close svg { width: 14px; height: 14px; }
-    .video-modal-player {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%;
-      background: #000;
-    }
-    .video-modal-player.shorts {
-      padding-top: 177.78%;
-      max-height: 80vh;
-    }
-    .video-modal-player iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+    .video-modal-player { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
+    .video-modal-player.shorts { padding-top: 177.78%; max-height: 80vh; }
+    .video-modal-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .video-modal-footer {
-      padding: 12px 18px;
-      background: rgba(255, 255, 255, 0.02);
+      padding: 12px 18px; background: rgba(255, 255, 255, 0.02);
       border-top: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
     }
-    .video-modal-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
-    .video-modal-info strong {
-      font-size: 13px;
-      font-weight: 700;
-      color: #F5F7FB;
-    }
-    .video-modal-info span {
-      font-size: 11px;
-      color: #7E879B;
-    }
+    .video-modal-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .video-modal-info strong { font-size: 13px; font-weight: 700; color: #F5F7FB; }
+    .video-modal-info span { font-size: 11px; color: #7E879B; }
     .video-modal-yt {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
-      border-radius: 9px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #AAB3C5;
-      font-size: 11px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: .2s ease;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 12px; border-radius: 9px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5; font-size: 11px; font-weight: 600; text-decoration: none; transition: .2s ease;
     }
-    .video-modal-yt:hover {
-      color: #F5F7FB;
-      border-color: rgba(46, 107, 255, 0.4);
-      background: rgba(46, 107, 255, 0.1);
-    }
+    .video-modal-yt:hover { color: #F5F7FB; border-color: rgba(46, 107, 255, 0.4); background: rgba(46, 107, 255, 0.1); }
     .video-modal-yt svg { width: 12px; height: 12px; }
     @media (max-width: 600px) {
       .video-modal-content { width: 95%; border-radius: 16px; }
@@ -481,162 +372,71 @@
       .video-modal-footer { padding: 10px 14px; }
     }
 
-    /* ──────────────────────────────────── */
-    /* MODAL DE CAPTURA DE LEADS (E-BOOKS) */
-    /* ──────────────────────────────────── */
+    /* MODAL DE CAPTURA DE LEADS */
     .lead-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2002;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
+      position: fixed; inset: 0; z-index: 2002;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center;
       animation: modalFadeIn .3s ease both;
     }
-    .lead-modal.open {
-      display: flex;
-    }
+    .lead-modal.open { display: flex; }
     .lead-modal-content {
-      width: 90%;
-      max-width: 480px;
-      max-height: 90vh;
+      width: 90%; max-width: 480px; max-height: 90vh;
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
-      border: 1px solid rgba(200, 109, 215, 0.25);
-      border-radius: 20px;
+      border: 1px solid rgba(200, 109, 215, 0.25); border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
       animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
     }
     .lead-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); flex-shrink: 0;
     }
     .lead-modal-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #F5F7FB;
-      letter-spacing: .02em;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 700; color: #F5F7FB; letter-spacing: .02em;
     }
     .lead-modal-title .lm-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 28px; height: 28px; border-radius: 8px;
       background: linear-gradient(135deg, #C86DD7, #8B3FAF);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .lead-modal-title .lm-icon svg {
-      width: 14px;
-      height: 14px;
-      color: #fff;
-    }
+    .lead-modal-title .lm-icon svg { width: 14px; height: 14px; color: #fff; }
     .lead-modal-close {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #AAB3C5;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s ease;
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all .2s ease;
     }
-    .lead-modal-close:hover {
-      background: rgba(255, 60, 60, 0.15);
-      border-color: rgba(255, 60, 60, 0.4);
-      color: #FF6B6B;
-    }
+    .lead-modal-close:hover { background: rgba(255, 60, 60, 0.15); border-color: rgba(255, 60, 60, 0.4); color: #FF6B6B; }
     .lead-modal-close svg { width: 14px; height: 14px; }
-    .lead-modal-body {
-      padding: 20px 18px;
-      overflow-y: auto;
-      flex: 1;
-    }
+    .lead-modal-body { padding: 20px 18px; overflow-y: auto; flex: 1; }
     .lead-modal-body::-webkit-scrollbar { width: 3px; }
     .lead-modal-body::-webkit-scrollbar-track { background: transparent; }
     .lead-modal-body::-webkit-scrollbar-thumb { background: rgba(200,109,215,.3); border-radius: 2px; }
-    .lead-form-title {
-      font-size: 18px;
-      font-weight: 800;
-      color: #F5F7FB;
-      text-align: center;
-      margin-bottom: 6px;
-    }
-    .lead-form-subtitle {
-      font-size: 12px;
-      color: #AAB3C5;
-      line-height: 1.5;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .lead-form-group {
-      margin-bottom: 12px;
-    }
+    .lead-form-title { font-size: 18px; font-weight: 800; color: #F5F7FB; text-align: center; margin-bottom: 6px; }
+    .lead-form-subtitle { font-size: 12px; color: #AAB3C5; line-height: 1.5; text-align: center; margin-bottom: 20px; }
+    .lead-form-group { margin-bottom: 12px; }
     .lead-form-group input {
-      width: 100%;
-      padding: 13px 15px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 11px;
-      font-size: 14px;
-      color: #fff;
-      outline: none;
-      transition: .3s ease;
+      width: 100%; padding: 13px 15px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 11px; font-size: 14px; color: #fff; outline: none; transition: .3s ease;
     }
-    .lead-form-group input:focus {
-      border-color: rgba(200, 109, 215, 0.5);
-      box-shadow: 0 0 0 3px rgba(200, 109, 215, 0.1);
-    }
-    .lead-form-group input::placeholder {
-      color: #5A6070;
-    }
+    .lead-form-group input:focus { border-color: rgba(200, 109, 215, 0.5); box-shadow: 0 0 0 3px rgba(200, 109, 215, 0.1); }
+    .lead-form-group input::placeholder { color: #5A6070; }
     .lead-submit-btn {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
-      border: none;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 16px;
-      transition: all .3s ease;
+      width: 100%; padding: 14px;
+      background: linear-gradient(135deg, #C86DD7, #8B3FAF); border: none; border-radius: 12px;
+      font-size: 15px; font-weight: 700; color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 16px; transition: all .3s ease;
       box-shadow: 0 10px 30px rgba(200, 109, 215, .35);
     }
-    .lead-submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(200, 109, 215, .5);
-    }
-    .lead-submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-    .lead-submit-btn svg {
-      width: 18px;
-      height: 18px;
-    }
+    .lead-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(200, 109, 215, .5); }
+    .lead-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+    .lead-submit-btn svg { width: 18px; height: 18px; }
     @media (max-width: 600px) {
       .lead-modal-content { width: 95%; border-radius: 16px; max-height: 92vh; }
       .lead-modal-header { padding: 12px 14px; }
@@ -645,199 +445,98 @@
       .lead-form-title { font-size: 16px; }
     }
 
-    /* ──────────────────────────────────── */
-    /* MODAL DE LISTA DE E-BOOKS           */
-    /* ──────────────────────────────────── */
+    /* MODAL DE LISTA DE E-BOOKS */
     .ebook-list-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2001;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
+      position: fixed; inset: 0; z-index: 2001;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center;
       animation: modalFadeIn .3s ease both;
     }
-    .ebook-list-modal.open {
-      display: flex;
-    }
+    .ebook-list-modal.open { display: flex; }
     .ebook-list-modal-content {
-      width: 90%;
-      max-width: 600px;
-      max-height: 85vh;
+      width: 90%; max-width: 600px; max-height: 85vh;
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
-      border: 1px solid rgba(200, 109, 215, 0.25);
-      border-radius: 20px;
+      border: 1px solid rgba(200, 109, 215, 0.25); border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
       animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
     }
     .ebook-list-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); flex-shrink: 0;
     }
     .ebook-list-modal-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #F5F7FB;
-      letter-spacing: .02em;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 700; color: #F5F7FB; letter-spacing: .02em;
     }
     .ebook-list-modal-title .em-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
+      width: 28px; height: 28px; border-radius: 8px;
       background: linear-gradient(135deg, #C86DD7, #8B3FAF);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .ebook-list-modal-title .em-icon svg {
-      width: 14px;
-      height: 14px;
-      color: #fff;
-    }
+    .ebook-list-modal-title .em-icon svg { width: 14px; height: 14px; color: #fff; }
     .ebook-list-modal-close {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #AAB3C5;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s ease;
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #AAB3C5; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all .2s ease;
     }
-    .ebook-list-modal-close:hover {
-      background: rgba(255, 60, 60, 0.15);
-      border-color: rgba(255, 60, 60, 0.4);
-      color: #FF6B6B;
-    }
+    .ebook-list-modal-close:hover { background: rgba(255, 60, 60, 0.15); border-color: rgba(255, 60, 60, 0.4); color: #FF6B6B; }
     .ebook-list-modal-close svg { width: 14px; height: 14px; }
-
     .ebook-list-modal-body {
-      padding: 16px 18px;
-      overflow-y: auto;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      padding: 16px 18px; overflow-y: auto; flex: 1;
+      display: flex; flex-direction: column; gap: 10px;
     }
     .ebook-list-modal-body::-webkit-scrollbar { width: 3px; }
     .ebook-list-modal-body::-webkit-scrollbar-track { background: transparent; }
     .ebook-list-modal-body::-webkit-scrollbar-thumb { background: rgba(200,109,215,.3); border-radius: 2px; }
-
     .ebook-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 16px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: 14px;
-      transition: all .3s ease;
-      cursor: pointer;
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07); border-radius: 14px;
+      transition: all .3s ease; cursor: pointer;
     }
     .ebook-item:hover {
-      border-color: rgba(200,109,215,.35);
-      background: rgba(200,109,215,.06);
-      transform: translateX(3px);
-      box-shadow: 0 8px 24px rgba(200,109,215,.12);
+      border-color: rgba(200,109,215,.35); background: rgba(200,109,215,.06);
+      transform: translateX(3px); box-shadow: 0 8px 24px rgba(200,109,215,.12);
     }
     .ebook-item-icon {
-      width: 46px;
-      height: 46px;
-      min-width: 46px;
-      border-radius: 12px;
+      width: 46px; height: 46px; min-width: 46px; border-radius: 12px;
       background: linear-gradient(135deg, rgba(200,109,215,.15), rgba(200,109,215,.06));
       border: 1px solid rgba(200,109,215,.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-    .ebook-item-icon svg {
-      width: 22px;
-      height: 22px;
-      color: #C86DD7;
-    }
-    .ebook-item-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .ebook-item-info strong {
-      font-size: 13px;
-      font-weight: 700;
-      color: #F5F7FB;
-      display: block;
-      margin-bottom: 3px;
-    }
-    .ebook-item-info span {
-      font-size: 11px;
-      color: #7E879B;
-      line-height: 1.4;
-    }
+    .ebook-item-icon svg { width: 22px; height: 22px; color: #C86DD7; }
+    .ebook-item-info { flex: 1; min-width: 0; }
+    .ebook-item-info strong { font-size: 13px; font-weight: 700; color: #F5F7FB; display: block; margin-bottom: 3px; }
+    .ebook-item-info span { font-size: 11px; color: #7E879B; line-height: 1.4; }
     .ebook-item-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 5px 10px;
-      border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 5px 10px; border-radius: 8px;
       background: linear-gradient(135deg, rgba(200,109,215,.15), rgba(200,109,215,.08));
       border: 1px solid rgba(200,109,215,.25);
-      color: #D08FE0;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: all .3s ease;
+      color: #D08FE0; font-size: 10px; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      white-space: nowrap; flex-shrink: 0; transition: all .3s ease;
     }
     .ebook-item:hover .ebook-item-badge {
       background: linear-gradient(135deg, #C86DD7, #8B3FAF);
-      color: #fff;
-      border-color: transparent;
+      color: #fff; border-color: transparent;
       box-shadow: 0 6px 18px rgba(200,109,215,.3);
     }
-    .ebook-item-badge svg {
-      width: 12px;
-      height: 12px;
-    }
+    .ebook-item-badge svg { width: 12px; height: 12px; }
     .ebook-list-modal-footer {
-      padding: 12px 18px;
-      background: rgba(255, 255, 255, 0.02);
+      padding: 12px 18px; background: rgba(255, 255, 255, 0.02);
       border-top: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0;
     }
     .ebook-list-modal-footer span {
-      font-size: 11px;
-      color: #5A6070;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      font-size: 11px; color: #5A6070;
+      display: flex; align-items: center; gap: 5px;
     }
-    .ebook-list-modal-footer svg {
-      width: 12px;
-      height: 12px;
-      color: #C86DD7;
-    }
-
+    .ebook-list-modal-footer svg { width: 12px; height: 12px; color: #C86DD7; }
     @media (max-width: 600px) {
       .ebook-list-modal-content { width: 95%; border-radius: 16px; max-height: 90vh; }
       .ebook-list-modal-header { padding: 12px 14px; }
@@ -852,42 +551,12 @@
 
     /* Slides 1-4 e 6 */
     .s1-wrap { text-align: center; max-width: 880px; width: 100%; }
-    .logo-img {
-      width: 100%;
-      max-width: 240px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-    .s1-title {
-      margin: 0 0 12px;
-      text-align: center;
-      color: #F5F7FB;
-      font-size: clamp(18px, 2.4vw, 28px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-    }
-    .s1-sub {
-      margin: 0 auto;
-      max-width: 560px;
-      color: #AAB3C5;
-      font-size: clamp(13px, 1.8vw, 16px);
-      line-height: 1.55;
-    }
-    .s1-stack {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
+    .logo-img { width: 100%; max-width: 240px; height: auto; display: block; margin: 0 auto; }
+    .s1-title { margin: 0 0 12px; text-align: center; color: #F5F7FB; font-size: clamp(18px, 2.4vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+    .s1-sub { margin: 0 auto; max-width: 560px; color: #AAB3C5; font-size: clamp(13px, 1.8vw, 16px); line-height: 1.55; }
+    .s1-stack { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
     @media (max-width: 768px) {
-      .slide-center.s1-top {
-        justify-content: flex-start !important;
-        padding-top: 18px !important;
-        padding-bottom: 90px !important;
-      }
+      .slide-center.s1-top { justify-content: flex-start !important; padding-top: 18px !important; padding-bottom: 90px !important; }
       .s1-stack { justify-content: flex-start; gap: 10px; }
       .logo-img { max-width: 200px; }
       .badge { margin-bottom: 14px; }
@@ -932,100 +601,30 @@
     .s5-wrap { max-width:900px; width:100%; }
     .s5-wrap h2 { font-size:clamp(22px,4vw,44px); font-weight:800; letter-spacing:-.025em; color:#F5F7FB; margin-bottom:10px; }
     .s5-wrap .sub { font-size:clamp(13px,1.8vw,16px); color:#AAB3C5; margin-bottom:32px; }
-
-    .s5-btns {
-      text-align:center;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-    }
+    .s5-btns { text-align:center; display: flex; flex-direction: column; gap: 12px; align-items: center; }
 
     .s6-wrap { text-align:center; max-width:800px; width:100%; }
     .s6-wrap h2 { font-size:clamp(28px,5.5vw,60px); font-weight:900; letter-spacing:-.03em; line-height:1.1; color:#F5F7FB; margin-bottom:16px; }
     .s6-wrap .sub { font-size:clamp(13px,2vw,17px); color:#AAB3C5; line-height:1.6; margin-bottom:36px; max-width:540px; margin-left:auto; margin-right:auto; }
 
     @media (max-width: 640px) {
-      .fl {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-        justify-items: center;
-        margin-bottom: 28px !important;
-      }
-      .fa {
-        display: none !important;
-      }
-      .fs-step {
-        min-width: unset;
-        width: 100%;
-        max-width: 150px;
-        padding: 0;
-      }
-      .fs-step .fi {
-        width: 50px;
-        height: 50px;
-        border-radius: 14px;
-        margin-bottom: 8px;
-      }
-      .fs-step .fi svg {
-        width: 22px;
-        height: 22px;
-      }
-      .fs-step span {
-        font-size: 10px;
-        line-height: 1.3;
-      }
-
-      .s5-btns {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        align-items: stretch;
-      }
-      .s5-btns .cta-btn {
-        font-size: 11px;
-        font-weight: 700;
-        padding: 12px 8px;
-        border-radius: 11px;
-        white-space: normal;
-        text-align: center;
-        justify-content: center;
-        gap: 6px;
-        letter-spacing: 0;
-      }
-      .s5-btns .cta-btn svg {
-        width: 14px;
-        height: 14px;
-        flex-shrink: 0;
-      }
+      .fl { display: grid !important; grid-template-columns: 1fr 1fr; gap: 14px; justify-items: center; margin-bottom: 28px !important; }
+      .fa { display: none !important; }
+      .fs-step { min-width: unset; width: 100%; max-width: 150px; padding: 0; }
+      .fs-step .fi { width: 50px; height: 50px; border-radius: 14px; margin-bottom: 8px; }
+      .fs-step .fi svg { width: 22px; height: 22px; }
+      .fs-step span { font-size: 10px; line-height: 1.3; }
+      .s5-btns { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px; align-items: stretch; }
+      .s5-btns .cta-btn { font-size: 11px; font-weight: 700; padding: 12px 8px; border-radius: 11px; white-space: normal; text-align: center; justify-content: center; gap: 6px; letter-spacing: 0; }
+      .s5-btns .cta-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
     }
-
     @media (max-width: 380px) {
-      .s5-btns {
-        gap: 8px;
-      }
-      .s5-btns .cta-btn {
-        font-size: 10px;
-        padding: 10px 6px;
-        border-radius: 9px;
-        gap: 4px;
-      }
-      .s5-btns .cta-btn svg {
-        width: 12px;
-        height: 12px;
-      }
-      .fl {
-        gap: 10px;
-      }
-      .fs-step .fi {
-        width: 42px;
-        height: 42px;
-      }
-      .fs-step .fi svg {
-        width: 18px;
-        height: 18px;
-      }
+      .s5-btns { gap: 8px; }
+      .s5-btns .cta-btn { font-size: 10px; padding: 10px 6px; border-radius: 9px; gap: 4px; }
+      .s5-btns .cta-btn svg { width: 12px; height: 12px; }
+      .fl { gap: 10px; }
+      .fs-step .fi { width: 42px; height: 42px; }
+      .fs-step .fi svg { width: 18px; height: 18px; }
     }
   </style>
 </head>
@@ -1110,9 +709,7 @@
     </div>
   </div>
 
-  <!-- ──────────────────────────────────── -->
-  <!-- MODAL DE CAPTURA DE LEADS            -->
-  <!-- ──────────────────────────────────── -->
+  <!-- MODAL DE CAPTURA DE LEADS -->
   <div class="lead-modal" id="leadModal" onclick="closeLeadModalOnBackdrop(event)">
     <div class="lead-modal-content">
       <div class="lead-modal-header">
@@ -1123,7 +720,7 @@
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
             </svg>
           </div>
-          <span>E-books Gratuitos · SEMEAR</span>
+          <span>E-book Gratuito · SEMEAR</span>
         </div>
         <button class="lead-modal-close" onclick="closeLeadModal()" aria-label="Fechar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1133,7 +730,7 @@
       </div>
       <div class="lead-modal-body">
         <div class="lead-form-title">📚 Receba seu e-book grátis</div>
-        <p class="lead-form-subtitle">Preencha seus dados para baixar o e-book escolhido. É 100% gratuito!</p>
+        <p class="lead-form-subtitle">Preencha seus dados para baixar o <strong>E-book Semear Lash Code</strong>. É 100% gratuito!</p>
         <form id="leadFormEl" onsubmit="handleLeadCapture(event)">
           <div class="lead-form-group">
             <input type="text" id="leadName" placeholder="Seu nome completo" required />
@@ -1195,9 +792,7 @@
     </div>
   </div>
 
-  <!-- ──────────────────────────────────── -->
-  <!-- MODAL DE LISTA DE E-BOOKS            -->
-  <!-- ──────────────────────────────────── -->
+  <!-- MODAL DE LISTA DE E-BOOKS -->
   <div class="ebook-list-modal" id="ebookListModal" onclick="closeEbookListModalOnBackdrop(event)">
     <div class="ebook-list-modal-content">
       <div class="ebook-list-modal-header">
@@ -1208,7 +803,7 @@
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
             </svg>
           </div>
-          <span>E-books Gratuitos · SEMEAR</span>
+          <span>E-book Gratuito · SEMEAR</span>
         </div>
         <button class="ebook-list-modal-close" onclick="closeEbookListModal()" aria-label="Fechar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1218,7 +813,7 @@
       </div>
       <div class="ebook-list-modal-body">
 
-        <!-- E-book 1 -->
+        <!-- Único E-book -->
         <div class="ebook-item" onclick="selectEbook(0)">
           <div class="ebook-item-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1227,74 +822,8 @@
             </svg>
           </div>
           <div class="ebook-item-info">
-            <strong>Guia Completo do Empreendedorismo Feminino</strong>
-            <span>Como iniciar e crescer seu negócio de beleza do zero</span>
-          </div>
-          <div class="ebook-item-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Grátis
-          </div>
-        </div>
-
-        <!-- E-book 2 -->
-        <div class="ebook-item" onclick="selectEbook(1)">
-          <div class="ebook-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
-            </svg>
-          </div>
-          <div class="ebook-item-info">
-            <strong>Marketing Digital para Profissionais da Beleza</strong>
-            <span>Estratégias para atrair clientes pelas redes sociais</span>
-          </div>
-          <div class="ebook-item-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Grátis
-          </div>
-        </div>
-
-        <!-- E-book 3 -->
-        <div class="ebook-item" onclick="selectEbook(2)">
-          <div class="ebook-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
-            </svg>
-          </div>
-          <div class="ebook-item-info">
-            <strong>Formação de Preço Justa e Lucrativa</strong>
-            <span>Aprenda a precificar seus serviços com segurança</span>
-          </div>
-          <div class="ebook-item-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Grátis
-          </div>
-        </div>
-
-        <!-- E-book 4 -->
-        <div class="ebook-item" onclick="selectEbook(3)">
-          <div class="ebook-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
-            </svg>
-          </div>
-          <div class="ebook-item-info">
-            <strong>Fidelização de Clientes na Prática</strong>
-            <span>Técnicas para transformar clientes em fãs do seu trabalho</span>
+            <strong>Semear Lash Code</strong>
+            <span>O guia definitivo do Alongamento de Cílios</span>
           </div>
           <div class="ebook-item-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1371,7 +900,7 @@
                   <span>Clique para assistir</span>
                 </div>
               </div>
-              <!-- Card E-books Gratuitos – abre lista de e-books -->
+              <!-- Card E-book Gratuito -->
               <div class="card au d5 clickable ebook-card" onclick="openEbookListModal()">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7">
@@ -1379,21 +908,21 @@
                     <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
                   </svg>
                 </div>
-                <h3>📚 E-books Gratuitos</h3>
-                <p>Baixe materiais exclusivos e gratuitos para impulsionar sua carreira na beleza.</p>
+                <h3>📚 E-book Gratuito</h3>
+                <p>Baixe o Semear Lash Code — o guia definitivo do alongamento de cílios.</p>
                 <div class="card-hint download">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
                     <polyline points="7 10 12 15 17 10"/>
                     <line x1="12" y1="15" x2="12" y2="3"/>
                   </svg>
-                  <span>Ver e-books grátis</span>
+                  <span>Baixar e-book grátis</span>
                 </div>
                 <div class="curso-tag">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
                     <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                   </svg>
-                  4 e-books disponíveis
+                  Semear Lash Code
                 </div>
               </div>
             </div>
@@ -1454,8 +983,8 @@
         <div class="slide-scroll">
           <div class="s4-wrap">
             <div class="gl au d1"></div>
-            <h2 class="au d2">E-books Gratuitos:<br><span class="gt">conhecimento que transforma</span></h2>
-            <p class="sub au d3">Materiais exclusivos para impulsionar sua carreira no mundo da beleza.</p>
+            <h2 class="au d2">E-book Gratuito:<br><span class="gt">conhecimento que transforma</span></h2>
+            <p class="sub au d3">Material exclusivo para impulsionar sua carreira no mundo da beleza.</p>
             <div class="s4-grid">
               <div class="s4-item au d4">
                 <div class="sicon">
@@ -1466,7 +995,7 @@
                 </div>
                 <div>
                   <strong>Conteúdo exclusivo</strong>
-                  <span>Materiais produzidos por especialistas do mercado de beleza.</span>
+                  <span>Material produzido por especialistas do mercado de beleza.</span>
                 </div>
               </div>
               <div class="s4-item au d5">
@@ -1478,7 +1007,7 @@
                 </div>
                 <div>
                   <strong>100% gratuito</strong>
-                  <span>Baixe quantos e-books quiser, sem nenhum custo.</span>
+                  <span>Baixe sem nenhum custo, direto no seu dispositivo.</span>
                 </div>
               </div>
               <div class="s4-item au d6">
@@ -1770,16 +1299,10 @@
     }
 
     /* ──────────────────────────────────── */
-    /* LISTA DE E-BOOKS                     */
+    /* E-BOOK SEMEAR LASH CODE              */
     /* ──────────────────────────────────── */
-    const ebookLinks = [
-      'https://drive.google.com/uc?export=download&id=1nbbsUOWQcjt6ccscpz4m5tUe6yP3qYqI',
-      '#', // E-book 2 - substitua pelo link real
-      '#', // E-book 3 - substitua pelo link real
-      '#'  // E-book 4 - substitua pelo link real
-    ];
-
-    let selectedEbookIndex = 0;
+    const EBOOK_LINK = 'https://drive.google.com/uc?export=download&id=1nbbsUOWQcjt6ccscpz4m5tUe6yP3qYqI';
+    const EBOOK_NAME = 'Semear Lash Code – O guia definitivo do Alongamento de Cílios';
 
     const ebookListModal = document.getElementById('ebookListModal');
 
@@ -1793,12 +1316,9 @@
       if (e.target === ebookListModal) closeEbookListModal();
     }
 
-    function selectEbook(index) {
-      selectedEbookIndex = index;
+    function selectEbook() {
       closeEbookListModal();
-      setTimeout(() => {
-        openLeadModal();
-      }, 200);
+      setTimeout(() => { openLeadModal(); }, 200);
     }
 
     /* ──────────────────────────────────── */
@@ -1848,14 +1368,8 @@
       const email = document.getElementById('leadEmail').value.trim();
       const tel   = document.getElementById('leadPhone').value.trim();
 
-      if (!nome || !email || !tel) {
-        alert('Preencha todos os campos!');
-        return;
-      }
-      if (!validateEmail(email)) {
-        alert('E-mail inválido!');
-        return;
-      }
+      if (!nome || !email || !tel) { alert('Preencha todos os campos!'); return; }
+      if (!validateEmail(email)) { alert('E-mail inválido!'); return; }
 
       btn.disabled = true;
       btn.innerHTML = '⏳ Enviando...';
@@ -1865,8 +1379,8 @@
       data.append('nome', nome);
       data.append('email', email);
       data.append('telefone', tel);
-      data.append('ebook_escolhido', 'E-book #' + (selectedEbookIndex + 1));
-      data.append('_subject', '📚 Novo lead - E-book Gratuito SEMEAR');
+      data.append('ebook_escolhido', EBOOK_NAME);
+      data.append('_subject', '📚 Novo lead - E-book Semear Lash Code');
       data.append('_captcha', 'false');
       data.append('_template', 'table');
 
@@ -1880,19 +1394,12 @@
       }
 
       // WhatsApp
-      const ebookNames = [
-        'Guia Completo do Empreendedorismo Feminino',
-        'Marketing Digital para Profissionais da Beleza',
-        'Formação de Preço Justa e Lucrativa',
-        'Fidelização de Clientes na Prática'
-      ];
-
       const msg = encodeURIComponent(
-        '📚 Novo lead - E-book Gratuito\n\n' +
+        '📚 Novo lead - E-book Semear Lash Code\n\n' +
         'Nome: ' + nome + '\n' +
         'E-mail: ' + email + '\n' +
         'WhatsApp: ' + tel + '\n' +
-        'E-book: ' + ebookNames[selectedEbookIndex] + '\n\n' +
+        'E-book: ' + EBOOK_NAME + '\n\n' +
         'Obrigado!'
       );
       window.open('https://wa.me/5511910832222?text=' + msg, '_blank');
@@ -1900,7 +1407,7 @@
       // Backup localStorage
       try {
         const leads = JSON.parse(localStorage.getItem('leads_semear') || '[]');
-        leads.push({ nome, email, tel, ebook: ebookNames[selectedEbookIndex], date: new Date().toISOString() });
+        leads.push({ nome, email, tel, ebook: EBOOK_NAME, date: new Date().toISOString() });
         localStorage.setItem('leads_semear', JSON.stringify(leads));
       } catch (e) {}
 
@@ -1908,20 +1415,12 @@
       btn.disabled = false;
       btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar E-book Grátis';
 
-      // Fecha modal de captura e abre o download do e-book
+      // Fecha modal de captura e abre o download
       closeLeadModal();
 
-      // Redireciona para o download do e-book escolhido
-      const downloadLink = ebookLinks[selectedEbookIndex];
-      if (downloadLink && downloadLink !== '#') {
-        setTimeout(() => {
-          window.open(downloadLink, '_blank');
-        }, 300);
-      } else {
-        setTimeout(() => {
-          alert('🎉 Obrigado! Seu e-book estará disponível em breve.');
-        }, 300);
-      }
+      setTimeout(() => {
+        window.open(EBOOK_LINK, '_blank');
+      }, 300);
     }
   </script>
 
