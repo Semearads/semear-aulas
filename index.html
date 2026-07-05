@@ -226,9 +226,7 @@
     @keyframes pipLeave    { from { opacity:1; transform:translateY(0) scale(1) }      to { opacity:0; transform:translateY(18px) scale(.94) } }
     @keyframes livePulse   { 0%,100% { box-shadow:0 0 0 0 rgba(46,107,255,.5) }       60% { box-shadow:0 0 0 5px rgba(46,107,255,0) } }
     @keyframes modalFadeIn { from { opacity: 0 } to { opacity: 1 } }
-    /* ✅ CORRIGIDO: removido translate(-50%, -50%) que conflitava com flexbox */
-    @keyframes modalScaleIn { from { opacity: 0; transform: scale(.92) } to { opacity: 1; transform: scale(1) } }
-
+    
     .slide.active .au { animation: fadeUp .7s ease both; }
     .slide.active .as { animation: fadeScale .7s ease both; }
     .d1{animation-delay:.10s!important} .d2{animation-delay:.22s!important}
@@ -368,89 +366,39 @@
     .video-modal-yt svg { width: 12px; height: 12px; }
 
     /* MODAL DE CAPTURA DE LEADS */
-    .lead-modal {
-      position: fixed; inset: 0; z-index: 2002;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
-      display: none; align-items: center; justify-content: center;
-      animation: modalFadeIn .3s ease both;
-    }
-    .lead-modal.open { display: flex; }
-    .lead-modal-content {
-      width: 90%; max-width: 480px; max-height: 90vh;
-      background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
-      border: 1px solid rgba(200, 109, 215, 0.25); border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
-      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
-      display: flex; flex-direction: column;
-    }
-    .lead-modal-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 18px; background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08); flex-shrink: 0;
-    }
-    .lead-modal-title {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 13px; font-weight: 700; color: #F5F7FB; letter-spacing: .02em;
-    }
-    .lead-modal-title .lm-icon {
-      width: 28px; height: 28px; border-radius: 8px;
-      background: linear-gradient(135deg, #C86DD7, #8B3FAF);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .lead-modal-title .lm-icon svg { width: 14px; height: 14px; color: #fff; }
-    .lead-modal-close {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #AAB3C5; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; transition: all .2s ease;
-    }
-    .lead-modal-close:hover { background: rgba(255, 60, 60, 0.15); border-color: rgba(255, 60, 60, 0.4); color: #FF6B6B; }
-    .lead-modal-close svg { width: 14px; height: 14px; }
-    .lead-modal-body { padding: 20px 18px; overflow-y: auto; flex: 1; }
-    .lead-modal-body::-webkit-scrollbar { width: 3px; }
-    .lead-modal-body::-webkit-scrollbar-track { background: transparent; }
-    .lead-modal-body::-webkit-scrollbar-thumb { background: rgba(200,109,215,.3); border-radius: 2px; }
-    .lead-form-title { font-size: 18px; font-weight: 800; color: #F5F7FB; text-align: center; margin-bottom: 6px; }
-    .lead-form-subtitle { font-size: 12px; color: #AAB3C5; line-height: 1.5; text-align: center; margin-bottom: 20px; }
-    .lead-form-group { margin-bottom: 12px; }
-    .lead-form-group input {
-      width: 100%; padding: 13px 15px;
-      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 11px; font-size: 14px; color: #fff; outline: none; transition: .3s ease;
-    }
-    .lead-form-group input:focus { border-color: rgba(200, 109, 215, 0.5); box-shadow: 0 0 0 3px rgba(200, 109, 215, 0.1); }
-    .lead-form-group input::placeholder { color: #5A6070; }
-    .lead-submit-btn {
-      width: 100%; padding: 14px;
-      background: linear-gradient(135deg, #C86DD7, #8B3FAF); border: none; border-radius: 12px;
-      font-size: 15px; font-weight: 700; color: #fff; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 16px; transition: all .3s ease;
-      box-shadow: 0 10px 30px rgba(200, 109, 215, .35);
-    }
-    .lead-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(200, 109, 215, .5); }
-    .lead-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
-    .lead-submit-btn svg { width: 18px; height: 18px; }
+  /* Container do modal - usa flexbox para centralizar */
+.ebook-list-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2001;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
 
-    /* MODAL DE LISTA DE E-BOOKS */
-    .ebook-list-modal {
-      position: fixed; inset: 0; z-index: 2001;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
-      display: none; align-items: center; justify-content: center;
-      animation: modalFadeIn .3s ease both;
-      padding: 16px; /* ✅ Adicionado padding para mobile */
-    }
-    .ebook-list-modal.open { display: flex; }
-    .ebook-list-modal-content {
-      width: 100%; max-width: 600px; max-height: 85vh;
-      background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
-      border: 1px solid rgba(200, 109, 215, 0.25); border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
-      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
-      display: flex; flex-direction: column;
-    }
+.ebook-list-modal.open {
+  display: flex;
+}
+
+/* Conteúdo do modal - margin: auto força centralização */
+.ebook-list-modal-content {
+  width: 100%;
+  max-width: 600px;
+  max-height: 85vh;
+  margin: auto; /* ✅ Isso centraliza no flex container */
+  background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
+  border: 1px solid rgba(200, 109, 215, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  /* ✅ Sem animation com transform - apenas fade simples */
+  animation: modalFadeIn 0.3s ease both;
+}
     .ebook-list-modal-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 18px; background: rgba(255, 255, 255, 0.03);
