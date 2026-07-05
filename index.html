@@ -434,22 +434,47 @@
     .lead-submit-btn svg { width: 18px; height: 18px; }
 
     /* MODAL DE LISTA DE E-BOOKS */
-    .ebook-list-modal {
-      position: fixed; inset: 0; z-index: 2001;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
-      display: none; align-items: center; justify-content: center;
-      animation: modalFadeIn .3s ease both;
-    }
-    .ebook-list-modal.open { display: flex; }
-    .ebook-list-modal-content {
-      width: 90%; max-width: 600px; max-height: 85vh;
-      background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
-      border: 1px solid rgba(200, 109, 215, 0.25); border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
-      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
-      display: flex; flex-direction: column;
-    }
+   .ebook-list-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 2001;
+
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(10px);
+
+  /* ESSENCIAL p/ centralizar */
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.ebook-list-modal.open{
+  display: flex;
+}
+
+/* seu content + centralização garantida */
+.ebook-list-modal-content{
+  width: 90%;
+  max-width: 600px;
+  max-height: calc(100dvh - 48px);
+
+  margin: 0 auto;           /* garante centro horizontal */
+  box-sizing: border-box;
+
+  background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
+  border: 1px solid rgba(200, 109, 215, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 109, 215, 0.15);
+  animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
+
+  display: flex;
+  flex-direction: column;
+}
+
     .ebook-list-modal-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 18px; background: rgba(255, 255, 255, 0.03);
