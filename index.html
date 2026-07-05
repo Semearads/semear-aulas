@@ -226,7 +226,8 @@
     @keyframes pipLeave    { from { opacity:1; transform:translateY(0) scale(1) }      to { opacity:0; transform:translateY(18px) scale(.94) } }
     @keyframes livePulse   { 0%,100% { box-shadow:0 0 0 0 rgba(46,107,255,.5) }       60% { box-shadow:0 0 0 5px rgba(46,107,255,0) } }
     @keyframes modalFadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @keyframes modalScaleIn { from { opacity: 0; transform: translate(-50%,-50%) scale(.92) } to { opacity: 1; transform: translate(-50%,-50%) scale(1) } }
+    /* ✅ CORRIGIDO: removido translate(-50%, -50%) que conflitava com flexbox */
+    @keyframes modalScaleIn { from { opacity: 0; transform: scale(.92) } to { opacity: 1; transform: scale(1) } }
 
     .slide.active .au { animation: fadeUp .7s ease both; }
     .slide.active .as { animation: fadeScale .7s ease both; }
@@ -316,7 +317,6 @@
     }
     .video-modal.open { display: flex; }
     .video-modal-content {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1);
       width: 90%; max-width: 900px;
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
       border: 1px solid rgba(46, 107, 255, 0.25); border-radius: 20px;
@@ -439,10 +439,11 @@
       background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
       display: none; align-items: center; justify-content: center;
       animation: modalFadeIn .3s ease both;
+      padding: 16px; /* ✅ Adicionado padding para mobile */
     }
     .ebook-list-modal.open { display: flex; }
     .ebook-list-modal-content {
-      width: 90%; max-width: 600px; max-height: 85vh;
+      width: 100%; max-width: 600px; max-height: 85vh;
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
       border: 1px solid rgba(200, 109, 215, 0.25); border-radius: 20px;
       overflow: hidden;
@@ -677,7 +678,7 @@
       .s6-wrap h2 { font-size: 24px; }
       .s6-wrap .sub { font-size: 14px; margin-bottom: 24px; }
 
-      /* Modais */
+      /* Modais - ✅ Ajustados para mobile */
       .video-modal-content { width: 95%; border-radius: 16px; }
       .video-modal-header { padding: 12px 14px; }
       .video-modal-title { font-size: 12px; }
@@ -689,7 +690,8 @@
       .lead-modal-body { padding: 16px 14px; }
       .lead-form-title { font-size: 16px; }
 
-      .ebook-list-modal-content { width: 95%; border-radius: 16px; max-height: 90vh; }
+      .ebook-list-modal { padding: 12px; }
+      .ebook-list-modal-content { width: 100%; border-radius: 16px; max-height: 90vh; }
       .ebook-list-modal-header { padding: 12px 14px; }
       .ebook-list-modal-title { font-size: 12px; }
       .ebook-list-modal-body { padding: 12px 14px; gap: 8px; }
@@ -731,6 +733,15 @@
       .fs-step span { font-size: 10px; }
 
       .s6-wrap h2 { font-size: 24px; }
+
+      .ebook-list-modal { padding: 10px; }
+      .ebook-list-modal-content { border-radius: 14px; }
+      .ebook-item { padding: 10px; gap: 8px; }
+      .ebook-item-icon { width: 36px; height: 36px; min-width: 36px; }
+      .ebook-item-icon svg { width: 16px; height: 16px; }
+      .ebook-item-info strong { font-size: 11px; }
+      .ebook-item-info span { font-size: 9px; }
+      .ebook-item-badge { padding: 3px 6px; font-size: 8px; }
     }
 
     /* Mobile muito pequeno (iPhone SE, etc) */
@@ -1181,7 +1192,7 @@
                     <path d="M7 11V7a5 5 0 0110 0v4"/>
                   </svg>
                 </div>
-                <span>② Faça login</span>
+                <span> Faça login</span>
               </div>
               <div class="fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
 
