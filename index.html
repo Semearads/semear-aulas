@@ -292,7 +292,7 @@
     .pip-yt:hover { color: #F5F7FB; border-color: rgba(46,107,255,.3); background: rgba(46,107,255,.08); }
     .pip-yt svg { width: 9px; height: 9px; }
 
-    /* MODAL DE VÍDEO */
+    /* MODAL (base) */
     .video-modal {
       position: fixed; inset: 0; z-index: 2000;
       background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
@@ -652,6 +652,78 @@
     </div>
   </div>
 
+  <!-- MODAL DE E-BOOKS -->
+  <div class="video-modal" id="ebooksModal" onclick="closeEbooksModalOnBackdrop(event)">
+    <div class="video-modal-content" style="max-width: 720px;">
+      <div class="video-modal-header">
+        <div class="video-modal-title">
+          <div class="vm-icon" style="background: linear-gradient(135deg, #C86DD7, #2E6BFF);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#fff">
+              <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
+            </svg>
+          </div>
+          <span>E-book´s Gratuitos · SEMEAR</span>
+        </div>
+
+        <button class="video-modal-close" onclick="closeEbooksModal()" aria-label="Fechar e-books">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div style="padding: 16px 18px; display: grid; gap: 10px;">
+        <!-- Ajuste os links (href) para os seus PDFs -->
+        <a class="card clickable" style="text-decoration:none; display:block;"
+           href="ebooks/ebook-1.pdf" target="_blank" rel="noopener">
+          <h3 style="margin:0 0 6px; color:#F5F7FB; font-size: 15px;">E-book 1</h3>
+          <p style="margin:0; color:#AAB3C5; font-size: 13px; line-height: 1.55;">
+            Clique para abrir/baixar o PDF.
+          </p>
+          <div class="card-hint play" style="margin-top:10px;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Abrir</span>
+          </div>
+        </a>
+
+        <a class="card clickable" style="text-decoration:none; display:block;"
+           href="ebooks/ebook-2.pdf" target="_blank" rel="noopener">
+          <h3 style="margin:0 0 6px; color:#F5F7FB; font-size: 15px;">E-book 2</h3>
+          <p style="margin:0; color:#AAB3C5; font-size: 13px; line-height: 1.55;">
+            Clique para abrir/baixar o PDF.
+          </p>
+          <div class="card-hint play" style="margin-top:10px;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Abrir</span>
+          </div>
+        </a>
+
+        <a class="card clickable" style="text-decoration:none; display:block;"
+           href="ebooks/ebook-3.pdf" target="_blank" rel="noopener">
+          <h3 style="margin:0 0 6px; color:#F5F7FB; font-size: 15px;">E-book 3</h3>
+          <p style="margin:0; color:#AAB3C5; font-size: 13px; line-height: 1.55;">
+            Clique para abrir/baixar o PDF.
+          </p>
+          <div class="card-hint play" style="margin-top:10px;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Abrir</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="video-modal-footer">
+        <div class="video-modal-info">
+          <strong>Downloads rápidos</strong>
+          <span>Abra no celular ou computador</span>
+        </div>
+        <a class="video-modal-yt" href="#" onclick="closeEbooksModal(); return false;">
+          Fechar
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- SLIDES -->
   <div class="presentation">
     <div class="slides" id="sw">
@@ -704,8 +776,8 @@
                 </div>
               </div>
 
-              <!-- Card E-book´s Gratuitos (sem clique por enquanto) -->
-              <div class="card au d5">
+              <!-- Card E-book´s Gratuitos (AGORA CLICÁVEL) -->
+              <div class="card au d5 clickable" onclick="openEbooksModal()">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7">
                     <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
@@ -722,7 +794,7 @@
                     <path d="M7 10l5 5 5-5"/>
                     <path d="M5 21h14"/>
                   </svg>
-                  <span>Em breve</span>
+                  <span>Clique para baixar</span>
                 </div>
               </div>
 
@@ -986,13 +1058,15 @@
     function prev() { if (C > 0)     go(C - 1); }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeVideoModal(); }
+      if (e.key === 'Escape') { closeVideoModal(); closeEbooksModal(); }
       if (e.key === 'ArrowRight' || e.key === ' ') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
+        if (document.getElementById('ebooksModal').classList.contains('open')) return;
         e.preventDefault(); next();
       }
       if (e.key === 'ArrowLeft') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
+        if (document.getElementById('ebooksModal').classList.contains('open')) return;
         e.preventDefault(); prev();
       }
       if (e.key === 'f' || e.key === 'F') toggleFs();
@@ -1093,6 +1167,19 @@
     }
     function closeVideoModalOnBackdrop(e) {
       if (e.target === videoModal) closeVideoModal();
+    }
+
+    /* MODAL DE E-BOOKS */
+    const ebooksModal = document.getElementById('ebooksModal');
+
+    function openEbooksModal() {
+      ebooksModal.classList.add('open');
+    }
+    function closeEbooksModal() {
+      ebooksModal.classList.remove('open');
+    }
+    function closeEbooksModalOnBackdrop(e) {
+      if (e.target === ebooksModal) closeEbooksModal();
     }
   </script>
 
