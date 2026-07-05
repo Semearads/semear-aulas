@@ -9,6 +9,12 @@
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* IMPORTANTES:
+       - Mantive overflow hidden como você tinha (slides fullscreen).
+       - Ajustei os MODAIS para serem centralizados via flex (sem absolute/translate).
+       - Adicionei padding no overlay + max-height e scroll interno nos conteúdos.
+    */
     html, body { width: 100%; height: 100%; overflow: hidden; background: #050816; }
     body {
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -210,8 +216,17 @@
     @keyframes pipEntrance { from { opacity:0; transform:translateY(18px) scale(.94) } to { opacity:1; transform:translateY(0) scale(1) } }
     @keyframes pipLeave    { from { opacity:1; transform:translateY(0) scale(1) }      to { opacity:0; transform:translateY(18px) scale(.94) } }
     @keyframes livePulse   { 0%,100% { box-shadow:0 0 0 0 rgba(46,107,255,.5) }       60% { box-shadow:0 0 0 5px rgba(46,107,255,0) } }
+
     @keyframes modalFadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @keyframes modalScaleIn { from { opacity: 0; transform: translate(-50%,-50%) scale(.92) } to { opacity: 1; transform: translate(-50%,-50%) scale(1) } }
+
+    /* CORREÇÃO PRINCIPAL:
+       Antes você animava usando translate(-50%,-50%), o que exige position/left/top e frequentemente dá "modal pra esquerda".
+       Agora o card é centralizado pelo flex do overlay e a animação só escala.
+    */
+    @keyframes modalScaleIn {
+      from { opacity: 0; transform: scale(.96); }
+      to   { opacity: 1; transform: scale(1); }
+    }
 
     .slide.active .au { animation: fadeUp .7s ease both; }
     .slide.active .as { animation: fadeScale .7s ease both; }
@@ -292,27 +307,36 @@
     .pip-yt:hover { color: #F5F7FB; border-color: rgba(46,107,255,.3); background: rgba(46,107,255,.08); }
     .pip-yt svg { width: 9px; height: 9px; }
 
-    /* MODAL (base) */
+    /* MODAL (base) - CORRIGIDO */
     .video-modal {
       position: fixed; inset: 0; z-index: 2000;
       background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
-      display: none; align-items: center; justify-content: center;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 16px;
       animation: modalFadeIn .3s ease both;
     }
     .video-modal.open { display: flex; }
+
     .video-modal-content {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1);
-      width: 90%; max-width: 900px;
+      position: relative;               /* (antes era absolute + translate) */
+      transform: none;                  /* remove translate(-50%, -50%) */
+      width: min(900px, 100%);          /* mais robusto */
+      max-height: calc(100dvh - 32px);  /* evita cortar com barra/teclado (mobile moderno) */
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
       border: 1px solid rgba(46, 107, 255, 0.25); border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(46, 107, 255, 0.2);
-      animation: modalScaleIn .4s cubic-bezier(.22,1,.36,1) both;
+      animation: modalScaleIn .22s cubic-bezier(.22,1,.36,1) both;
+      display: flex;
+      flex-direction: column;
     }
+
     .video-modal-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 18px; background: rgba(255, 255, 255, 0.03);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex: 0 0 auto;
     }
     .video-modal-title {
       display: flex; align-items: center; gap: 10px;
@@ -329,16 +353,21 @@
       background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
       color: #AAB3C5; cursor: pointer;
       display: flex; align-items: center; justify-content: center; transition: all .2s ease;
+      flex: 0 0 auto;
     }
     .video-modal-close:hover { background: rgba(255, 60, 60, 0.15); border-color: rgba(255, 60, 60, 0.4); color: #FF6B6B; }
     .video-modal-close svg { width: 14px; height: 14px; }
-    .video-modal-player { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
+
+    .video-modal-player { position: relative; width: 100%; padding-top: 56.25%; background: #000; flex: 0 0 auto; }
     .video-modal-player.shorts { padding-top: 177.78%; max-height: 80vh; }
+
     .video-modal-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
     .video-modal-footer {
       padding: 12px 18px; background: rgba(255, 255, 255, 0.02);
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+      flex: 0 0 auto;
     }
     .video-modal-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .video-modal-info strong { font-size: 13px; font-weight: 700; color: #F5F7FB; }
@@ -485,7 +514,7 @@
       .s6-wrap h2 { font-size: 24px; }
       .s6-wrap .sub { font-size: 14px; margin-bottom: 24px; }
 
-      .video-modal-content { width: 95%; border-radius: 16px; }
+      .video-modal-content { border-radius: 16px; }
       .video-modal-header { padding: 12px 14px; }
       .video-modal-title { font-size: 12px; }
       .video-modal-footer { padding: 10px 14px; }
@@ -532,24 +561,39 @@
       .s5-btns .cta-btn { font-size: 12px; padding: 13px 12px; }
     }
 
-    /* ====== MODAL DE CAPTURA (LEAD) ====== */
+    /* ====== MODAL DE CAPTURA (LEAD) - CORRIGIDO ====== */
     .lead-modal {
       position: fixed; inset: 0; z-index: 2200;
       background: rgba(0,0,0,.85); backdrop-filter: blur(10px);
       display: none; align-items: center; justify-content: center;
+      padding: 16px;
       animation: modalFadeIn .25s ease both;
     }
     .lead-modal.open { display: flex; }
+
     .lead-content {
-      width: 92%; max-width: 520px;
+      width: min(520px, 100%);
+      max-height: calc(100dvh - 32px);
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
       border: 1px solid rgba(200,109,215,.28);
       border-radius: 18px;
       box-shadow: 0 30px 80px rgba(0,0,0,.7), 0 0 60px rgba(200,109,215,.12);
       overflow: hidden;
-      animation: modalScaleIn .32s cubic-bezier(.22,1,.36,1) both;
+      animation: modalScaleIn .22s cubic-bezier(.22,1,.36,1) both;
+      display: flex;
+      flex-direction: column;
     }
-    .lead-body { padding: 16px 18px 18px; display: grid; gap: 10px; }
+
+    /* agora o conteúdo pode rolar sem cortar no mobile */
+    .lead-body {
+      padding: 16px 18px 18px;
+      display: grid;
+      gap: 10px;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1 1 auto;
+    }
+
     .lead-body p { color: #AAB3C5; font-size: 12.5px; line-height: 1.5; }
     .lead-field { display: grid; gap: 6px; }
     .lead-field label {
@@ -564,12 +608,14 @@
       color: #F5F7FB;
       outline: none;
       transition: .2s ease;
+      font-size: 16px; /* evita zoom no iPhone e melhora o foco */
     }
     .lead-field input:focus {
       border-color: rgba(46,107,255,.55);
       box-shadow: 0 0 0 3px rgba(46,107,255,.12);
     }
-    .lead-actions { display: grid; gap: 10px; padding: 0 18px 18px; }
+
+    .lead-actions { display: grid; gap: 10px; padding: 0 18px 18px; flex: 0 0 auto; }
     .lead-primary {
       width: 100%;
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -614,6 +660,7 @@
       color: #7E879B;
       font-size: 11px;
       line-height: 1.45;
+      flex: 0 0 auto;
     }
     .lead-ebook-title {
       font-size: 14px;
@@ -770,7 +817,7 @@
         </button>
       </div>
 
-      <div style="padding: 16px 18px; display: grid; gap: 10px;">
+      <div style="padding: 16px 18px; display: grid; gap: 10px; overflow:auto; -webkit-overflow-scrolling:touch;">
         <a class="card clickable" style="text-decoration:none; display:block;"
            href="#"
            onclick="openLeadModal({ ebookId: 'ebook-1', ebookTitle: 'E-book Lash Code', downloadUrl: 'https://drive.google.com/uc?export=download&id=1nbbsUOWQcjt6ccscpz4m5tUe6yP3qYqI' }); return false;">
@@ -1402,7 +1449,6 @@ Página: ${payload.pageUrl}`;
       const link = buildWhatsAppLink(payload);
       window.open(link, "_blank", "noopener");
 
-      // Agora libera o botão 2 (o download só acontece quando ela clicar nele)
       enableDownloadButton();
       leadStatus.classList.add('on');
     }
