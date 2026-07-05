@@ -532,7 +532,7 @@
       .s5-btns .cta-btn { font-size: 12px; padding: 13px 12px; }
     }
 
-    /* ====== NOVO: MODAL DE CAPTURA (LEAD) ====== */
+    /* ====== MODAL DE CAPTURA (LEAD) ====== */
     .lead-modal {
       position: fixed; inset: 0; z-index: 2200;
       background: rgba(0,0,0,.85); backdrop-filter: blur(10px);
@@ -551,9 +551,7 @@
     }
     .lead-body { padding: 16px 18px 18px; display: grid; gap: 10px; }
     .lead-body p { color: #AAB3C5; font-size: 12.5px; line-height: 1.5; }
-    .lead-field {
-      display: grid; gap: 6px;
-    }
+    .lead-field { display: grid; gap: 6px; }
     .lead-field label {
       font-size: 11px; font-weight: 700; color: #AAB3C5; letter-spacing: .03em; text-transform: uppercase;
     }
@@ -571,10 +569,7 @@
       border-color: rgba(46,107,255,.55);
       box-shadow: 0 0 0 3px rgba(46,107,255,.12);
     }
-    .lead-actions {
-      display: grid; gap: 10px;
-      padding: 0 18px 18px;
-    }
+    .lead-actions { display: grid; gap: 10px; padding: 0 18px 18px; }
     .lead-primary {
       width: 100%;
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -588,17 +583,32 @@
       transition: .2s ease;
     }
     .lead-primary:hover { transform: translateY(-1px); }
+
     .lead-secondary {
       width: 100%;
       display: inline-flex; align-items: center; justify-content: center;
       background: rgba(255,255,255,.04);
       color: #AAB3C5;
-      font-weight: 700;
+      font-weight: 800;
       padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.10);
-      cursor: pointer;
+      cursor: not-allowed;
+      opacity: .55;
+      filter: grayscale(.2);
+      transition: .2s ease;
     }
+    .lead-secondary.enabled {
+      cursor: pointer;
+      opacity: 1;
+      filter: none;
+    }
+    .lead-secondary.enabled:hover {
+      border-color: rgba(46,107,255,.35);
+      background: rgba(46,107,255,.10);
+      color: #F5F7FB;
+    }
+
     .lead-note {
       padding: 0 18px 18px;
       color: #7E879B;
@@ -761,7 +771,6 @@
       </div>
 
       <div style="padding: 16px 18px; display: grid; gap: 10px;">
-        <!-- ALTERADO: agora abre o modal de captura antes do download -->
         <a class="card clickable" style="text-decoration:none; display:block;"
            href="#"
            onclick="openLeadModal({ ebookId: 'ebook-1', ebookTitle: 'E-book Lash Code', downloadUrl: 'https://drive.google.com/uc?export=download&id=1nbbsUOWQcjt6ccscpz4m5tUe6yP3qYqI' }); return false;">
@@ -814,7 +823,7 @@
     </div>
   </div>
 
-  <!-- NOVO: MODAL DE CAPTURA DE LEAD (ANTES DO DOWNLOAD) -->
+  <!-- MODAL DE CAPTURA DE LEAD (ANTES DO DOWNLOAD) -->
   <div class="lead-modal" id="leadModal" onclick="closeLeadModalOnBackdrop(event)">
     <div class="lead-content">
       <div class="video-modal-header">
@@ -857,13 +866,13 @@
             <input id="leadWhatsapp" name="whatsapp" required placeholder="Ex: 11999999999" inputmode="numeric" />
           </div>
 
-          <div class="lead-status" id="leadStatus">Depois de enviar no WhatsApp, volte aqui: o download será liberado.</div>
+          <div class="lead-status" id="leadStatus">Passo 2: depois de tocar em <strong>Enviar</strong> no WhatsApp, volte aqui para liberar o download.</div>
 
           <div class="lead-actions">
-            <button type="button" class="lead-primary" onclick="leadSendWhatsappAndArmDownload()">
+            <button type="button" class="lead-primary" onclick="leadSendWhatsappAndEnableDownload()">
               Enviar no WhatsApp e liberar download
             </button>
-            <button type="button" class="lead-secondary" onclick="leadIMSentNowDownload()">
+            <button type="button" id="leadDownloadBtn" class="lead-secondary" disabled onclick="leadIMSentNowDownload()">
               Já enviei no WhatsApp — baixar agora
             </button>
           </div>
@@ -879,7 +888,6 @@
   <!-- SLIDES -->
   <div class="presentation">
     <div class="slides" id="sw">
-
       <!-- SLIDE 1 -->
       <section class="slide active">
         <div class="slide-center">
@@ -928,7 +936,6 @@
                 </div>
               </div>
 
-              <!-- Card E-book´s Gratuitos (clicável) -->
               <div class="card au d5 clickable" onclick="openEbooksModal()">
                 <div class="ic" style="background:rgba(200,109,215,.08)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#C86DD7">
@@ -936,10 +943,8 @@
                     <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
                   </svg>
                 </div>
-
                 <h3>E-book´s Gratuitos</h3>
                 <p>Para você que quer aprender ainda mais sobre a área da beleza!</p>
-
                 <div class="card-hint play" style="border-color: rgba(200,109,215,.35); color:#D9B3EA;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:currentColor">
                     <path d="M12 3v12"/>
@@ -1176,14 +1181,13 @@
           </div>
         </div>
       </section>
-
     </div>
   </div>
 
   <script>
     /* ====== CONFIG (edite aqui) ====== */
-    const SEU_WHATSAPP_DESTINO = "5511910832222"; // Marcelo
-    const LEAD_WEBHOOK_URL = "COLE_AQUI_A_URL_DO_WEBHOOK_DO_MAKE"; // opcional: para mandar pro seu Gmail via Make
+    const SEU_WHATSAPP_DESTINO = "5511910832222";
+    const LEAD_WEBHOOK_URL = "COLE_AQUI_A_URL_DO_WEBHOOK_DO_MAKE"; // opcional
 
     /* Slides */
     const T = 6;
@@ -1283,28 +1287,6 @@
       pipFrame.src = '';
     }
 
-    (function fixThumb() {
-      const img = document.getElementById('pipThumbImg');
-      if (!img) return;
-      const videoId = 'lF9D-wNGChs';
-      const fallbacks = ['hqdefault.jpg', 'mqdefault.jpg', 'sddefault.jpg', 'default.jpg'];
-      let idx = 0;
-      function tryNext() {
-        idx++;
-        if (idx < fallbacks.length) {
-          img.src = 'https://img.youtube.com/vi/' + videoId + '/' + fallbacks[idx];
-        }
-      }
-      img.addEventListener('load', function onLoad() {
-        if (img.naturalWidth <= 120) tryNext();
-        img.removeEventListener('load', onLoad);
-      });
-      img.addEventListener('error', function onError() {
-        tryNext();
-        img.removeEventListener('error', onError);
-      });
-    })();
-
     /* MODAL DE VIDEOAULAS */
     const VIDEO_MODAL_SRC = 'https://www.youtube.com/embed/jWXgbQKV3h4?autoplay=1&rel=0&modestbranding=1';
     const videoModal       = document.getElementById('videoModal');
@@ -1314,35 +1296,38 @@
     function openVideoModal() {
       videoModalFrame.src = VIDEO_MODAL_SRC;
       videoModal.classList.add('open');
-      if (VIDEO_MODAL_SRC.includes('jWXgbQKV3h4')) {
-        videoModalPlayer.classList.add('shorts');
-      } else {
-        videoModalPlayer.classList.remove('shorts');
-      }
+      if (VIDEO_MODAL_SRC.includes('jWXgbQKV3h4')) videoModalPlayer.classList.add('shorts');
+      else videoModalPlayer.classList.remove('shorts');
     }
     function closeVideoModal() {
       videoModal.classList.remove('open');
       setTimeout(() => { videoModalFrame.src = ''; }, 300);
     }
-    function closeVideoModalOnBackdrop(e) {
-      if (e.target === videoModal) closeVideoModal();
-    }
+    function closeVideoModalOnBackdrop(e) { if (e.target === videoModal) closeVideoModal(); }
 
     /* MODAL DE E-BOOKS */
     const ebooksModal = document.getElementById('ebooksModal');
-
     function openEbooksModal() { ebooksModal.classList.add('open'); }
     function closeEbooksModal() { ebooksModal.classList.remove('open'); }
     function closeEbooksModalOnBackdrop(e) { if (e.target === ebooksModal) closeEbooksModal(); }
 
-    /* ====== LEAD + WhatsApp (wa.me) + download após confirmação ====== */
+    /* ====== LEAD + WhatsApp + Download (botão 2 desabilitado até clicar no botão 1) ====== */
     const leadModal = document.getElementById('leadModal');
     const leadStatus = document.getElementById('leadStatus');
+    const leadDownloadBtn = document.getElementById('leadDownloadBtn');
 
     function onlyDigits(s){ return (s || '').replace(/\D/g,''); }
 
+    function resetDownloadButton() {
+      leadDownloadBtn.disabled = true;
+      leadDownloadBtn.classList.remove('enabled');
+    }
+    function enableDownloadButton() {
+      leadDownloadBtn.disabled = false;
+      leadDownloadBtn.classList.add('enabled');
+    }
+
     function openLeadModal({ebookId, ebookTitle, downloadUrl}) {
-      // fecha modal de ebooks pra não sobrepor
       closeEbooksModal();
 
       document.getElementById('leadEbookTitle').textContent = ebookTitle;
@@ -1351,9 +1336,9 @@
       document.getElementById('leadDownloadUrl').value = downloadUrl;
 
       leadStatus.classList.remove('on');
+      resetDownloadButton();
 
       leadModal.classList.add('open');
-      // foco no nome
       setTimeout(() => document.getElementById('leadName')?.focus(), 50);
     }
 
@@ -1407,32 +1392,29 @@ Página: ${payload.pageUrl}`;
       return null;
     }
 
-    // 1) abre WhatsApp para a pessoa clicar Enviar
-    // 2) só depois ela clica no botão "Já enviei..." para baixar (sem API não dá pra verificar clique)
-    function leadSendWhatsappAndArmDownload() {
+    function leadSendWhatsappAndEnableDownload() {
       const payload = getLeadPayloadFromForm();
       const err = validateLead(payload);
       if (err) { alert(err); return; }
 
-      // manda pro Make (e-mail) em paralelo (não bloqueia)
       sendLeadToMake(payload).catch(()=>{});
 
       const link = buildWhatsAppLink(payload);
       window.open(link, "_blank", "noopener");
 
-      // mostra instrução e habilita o fluxo do "já enviei"
+      // Agora libera o botão 2 (o download só acontece quando ela clicar nele)
+      enableDownloadButton();
       leadStatus.classList.add('on');
     }
 
     function leadIMSentNowDownload() {
+      if (leadDownloadBtn.disabled) return;
+
       const payload = getLeadPayloadFromForm();
       const err = validateLead(payload);
       if (err) { alert(err); return; }
 
-      // fecha modal e inicia download
       closeLeadModal();
-
-      // abre o PDF (força navegação). Se preferir nova aba: window.open(payload.downloadUrl,'_blank');
       window.location.href = payload.downloadUrl;
     }
   </script>
