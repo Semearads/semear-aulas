@@ -531,6 +531,93 @@
       .s5-btns { grid-template-columns: 1fr !important; }
       .s5-btns .cta-btn { font-size: 12px; padding: 13px 12px; }
     }
+
+    /* ====== NOVO: MODAL DE CAPTURA (LEAD) ====== */
+    .lead-modal {
+      position: fixed; inset: 0; z-index: 2200;
+      background: rgba(0,0,0,.85); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center;
+      animation: modalFadeIn .25s ease both;
+    }
+    .lead-modal.open { display: flex; }
+    .lead-content {
+      width: 92%; max-width: 520px;
+      background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
+      border: 1px solid rgba(200,109,215,.28);
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.7), 0 0 60px rgba(200,109,215,.12);
+      overflow: hidden;
+      animation: modalScaleIn .32s cubic-bezier(.22,1,.36,1) both;
+    }
+    .lead-body { padding: 16px 18px 18px; display: grid; gap: 10px; }
+    .lead-body p { color: #AAB3C5; font-size: 12.5px; line-height: 1.5; }
+    .lead-field {
+      display: grid; gap: 6px;
+    }
+    .lead-field label {
+      font-size: 11px; font-weight: 700; color: #AAB3C5; letter-spacing: .03em; text-transform: uppercase;
+    }
+    .lead-field input {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: #F5F7FB;
+      outline: none;
+      transition: .2s ease;
+    }
+    .lead-field input:focus {
+      border-color: rgba(46,107,255,.55);
+      box-shadow: 0 0 0 3px rgba(46,107,255,.12);
+    }
+    .lead-actions {
+      display: grid; gap: 10px;
+      padding: 0 18px 18px;
+    }
+    .lead-primary {
+      width: 100%;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #06140F;
+      font-weight: 900;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .lead-primary:hover { transform: translateY(-1px); }
+    .lead-secondary {
+      width: 100%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.04);
+      color: #AAB3C5;
+      font-weight: 700;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      cursor: pointer;
+    }
+    .lead-note {
+      padding: 0 18px 18px;
+      color: #7E879B;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .lead-ebook-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: #F5F7FB;
+      margin: 0;
+    }
+    .lead-status {
+      display: none;
+      margin-top: 4px;
+      font-size: 11px;
+      color: #8FAEFF;
+    }
+    .lead-status.on { display: block; }
   </style>
 </head>
 
@@ -674,41 +761,43 @@
       </div>
 
       <div style="padding: 16px 18px; display: grid; gap: 10px;">
-        <!-- E-book 1 (DOWNLOAD DIRETO via Google Drive) -->
+        <!-- ALTERADO: agora abre o modal de captura antes do download -->
         <a class="card clickable" style="text-decoration:none; display:block;"
-           href="https://drive.google.com/uc?export=download&id=1nbbsUOWQcjt6ccscpz4m5tUe6yP3qYqI"
-           target="_blank" rel="noopener">
+           href="#"
+           onclick="openLeadModal({ ebookId: 'ebook-1', ebookTitle: 'E-book Lash Code', downloadUrl: 'https://drive.google.com/uc?export=download&id=1nbbsUOWQcjt6ccscpz4m5tUe6yP3qYqI' }); return false;">
           <h3 style="margin:0 0 6px; color:#F5F7FB; font-size: 15px;">E-book Lash Code</h3>
           <p style="margin:0; color:#AAB3C5; font-size: 13px; line-height: 1.55;">
            O Guia Definitivo do Alongamento de Cílois.
           </p>
           <div class="card-hint play" style="margin-top:10px;">
             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span>Download</span>
+            <span>Baixar</span>
           </div>
         </a>
 
         <a class="card clickable" style="text-decoration:none; display:block;"
-           href="ebooks/ebook-2.pdf" target="_blank" rel="noopener">
+           href="#"
+           onclick="openLeadModal({ ebookId: 'ebook-2', ebookTitle: 'E-book 2', downloadUrl: 'ebooks/ebook-2.pdf' }); return false;">
           <h3 style="margin:0 0 6px; color:#F5F7FB; font-size: 15px;">E-book 2</h3>
           <p style="margin:0; color:#AAB3C5; font-size: 13px; line-height: 1.55;">
             Clique para abrir/baixar o PDF.
           </p>
           <div class="card-hint play" style="margin-top:10px;">
             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span>Abrir</span>
+            <span>Baixar</span>
           </div>
         </a>
 
         <a class="card clickable" style="text-decoration:none; display:block;"
-           href="ebooks/ebook-3.pdf" target="_blank" rel="noopener">
+           href="#"
+           onclick="openLeadModal({ ebookId: 'ebook-3', ebookTitle: 'E-book 3', downloadUrl: 'ebooks/ebook-3.pdf' }); return false;">
           <h3 style="margin:0 0 6px; color:#F5F7FB; font-size: 15px;">E-book 3</h3>
           <p style="margin:0; color:#AAB3C5; font-size: 13px; line-height: 1.55;">
             Clique para abrir/baixar o PDF.
           </p>
           <div class="card-hint play" style="margin-top:10px;">
             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span>Abrir</span>
+            <span>Baixar</span>
           </div>
         </a>
       </div>
@@ -721,6 +810,68 @@
         <a class="video-modal-yt" href="#" onclick="closeEbooksModal(); return false;">
           Fechar
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOVO: MODAL DE CAPTURA DE LEAD (ANTES DO DOWNLOAD) -->
+  <div class="lead-modal" id="leadModal" onclick="closeLeadModalOnBackdrop(event)">
+    <div class="lead-content">
+      <div class="video-modal-header">
+        <div class="video-modal-title">
+          <div class="vm-icon" style="background: linear-gradient(135deg, #25D366, #128C7E);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#06140F">
+              <path d="M20 13V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6"/>
+              <path d="M8 21h8"/>
+              <path d="M12 17v4"/>
+            </svg>
+          </div>
+          <span>Confirme para baixar</span>
+        </div>
+        <button class="video-modal-close" onclick="closeLeadModal()" aria-label="Fechar formulário">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="lead-body">
+        <p class="lead-ebook-title" id="leadEbookTitle">E-book</p>
+        <p>Preencha seus dados e clique em <strong>“Enviar no WhatsApp e liberar download”</strong>. Você será direcionada ao WhatsApp para apertar <strong>Enviar</strong>.</p>
+
+        <form id="leadForm" autocomplete="on">
+          <input type="hidden" name="ebookId" id="leadEbookId" />
+          <input type="hidden" name="ebookTitle" id="leadEbookTitleInput" />
+          <input type="hidden" name="downloadUrl" id="leadDownloadUrl" />
+
+          <div class="lead-field">
+            <label for="leadName">Nome</label>
+            <input id="leadName" name="name" required placeholder="Seu nome completo" />
+          </div>
+          <div class="lead-field">
+            <label for="leadEmail">E-mail</label>
+            <input id="leadEmail" name="email" type="email" required placeholder="seuemail@dominio.com" />
+          </div>
+          <div class="lead-field">
+            <label for="leadWhatsapp">Seu WhatsApp (com DDD)</label>
+            <input id="leadWhatsapp" name="whatsapp" required placeholder="Ex: 11999999999" inputmode="numeric" />
+          </div>
+
+          <div class="lead-status" id="leadStatus">Depois de enviar no WhatsApp, volte aqui: o download será liberado.</div>
+
+          <div class="lead-actions">
+            <button type="button" class="lead-primary" onclick="leadSendWhatsappAndArmDownload()">
+              Enviar no WhatsApp e liberar download
+            </button>
+            <button type="button" class="lead-secondary" onclick="leadIMSentNowDownload()">
+              Já enviei no WhatsApp — baixar agora
+            </button>
+          </div>
+
+          <div class="lead-note">
+            *Sem API do WhatsApp, o envio precisa do seu clique em <strong>Enviar</strong> no WhatsApp.
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -1030,6 +1181,11 @@
   </div>
 
   <script>
+    /* ====== CONFIG (edite aqui) ====== */
+    const SEU_WHATSAPP_DESTINO = "5511910832222"; // Marcelo
+    const LEAD_WEBHOOK_URL = "COLE_AQUI_A_URL_DO_WEBHOOK_DO_MAKE"; // opcional: para mandar pro seu Gmail via Make
+
+    /* Slides */
     const T = 6;
     let C = 0;
 
@@ -1059,15 +1215,17 @@
     function prev() { if (C > 0)     go(C - 1); }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeVideoModal(); closeEbooksModal(); }
+      if (e.key === 'Escape') { closeVideoModal(); closeEbooksModal(); closeLeadModal(); }
       if (e.key === 'ArrowRight' || e.key === ' ') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
         if (document.getElementById('ebooksModal').classList.contains('open')) return;
+        if (document.getElementById('leadModal').classList.contains('open')) return;
         e.preventDefault(); next();
       }
       if (e.key === 'ArrowLeft') {
         if (document.getElementById('videoModal').classList.contains('open')) return;
         if (document.getElementById('ebooksModal').classList.contains('open')) return;
+        if (document.getElementById('leadModal').classList.contains('open')) return;
         e.preventDefault(); prev();
       }
       if (e.key === 'f' || e.key === 'F') toggleFs();
@@ -1173,14 +1331,109 @@
     /* MODAL DE E-BOOKS */
     const ebooksModal = document.getElementById('ebooksModal');
 
-    function openEbooksModal() {
-      ebooksModal.classList.add('open');
+    function openEbooksModal() { ebooksModal.classList.add('open'); }
+    function closeEbooksModal() { ebooksModal.classList.remove('open'); }
+    function closeEbooksModalOnBackdrop(e) { if (e.target === ebooksModal) closeEbooksModal(); }
+
+    /* ====== LEAD + WhatsApp (wa.me) + download após confirmação ====== */
+    const leadModal = document.getElementById('leadModal');
+    const leadStatus = document.getElementById('leadStatus');
+
+    function onlyDigits(s){ return (s || '').replace(/\D/g,''); }
+
+    function openLeadModal({ebookId, ebookTitle, downloadUrl}) {
+      // fecha modal de ebooks pra não sobrepor
+      closeEbooksModal();
+
+      document.getElementById('leadEbookTitle').textContent = ebookTitle;
+      document.getElementById('leadEbookId').value = ebookId;
+      document.getElementById('leadEbookTitleInput').value = ebookTitle;
+      document.getElementById('leadDownloadUrl').value = downloadUrl;
+
+      leadStatus.classList.remove('on');
+
+      leadModal.classList.add('open');
+      // foco no nome
+      setTimeout(() => document.getElementById('leadName')?.focus(), 50);
     }
-    function closeEbooksModal() {
-      ebooksModal.classList.remove('open');
+
+    function closeLeadModal() { leadModal.classList.remove('open'); }
+    function closeLeadModalOnBackdrop(e) { if (e.target === leadModal) closeLeadModal(); }
+
+    function buildWhatsAppLink(payload) {
+      const text =
+`Olá! Quero receber o e-book.
+
+Nome: ${payload.name}
+E-mail: ${payload.email}
+WhatsApp: ${payload.whatsapp}
+E-book: ${payload.ebookTitle}
+Página: ${payload.pageUrl}`;
+
+      return `https://wa.me/${SEU_WHATSAPP_DESTINO}?text=${encodeURIComponent(text)}`;
     }
-    function closeEbooksModalOnBackdrop(e) {
-      if (e.target === ebooksModal) closeEbooksModal();
+
+    async function sendLeadToMake(payload) {
+      if (!LEAD_WEBHOOK_URL || LEAD_WEBHOOK_URL.includes("COLE_AQUI")) return;
+      await fetch(LEAD_WEBHOOK_URL, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(payload)
+      });
+    }
+
+    function getLeadPayloadFromForm() {
+      const name = (document.getElementById('leadName').value || '').trim();
+      const email = (document.getElementById('leadEmail').value || '').trim();
+      const whatsapp = onlyDigits(document.getElementById('leadWhatsapp').value);
+
+      const ebookId = document.getElementById('leadEbookId').value;
+      const ebookTitle = document.getElementById('leadEbookTitleInput').value;
+      const downloadUrl = document.getElementById('leadDownloadUrl').value;
+
+      return {
+        name, email, whatsapp,
+        ebookId, ebookTitle, downloadUrl,
+        pageUrl: window.location.href,
+        timestamp: new Date().toISOString()
+      };
+    }
+
+    function validateLead(p) {
+      if (!p.name) return "Informe seu nome.";
+      if (!p.email || !p.email.includes('@')) return "Informe um e-mail válido.";
+      if (!p.whatsapp || p.whatsapp.length < 10) return "Informe um WhatsApp válido com DDD.";
+      if (!p.downloadUrl) return "Link de download não configurado.";
+      return null;
+    }
+
+    // 1) abre WhatsApp para a pessoa clicar Enviar
+    // 2) só depois ela clica no botão "Já enviei..." para baixar (sem API não dá pra verificar clique)
+    function leadSendWhatsappAndArmDownload() {
+      const payload = getLeadPayloadFromForm();
+      const err = validateLead(payload);
+      if (err) { alert(err); return; }
+
+      // manda pro Make (e-mail) em paralelo (não bloqueia)
+      sendLeadToMake(payload).catch(()=>{});
+
+      const link = buildWhatsAppLink(payload);
+      window.open(link, "_blank", "noopener");
+
+      // mostra instrução e habilita o fluxo do "já enviei"
+      leadStatus.classList.add('on');
+    }
+
+    function leadIMSentNowDownload() {
+      const payload = getLeadPayloadFromForm();
+      const err = validateLead(payload);
+      if (err) { alert(err); return; }
+
+      // fecha modal e inicia download
+      closeLeadModal();
+
+      // abre o PDF (força navegação). Se preferir nova aba: window.open(payload.downloadUrl,'_blank');
+      window.location.href = payload.downloadUrl;
     }
   </script>
 
