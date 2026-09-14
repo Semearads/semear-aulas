@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Pacote Cabeleireiro – Instituto Semear</title>
+  <title>Vídeos Práticos – Instituto Semear</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -18,7 +18,6 @@
 
     .wrap { max-width: 800px; margin: 0 auto; width: 100%; }
 
-    /* ── Header ── */
     .header { text-align: center; margin-bottom: 40px; }
 
     .badge {
@@ -59,14 +58,14 @@
       margin: 0 auto 24px;
     }
 
-    /* ── Lista de cursos ── */
-    .cursos-list {
+    /* ── Cards de vídeos ── */
+    .videos-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .curso-btn {
+    .video-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -85,18 +84,18 @@
       width: 100%;
     }
 
-    .curso-btn:hover,
-    .curso-btn:active {
+    .video-card:hover,
+    .video-card:active {
       background: rgba(46,107,255,.08);
       border-color: rgba(46,107,255,.35);
       box-shadow: 0 8px 32px rgba(46,107,255,.15);
     }
 
     @media (min-width: 600px) {
-      .curso-btn:hover { transform: translateX(6px); }
+      .video-card:hover { transform: translateX(6px); }
     }
 
-    .curso-btn .left {
+    .video-card .left {
       display: flex;
       align-items: center;
       gap: 14px;
@@ -104,23 +103,21 @@
       min-width: 0;
     }
 
-    .curso-num {
+    .video-num {
       width: 40px; height: 40px; min-width: 40px;
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 15px; font-weight: 900; color: #fff;
       flex-shrink: 0;
     }
-    .n1 { background: linear-gradient(135deg, #2E6BFF, #1E56D9); }
-    .n2 { background: linear-gradient(135deg, #5B3FD6, #4530B3); }
-    .n3 { background: linear-gradient(135deg, #C86DD7, #A854BF); }
-    .n4 { background: linear-gradient(135deg, #2E6BFF, #5B3FD6); }
-    .n5 { background: linear-gradient(135deg, #1E56D9, #C86DD7); }
-    .n6 { background: linear-gradient(135deg, #A854BF, #2E6BFF); }
-    .n7 { background: linear-gradient(135deg, #FF6B35, #C86DD7); }
+    .v1 { background: linear-gradient(135deg, #FF6B35, #E8552A); }
+    .v2 { background: linear-gradient(135deg, #C86DD7, #A854BF); }
+    .v3 { background: linear-gradient(135deg, #2E6BFF, #1E56D9); }
+    .v4 { background: linear-gradient(135deg, #3FB5A1, #2E8C7D); }
+    .v5 { background: linear-gradient(135deg, #FFB347, #E8932A); }
+    .v6 { background: linear-gradient(135deg, #5B3FD6, #4530B3); }
 
-    /* Texto do botão: quebra normalmente, sem truncar */
-    .curso-btn .label {
+    .video-card .label {
       flex: 1;
       min-width: 0;
       line-height: 1.35;
@@ -128,13 +125,13 @@
       hyphens: auto;
     }
 
-    .curso-btn .arrow {
+    .video-card .arrow {
       color: #7E879B;
       transition: all .3s ease;
       flex-shrink: 0;
     }
-    .curso-btn:hover .arrow,
-    .curso-btn:active .arrow {
+    .video-card:hover .arrow,
+    .video-card:active .arrow {
       color: #2E6BFF;
     }
 
@@ -266,7 +263,6 @@
       margin-top: 8px;
     }
 
-    /* Botão Sair no topo */
     .top-logout {
       position: fixed;
       top: 14px;
@@ -277,11 +273,9 @@
 </head>
 
 <body>
-  <!-- Botão Sair (aparece após login) -->
+  <!-- Botão Sair -->
   <div class="top-logout" id="logoutWrap" style="display:none;">
-    <button class="btn-back" type="button" onclick="logout()" style="margin-top:0;">
-      Sair
-    </button>
+    <button class="btn-back" type="button" onclick="logout()" style="margin-top:0;">Sair</button>
   </div>
 
   <!-- Modal de Login -->
@@ -318,78 +312,74 @@
   <div class="wrap">
 
     <div class="header">
-      <div class="badge">✂️ Pacote Cabeleireiro</div>
+      <div class="badge">🎬 Vídeos Práticos</div>
       <div class="gl"></div>
-      <h1>Escolha seu <span class="gt">curso</span></h1>
-      <p>Seu pacote inclui 6 cursos completos + vídeos práticos. Clique em qualquer um para começar.</p>
+      <h1>Escolha um <span class="gt">vídeo</span></h1>
+      <p>Clique em um dos vídeos abaixo para assistir.</p>
     </div>
 
-    <div class="cursos-list">
+    <div class="videos-list">
 
-      <a href="curso-tratamentos.html" class="curso-btn">
+      <!-- VÍDEO 1 -->
+      <a href="COLE_O_LINK_DO_VIDEO_1" target="_blank" rel="noopener" class="video-card">
         <div class="left">
-          <div class="curso-num n1">1</div>
-          <span class="label">Tratamentos e Terapia Capilar</span>
+          <div class="video-num v1">▶</div>
+          <span class="label">Vídeo 1</span>
         </div>
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true" focusable="false">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
 
-      <a href="curso-procedimentos-termicos.html" class="curso-btn">
+      <!-- VÍDEO 2 -->
+      <a href="COLE_O_LINK_DO_VIDEO_2" target="_blank" rel="noopener" class="video-card">
         <div class="left">
-          <div class="curso-num n2">2</div>
-          <span class="label">Procedimentos Térmicos</span>
+          <div class="video-num v2">▶</div>
+          <span class="label">Vídeo 2</span>
         </div>
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true" focusable="false">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
 
-      <a href="curso-luzes-mechas.html" class="curso-btn">
+      <!-- VÍDEO 3 -->
+      <a href="COLE_O_LINK_DO_VIDEO_3" target="_blank" rel="noopener" class="video-card">
         <div class="left">
-          <div class="curso-num n3">3</div>
-          <span class="label">Luzes e Mechas</span>
+          <div class="video-num v3">▶</div>
+          <span class="label">Vídeo 3</span>
         </div>
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true" focusable="false">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
 
-      <a href="curso-coloracao.html" class="curso-btn">
+      <!-- VÍDEO 4 -->
+      <a href="COLE_O_LINK_DO_VIDEO_4" target="_blank" rel="noopener" class="video-card">
         <div class="left">
-          <div class="curso-num n4">4</div>
-          <span class="label">Coloração</span>
+          <div class="video-num v4">▶</div>
+          <span class="label">Vídeo 4</span>
         </div>
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true" focusable="false">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
 
-      <a href="curso-cortes-modelagens.html" class="curso-btn">
+      <!-- VÍDEO 5 -->
+      <a href="COLE_O_LINK_DO_VIDEO_5" target="_blank" rel="noopener" class="video-card">
         <div class="left">
-          <div class="curso-num n5">5</div>
-          <span class="label">Cortes e Modelagens</span>
+          <div class="video-num v5">▶</div>
+          <span class="label">Vídeo 5</span>
         </div>
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true" focusable="false">
           <path d="M9 18l6-6-6-6"/>
         </svg>
       </a>
 
-      <a href="curso-marketing.html" class="curso-btn">
+      <!-- VÍDEO 6 -->
+      <a href="COLE_O_LINK_DO_VIDEO_6" target="_blank" rel="noopener" class="video-card">
         <div class="left">
-          <div class="curso-num n6">6</div>
-          <span class="label">Marketing para Salões e Como Montar Pacotes</span>
-        </div>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true" focusable="false">
-          <path d="M9 18l6-6-6-6"/>
-        </svg>
-      </a>
-
-      <a href="curso-videos-praticos.html" class="curso-btn">
-        <div class="left">
-          <div class="curso-num n7">7</div>
-          <span class="label">Vídeos Práticos</span>
+          <div class="video-num v6">▶</div>
+          <span class="label">Vídeo 6</span>
         </div>
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true" focusable="false">
           <path d="M9 18l6-6-6-6"/>
@@ -402,14 +392,12 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true" focusable="false">
         <path d="M15 18l-6-6 6-6"/>
       </svg>
-      Voltar à Área do Aluno
+      Voltar aos Cursos
     </a>
 
   </div>
 
   <script>
-    // ===== Login simples (front-end) =====
-    // Obs: em site estático isso NÃO é segurança real; é apenas um bloqueio básico de interface.
     const ACCESS_KEY = 'semear_access_ok_cabeleireiro';
     const NAME_KEY   = 'semear_access_name';
     const PASSWORD   = 'semearcp';
