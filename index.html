@@ -1352,7 +1352,7 @@
 </head>
 
 <body>
-  <div class="progress" id="prog" style="width:16.6%"></div>
+  <div class="progress" id="prog" style="width:14.285%"></div>
 
   <button class="fs-btn" onclick="toggleFs()" type="button">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1361,7 +1361,7 @@
     <span id="fsTxt">Tela cheia</span>
   </button>
 
-  <div class="sc"><span class="cn" id="cn">1</span> / 6</div>
+  <div class="sc"><span class="cn" id="cn">1</span> / 7</div>
   <div class="ind" id="ind"></div>
 
   <div class="nav-arr">
@@ -1741,7 +1741,43 @@
         </div>
       </section>
 
-      <!-- Slide 5: E-books -->
+      <!-- Slide 5: Cabeleireiro Profissional (CP, EL) -->
+      <section class="slide">
+        <div class="slide-scroll">
+          <div class="s2-wrap">
+            <div class="gl au d1"></div>
+            <h2 class="au d2">CURSOS DE CABELEIREIRO<br><span class="gt">PROFISSIONAL</span></h2>
+            <p class="sub au d3">TREINOS PRÁTICOS, DESENVOLVIMENTO DE HABILIDADES E ATENDIMENTO NAS MODELOS.</p>
+
+            <div class="combo-grid">
+              <div class="combo-card au d4">
+                <div class="combo-img-wrap">
+                  <img src="img/cp.png" alt="Curso de cabeleireiro CP">
+                </div>
+                <a href="https://wa.me/5511910832222?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20curso%20de%20cabeleireiro%20CP" target="_blank" rel="noopener" class="cta-btn combo-btn">EU QUERO ESTE COMBO</a>
+              </div>
+
+              <div class="combo-card au d5">
+                <div class="combo-img-wrap">
+                  <img src="img/el.png" alt="Curso de cabeleireiro EL">
+                </div>
+                <a href="https://wa.me/5511910832222?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20curso%20de%20cabeleireiro%20EL" target="_blank" rel="noopener" class="cta-btn combo-btn">EU QUERO ESTE COMBO</a>
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:center;margin-top:22px;">
+              <a href="#" onclick="go(5);return false;" class="cta-btn" style="animation:none;background:rgba(255,255,255,.05);border:1px solid rgba(46,107,255,.35);box-shadow:none;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:700;gap:8px;color:#F5F7FB;white-space:normal;">
+                Ver outros cursos
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px;">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: E-books -->
       <section class="slide">
         <div class="slide-scroll">
           <div class="s4-wrap">
@@ -1794,7 +1830,7 @@
         </div>
       </section>
 
-      <!-- Slide 6: Como acessar (ÚLTIMO) -->
+      <!-- Slide 7: Como acessar (ÚLTIMO) -->
       <section class="slide">
         <div class="slide-scroll">
           <div class="s5-wrap">
@@ -1888,7 +1924,7 @@
     const SEU_WHATSAPP_DESTINO = "5511910832222";
     const LEAD_WEBHOOK_URL = "COLE_AQUI_A_URL_DO_WEBHOOK_DO_MAKE";
 
-    const T = 6;
+    const T = 7;
     let C = 0;
 
     const W = document.getElementById('sw');
@@ -1925,7 +1961,7 @@
         element.scrollTop = 0;
       });
 
-      if (C === 5) {
+      if (C === 6) {
         pip.classList.remove('hidden-pip', 'gone');
         pip.style.display = 'block';
       } else {
