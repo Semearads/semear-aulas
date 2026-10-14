@@ -276,7 +276,6 @@
     }
     #pip.big { width: 320px; }
     #pip.gone { animation: pipLeave .28s ease forwards; pointer-events:none; }
-    /* Esconde o PiP por padrão (só aparece no slide 5) */
     #pip.hidden-pip { display: none !important; }
 
     @media (max-width: 480px) {
@@ -977,17 +976,21 @@
                 </div>
               </div>
               <h2 class="au d2 s1-title">
-                Seja bem-vinda ao <span class="gt">Portal da Aluna</span>
+                Sua nova profissão na beleza<br><span class="gt">começa aqui</span>
               </h2>
               <p class="au d3 s1-sub">
-                Toda a teoria que você teria em sala de aula está no nosso portal!
+                Aprenda na prática, <strong>presencialmente</strong>, com acompanhamento real.
               </p>
               <p class="au d3 s1-sub">
-                Assim, nas nossas aulas presenciais, fazemos muito mais treinos e atendimentos nas modelos!
+                Transforme seu talento em uma carreira que dá autonomia e orgulho.
               </p>
               <div class="badge au d4">
-                Área do Aluno · SEMEAR · Acesso rápido
+                Cursos 100% Presenciais · 100% Práticos · SEMEAR
               </div>
+              <a href="#" onclick="go(4); return false;" class="cta-btn au d5"
+                 style="animation:none; white-space:normal; text-align:center; max-width:90%;">
+                Mão na Massa desde a primeira aula
+              </a>
             </div>
           </div>
         </div>
@@ -1305,7 +1308,7 @@
         pip.style.display = 'block';
       } else {
         pip.classList.add('hidden-pip');
-        pipFrame.src = '';        // pausa o vídeo ao sair do slide
+        pipFrame.src = '';
         pipPlayer.classList.remove('on');
         pipThumb.style.display = 'block';
       }
