@@ -6,6 +6,7 @@
   <title>Área do Aluno – SEMEAR - A Escola da Mulher Empreendedora</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -414,9 +415,31 @@
 
     /* Slides 1-4 e 6 */
     .s1-wrap { text-align: center; max-width: 880px; width: 100%; }
+
+    /* ===== TIPOGRAFIA SOFISTICADA DO SLIDE 1 ===== */
+    .s1-title {
+      margin: 0 0 12px; text-align: center; color: #F5F7FB;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(28px, 3.6vw, 48px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+    .s1-title .gt { font-weight: 700; letter-spacing: -0.015em; }
+
+    .s1-sub,
+    .s1-wrap .badge,
+    .s1-wrap .cta-btn {
+      font-family: 'Manrope', 'Inter', sans-serif;
+    }
+    .s1-sub {
+      margin: 0 auto; max-width: 560px; color: #AAB3C5;
+      font-size: clamp(13px, 1.8vw, 16px); line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: 0.005em;
+    }
+
     .logo-img { width: 100%; max-width: 240px; height: auto; display: block; margin: 0 auto; }
-    .s1-title { margin: 0 0 12px; text-align: center; color: #F5F7FB; font-size: clamp(18px, 2.4vw, 28px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
-    .s1-sub { margin: 0 auto; max-width: 560px; color: #AAB3C5; font-size: clamp(13px, 1.8vw, 16px); line-height: 1.55; }
     .s1-stack { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
 
     .s2-wrap { max-width:1000px; width:100%; }
@@ -478,7 +501,7 @@
 
       .s1-wrap { padding: 0 4px; }
       .logo-img { max-width: 180px; }
-      .s1-title { font-size: 20px; margin-bottom: 10px; line-height: 1.25; }
+      .s1-title { font-size: 30px; margin-bottom: 10px; line-height: 1.2; }
       .s1-sub { font-size: 13px; line-height: 1.55; margin-bottom: 4px; }
       .s1-stack { gap: 10px; }
       .badge { font-size: 10px; padding: 7px 12px; margin-bottom: 16px; }
@@ -556,7 +579,7 @@
       .slide-center { padding: 90px 12px 130px; }
 
       .logo-img { max-width: 160px; }
-      .s1-title { font-size: 18px; }
+      .s1-title { font-size: 27px; }
       .s1-sub { font-size: 12px; }
 
       .s2-wrap h2, .s3-wrap h2, .s4-wrap h2, .s5-wrap h2 { font-size: 20px; }
@@ -585,7 +608,7 @@
       .slide-center { padding: 72px 10px 110px; }
 
       .logo-img { max-width: 140px; }
-      .s1-title { font-size: 17px; }
+      .s1-title { font-size: 25px; }
       .s1-sub { font-size: 11px; }
 
       .s5-btns { grid-template-columns: 1fr !important; }
