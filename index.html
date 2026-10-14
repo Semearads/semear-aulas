@@ -1,3 +1,6 @@
+Segue o arquivo completo com a alteração aplicada: o vídeo de apresentação (PiP) agora aparece **somente no slide 5**, exatamente onde ficam os botões de acesso às aulas.
+
+<artifact id="area-aluna-pip-slide5" type="html" title="Área do Aluno - SEMEAR (PiP no slide 5)">
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -247,6 +250,9 @@
     }
     #pip.big { width: 320px; }
     #pip.gone { animation: pipLeave .28s ease forwards; pointer-events:none; }
+    /* NOVO: esconde o PiP por padrão (só aparece no slide 5) */
+    #pip.hidden-pip { display: none !important; }
+
     @media (max-width: 480px) {
       #pip { width: 180px; bottom: 80px; right: 10px; }
       #pip.big { width: 260px; }
@@ -319,10 +325,10 @@
     .video-modal.open { display: flex; }
 
     .video-modal-content {
-      position: relative;               /* (antes era absolute + translate) */
-      transform: none;                  /* remove translate(-50%, -50%) */
-      width: min(900px, 100%);          /* mais robusto */
-      max-height: calc(100dvh - 32px);  /* evita cortar com barra/teclado (mobile moderno) */
+      position: relative;
+      transform: none;
+      width: min(900px, 100%);
+      max-height: calc(100dvh - 32px);
       background: linear-gradient(160deg, #0E0A2B 0%, #080C1C 100%);
       border: 1px solid rgba(46, 107, 255, 0.25); border-radius: 20px;
       overflow: hidden;
@@ -608,7 +614,7 @@
       color: #F5F7FB;
       outline: none;
       transition: .2s ease;
-      font-size: 16px; /* evita zoom no iPhone e melhora o foco */
+      font-size: 16px;
     }
     .lead-field input:focus {
       border-color: rgba(46,107,255,.55);
@@ -701,7 +707,7 @@
   </div>
 
   <!-- PiP -->
-  <div id="pip">
+  <div id="pip" class="hidden-pip">
     <div class="pip-bar">
       <div class="pip-bar-l">
         <div class="pip-live"></div>
@@ -1245,6 +1251,11 @@
     const Prog = document.getElementById('prog');
     const Ind  = document.getElementById('ind');
 
+    const pip       = document.getElementById('pip');
+    const pipThumb  = document.getElementById('pipThumb');
+    const pipPlayer = document.getElementById('pipPlayer');
+    const pipFrame  = document.getElementById('pipFrame');
+
     for (let i = 0; i < T; i++) {
       const d = document.createElement('div');
       d.classList.add('dot');
@@ -1259,6 +1270,18 @@
       Prog.style.width = ((C + 1) / T * 100) + '%';
       document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === C));
       document.querySelectorAll('.slide-scroll').forEach(el => el.scrollTop = 0);
+
+      // Mostra o PiP apenas no slide 5 (índice 4)
+      if (C === 4) {
+        pip.classList.remove('hidden-pip');
+        pip.classList.remove('gone');
+        pip.style.display = 'block';
+      } else {
+        pip.classList.add('hidden-pip');
+        pipFrame.src = '';        // pausa o vídeo ao sair do slide
+        pipPlayer.classList.remove('on');
+        pipThumb.style.display = 'block';
+      }
     }
 
     function go(i)  { if (i < 0 || i >= T) return; C = i; W.style.transform = `translateX(-${C * 100}vw)`; upd(); }
@@ -1305,10 +1328,6 @@
     upd();
 
     /* PiP */
-    const pip       = document.getElementById('pip');
-    const pipThumb  = document.getElementById('pipThumb');
-    const pipPlayer = document.getElementById('pipPlayer');
-    const pipFrame  = document.getElementById('pipFrame');
     const VIDEO_SRC = 'https://www.youtube.com/embed/lF9D-wNGChs?autoplay=1&rel=0&modestbranding=1';
     let isBig = false;
 
@@ -1467,3 +1486,6 @@ Página: ${payload.pageUrl}`;
 
 </body>
 </html>
+</artifact>
+
+Agora o PiP fica totalmente oculto ao abrir a página e só surge quando você navega até o **slide 5**. Ao sair dele, o vídeo é pausado e o PiP some de novo — exatamente como você pediu.
