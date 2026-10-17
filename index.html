@@ -763,7 +763,7 @@
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
       margin-top: 24px;
     }
@@ -1394,7 +1394,7 @@
       .combo-grid { grid-template-columns: 1fr; gap: 18px; }
       .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
       .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-      .s2-grid, .s4-grid { grid-template-columns: 1fr; gap: 14px; }
+      .s4-grid { grid-template-columns: 1fr; gap: 14px; }
       .slide-scroll { padding: 80px 16px 110px; }
       .slide-center { padding: 80px 16px 110px; }
       .sc { bottom: 16px; left: 10px; padding: 6px 10px; font-size: 11px; }
@@ -2146,26 +2146,33 @@
       const videoOpen = document.getElementById('videoModal').classList.contains('open');
       const ebooksOpen = document.getElementById('ebooksModal').classList.contains('open');
       const leadOpen = document.getElementById('leadModal').classList.contains('open');
+      const anyModalOpen = videoOpen || ebooksOpen || leadOpen;
 
       if (event.key === 'Escape') {
         closeVideoModal();
         closeEbooksModal();
         closeLeadModal();
+        return;
       }
 
+      const target = event.target;
+      const isTyping = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable);
+
+      if (isTyping) return;
+
       if (event.key === 'ArrowRight' || event.key === ' ') {
-        if (videoOpen || ebooksOpen || leadOpen) return;
+        if (anyModalOpen) return;
         event.preventDefault();
         next();
       }
 
       if (event.key === 'ArrowLeft') {
-        if (videoOpen || ebooksOpen || leadOpen) return;
+        if (anyModalOpen) return;
         event.preventDefault();
         prev();
       }
 
-      if (event.key === 'f' || event.key === 'F') toggleFs();
+      if ((event.key === 'f' || event.key === 'F') && !anyModalOpen) toggleFs();
     });
 
     let tx = 0;
@@ -2177,6 +2184,11 @@
     }, { passive: true });
 
     document.addEventListener('touchend', event => {
+      const videoOpen = document.getElementById('videoModal').classList.contains('open');
+      const ebooksOpen = document.getElementById('ebooksModal').classList.contains('open');
+      const leadOpen = document.getElementById('leadModal').classList.contains('open');
+      if (videoOpen || ebooksOpen || leadOpen) return;
+
       const dx = tx - event.changedTouches[0].screenX;
       const dy = ty - event.changedTouches[0].screenY;
       if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
